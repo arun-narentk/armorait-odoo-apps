@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_resume_skill_normalization_user,hr.resume.skill.normalization.user,model_hr_resume_skill_normalization,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_hr_resume_skill_normalization_manager,hr.resume.skill.normalization.manager,model_hr_resume_skill_normalization,hr_recruitment.group_hr_recruitment_manager,1,1,1,1
+access_hr_resume_similarity_user,hr.resume.similarity.user,model_hr_resume_similarity,hr_recruitment.group_hr_recruitment_user,1,0,0,0
+access_hr_resume_similarity_manager,hr.resume.similarity.manager,model_hr_resume_similarity,hr_recruitment.group_hr_recruitment_manager,1,1,1,1
+access_hr_resume_bulk_upload_wizard_user,hr.resume.bulk.upload.wizard.user,model_hr_resume_bulk_upload_wizard,hr_recruitment.group_hr_recruitment_user,1,1,1,1

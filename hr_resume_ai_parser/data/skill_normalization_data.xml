@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Skill type for resume-parsed technical skills (if hr_skills demo not installed) -->
+    <record id="hr_skill_type_resume_technical" model="hr.skill.type">
+        <field name="name">Technical (Resume Parser)</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="hr_skill_level_resume_technical" model="hr.skill.level">
+        <field name="name">Mentioned</field>
+        <field name="default_level">1</field>
+        <field name="level_progress">50</field>
+        <field name="skill_type_id" ref="hr_skill_type_resume_technical"/>
+    </record>
+    <!-- Skills that normalization will map to -->
+    <record id="hr_skill_resume_python" model="hr.skill">
+        <field name="name">Python</field>
+        <field name="skill_type_id" ref="hr_skill_type_resume_technical"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="hr_skill_resume_javascript" model="hr.skill">
+        <field name="name">JavaScript</field>
+        <field name="skill_type_id" ref="hr_skill_type_resume_technical"/>
+        <field name="sequence">2</field>
+    </record>
+    <record id="hr_skill_resume_odoo" model="hr.skill">
+        <field name="name">Odoo</field>
+        <field name="skill_type_id" ref="hr_skill_type_resume_technical"/>
+        <field name="sequence">3</field>
+    </record>
+    <record id="hr_skill_resume_postgresql" model="hr.skill">
+        <field name="name">PostgreSQL</field>
+        <field name="skill_type_id" ref="hr_skill_type_resume_technical"/>
+        <field name="sequence">4</field>
+    </record>
+    <!-- Normalization: parsed name -> canonical hr.skill -->
+    <record id="skill_norm_js" model="hr.resume.skill.normalization">
+        <field name="parsed_name">JS</field>
+        <field name="skill_id" ref="hr_skill_resume_javascript"/>
+    </record>
+    <record id="skill_norm_javascript" model="hr.resume.skill.normalization">
+        <field name="parsed_name">javascript</field>
+        <field name="skill_id" ref="hr_skill_resume_javascript"/>
+    </record>
+    <record id="skill_norm_python" model="hr.resume.skill.normalization">
+        <field name="parsed_name">python</field>
+        <field name="skill_id" ref="hr_skill_resume_python"/>
+    </record>
+    <record id="skill_norm_odoo_erp" model="hr.resume.skill.normalization">
+        <field name="parsed_name">odoo erp</field>
+        <field name="skill_id" ref="hr_skill_resume_odoo"/>
+    </record>
+    <record id="skill_norm_odoo" model="hr.resume.skill.normalization">
+        <field name="parsed_name">odoo</field>
+        <field name="skill_id" ref="hr_skill_resume_odoo"/>
+    </record>
+    <record id="skill_norm_postgres" model="hr.resume.skill.normalization">
+        <field name="parsed_name">postgres</field>
+        <field name="skill_id" ref="hr_skill_resume_postgresql"/>
+    </record>
+    <record id="skill_norm_postgresql" model="hr.resume.skill.normalization">
+        <field name="parsed_name">postgresql</field>
+        <field name="skill_id" ref="hr_skill_resume_postgresql"/>
+    </record>
+</odoo>

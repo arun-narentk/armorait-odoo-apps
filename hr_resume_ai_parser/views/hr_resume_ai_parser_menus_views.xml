@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Search view for AI Ranking (must be before action that references it) -->
+    <record id="hr_applicant_search_ai_ranking" model="ir.ui.view">
+        <field name="name">hr.applicant.search.ai.ranking</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <search string="Applicants (AI Ranking)">
+                <field name="partner_name" string="Applicant" filter_domain="['|', ('partner_name', 'ilike', self), ('email_from', 'ilike', self)]"/>
+                <field name="email_from" string="Email" filter_domain="[('email_from', 'ilike', self)]"/>
+                <field name="job_id"/>
+                <filter string="Parsed" name="parsed" domain="[('parsing_status', '=', 'done')]"/>
+                <filter string="With job" name="has_job" domain="[('job_id', '!=', False)]"/>
+                <separator/>
+                <filter string="High match" name="high_match" domain="[('match_score', '&gt;=', 70)]"/>
+                <filter string="High confidence" name="high_confidence" domain="[('parsing_confidence', '&gt;=', 70)]"/>
+                <separator/>
+                <group>
+                    <filter string="Job" name="group_job" domain="[]" context="{'group_by': 'job_id'}"/>
+                    <filter string="Parsing status" name="group_status" domain="[]" context="{'group_by': 'parsing_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Bulk upload wizard action -->
+    <record id="hr_resume_bulk_upload_wizard_action" model="ir.actions.act_window">
+        <field name="name">Bulk Resume Upload</field>
+        <field name="res_model">hr.resume.bulk.upload.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+    </record>
+
+    <!-- AI Ranking dashboard: applicants ordered by match score, filtered to parsed -->
+    <record id="hr_applicant_action_ai_ranking" model="ir.actions.act_window">
+        <field name="name">AI Ranking</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="hr_resume_ai_parser.hr_applicant_search_ai_ranking"/>
+        <field name="context">{'search_default_parsed': 1, 'search_default_has_job': 1, 'order': 'match_score desc, parsing_confidence desc, id desc'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No applicants with parsed resumes yet.
+            </p>
+            <p>
+                Upload resumes (single or bulk) to get AI parsing and match scores. Applicants are ranked by match score for the selected job.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menus under Recruitment > Applications -->
+    <menuitem id="menu_hr_resume_bulk_upload"
+              name="Bulk Resume Upload"
+              parent="hr_recruitment.menu_crm_case_categ0_act_job"
+              action="hr_resume_ai_parser.hr_resume_bulk_upload_wizard_action"
+              sequence="5"
+              groups="hr_recruitment.group_hr_recruitment_user"/>
+    <menuitem id="menu_hr_applicant_ai_ranking"
+              name="AI Ranking"
+              parent="hr_recruitment.menu_crm_case_categ0_act_job"
+              action="hr_resume_ai_parser.hr_applicant_action_ai_ranking"
+              sequence="6"
+              groups="hr_recruitment.group_hr_recruitment_user"/>
+</odoo>
