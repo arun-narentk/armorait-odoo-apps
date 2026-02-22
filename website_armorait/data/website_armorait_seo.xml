@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Homepage SEO: Website → Promote → SEO (title, meta description, keywords) -->
-    <record id="armorait_homepage_seo" model="ir.ui.view" ref="website.homepage">
-        <field name="website_meta_title">ERP Implementation &amp; Odoo Customization | Armorait</field>
-        <field name="website_meta_description">Armorait provides ERP implementation, Odoo customization and business automation solutions for manufacturing, trading and service companies in India.</field>
-        <field name="website_meta_keywords">ERP implementation services, Odoo ERP partner, Inventory management ERP, Business automation software</field>
-    </record>
+    <data noupdate="1">
+        <!-- Homepage SEO: Website → Promote → SEO (title, meta description, keywords) -->
+        <record id="armorait_homepage_seo" model="ir.ui.view" ref="website.homepage">
+            <field name="website_meta_title">ERP Implementation &amp; Odoo Customization | Armorait</field>
+            <field name="website_meta_description">Armorait provides ERP implementation, Odoo customization and business automation solutions for manufacturing, trading and service companies in India.</field>
+            <field name="website_meta_keywords">ERP implementation services, Odoo ERP partner, Inventory management ERP, Business automation software</field>
+        </record>
+    </data>
 </odoo>
