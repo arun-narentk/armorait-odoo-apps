@@ -173,12 +173,12 @@ class HrApplicant(models.Model):
             return
 
         parser = self.env['resume.ai.parser.service'].sudo()
-        raw_text = parser.extract_pdf_text(attachment)
+        raw_text, extract_error = parser.extract_pdf_text(attachment)
         if not raw_text or not raw_text.strip():
             self.sudo().write({
                 'resume_text': '',
                 'parsing_status': 'error',
-                'parsing_error_message': _('Could not extract text from PDF.'),
+                'parsing_error_message': extract_error or _('Could not extract text from PDF.'),
             })
             return
 

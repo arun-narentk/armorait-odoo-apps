@@ -560,6 +560,7 @@
             </div>
         </xpath>
     </template>
+
     <template id="footer_copyright_armorait" name="ARMORAIT Footer Copyright" inherit_id="website.layout" priority="50">
         <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">
             <span class="o_footer_copyright_name me-2 small">Copyright © ARMORAIT</span>

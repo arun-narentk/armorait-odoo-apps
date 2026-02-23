@@ -1,1 +1,6 @@
 https://www.odoo.com/my/databases
+
+https://udyamregistration.gov.in/UdyamRegistration.aspx
+
+cd /home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA
+./venv310/bin/python odoo-bin -c .openerp_serverrc

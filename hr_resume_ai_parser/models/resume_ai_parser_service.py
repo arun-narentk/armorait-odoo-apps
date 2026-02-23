@@ -38,25 +38,53 @@ class ResumeAiParserService(models.AbstractModel):
     _description = 'Resume AI Parser Service'
 
     def extract_pdf_text(self, attachment):
-        """Extract raw text from PDF using pdfminer.six."""
+        """Extract raw text from PDF using pdfminer.six.
+        Returns (text, error_message). error_message is set when file is not a valid PDF.
+        """
         if not attachment or attachment.mimetype != 'application/pdf':
-            return ''
+            return '', _('Attachment is not a PDF.')
         try:
-            from pdfminer.high_level import extract_text_to_fp
-            from pdfminer.layout import LAParams
             raw = attachment.raw
             if not raw:
-                return ''
-            buffer = BytesIO(base64.b64decode(raw))
+                return '', _('Attachment is empty.')
+            data = base64.b64decode(raw)
+            if not data or len(data) < 8:
+                _logger.warning("PDF text extraction failed: attachment empty or too small")
+                return '', _('File is too small or empty.')
+            # PDF files start with %PDF-; reject clearly non-PDF content
+            if not data.startswith(b'%PDF'):
+                _logger.warning(
+                    "PDF text extraction failed: file is not a valid PDF (wrong format or extension). "
+                    "Attachment: %s (id=%s)",
+                    attachment.name, attachment.id,
+                )
+                return '', _(
+                    'File is not a valid PDF (wrong format or extension). '
+                    'Re-save the document as PDF (e.g. Print → Save as PDF) or upload a different file.'
+                )
+            from pdfminer.high_level import extract_text_to_fp
+            from pdfminer.layout import LAParams
+            buffer = BytesIO(data)
             out = BytesIO()
             extract_text_to_fp(buffer, out, laparams=LAParams(), output_type='text')
-            return out.getvalue().decode('utf-8', errors='replace')
+            return out.getvalue().decode('utf-8', errors='replace'), None
         except ImportError:
             _logger.warning("pdfminer.six not installed; cannot extract PDF text")
-            return ''
+            return '', _('PDF extraction is not available (pdfminer.six not installed).')
         except Exception as e:
+            err_msg = str(e).strip()
+            if '/Root' in err_msg or 'not a PDF' in err_msg.lower() or 'invalid' in err_msg.lower():
+                _logger.warning(
+                    "PDF text extraction failed: file is not a valid or supported PDF (%s). "
+                    "Attachment: %s (id=%s)",
+                    err_msg[:80], getattr(attachment, 'name', '?'), getattr(attachment, 'id', '?'),
+                )
+                return '', _(
+                    'File is not a valid or supported PDF. '
+                    'Re-save as PDF or try a different file.'
+                )
             _logger.exception("PDF text extraction failed: %s", e)
-            return ''
+            return '', _('Could not extract text from PDF.')
 
     def parse_resume_with_ai(self, resume_text):
         """Send resume text to AI and return validated JSON. Override in custom module for OpenAI/Azure/local LLM."""
