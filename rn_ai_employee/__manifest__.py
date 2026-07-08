@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Copilot for Odoo',
+    'name': 'AI Chatbot',
     'version': '19.0.2.6.0',
     'category': 'Productivity',
-    'summary': 'Business assistant for sales, accounting, inventory, and CRM insights',
+    'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
     'description': """
 AI Copilot for Odoo 19
 ======================
@@ -22,11 +22,12 @@ Install, enable, and use it in your own Odoo environment.
 
 Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
-    'price': 49.0,
+    'license': 'OPL-1',
+    'price': 99.99,
     'currency': 'USD',
     'depends': [
         'base',
@@ -49,14 +50,10 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
         'views/ai_employee_menus.xml',
     ],
     'images': [
-        'static/description/main_screenshot.png',
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/screenshot_real_copilot.png',
-        'static/description/screenshot_real_settings.png',
-        'static/description/screenshot_real_crm.png',
-        'static/description/screenshot_real_sales.png',
-        'static/description/screenshot_real_invoices.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

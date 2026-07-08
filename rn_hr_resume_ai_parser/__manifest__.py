@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'HR Resume AI Parser',
+    'name': 'Resume AI Parser',
     'version': '1.0',
     'category': 'Human Resources/Recruitment',
-    'summary': 'Parse resumes with AI and extract skills, experience, and match score',
+    'summary': 'Parse CVs into skills, experience, and applicant records',
     'description': """
         Async resume parsing: PDF extraction, AI-structured JSON, skill normalization,
         experience calculation, and job match score. Uses queue_job when available.
@@ -28,8 +28,17 @@
         'wizard/hr_resume_bulk_upload_wizard_views.xml',
         'views/hr_resume_ai_parser_menus_views.xml',
     ],
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
+    'images': [
+        'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
+    ],
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 79.99,
 }
