@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'BI Sales Dashboard',
+    'name': 'ARMORA BI Sales Dashboard',
     'version': '19.0.1.0.0',
     'category': 'Sales',
     'summary': 'Advanced sales analytics, KPIs, charts, targets, and forecasts for Odoo 19',
@@ -15,10 +15,14 @@ snapshots, filter engine, OWL dashboard shell, Chart.js hooks,
 export stubs, and service-layer architecture ready for future
 bi_* dashboard modules to share patterns with.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 39.99,
+    'sequence': 35,
     'depends': [
         'base',
         'mail',

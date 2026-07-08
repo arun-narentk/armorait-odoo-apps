@@ -70,7 +70,7 @@ Phase 1 uses live `sale.order` aggregation with a process-local TTL cache. Daily
 
 ## License
 
-LGPL-3
+OPL-1
 
 ## Support
 
