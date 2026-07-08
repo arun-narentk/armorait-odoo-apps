@@ -1,8 +1,8 @@
 {
-    'name': 'Theme Base',
+    'name': 'Website Theme Framework',
     'description': 'Premium Website Theme Framework for ARMORAIT. Bootstrap 5, 40 snippets, customizer, SEO, animations.',
     'category': 'Theme/Corporate',
-    'summary': 'Corporate, Framework, Snippets, Customizer, SEO, Bootstrap 5',
+    'summary': '40 snippets, customizer, SEO, and Bootstrap 5 theme base',
     'sequence': 100,
     'version': '19.0.1.0.0',
     'depends': [
@@ -64,10 +64,16 @@
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 49.99,
+    'live_test_url': 'https://www.armorait.com',
     'configurator_snippets': {
         'homepage': [
             's_tb_hero_banner',
