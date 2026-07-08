@@ -22,6 +22,7 @@ bi_* dashboard modules to share patterns with.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 39.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 35,
     'depends': [
         'base',
