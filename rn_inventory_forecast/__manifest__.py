@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Inventory Forecast',
+    'name': 'Inventory Forecast',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
-    'summary': 'Demand forecasting, safety stock, ABC/XYZ/FSN, and inventory planning for Odoo 19',
+    'summary': 'Demand forecasting, safety stock, and ABC analysis',
     'description': """
 ARMORA Inventory Forecast for Odoo 19 Community
 ==========================================
@@ -56,8 +56,10 @@ dashboard shell. AI forecasting arrives in later releases.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
