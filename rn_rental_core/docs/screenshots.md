@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, asset form, booking calendar, quick booking, availability wizard, settings before publish.
+Replace generated placeholders for **Rental Management** with real desktop, tablet, and mobile captures.

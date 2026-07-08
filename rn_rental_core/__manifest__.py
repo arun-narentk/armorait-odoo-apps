@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Rental Core',
+    'name': 'Rental Management',
     'version': '19.0.1.0.0',
     'category': 'Sales/Rental',
-    'summary': 'Industry-agnostic rental assets, pricing, availability, and booking foundation for Odoo 19',
+    'summary': 'Assets, pricing, availability, and bookings for any rental business',
     'description': """
 ARMORA Rental Core for Odoo 19 Community
 ========================================
@@ -62,6 +62,8 @@ returns, damage, website, and industry packs.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

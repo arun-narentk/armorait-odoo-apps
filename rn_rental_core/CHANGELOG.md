@@ -1,5 +1,5 @@
 # Changelog
 
 ## 19.0.1.0.0
-
-- Phase 1: rental core with assets, pricing, availability, bookings, dashboard, docs
+- Initial commercial release of Rental Management
+- Professional Apps Store assets and documentation pack

@@ -1,9 +1,21 @@
 # User Guide
 
-1. Create categories and assets with daily/weekly prices.
-2. Use Check Availability for a period.
-3. Create bookings or use Quick Booking to reserve.
-4. Confirm bookings when payment is cleared (companion module later).
-5. Track utilization on the rental dashboard.
+        ## Rental Management
 
-ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+        Rental Management is an industry-agnostic rental engine with assets, pricing rules, conflict detection, and an OWL operations dashboard.
+
+        ## Typical workflow
+        1. Add assets
+2. Set pricing
+3. Create booking
+4. Check availability
+5. Confirm rental
+6. Return asset
+
+        ## Tips
+        - Start with demo data to learn the screens.
+        - Configure settings before inviting end users.
+        - Use dashboards for daily operations reviews.
+
+        ## Support
+        info@armorait.com
