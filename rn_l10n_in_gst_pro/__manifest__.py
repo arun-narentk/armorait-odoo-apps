@@ -23,6 +23,7 @@ and GSTN workflow features.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 49.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 39,
     'countries': ['IN'],
     'depends': [
