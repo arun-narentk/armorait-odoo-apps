@@ -29,6 +29,7 @@ Higher editions add team inbox, campaigns, REST API, and high-volume tooling.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 79.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 45,
     'depends': [
         'base',
