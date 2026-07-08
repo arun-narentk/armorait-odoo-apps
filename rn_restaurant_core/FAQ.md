@@ -1,12 +1,13 @@
 # FAQ
 
-**Is this a full POS?**  
-No. This is the domain foundation. Billing is `rn_restaurant_pos`.
+## Does Restaurant Management work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Does it need point_of_sale?**  
-Phase 1 does not. POS companion will decide integration approach.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Price?**  
-Core is listed at 49.99 USD.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

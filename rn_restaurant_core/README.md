@@ -1,56 +1,28 @@
-# ARMORA Restaurant Core
+# Restaurant Management
 
-Foundation of ARMORA Restaurant Cloud POS for Odoo 19 Community.
+        Branches, floors, tables, menu, and restaurant setup
 
-## Overview
+        ## Business problem
+        Restaurant groups lack a single Odoo foundation for branches, menus, tables, and taxes before POS rollout.
 
-`rn_restaurant_core` defines restaurants, branches, dining areas, tables, menu categories/items, F&B taxes, and payment methods. POS, KDS, QR, inventory recipes, delivery, loyalty, and AI modules depend on this shared domain.
+        ## Solution
+        Restaurant Management delivers multi-branch setup, floor plans, table management, menu structure, taxes, payments, and an overview dashboard.
 
-## Business Problem
+        ## Key benefits
+        - Multi-branch ready
+- Table and floor planning
+- Menu and tax setup
+- Setup wizard
+- Foundation for POS and KDS
 
-Cafes, bakeries, cloud kitchens, and small hotels need a lightweight cloud stack. Most full ERP POS packs are heavy. This core keeps configuration reusable so outlets can start with setup and grow into billing, kitchen, QR, and delivery.
+        ## Installation
+        See INSTALL.md.
 
-## Phase 1 Features
+        ## Technical name
+        `rn_restaurant_core`
 
-- Restaurant and multi-branch setup
-- Floors and table states (available / occupied / reserved / dirty)
-- Menu categories and items with kitchen stations
-- Restaurant taxes and payment methods
-- Setup wizard and menu CSV export
-- OWL overview dashboard
-- SaaS edition tracking (Starter / Professional / Enterprise)
+        ## Support
+        ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
 
-## Suite Roadmap
-
-```
-rn_restaurant_core
-├── rn_restaurant_pos
-├── rn_restaurant_kds
-├── rn_restaurant_inventory
-├── rn_restaurant_qr
-├── rn_restaurant_dashboard
-├── rn_restaurant_delivery
-├── rn_restaurant_loyalty
-├── rn_restaurant_online
-└── rn_ai_restaurant
-```
-
-## Pricing
-
-Marketplace core list price: **49.99 USD**. SaaS plans sold separately (Starter / Professional / Enterprise).
-
-## Installation
-
-1. Install Contacts and Product.
-2. Update Apps List and install **ARMORA Restaurant Core**.
-3. Run **Setup Wizard** or open the demo cafe.
-
-## Support
-
-ARMORA IT Technologies  
-Website: https://www.armorait.com  
-Support: info@armorait.com
-
-## License
-
-OPL-1
+        ## License
+        OPL-1. Proprietary to ARMORA IT Technologies.

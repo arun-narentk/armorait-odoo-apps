@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Restaurant Core',
+    'name': 'Restaurant Management',
     'version': '19.0.1.0.0',
     'category': 'Sales/Point of Sale',
-    'summary': 'Restaurant foundation: branches, floors, tables, menu, taxes, and payment methods',
+    'summary': 'Branches, floors, tables, menu, and restaurant setup',
     'description': """
 ARMORA Restaurant Core for Odoo 19 Community
 ============================================
@@ -65,6 +65,8 @@ delivery, loyalty, online ordering, and AI forecasting.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

@@ -1,12 +1,13 @@
 # Developer Guide
 
-Depend on `rn_restaurant_core`. Reuse:
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-- rn.restaurant.service
-- rn.restaurant.table.service
-- rn.restaurant.menu.service
-- rn.restaurant.dashboard.service
+## Testing
+Run Odoo tests with the module in the addons path.
 
-POS/KDS/QR modules should reference `rn.restaurant.table` and `rn.restaurant.menu.item` instead of duplicating masters.
-
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

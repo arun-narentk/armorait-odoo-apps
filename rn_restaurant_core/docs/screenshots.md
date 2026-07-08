@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture overview, restaurant form, table kanban, menu kanban, setup wizard, settings before publish.
+Replace generated placeholders for **Restaurant Management** with real desktop, tablet, and mobile captures.
