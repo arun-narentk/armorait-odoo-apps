@@ -25,6 +25,7 @@ re-implementing ERP foundations inside HMS.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 99.0,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 42,
     'depends': [
         'base',
