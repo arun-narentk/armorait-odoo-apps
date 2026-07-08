@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'India GST Compliance Pro',
+    'name': 'ARMORA India GST Compliance Pro',
     'version': '19.0.1.0.0',
     'category': 'Accounting/Localizations',
     'summary': 'Complete GST suite: GSTR-1, GSTR-3B, GSTR-9, HSN, validation, and exports',
@@ -16,10 +16,14 @@ return shell models, service stubs, OWL dashboard placeholder, and tests.
 Later phases add GSTR computation, JSON/Excel/PDF export, reconciliation,
 and GSTN workflow features.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 49.99,
+    'sequence': 39,
     'countries': ['IN'],
     'depends': [
         'base',

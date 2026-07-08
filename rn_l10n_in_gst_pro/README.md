@@ -51,7 +51,7 @@ GST Returns / Dashboard / Exports
 
 ## License
 
-LGPL-3
+OPL-1
 
 ## Support
 
