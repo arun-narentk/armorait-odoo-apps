@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dead_stock_log_tree" model="ir.ui.view">
+        <field name="name">dead.stock.log.tree</field>
+        <field name="model">dead.stock.log</field>
+        <field name="arch" type="xml">
+            <list string="Dead Stock Log" create="0">
+                <field name="create_date"/>
+                <field name="product_id"/>
+                <field name="dead_stock_status" decoration-danger="dead_stock_status == 'dead'" decoration-warning="dead_stock_status == 'slow'"/>
+                <field name="dead_stock_days"/>
+                <field name="capital_locked"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+</odoo>

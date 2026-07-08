@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Dead stock: days thresholds -->
+        <record id="param_dead_stock_days_slow" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.dead_stock_days_slow</field>
+            <field name="value">90</field>
+        </record>
+        <record id="param_dead_stock_days_dead" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.dead_stock_days_dead</field>
+            <field name="value">180</field>
+        </record>
+        <!-- Carrying cost: annual rate % -->
+        <record id="param_carrying_cost_annual_pct" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.carrying_cost_annual_pct</field>
+            <field name="value">15</field>
+        </record>
+        <!-- Margin: block below this % -->
+        <record id="param_margin_block_pct" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.margin_block_pct</field>
+            <field name="value">10</field>
+        </record>
+        <record id="param_margin_warning_pct" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.margin_warning_pct</field>
+            <field name="value">20</field>
+        </record>
+        <record id="param_margin_safe_pct" model="ir.config_parameter">
+            <field name="key">rn_profit_guard.margin_safe_pct</field>
+            <field name="value">20</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_margin_violation_log_tree" model="ir.ui.view">
+        <field name="name">margin.violation.log.tree</field>
+        <field name="model">margin.violation.log</field>
+        <field name="arch" type="xml">
+            <list string="Margin Violations" create="0">
+                <field name="create_date"/>
+                <field name="order_id"/>
+                <field name="order_line_id"/>
+                <field name="margin_pct"/>
+                <field name="status" decoration-danger="status == 'danger'" decoration-warning="status == 'warning'"/>
+                <field name="reason"/>
+                <field name="approved_by_id"/>
+            </list>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_clearance_discount_wizard_form" model="ir.ui.view">
+        <field name="name">clearance.discount.wizard.form</field>
+        <field name="model">clearance.discount.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Clearance Discount">
+                <group>
+                    <field name="order_id" readonly="1"/>
+                    <field name="line_ids" widget="many2many_tags" options="{'no_create': True}" domain="[('order_id', '=', order_id), ('display_type', '=', False), ('product_id', '!=', False)]"/>
+                    <field name="discount_pct"/>
+                    <field name="min_margin_pct"/>
+                </group>
+                <footer>
+                    <button name="action_apply_clearance" string="Apply Clearance" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

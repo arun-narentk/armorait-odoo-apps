@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_product_dead_stock" model="ir.ui.view">
+        <field name="name">product.product.form.dead.stock</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Dead Stock &amp; Margin" name="rn_profit_guard" groups="stock.group_stock_user">
+                    <group>
+                        <field name="last_outgoing_date"/>
+                        <field name="dead_stock_days"/>
+                        <field name="dead_stock_status" widget="badge" decoration-danger="dead_stock_status == 'dead'" decoration-warning="dead_stock_status == 'slow'"/>
+                        <field name="capital_locked" widget="monetary" options="{'currency_field': 'cost_currency_id'}"/>
+                        <field name="inventory_carrying_cost" widget="monetary" options="{'currency_field': 'cost_currency_id'}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_product_product_dead_stock_graph" model="ir.ui.view">
+        <field name="name">product.product.graph.dead.stock</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <graph string="Products by Dead Stock Status" type="bar">
+                <field name="dead_stock_status"/>
+                <field name="capital_locked" type="measure"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_margin_override_wizard,margin.override.wizard,rn_profit_guard.model_margin_override_wizard,,1,1,1,1
+access_clearance_discount_wizard,clearance.discount.wizard,rn_profit_guard.model_clearance_discount_wizard,,1,1,1,1
+access_dead_stock_log,dead.stock.log,rn_profit_guard.model_dead_stock_log,,1,1,1,1
+access_margin_violation_log,margin.violation.log,rn_profit_guard.model_margin_violation_log,,1,1,1,1
+access_profit_guard_dashboard,profit.guard.dashboard,rn_profit_guard.model_profit_guard_dashboard,,1,1,1,1

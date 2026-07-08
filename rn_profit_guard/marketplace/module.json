@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_profit_guard",
+  "app_name": "Profit Guard",
+  "tagline": "Margin protection and dead stock intelligence",
+  "category_type": "dashboard",
+  "price": 39.99,
+  "accent": "#ea580c",
+  "problem": "Sales teams confirm low-margin orders while dead stock locks working capital silently.",
+  "solution": "Profit Guard blocks or warns on low-margin order lines and highlights slow and dead inventory with clearance suggestions.",
+  "benefits": [
+    "Protect gross margin",
+    "Surface dead stock value",
+    "Manager override audit",
+    "Inventory aging insight",
+    "Configurable thresholds"
+  ],
+  "features": [
+    {
+      "title": "Margin Guard",
+      "text": "Warn or block lines below margin rules."
+    },
+    {
+      "title": "Dead Stock",
+      "text": "Days without movement and capital locked."
+    },
+    {
+      "title": "Clearance",
+      "text": "Discount suggestions for stagnant SKUs."
+    },
+    {
+      "title": "Dashboard",
+      "text": "Risk products and violation trends."
+    }
+  ],
+  "workflow": [
+    "Set thresholds",
+    "Confirm sales order",
+    "Review margin alert",
+    "Manager override",
+    "Act on dead stock"
+  ],
+  "seo_keywords": "Odoo margin control, dead stock, inventory intelligence, profit protection",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

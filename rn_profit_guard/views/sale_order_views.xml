@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_rn_profit_guard" model="ir.ui.view">
+        <field name="name">sale.order.form.profit.guard</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="margin_blocked" invisible="1"/>
+            </field>
+            <div name="button_box" position="inside">
+                <button name="action_margin_override" type="object" string="Margin Override" class="oe_highlight"
+                    invisible="state not in ('draft', 'sent') or not margin_blocked"/>
+            </div>
+        </field>
+    </record>
+    <record id="view_order_line_form_margin" model="ir.ui.view">
+        <field name="name">sale.order.line.form.margin</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//field[@name='price_unit']" position="after">
+                <field name="cost_price" optional="hide"/>
+                <field name="real_margin" optional="hide" widget="progressbar" options="{'max_value': 100}"/>
+                <field name="margin_status" optional="hide" widget="badge" decoration-danger="margin_status == 'danger'" decoration-warning="margin_status == 'warning'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
