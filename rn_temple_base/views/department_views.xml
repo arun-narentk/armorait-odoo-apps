@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_department_list" model="ir.ui.view">
+        <field name="name">rn.temple.department.list</field>
+        <field name="model">rn.temple.department</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="temple_id"/>
+                <field name="department_type"/>
+                <field name="branch_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">rn.temple.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_temple_timing_list" model="ir.ui.view">
+        <field name="name">rn.temple.timing.list</field>
+        <field name="model">rn.temple.timing</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="temple_id"/>
+                <field name="branch_id"/>
+                <field name="day_of_week"/>
+                <field name="session_type"/>
+                <field name="time_open" widget="float_time"/>
+                <field name="time_close" widget="float_time"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_timing" model="ir.actions.act_window">
+        <field name="name">Daily Timings</field>
+        <field name="res_model">rn.temple.timing</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

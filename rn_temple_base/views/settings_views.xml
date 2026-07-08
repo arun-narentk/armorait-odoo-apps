@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_settings_form" model="ir.ui.view">
+        <field name="name">rn.temple.settings.form</field>
+        <field name="model">rn.temple.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id"/>
+                        <field name="default_temple_id"/>
+                        <field name="institution_label"/>
+                        <field name="devotee_label"/>
+                        <field name="priest_label"/>
+                        <field name="receipt_prefix"/>
+                        <field name="seva_prefix"/>
+                        <field name="timezone"/>
+                    </group>
+                    <group string="Channels">
+                        <field name="enable_sms"/>
+                        <field name="enable_whatsapp"/>
+                        <field name="enable_email"/>
+                        <field name="enable_online_booking"/>
+                        <field name="enable_donation_portal"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_settings" model="ir.actions.act_window">
+        <field name="name">Temple Settings</field>
+        <field name="res_model">rn.temple.settings</field>
+        <field name="view_mode">form,list</field>
+    </record>
+    <record id="view_rn_temple_subscription_list" model="ir.ui.view">
+        <field name="name">rn.temple.subscription.list</field>
+        <field name="model">rn.temple.subscription</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="temple_id"/>
+                <field name="plan"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state"/>
+                <field name="monthly_fee"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_subscription" model="ir.actions.act_window">
+        <field name="name">SaaS Subscriptions</field>
+        <field name="res_model">rn.temple.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_temple_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'rn_temple_base'}</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_temple" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.temple</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Temple Management" name="rn_temple_base">
+                    <block title="Institution">
+                        <setting string="Default temple">
+                            <field name="temple_default_temple_id"/>
+                        </setting>
+                        <setting string="Institution label">
+                            <field name="temple_institution_label"/>
+                        </setting>
+                    </block>
+                    <block title="Portal">
+                        <setting string="Online booking">
+                            <field name="temple_enable_online_booking"/>
+                        </setting>
+                        <setting string="Donation portal">
+                            <field name="temple_enable_donation_portal"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
