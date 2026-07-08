@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA AI Document Automation',
+    'name': 'AI Document Automation',
     'version': '19.0.1.0.0',
     'category': 'Productivity',
-    'summary': 'AI-assisted document automation with templates, approvals, versioning, and PDF output',
+    'summary': 'Templates, AI drafts, approvals, and PDF output',
     'description': """
 ARMORA AI Document Automation for Odoo 19 Community
 ===================================================
@@ -64,6 +64,8 @@ template marketplace, and bulk generation.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

@@ -1,9 +1,13 @@
 # FAQ
 
-**Does it require an external AI API?**  
-No. Built-in draft engine works offline. OpenAI-compatible URL/key is optional.
+## Does AI Document Automation work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Price?**  
-Marketplace list price is 59.99 USD.
+## Multi-company?
+Supported where business models include company scoping.
 
-Support: info@armorait.com
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
+
+## Support contact?
+info@armorait.com

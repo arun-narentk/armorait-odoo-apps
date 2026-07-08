@@ -1,7 +1,12 @@
 # Roadmap
 
-1. rn_ai_document_generator (done)
-2. DOCX export and richer e-sign connectors
-3. rn_ai_contract_review
-4. Template marketplace and bulk generation
-5. Translation provider and voice drafting
+## Shipped in 19.0.1.0.0
+- Core models, security, menus, and views
+- Marketplace-ready documentation and assets
+
+## Next
+- Deeper automation and reporting
+- Additional provider and integration adapters
+- Performance tuning for large datasets
+
+Contact info@armorait.com for enterprise roadmap requests.

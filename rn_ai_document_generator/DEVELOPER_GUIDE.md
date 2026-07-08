@@ -1,7 +1,13 @@
 # Developer Guide
 
-Services: placeholder, template, ai.generation, render, pdf, docx, approval, signature, version, export, dashboard.
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-Inject AI sections with `{{ai_introduction}}`, `{{ai_scope_of_work}}`, `{{ai_terms}}`, `{{ai_closing}}`.
+## Testing
+Run Odoo tests with the module in the addons path.
 
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

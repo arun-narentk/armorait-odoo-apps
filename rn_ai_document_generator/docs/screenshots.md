@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, generate wizard, document form, template, versions, PDF before publish.
+Replace generated placeholders for **AI Document Automation** with real desktop, tablet, and mobile captures.
