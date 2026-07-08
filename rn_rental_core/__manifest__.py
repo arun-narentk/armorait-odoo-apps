@@ -24,6 +24,7 @@ returns, damage, website, and industry packs.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 29.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 48,
     'depends': [
         'base',
