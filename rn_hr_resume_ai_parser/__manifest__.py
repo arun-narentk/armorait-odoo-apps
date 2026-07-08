@@ -41,4 +41,5 @@
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 79.99,
+    'live_test_url': 'https://www.armorait.com',
 }

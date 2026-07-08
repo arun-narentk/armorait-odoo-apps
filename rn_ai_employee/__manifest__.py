@@ -28,6 +28,7 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'price': 99.99,
+    'live_test_url': 'https://www.armorait.com',
     'currency': 'USD',
     'depends': [
         'base',
