@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_ai_site_publisher_mode" model="ir.config_parameter">
+        <field name="key">rn_ai_site_base.publisher_mode</field>
+        <field name="value">odoo</field>
+    </record>
+</odoo>

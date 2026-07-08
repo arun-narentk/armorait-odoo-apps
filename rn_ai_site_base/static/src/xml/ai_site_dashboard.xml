@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_ai_site_base.AiSiteDashboard">
+        <div class="o_rn_ai_site_dashboard p-4">
+            <h2>Business Launch</h2>
+            <div class="row g-3 mt-2">
+                <div class="col-md-2" t-foreach="state.cards" t-as="card" t-key="card.key">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="fs-4 fw-bold" t-esc="card.value"/>
+                            <div class="text-muted" t-esc="card.label"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="mt-4">Recent Briefs</h4>
+            <ul class="list-group">
+                <li class="list-group-item" t-foreach="state.briefs" t-as="brief" t-key="brief.id">
+                    <strong t-esc="brief.business_name"/> -
+                    <span t-esc="brief.state"/>
+                    <span t-if="brief.location"> (<t t-esc="brief.location"/>)</span>
+                </li>
+            </ul>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_ai_site">
+        <field name="name">ARMORA AI Business Launch</field>
+        <field name="category_id" ref="base.module_category_website"/>
+    </record>
+    <record id="group_rn_ai_site_user" model="res.groups">
+        <field name="name">Site Creator</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_site"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_ai_site_editor" model="res.groups">
+        <field name="name">Content Editor</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_site"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_ai_site_user'))]"/>
+    </record>
+    <record id="group_rn_ai_site_manager" model="res.groups">
+        <field name="name">Launch Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_site"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_ai_site_editor'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_ai_site_brief_company" model="ir.rule">
+        <field name="name">AI Site Brief multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_brief"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_site_site_company" model="ir.rule">
+        <field name="name">AI Site multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_site"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_site_page_company" model="ir.rule">
+        <field name="name">AI Site Page multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_page"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_site_block_company" model="ir.rule">
+        <field name="name">AI Site Block multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_block"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_site_settings_company" model="ir.rule">
+        <field name="name">AI Site Settings multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_site_subscription_company" model="ir.rule">
+        <field name="name">AI Site Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_ai_site_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
