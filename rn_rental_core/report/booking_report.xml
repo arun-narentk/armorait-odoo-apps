@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_rental_booking" model="ir.actions.report">
+        <field name="name">Rental Booking</field>
+        <field name="model">rn.rental.booking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_rental_core.report_rental_booking_document</field>
+        <field name="report_file">rn_rental_core.report_rental_booking_document</field>
+        <field name="binding_model_id" ref="model_rn_rental_booking"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_rental_booking_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Rental Booking</h2>
+                    <p><strong>Number:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Customer:</strong> <span t-field="doc.partner_id"/></p>
+                    <p><strong>Period:</strong> <span t-field="doc.date_start"/> to <span t-field="doc.date_end"/></p>
+                    <p><strong>Total:</strong> <span t-field="doc.amount_total"/></p>
+                    <p class="mt-4">ARMORA IT Technologies | https://www.armorait.com | info@armorait.com</p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

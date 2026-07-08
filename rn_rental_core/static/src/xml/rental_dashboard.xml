@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_rental_core.Dashboard">
+        <div class="o_rn_rental_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Rental</h1>
+                    <div class="text-muted small">Industry-agnostic rental engine for Odoo 19</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading dashboard...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Today Rentals</div><div class="value" t-esc="state.cards.today_rentals || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Returns Today</div><div class="value" t-esc="state.cards.returns_today || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Revenue</div><div class="value" t-esc="formatNumber(state.cards.revenue)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Utilization %</div><div class="value" t-esc="formatNumber(state.cards.utilization)"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Available Assets</div><div class="value" t-esc="state.cards.available_assets || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Damaged</div><div class="value" t-esc="state.cards.damaged_assets || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Late Returns</div><div class="value" t-esc="state.cards.late_returns || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rental_card"><div class="label">Outstanding Deposits</div><div class="value" t-esc="formatNumber(state.cards.outstanding_deposits)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3">Payment, deposit, and damage KPIs fill as companion modules are installed. Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

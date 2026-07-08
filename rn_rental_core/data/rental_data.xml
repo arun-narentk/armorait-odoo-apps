@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="rn_rental_cat_equipment" model="rn.rental.category">
+<field name="name">Equipment</field><field name="code">EQ</field>
+</record>
+<record id="rn_rental_cat_vehicle" model="rn.rental.category">
+<field name="name">Vehicles</field><field name="code">VEH</field>
+</record>
+<record id="rn_rental_cat_events" model="rn.rental.category">
+<field name="name">Events</field><field name="code">EVT</field>
+</record>
+<record id="rn_rental_default_settings" model="rn.rental.settings">
+<field name="name">Default Rental Settings</field>
+<field name="default_plan">daily</field>
+<field name="default_deposit_pct">20</field>
+<field name="allow_overlap_block" eval="True"/>
+<field name="enable_email" eval="True"/>
+</record>
+<record id="rn_rental_subscription_trial" model="rn.rental.subscription">
+<field name="name">Core Trial</field>
+<field name="edition">core</field>
+<field name="state">trial</field>
+<field name="max_assets">100</field>
+</record>
+</data></odoo>
