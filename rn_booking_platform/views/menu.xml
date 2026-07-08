@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_booking_root"
+              name="Appointments"
+              web_icon="rn_booking_platform,static/description/icon.png"
+              groups="rn_booking_platform.group_rn_booking_user"
+              sequence="46"/>
+
+    <menuitem id="menu_rn_booking_dashboard"
+              name="Dashboard"
+              parent="menu_rn_booking_root"
+              action="action_rn_booking_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_booking_appointments"
+              name="Appointments"
+              parent="menu_rn_booking_root"
+              action="action_rn_booking_appointment"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_booking_quick"
+              name="Quick Booking"
+              parent="menu_rn_booking_root"
+              action="action_rn_booking_quick_create"
+              sequence="15"/>
+
+    <menuitem id="menu_rn_booking_catalog"
+              name="Catalog"
+              parent="menu_rn_booking_root"
+              sequence="20"/>
+    <menuitem id="menu_rn_booking_services"
+              name="Services"
+              parent="menu_rn_booking_catalog"
+              action="action_rn_booking_service"
+              sequence="10"/>
+    <menuitem id="menu_rn_booking_staff"
+              name="Staff"
+              parent="menu_rn_booking_catalog"
+              action="action_rn_booking_staff"
+              sequence="20"/>
+    <menuitem id="menu_rn_booking_locations"
+              name="Locations"
+              parent="menu_rn_booking_catalog"
+              action="action_rn_booking_location"
+              sequence="30"/>
+    <menuitem id="menu_rn_booking_resources"
+              name="Resources"
+              parent="menu_rn_booking_catalog"
+              action="action_rn_booking_resource"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_booking_configuration"
+              name="Configuration"
+              parent="menu_rn_booking_root"
+              groups="rn_booking_platform.group_rn_booking_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_booking_industries"
+              name="Industries"
+              parent="menu_rn_booking_configuration"
+              action="action_rn_booking_industry"
+              sequence="10"/>
+    <menuitem id="menu_rn_booking_settings"
+              name="Booking Settings"
+              parent="menu_rn_booking_configuration"
+              action="action_rn_booking_settings"
+              sequence="20"/>
+    <menuitem id="menu_rn_booking_config_settings"
+              name="Settings"
+              parent="menu_rn_booking_configuration"
+              action="action_rn_booking_config_settings"
+              sequence="100"/>
+</odoo>

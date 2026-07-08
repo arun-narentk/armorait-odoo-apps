@@ -1,0 +1,26 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_booking_industry_ro,rn.booking.industry readonly,model_rn_booking_industry,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_location_ro,rn.booking.location readonly,model_rn_booking_location,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_service_ro,rn.booking.service readonly,model_rn_booking_service,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_staff_ro,rn.booking.staff readonly,model_rn_booking_staff,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_resource_ro,rn.booking.resource readonly,model_rn_booking_resource,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_hours_ro,rn.booking.working.hour readonly,model_rn_booking_working_hour,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_appt_ro,rn.booking.appointment readonly,model_rn_booking_appointment,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_settings_ro,rn.booking.settings readonly,model_rn_booking_settings,group_rn_booking_readonly,1,0,0,0
+access_rn_booking_industry_user,rn.booking.industry user,model_rn_booking_industry,group_rn_booking_user,1,0,0,0
+access_rn_booking_location_user,rn.booking.location user,model_rn_booking_location,group_rn_booking_user,1,0,0,0
+access_rn_booking_service_user,rn.booking.service user,model_rn_booking_service,group_rn_booking_user,1,0,0,0
+access_rn_booking_staff_user,rn.booking.staff user,model_rn_booking_staff,group_rn_booking_user,1,0,0,0
+access_rn_booking_resource_user,rn.booking.resource user,model_rn_booking_resource,group_rn_booking_user,1,0,0,0
+access_rn_booking_hours_user,rn.booking.working.hour user,model_rn_booking_working_hour,group_rn_booking_user,1,1,1,0
+access_rn_booking_appt_user,rn.booking.appointment user,model_rn_booking_appointment,group_rn_booking_user,1,1,1,0
+access_rn_booking_wiz_quick_user,rn.booking.quick.create.wizard user,model_rn_booking_quick_create_wizard,group_rn_booking_user,1,1,1,1
+access_rn_booking_wiz_cancel_user,rn.booking.cancel.wizard user,model_rn_booking_cancel_wizard,group_rn_booking_user,1,1,1,1
+access_rn_booking_industry_mgr,rn.booking.industry manager,model_rn_booking_industry,group_rn_booking_manager,1,1,1,1
+access_rn_booking_location_mgr,rn.booking.location manager,model_rn_booking_location,group_rn_booking_manager,1,1,1,1
+access_rn_booking_service_mgr,rn.booking.service manager,model_rn_booking_service,group_rn_booking_manager,1,1,1,1
+access_rn_booking_staff_mgr,rn.booking.staff manager,model_rn_booking_staff,group_rn_booking_manager,1,1,1,1
+access_rn_booking_resource_mgr,rn.booking.resource manager,model_rn_booking_resource,group_rn_booking_manager,1,1,1,1
+access_rn_booking_hours_mgr,rn.booking.working.hour manager,model_rn_booking_working_hour,group_rn_booking_manager,1,1,1,1
+access_rn_booking_appt_mgr,rn.booking.appointment manager,model_rn_booking_appointment,group_rn_booking_manager,1,1,1,1
+access_rn_booking_settings_mgr,rn.booking.settings manager,model_rn_booking_settings,group_rn_booking_manager,1,1,1,1

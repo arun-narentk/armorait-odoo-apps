@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_booking_resource_list" model="ir.ui.view">
+        <field name="name">rn.booking.resource.list</field>
+        <field name="model">rn.booking.resource</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="resource_type"/>
+                <field name="location_id"/>
+                <field name="capacity"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_booking_resource" model="ir.actions.act_window">
+        <field name="name">Resources</field>
+        <field name="res_model">rn.booking.resource</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
