@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="rn_hrms_default_settings" model="rn.hrms.settings">
+<field name="name">Default HRMS Settings</field>
+<field name="enable_announcements" eval="True"/>
+<field name="enable_approvals" eval="True"/>
+<field name="enable_email" eval="True"/>
+<field name="employee_code_prefix">EMP</field>
+</record>
+<record id="rn_hrms_skill_communication" model="rn.hrms.skill"><field name="name">Communication</field></record>
+<record id="rn_hrms_skill_leadership" model="rn.hrms.skill"><field name="name">Leadership</field></record>
+<record id="rn_hrms_skill_technical" model="rn.hrms.skill"><field name="name">Technical</field></record>
+<record id="rn_hrms_subscription_trial" model="rn.hrms.subscription">
+<field name="name">Starter Trial</field>
+<field name="edition">starter</field>
+<field name="state">trial</field>
+<field name="max_employees">50</field>
+</record>
+</data></odoo>

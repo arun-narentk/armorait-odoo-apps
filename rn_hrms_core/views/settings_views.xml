@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hrms_settings_form" model="ir.ui.view">
+        <field name="name">rn.hrms.settings.form</field>
+        <field name="model">rn.hrms.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="employee_code_prefix"/>
+                        <field name="enable_announcements"/>
+                        <field name="enable_approvals"/>
+                        <field name="enable_email"/>
+                        <field name="enable_whatsapp"/>
+                        <field name="enable_sms"/>
+                        <field name="timezone"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hrms_settings" model="ir.actions.act_window">
+        <field name="name">HRMS Settings</field>
+        <field name="res_model">rn.hrms.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_hrms_subscription" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">rn.hrms.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_hrms" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.hrms</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="ARMORA HRMS" name="rn_hrms_core" groups="rn_hrms_core.group_rn_hrms_manager">
+                    <block title="General">
+                        <setting string="Enable HRMS Core"><field name="rn_hrms_enabled"/></setting>
+                        <setting string="Employee Code Prefix"><field name="rn_hrms_code_prefix"/></setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_hrms_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_hrms_core'}</field>
+    </record>
+</odoo>

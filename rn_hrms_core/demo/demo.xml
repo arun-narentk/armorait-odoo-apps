@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_hrms_branch" model="rn.hrms.branch">
+<field name="name">Head Office</field>
+<field name="code">HO</field>
+</record>
+<record id="demo_rn_hrms_designation" model="rn.hrms.designation">
+<field name="name">HR Executive</field>
+<field name="code">HRE</field>
+</record>
+<record id="demo_rn_hrms_announcement" model="rn.hrms.announcement">
+<field name="name">Welcome to ARMORA HRMS</field>
+<field name="body"><![CDATA[<p>Welcome to the ARMORA HR platform.</p>]]></field>
+<field name="audience">all</field>
+<field name="state">published</field>
+</record>
+</data></odoo>

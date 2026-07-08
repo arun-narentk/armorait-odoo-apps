@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hrms_root"
+              name="ARMORA HRMS"
+              web_icon="rn_hrms_core,static/description/icon.png"
+              groups="rn_hrms_core.group_rn_hrms_officer"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_hrms_dashboard"
+              name="Dashboard"
+              parent="menu_rn_hrms_root"
+              action="action_rn_hrms_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_hrms_organization"
+              name="Organization"
+              parent="menu_rn_hrms_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_hrms_branches"
+              name="Branches"
+              parent="menu_rn_hrms_organization"
+              action="action_rn_hrms_branch"
+              sequence="10"/>
+    <menuitem id="menu_rn_hrms_designations"
+              name="Designations"
+              parent="menu_rn_hrms_organization"
+              action="action_rn_hrms_designation"
+              sequence="20"/>
+    <menuitem id="menu_rn_hrms_skills"
+              name="Skills"
+              parent="menu_rn_hrms_organization"
+              action="action_rn_hrms_skill"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_hrms_documents"
+              name="Documents"
+              parent="menu_rn_hrms_root"
+              action="action_rn_hrms_document"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_hrms_announcements"
+              name="Announcements"
+              parent="menu_rn_hrms_root"
+              action="action_rn_hrms_announcement"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_hrms_approvals"
+              name="Approvals"
+              parent="menu_rn_hrms_root"
+              action="action_rn_hrms_approval"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_hrms_operations"
+              name="Operations"
+              parent="menu_rn_hrms_root"
+              sequence="50"/>
+    <menuitem id="menu_rn_hrms_onboard"
+              name="Onboard Employees"
+              parent="menu_rn_hrms_operations"
+              action="action_rn_hrms_onboarding_wizard"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_hrms_configuration"
+              name="Configuration"
+              parent="menu_rn_hrms_root"
+              groups="rn_hrms_core.group_rn_hrms_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_hrms_settings"
+              name="HRMS Settings"
+              parent="menu_rn_hrms_configuration"
+              action="action_rn_hrms_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_hrms_subscriptions"
+              name="Subscriptions"
+              parent="menu_rn_hrms_configuration"
+              action="action_rn_hrms_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_hrms_config_settings"
+              name="Settings"
+              parent="menu_rn_hrms_configuration"
+              action="action_rn_hrms_config_settings"
+              sequence="100"/>
+</odoo>
