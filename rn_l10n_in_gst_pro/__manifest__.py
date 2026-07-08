@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA India GST Compliance Pro',
+    'name': 'GST Reports',
     'version': '19.0.1.0.0',
     'category': 'Accounting/Localizations',
-    'summary': 'Complete GST suite: GSTR-1, GSTR-3B, GSTR-9, HSN, validation, and exports',
+    'summary': 'GSTR-1, GSTR-3B, GSTR-9, and GST validation for India',
     'description': """
 India GST Compliance Pro for Odoo 19 Community
 ==============================================
@@ -63,8 +63,10 @@ and GSTN workflow features.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
