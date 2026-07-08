@@ -22,6 +22,7 @@ dashboard shell. AI forecasting arrives in later releases.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 39.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 38,
     'depends': [
         'base',
