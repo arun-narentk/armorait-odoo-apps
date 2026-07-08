@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA HRMS Core',
+    'name': 'HRMS Core',
     'version': '19.0.1.0.0',
     'category': 'Human Resources',
-    'summary': 'Shared HRMS foundation: employees, approvals, announcements, dashboard, SaaS settings',
+    'summary': 'Employee lifecycle, org structure, and HR operations base',
     'description': """
 ARMORA HRMS Core for Odoo 19 Community
 ======================================
@@ -65,6 +65,8 @@ recruitment, performance, portal, and more.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

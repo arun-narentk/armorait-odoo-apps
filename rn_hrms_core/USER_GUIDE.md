@@ -1,10 +1,19 @@
 # User Guide
 
-1. Create branches and designations.
-2. Open Employees and fill ARMORA HRMS fields.
-3. Use Onboard Employees wizard for codes and joining date.
-4. Publish announcements.
-5. Create approval requests for leave/expense flows (full modules later).
-6. Track edition under Subscriptions.
+        ## HRMS Core
 
-ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+        HRMS Core extends Odoo HR with ARMORA employee lifecycle, org units, document hooks, and an HR overview dashboard.
+
+        ## Typical workflow
+        1. Onboard employee
+2. Assign department
+3. Track documents
+4. Review dashboard
+
+        ## Tips
+        - Start with demo data to learn the screens.
+        - Configure settings before inviting end users.
+        - Use dashboards for daily operations reviews.
+
+        ## Support
+        info@armorait.com

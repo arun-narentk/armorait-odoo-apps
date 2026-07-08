@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, employee form HRMS tab, branches, approvals, announcements, settings before publish.
+Replace generated placeholders for **HRMS Core** with real desktop, tablet, and mobile captures.

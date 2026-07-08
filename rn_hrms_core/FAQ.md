@@ -1,12 +1,13 @@
 # FAQ
 
-**Is this a full payroll product?**  
-No. Core is the foundation. Install `rn_hr_payroll` (planned) for payroll.
+## Does HRMS Core work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Can I sell modules separately?**  
-Yes. That is the intended architecture.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Starter price?**  
-Core is listed at 49.00 USD. Bundle pricing for Professional/Enterprise comes later.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com
