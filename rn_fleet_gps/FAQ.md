@@ -1,12 +1,13 @@
 # FAQ
 
-**Does it require Enterprise IoT?**  
-No. It works on Community Fleet.
+## Does Fleet GPS Tracking work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Is map rendering included?**  
-Phase 1 ships the live board with KPIs and position lists. Full Leaflet/Google canvas is planned in `rn_fleet_dashboard`.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Price?**  
-Base module is 49.99 USD.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

@@ -1,7 +1,13 @@
 # Developer Guide
 
-Implement a connector by inheriting `rn.fleet.gps.provider.base` and registering it in `PROVIDER_REGISTRY` / companion module overrides.
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-Ingest path: provider/API -> `rn.fleet.location.service.ingest` -> trip / geofence / alert engines.
+## Testing
+Run Odoo tests with the module in the addons path.
 
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

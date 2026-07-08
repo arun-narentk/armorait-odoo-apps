@@ -1,11 +1,9 @@
 # Security
 
-Groups: Readonly, User, Manager.
+- Access rights on all custom models
+- Security groups with least-privilege defaults
+- Record rules for multi-company isolation where applicable
+- Controllers use authenticated routes unless documented otherwise
+- Audit-friendly logs on critical business events
 
-API tokens restricted to Manager.
-
-Multi-company rules on devices, locations, trips, geofences, alerts, fuel, expenses, settings.
-
-Authenticated JSON APIs except public health check.
-
-Support: info@armorait.com
+Report security issues to info@armorait.com.

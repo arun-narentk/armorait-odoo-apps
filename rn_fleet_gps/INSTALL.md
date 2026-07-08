@@ -1,9 +1,16 @@
 # Installation
 
-1. Copy `rn_fleet_gps` into addons (`armora/`).
-2. Restart Odoo and Update Apps List.
-3. Install Fleet, then **ARMORA Fleet GPS**.
-4. Assign User / Manager groups.
-5. Open Fleet GPS > Push GPS Point for a dry run.
+## Requirements
+- Odoo 19 Community
+- Python 3.12
+- PostgreSQL
 
-Support: info@armorait.com
+## Steps
+1. Copy the module into your addons path.
+2. Update the apps list and install **Fleet GPS Tracking**.
+3. Open **Settings** and complete module configuration.
+4. Assign the relevant security groups to users.
+5. Optional: enable demo data for evaluation.
+
+## Support
+ARMORA IT Technologies | https://www.armorait.com | info@armorait.com

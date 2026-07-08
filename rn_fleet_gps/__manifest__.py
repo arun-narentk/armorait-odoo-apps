@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Fleet GPS',
+    'name': 'Fleet GPS Tracking',
     'version': '19.0.1.0.0',
     'category': 'Human Resources/Fleet',
-    'summary': 'Provider-agnostic GPS tracking, trips, geofencing, fuel, and fleet alerts for Odoo 19',
+    'summary': 'Live tracking, trips, geofences, and fleet alerts',
     'description': """
 ARMORA Fleet GPS for Odoo 19 Community
 ======================================
@@ -67,6 +67,8 @@ Integrates with Fleet without requiring Enterprise features.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

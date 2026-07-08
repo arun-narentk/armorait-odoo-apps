@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture live board, device form, trip form, alerts, vehicle GPS tab, ingest wizard before publish.
+Replace generated placeholders for **Fleet GPS Tracking** with real desktop, tablet, and mobile captures.

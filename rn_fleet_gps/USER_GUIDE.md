@@ -1,8 +1,20 @@
 # User Guide
 
-1. Create a GPS device and link it to a Fleet vehicle.
-2. Use Push GPS Point or `/api/rn_fleet/v1/location` to ingest coordinates.
-3. Watch trips open when the vehicle moves and alerts for overspeed.
-4. Configure geofences and review the Live Board.
+        ## Fleet GPS Tracking
 
-ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+        Fleet GPS Tracking connects devices to Odoo Fleet, ingests locations, builds trips, monitors geofences, and logs fuel and expenses.
+
+        ## Typical workflow
+        1. Register device
+2. Assign vehicle
+3. Ingest GPS
+4. Build trips
+5. Review alerts
+
+        ## Tips
+        - Start with demo data to learn the screens.
+        - Configure settings before inviting end users.
+        - Use dashboards for daily operations reviews.
+
+        ## Support
+        info@armorait.com
