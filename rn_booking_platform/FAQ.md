@@ -1,12 +1,13 @@
 # FAQ
 
-**Is this industry-specific?**  
-No. Industries are configurable. Vertical add-ons can specialize later.
+## Does Appointment Booking work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Does Phase 1 include Stripe/WhatsApp/Zoom?**  
-Integration engines are stubbed for later phases and companion modules.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Default price?**  
-Marketplace price for this premium product is set to 49.00 USD.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

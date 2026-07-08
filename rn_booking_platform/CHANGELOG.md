@@ -1,5 +1,5 @@
 # Changelog
 
 ## 19.0.1.0.0
-
-- Phase 1: module skeleton, core booking models, availability and booking services, OWL dashboard, security, menus, docs
+- Initial commercial release of Appointment Booking
+- Professional Apps Store assets and documentation pack

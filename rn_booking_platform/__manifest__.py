@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Appointment Booking Pro',
+    'name': 'Appointment Booking',
     'version': '19.0.1.0.0',
     'category': 'Services/Appointment',
-    'summary': 'Online appointment scheduling, staff calendars, and booking portal for Odoo 19',
+    'summary': 'Online booking, resources, and calendar sync',
     'description': """
 ARMORA Appointment Booking Pro for Odoo 19 Community
 ====================================================
@@ -64,6 +64,8 @@ hooks, OWL dashboard shell, security, menus, and docs.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

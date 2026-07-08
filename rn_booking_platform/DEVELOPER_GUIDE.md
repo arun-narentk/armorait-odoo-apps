@@ -1,14 +1,13 @@
 # Developer Guide
 
-Business logic lives in `services/`:
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-- availability_service
-- booking_service
-- calendar_service
-- notification_service
-- payment_service
-- dashboard_service
+## Testing
+Run Odoo tests with the module in the addons path.
 
-Extend with companion modules such as `rn_booking_whatsapp` rather than hardcoding integrations in core.
-
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, list/form/calendar, quick booking wizard, settings, portal, mobile before Apps publish.
+Replace generated placeholders for **Appointment Booking** with real desktop, tablet, and mobile captures.

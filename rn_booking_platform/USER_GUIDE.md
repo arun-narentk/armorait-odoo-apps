@@ -1,10 +1,20 @@
 # User Guide
 
-1. Configure industries and locations.
-2. Create staff and working hours.
-3. Create services and assign staff.
-4. Use Quick Booking or Appointments calendar.
-5. Confirm, complete, invoice, or cancel appointments.
-6. Customers can view bookings under /my/appointments.
+        ## Appointment Booking
 
-ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+        Appointment Booking provides services, resources, slots, confirmations, and calendar integration for Odoo-based scheduling.
+
+        ## Typical workflow
+        1. Define service
+2. Set availability
+3. Customer books
+4. Confirm slot
+5. Deliver service
+
+        ## Tips
+        - Start with demo data to learn the screens.
+        - Configure settings before inviting end users.
+        - Use dashboards for daily operations reviews.
+
+        ## Support
+        info@armorait.com

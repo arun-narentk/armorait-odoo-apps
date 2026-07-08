@@ -1,12 +1,18 @@
 # Release Checklist
 
-- [x] Manifest with ARMORA branding and price 49.00 USD
-- [x] Security groups and access rights
-- [x] Menus / views / actions
-- [x] Cron stubs
-- [x] Tests
-- [x] README and docs
-- [x] index.html
-- [x] Icon / banner placeholders
-- [ ] Real screenshots / GIFs (capture before publish)
-- [ ] Full marketplace QA
+## Marketplace assets
+- [ ] Professional app name: Appointment Booking
+- [ ] 512x512 icon.png
+- [ ] 1200x600 banner.png
+- [ ] 10-20 real screenshots
+- [ ] GIF demos recorded
+- [ ] index.html reviewed on apps.odoo.com staging
+
+## Code quality
+- [ ] Tests passing
+- [ ] No debug code
+- [ ] Manifest price, license OPL-1, images
+
+## Branding
+- [ ] ARMORA IT Technologies footer on index.html
+- [ ] Support info@armorait.com
