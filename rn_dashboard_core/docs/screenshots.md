@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture Live Board, dashboard form, filters, alerts, KPI catalog, TV mode, settings before publish.
+Replace generated placeholders for **Dashboard Core** with real desktop, tablet, and mobile captures.

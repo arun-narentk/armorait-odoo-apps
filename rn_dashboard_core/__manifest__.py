@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Dashboard Core',
+    'name': 'Dashboard Core',
     'version': '19.0.1.0.0',
     'category': 'Productivity',
-    'summary': 'Shared real-time dashboard framework for Manufacturing Intelligence and KPI apps',
+    'summary': 'Shared OWL dashboard shell for ARMORA analytics modules',
     'description': """
 ARMORA Dashboard Core for Odoo 19 Community
 ==========================================
@@ -60,6 +60,8 @@ depend on this core instead of duplicating chart, filter, or alert logic.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

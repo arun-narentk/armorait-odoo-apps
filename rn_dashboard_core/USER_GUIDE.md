@@ -1,11 +1,20 @@
 # User Guide
 
-1. Open Live Board for the default operations overview.
-2. Create extra dashboards (factory, CEO, TV) as needed.
-3. Add widgets and bind KPI keys.
-4. Configure alert rules for missed targets or low efficiency.
-5. Use filters for shift, plant, and work center context.
+        ## Dashboard Core
 
-Domain KPIs fill when MRP companion modules are installed.
+        Dashboard Core is the shared foundation for ARMORA dashboards: widgets, filters, alerts, KPI snapshots, and TV-ready refresh.
 
-ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+        ## Typical workflow
+        1. Install core
+2. Configure widgets
+3. Attach data services
+4. Schedule snapshots
+5. Display on TV
+
+        ## Tips
+        - Start with demo data to learn the screens.
+        - Configure settings before inviting end users.
+        - Use dashboards for daily operations reviews.
+
+        ## Support
+        info@armorait.com

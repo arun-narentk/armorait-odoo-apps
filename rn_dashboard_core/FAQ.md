@@ -1,12 +1,13 @@
 # FAQ
 
-**Is this a manufacturing-only app?**  
-No. Core is domain-neutral. Manufacturing modules plug into it.
+## Does Dashboard Core work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Does it need IoT?**  
-No. IoT connectors are optional future modules.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Price?**  
-Apps list price 49.99 USD. SaaS tiers are separate.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

@@ -1,13 +1,13 @@
 # Developer Guide
 
-Depend on `rn_dashboard_core` and reuse:
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-- rn.dashboard.service
-- rn.dashboard.filter.service
-- rn.dashboard.chart.service
-- rn.dashboard.alert.service
-- rn.dashboard.cache.service
+## Testing
+Run Odoo tests with the module in the addons path.
 
-Register domain KPI keys (for example `mrp.oee`) and extend the payload builder from `rn_mrp_dashboard`.
-
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies
