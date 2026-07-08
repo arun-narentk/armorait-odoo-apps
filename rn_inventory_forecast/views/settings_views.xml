@@ -38,7 +38,7 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
-                <app string="RN Inventory Forecast" name="rn_inventory_forecast" groups="rn_inventory_forecast.group_rn_inv_forecast_admin">
+                <app string="ARMORA Inventory Forecast" name="rn_inventory_forecast" groups="rn_inventory_forecast.group_rn_inv_forecast_admin">
                     <block title="General">
                         <setting string="Enable Inventory Forecast"><field name="rn_inv_forecast_enabled"/></setting>
                         <setting string="Default Horizon"><field name="rn_inv_forecast_horizon"/></setting>

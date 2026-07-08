@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'RN Inventory Forecast',
+    'name': 'ARMORA Inventory Forecast',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
     'summary': 'Demand forecasting, safety stock, ABC/XYZ/FSN, and inventory planning for Odoo 19',
     'description': """
-RN Inventory Forecast for Odoo 19 Community
+ARMORA Inventory Forecast for Odoo 19 Community
 ==========================================
 
 Intelligent inventory planning: demand forecast, safety stock,
@@ -15,10 +15,14 @@ Phase 1 delivers the installable framework with service-layer
 architecture, models, security, menus, scheduled jobs, and a live
 dashboard shell. AI forecasting arrives in later releases.
     """,
-    'author': 'RN Technologies',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 39.99,
+    'sequence': 38,
     'depends': [
         'base',
         'mail',

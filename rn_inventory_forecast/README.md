@@ -1,8 +1,8 @@
-# RN Inventory Forecast
+# ARMORA Inventory Forecast
 
 ## Intelligent Inventory Forecast & Demand Planning for Odoo 19 Community
 
-RN Inventory Forecast is a commercial-grade inventory planning solution designed for Odoo 19 Community. It helps businesses forecast inventory demand, optimize stock levels, reduce stock-outs, minimize excess inventory, and make data-driven purchasing decisions.
+ARMORA Inventory Forecast is a commercial-grade inventory planning solution designed for Odoo 19 Community. It helps businesses forecast inventory demand, optimize stock levels, reduce stock-outs, minimize excess inventory, and make data-driven purchasing decisions.
 
 The module provides real-time analytics, inventory forecasting, safety stock recommendations, reorder planning, ABC analysis, XYZ analysis, demand trends, and executive dashboards.
 
@@ -154,7 +154,7 @@ Includes
 
 1. Copy module into addons directory.
 2. Update Apps List.
-3. Install **RN Inventory Forecast**.
+3. Install **ARMORA Inventory Forecast**.
 4. Configure Forecast Settings.
 5. Start generating inventory forecasts.
 
@@ -187,7 +187,7 @@ Upcoming Features
 
 ## Author
 
-RN Technologies
+ARMORA IT Technologies
 
 ---
 

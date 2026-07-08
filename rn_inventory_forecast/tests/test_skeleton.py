@@ -9,7 +9,7 @@ from odoo.tests.common import TransactionCase
 
 @tagged('post_install', '-at_install')
 class TestRnInventoryForecastSkeleton(TransactionCase):
-    """Phase 1 tests for RN Inventory Forecast."""
+    """Phase 1 tests for ARMORA Inventory Forecast."""
 
     def test_groups_exist(self):
         group = self.env.ref('rn_inventory_forecast.group_rn_inv_forecast_user', raise_if_not_found=False)
