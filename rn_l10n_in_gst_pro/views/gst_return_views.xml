@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_gst_return_list" model="ir.ui.view">
+        <field name="name">rn.gst.return.list</field>
+        <field name="model">rn.gst.return</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="return_type"/>
+                <field name="period_id"/>
+                <field name="financial_year"/>
+                <field name="state"/>
+                <field name="total_taxable"/>
+                <field name="total_tax"/>
+                <field name="error_count"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_gst_return_form" model="ir.ui.view">
+        <field name="name">rn.gst.return.form</field>
+        <field name="model">rn.gst.return</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_compute" type="object" string="Compute" class="btn-primary" invisible="state in ('locked', 'filed')"/>
+                    <button name="action_validate" type="object" string="Validate" invisible="state in ('draft', 'locked', 'filed')"/>
+                    <button name="action_lock" type="object" string="Lock" invisible="state != 'validated'" groups="rn_l10n_in_gst_pro.group_rn_gst_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,computed,validated,exported,locked,filed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="return_type"/>
+                            <field name="period_id"/>
+                            <field name="financial_year"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                        <group>
+                            <field name="total_taxable"/>
+                            <field name="total_cgst"/>
+                            <field name="total_sgst"/>
+                            <field name="total_igst"/>
+                            <field name="total_cess"/>
+                            <field name="total_tax"/>
+                            <field name="error_count"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Invoice Lines">
+                            <field name="invoice_line_ids">
+                                <list>
+                                    <field name="section"/>
+                                    <field name="invoice_number"/>
+                                    <field name="invoice_date"/>
+                                    <field name="partner_id"/>
+                                    <field name="partner_gstin"/>
+                                    <field name="taxable_amount"/>
+                                    <field name="igst_amount"/>
+                                    <field name="cgst_amount"/>
+                                    <field name="sgst_amount"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Summaries">
+                            <field name="summary_ids"/>
+                        </page>
+                        <page string="HSN">
+                            <field name="hsn_ids"/>
+                        </page>
+                        <page string="Documents">
+                            <field name="document_ids"/>
+                        </page>
+                        <page string="Validations">
+                            <field name="validation_ids"/>
+                        </page>
+                        <page string="Exports">
+                            <field name="export_ids"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                            <field name="lock_date" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_return" model="ir.actions.act_window">
+        <field name="name">GST Returns</field>
+        <field name="res_model">rn.gst.return</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

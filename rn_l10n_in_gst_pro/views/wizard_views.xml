@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_gst_gstr1_wizard_form" model="ir.ui.view">
+        <field name="name">rn.gst.gstr1.wizard.form</field>
+        <field name="model">rn.gst.gstr1.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate GSTR-1">
+                <group>
+                    <field name="period_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="auto_compute"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_gstr1_wizard" model="ir.actions.act_window">
+        <field name="name">Generate GSTR-1</field>
+        <field name="res_model">rn.gst.gstr1.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_gst_gstr3b_wizard_form" model="ir.ui.view">
+        <field name="name">rn.gst.gstr3b.wizard.form</field>
+        <field name="model">rn.gst.gstr3b.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate GSTR-3B">
+                <group>
+                    <field name="period_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="auto_compute"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_gstr3b_wizard" model="ir.actions.act_window">
+        <field name="name">Generate GSTR-3B</field>
+        <field name="res_model">rn.gst.gstr3b.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_gst_gstr9_wizard_form" model="ir.ui.view">
+        <field name="name">rn.gst.gstr9.wizard.form</field>
+        <field name="model">rn.gst.gstr9.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate GSTR-9">
+                <group>
+                    <field name="period_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_gstr9_wizard" model="ir.actions.act_window">
+        <field name="name">Generate GSTR-9</field>
+        <field name="res_model">rn.gst.gstr9.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_gst_reconciliation_wizard_form" model="ir.ui.view">
+        <field name="name">rn.gst.reconciliation.wizard.form</field>
+        <field name="model">rn.gst.reconciliation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Run Reconciliation">
+                <group>
+                    <field name="period_id"/>
+                    <field name="reconciliation_type"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </group>
+                <footer>
+                    <button name="action_run" type="object" string="Run" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_reconciliation_wizard" model="ir.actions.act_window">
+        <field name="name">Run Reconciliation</field>
+        <field name="res_model">rn.gst.reconciliation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

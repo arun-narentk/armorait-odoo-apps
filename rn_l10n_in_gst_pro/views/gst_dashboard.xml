@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_gst_dashboard" model="ir.actions.client">
+        <field name="name">GST Dashboard</field>
+        <field name="tag">rn_l10n_in_gst_pro.dashboard</field>
+    </record>
+</odoo>
