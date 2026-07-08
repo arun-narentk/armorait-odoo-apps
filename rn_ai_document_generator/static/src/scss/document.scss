@@ -1,0 +1,12 @@
+.o_rn_ai_doc_dashboard {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  min-height: 100%;
+  .o_rn_doc_card {
+    background: #fff;
+    border: 1px solid #c7d2fe;
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .label { color: #64748b; font-size: 0.8rem; margin-bottom: 0.35rem; }
+  .value { color: #3730A3; font-size: 1.35rem; font-weight: 700; }
+}

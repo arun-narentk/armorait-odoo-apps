@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_ai_doc">
+        <field name="name">ARMORA AI Documents</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+    <record id="group_rn_ai_doc_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_doc"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_ai_doc_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_doc"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_ai_doc_readonly'))]"/>
+    </record>
+    <record id="group_rn_ai_doc_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_ai_doc"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_ai_doc_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_ai_doc_type_company" model="ir.rule">
+        <field name="name">AI Doc Type multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_type"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_template_company" model="ir.rule">
+        <field name="name">AI Doc Template multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_template"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_document_company" model="ir.rule">
+        <field name="name">AI Document multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_version_company" model="ir.rule">
+        <field name="name">AI Doc Version multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_version"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_approval_company" model="ir.rule">
+        <field name="name">AI Doc Approval multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_approval"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_settings_company" model="ir.rule">
+        <field name="name">AI Doc Settings multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_ai_doc_subscription_company" model="ir.rule">
+        <field name="name">AI Doc Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_ai_document_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

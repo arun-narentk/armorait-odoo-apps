@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_ai_document" model="ir.actions.report">
+        <field name="name">AI Document PDF</field>
+        <field name="model">rn.ai.document</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_ai_document_generator.report_rn_ai_document_document</field>
+        <field name="report_file">rn_ai_document_generator.report_rn_ai_document_document</field>
+        <field name="print_report_name">'Document - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_rn_ai_document"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_rn_ai_document_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="doc.subject or doc.name"/>
+                        <div t-out="doc.body_html"/>
+                        <p t-if="doc.state == 'signed'">Signed on <span t-esc="doc.signed_date"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

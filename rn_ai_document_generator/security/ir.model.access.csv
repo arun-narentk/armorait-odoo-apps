@@ -1,0 +1,22 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_ai_doc_type_ro,rn.ai.document.type readonly,model_rn_ai_document_type,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_template_ro,rn.ai.document.template readonly,model_rn_ai_document_template,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_document_ro,rn.ai.document readonly,model_rn_ai_document,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_version_ro,rn.ai.document.version readonly,model_rn_ai_document_version,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_approval_ro,rn.ai.document.approval readonly,model_rn_ai_document_approval,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_settings_ro,rn.ai.document.settings readonly,model_rn_ai_document_settings,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_sub_ro,rn.ai.document.subscription readonly,model_rn_ai_document_subscription,group_rn_ai_doc_readonly,1,0,0,0
+access_rn_ai_doc_type_user,rn.ai.document.type user,model_rn_ai_document_type,group_rn_ai_doc_user,1,0,0,0
+access_rn_ai_doc_template_user,rn.ai.document.template user,model_rn_ai_document_template,group_rn_ai_doc_user,1,0,0,0
+access_rn_ai_doc_document_user,rn.ai.document user,model_rn_ai_document,group_rn_ai_doc_user,1,1,1,0
+access_rn_ai_doc_version_user,rn.ai.document.version user,model_rn_ai_document_version,group_rn_ai_doc_user,1,0,0,0
+access_rn_ai_doc_approval_user,rn.ai.document.approval user,model_rn_ai_document_approval,group_rn_ai_doc_user,1,1,0,0
+access_rn_ai_doc_wiz_gen_user,rn.ai.document.generate.wizard user,model_rn_ai_document_generate_wizard,group_rn_ai_doc_user,1,1,1,1
+access_rn_ai_doc_wiz_exp_user,rn.ai.document.export.wizard user,model_rn_ai_document_export_wizard,group_rn_ai_doc_user,1,1,1,1
+access_rn_ai_doc_type_mgr,rn.ai.document.type manager,model_rn_ai_document_type,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_template_mgr,rn.ai.document.template manager,model_rn_ai_document_template,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_document_mgr,rn.ai.document manager,model_rn_ai_document,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_version_mgr,rn.ai.document.version manager,model_rn_ai_document_version,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_approval_mgr,rn.ai.document.approval manager,model_rn_ai_document_approval,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_settings_mgr,rn.ai.document.settings manager,model_rn_ai_document_settings,group_rn_ai_doc_manager,1,1,1,1
+access_rn_ai_doc_sub_mgr,rn.ai.document.subscription manager,model_rn_ai_document_subscription,group_rn_ai_doc_manager,1,1,1,1
