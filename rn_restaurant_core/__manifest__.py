@@ -24,6 +24,7 @@ delivery, loyalty, online ordering, and AI forecasting.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 49.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 46,
     'depends': [
         'base',
