@@ -22,6 +22,7 @@ hooks, OWL dashboard shell, security, menus, and docs.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 49.0,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 45,
     'depends': [
         'base',
