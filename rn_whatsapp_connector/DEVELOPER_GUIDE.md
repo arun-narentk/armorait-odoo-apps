@@ -1,12 +1,13 @@
 # Developer Guide
 
-Register a custom trigger:
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-```python
-env['rn.whatsapp.automation.service'].register_trigger('my_event', 'My Event')
-env['rn.whatsapp.automation.service'].run_trigger('custom', records)
-```
+## Testing
+Run Odoo tests with the module in the addons path.
 
-Add a provider by inheriting `rn.whatsapp.provider.base` and registering it in `PROVIDER_REGISTRY`.
-
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

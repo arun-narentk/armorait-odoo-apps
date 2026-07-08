@@ -1,9 +1,16 @@
 # Installation
 
-1. Copy `rn_whatsapp_connector` into addons (`armora/`).
-2. Restart Odoo and Update Apps List.
-3. Install **ARMORA WhatsApp Automation Platform**.
-4. Assign User / Manager / Administrator groups.
-5. Configure a simulation account, then switch to live Meta credentials.
+## Requirements
+- Odoo 19 Community
+- Python 3.12
+- PostgreSQL
 
-Support: info@armorait.com
+## Steps
+1. Copy the module into your addons path.
+2. Update the apps list and install **WhatsApp Automation**.
+3. Open **Settings** and complete module configuration.
+4. Assign the relevant security groups to users.
+5. Optional: enable demo data for evaluation.
+
+## Support
+ARMORA IT Technologies | https://www.armorait.com | info@armorait.com

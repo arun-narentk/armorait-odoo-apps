@@ -1,12 +1,13 @@
 # FAQ
 
-**Do I need a Meta BSP?**  
-Any supported provider works. Meta Cloud is first-class; others ship as adapters.
+## Does WhatsApp Automation work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Will it send real messages out of the box?**  
-Simulation Mode is on by default. Disable it and set a valid Access Token / Phone Number ID for live Meta sends.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Price?**  
-Professional Apps list price is 79.99 USD.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

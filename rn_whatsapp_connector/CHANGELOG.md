@@ -1,5 +1,5 @@
 # Changelog
 
 ## 19.0.1.0.0
-
-- Phase 1: provider layer, templates, queue, automation engine, sales/invoice/delivery hooks, dashboard, docs
+- Initial commercial release of WhatsApp Automation
+- Professional Apps Store assets and documentation pack

@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, account form, queue, automation rules, template, wizard before publish.
+Replace generated placeholders for **WhatsApp Automation** with real desktop, tablet, and mobile captures.

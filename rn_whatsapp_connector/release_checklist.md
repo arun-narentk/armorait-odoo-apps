@@ -1,9 +1,18 @@
 # Release Checklist
 
-- [x] Manifest ARMORA branding and price 79.99 USD
-- [x] Provider / automation / queue
-- [x] Security / menus / views
-- [x] Tests
-- [x] README and docs
-- [x] index.html and assets
-- [ ] Real screenshots / GIFs before Apps publish
+## Marketplace assets
+- [ ] Professional app name: WhatsApp Automation
+- [ ] 512x512 icon.png
+- [ ] 1200x600 banner.png
+- [ ] 10-20 real screenshots
+- [ ] GIF demos recorded
+- [ ] index.html reviewed on apps.odoo.com staging
+
+## Code quality
+- [ ] Tests passing
+- [ ] No debug code
+- [ ] Manifest price, license OPL-1, images
+
+## Branding
+- [ ] ARMORA IT Technologies footer on index.html
+- [ ] Support info@armorait.com

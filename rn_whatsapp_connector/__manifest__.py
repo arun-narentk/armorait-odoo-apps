@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA WhatsApp Automation Platform',
+    'name': 'WhatsApp Automation',
     'version': '19.0.1.0.0',
     'category': 'Marketing/WhatsApp',
-    'summary': 'Provider-agnostic WhatsApp automation: templates, queue, webhooks, and business triggers',
+    'summary': 'Send invoices, orders, and alerts on WhatsApp from Odoo 19',
     'description': """
 ARMORA WhatsApp Automation Platform for Odoo 19 Community
 =======================================================
@@ -74,6 +74,8 @@ Higher editions add team inbox, campaigns, REST API, and high-volume tooling.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
