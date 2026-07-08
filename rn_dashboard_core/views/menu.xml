@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_dashboard_root"
+              name="Dashboards"
+              web_icon="rn_dashboard_core,static/description/icon.png"
+              groups="rn_dashboard_core.group_rn_dashboard_user"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_dashboard_shell"
+              name="Live Board"
+              parent="menu_rn_dashboard_root"
+              action="action_rn_dashboard_shell"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_dashboard_ops"
+              name="Operations"
+              parent="menu_rn_dashboard_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_dashboard_definitions"
+              name="Dashboard Definitions"
+              parent="menu_rn_dashboard_ops"
+              action="action_rn_dashboard"
+              sequence="10"/>
+    <menuitem id="menu_rn_dashboard_alerts"
+              name="Alerts"
+              parent="menu_rn_dashboard_ops"
+              action="action_rn_dashboard_alert"
+              sequence="20"/>
+    <menuitem id="menu_rn_dashboard_open_filter"
+              name="Open With Filter"
+              parent="menu_rn_dashboard_ops"
+              action="action_rn_dashboard_apply_filter"
+              sequence="30"/>
+    <menuitem id="menu_rn_dashboard_export"
+              name="Export Snapshots"
+              parent="menu_rn_dashboard_ops"
+              action="action_rn_dashboard_export"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_dashboard_catalog"
+              name="Catalog"
+              parent="menu_rn_dashboard_root"
+              sequence="20"/>
+    <menuitem id="menu_rn_dashboard_filters"
+              name="Filters"
+              parent="menu_rn_dashboard_catalog"
+              action="action_rn_dashboard_filter"
+              sequence="10"/>
+    <menuitem id="menu_rn_dashboard_kpis"
+              name="KPI Catalog"
+              parent="menu_rn_dashboard_catalog"
+              action="action_rn_dashboard_kpi"
+              sequence="20"/>
+    <menuitem id="menu_rn_dashboard_snapshots"
+              name="KPI Snapshots"
+              parent="menu_rn_dashboard_catalog"
+              action="action_rn_dashboard_kpi_snapshot"
+              sequence="30"/>
+    <menuitem id="menu_rn_dashboard_alert_rules"
+              name="Alert Rules"
+              parent="menu_rn_dashboard_catalog"
+              action="action_rn_dashboard_alert_rule"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_dashboard_config"
+              name="Configuration"
+              parent="menu_rn_dashboard_root"
+              groups="rn_dashboard_core.group_rn_dashboard_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_dashboard_settings"
+              name="Dashboard Settings"
+              parent="menu_rn_dashboard_config"
+              action="action_rn_dashboard_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_dashboard_subscriptions"
+              name="Subscriptions"
+              parent="menu_rn_dashboard_config"
+              action="action_rn_dashboard_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_dashboard_config_settings"
+              name="Settings"
+              parent="menu_rn_dashboard_config"
+              action="action_rn_dashboard_config_settings"
+              sequence="100"/>
+</odoo>

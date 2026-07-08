@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_dashboard_core.Shell">
+        <div class="o_rn_dashboard_shell p-3" t-att-class="{'o_rn_tv_mode': state.dashboard.is_tv_mode}">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                <div>
+                    <h1 class="h3 mb-0" t-esc="state.dashboard.name || 'ARMORA Dashboard'"/>
+                    <div class="text-muted small">
+                        Manufacturing Intelligence foundation
+                        <t t-if="state.dashboard.show_clock"> | <t t-esc="state.clock"/></t>
+                        | Edition: <t t-esc="state.edition"/>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading live board...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_dash_card"><div class="label">Target</div><div class="value" t-esc="formatNumber(state.cards.target)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_dash_card"><div class="label">Actual</div><div class="value" t-esc="formatNumber(state.cards.actual)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_dash_card"><div class="label">Progress</div><div class="value" t-esc="formatPercent(state.cards.progress_pct)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_dash_card"><div class="label">Efficiency</div><div class="value" t-esc="formatPercent(state.cards.efficiency_pct)"/></div></div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <div class="o_rn_dash_panel">
+                            <div class="panel-title">Status Legend (for machine boards)</div>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+                                <t t-foreach="state.statusLegend" t-as="entry" t-key="entry.key">
+                                    <span class="o_rn_status_chip" t-att-style="'background:' + entry.color">
+                                        <t t-esc="entry.key"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="o_rn_dash_panel">
+                            <div class="panel-title">Open Alerts</div>
+                            <t t-if="!state.alerts.length"><div class="text-muted small">No open alerts</div></t>
+                            <ul class="mb-0 ps-3">
+                                <t t-foreach="state.alerts" t-as="alert" t-key="alert.id">
+                                    <li><span t-esc="alert.severity"/>: <t t-esc="alert.name"/></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_rn_dash_panel mb-3">
+                    <div class="panel-title">Configured Widgets</div>
+                    <div class="row g-2 mt-1">
+                        <t t-foreach="state.widgets" t-as="w" t-key="w.id">
+                            <div class="col-6 col-md-3">
+                                <div class="o_rn_widget_chip" t-att-style="'border-color:' + (w.color || '#0F766E')">
+                                    <strong t-esc="w.name"/><br/>
+                                    <span class="small text-muted" t-esc="w.type"/> / <span class="small" t-esc="w.kpi_key"/>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="text-muted small">
+                    Sample charts/KPIs until rn_mrp_dashboard and companions provide live MES data.
+                    Updated: <t t-esc="state.updatedAt"/>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

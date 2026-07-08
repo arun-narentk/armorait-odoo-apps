@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dashboard_alert_list" model="ir.ui.view">
+        <field name="name">rn.dashboard.alert.list</field>
+        <field name="model">rn.dashboard.alert</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="kpi_key"/>
+                <field name="value"/>
+                <field name="severity"/>
+                <field name="state"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_dashboard_alert_form" model="ir.ui.view">
+        <field name="name">rn.dashboard.alert.form</field>
+        <field name="model">rn.dashboard.alert</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_acknowledge" type="object" string="Acknowledge" invisible="state != 'open'"/>
+                    <button name="action_resolve" type="object" string="Resolve" invisible="state == 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,ack,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="rule_id"/>
+                        <field name="dashboard_id"/>
+                        <field name="kpi_key"/>
+                        <field name="value"/>
+                        <field name="threshold"/>
+                        <field name="severity"/>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_dashboard_alert" model="ir.actions.act_window">
+        <field name="name">Alerts</field>
+        <field name="res_model">rn.dashboard.alert</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_dashboard_alert_rule" model="ir.actions.act_window">
+        <field name="name">Alert Rules</field>
+        <field name="res_model">rn.dashboard.alert.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_dashboard_widget" model="ir.actions.act_window">
+        <field name="name">Widgets</field>
+        <field name="res_model">rn.dashboard.widget</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
