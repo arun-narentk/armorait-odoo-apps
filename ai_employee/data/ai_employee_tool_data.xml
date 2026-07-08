@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="tool_today_sales" model="ai.employee.tool">
+        <field name="name">Today's Sales</field>
+        <field name="model_name">today_sales</field>
+        <field name="description">Show confirmed sales orders and revenue for today.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_pending_quotations" model="ai.employee.tool">
+        <field name="name">Pending Quotations</field>
+        <field name="model_name">pending_quotations</field>
+        <field name="description">List quotations waiting for confirmation.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_lost_quotations" model="ai.employee.tool">
+        <field name="name">Lost Quotations</field>
+        <field name="model_name">lost_quotations</field>
+        <field name="description">List cancelled quotations.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_top_customers" model="ai.employee.tool">
+        <field name="name">Top Customers</field>
+        <field name="model_name">top_customers</field>
+        <field name="description">Rank customers by confirmed sales revenue.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_best_selling_products" model="ai.employee.tool">
+        <field name="name">Best Selling Products</field>
+        <field name="model_name">best_selling_products</field>
+        <field name="description">Rank products by sold quantity.</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tool_overdue_invoices" model="ai.employee.tool">
+        <field name="name">Overdue Invoices</field>
+        <field name="model_name">overdue_invoices</field>
+        <field name="description">List posted customer invoices unpaid past their due date.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_customer_balance" model="ai.employee.tool">
+        <field name="name">Customer Balance</field>
+        <field name="model_name">customer_balance</field>
+        <field name="description">Show customers with the highest receivable balances.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_revenue_this_month" model="ai.employee.tool">
+        <field name="name">Revenue This Month</field>
+        <field name="model_name">revenue_this_month</field>
+        <field name="description">Show posted customer invoice revenue for the current month.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_expenses_this_month" model="ai.employee.tool">
+        <field name="name">Expenses This Month</field>
+        <field name="model_name">expenses_this_month</field>
+        <field name="description">Show posted vendor bill totals for the current month.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_profit_this_month" model="ai.employee.tool">
+        <field name="name">Profit This Month</field>
+        <field name="model_name">profit_this_month</field>
+        <field name="description">Estimate profit as revenue minus expenses this month.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_revenue_analysis" model="ai.employee.tool">
+        <field name="name">Revenue Analysis</field>
+        <field name="model_name">revenue_analysis</field>
+        <field name="description">Compare customer invoice revenue between months.</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tool_negative_stock" model="ai.employee.tool">
+        <field name="name">Negative Stock</field>
+        <field name="model_name">negative_stock</field>
+        <field name="description">List products with negative on-hand quantity.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_low_stock" model="ai.employee.tool">
+        <field name="name">Low Stock</field>
+        <field name="model_name">low_stock</field>
+        <field name="description">List products with low on-hand quantity.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_products_not_moved" model="ai.employee.tool">
+        <field name="name">Products Not Moved</field>
+        <field name="model_name">products_not_moved</field>
+        <field name="description">Highlight products without stock moves for a period.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_inventory_valuation" model="ai.employee.tool">
+        <field name="name">Inventory Valuation</field>
+        <field name="model_name">inventory_valuation</field>
+        <field name="description">Estimate on-hand inventory value using standard cost.</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="tool_find_customer" model="ai.employee.tool">
+        <field name="name">Find Customer</field>
+        <field name="model_name">find_customer</field>
+        <field name="description">Search customers or find inactive customers.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_top_opportunities" model="ai.employee.tool">
+        <field name="name">Top Opportunities</field>
+        <field name="model_name">top_opportunities</field>
+        <field name="description">List the highest value open CRM opportunities.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_lost_leads" model="ai.employee.tool">
+        <field name="name">Lost Leads</field>
+        <field name="model_name">lost_leads</field>
+        <field name="description">List recently lost CRM leads and opportunities.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_followup_overdue" model="ai.employee.tool">
+        <field name="name">Follow-up Overdue</field>
+        <field name="model_name">followup_overdue</field>
+        <field name="description">List CRM records with overdue next activities.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_pipeline_revenue" model="ai.employee.tool">
+        <field name="name">Pipeline Revenue</field>
+        <field name="model_name">pipeline_revenue</field>
+        <field name="description">Summarize expected revenue from the open CRM pipeline.</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>
