@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_textile_factory_coimbatore" model="rn.textile.factory">
+        <field name="name">Sri Murugan Knitting Unit</field>
+        <field name="unit_type">knitting</field>
+        <field name="legal_name">SMKU Pvt Ltd</field>
+        <field name="city">Coimbatore</field>
+        <field name="gstin">33AAAAA0000A1Z5</field>
+        <field name="phone">+91 422 333 4444</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_textile_dept_knitting" model="rn.textile.department">
+        <field name="name">Knitting Floor</field>
+        <field name="factory_id" ref="demo_textile_factory_coimbatore"/>
+        <field name="department_type">knitting</field>
+    </record>
+    <record id="demo_textile_machine_k01" model="rn.textile.machine">
+        <field name="name">Circular Knitter K-01</field>
+        <field name="factory_id" ref="demo_textile_factory_coimbatore"/>
+        <field name="department_id" ref="demo_textile_dept_knitting"/>
+        <field name="machine_type">knitting</field>
+        <field name="capacity_per_day">180</field>
+        <field name="capacity_uom_id" ref="uom.product_uom_kgm"/>
+        <field name="state">active</field>
+    </record>
+    <record id="demo_textile_yarn_30s_cvc" model="rn.textile.yarn.spec">
+        <field name="name">30s CVC Grey</field>
+        <field name="factory_id" ref="demo_textile_factory_coimbatore"/>
+        <field name="yarn_count">30s</field>
+        <field name="blend_type">cotton_poly</field>
+        <field name="blend_ratio">60/40</field>
+        <field name="gsm">160</field>
+        <field name="color_name">Grey Melange</field>
+        <field name="lot_prefix">SMK</field>
+    </record>
+    <record id="demo_textile_settings" model="rn.textile.settings">
+        <field name="name">Textile Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="default_factory_id" ref="demo_textile_factory_coimbatore"/>
+        <field name="unit_label">Knitting Unit</field>
+        <field name="enable_job_work" eval="True"/>
+    </record>
+</odoo>

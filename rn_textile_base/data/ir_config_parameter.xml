@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_textile_lot_traceability" model="ir.config_parameter">
+        <field name="key">rn_textile_base.enable_lot_traceability</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

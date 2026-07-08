@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_textile_factory" model="ir.sequence">
+        <field name="name">Textile Factory</field>
+        <field name="code">rn.textile.factory</field>
+        <field name="prefix">FAC</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_textile_machine" model="ir.sequence">
+        <field name="name">Textile Machine</field>
+        <field name="code">rn.textile.machine</field>
+        <field name="prefix">MCH</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_textile_yarn_spec" model="ir.sequence">
+        <field name="name">Yarn Specification</field>
+        <field name="code">rn.textile.yarn.spec</field>
+        <field name="prefix">YRN</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

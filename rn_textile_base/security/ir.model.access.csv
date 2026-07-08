@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_textile_factory_ro,rn.textile.factory readonly,model_rn_textile_factory,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_department_ro,rn.textile.department readonly,model_rn_textile_department,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_machine_ro,rn.textile.machine readonly,model_rn_textile_machine,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_yarn_spec_ro,rn.textile.yarn.spec readonly,model_rn_textile_yarn_spec,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_settings_ro,rn.textile.settings readonly,model_rn_textile_settings,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_subscription_ro,rn.textile.subscription readonly,model_rn_textile_subscription,group_rn_textile_readonly,1,0,0,0
+access_rn_textile_machine_operator,rn.textile.machine operator,model_rn_textile_machine,group_rn_textile_operator,1,1,0,0
+access_rn_textile_factory_supervisor,rn.textile.factory supervisor,model_rn_textile_factory,group_rn_textile_supervisor,1,1,1,0
+access_rn_textile_department_supervisor,rn.textile.department supervisor,model_rn_textile_department,group_rn_textile_supervisor,1,1,1,0
+access_rn_textile_machine_supervisor,rn.textile.machine supervisor,model_rn_textile_machine,group_rn_textile_supervisor,1,1,1,0
+access_rn_textile_yarn_spec_supervisor,rn.textile.yarn.spec supervisor,model_rn_textile_yarn_spec,group_rn_textile_supervisor,1,1,1,0
+access_rn_textile_factory_mgr,rn.textile.factory manager,model_rn_textile_factory,group_rn_textile_manager,1,1,1,1
+access_rn_textile_department_mgr,rn.textile.department manager,model_rn_textile_department,group_rn_textile_manager,1,1,1,1
+access_rn_textile_machine_mgr,rn.textile.machine manager,model_rn_textile_machine,group_rn_textile_manager,1,1,1,1
+access_rn_textile_yarn_spec_mgr,rn.textile.yarn.spec manager,model_rn_textile_yarn_spec,group_rn_textile_manager,1,1,1,1
+access_rn_textile_settings_mgr,rn.textile.settings manager,model_rn_textile_settings,group_rn_textile_manager,1,1,1,1
+access_rn_textile_subscription_mgr,rn.textile.subscription manager,model_rn_textile_subscription,group_rn_textile_manager,1,1,1,1
