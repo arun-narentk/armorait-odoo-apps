@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_realestate_project_list" model="ir.ui.view">
+        <field name="name">rn.realestate.project.list</field>
+        <field name="model">rn.realestate.project</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="developer_id"/>
+                <field name="project_type"/>
+                <field name="location"/>
+                <field name="available_count"/>
+                <field name="booked_count"/>
+                <field name="sold_count"/>
+                <field name="construction_progress" widget="progressbar"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_project_form" model="ir.ui.view">
+        <field name="name">rn.realestate.project.form</field>
+        <field name="model">rn.realestate.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_units" type="object" class="oe_stat_button" icon="fa-home">
+                            <field name="unit_count" widget="statinfo" string="Units"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="developer_id"/>
+                            <field name="project_type"/>
+                            <field name="location"/>
+                            <field name="city"/>
+                            <field name="rera_id"/>
+                        </group>
+                        <group>
+                            <field name="launch_date"/>
+                            <field name="possession_date"/>
+                            <field name="construction_progress" widget="progressbar"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Blocks" name="blocks">
+                            <field name="block_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="total_floors"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Amenities" name="amenities">
+                            <field name="amenities"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">rn.realestate.project</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

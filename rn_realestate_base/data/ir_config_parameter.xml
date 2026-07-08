@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_realestate_portal" model="ir.config_parameter">
+        <field name="key">rn_realestate_base.enable_portal</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

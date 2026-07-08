@@ -1,0 +1,20 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_realestate_developer_ro,rn.realestate.developer readonly,model_rn_realestate_developer,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_project_ro,rn.realestate.project readonly,model_rn_realestate_project,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_block_ro,rn.realestate.block readonly,model_rn_realestate_block,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_unit_ro,rn.realestate.unit readonly,model_rn_realestate_unit,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_lead_ro,rn.realestate.lead readonly,model_rn_realestate_lead,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_settings_ro,rn.realestate.settings readonly,model_rn_realestate_settings,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_subscription_ro,rn.realestate.subscription readonly,model_rn_realestate_subscription,group_rn_realestate_readonly,1,0,0,0
+access_rn_realestate_lead_sales,rn.realestate.lead sales,model_rn_realestate_lead,group_rn_realestate_sales,1,1,1,0
+access_rn_realestate_unit_sales,rn.realestate.unit sales,model_rn_realestate_unit,group_rn_realestate_sales,1,1,0,0
+access_rn_realestate_project_mgr,rn.realestate.project manager,model_rn_realestate_project,group_rn_realestate_manager,1,1,1,0
+access_rn_realestate_unit_mgr,rn.realestate.unit manager,model_rn_realestate_unit,group_rn_realestate_manager,1,1,1,0
+access_rn_realestate_lead_mgr,rn.realestate.lead manager,model_rn_realestate_lead,group_rn_realestate_manager,1,1,1,1
+access_rn_realestate_developer_admin,rn.realestate.developer admin,model_rn_realestate_developer,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_project_admin,rn.realestate.project admin,model_rn_realestate_project,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_block_admin,rn.realestate.block admin,model_rn_realestate_block,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_unit_admin,rn.realestate.unit admin,model_rn_realestate_unit,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_lead_admin,rn.realestate.lead admin,model_rn_realestate_lead,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_settings_admin,rn.realestate.settings admin,model_rn_realestate_settings,group_rn_realestate_admin,1,1,1,1
+access_rn_realestate_subscription_admin,rn.realestate.subscription admin,model_rn_realestate_subscription,group_rn_realestate_admin,1,1,1,1

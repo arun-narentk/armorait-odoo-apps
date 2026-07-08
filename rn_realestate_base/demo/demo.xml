@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_realestate_developer" model="rn.realestate.developer">
+        <field name="name">Green Valley Builders</field>
+        <field name="developer_type">builder</field>
+        <field name="legal_name">Green Valley Constructions Pvt Ltd</field>
+        <field name="city">Coimbatore</field>
+        <field name="rera_registration">TN/01/Building/2024/001</field>
+        <field name="phone">+91 422 555 0101</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_realestate_project" model="rn.realestate.project">
+        <field name="name">Green Meadows Apartments</field>
+        <field name="developer_id" ref="demo_realestate_developer"/>
+        <field name="project_type">apartment</field>
+        <field name="location">Saravanampatti</field>
+        <field name="city">Coimbatore</field>
+        <field name="construction_progress">45</field>
+        <field name="amenities">Clubhouse, Gym, Children's play area, Covered parking</field>
+    </record>
+    <record id="demo_realestate_block_a" model="rn.realestate.block">
+        <field name="name">Tower A</field>
+        <field name="project_id" ref="demo_realestate_project"/>
+        <field name="total_floors">12</field>
+    </record>
+    <record id="demo_realestate_unit_a101" model="rn.realestate.unit">
+        <field name="name">A-101</field>
+        <field name="developer_id" ref="demo_realestate_developer"/>
+        <field name="project_id" ref="demo_realestate_project"/>
+        <field name="block_id" ref="demo_realestate_block_a"/>
+        <field name="floor_no">1</field>
+        <field name="unit_type">apartment</field>
+        <field name="facing">east</field>
+        <field name="carpet_area">1050</field>
+        <field name="base_price">5800000</field>
+        <field name="status">available</field>
+    </record>
+    <record id="demo_realestate_unit_a102" model="rn.realestate.unit">
+        <field name="name">A-102</field>
+        <field name="developer_id" ref="demo_realestate_developer"/>
+        <field name="project_id" ref="demo_realestate_project"/>
+        <field name="block_id" ref="demo_realestate_block_a"/>
+        <field name="floor_no">1</field>
+        <field name="unit_type">apartment</field>
+        <field name="facing">west</field>
+        <field name="carpet_area">980</field>
+        <field name="base_price">5200000</field>
+        <field name="status">booked</field>
+    </record>
+    <record id="demo_realestate_lead" model="rn.realestate.lead">
+        <field name="name">Anitha R - 3BHK Inquiry</field>
+        <field name="developer_id" ref="demo_realestate_developer"/>
+        <field name="phone">+91 98765 11111</field>
+        <field name="lead_source">website</field>
+        <field name="stage">site_visit</field>
+        <field name="property_type">apartment</field>
+        <field name="preferred_location">Saravanampatti</field>
+        <field name="budget_min">4500000</field>
+        <field name="budget_max">6500000</field>
+        <field name="project_id" ref="demo_realestate_project"/>
+    </record>
+    <record id="demo_realestate_settings" model="rn.realestate.settings">
+        <field name="name">Real Estate Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="default_developer_id" ref="demo_realestate_developer"/>
+        <field name="developer_label">Builder</field>
+        <field name="token_amount_default">100000</field>
+    </record>
+</odoo>
