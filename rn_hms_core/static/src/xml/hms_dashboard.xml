@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_hms_core.Dashboard">
+        <div class="o_rn_hms_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Hospital ERP</h1>
+                    <div class="text-muted small">Affordable hospital and clinic management for Odoo 19</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Today Appointments</div><div class="value" t-esc="state.cards.today_appointments || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Waiting / Confirmed</div><div class="value" t-esc="state.cards.patients_waiting || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Bed Occupancy %</div><div class="value" t-esc="formatNumber(state.cards.bed_occupancy)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Beds Available</div><div class="value" t-esc="state.cards.beds_available || 0"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Patients</div><div class="value" t-esc="state.cards.patients || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Doctors</div><div class="value" t-esc="state.cards.doctors || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Occupied Beds</div><div class="value" t-esc="state.cards.beds_occupied || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hms_card"><div class="label">Revenue</div><div class="value" t-esc="formatNumber(state.cards.revenue)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3">Lab, pharmacy, and IPD admission KPIs fill as companion modules are installed. Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

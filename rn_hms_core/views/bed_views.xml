@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hms_bed_list" model="ir.ui.view">
+        <field name="name">rn.hms.bed.list</field>
+        <field name="model">rn.hms.bed</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="ward_id"/>
+                <field name="state"/>
+                <field name="patient_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hms_bed_form" model="ir.ui.view">
+        <field name="name">rn.hms.bed.form</field>
+        <field name="model">rn.hms.bed</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_mark_available" type="object" string="Available" invisible="state == 'available'"/>
+                    <button name="action_mark_cleaning" type="object" string="Cleaning" invisible="state == 'cleaning'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="ward_id"/>
+                        <field name="patient_id"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hms_bed" model="ir.actions.act_window">
+        <field name="name">Beds</field>
+        <field name="res_model">rn.hms.bed</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_hms_admit_patient_wizard_form" model="ir.ui.view">
+        <field name="name">rn.hms.admit.patient.wizard.form</field>
+        <field name="model">rn.hms.admit.patient.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Allocate Bed">
+                <group>
+                    <field name="patient_id"/>
+                    <field name="bed_id"/>
+                    <field name="note"/>
+                </group>
+                <footer>
+                    <button name="action_admit" type="object" string="Allocate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hms_admit_patient_wizard" model="ir.actions.act_window">
+        <field name="name">Allocate Bed</field>
+        <field name="res_model">rn.hms.admit.patient.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

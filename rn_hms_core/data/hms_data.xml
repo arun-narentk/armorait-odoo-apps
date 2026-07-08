@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="rn_hms_dept_opd" model="rn.hms.department">
+<field name="name">General OPD</field><field name="code">OPD</field><field name="department_type">opd</field>
+</record>
+<record id="rn_hms_dept_ipd" model="rn.hms.department">
+<field name="name">Inpatient</field><field name="code">IPD</field><field name="department_type">ipd</field>
+</record>
+<record id="rn_hms_dept_lab" model="rn.hms.department">
+<field name="name">Laboratory</field><field name="code">LAB</field><field name="department_type">lab</field>
+</record>
+<record id="rn_hms_default_settings" model="rn.hms.settings">
+<field name="name">Default Hospital Settings</field>
+<field name="patient_code_prefix">P</field>
+<field name="default_slot_minutes">15</field>
+<field name="enable_email" eval="True"/>
+<field name="enable_token" eval="True"/>
+</record>
+<record id="rn_hms_subscription_trial" model="rn.hms.subscription">
+<field name="name">Professional Trial</field>
+<field name="edition">professional</field>
+<field name="state">trial</field>
+<field name="max_beds">50</field>
+</record>
+</data></odoo>
