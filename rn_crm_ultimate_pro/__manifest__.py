@@ -21,6 +21,7 @@ and service stubs. Feature engines arrive in later phases.
     'license': 'OPL-1',
     'currency': 'USD',
     'price': 49.99,
+    'live_test_url': 'https://www.armorait.com',
     'sequence': 36,
     'depends': [
         'base',
