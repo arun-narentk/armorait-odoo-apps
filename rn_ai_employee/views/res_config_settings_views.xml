@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
-                <app string="AI Copilot" name="ai_employee" groups="ai_employee.group_ai_employee_manager">
+                <app string="AI Copilot" name="rn_ai_employee" groups="rn_ai_employee.group_ai_employee_manager">
                     <block title="AI Copilot">
                         <setting string="Enable AI Copilot"
                                  help="Turn on the business assistant for sales, accounting, inventory, and CRM insights.">
@@ -47,6 +47,6 @@
         <field name="name">Settings</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="context">{'module': 'ai_employee', 'bin_size': False}</field>
+        <field name="context">{'module': 'rn_ai_employee', 'bin_size': False}</field>
     </record>
 </odoo>

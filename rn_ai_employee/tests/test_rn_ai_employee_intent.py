@@ -3,7 +3,7 @@
 from odoo.tests import tagged, TransactionCase
 
 
-@tagged('post_install', '-at_install', 'ai_employee')
+@tagged('post_install', '-at_install', 'rn_ai_employee')
 class TestAiEmployeeIntent(TransactionCase):
 
     def test_detect_overdue_invoices(self):

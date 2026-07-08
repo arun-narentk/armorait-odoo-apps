@@ -4,7 +4,7 @@ from odoo.tests import tagged, TransactionCase
 from odoo.exceptions import UserError
 
 
-@tagged('post_install', '-at_install', 'ai_employee')
+@tagged('post_install', '-at_install', 'rn_ai_employee')
 class TestAiEmployeeTools(TransactionCase):
 
     @classmethod

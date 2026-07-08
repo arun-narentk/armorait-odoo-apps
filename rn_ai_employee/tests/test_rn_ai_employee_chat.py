@@ -4,7 +4,7 @@ from odoo.tests import tagged, TransactionCase
 from odoo.exceptions import UserError
 
 
-@tagged('post_install', '-at_install', 'ai_employee')
+@tagged('post_install', '-at_install', 'rn_ai_employee')
 class TestAiEmployeeChat(TransactionCase):
 
     @classmethod
@@ -12,7 +12,7 @@ class TestAiEmployeeChat(TransactionCase):
         super().setUpClass()
         cls.Chat = cls.env['ai.employee.chat']
         cls.Service = cls.env['ai.employee.service']
-        cls.env['ir.config_parameter'].sudo().set_param('ai_employee.enabled', 'True')
+        cls.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'True')
 
     def test_chat_creation_adds_system_message(self):
         chat = self.Chat.create({'name': 'Test chat'})
@@ -43,7 +43,7 @@ class TestAiEmployeeChat(TransactionCase):
 
     def test_disabled_copilot_blocks_processing(self):
         chat = self.Chat.create({'name': 'Disabled test'})
-        self.env['ir.config_parameter'].sudo().set_param('ai_employee.enabled', 'False')
+        self.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'False')
         with self.assertRaises(UserError):
             self.Service.process_chat_message(chat, 'Show overdue invoices')
-        self.env['ir.config_parameter'].sudo().set_param('ai_employee.enabled', 'True')
+        self.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'True')

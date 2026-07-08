@@ -170,7 +170,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Conversation Info" name="details" groups="ai_employee.group_ai_employee_manager">
+                        <page string="Conversation Info" name="details" groups="rn_ai_employee.group_ai_employee_manager">
                             <group>
                                 <field name="user_id" readonly="1"/>
                                 <field name="company_id" groups="base.group_multi_company" readonly="1"/>

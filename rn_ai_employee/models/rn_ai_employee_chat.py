@@ -62,7 +62,7 @@ class AiEmployeeChat(models.Model):
         """Send the draft message through the orchestration service."""
         self.ensure_one()
         if self.user_id != self.env.user and not self.env.user.has_group(
-            'ai_employee.group_ai_employee_manager'
+            'rn_ai_employee.group_ai_employee_manager'
         ):
             raise UserError(_('You can only send messages in your own conversations.'))
 

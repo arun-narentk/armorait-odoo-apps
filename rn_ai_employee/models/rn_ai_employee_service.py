@@ -51,7 +51,7 @@ class AiEmployeeService(models.AbstractModel):
 
     @api.model
     def _ensure_enabled(self) -> None:
-        enabled = self.env['ir.config_parameter'].get_param('ai_employee.enabled', 'False') == 'True'
+        enabled = self.env['ir.config_parameter'].get_param('rn_ai_employee.enabled', 'False') == 'True'
         if not enabled:
             raise UserError(_('AI Copilot is disabled. Enable it under AI Copilot > Settings.'))
 

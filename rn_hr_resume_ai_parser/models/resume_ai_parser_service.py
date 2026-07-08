@@ -127,7 +127,7 @@ class ResumeAiParserService(models.AbstractModel):
         HrSkill = env['hr.skill']
         Mapping = env['hr.resume.skill.normalization'].sudo()
         auto_create = env['ir.config_parameter'].sudo().get_param(
-            'hr_resume_ai_parser.auto_create_skills', 'False'
+            'rn_hr_resume_ai_parser.auto_create_skills', 'False'
         ) == 'True'
         mapping_map = {}
         for m in Mapping.search([]):
@@ -140,7 +140,7 @@ class ResumeAiParserService(models.AbstractModel):
                 mapping_map[key] = skill.id
         result = []
         default_skill_type = env.ref(
-            'hr_resume_ai_parser.hr_skill_type_resume_technical',
+            'rn_hr_resume_ai_parser.hr_skill_type_resume_technical',
             raise_if_not_found=False,
         ) or env['hr.skill.type'].search([], limit=1)
         for name in parsed_skills:

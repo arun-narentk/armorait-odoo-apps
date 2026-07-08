@@ -362,6 +362,6 @@ class HrApplicant(models.Model):
             'res_model': 'hr.applicant',
             'res_id': self.id,
             'view_mode': 'form',
-            'views': [(self.env.ref('hr_resume_ai_parser.hr_applicant_form_parsed_view').id, 'form')],
+            'views': [(self.env.ref('rn_hr_resume_ai_parser.hr_applicant_form_parsed_view').id, 'form')],
             'target': 'new',
         }

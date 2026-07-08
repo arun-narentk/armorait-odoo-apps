@@ -9,6 +9,6 @@ class ResConfigSettings(models.TransientModel):
 
     hr_resume_ai_parser_auto_create_skills = fields.Boolean(
         string='Auto-create skills from resume',
-        config_parameter='hr_resume_ai_parser.auto_create_skills',
+        config_parameter='rn_hr_resume_ai_parser.auto_create_skills',
         help='When parsing resumes, create new hr.skill records for unknown skills instead of skipping them.',
     )
