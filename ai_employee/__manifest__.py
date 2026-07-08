@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Copilot for Odoo',
-    'version': '19.0.2.2.0',
+    'version': '19.0.2.3.0',
     'category': 'Productivity',
     'summary': 'Business assistant for sales, accounting, inventory, and CRM insights',
     'description': """
@@ -26,6 +26,8 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'LGPL-3',
+    'price': 49.0,
+    'currency': 'USD',
     'depends': [
         'base',
         'mail',
@@ -49,8 +51,8 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'images': [
         'static/description/main_screenshot.png',
         'static/description/icon.png',
-        'static/description/screenshot_actions.png',
-        'static/description/screenshot_settings.png',
+        'static/description/screenshot_repository_register.png',
+        'static/description/screenshot_repository_scan.png',
         'static/description/banner.png',
     ],
     'installable': True,
