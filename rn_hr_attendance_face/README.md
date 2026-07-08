@@ -64,7 +64,7 @@ Embeddings (not match photos) are stored for scalable matching.
 
 ## License
 
-LGPL-3
+OPL-1
 
 ## Support
 

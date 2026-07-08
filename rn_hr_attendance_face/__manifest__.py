@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'HR Attendance Face Recognition',
+    'name': 'ARMORA HR Attendance Face Recognition',
     'version': '19.0.1.0.0',
     'category': 'Human Resources/Attendances',
     'summary': 'Face recognition attendance with embedding matching and OWL kiosk',
@@ -16,10 +16,14 @@ ONNX) can be swapped without changing HR flows.
 
 Phase 1: Module skeleton, security, menus, models, and service stubs.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 59.99,
+    'sequence': 37,
     'depends': [
         'base',
         'mail',
