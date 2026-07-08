@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Copilot for Odoo',
-    'version': '19.0.2.1.0',
+    'version': '19.0.2.1.1',
     'category': 'Productivity',
     'summary': 'Business assistant for sales, accounting, inventory, and CRM insights',
     'description': """
@@ -55,11 +55,11 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive in Phase 2
         'views/ai_employee_menus.xml',
     ],
     'images': [
-        'static/description/banner.png',
+        'static/description/main_screenshot.png',
         'static/description/icon.png',
-        'static/description/screenshot_chat.png',
         'static/description/screenshot_actions.png',
         'static/description/screenshot_settings.png',
+        'static/description/banner.png',
     ],
     'installable': True,
     'application': True,
