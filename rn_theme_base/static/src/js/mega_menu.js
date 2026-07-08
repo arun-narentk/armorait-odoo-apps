@@ -62,4 +62,4 @@ export class TbMegaMenu extends Interaction {
     }
 }
 
-registry.category("public.interactions").add("theme_base.mega_menu", TbMegaMenu);
+registry.category("public.interactions").add("rn_theme_base.mega_menu", TbMegaMenu);

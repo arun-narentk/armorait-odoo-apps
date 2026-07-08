@@ -84,5 +84,5 @@ export class TbStickyHeader extends Interaction {
     }
 }
 
-registry.category("public.interactions").add("theme_base.animations", TbAnimations);
-registry.category("public.interactions").add("theme_base.sticky_header", TbStickyHeader);
+registry.category("public.interactions").add("rn_theme_base.animations", TbAnimations);
+registry.category("public.interactions").add("rn_theme_base.sticky_header", TbStickyHeader);

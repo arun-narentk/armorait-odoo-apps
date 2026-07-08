@@ -70,4 +70,4 @@ export class TbCustomizer extends Interaction {
     }
 }
 
-registry.category("public.interactions").add("theme_base.customizer", TbCustomizer);
+registry.category("public.interactions").add("rn_theme_base.customizer", TbCustomizer);

@@ -2,7 +2,7 @@
 <odoo>
 
 <function model="ir.module.module" name="_generate_primary_snippet_templates">
-    <value eval="[ref('base.module_theme_base')]"/>
+    <value eval="[ref('base.module_rn_theme_base')]"/>
 </function>
 
 </odoo>

@@ -58,7 +58,7 @@
     <field name="inherit_id" ref="website.view_website_form"/>
     <field name="arch" type="xml">
         <xpath expr="//notebook" position="inside">
-            <page string="Theme Base" name="theme_base">
+            <page string="Theme Base" name="rn_theme_base">
                 <group>
                     <group string="Colors">
                         <field name="tb_primary_color" widget="color"/>

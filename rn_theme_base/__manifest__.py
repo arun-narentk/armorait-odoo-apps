@@ -79,11 +79,11 @@
     },
     'assets': {
         'web.assets_frontend': [
-            'theme_base/static/src/scss/theme.scss',
-            'theme_base/static/src/js/theme_base.js',
-            'theme_base/static/src/js/mega_menu.js',
-            'theme_base/static/src/js/animations.js',
-            'theme_base/static/src/js/customizer.js',
+            'rn_theme_base/static/src/scss/theme.scss',
+            'rn_theme_base/static/src/js/rn_theme_base.js',
+            'rn_theme_base/static/src/js/mega_menu.js',
+            'rn_theme_base/static/src/js/animations.js',
+            'rn_theme_base/static/src/js/customizer.js',
         ],
     },
 }
