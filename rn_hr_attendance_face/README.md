@@ -1,71 +1,28 @@
-# HR Attendance Face Recognition
+# Attendance Face Recognition
 
-Commercial-grade face recognition attendance for Odoo 19 Community.
+        Biometric attendance with face matching and OWL kiosk
 
-## Architecture
+        ## Business problem
+        Manual attendance and shared PINs create buddy punching and payroll disputes.
 
-```
-Browser (OWL Webcam)
-        |
-        v
-Odoo Controller
-        |
-        v
-Face Recognition Services
-  - Detection
-  - Embedding
-  - Matching
-  - Anti-spoof
-        |
-        v
-Odoo HR Attendance
-```
+        ## Solution
+        Attendance Face Recognition stores face embeddings, matches employees at kiosk check-in, and writes clean HR attendance records.
 
-AI logic lives in `services/`. Models store profiles, logs, devices, and settings.
+        ## Key benefits
+        - Reduce buddy punching
+- Fast kiosk check-in
+- Embedding-based matching
+- Camera and device registry
+- Modular AI engine layer
 
-Embeddings (not match photos) are stored for scalable matching.
+        ## Installation
+        See INSTALL.md.
 
-## Phase 1 (current)
+        ## Technical name
+        `rn_hr_attendance_face`
 
-- Installable module skeleton
-- Security groups: Administrator, HR Manager, Attendance Officer, Employee, Readonly
-- Models: Employee Face, Attendance Log, Camera, Device, Settings, Session, History
-- Service stubs for detection, embedding, recognition, attendance, anti-spoof, camera, device, notifications, scheduler
-- OWL dashboard and kiosk shells
-- Controllers and API stubs
-- Cron placeholders, demo data, skeleton tests
+        ## Support
+        ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
 
-## Installation
-
-1. Add `rn_hr_attendance_face` to the addons path.
-2. Install optional AI packages from `requirements.txt` when moving to Phase 3+.
-3. Update Apps and install **HR Attendance Face Recognition**.
-4. Enable the feature under **Face Attendance > Configuration > Settings**.
-
-## Dependencies
-
-- Odoo apps: `hr`, `hr_attendance`
-- Python: `numpy` (required). Optional later: `opencv-python`, `insightface`, `onnxruntime`, `cryptography`
-
-## Roadmap
-
-| Phase | Deliverable |
-|-------|-------------|
-| 1 | Skeleton (done) |
-| 2 | Multi-angle face registration |
-| 3 | Embedding generation and encrypted storage |
-| 4 | OWL webcam kiosk with real-time recognition |
-| 5 | Attendance and shift rules |
-| 6 | Anti-spoofing |
-| 7 | GPS, IP, device validation |
-| 8 | Multi-camera / RTSP |
-| 9 | Dashboard analytics and reports |
-| 10 | REST API, jobs, tests, documentation |
-
-## License
-
-OPL-1
-
-## Support
-
-info@armorait.com
+        ## License
+        OPL-1. Proprietary to ARMORA IT Technologies.

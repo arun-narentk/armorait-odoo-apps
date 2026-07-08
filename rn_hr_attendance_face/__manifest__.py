@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA HR Attendance Face Recognition',
+    'name': 'Attendance Face Recognition',
     'version': '19.0.1.0.0',
     'category': 'Human Resources/Attendances',
-    'summary': 'Face recognition attendance with embedding matching and OWL kiosk',
+    'summary': 'Biometric attendance with face matching and OWL kiosk',
     'description': """
 HR Attendance Face Recognition for Odoo 19 Community
 ====================================================
@@ -61,8 +61,10 @@ Phase 1: Module skeleton, security, menus, models, and service stubs.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
