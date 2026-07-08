@@ -1,14 +1,13 @@
 # Developer Guide
 
-Shared services:
+## Architecture
+- Models for business entities
+- `services/` for business logic
+- Thin controllers and wizards
+- OWL assets under `static/src/`
 
-- patient_service
-- appointment_service
-- bed_service
-- notification_service
-- dashboard_service
-- export_service
+## Testing
+Run Odoo tests with the module in the addons path.
 
-Companion modules should depend on `rn_hms_core` and extend Inventory/Accounting for pharmacy and billing.
-
-ARMORA IT Technologies | https://www.armorait.com
+## Branding
+ARMORA IT Technologies

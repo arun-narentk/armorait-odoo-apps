@@ -1,12 +1,13 @@
 # FAQ
 
-**Is this a full HIS like Bahmni?**  
-No. It targets small hospitals and clinics with a modular roadmap.
+## Does Hospital ERP work on Odoo Community?
+Yes. It targets Odoo 19 Community.
 
-**Does core include pharmacy and lab?**  
-Not yet. Those are companion modules planned next.
+## Multi-company?
+Supported where business models include company scoping.
 
-**Price?**  
-Core is listed at 99.00 USD for Professional positioning.
+## Customization?
+Extend models, views, and services using standard Odoo patterns.
 
-Support: info@armorait.com
+## Support contact?
+info@armorait.com

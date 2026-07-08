@@ -1,3 +1,3 @@
 # Screenshots
 
-Capture dashboard, patient form, appointment calendar, ward/beds, wizards, settings before publish.
+Replace generated placeholders for **Hospital ERP** with real desktop, tablet, and mobile captures.

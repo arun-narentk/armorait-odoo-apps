@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA Hospital ERP Core',
+    'name': 'Hospital ERP',
     'version': '19.0.1.0.0',
     'category': 'Healthcare',
-    'summary': 'Hospital and clinic foundation: patients, doctors, wards, beds, appointments, dashboard',
+    'summary': 'Patients, appointments, and hospital operations foundation',
     'description': """
 ARMORA Hospital ERP Core for Odoo 19 Community
 ==============================================
@@ -66,6 +66,8 @@ re-implementing ERP foundations inside HMS.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
