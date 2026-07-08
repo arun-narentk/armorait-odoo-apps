@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_rn_hr_recognition_settings_form" model="ir.ui.view">
+        <field name="name">rn.hr.recognition.settings.form</field>
+        <field name="model">rn.hr.recognition.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="detection_model"/>
+                            <field name="embedding_model"/>
+                            <field name="matching_threshold"/>
+                            <field name="minimum_confidence"/>
+                            <field name="min_face_size"/>
+                            <field name="anti_spoof_enabled"/>
+                            <field name="geo_validation"/>
+                            <field name="camera_timeout"/>
+                            <field name="retry_count"/>
+                            <field name="min_enrollment_images"/>
+                            <field name="target_recognition_ms"/>
+                            <field name="grace_time_minutes"/>
+                            <field name="store_snapshots"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_recognition_settings" model="ir.actions.act_window">
+        <field name="name">Recognition Settings</field>
+        <field name="res_model">rn.hr.recognition.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_config_settings_view_form_rn_face" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.face</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Face Attendance" name="rn_hr_attendance_face"
+                     groups="rn_hr_attendance_face.group_rn_face_admin">
+                    <block title="General">
+                        <setting string="Enable Face Recognition" help="Turn on biometric attendance kiosk features.">
+                            <field name="rn_face_enabled"/>
+                        </setting>
+                        <setting string="Anti Spoofing">
+                            <field name="rn_face_anti_spoof"/>
+                        </setting>
+                        <setting string="Geo Validation">
+                            <field name="rn_face_geo_validation"/>
+                        </setting>
+                    </block>
+                    <block title="AI Engines">
+                        <setting string="Detection Model">
+                            <field name="rn_face_detection_model"/>
+                        </setting>
+                        <setting string="Embedding Model">
+                            <field name="rn_face_embedding_model"/>
+                        </setting>
+                        <setting string="Matching Threshold">
+                            <field name="rn_face_matching_threshold"/>
+                        </setting>
+                        <setting string="Minimum Enrollment Images">
+                            <field name="rn_face_min_enrollment_images"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_face_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_hr_attendance_face'}</field>
+    </record>
+
+</odoo>

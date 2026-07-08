@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="param_rn_face_enabled" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.enabled</field>
+            <field name="value">False</field>
+        </record>
+        <record id="param_rn_face_anti_spoof" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.anti_spoof</field>
+            <field name="value">True</field>
+        </record>
+        <record id="param_rn_face_geo" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.geo_validation</field>
+            <field name="value">False</field>
+        </record>
+        <record id="param_rn_face_min_images" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.min_enrollment_images</field>
+            <field name="value">10</field>
+        </record>
+        <record id="param_rn_face_threshold" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.matching_threshold</field>
+            <field name="value">0.45</field>
+        </record>
+        <record id="param_rn_face_detection_model" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.detection_model</field>
+            <field name="value">opencv</field>
+        </record>
+        <record id="param_rn_face_embedding_model" model="ir.config_parameter">
+            <field name="key">rn_hr_attendance_face.embedding_model</field>
+            <field name="value">insightface</field>
+        </record>
+
+    </data>
+</odoo>

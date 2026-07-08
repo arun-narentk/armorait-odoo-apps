@@ -1,0 +1,8 @@
+# Core (Phase 1)
+numpy>=1.24.0
+
+# AI engines (install when enabling Phase 3+)
+# opencv-python-headless>=4.8.0
+# insightface>=0.7.3
+# onnxruntime>=1.16.0
+# cryptography>=41.0.0

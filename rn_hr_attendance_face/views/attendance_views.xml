@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_rn_hr_attendance_log_list" model="ir.ui.view">
+        <field name="name">rn.hr.attendance.log.list</field>
+        <field name="model">rn.hr.attendance.log</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="recognition_result in ('spoof', 'unknown_face', 'geo_rejected')"
+                  decoration-success="recognition_result in ('check_in', 'check_out')">
+                <field name="recognition_time"/>
+                <field name="employee_id"/>
+                <field name="recognition_result"/>
+                <field name="confidence"/>
+                <field name="recognition_duration_ms"/>
+                <field name="camera_id"/>
+                <field name="device_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_hr_attendance_log_form" model="ir.ui.view">
+        <field name="name">rn.hr.attendance.log.form</field>
+        <field name="model">rn.hr.attendance.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="face_id"/>
+                            <field name="attendance_id"/>
+                            <field name="recognition_result"/>
+                            <field name="confidence"/>
+                            <field name="recognition_duration_ms"/>
+                        </group>
+                        <group>
+                            <field name="camera_id"/>
+                            <field name="device_id"/>
+                            <field name="session_id"/>
+                            <field name="ip_address"/>
+                            <field name="browser"/>
+                            <field name="operating_system"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="image_snapshot" widget="image"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_attendance_log" model="ir.actions.act_window">
+        <field name="name">Recognition Logs</field>
+        <field name="res_model">rn.hr.attendance.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_hr_attendance_session_list" model="ir.ui.view">
+        <field name="name">rn.hr.attendance.session.list</field>
+        <field name="model">rn.hr.attendance.session</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="camera_id"/>
+                <field name="start_at"/>
+                <field name="end_at"/>
+                <field name="state"/>
+                <field name="success_count"/>
+                <field name="fail_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_attendance_session" model="ir.actions.act_window">
+        <field name="name">Kiosk Sessions</field>
+        <field name="res_model">rn.hr.attendance.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

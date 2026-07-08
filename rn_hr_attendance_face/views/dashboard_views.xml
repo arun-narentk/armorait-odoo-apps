@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_rn_hr_face_dashboard" model="ir.actions.client">
+        <field name="name">Face Attendance Dashboard</field>
+        <field name="tag">rn_hr_attendance_face.dashboard</field>
+    </record>
+
+    <record id="action_rn_hr_face_kiosk" model="ir.actions.client">
+        <field name="name">Face Kiosk</field>
+        <field name="tag">rn_hr_attendance_face.kiosk</field>
+    </record>
+
+</odoo>
