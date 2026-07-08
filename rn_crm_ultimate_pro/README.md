@@ -1,54 +1,28 @@
-# CRM Ultimate Pro
+# CRM Enhancements
 
-Complete CRM enhancement suite for Odoo 19 Community.
+        Lead scoring, duplicates, follow-ups, and CRM analytics
 
-## Phase 1 (current)
+        ## Business problem
+        Sales teams lose deals because leads are duplicated, unscored, and follow-ups are missed.
 
-- Installable skeleton with service-layer architecture
-- Lead score fields, badge, and basic scoring rules
-- Duplicate scan stub (email match)
-- Prediction provider interface (rule engine)
-- Follow-up rules, reminders, activity templates
-- Merge / bulk follow-up / bulk assign wizards
-- OWL dashboard shell, menus, security, crons, tests
+        ## Solution
+        CRM Enhancements adds scoring rules, duplicate detection, follow-up automation, and a CRM dashboard on top of Odoo CRM.
 
-## Architecture
+        ## Key benefits
+        - Prioritize hot leads
+- Merge duplicate opportunities
+- Automate follow-up reminders
+- Live CRM KPIs
+- Configurable scoring
 
-```
-CRM Lead / Opportunity
-        |
-        v
-Scoring / Prediction / Duplicate / Follow-up Services
-        |
-        v
-Dashboard + Automation + APIs
-```
+        ## Installation
+        See INSTALL.md.
 
-## Installation
+        ## Technical name
+        `rn_crm_ultimate_pro`
 
-1. Install CRM and Sales.
-2. Install **CRM Ultimate Pro**.
-3. Open **CRM Ultimate > Configuration** and adjust settings.
+        ## Support
+        ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
 
-## Roadmap
-
-| Phase | Focus |
-|-------|-------|
-| 1 | Skeleton (done) |
-| 2 | Full scoring formula engine |
-| 3 | Follow-up automation + escalations |
-| 4 | Smart duplicate / fuzzy matching |
-| 5 | Merge with chatter/attachments |
-| 6 | Enrichment provider abstraction |
-| 7 | Pipeline SLA and aging |
-| 8 | Email tracking |
-| 9 | Full OWL analytics |
-| 10 | Packaging, docs, Apps release |
-
-## License
-
-OPL-1
-
-## Support
-
-info@armorait.com
+        ## License
+        OPL-1. Proprietary to ARMORA IT Technologies.

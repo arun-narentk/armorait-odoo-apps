@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA CRM Ultimate Pro',
+    'name': 'CRM Enhancements',
     'version': '19.0.1.0.0',
     'category': 'Sales/CRM',
-    'summary': 'Lead scoring, duplicates, follow-ups, forecasting, and CRM dashboard for Odoo 19',
+    'summary': 'Lead scoring, duplicates, follow-ups, and CRM analytics',
     'description': """
 CRM Ultimate Pro for Odoo 19 Community
 ======================================
@@ -60,8 +60,10 @@ and service stubs. Feature engines arrive in later phases.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
