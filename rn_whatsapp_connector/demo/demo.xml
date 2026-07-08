@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="demo_rn_whatsapp_account" model="rn.whatsapp.account">
+            <field name="name">Demo Meta Cloud Account</field>
+            <field name="provider">meta_cloud</field>
+            <field name="phone_number">+15551230000</field>
+            <field name="api_version">v21.0</field>
+            <field name="status">draft</field>
+        </record>
+
+        <record id="demo_rn_whatsapp_template" model="rn.whatsapp.template">
+            <field name="name">welcome_message</field>
+            <field name="account_id" ref="demo_rn_whatsapp_account"/>
+            <field name="body">Hello {{name}}, welcome to our business.</field>
+            <field name="variable_ids">name</field>
+            <field name="category">utility</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_rn_whatsapp_message" model="ir.actions.report">
+        <field name="name">WhatsApp Message</field>
+        <field name="model">rn.whatsapp.message</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_whatsapp_connector.report_message_document</field>
+        <field name="report_file">rn_whatsapp_connector.report_message_document</field>
+        <field name="binding_model_id" ref="model_rn_whatsapp_message"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_message_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>WhatsApp Message</h2>
+                    <p><strong>UUID:</strong> <span t-field="doc.uuid"/></p>
+                    <p><strong>Phone:</strong> <span t-field="doc.phone"/></p>
+                    <p><strong>Status:</strong> <span t-field="doc.status"/></p>
+                    <p><strong>Body:</strong></p>
+                    <p t-field="doc.body"/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

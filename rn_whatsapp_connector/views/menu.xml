@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_rn_whatsapp_root"
+              name="WhatsApp"
+              web_icon="rn_whatsapp_connector,static/description/icon.png"
+              groups="rn_whatsapp_connector.group_rn_whatsapp_user"
+              sequence="45"/>
+
+    <menuitem id="menu_rn_whatsapp_dashboard"
+              name="Dashboard"
+              parent="menu_rn_whatsapp_root"
+              action="action_rn_whatsapp_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_whatsapp_messages"
+              name="Messages"
+              parent="menu_rn_whatsapp_root"
+              action="action_rn_whatsapp_message"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_whatsapp_templates"
+              name="Templates"
+              parent="menu_rn_whatsapp_root"
+              action="action_rn_whatsapp_template"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_whatsapp_configuration"
+              name="Configuration"
+              parent="menu_rn_whatsapp_root"
+              groups="rn_whatsapp_connector.group_rn_whatsapp_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_rn_whatsapp_accounts"
+              name="Accounts"
+              parent="menu_rn_whatsapp_configuration"
+              action="action_rn_whatsapp_account"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_whatsapp_webhooks"
+              name="Webhook Logs"
+              parent="menu_rn_whatsapp_configuration"
+              action="action_rn_whatsapp_webhook"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_whatsapp_history"
+              name="Message History"
+              parent="menu_rn_whatsapp_configuration"
+              action="action_rn_whatsapp_history"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_whatsapp_settings"
+              name="Settings"
+              parent="menu_rn_whatsapp_configuration"
+              action="action_rn_whatsapp_settings"
+              sequence="100"
+              groups="rn_whatsapp_connector.group_rn_whatsapp_admin"/>
+
+</odoo>
