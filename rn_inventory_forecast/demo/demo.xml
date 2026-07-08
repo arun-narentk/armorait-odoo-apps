@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+    <!-- Demo stays light so unique settings per company are not duplicated. -->
+    <record id="demo_rn_inv_alert" model="rn.inv.stock.alert">
+        <field name="name">Demo low stock reminder</field>
+        <field name="alert_type">reorder</field>
+        <field name="severity">info</field>
+        <field name="message">Sample alert created by demo data.</field>
+        <field name="state">open</field>
+    </record>
+</data></odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_inv_forecast_settings_form" model="ir.ui.view">
+        <field name="name">rn.inv.forecast.settings.form</field>
+        <field name="model">rn.inv.forecast.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="default_horizon_days"/>
+                        <field name="default_lead_time_days"/>
+                        <field name="service_level"/>
+                        <field name="history_days"/>
+                        <field name="dead_stock_days"/>
+                        <field name="low_stock_coverage_days"/>
+                        <field name="overstock_coverage_days"/>
+                        <field name="abc_a_pct"/>
+                        <field name="abc_b_pct"/>
+                        <field name="enable_alerts"/>
+                        <field name="enable_auto_forecast"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_inv_forecast_settings" model="ir.actions.act_window">
+        <field name="name">Forecast Settings</field>
+        <field name="res_model">rn.inv.forecast.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_inv" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.inv</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="RN Inventory Forecast" name="rn_inventory_forecast" groups="rn_inventory_forecast.group_rn_inv_forecast_admin">
+                    <block title="General">
+                        <setting string="Enable Inventory Forecast"><field name="rn_inv_forecast_enabled"/></setting>
+                        <setting string="Default Horizon"><field name="rn_inv_forecast_horizon"/></setting>
+                        <setting string="History Window"><field name="rn_inv_forecast_history"/></setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_inv_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_inventory_forecast'}</field>
+    </record>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_inventory_forecast.Dashboard">
+        <div class="o_rn_inv_forecast_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">RN Inventory Forecast</h1>
+                    <div class="text-muted small">Demand forecasting and inventory planning</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Inventory Value</div>
+                            <div class="value" t-esc="formatNumber(state.cards.inventory_value)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Available Stock</div>
+                            <div class="value" t-esc="formatNumber(state.cards.available_stock)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Incoming</div>
+                            <div class="value" t-esc="formatNumber(state.cards.incoming_stock)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Outgoing</div>
+                            <div class="value" t-esc="formatNumber(state.cards.outgoing_stock)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Forecast Accuracy %</div>
+                            <div class="value" t-esc="formatNumber(state.cards.forecast_accuracy)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Open Alerts</div>
+                            <div class="value" t-esc="state.cards.open_alerts || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Dead Stock</div>
+                            <div class="value" t-esc="state.cards.dead_stock || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="o_rn_inv_card">
+                            <div class="label">Reorder Suggestions</div>
+                            <div class="value" t-esc="state.cards.reorder_suggestions || 0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_rn_inv_panel">
+                    <h2 class="h5">Top Moving Products (Forecast)</h2>
+                    <ul class="small mb-0">
+                        <t t-foreach="state.tops.products || []" t-as="row" t-key="row_index">
+                            <li><t t-esc="row.name"/>: <t t-esc="formatNumber(row.value)"/></li>
+                        </t>
+                    </ul>
+                    <div class="text-muted small mt-2">Updated: <t t-esc="state.updatedAt"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

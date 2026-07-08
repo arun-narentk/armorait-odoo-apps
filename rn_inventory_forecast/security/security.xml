@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_inv_forecast">
+        <field name="name">RN Inventory Forecast</field>
+        <field name="category_id" ref="base.module_category_supply_chain"/>
+    </record>
+    <record id="group_rn_inv_forecast_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_inv_forecast"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_inv_forecast_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_inv_forecast"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_inv_forecast_readonly'))]"/>
+    </record>
+    <record id="group_rn_inv_forecast_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_inv_forecast"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_inv_forecast_user'))]"/>
+    </record>
+    <record id="group_rn_inv_forecast_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_inv_forecast"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_inv_forecast_manager'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_inv_forecast_run_company" model="ir.rule">
+        <field name="name">Forecast Run multi-company</field>
+        <field name="model_id" ref="model_rn_inv_forecast_run"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_inv_analysis_company" model="ir.rule">
+        <field name="name">Analysis multi-company</field>
+        <field name="model_id" ref="model_rn_inv_analysis"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_inv_alert_company" model="ir.rule">
+        <field name="name">Alert multi-company</field>
+        <field name="model_id" ref="model_rn_inv_stock_alert"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_inv_settings_company" model="ir.rule">
+        <field name="name">Forecast Settings multi-company</field>
+        <field name="model_id" ref="model_rn_inv_forecast_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_inv_reorder_company" model="ir.rule">
+        <field name="name">Reorder Suggestion multi-company</field>
+        <field name="model_id" ref="model_rn_inv_reorder_suggestion"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

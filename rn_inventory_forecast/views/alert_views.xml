@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_inv_stock_alert_list" model="ir.ui.view">
+        <field name="name">rn.inv.stock.alert.list</field>
+        <field name="model">rn.inv.stock.alert</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="alert_type"/>
+                <field name="severity"/>
+                <field name="product_id"/>
+                <field name="qty"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_inv_stock_alert_form" model="ir.ui.view">
+        <field name="name">rn.inv.stock.alert.form</field>
+        <field name="model">rn.inv.stock.alert</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_mark_done" type="object" string="Done" class="btn-primary" invisible="state != 'open'"/>
+                    <button name="action_ignore" type="object" string="Ignore" invisible="state != 'open'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="alert_type"/>
+                        <field name="severity"/>
+                        <field name="product_id"/>
+                        <field name="warehouse_id"/>
+                        <field name="qty"/>
+                        <field name="message"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_inv_stock_alert" model="ir.actions.act_window">
+        <field name="name">Smart Alerts</field>
+        <field name="res_model">rn.inv.stock.alert</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'open')]</field>
+    </record>
+</odoo>
