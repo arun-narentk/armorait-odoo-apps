@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_hall_dashboard" model="ir.actions.client">
+        <field name="name">Hall Dashboard</field>
+        <field name="tag">rn_hall_dashboard</field>
+    </record>
+</odoo>

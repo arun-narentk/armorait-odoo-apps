@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_hall_venue_coimbatore" model="rn.hall.venue">
+        <field name="name">Sri Lakshmi Marriage Mahal</field>
+        <field name="venue_type">marriage_hall</field>
+        <field name="trust_name">SLM Events Trust</field>
+        <field name="city">Coimbatore</field>
+        <field name="state_id" ref="base.state_in_tn"/>
+        <field name="phone">+91 422 111 2222</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_hall_main" model="rn.hall.hall">
+        <field name="name">Grand Hall A</field>
+        <field name="venue_id" ref="demo_hall_venue_coimbatore"/>
+        <field name="capacity_seated">500</field>
+        <field name="has_ac" eval="True"/>
+        <field name="has_parking" eval="True"/>
+        <field name="parking_slots">120</field>
+        <field name="has_dining_hall" eval="True"/>
+        <field name="has_kitchen" eval="True"/>
+        <field name="has_stage" eval="True"/>
+    </record>
+    <record id="demo_hall_secondary" model="rn.hall.hall">
+        <field name="name">Mini Hall B</field>
+        <field name="venue_id" ref="demo_hall_venue_coimbatore"/>
+        <field name="capacity_seated">150</field>
+        <field name="has_ac" eval="True"/>
+        <field name="has_parking" eval="True"/>
+        <field name="has_stage" eval="True"/>
+    </record>
+    <record id="demo_hall_customer" model="res.partner">
+        <field name="name">Ravi Kumar Family</field>
+        <field name="phone">+91 98765 43210</field>
+        <field name="city">Coimbatore</field>
+    </record>
+    <record id="demo_hall_booking_muhurtham" model="rn.hall.booking">
+        <field name="venue_id" ref="demo_hall_venue_coimbatore"/>
+        <field name="hall_id" ref="demo_hall_main"/>
+        <field name="partner_id" ref="demo_hall_customer"/>
+        <field name="groom_name">Ravi Kumar</field>
+        <field name="bride_name">Priya Devi</field>
+        <field name="function_type">muhurtham</field>
+        <field name="date_start" eval="(DateTime.today() + relativedelta(months=3)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="date_end" eval="(DateTime.today() + relativedelta(months=3)).strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="muhurtham_time">10.5</field>
+        <field name="guest_count">450</field>
+        <field name="total_amount">350000</field>
+        <field name="advance_amount">100000</field>
+        <field name="state">confirmed</field>
+    </record>
+    <record id="demo_hall_settings" model="rn.hall.settings">
+        <field name="name">Hall Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="default_venue_id" ref="demo_hall_venue_coimbatore"/>
+        <field name="venue_label">Marriage Hall</field>
+    </record>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hall_root"
+              name="Marriage Hall"
+              web_icon="rn_hall_base,static/description/icon.png"
+              groups="rn_hall_base.group_rn_hall_counter"
+              sequence="56"/>
+
+    <menuitem id="menu_rn_hall_dashboard"
+              name="Dashboard"
+              parent="menu_rn_hall_root"
+              action="action_rn_hall_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_hall_bookings"
+              name="Bookings"
+              parent="menu_rn_hall_root"
+              action="action_rn_hall_booking"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_hall_master"
+              name="Hall Management"
+              parent="menu_rn_hall_root"
+              sequence="20"/>
+    <menuitem id="menu_rn_hall_venues"
+              name="Venues"
+              parent="menu_rn_hall_master"
+              action="action_rn_hall_venue"
+              sequence="10"/>
+    <menuitem id="menu_rn_hall_halls"
+              name="Halls"
+              parent="menu_rn_hall_master"
+              action="action_rn_hall_hall"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_hall_configuration"
+              name="Configuration"
+              parent="menu_rn_hall_root"
+              groups="rn_hall_base.group_rn_hall_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_hall_settings"
+              name="Hall Settings"
+              parent="menu_rn_hall_configuration"
+              action="action_rn_hall_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_hall_subscriptions"
+              name="SaaS Subscriptions"
+              parent="menu_rn_hall_configuration"
+              action="action_rn_hall_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_hall_config_settings"
+              name="Settings"
+              parent="menu_rn_hall_configuration"
+              action="action_rn_hall_config_settings"
+              sequence="100"/>
+</odoo>

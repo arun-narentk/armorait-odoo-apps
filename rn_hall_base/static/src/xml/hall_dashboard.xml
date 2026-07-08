@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_hall_base.HallDashboard">
+        <div class="o_rn_hall_dashboard p-4">
+            <h2>Hall Operations</h2>
+            <div class="row g-3 mt-2">
+                <div class="col-md-2" t-foreach="state.cards" t-as="card" t-key="card.key">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="fs-4 fw-bold" t-esc="card.value"/>
+                            <div class="text-muted" t-esc="card.label"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="mt-4">Upcoming Bookings</h4>
+            <ul class="list-group">
+                <li class="list-group-item" t-foreach="state.bookings" t-as="booking" t-key="booking.id">
+                    <strong t-esc="booking.reference"/> -
+                    <span t-esc="booking.hall"/>
+                    <span t-if="booking.date_start"> (<t t-esc="booking.date_start"/>)</span>
+                </li>
+            </ul>
+        </div>
+    </t>
+</templates>
