@@ -1,0 +1,63 @@
+//------------------------------------------------------------------------------
+// Scroll reveal and motion
+//------------------------------------------------------------------------------
+
+.tb-reveal {
+    @include tb-reveal-base;
+}
+
+.tb-reveal-left {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+    @include tb-transition(opacity transform, .6s, ease-out);
+    &.tb-revealed {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tb-reveal-right {
+    opacity: 0;
+    transform: translateX(1.5rem);
+    @include tb-transition(opacity transform, .6s, ease-out);
+    &.tb-revealed {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes tb-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tb-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.tb-animate-pulse {
+    animation: tb-pulse 2s ease-in-out infinite;
+}
+
+.tb-counter-value {
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tb-reveal,
+    .tb-reveal-left,
+    .tb-reveal-right,
+    .tb-animate-pulse {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

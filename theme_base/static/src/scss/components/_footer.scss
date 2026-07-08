@@ -1,0 +1,34 @@
+@import '../mixins';
+
+#footer.tb-footer-minimal,
+#footer.tb-footer-columns {
+    background-color: var(--tb-primary);
+    color: rgba(255, 255, 255, .9);
+
+    a {
+        color: rgba(255, 255, 255, .85);
+        @include tb-transition(color);
+        &:hover {
+            color: var(--tb-accent);
+        }
+    }
+
+    .o_footer_logo img {
+        filter: brightness(0) invert(1);
+    }
+}
+
+#footer.tb-footer-columns {
+    .tb-footer-col-title {
+        @include tb-heading;
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+#footer.tb-footer-minimal {
+    .nav-link {
+        padding: .25rem .75rem;
+    }
+}

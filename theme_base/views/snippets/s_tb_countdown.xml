@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_countdown" name="Countdown">
+    <section class="s_tb_countdown tb-snippet tb-reveal pt64 pb64 text-center" data-snippet="s_tb_countdown">
+        <div class="container">
+            <h2 class="mb-4">Launch Countdown</h2>
+            <div class="row justify-content-center g-3 tb-countdown" data-date="2026-12-31">
+                <div class="col-auto"><div class="tb-countdown-box p-3 border rounded"><span class="tb-countdown-days display-6">00</span><div>Days</div></div></div>
+                <div class="col-auto"><div class="tb-countdown-box p-3 border rounded"><span class="tb-countdown-hours display-6">00</span><div>Hours</div></div></div>
+                <div class="col-auto"><div class="tb-countdown-box p-3 border rounded"><span class="tb-countdown-mins display-6">00</span><div>Mins</div></div></div>
+                <div class="col-auto"><div class="tb-countdown-box p-3 border rounded"><span class="tb-countdown-secs display-6">00</span><div>Secs</div></div></div>
+            </div>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

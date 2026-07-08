@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="template_footer_tb_minimal" inherit_id="website.layout" name="ARMORAIT Minimal Footer" active="False">
+    <xpath expr="//div[@id='footer']" position="replace">
+        <div id="footer" class="oe_structure oe_structure_solo tb-footer-minimal text-break" t-ignore="true" t-if="not no_footer">
+            <section class="s_text_block pt40 pb40" data-snippet="s_text_block" data-name="Footer">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-4 pb16">
+                            <a href="/" class="o_footer_logo logo">
+                                <img src="/website/static/src/img/website_logo.svg" class="img-fluid" alt="Logo" loading="lazy"/>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 pb16">
+                            <nav class="nav justify-content-center flex-wrap" aria-label="Footer">
+                                <a class="nav-link" href="/">Home</a>
+                                <a class="nav-link" href="/about-us">About</a>
+                                <a class="nav-link" href="/contactus">Contact</a>
+                            </nav>
+                        </div>
+                        <div class="col-lg-3 col-md-12 pb16 text-center text-lg-end">
+                            <small>Powered by ARMORAIT theme_base</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </xpath>
+</template>
+
+<template id="template_footer_tb_columns" inherit_id="website.layout" name="ARMORAIT Columns Footer" active="False">
+    <xpath expr="//div[@id='footer']" position="replace">
+        <div id="footer" class="oe_structure oe_structure_solo tb-footer-columns text-break" t-ignore="true" t-if="not no_footer">
+            <section class="s_text_block pt56 pb40" data-snippet="s_text_block" data-name="Footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 pb24">
+                            <h5 class="tb-footer-col-title">About</h5>
+                            <p class="mb-0">Premium website framework for modern businesses.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 pb24">
+                            <h5 class="tb-footer-col-title">Quick Links</h5>
+                            <nav class="nav flex-column" aria-label="Footer links">
+                                <a class="nav-link ps-0" href="/">Home</a>
+                                <a class="nav-link ps-0" href="/services">Services</a>
+                                <a class="nav-link ps-0" href="/contactus">Contact</a>
+                            </nav>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pb24">
+                            <h5 class="tb-footer-col-title">Contact</h5>
+                            <p class="mb-1">info@armorait.com</p>
+                            <p class="mb-0">https://www.armorait.com</p>
+                        </div>
+                    </div>
+                    <hr class="border-light opacity-25"/>
+                        <p class="text-center mb-0 small">Copyright ARMORAIT. All rights reserved.</p>
+                </div>
+            </section>
+        </div>
+    </xpath>
+</template>
+
+</odoo>

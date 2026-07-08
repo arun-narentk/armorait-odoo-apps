@@ -1,0 +1,40 @@
+@import '../mixins';
+
+.tb-text-gradient {
+    @include tb-text-gradient;
+}
+
+.tb-section-title {
+    @include tb-heading;
+    margin-bottom: 1.5rem;
+}
+
+.tb-section-subtitle {
+    color: var(--tb-secondary);
+    font-size: .875rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+}
+
+.tb-shadow {
+    box-shadow: var(--tb-shadow);
+}
+
+.tb-rounded {
+    border-radius: var(--tb-border-radius);
+}
+
+.tb-emergency-banner {
+    background: var(--tb-accent);
+    color: #1a1a1a;
+    font-size: .875rem;
+    text-align: center;
+    padding: .5rem 1rem;
+}
+
+.tb-lazy-img {
+    &[loading="lazy"] {
+        background: #f0f2f5;
+    }
+}

@@ -1,0 +1,24 @@
+@import '../mixins';
+
+.tb-breadcrumb {
+    padding: .75rem 0;
+    background: transparent;
+
+    .breadcrumb {
+        margin-bottom: 0;
+        font-size: .875rem;
+    }
+
+    .breadcrumb-item a {
+        color: var(--tb-secondary);
+        text-decoration: none;
+        @include tb-transition(color);
+        &:hover {
+            color: var(--tb-primary);
+        }
+    }
+
+    .breadcrumb-item.active {
+        color: var(--tb-primary);
+    }
+}

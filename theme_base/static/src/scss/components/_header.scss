@@ -1,0 +1,40 @@
+@import '../mixins';
+
+// Header layouts
+.tb-header-sticky {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1030;
+        @include tb-transition(box-shadow);
+        &.tb-header-scrolled {
+            box-shadow: var(--tb-shadow);
+        }
+    }
+}
+
+.tb-header-search {
+    .tb-header-search-form {
+        max-width: 280px;
+        .form-control {
+            border-radius: 2rem 0 0 2rem;
+        }
+        .btn {
+            border-radius: 0 2rem 2rem 0;
+        }
+    }
+}
+
+#top_menu .nav-link {
+    @include tb-transition(color);
+    &:hover, &:focus {
+        color: var(--tb-secondary) !important;
+    }
+}
+
+@include tb-mobile-only {
+    .tb-header-search .tb-header-search-form {
+        max-width: 100%;
+        margin-top: .5rem;
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_emergency_banner" name="Emergency Banner">
+    <section class="s_tb_emergency_banner tb-snippet tb-reveal py-2 bg-danger text-white text-center" data-snippet="s_tb_emergency_banner">
+        <div class="container"><p class="mb-0 fw-bold">Emergency Notice: Important update for all visitors.</p></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

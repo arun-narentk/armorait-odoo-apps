@@ -1,0 +1,110 @@
+//------------------------------------------------------------------------------
+// ARMORAIT theme_base - Primary Variables
+//------------------------------------------------------------------------------
+
+$o-website-values-palettes: (
+    (
+        'color-palettes-name':              'armorait-base',
+
+        // Header
+        'logo-height':                      2.75rem,
+        'fixed-logo-height':                2rem,
+        'header-template':                  'default',
+        'header-links-style':               'default',
+
+        // Font
+        'font':                             'Inter',
+        'headings-font':                    'Poppins',
+
+        // Buttons
+        'btn-padding-x':                    1.25rem,
+        'btn-padding-y':                    .625rem,
+        'btn-padding-y-sm':                 .375rem,
+        'btn-padding-x-sm':                 .875rem,
+        'btn-padding-y-lg':                 .875rem,
+        'btn-padding-x-lg':                 2rem,
+        'btn-border-radius':                .375rem,
+        'btn-border-radius-sm':             .25rem,
+        'btn-border-radius-lg':             .5rem,
+        'btn-ripple':                       true,
+
+        // Footer
+        'footer-template':                  'default',
+        'footer-effect':                    'slideout_slide_hover',
+        'footer-scrolltop':                 true,
+    ),
+);
+
+$armorait-base: map-get($o-color-palettes, 'default-24');
+$armorait-base: map-merge($armorait-base, ('footer': 5));
+$o-color-palettes: map-merge($o-color-palettes, ('armorait-base': $armorait-base));
+
+//------------------------------------------------------------------------------
+// Theme color palettes
+//------------------------------------------------------------------------------
+
+$o-theme-color-palettes: map-merge($o-theme-color-palettes,
+    (
+        'armorait-1': (
+            'alpha': #1a3a5c,
+            'beta': #2d7dd2,
+            'gamma': #f4a261,
+            'delta': #1e2d3d,
+            'epsilon': #0f1c2e,
+        ),
+    )
+);
+
+$o-selected-theme-color-palette-names: append($o-selected-theme-color-palette-names, 'armorait-1');
+
+//------------------------------------------------------------------------------
+// Fonts
+//------------------------------------------------------------------------------
+
+$o-theme-font-configs: map-merge($o-theme-font-configs, (
+    'Inter': (
+        'family': ('Inter', sans-serif),
+        'url': 'Inter:300,400,500,600,700',
+        'properties': (
+            'base': (
+                'font-size-base': (16 / 16) * 1rem,
+            ),
+        ),
+    ),
+    'Poppins': (
+        'family': ('Poppins', sans-serif),
+        'url': 'Poppins:400,500,600,700',
+        'properties': (
+            'base': (
+                'header-font-size': (16 / 16) * 1rem,
+            ),
+        ),
+    ),
+));
+
+$o-theme-h4-font-size-multiplier:           1.75;
+$o-theme-h5-font-size-multiplier:           1.5;
+$o-theme-headings-font-weight:              600;
+$o-theme-font-size-lg-multiplier:           1.25;
+$o-theme-font-size-sm-multiplier:           .875;
+
+//------------------------------------------------------------------------------
+// theme_base custom properties (SCSS defaults)
+//------------------------------------------------------------------------------
+
+$tb-primary:    #1a3a5c !default;
+$tb-secondary:  #2d7dd2 !default;
+$tb-accent:     #f4a261 !default;
+$tb-radius:     .375rem !default;
+$tb-shadow:     0 .5rem 1.5rem rgba($tb-primary, .12) !default;
+
+:root {
+    --tb-primary: #{$tb-primary};
+    --tb-secondary: #{$tb-secondary};
+    --tb-accent: #{$tb-accent};
+    --tb-heading-font: 'Poppins', sans-serif;
+    --tb-body-font: 'Inter', sans-serif;
+    --tb-header-height: 72px;
+    --tb-border-radius: #{$tb-radius};
+    --tb-shadow: #{$tb-shadow};
+}

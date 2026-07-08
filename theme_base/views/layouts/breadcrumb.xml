@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="tb_breadcrumb" inherit_id="website.layout" name="ARMORAIT Breadcrumb" active="True">
+    <xpath expr="//div[@id='wrap']" position="before">
+        <t t-set="show_tb_crumb" t-value="main_object and getattr(main_object, 'url', None) and main_object.url != '/'"/>
+        <nav t-if="show_tb_crumb and not no_header" class="tb-breadcrumb container" aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li t-if="main_object and 'name' in main_object" class="breadcrumb-item active" aria-current="page">
+                    <span t-esc="main_object.sudo().name"/>
+                </li>
+            </ol>
+        </nav>
+    </xpath>
+</template>
+
+</odoo>

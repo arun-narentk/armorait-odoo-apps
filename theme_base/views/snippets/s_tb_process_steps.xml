@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_process_steps" name="Process Steps">
+    <section class="s_tb_process_steps tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_process_steps"><div class="container"><div class="row g-4"><div class="col-md-4 text-center tb-reveal"><div class="tb-step-number display-4 fw-bold text-primary">1</div><h3 class="h5 mt-2">Discover</h3><p>Step description.</p></div><div class="col-md-4 text-center tb-reveal"><div class="tb-step-number display-4 fw-bold text-primary">2</div><h3 class="h5 mt-2">Design</h3><p>Step description.</p></div><div class="col-md-4 text-center tb-reveal"><div class="tb-step-number display-4 fw-bold text-primary">3</div><h3 class="h5 mt-2">Deliver</h3><p>Step description.</p></div></div></div><div class="oe_structure oe_empty"/></section>
+</template>
+
+</odoo>

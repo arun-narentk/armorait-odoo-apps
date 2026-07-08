@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_image_slider" name="Image Slider">
+    <section class="s_tb_image_slider tb-snippet tb-reveal pt48 pb48" data-snippet="s_tb_image_slider">
+        <div id="tbCarousel_s_tb_image_slider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active"><img src="/web/image/website.s_cover_default_image" class="d-block w-100 rounded" alt="Slide 1"/></div>
+                <div class="carousel-item"><img src="/web/image/website.s_cover_default_image" class="d-block w-100 rounded" alt="Slide 2"/></div>
+                <div class="carousel-item"><img src="/web/image/website.s_cover_default_image" class="d-block w-100 rounded" alt="Slide 3"/></div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#tbCarousel_s_tb_image_slider" data-bs-slide="prev"><span class="carousel-control-prev-icon"/></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#tbCarousel_s_tb_image_slider" data-bs-slide="next"><span class="carousel-control-next-icon"/></button>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

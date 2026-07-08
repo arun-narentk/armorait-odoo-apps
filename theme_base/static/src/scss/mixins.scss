@@ -1,0 +1,49 @@
+@mixin tb-transition($props: all, $duration: .3s, $ease: ease) {
+    transition: $props $duration $ease;
+}
+
+@mixin tb-focus-ring {
+    outline: 2px solid var(--tb-secondary, #{$tb-secondary});
+    outline-offset: 2px;
+}
+
+@mixin tb-card-hover {
+    @include tb-transition(transform box-shadow);
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--tb-shadow, #{$tb-shadow});
+    }
+}
+
+@mixin tb-overlay($opacity: .55) {
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba($tb-primary, $opacity);
+        z-index: 1;
+    }
+}
+
+@mixin tb-container-narrow {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin tb-text-gradient {
+    background: linear-gradient(135deg, var(--tb-primary, #{$tb-primary}), var(--tb-secondary, #{$tb-secondary}));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin tb-reveal-base {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    @include tb-transition(opacity transform, .6s, ease-out);
+    &.tb-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

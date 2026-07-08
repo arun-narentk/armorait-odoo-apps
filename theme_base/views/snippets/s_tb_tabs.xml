@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_tabs" name="Tabs">
+    <section class="s_tb_tabs tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_tabs">
+        <div class="container"><ul class="nav nav-tabs" role="tablist"><li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab1_s_tb_tabs">Tab 1</a></li><li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab2_s_tb_tabs">Tab 2</a></li></ul>
+        <div class="tab-content pt-3"><div class="tab-pane fade show active tb-reveal" id="tab1_s_tb_tabs"><p>First tab content.</p></div><div class="tab-pane fade tb-reveal" id="tab2_s_tb_tabs"><p>Second tab content.</p></div></div></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

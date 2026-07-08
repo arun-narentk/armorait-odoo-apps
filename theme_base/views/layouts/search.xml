@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="tb_search_modal" inherit_id="website.layout" name="ARMORAIT Search Modal" active="True">
+    <xpath expr="//header" position="inside">
+        <div id="tb_search_modal_block" class="d-none d-lg-block">
+            <a href="#o_search_modal" class="visually-hidden-focusable" data-bs-toggle="modal" data-bs-target="#o_search_modal">Open search</a>
+        </div>
+    </xpath>
+</template>
+
+</odoo>

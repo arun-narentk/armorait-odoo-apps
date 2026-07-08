@@ -1,0 +1,24 @@
+@import 'mixins';
+@import 'animations';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/mega_menu';
+@import 'components/breadcrumb';
+@import 'components/utilities';
+@import 'snippets/snippets';
+
+// Global typography
+body {
+    font-family: var(--tb-body-font);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--tb-heading-font);
+}
+
+.tb-snippet {
+    position: relative;
+}

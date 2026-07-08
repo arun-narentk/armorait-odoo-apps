@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_testimonials" name="Testimonials">
+    <section class="s_tb_testimonials tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_testimonials">
+        <div class="container"><h2 class="text-center mb-4">What clients say</h2>
+        <div class="row g-4"><div class="col-md-6 tb-reveal"><blockquote class="blockquote p-4 border rounded"><p>Outstanding quality and support.</p><footer class="blockquote-footer mt-2">Jane Doe, CEO</footer></blockquote></div>
+        <div class="col-md-6 tb-reveal"><blockquote class="blockquote p-4 border rounded"><p>Our site launched in days, not weeks.</p><footer class="blockquote-footer mt-2">John Smith, Founder</footer></blockquote></div></div></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

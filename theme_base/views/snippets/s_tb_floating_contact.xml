@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_floating_contact" name="Floating Contact Button">
+    <section class="s_tb_floating_contact tb-snippet tb-reveal" data-snippet="s_tb_floating_contact">
+        <a href="/contactus" class="tb-floating-contact btn btn-primary rounded-circle position-fixed bottom-0 start-0 m-4" aria-label="Contact us"><i class="fa fa-envelope fa-lg"/></a>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

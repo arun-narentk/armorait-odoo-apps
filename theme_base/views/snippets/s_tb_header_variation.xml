@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_header_variation" name="Header Variation">
+    <section class="s_tb_header_variation tb-snippet tb-reveal pt48 pb48 o_cc o_cc5" data-snippet="s_tb_header_variation">
+        <div class="container tb-reveal"><h2 class="h4">Header Variation</h2><p>Drop this block to preview header variation styling in the page editor.</p></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

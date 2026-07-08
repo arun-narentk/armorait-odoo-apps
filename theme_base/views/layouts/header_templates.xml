@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Sticky header with compact navbar -->
+<template id="template_header_tb_sticky" inherit_id="website.layout" name="ARMORAIT Sticky Header" active="False">
+    <xpath expr="//header//nav" position="replace">
+        <t t-call="website.navbar" _navbar_classes.f="navbar-light bg-white shadow-sm py-2">
+            <div id="o_main_nav" class="container d-flex align-items-center justify-content-between">
+                <t t-call="website.placeholder_header_brand"/>
+                <t t-call="website.navbar_toggler"/>
+                <t t-call="website.navbar_nav" _nav_class.f="ms-auto align-items-center">
+                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                        <t t-call="website.submenu"
+                            item_class.f="nav-item"
+                            link_class.f="nav-link"/>
+                    </t>
+                    <t t-call="portal.placeholder_user_sign_in" _item_class.f="nav-item" _link_class.f="nav-link"/>
+                    <t t-call="portal.user_dropdown" _item_class.f="nav-item dropdown" _link_class.f="nav-link"/>
+                </t>
+            </div>
+        </t>
+        <t t-call="website.template_header_mobile"/>
+    </xpath>
+</template>
+
+<!-- Header with inline search bar -->
+<template id="template_header_tb_search" inherit_id="website.layout" name="ARMORAIT Search Header" active="False">
+    <xpath expr="//header//nav" position="replace">
+        <t t-call="website.navbar" _navbar_classes.f="navbar-light bg-white tb-header-search py-2">
+            <div id="o_main_nav" class="container">
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <t t-call="website.placeholder_header_brand"/>
+                    <t t-call="website.navbar_toggler"/>
+                    <form class="tb-header-search-form d-flex ms-lg-auto" action="/website/search" method="get" role="search">
+                        <input type="search" name="search" class="form-control form-control-sm" placeholder="Search..." aria-label="Search"/>
+                        <button type="submit" class="btn btn-primary btn-sm" aria-label="Submit search">
+                            <i class="fa fa-search" aria-hidden="true"/>
+                        </button>
+                    </form>
+                </div>
+                <t t-call="website.navbar_nav" _nav_class.f="mt-2 align-items-center">
+                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                        <t t-call="website.submenu"
+                            item_class.f="nav-item"
+                            link_class.f="nav-link"/>
+                    </t>
+                    <t t-call="portal.placeholder_user_sign_in" _item_class.f="nav-item" _link_class.f="nav-link"/>
+                    <t t-call="portal.user_dropdown" _item_class.f="nav-item dropdown" _link_class.f="nav-link"/>
+                </t>
+            </div>
+        </t>
+        <t t-call="website.template_header_mobile"/>
+    </xpath>
+</template>
+
+</odoo>
