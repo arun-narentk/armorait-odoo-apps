@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'CRM Ultimate Pro',
+    'name': 'ARMORA CRM Ultimate Pro',
     'version': '19.0.1.0.0',
     'category': 'Sales/CRM',
     'summary': 'Lead scoring, duplicates, follow-ups, forecasting, and CRM dashboard for Odoo 19',
@@ -14,10 +14,14 @@ detection, merge, follow-up automation, and OWL dashboard.
 Phase 1 delivers the installable skeleton, security, menus, models,
 and service stubs. Feature engines arrive in later phases.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 49.99,
+    'sequence': 36,
     'depends': [
         'base',
         'mail',
