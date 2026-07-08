@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fleet_vehicle_form_rn_gps" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.rn.gps</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="GPS Tracking" name="rn_gps_page">
+                    <group>
+                        <group>
+                            <field name="rn_gps_device_id"/>
+                            <field name="rn_gps_online"/>
+                            <field name="rn_last_gps_at"/>
+                        </group>
+                        <group>
+                            <field name="rn_last_latitude"/>
+                            <field name="rn_last_longitude"/>
+                            <field name="rn_last_speed"/>
+                        </group>
+                    </group>
+                    <div>
+                        <button name="action_open_rn_live_map" type="object" string="Open Live Board" class="btn-primary"/>
+                    </div>
+                    <field name="rn_gps_device_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="provider"/>
+                            <field name="state"/>
+                            <field name="online"/>
+                            <field name="last_seen"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

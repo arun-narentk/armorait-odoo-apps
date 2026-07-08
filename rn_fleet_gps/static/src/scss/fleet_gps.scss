@@ -1,0 +1,13 @@
+.o_rn_fleet_dashboard {
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  min-height: 100%;
+  .o_rn_fleet_card, .o_rn_fleet_panel {
+    background: #fff;
+    border: 1px solid #93c5fd;
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .label { color: #64748b; font-size: 0.8rem; margin-bottom: 0.35rem; }
+  .value { color: #1d4ed8; font-size: 1.35rem; font-weight: 700; }
+  .panel-title { font-weight: 600; margin-bottom: 0.5rem; }
+}

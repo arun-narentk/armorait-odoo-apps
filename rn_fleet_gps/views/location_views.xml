@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_fleet_gps_location_list" model="ir.ui.view">
+        <field name="name">rn.fleet.gps.location.list</field>
+        <field name="model">rn.fleet.gps.location</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="timestamp"/>
+                <field name="vehicle_id"/>
+                <field name="device_id"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="speed"/>
+                <field name="ignition"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_fleet_gps_location" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="res_model">rn.fleet.gps.location</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_fleet_ingest_location_form" model="ir.ui.view">
+        <field name="name">rn.fleet.ingest.location.wizard.form</field>
+        <field name="model">rn.fleet.ingest.location.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Push GPS Point">
+                <group>
+                    <field name="device_id"/>
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                    <field name="speed"/>
+                    <field name="ignition"/>
+                    <field name="odometer"/>
+                </group>
+                <footer>
+                    <button name="action_ingest" type="object" string="Ingest" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_fleet_ingest_location" model="ir.actions.act_window">
+        <field name="name">Push GPS Point</field>
+        <field name="res_model">rn.fleet.ingest.location.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

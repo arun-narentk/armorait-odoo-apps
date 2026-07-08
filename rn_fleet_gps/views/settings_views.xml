@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_fleet_settings" model="ir.actions.act_window">
+        <field name="name">GPS Settings</field>
+        <field name="res_model">rn.fleet.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_fleet_subscription" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">rn.fleet.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_res_config_settings_rn_fleet" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.fleet</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="ARMORA Fleet GPS" name="rn_fleet_gps">
+                    <block title="Alerts">
+                        <setting string="Overspeed Limit (km/h)">
+                            <field name="rn_fleet_overspeed_limit"/>
+                        </setting>
+                        <setting string="Offline Minutes">
+                            <field name="rn_fleet_offline_minutes"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_fleet_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module': 'rn_fleet_gps'}</field>
+    </record>
+</odoo>

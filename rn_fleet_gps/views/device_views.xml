@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_fleet_gps_device_list" model="ir.ui.view">
+        <field name="name">rn.fleet.gps.device.list</field>
+        <field name="model">rn.fleet.gps.device</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="provider"/>
+                <field name="vehicle_id"/>
+                <field name="imei"/>
+                <field name="online"/>
+                <field name="last_seen"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_fleet_gps_device_form" model="ir.ui.view">
+        <field name="name">rn.fleet.gps.device.form</field>
+        <field name="model">rn.fleet.gps.device</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="btn-primary" invisible="state == 'active'"/>
+                    <button name="action_test_provider" type="object" string="Test Provider"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="provider"/>
+                            <field name="vendor"/>
+                            <field name="vehicle_id"/>
+                            <field name="imei"/>
+                            <field name="sim_number"/>
+                            <field name="firmware"/>
+                            <field name="install_date"/>
+                        </group>
+                        <group>
+                            <field name="device_uid"/>
+                            <field name="api_url"/>
+                            <field name="api_token" password="True"/>
+                            <field name="online"/>
+                            <field name="last_seen"/>
+                            <field name="last_location_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_fleet_gps_device" model="ir.actions.act_window">
+        <field name="name">GPS Devices</field>
+        <field name="res_model">rn.fleet.gps.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

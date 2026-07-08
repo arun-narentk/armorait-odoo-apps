@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_fleet_dashboard" model="ir.actions.client">
+        <field name="name">Fleet Live Board</field>
+        <field name="tag">rn_fleet_gps.dashboard</field>
+    </record>
+</odoo>
