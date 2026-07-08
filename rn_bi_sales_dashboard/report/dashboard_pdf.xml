@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_bi_dashboard" model="ir.actions.report">
+        <field name="name">BI Dashboard Summary</field>
+        <field name="model">rn.bi.sales.dashboard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_bi_sales_dashboard.report_bi_dashboard_document</field>
+        <field name="report_file">rn_bi_sales_dashboard.report_bi_dashboard_document</field>
+        <field name="binding_model_id" ref="model_rn_bi_sales_dashboard"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_bi_dashboard_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Sales BI Dashboard</h2>
+                    <p><strong>Name:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Theme:</strong> <span t-field="doc.theme"/></p>
+                    <p>Detailed PDF exports arrive in a later phase.</p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

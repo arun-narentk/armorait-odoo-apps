@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_bi_settings" model="rn.bi.dashboard.settings">
+<field name="name">Demo BI Settings</field>
+<field name="theme">corporate</field>
+<field name="refresh_interval">180</field>
+<field name="chart_color_primary">#4F46E5</field>
+<field name="chart_color_secondary">#22C55E</field>
+</record>
+<record id="demo_rn_bi_target_month" model="rn.bi.sales.target">
+<field name="name">Demo Monthly Target</field>
+<field name="period_type">month</field>
+<field name="date_start" eval="(DateTime.today().replace(day=1)).strftime('%Y-%m-%d')"/>
+<field name="date_end" eval="(DateTime.today()).strftime('%Y-%m-%d')"/>
+<field name="target_amount">100000</field>
+<field name="state">open</field>
+</record>
+<record id="demo_rn_bi_filter" model="rn.bi.dashboard.filter">
+<field name="name">Demo This Month</field>
+<field name="date_preset">this_month</field>
+<field name="shared" eval="True"/>
+</record>
+</data></odoo>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_bi_root"
+              name="Sales BI"
+              web_icon="rn_bi_sales_dashboard,static/description/icon.png"
+              groups="rn_bi_sales_dashboard.group_rn_bi_sales_user"
+              sequence="49"/>
+
+    <menuitem id="menu_rn_bi_dashboard_client"
+              name="Dashboard"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_sales_dashboard_client"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_bi_dashboards"
+              name="Dashboard Layouts"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_sales_dashboard"
+              sequence="10"
+              groups="rn_bi_sales_dashboard.group_rn_bi_sales_manager"/>
+
+    <menuitem id="menu_rn_bi_targets"
+              name="Targets"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_sales_target"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_bi_kpis"
+              name="KPI Cards"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_sales_kpi"
+              sequence="30"
+              groups="rn_bi_sales_dashboard.group_rn_bi_sales_manager"/>
+
+    <menuitem id="menu_rn_bi_filters"
+              name="Filters"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_dashboard_filter"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_bi_favorites"
+              name="Favorites"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_dashboard_favorite"
+              sequence="45"/>
+
+    <menuitem id="menu_rn_bi_snapshots"
+              name="Snapshots"
+              parent="menu_rn_bi_root"
+              action="action_rn_bi_sales_snapshot"
+              sequence="50"
+              groups="rn_bi_sales_dashboard.group_rn_bi_sales_manager"/>
+
+    <menuitem id="menu_rn_bi_operations"
+              name="Operations"
+              parent="menu_rn_bi_root"
+              sequence="60"/>
+    <menuitem id="menu_rn_bi_op_filter"
+              name="Open Filtered Dashboard"
+              parent="menu_rn_bi_operations"
+              action="action_rn_bi_sales_filter_wizard"
+              sequence="10"/>
+    <menuitem id="menu_rn_bi_op_compare"
+              name="Compare Periods"
+              parent="menu_rn_bi_operations"
+              action="action_rn_bi_compare_period_wizard"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_bi_configuration"
+              name="Configuration"
+              parent="menu_rn_bi_root"
+              groups="rn_bi_sales_dashboard.group_rn_bi_dashboard_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_bi_settings"
+              name="BI Settings"
+              parent="menu_rn_bi_configuration"
+              action="action_rn_bi_dashboard_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_bi_config_settings"
+              name="Settings"
+              parent="menu_rn_bi_configuration"
+              action="action_rn_bi_config_settings"
+              sequence="100"/>
+</odoo>

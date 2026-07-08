@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_bi_sales_dashboard.Dashboard">
+        <div class="o_rn_bi_sales_dashboard p-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                <div>
+                    <h1 class="h3 mb-0">Business Intelligence Sales Dashboard</h1>
+                    <div class="text-muted small">Advanced analytics and KPIs for Odoo 19 Community</div>
+                </div>
+                <div class="d-flex gap-2 align-items-center">
+                    <select class="form-select form-select-sm w-auto" t-on-change="onPresetChange">
+                        <option value="today" t-att-selected="state.datePreset === 'today'">Today</option>
+                        <option value="yesterday" t-att-selected="state.datePreset === 'yesterday'">Yesterday</option>
+                        <option value="last_7" t-att-selected="state.datePreset === 'last_7'">Last 7 Days</option>
+                        <option value="last_30" t-att-selected="state.datePreset === 'last_30'">Last 30 Days</option>
+                        <option value="this_month" t-att-selected="state.datePreset === 'this_month'">This Month</option>
+                        <option value="last_month" t-att-selected="state.datePreset === 'last_month'">Last Month</option>
+                        <option value="quarter" t-att-selected="state.datePreset === 'quarter'">Quarter</option>
+                        <option value="year" t-att-selected="state.datePreset === 'year'">Year</option>
+                    </select>
+                    <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+                </div>
+            </div>
+
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">Revenue</div>
+                            <div class="value" t-esc="getFormatted(state.cards.total_revenue)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">Orders</div>
+                            <div class="value" t-esc="state.cards.orders || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">AOV</div>
+                            <div class="value" t-esc="getFormatted(state.cards.aov)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">Target %</div>
+                            <div class="value" t-esc="getFormatted(state.cards.achievement_pct)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">Quotes</div>
+                            <div class="value" t-esc="getFormatted(state.cards.quotation_value)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <div class="o_rn_bi_card">
+                            <div class="label">Won Opps</div>
+                            <div class="value" t-esc="state.cards.won_opportunities || 0"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-lg-6">
+                        <div class="o_rn_bi_panel">
+                            <h2 class="h5">Monthly Sales Trend</h2>
+                            <p class="text-muted small mb-2">Line chart dataset ready for Chart.js (Phase 2).</p>
+                            <ul class="small mb-0">
+                                <t t-foreach="monthlyTrend().labels" t-as="label" t-key="label_index">
+                                    <li>
+                                        <t t-esc="label"/>:
+                                        <t t-esc="getFormatted(monthlyTrend().datasets[0] and monthlyTrend().datasets[0].data[label_index])"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="o_rn_bi_panel">
+                            <h2 class="h5">Forecast</h2>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="label">Projected</div>
+                                    <div class="value" t-esc="getFormatted(state.forecast.projected_revenue)"/>
+                                </div>
+                                <div class="col-6">
+                                    <div class="label">Achievement Prediction</div>
+                                    <div class="value" t-esc="getFormatted(state.forecast.achievement_prediction)"/>%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="o_rn_bi_panel">
+                            <h2 class="h5">Top Products</h2>
+                            <ul class="small mb-0">
+                                <t t-foreach="state.tops.products || []" t-as="row" t-key="row_index">
+                                    <li><t t-esc="row.name"/>: <t t-esc="getFormatted(row.value)"/></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_bi_panel">
+                            <h2 class="h5">Top Customers</h2>
+                            <ul class="small mb-0">
+                                <t t-foreach="state.tops.customers || []" t-as="row" t-key="row_index">
+                                    <li><t t-esc="row.name"/>: <t t-esc="getFormatted(row.value)"/></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_bi_panel">
+                            <h2 class="h5">Top Salespersons</h2>
+                            <ul class="small mb-0">
+                                <t t-foreach="state.tops.salespersons || []" t-as="row" t-key="row_index">
+                                    <li><t t-esc="row.name"/>: <t t-esc="getFormatted(row.value)"/></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>
