@@ -2,7 +2,7 @@
 <odoo>
 
     <record model="res.groups.privilege" id="res_groups_privilege_rn_whatsapp">
-        <field name="name">WhatsApp Connector</field>
+        <field name="name">ARMORA WhatsApp</field>
         <field name="category_id" ref="base.module_category_marketing"/>
     </record>
 
@@ -55,4 +55,16 @@
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
+
+    <record id="rule_rn_whatsapp_automation_company" model="ir.rule">
+        <field name="name">WhatsApp Automation: multi-company</field>
+        <field name="model_id" ref="model_rn_whatsapp_automation_rule"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_whatsapp_subscription_company" model="ir.rule">
+        <field name="name">WhatsApp Subscription: multi-company</field>
+        <field name="model_id" ref="model_rn_whatsapp_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
 </odoo>
+

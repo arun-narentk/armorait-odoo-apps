@@ -11,6 +11,7 @@
                     <field name="partner_id"/>
                     <field name="phone"/>
                     <field name="template_id"/>
+                    <field name="send_immediately"/>
                     <field name="body"/>
                     <field name="res_model" invisible="1"/>
                     <field name="res_id" invisible="1"/>

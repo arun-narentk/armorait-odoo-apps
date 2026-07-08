@@ -2,8 +2,9 @@
 """Cron and scheduler helpers."""
 
 import logging
+from datetime import timedelta
 
-from odoo import models
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -15,21 +16,30 @@ class RnWhatsappSchedulerService(models.AbstractModel):
     _description = 'WhatsApp Scheduler Service'
 
     def cron_retry_failed_messages(self):
-        """Retry failed outbound messages within configured limits."""
-        _logger.info('WhatsApp retry cron placeholder (Phase 10).')
+        count = self.env['rn.whatsapp.queue.service'].retry_failed(limit=100)
+        _logger.info('Retried / re-queued %s failed WhatsApp messages', count)
         return True
 
     def cron_send_scheduled_messages(self):
-        """Send messages whose schedule time has passed."""
-        _logger.info('WhatsApp scheduled send cron placeholder (Phase 10).')
+        count = self.env['rn.whatsapp.queue.service'].process_queue(limit=100)
+        _logger.info('Processed %s scheduled/queued WhatsApp messages', count)
         return True
 
     def cron_cleanup_webhooks(self):
-        """Archive or delete old webhook logs."""
-        _logger.info('WhatsApp webhook cleanup cron placeholder (Phase 10).')
+        cutoff = fields.Datetime.now() - timedelta(days=30)
+        old = self.env['rn.whatsapp.webhook'].search([('create_date', '<', cutoff)], limit=500)
+        count = len(old)
+        old.unlink()
+        _logger.info('Removed %s old WhatsApp webhook logs', count)
         return True
 
     def cron_sync_provider_status(self):
-        """Refresh account connection health from providers."""
-        _logger.info('WhatsApp provider sync cron placeholder (Phase 10).')
+        accounts = self.env['rn.whatsapp.account'].search([('active', '=', True)])
+        for account in accounts:
+            result = self.env['rn.whatsapp.provider.service'].test_connection(account)
+            account.write({
+                'status': 'connected' if result.get('ok') else account.status,
+                'last_sync': fields.Datetime.now(),
+                'connection_state': 'online' if result.get('ok') else account.connection_state,
+            })
         return True

@@ -1,0 +1,1 @@
+# No mandatory PyPI deps. Uses Python stdlib urllib for Meta Cloud.

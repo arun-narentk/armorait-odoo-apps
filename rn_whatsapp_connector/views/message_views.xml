@@ -1,102 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="view_rn_whatsapp_message_list" model="ir.ui.view">
         <field name="name">rn.whatsapp.message.list</field>
         <field name="model">rn.whatsapp.message</field>
         <field name="arch" type="xml">
-            <list decoration-danger="status == 'failed'" decoration-muted="status == 'cancelled'">
-                <field name="create_date"/>
+            <list>
+                <field name="name"/>
                 <field name="phone"/>
                 <field name="partner_id"/>
                 <field name="message_type"/>
                 <field name="direction"/>
                 <field name="status"/>
+                <field name="priority"/>
+                <field name="schedule_at"/>
+                <field name="sent_at"/>
                 <field name="account_id"/>
-                <field name="user_id"/>
             </list>
         </field>
     </record>
-
     <record id="view_rn_whatsapp_message_form" model="ir.ui.view">
         <field name="name">rn.whatsapp.message.form</field>
         <field name="model">rn.whatsapp.message</field>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_queue_message" type="object" string="Queue" invisible="status != 'draft'"/>
-                    <field name="status" widget="statusbar" statusbar_visible="draft,queued,sent,delivered,read"/>
+                    <button name="action_queue_message" type="object" string="Queue" invisible="status not in ('draft','failed')"/>
+                    <button name="action_send_now" type="object" string="Send Now" class="btn-primary" invisible="status not in ('draft','queued','failed')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="status not in ('draft','queued')"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,queued,sent,delivered,read,failed"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="uuid" readonly="1"/>
+                            <field name="name" readonly="1"/>
                             <field name="account_id"/>
                             <field name="partner_id"/>
                             <field name="phone"/>
-                            <field name="message_type"/>
                             <field name="direction"/>
+                            <field name="message_type"/>
+                            <field name="template_id"/>
                             <field name="priority"/>
                         </group>
                         <group>
-                            <field name="template_id"/>
-                            <field name="provider_message_id" readonly="1"/>
-                            <field name="retry_count" readonly="1"/>
                             <field name="schedule_at"/>
-                            <field name="sent_at" readonly="1"/>
-                            <field name="delivered_at" readonly="1"/>
-                            <field name="read_at" readonly="1"/>
-                            <field name="failed_at" readonly="1"/>
+                            <field name="sent_at"/>
+                            <field name="delivered_at"/>
+                            <field name="read_at"/>
+                            <field name="retry_count"/>
+                            <field name="provider_message_id"/>
+                            <field name="automation_rule_id"/>
                             <field name="company_id" groups="base.group_multi_company"/>
-                            <field name="user_id" readonly="1"/>
                         </group>
                     </group>
                     <group>
-                        <field name="body" nolabel="1" placeholder="Message text..."/>
+                        <field name="body"/>
+                        <field name="template_vars"/>
+                        <field name="error_message"/>
+                        <field name="provider_response"/>
                     </group>
-                    <field name="error_message" readonly="1" invisible="not error_message"/>
-                    <notebook>
-                        <page string="Attachments">
-                            <field name="attachment_ids">
-                                <list>
-                                    <field name="name"/>
-                                    <field name="attachment_type"/>
-                                    <field name="mimetype"/>
-                                    <field name="file_size"/>
-                                </list>
-                            </field>
-                        </page>
-                    </notebook>
                 </sheet>
                 <chatter/>
             </form>
         </field>
     </record>
-
-    <record id="view_rn_whatsapp_message_search" model="ir.ui.view">
-        <field name="name">rn.whatsapp.message.search</field>
-        <field name="model">rn.whatsapp.message</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="phone"/>
-                <field name="partner_id"/>
-                <field name="uuid"/>
-                <filter name="outbound" string="Outbound" domain="[('direction', '=', 'outbound')]"/>
-                <filter name="inbound" string="Inbound" domain="[('direction', '=', 'inbound')]"/>
-                <filter name="failed" string="Failed" domain="[('status', '=', 'failed')]"/>
-                <group>
-                    <filter name="group_status" string="Status" context="{'group_by': 'status'}"/>
-                    <filter name="group_account" string="Account" context="{'group_by': 'account_id'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
-
     <record id="action_rn_whatsapp_message" model="ir.actions.act_window">
         <field name="name">Messages</field>
         <field name="res_model">rn.whatsapp.message</field>
         <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="view_rn_whatsapp_message_search"/>
     </record>
-
+    <record id="action_rn_whatsapp_queue" model="ir.actions.act_window">
+        <field name="name">Message Queue</field>
+        <field name="res_model">rn.whatsapp.message</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('status', '=', 'queued')]</field>
+        <field name="context">{'search_default_queued': 1}</field>
+    </record>
 </odoo>

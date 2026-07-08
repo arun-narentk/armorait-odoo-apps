@@ -15,9 +15,11 @@ class RnWhatsappWebhook(models.Model):
     provider = fields.Selection(
         selection=[
             ('meta_cloud', 'Meta Cloud API'),
-            ('chat_api', 'Chat API'),
             ('twilio', 'Twilio'),
             ('dialog360', '360Dialog'),
+            ('gupshup', 'Gupshup'),
+            ('interakt', 'Interakt'),
+            ('chat_api', 'Chat API'),
             ('ultramsg', 'UltraMsg'),
             ('green_api', 'Green API'),
         ],
@@ -41,4 +43,5 @@ class RnWhatsappWebhook(models.Model):
         'res.company',
         required=True,
         default=lambda self: self.env.company,
+        index=True,
     )

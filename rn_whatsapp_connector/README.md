@@ -1,58 +1,59 @@
-# WhatsApp Connector for Odoo 19
+# ARMORA WhatsApp Automation Platform
 
-Commercial-grade multi-provider WhatsApp integration for Odoo 19 Community.
+Provider-agnostic WhatsApp communication automation for Odoo 19 Community.
 
-## Phase 1 (current)
+## Overview
 
-- Module skeleton and installable app shell
-- Security groups: Administrator, Manager, User, Readonly
-- Models: Account, Message, Template, Attachment, Webhook, History
-- Service layer stubs: API, Provider, Message, PDF, Scheduler, Webhook
-- Menus, settings, dashboard placeholder, send wizard
-- Cron job placeholders
-- Unit test skeleton
+`rn_whatsapp_connector` is not just another API connector. It is a complete automation platform:
+
+Odoo -> Automation Engine -> Message Templates -> Provider Layer -> WhatsApp (Meta, Twilio, 360Dialog, Gupshup, Interakt)
+
+## Business Problem
+
+SMBs want WhatsApp in Odoo, but most connectors are expensive, locked to one BSP, or lack automation. This module isolates providers behind a service interface and ships a registerable automation engine.
+
+## Phase 1 Features
+
+- Multi-provider accounts (Meta Cloud live-ready, others simulation adapters)
+- Templates with variables
+- Message queue, retries, scheduling
+- Message log / history and webhook intake
+- Automation rules (sale confirm, invoice post, delivery done, plus extensible triggers)
+- OWL KPI dashboard
+- Multi-company security
+- SaaS edition tracking (Standard / Professional / Enterprise)
+
+## Editions
+
+| Edition | List Price (USD) |
+|---|---|
+| Standard | 29.99 |
+| Professional (this Apps package) | 79.99 |
+| Enterprise | 199.99 |
 
 ## Installation
 
-1. Copy `rn_whatsapp_connector` into your `armora` addons path.
-2. Update the apps list and install **WhatsApp Connector**.
-3. Open **WhatsApp > Configuration > Settings** and enable the connector.
+1. Install Contacts, CRM, Sales, Accounting, Inventory.
+2. Update Apps List and install **ARMORA WhatsApp Automation Platform**.
+3. Open WhatsApp > Accounts, keep Simulation Mode for dry runs.
+4. Configure automation rules and templates.
 
 ## Configuration
 
-1. Create a **WhatsApp Account** under Configuration.
-2. Choose a provider (Meta Cloud API, Twilio, 360Dialog, and more in later phases).
-3. Set API credentials and webhook tokens.
-
-## Architecture
-
-```
-Controllers -> Services -> Models -> Providers (Phase 3+)
-```
-
-Business logic lives in `services/`. Models store data only. Provider adapters will plug into `provider_service.py`.
-
-## Roadmap
-
-| Phase | Deliverable |
-|-------|-------------|
-| 1 | Skeleton (done) |
-| 2 | Account model hardening and settings |
-| 3 | Provider abstraction layer |
-| 4 | Message sending service |
-| 5 | Template engine |
-| 6 | PDF attachments |
-| 7 | CRM, Sales, Purchase, Accounting integrations |
-| 8 | Webhook processing |
-| 9 | OWL chat window |
-| 10 | Automation rules and schedulers |
-| 11 | Dashboard analytics |
-| 12 | Tests, demo data, documentation |
-
-## License
-
-LGPL-3
+- Webhook URL: `/rn_whatsapp/webhook/meta_cloud`
+- Use Simulation Mode until Cloud API credentials are validated.
+- Set Default account per company.
 
 ## Support
 
-info@armorait.com
+ARMORA IT Technologies  
+Website: https://www.armorait.com  
+Support: info@armorait.com
+
+## License
+
+OPL-1
+
+## Credits
+
+(c) ARMORA IT Technologies

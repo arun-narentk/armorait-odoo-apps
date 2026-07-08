@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="view_rn_whatsapp_account_list" model="ir.ui.view">
         <field name="name">rn.whatsapp.account.list</field>
         <field name="model">rn.whatsapp.account</field>
@@ -9,6 +8,8 @@
                 <field name="name"/>
                 <field name="provider"/>
                 <field name="phone_number"/>
+                <field name="is_default"/>
+                <field name="simulation_mode"/>
                 <field name="status"/>
                 <field name="connection_state"/>
                 <field name="messages_today"/>
@@ -16,7 +17,6 @@
             </list>
         </field>
     </record>
-
     <record id="view_rn_whatsapp_account_form" model="ir.ui.view">
         <field name="name">rn.whatsapp.account.form</field>
         <field name="model">rn.whatsapp.account</field>
@@ -24,6 +24,7 @@
             <form>
                 <header>
                     <button name="action_test_connection" type="object" string="Test Connection" class="btn-primary"/>
+                    <button name="action_set_default" type="object" string="Set Default"/>
                     <field name="status" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -37,7 +38,10 @@
                             <field name="name"/>
                             <field name="provider"/>
                             <field name="phone_number"/>
+                            <field name="phone_number_id"/>
                             <field name="business_id"/>
+                            <field name="is_default"/>
+                            <field name="simulation_mode"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                             <field name="active"/>
                         </group>
@@ -71,11 +75,9 @@
             </form>
         </field>
     </record>
-
     <record id="action_rn_whatsapp_account" model="ir.actions.act_window">
         <field name="name">WhatsApp Accounts</field>
         <field name="res_model">rn.whatsapp.account</field>
         <field name="view_mode">list,form</field>
     </record>
-
 </odoo>

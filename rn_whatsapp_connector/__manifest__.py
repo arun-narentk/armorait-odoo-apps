@@ -1,23 +1,35 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'WhatsApp Connector',
+    'name': 'ARMORA WhatsApp Automation Platform',
     'version': '19.0.1.0.0',
     'category': 'Marketing/WhatsApp',
-    'summary': 'Multi-provider WhatsApp messaging for CRM, Sales, Accounting, and more',
+    'summary': 'Provider-agnostic WhatsApp automation: templates, queue, webhooks, and business triggers',
     'description': """
-WhatsApp Connector for Odoo 19 Community
-======================================
+ARMORA WhatsApp Automation Platform for Odoo 19 Community
+=======================================================
 
-Commercial-grade WhatsApp integration with provider abstraction, templates,
-webhooks, automation, and OWL chat (upcoming phases).
+Complete communication automation on WhatsApp. Not just an API connector.
 
-Phase 1 delivers the module skeleton: security, menus, configuration, and
-extensible service architecture.
+Phase 1 delivers:
+- Multi-provider account layer (Meta Cloud, Twilio, 360Dialog, Gupshup, Interakt)
+- Message templates with variables
+- Message queue with retries and scheduling
+- Message log / history and webhook intake
+- Generic automation engine (registerable triggers)
+- Sales / Invoice / Delivery helper hooks
+- OWL KPI dashboard
+- Multi-company security and SaaS edition tracking
+
+Higher editions add team inbox, campaigns, REST API, and high-volume tooling.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
+    'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 79.99,
+    'sequence': 45,
     'depends': [
         'base',
         'mail',
@@ -34,17 +46,19 @@ extensible service architecture.
         'security/ir.model.access.csv',
         'data/sequence.xml',
         'data/message_templates.xml',
+        'data/automation_data.xml',
         'data/cron.xml',
         'data/ir_config_parameter.xml',
-        'data/ir_config_parameter.xml',
-        'views/menu.xml',
-        'views/settings_views.xml',
         'views/account_views.xml',
-        'views/message_views.xml',
         'views/template_views.xml',
+        'views/message_views.xml',
+        'views/queue_views.xml',
+        'views/automation_views.xml',
         'views/history_views.xml',
         'views/wizard_views.xml',
         'views/dashboard_views.xml',
+        'views/settings_views.xml',
+        'views/menu.xml',
         'report/message_report.xml',
     ],
     'demo': [
@@ -58,8 +72,8 @@ extensible service architecture.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
     ],
     'installable': True,
     'application': True,

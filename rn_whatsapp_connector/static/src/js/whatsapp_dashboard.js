@@ -10,21 +10,29 @@ export class RnWhatsappDashboard extends Component {
     setup() {
         this.orm = useService("orm");
         this.state = useState({
-            today: 0,
-            delivered: 0,
-            failed: 0,
-            pending: 0,
+            loading: true,
+            cards: {},
+            edition: "professional",
+            updatedAt: "",
         });
         onWillStart(async () => {
-            await this.loadStats();
+            await this.refresh();
         });
     }
 
-    async loadStats() {
-        this.state.today = await this.orm.searchCount("rn.whatsapp.message", []);
-        this.state.delivered = await this.orm.searchCount("rn.whatsapp.message", [["status", "=", "delivered"]]);
-        this.state.failed = await this.orm.searchCount("rn.whatsapp.message", [["status", "=", "failed"]]);
-        this.state.pending = await this.orm.searchCount("rn.whatsapp.message", [["status", "in", ["draft", "queued"]]]);
+    formatNumber(value) {
+        return Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: 1 });
+    }
+
+    async refresh() {
+        this.state.loading = true;
+        const data = await this.orm.call("rn.whatsapp.dashboard.service", "get_dashboard_data", []);
+        Object.assign(this.state, {
+            loading: false,
+            cards: data.cards || {},
+            edition: data.edition || "professional",
+            updatedAt: data.updated_at || "",
+        });
     }
 }
 

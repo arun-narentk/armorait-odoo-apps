@@ -1,45 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-
     <t t-name="rn_whatsapp_connector.Dashboard">
-        <div class="o_rn_whatsapp_dashboard p-4">
-            <h1 class="mb-4">WhatsApp Dashboard</h1>
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <div class="text-muted">Today's Messages</div>
-                            <div class="display-6" t-esc="state.today"/>
-                        </div>
-                    </div>
+        <div class="o_rn_whatsapp_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA WhatsApp</h1>
+                    <div class="text-muted small">Automation Platform | Edition: <t t-esc="state.edition"/></div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <div class="text-muted">Delivered</div>
-                            <div class="display-6 text-success" t-esc="state.delivered"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <div class="text-muted">Failed</div>
-                            <div class="display-6 text-danger" t-esc="state.failed"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <div class="text-muted">Pending</div>
-                            <div class="display-6 text-warning" t-esc="state.pending"/>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
             </div>
-            <p class="text-muted mt-4">Phase 1 dashboard. Charts and provider health arrive in Phase 11.</p>
+            <t t-if="state.loading"><div class="text-muted">Loading KPIs...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Sent</div><div class="value" t-esc="formatNumber(state.cards.sent)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Delivered</div><div class="value" t-esc="formatNumber(state.cards.delivered)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Read</div><div class="value" t-esc="formatNumber(state.cards.read)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Failed</div><div class="value" t-esc="formatNumber(state.cards.failed)"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Queue</div><div class="value" t-esc="formatNumber(state.cards.queue_size)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Today</div><div class="value" t-esc="formatNumber(state.cards.today)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Inbound</div><div class="value" t-esc="formatNumber(state.cards.inbound)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_wa_card"><div class="label">Success %</div><div class="value" t-esc="formatNumber(state.cards.success_rate)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
         </div>
     </t>
-
 </templates>

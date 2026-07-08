@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <menuitem id="menu_rn_whatsapp_root"
               name="WhatsApp"
               web_icon="rn_whatsapp_connector,static/description/icon.png"
@@ -19,11 +18,23 @@
               action="action_rn_whatsapp_message"
               sequence="10"/>
 
+    <menuitem id="menu_rn_whatsapp_queue"
+              name="Queue"
+              parent="menu_rn_whatsapp_root"
+              action="action_rn_whatsapp_queue"
+              sequence="15"/>
+
     <menuitem id="menu_rn_whatsapp_templates"
               name="Templates"
               parent="menu_rn_whatsapp_root"
               action="action_rn_whatsapp_template"
               sequence="20"/>
+
+    <menuitem id="menu_rn_whatsapp_automation"
+              name="Automation"
+              parent="menu_rn_whatsapp_root"
+              action="action_rn_whatsapp_automation"
+              sequence="30"/>
 
     <menuitem id="menu_rn_whatsapp_configuration"
               name="Configuration"
@@ -49,11 +60,16 @@
               action="action_rn_whatsapp_history"
               sequence="30"/>
 
+    <menuitem id="menu_rn_whatsapp_subscriptions"
+              name="Subscriptions"
+              parent="menu_rn_whatsapp_configuration"
+              action="action_rn_whatsapp_subscription"
+              sequence="40"/>
+
     <menuitem id="menu_rn_whatsapp_settings"
               name="Settings"
               parent="menu_rn_whatsapp_configuration"
               action="action_rn_whatsapp_settings"
               sequence="100"
               groups="rn_whatsapp_connector.group_rn_whatsapp_admin"/>
-
 </odoo>

@@ -5,7 +5,7 @@ from odoo import fields, models
 
 
 class RnWhatsappTemplate(models.Model):
-    """Stores provider-backed or local WhatsApp message templates."""
+    """Provider-backed or local WhatsApp message templates."""
 
     _name = 'rn.whatsapp.template'
     _description = 'WhatsApp Template'
@@ -18,6 +18,7 @@ class RnWhatsappTemplate(models.Model):
         string='Account',
         required=True,
         ondelete='cascade',
+        index=True,
     )
     language = fields.Char(default='en')
     body = fields.Text(required=True)
@@ -33,9 +34,12 @@ class RnWhatsappTemplate(models.Model):
         ],
         default='none',
     )
-    variable_ids = fields.Char(string='Variables', help='Comma-separated variable placeholders.')
+    variable_ids = fields.Char(
+        string='Variables',
+        help='Comma-separated variable placeholders, e.g. name,order,amount',
+    )
     approved = fields.Boolean(default=False, tracking=True)
-    provider_template_id = fields.Char(string='Provider Template ID', copy=False)
+    provider_template_id = fields.Char(string='Meta / Provider Template ID', copy=False)
     category = fields.Selection(
         selection=[
             ('marketing', 'Marketing'),
@@ -48,5 +52,6 @@ class RnWhatsappTemplate(models.Model):
         'res.company',
         required=True,
         default=lambda self: self.env.company,
+        index=True,
     )
     active = fields.Boolean(default=True)
