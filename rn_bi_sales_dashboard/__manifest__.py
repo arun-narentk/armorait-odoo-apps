@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ARMORA BI Sales Dashboard',
+    'name': 'Sales Dashboard',
     'version': '19.0.1.0.0',
     'category': 'Sales',
-    'summary': 'Advanced sales analytics, KPIs, charts, targets, and forecasts for Odoo 19',
+    'summary': 'Revenue KPIs, targets, charts, and sales analytics',
     'description': """
 Business Intelligence Sales Dashboard for Odoo 19 Community
 ===========================================================
@@ -58,8 +58,10 @@ bi_* dashboard modules to share patterns with.
         ],
     },
     'images': [
-        'static/description/icon.png',
         'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,
