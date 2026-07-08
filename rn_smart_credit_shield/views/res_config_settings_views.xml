@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_credit_shield" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.smart.credit.shield</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='account']" position="inside">
+                    <block title="Credit Risk (Smart Credit Shield)" name="rn_smart_credit_shield_settings" string="Credit Risk"
+                        help="Weights and score thresholds for partner credit risk (Low / Medium / High / Critical).">
+                        <setting id="rn_smart_credit_shield_weights" string="Risk score weights" company_dependent="1"
+                            help="Weights for the credit risk formula (0–100). They are normalized, so relative values matter.">
+                            <div class="content-group mt16">
+                                <div class="row mt8">
+                                    <label for="credit_risk_weight_overdue" string="Overdue ratio" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_weight_overdue" class="col-lg-2"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="credit_risk_weight_delay" string="Avg delay" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_weight_delay" class="col-lg-2"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="credit_risk_weight_unpaid_count" string="Unpaid count" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_weight_unpaid_count" class="col-lg-2"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="credit_risk_weight_exposure" string="Exposure" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_weight_exposure" class="col-lg-2"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="rn_smart_credit_shield_thresholds" string="Risk level thresholds" company_dependent="1"
+                            help="Score (0–100): Low &lt; Medium &lt; High &lt; Critical. Used for blocking sale orders and warnings.">
+                            <div class="content-group mt16">
+                                <div class="row mt8">
+                                    <label for="credit_risk_threshold_medium" string="Medium (≥)" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_threshold_medium" class="col-lg-2"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="credit_risk_threshold_high" string="High (≥)" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_threshold_high" class="col-lg-2"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="credit_risk_threshold_critical" string="Critical (≥)" class="col-lg-4 o_light_label"/>
+                                    <field name="credit_risk_threshold_critical" class="col-lg-2"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="rn_smart_credit_shield_automation" string="Automation" company_dependent="0"
+                            help="Enable or disable credit blocking and WhatsApp reminders globally.">
+                            <div class="content-group mt16">
+                                <div class="row mt8">
+                                    <label for="enable_auto_block" class="col-lg-4 o_light_label"/>
+                                    <field name="enable_auto_block" class="col-lg-8"/>
+                                </div>
+                                <div class="row mt8">
+                                    <label for="enable_whatsapp_automation" class="col-lg-4 o_light_label"/>
+                                    <field name="enable_whatsapp_automation" class="col-lg-8"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

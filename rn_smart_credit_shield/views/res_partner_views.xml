@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_credit_risk" model="ir.ui.view">
+        <field name="name">res.partner.form.credit.risk</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <page name="internal_notes" position="after">
+                <page string="Credit Risk" name="credit_risk">
+                    <group>
+                        <field name="credit_risk_score" widget="progressbar" options="{'max_value': 100}"/>
+                        <field name="credit_risk_level" widget="badge" decoration-danger="credit_risk_level == 'critical'" decoration-warning="credit_risk_level == 'high'" decoration-info="credit_risk_level == 'medium'"/>
+                        <field name="avg_payment_delay"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_partner_graph_credit_risk" model="ir.ui.view">
+        <field name="name">res.partner.graph.credit.risk</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <graph string="Partners by Risk" type="bar">
+                <field name="credit_risk_level"/>
+                <field name="credit_risk_score" type="measure"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

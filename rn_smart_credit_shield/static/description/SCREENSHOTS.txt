@@ -1,0 +1,20 @@
+SMART CREDIT SHIELD: Screenshots for Odoo Apps
+================================================
+
+Add these files in this folder (static/description/) for the Odoo Apps store listing.
+Recommended size: 876 x 500 pixels (or keep same aspect ratio for consistency).
+
+Filename                    | What to capture
+----------------------------|----------------------------------------------------------
+screenshot_dashboard.png    | Accounting → Credit Control → Dashboard (KPIs + stat button)
+screenshot_partner_risk.png | Contact form, Credit Risk tab (score, level, avg delay)
+screenshot_sale_override.png| Sale order with Credit Override button / wizard open
+screenshot_high_risk_list.png | Credit Control → High-Risk Customers list view
+screenshot_whatsapp_log.png | Credit Control → WhatsApp Logs list view
+screenshot_overdue_invoices.png | Credit Control → Overdue Invoices (with Overdue filter)
+
+Optional:
+icon.png                    | App icon 256x256 (if you prefer PNG; otherwise icon.svg is used)
+
+After adding the images, ensure __manifest__.py includes an 'images' list if your
+publishing workflow requires it (e.g. ['static/description/icon.png', 'static/description/screenshot_dashboard.png', ...]).

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_credit_override_wizard_user,credit.override.wizard.user,rn_smart_credit_shield.model_credit_override_wizard,,1,1,1,1
+access_whatsapp_message_log_user,whatsapp.message.log.user,rn_smart_credit_shield.model_whatsapp_message_log,,1,1,1,1
+access_credit_control_dashboard_user,credit.control.dashboard.user,rn_smart_credit_shield.model_credit_control_dashboard,,1,1,1,1
+access_credit_violation_log_user,credit.violation.log.user,rn_smart_credit_shield.model_credit_violation_log,,1,0,0,0

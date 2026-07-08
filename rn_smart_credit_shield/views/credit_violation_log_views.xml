@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_credit_violation_log_tree" model="ir.ui.view">
+        <field name="name">credit.violation.log.tree</field>
+        <field name="model">credit.violation.log</field>
+        <field name="arch" type="xml">
+            <list string="Credit Violations" create="0" delete="0">
+                <field name="create_date"/>
+                <field name="order_id"/>
+                <field name="partner_id"/>
+                <field name="risk_level" decoration-danger="risk_level == 'critical'" decoration-warning="risk_level == 'high'"/>
+                <field name="blocked_by_system"/>
+                <field name="override_by_id"/>
+                <field name="override_reason"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_credit_violation_log_form" model="ir.ui.view">
+        <field name="name">credit.violation.log.form</field>
+        <field name="model">credit.violation.log</field>
+        <field name="arch" type="xml">
+            <form string="Credit Violation" create="0" delete="0">
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="order_id"/>
+                        <field name="partner_id"/>
+                        <field name="risk_level"/>
+                        <field name="blocked_by_system"/>
+                        <field name="override_by_id"/>
+                        <field name="override_reason" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

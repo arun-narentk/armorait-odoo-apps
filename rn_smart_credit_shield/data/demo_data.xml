@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo partner for credit scenarios -->
+        <record id="res_partner_demo_risky" model="res.partner">
+            <field name="name">Demo Risky Customer</field>
+            <field name="company_type">company</field>
+            <field name="credit_limit">5000</field>
+            <field name="customer_rank">1</field>
+        </record>
+        <!-- Draft SO that can be used to demonstrate blocking / override -->
+        <record id="sale_order_demo_blocked" model="sale.order">
+            <field name="partner_id" ref="res_partner_demo_risky"/>
+            <field name="credit_blocked" eval="True"/>
+            <field name="order_line" eval="[(0, 0, {'product_id': ref('product.product_product_1'), 'product_uom_qty': 1})]"/>
+        </record>
+        <!-- Sample credit violation log (override scenario) -->
+        <record id="credit_violation_log_demo" model="credit.violation.log">
+            <field name="company_id" ref="base.main_company"/>
+            <field name="order_id" ref="sale_order_demo_blocked"/>
+            <field name="risk_level">high</field>
+            <field name="blocked_by_system" eval="False"/>
+            <field name="override_by_id" ref="base.user_root"/>
+            <field name="override_reason">Demo: Manager override for testing.</field>
+        </record>
+        <!-- Sample WhatsApp log entry -->
+        <record id="whatsapp_message_log_demo" model="whatsapp.message.log">
+            <field name="res_model">sale.order</field>
+            <field name="res_id" ref="sale_order_demo_blocked"/>
+            <field name="partner_id" ref="res_partner_demo_risky"/>
+            <field name="state">sent</field>
+            <field name="message_body">Dear Demo Risky Customer, your invoice INV/2024/0001 of 1,500.00 is overdue by 15 days. Please arrange payment. Regards, Accounts Team</field>
+            <field name="retry_count" eval="0"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

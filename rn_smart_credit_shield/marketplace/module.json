@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_smart_credit_shield",
+  "app_name": "Credit Control",
+  "tagline": "Credit limits, risk scoring, and payment reminders",
+  "category_type": "productivity",
+  "price": 49.99,
+  "accent": "#0891b2",
+  "problem": "Sales confirms orders for customers who are already overdue or over credit limit.",
+  "solution": "Credit Control scores partner risk, enforces limits, blocks risky orders, and automates WhatsApp payment reminders.",
+  "benefits": [
+    "Lower bad debt",
+    "Automated risk scoring",
+    "Order blocks with override",
+    "Exposure dashboards",
+    "WhatsApp payment nudges"
+  ],
+  "features": [
+    {
+      "title": "Risk Score",
+      "text": "Weighted score from overdue, delay, and exposure."
+    },
+    {
+      "title": "Credit Limits",
+      "text": "Per-customer limits with manager override."
+    },
+    {
+      "title": "Blocks",
+      "text": "Stop confirm on critical risk partners."
+    },
+    {
+      "title": "Reminders",
+      "text": "WhatsApp and follow-up automation hooks."
+    }
+  ],
+  "workflow": [
+    "Set credit limit",
+    "Score on order",
+    "Block or approve",
+    "Send reminder",
+    "Collect payment"
+  ],
+  "seo_keywords": "Odoo credit control, credit limit, overdue invoices, collections Odoo",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

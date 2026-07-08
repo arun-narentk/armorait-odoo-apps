@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_message_log_tree" model="ir.ui.view">
+        <field name="name">whatsapp.message.log.tree</field>
+        <field name="model">whatsapp.message.log</field>
+        <field name="arch" type="xml">
+            <list string="WhatsApp Message Log" create="0" delete="0">
+                <header>
+                    <button name="action_retry" string="Retry failed" type="object" invisible="state != 'failed'"/>
+                </header>
+                <field name="create_date"/>
+                <field name="res_model"/>
+                <field name="res_id"/>
+                <field name="partner_id"/>
+                <field name="state" decoration-danger="state == 'failed'" decoration-success="state == 'delivered'"/>
+                <field name="retry_count"/>
+                <field name="last_attempt"/>
+                <field name="message_body"/>
+                <field name="failure_reason"/>
+            </list>
+        </field>
+    </record>
+</odoo>

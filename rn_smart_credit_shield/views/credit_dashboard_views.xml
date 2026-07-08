@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_credit_control_dashboard_form" model="ir.ui.view">
+        <field name="name">credit.control.dashboard.form</field>
+        <field name="model">credit.control.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Credit Control Dashboard" create="0" delete="0" class="o_credit_control_dashboard">
+                <sheet>
+                    <field name="company_id" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <!-- KPI cards row -->
+                    <div class="row mt16 mb16">
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="card bg-light border-0 shadow-sm h-100">
+                                <div class="card-body py-3">
+                                    <div class="text-muted small text-uppercase">Total exposure (high/critical)</div>
+                                    <field name="total_exposure" class="fs-4 fw-bold" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="card border-0 shadow-sm h-100" style="border-left: 4px solid #f0ad4e !important;">
+                                <div class="card-body py-3">
+                                    <div class="text-muted small text-uppercase">High-risk customers</div>
+                                    <field name="high_risk_count" class="fs-4 fw-bold" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="card border-0 shadow-sm h-100" style="border-left: 4px solid #d9534f !important;">
+                                <div class="card-body py-3">
+                                    <div class="text-muted small text-uppercase">Critical risk</div>
+                                    <field name="critical_count" class="fs-4 fw-bold" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="card bg-light border-0 shadow-sm h-100">
+                                <div class="card-body py-3">
+                                    <div class="text-muted small text-uppercase">Avg payment delay (days)</div>
+                                    <field name="avg_delay" class="fs-4 fw-bold" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second row: Overdue + Total receivable -->
+                    <div class="row mb16">
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body py-3">
+                                    <span class="text-muted small text-uppercase">Overdue invoices</span>
+                                    <field name="overdue_invoices_count" class="fs-5 fw-bold ms-2" nolabel="1"/>
+                                    <button name="action_overdue_invoices" type="object" class="btn btn-link btn-sm ms-2" string="View"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="card border-0 shadow-sm" style="border-left: 4px solid #d9534f !important;">
+                                <div class="card-body py-3">
+                                    <span class="text-muted small text-uppercase">Overdue &gt; 90 days</span>
+                                    <field name="overdue_90_count" class="fs-5 fw-bold ms-2" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body py-3">
+                                    <span class="text-muted small text-uppercase">Total receivable (all with risk)</span>
+                                    <field name="total_receivable" class="fs-5 fw-bold ms-2" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb16">
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body py-3">
+                                    <span class="text-muted small text-uppercase">Blocked sales orders</span>
+                                    <field name="blocked_so_count" class="fs-5 fw-bold ms-2" nolabel="1"/>
+                                    <button name="action_blocked_so" type="object" class="btn btn-link btn-sm ms-2" string="View"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body py-3">
+                                    <span class="text-muted small text-uppercase">Credit violations this month</span>
+                                    <field name="violations_this_month" class="fs-5 fw-bold ms-2" nolabel="1"/>
+                                    <button name="action_credit_violations" type="object" class="btn btn-link btn-sm ms-2" string="View"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Risk heatmap -->
+                    <div class="mb16">
+                        <h6 class="text-uppercase text-muted mb-2">Risk distribution</h6>
+                        <div class="row g-2">
+                            <div class="col-6 col-md-3">
+                                <div class="card border-0 bg-success bg-opacity-10">
+                                    <div class="card-body py-2 text-center">
+                                        <field name="count_low" class="h5 mb-0 text-success" nolabel="1"/>
+                                        <span class="small text-muted">Low</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="card border-0 bg-info bg-opacity-10">
+                                    <div class="card-body py-2 text-center">
+                                        <field name="count_medium" class="h5 mb-0 text-info" nolabel="1"/>
+                                        <span class="small text-muted">Medium</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="card border-0 bg-warning bg-opacity-10">
+                                    <div class="card-body py-2 text-center">
+                                        <field name="count_high" class="h5 mb-0 text-warning" nolabel="1"/>
+                                        <span class="small text-muted">High</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="card border-0 bg-danger bg-opacity-10">
+                                    <div class="card-body py-2 text-center">
+                                        <field name="count_critical" class="h5 mb-0 text-danger" nolabel="1"/>
+                                        <span class="small text-muted">Critical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Top 10 risky partners -->
+                    <div class="mb16">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-uppercase text-muted mb-0">Top 10 risky partners</h6>
+                            <button name="action_top_10_risky" type="object" class="btn btn-primary btn-sm" string="View all risky"/>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-0">
+                                <field name="top_10_risky_html" nolabel="1" placeholder="No high-risk partners"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stat buttons -->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_partner_high_risk" type="action" class="oe_stat_button" icon="fa-exclamation-triangle">
+                            <field name="high_risk_count" widget="statinfo" string="High-Risk"/>
+                        </button>
+                        <button name="action_partner_risk_graph" type="action" class="oe_stat_button" icon="fa-bar-chart">
+                            <span class="o_stat_text">Risk graph</span>
+                        </button>
+                        <button name="action_overdue_invoices" type="object" class="oe_stat_button" icon="fa-clock-o">
+                            <field name="overdue_invoices_count" widget="statinfo" string="Overdue"/>
+                        </button>
+                        <button name="action_blocked_so" type="object" class="oe_stat_button" icon="fa-ban">
+                            <field name="blocked_so_count" widget="statinfo" string="Blocked SO"/>
+                        </button>
+                        <button name="action_credit_violations" type="object" class="oe_stat_button" icon="fa-list-alt">
+                            <field name="violations_this_month" widget="statinfo" string="Violations"/>
+                        </button>
+                        <button name="action_whatsapp_log" type="object" class="oe_stat_button" icon="fa-whatsapp">
+                            <span class="o_stat_text">WhatsApp log</span>
+                        </button>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_top_10_risky_partners" model="ir.actions.act_window">
+        <field name="name">Top 10 Risky Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('credit_risk_level', 'in', ['high', 'critical']), '|', ('customer_rank', '>', 0), ('supplier_rank', '>', 0)]</field>
+        <field name="context">{'search_default_customer': 1}</field>
+        <field name="limit">10</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No high-risk or critical partners</p>
+        </field>
+    </record>
+
+    <record id="action_partner_high_risk" model="ir.actions.act_window">
+        <field name="name">High-Risk Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('credit_risk_level', 'in', ['high', 'critical']), '|', ('customer_rank', '>', 0), ('supplier_rank', '>', 0)]</field>
+        <field name="context">{'search_default_customer': 1}</field>
+    </record>
+
+    <record id="action_partner_risk_graph" model="ir.actions.act_window">
+        <field name="name">Partners by Risk Level</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">graph,list</field>
+        <field name="view_id" ref="view_partner_graph_credit_risk"/>
+        <field name="domain">[('credit_risk_level', '!=', False), '|', ('customer_rank', '>', 0), ('supplier_rank', '>', 0)]</field>
+        <field name="context">{'search_default_customer': 1}</field>
+    </record>
+
+    <record id="action_account_move_overdue" model="ir.actions.act_window">
+        <field name="name">Overdue Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('move_type', 'in', ['out_invoice', 'out_refund']), ('state', '=', 'posted'), ('payment_state', 'not in', ['paid', 'reversed'])]</field>
+        <field name="context">{'search_default_late': 1}</field>
+    </record>
+
+    <record id="action_whatsapp_message_log" model="ir.actions.act_window">
+        <field name="name">WhatsApp Message Log</field>
+        <field name="res_model">whatsapp.message.log</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_credit_violation_log" model="ir.actions.act_window">
+        <field name="name">Credit Violations</field>
+        <field name="res_model">credit.violation.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No credit violations or overrides recorded</p>
+        </field>
+    </record>
+
+    <record id="action_sale_order_blocked" model="ir.actions.act_window">
+        <field name="name">Blocked Sales Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('credit_blocked', '=', True), ('state', 'not in', ['sale', 'done', 'cancel'])]</field>
+    </record>
+
+    <record id="action_server_open_dashboard" model="ir.actions.server">
+        <field name="name">Credit Control Dashboard</field>
+        <field name="model_id" ref="rn_smart_credit_shield.model_credit_control_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_open_dashboard()</field>
+    </record>
+
+    <menuitem id="menu_credit_control_root"
+        name="Credit Control"
+        parent="account.menu_finance"
+        action="action_server_open_dashboard"
+        sequence="50"/>
+    <menuitem id="menu_credit_control_dashboard"
+        name="Dashboard"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="action_server_open_dashboard"
+        sequence="1"/>
+    <menuitem id="menu_partner_high_risk"
+        name="High-Risk Customers"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="rn_smart_credit_shield.action_partner_high_risk"
+        sequence="10"/>
+    <menuitem id="menu_partner_risk_graph"
+        name="Partners by Risk"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="rn_smart_credit_shield.action_partner_risk_graph"
+        sequence="15"/>
+    <menuitem id="menu_overdue_invoices"
+        name="Overdue Invoices"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="rn_smart_credit_shield.action_account_move_overdue"
+        sequence="20"/>
+    <menuitem id="menu_whatsapp_log"
+        name="WhatsApp Logs"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="rn_smart_credit_shield.action_whatsapp_message_log"
+        sequence="30"/>
+    <menuitem id="menu_credit_violations"
+        name="Credit Violations"
+        parent="rn_smart_credit_shield.menu_credit_control_root"
+        action="rn_smart_credit_shield.action_credit_violation_log"
+        sequence="25"/>
+</odoo>
