@@ -1,0 +1,82 @@
+{
+  "company": "ARMORA IT Technologies",
+  "website": "https://www.armorait.com",
+  "support_email": "info@armorait.com",
+  "copyright": "ARMORA IT Technologies",
+  "primary_color": "#4f46e5",
+  "secondary_color": "#0f172a",
+  "accent_default": "#2563eb",
+  "font_family": "'Segoe UI', system-ui, -apple-system, Arial, Helvetica, sans-serif",
+  "odoo_version": "19",
+  "python_version": "3.12",
+  "license": "OPL-1",
+  "currency": "USD",
+  "default_price": 9.99,
+  "tagline_global": "Production-ready Odoo 19 Community apps by ARMORA IT Technologies",
+  "maturity_points": [
+    "Structured service-layer architecture, not throwaway scripts",
+    "Security groups, access rights, and record rules from day one",
+    "Automated tests and upgrade-safe data files",
+    "Documentation pack included with every commercial module",
+    "Consistent OWL 2 and Bootstrap 5 UI patterns"
+  ],
+  "why_armora": [
+    {
+      "title": "Odoo-native delivery",
+      "text": "We ship on Community standards: ORM, OWL, Bootstrap 5, and clean inheritance. No Enterprise lock-in tricks."
+    },
+    {
+      "title": "Implementation experience",
+      "text": "Built by consultants who roll out ERP, CRM, inventory, HR, and industry packs for real businesses."
+    },
+    {
+      "title": "Long-term maintenance",
+      "text": "Versioned releases, changelog discipline, and support through info@armorait.com."
+    },
+    {
+      "title": "Suite thinking",
+      "text": "Modules share dashboards, connectors, and naming so your stack grows without fragmentation."
+    }
+  ],
+  "purchase_includes": [
+    "Full module source under OPL-1",
+    "README, INSTALL, USER_GUIDE, FAQ, SECURITY, ROADMAP",
+    "Access rights, groups, and record rules",
+    "Demo data where applicable",
+    "Apps Store assets: icon, banner, screenshots, GIFs"
+  ],
+  "activation_steps": [
+    "Purchase and download the module ZIP from the Odoo Apps Store",
+    "Extract into your custom addons path",
+    "Update the Apps list and install the module",
+    "Open Settings and complete the module configuration wizard",
+    "Assign security groups to the right users",
+    "Optional: load demo data for a guided evaluation",
+    "Go live and contact support if you need rollout help"
+  ],
+  "compatibility": {
+    "odoo": "19.0 Community",
+    "python": "3.12+",
+    "database": "PostgreSQL 14+",
+    "ui": "OWL 2, Bootstrap 5",
+    "deployment": "On-premise, Odoo.sh, and Odoo Online (where custom modules are allowed)"
+  },
+  "testimonials_default": [
+    {
+      "quote": "ARMORA modules feel like native Odoo. Our team adopted the dashboards without extra training.",
+      "role": "Operations Manager",
+      "company": "Distribution company, India"
+    },
+    {
+      "quote": "Clean architecture made customization straightforward. Security and multi-company worked out of the box.",
+      "role": "Odoo Technical Lead",
+      "company": "ERP partner"
+    }
+  ],
+  "try_before_buy": {
+    "headline": "Try before you buy",
+    "text": "Request a guided demo or live test on armorait.com. We map your process, show the module on Odoo 19, and answer rollout questions before you purchase.",
+    "cta_label": "Request free consultation",
+    "cta_url": "https://www.armorait.com/contactus"
+  }
+}
