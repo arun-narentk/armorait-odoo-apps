@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="rn_restaurant_settings_default" model="rn.restaurant.settings">
+        <field name="enable_table_management" eval="True"/>
+        <field name="enable_kitchen_stations" eval="True"/>
+        <field name="default_preparation_minutes">12</field>
+    </record>
+    <record id="rn_restaurant_subscription_trial" model="rn.restaurant.subscription">
+        <field name="name">Starter Trial</field>
+        <field name="plan">starter</field>
+        <field name="state">trial</field>
+        <field name="outlet_limit">1</field>
+    </record>
+    <record id="rn_restaurant_demo_main" model="rn.restaurant">
+        <field name="name">ARMORA Demo Cafe</field>
+        <field name="cuisine_type">cafe</field>
+    </record>
+    <record id="rn_restaurant_branch_main" model="rn.restaurant.branch">
+        <field name="name">Main Outlet</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="opens_at">8.0</field>
+        <field name="closes_at">22.0</field>
+    </record>
+    <record id="rn_restaurant_floor_indoor" model="rn.restaurant.floor">
+        <field name="name">Indoor</field>
+        <field name="branch_id" ref="rn_restaurant_branch_main"/>
+    </record>
+    <record id="rn_restaurant_table_1" model="rn.restaurant.table">
+        <field name="name">T1</field>
+        <field name="branch_id" ref="rn_restaurant_branch_main"/>
+        <field name="floor_id" ref="rn_restaurant_floor_indoor"/>
+        <field name="seats">2</field>
+        <field name="state">available</field>
+    </record>
+    <record id="rn_restaurant_table_2" model="rn.restaurant.table">
+        <field name="name">T2</field>
+        <field name="branch_id" ref="rn_restaurant_branch_main"/>
+        <field name="floor_id" ref="rn_restaurant_floor_indoor"/>
+        <field name="seats">4</field>
+        <field name="state">available</field>
+    </record>
+    <record id="rn_restaurant_cat_beverages" model="rn.restaurant.menu.category">
+        <field name="name">Beverages</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="rn_restaurant_cat_snacks" model="rn.restaurant.menu.category">
+        <field name="name">Snacks</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="sequence">20</field>
+    </record>
+    <record id="rn_restaurant_tax_gst5" model="rn.restaurant.tax">
+        <field name="name">GST 5%</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="amount">5.0</field>
+    </record>
+    <record id="rn_restaurant_pay_cash" model="rn.restaurant.payment.method">
+        <field name="name">Cash</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="method_type">cash</field>
+        <field name="opens_drawer" eval="True"/>
+    </record>
+    <record id="rn_restaurant_pay_upi" model="rn.restaurant.payment.method">
+        <field name="name">UPI</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="method_type">upi</field>
+        <field name="is_online" eval="True"/>
+    </record>
+    <record id="rn_restaurant_item_coffee" model="rn.restaurant.menu.item">
+        <field name="name">Filter Coffee</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="category_id" ref="rn_restaurant_cat_beverages"/>
+        <field name="list_price">40</field>
+        <field name="kitchen_station">beverage</field>
+        <field name="is_veg" eval="True"/>
+        <field name="preparation_minutes">5</field>
+        <field name="tax_ids" eval="[(4, ref('rn_restaurant_tax_gst5'))]"/>
+    </record>
+    <record id="rn_restaurant_item_sandwich" model="rn.restaurant.menu.item">
+        <field name="name">Veg Sandwich</field>
+        <field name="restaurant_id" ref="rn_restaurant_demo_main"/>
+        <field name="category_id" ref="rn_restaurant_cat_snacks"/>
+        <field name="list_price">80</field>
+        <field name="kitchen_station">cold</field>
+        <field name="is_veg" eval="True"/>
+        <field name="preparation_minutes">8</field>
+    </record>
+</data>
+</odoo>

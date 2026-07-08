@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_restaurant_core.Dashboard">
+        <div class="o_rn_restaurant_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Restaurant</h1>
+                    <div class="text-muted small">Cloud POS foundation | Edition: <t t-esc="state.edition"/></div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading overview...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Restaurants</div><div class="value" t-esc="formatNumber(state.cards.restaurants)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Branches</div><div class="value" t-esc="formatNumber(state.cards.branches)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Tables Free</div><div class="value" t-esc="formatNumber(state.cards.tables_available)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Tables Busy</div><div class="value" t-esc="formatNumber(state.cards.tables_occupied)"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Menu Items</div><div class="value" t-esc="formatNumber(state.cards.menu_items)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">Out of Stock</div><div class="value" t-esc="formatNumber(state.cards.items_out)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_rst_card"><div class="label">All Tables</div><div class="value" t-esc="formatNumber(state.cards.tables)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3"><t t-esc="state.suiteHint"/> Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

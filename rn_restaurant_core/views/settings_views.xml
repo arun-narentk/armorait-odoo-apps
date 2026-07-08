@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_restaurant_settings" model="ir.actions.act_window">
+        <field name="name">Restaurant Settings</field>
+        <field name="res_model">rn.restaurant.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_restaurant_subscription" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">rn.restaurant.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_res_config_settings_rn_restaurant" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.restaurant</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="ARMORA Restaurant" name="rn_restaurant_core">
+                    <block title="Operations">
+                        <setting string="Default Prep Minutes">
+                            <field name="rn_restaurant_default_prep"/>
+                        </setting>
+                        <setting string="Enable Table Management">
+                            <field name="rn_restaurant_enable_tables"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_restaurant_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module': 'rn_restaurant_core'}</field>
+    </record>
+    <record id="view_rn_restaurant_setup_wizard_form" model="ir.ui.view">
+        <field name="name">rn.restaurant.setup.wizard.form</field>
+        <field name="model">rn.restaurant.setup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Setup Restaurant">
+                <group>
+                    <field name="name"/>
+                    <field name="cuisine_type"/>
+                    <field name="branch_name"/>
+                    <field name="table_count"/>
+                    <field name="seats_per_table"/>
+                    <field name="create_defaults"/>
+                </group>
+                <footer>
+                    <button name="action_setup" type="object" string="Create" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_restaurant_setup_wizard" model="ir.actions.act_window">
+        <field name="name">Setup Wizard</field>
+        <field name="res_model">rn.restaurant.setup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="view_rn_restaurant_export_menu_form" model="ir.ui.view">
+        <field name="name">rn.restaurant.export.menu.wizard.form</field>
+        <field name="model">rn.restaurant.export.menu.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Menu">
+                <group>
+                    <field name="restaurant_id"/>
+                </group>
+                <footer>
+                    <button name="action_export" type="object" string="Export CSV" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_restaurant_export_menu" model="ir.actions.act_window">
+        <field name="name">Export Menu</field>
+        <field name="res_model">rn.restaurant.export.menu.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_restaurant">
+        <field name="name">ARMORA Restaurant</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+    <record id="group_rn_restaurant_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_restaurant"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_restaurant_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_restaurant"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_restaurant_readonly'))]"/>
+    </record>
+    <record id="group_rn_restaurant_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_restaurant"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_restaurant_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_restaurant_company" model="ir.rule">
+        <field name="name">Restaurant multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_branch_company" model="ir.rule">
+        <field name="name">Restaurant Branch multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_branch"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_floor_company" model="ir.rule">
+        <field name="name">Restaurant Floor multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_floor"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_table_company" model="ir.rule">
+        <field name="name">Restaurant Table multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_table"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_menu_category_company" model="ir.rule">
+        <field name="name">Menu Category multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_menu_category"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_menu_item_company" model="ir.rule">
+        <field name="name">Menu Item multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_menu_item"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_tax_company" model="ir.rule">
+        <field name="name">Restaurant Tax multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_tax"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_payment_company" model="ir.rule">
+        <field name="name">Restaurant Payment multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_payment_method"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_settings_company" model="ir.rule">
+        <field name="name">Restaurant Settings multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_restaurant_subscription_company" model="ir.rule">
+        <field name="name">Restaurant Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_restaurant_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

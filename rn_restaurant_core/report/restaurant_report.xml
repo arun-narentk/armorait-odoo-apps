@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_restaurant" model="ir.actions.report">
+        <field name="name">Restaurant Summary</field>
+        <field name="model">rn.restaurant</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_restaurant_core.report_rn_restaurant_document</field>
+        <field name="report_file">rn_restaurant_core.report_rn_restaurant_document</field>
+        <field name="print_report_name">'Restaurant - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_rn_restaurant"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_rn_restaurant_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="doc.name"/>
+                        <p>Code: <t t-esc="doc.code"/> | Cuisine: <t t-esc="doc.cuisine_type"/></p>
+                        <h3>Branches</h3>
+                        <ul>
+                            <t t-foreach="doc.branch_ids" t-as="b">
+                                <li><t t-esc="b.name"/> (<t t-esc="b.code"/>)</li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,12 @@
+.o_rn_restaurant_dashboard {
+  background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
+  min-height: 100%;
+  .o_rn_rst_card {
+    background: #fff;
+    border: 1px solid #fdba74;
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .label { color: #78716c; font-size: 0.8rem; margin-bottom: 0.35rem; }
+  .value { color: #c2410c; font-size: 1.35rem; font-weight: 700; }
+}
