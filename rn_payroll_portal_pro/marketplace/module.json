@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_payroll_portal_pro",
+  "app_name": "Payroll Portal",
+  "tagline": "Employee self-service for payslips, leave, and HR documents",
+  "category_type": "productivity",
+  "price": 49.99,
+  "accent": "#7c3aed",
+  "problem": "HR teams email payslips and answer the same leave questions repeatedly.",
+  "solution": "Payroll Portal gives employees a secure portal for payslips, leave requests, and HR documents synced with Odoo HR.",
+  "benefits": [
+    "Employee payslip downloads",
+    "Leave request workflow",
+    "HR document access",
+    "Mobile-friendly portal",
+    "Role-based security"
+  ],
+  "features": [
+    {
+      "title": "Portal Home",
+      "text": "Dashboard for payslips, leave balance, and requests."
+    },
+    {
+      "title": "Payslip Access",
+      "text": "PDF payslips when HR Payroll is available."
+    },
+    {
+      "title": "Leave Requests",
+      "text": "Submit and track time off from the portal."
+    },
+    {
+      "title": "Access Control",
+      "text": "Portal security separate from backend groups."
+    }
+  ],
+  "workflow": [
+    "Install portal",
+    "Enable employees",
+    "Employee logs in",
+    "Download payslip",
+    "Submit leave"
+  ],
+  "seo_keywords": "Odoo payroll portal, employee self-service, payslip portal, Odoo HR",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

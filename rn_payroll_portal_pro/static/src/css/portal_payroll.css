@@ -1,0 +1,58 @@
+/* Payroll Portal Pro: card-based dashboard and payslip portal */
+
+.o_portal_payroll_dashboard .o_payroll_card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.o_portal_payroll_dashboard .o_payroll_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+.o_payroll_card_gross .card-body { border-left: 4px solid #0d6efd; }
+.o_payroll_card_net .card-body { border-left: 4px solid #198754; }
+.o_payroll_card_ded .card-body { border-left: 4px solid #6c757d; }
+
+/* Monthly payslip card */
+.o_payroll_month_card {
+    transition: box-shadow 0.15s ease;
+}
+.o_payroll_month_card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Circular progress: lightweight CSS-only (Net vs Gross ratio) */
+.o_payroll_progress_circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--o-payroll-progress-color, #198754) calc(var(--o-payroll-pct, 0) * 1%),
+        #e9ecef calc(var(--o-payroll-pct, 0) * 1%)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.o_payroll_progress_circle::before {
+    content: '';
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+}
+.o_payroll_progress_value {
+    position: relative;
+    z-index: 1;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Detail page */
+.o_portal_payroll_detail .card-header.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .o_portal_payroll_dashboard .fs-4 { font-size: 1.25rem !important; }
+}
