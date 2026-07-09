@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_mobile_app_user,rn.mobile.app user,model_rn_mobile_app,group_rn_mobile_platform_user,1,1,1,0
+access_rn_mobile_app_manager,rn.mobile.app manager,model_rn_mobile_app,group_rn_mobile_platform_manager,1,1,1,1
+access_rn_mobile_screen_user,rn.mobile.screen user,model_rn_mobile_screen,group_rn_mobile_platform_user,1,1,1,0
+access_rn_mobile_screen_manager,rn.mobile.screen manager,model_rn_mobile_screen,group_rn_mobile_platform_manager,1,1,1,1
+access_rn_mobile_sync_user,rn.mobile.sync.profile user,model_rn_mobile_sync_profile,group_rn_mobile_platform_user,1,1,1,0
+access_rn_mobile_sync_manager,rn.mobile.sync.profile manager,model_rn_mobile_sync_profile,group_rn_mobile_platform_manager,1,1,1,1
+access_rn_mobile_theme_user,rn.mobile.theme user,model_rn_mobile_theme,group_rn_mobile_platform_user,1,1,1,0
+access_rn_mobile_theme_manager,rn.mobile.theme manager,model_rn_mobile_theme,group_rn_mobile_platform_manager,1,1,1,1

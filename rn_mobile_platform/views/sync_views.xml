@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mobile_sync_tree" model="ir.ui.view"><field name="name">rn.mobile.sync.profile.tree</field><field name="model">rn.mobile.sync.profile</field><field name="arch" type="xml"><list><field name="app_id"/><field name="model_name"/><field name="sync_mode"/><field name="offline_limit"/><field name="conflict_strategy"/></list></field></record>
+    <record id="action_rn_mobile_sync" model="ir.actions.act_window"><field name="name">Sync Profiles</field><field name="res_model">rn.mobile.sync.profile</field><field name="view_mode">list</field></record>
+</odoo>

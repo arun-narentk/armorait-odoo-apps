@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mobile_theme_tree" model="ir.ui.view"><field name="name">rn.mobile.theme.tree</field><field name="model">rn.mobile.theme</field><field name="arch" type="xml"><list><field name="app_id"/><field name="name"/><field name="primary_color"/><field name="secondary_color"/><field name="icon_style"/></list></field></record>
+    <record id="action_rn_mobile_theme" model="ir.actions.act_window"><field name="name">Themes</field><field name="res_model">rn.mobile.theme</field><field name="view_mode">list</field></record>
+</odoo>

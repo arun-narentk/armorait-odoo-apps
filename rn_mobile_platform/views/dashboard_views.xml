@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><record id="action_rn_mobile_dashboard" model="ir.actions.client"><field name="name">Mobile Platform Dashboard</field><field name="tag">rn_mobile_platform.dashboard</field></record></odoo>
