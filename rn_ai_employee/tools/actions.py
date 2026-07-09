@@ -17,6 +17,8 @@ from .result import error_result, write_result
 class CreateQuotationTool(BaseAITool):
     name = 'create_quotation'
     description = 'Create a draft sales quotation for a customer and product with quantity.'
+    is_write_tool = True
+    requires_confirmation = True
 
     def get_parameters_schema(self) -> dict[str, Any]:
         return {
@@ -100,6 +102,8 @@ class CreateQuotationTool(BaseAITool):
 class SendPaymentRemindersTool(BaseAITool):
     name = 'send_payment_reminders'
     description = 'Send payment reminder emails for overdue customer invoices.'
+    is_write_tool = True
+    requires_confirmation = True
 
     def get_parameters_schema(self) -> dict[str, Any]:
         return {
@@ -126,12 +130,16 @@ class SendPaymentRemindersTool(BaseAITool):
         Move.check_access('read')
         Mail.check_access('create')
 
-        invoices = Move.search([
+        domain = [
             ('move_type', '=', 'out_invoice'),
             ('state', '=', 'posted'),
             ('payment_state', 'in', ('not_paid', 'partial')),
             ('invoice_date_due', '<=', cutoff),
-        ], limit=limit, order='invoice_date_due asc')
+        ]
+        record_ids = arguments.get('record_ids') or []
+        if record_ids:
+            domain.append(('id', 'in', record_ids))
+        invoices = Move.search(domain, limit=limit, order='invoice_date_due asc')
 
         sent = 0
         skipped = 0

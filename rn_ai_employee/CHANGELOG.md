@@ -1,5 +1,14 @@
 # Changelog
 
+## 19.0.4.0.0
+- Rebrand product to **AI Copilot for Odoo** (enterprise intelligence layer)
+- Phase 3: session memory for follow-up questions
+- Phase 3: write confirmation gates and audit log
+- Phase 3: new skills (RFQ, activities, partner email, PO confirm, stock reserve, morning briefing)
+- Phase 3: proactive morning briefing cron for managers
+- Architecture documentation in `docs/architecture.md`
+- Add Purchase dependency for RFQ and PO skills
+
 ## 19.0.3.1.0
 - Refresh Apps Store description for Phase 2: LLM routing, write tools, systray widget
 

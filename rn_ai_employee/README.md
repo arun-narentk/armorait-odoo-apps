@@ -1,12 +1,12 @@
-# AI Employee
+# AI Copilot for Odoo
 
-Ask Odoo anything. Get answers and actions from an AI assistant that reads live business data.
+Technical name: `rn_ai_employee`. The enterprise intelligence layer for your Odoo ERP.
 
 ## Business problem
 Users waste time clicking through menus to find data, run reports, or complete routine tasks.
 
 ## Solution
-AI Employee is an Odoo-native assistant that understands intent, calls registered tools, and returns answers with optional actions on CRM, sales, stock, and accounting.
+AI Copilot routes questions to registered skills, remembers session context, confirms write actions, and audits every execution across CRM, sales, stock, accounting, and purchase.
 
 ## Key benefits
 - Natural language queries

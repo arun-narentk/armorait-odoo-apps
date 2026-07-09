@@ -24,6 +24,24 @@ class AiEmployeeIntent(models.AbstractModel):
         {'tool': 'create_quotation', 'priority': 98, 'phrases': (
             'create quotation', 'create quote', 'quotation for', 'quote for',
         )},
+        {'tool': 'send_partner_email', 'priority': 97, 'phrases': (
+            'email customer', 'email partner', 'send email to', 'email them', 'email those',
+        )},
+        {'tool': 'schedule_activity', 'priority': 96, 'phrases': (
+            'schedule activity', 'create activity', 'follow up activity', 'follow-up activity',
+        )},
+        {'tool': 'create_rfq', 'priority': 95, 'phrases': (
+            'create rfq', 'purchase rfq', 'request for quotation', 'vendor quote',
+        )},
+        {'tool': 'confirm_purchase_order', 'priority': 94, 'phrases': (
+            'approve purchase', 'confirm purchase', 'approve po', 'confirm po',
+        )},
+        {'tool': 'reserve_stock', 'priority': 93, 'phrases': (
+            'reserve stock', 'hold stock', 'block stock',
+        )},
+        {'tool': 'morning_briefing', 'priority': 92, 'phrases': (
+            'morning briefing', 'daily briefing', 'executive briefing', 'good morning',
+        )},
         {'tool': 'today_sales', 'priority': 95, 'phrases': (
             "today's sales", 'todays sales', 'sales today', 'today sales', 'show today sales',
         )},

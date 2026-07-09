@@ -6,11 +6,19 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
-                <app string="AI Employee" name="rn_ai_employee" groups="rn_ai_employee.group_rn_ai_employee_manager">
-                    <block title="AI Employee">
-                        <setting string="Enable AI Employee"
-                                 help="Turn on the business assistant for sales, accounting, inventory, and CRM insights.">
+                <app string="AI Copilot" name="rn_ai_employee" groups="rn_ai_employee.group_rn_ai_employee_manager">
+                    <block title="AI Copilot Platform">
+                        <setting string="Enable AI Copilot"
+                                 help="Turn on the enterprise intelligence layer for sales, finance, inventory, CRM, and purchase.">
                             <field name="rn_ai_employee_enabled"/>
+                        </setting>
+                        <setting string="Require write confirmation"
+                                 help="Sensitive skills ask for explicit confirmation before changing live data.">
+                            <field name="rn_ai_employee_require_write_confirmation"/>
+                        </setting>
+                        <setting string="Morning briefing"
+                                 help="Send a proactive executive briefing to managers each morning.">
+                            <field name="rn_ai_employee_morning_briefing_enabled"/>
                         </setting>
                         <setting string="Provider"
                                  help="External AI provider configuration.">

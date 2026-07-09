@@ -7,7 +7,7 @@
 
 ## Steps
 1. Copy the module into your addons path.
-2. Update the apps list and install **AI Employee**.
+2. Update the apps list and install **AI Copilot for Odoo**.
 3. Open **Settings** and complete module configuration.
 4. Assign the relevant security groups to users.
 5. Optional: enable demo data for evaluation.
