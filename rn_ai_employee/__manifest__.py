@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Employee',
-    'version': '19.0.3.0.0',
+    'version': '19.0.3.1.0',
     'category': 'Productivity',
-    'summary': 'AI assistant for Odoo: ask business questions and get answers from live data',
+    'summary': 'AI assistant for Odoo: analytics, LLM routing, quotations, reminders, systray chat',
     'description': """
 AI Employee for Odoo 19
 =======================
@@ -11,17 +11,16 @@ AI Employee for Odoo 19
 Ask everyday business questions in plain language and get answers from live Odoo data.
 
 **Key points**
-* Suggested questions for managers
-* Analytics across Sales, Accounting, Inventory, and CRM
-* Action cards: Open List and Create Activity
+* 20+ analytics and action tools across Sales, Accounting, Inventory, and CRM
+* OpenAI-compatible LLM routing with rules fallback
+* Backend systray chat widget
+* Guided write tools: create quotation, send payment reminders
+* Action cards: Open List, Open Record, Create Activity
 * Permission-aware ORM tools
 * Community, Enterprise, and Odoo.sh compatible
 
 **Self-service**
 Install, enable, and use it in your own Odoo environment.
-
-Phase 1 focuses on analytics (read-only). Phase 2 adds LLM routing, write tools,
-and the backend systray chat widget.
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
