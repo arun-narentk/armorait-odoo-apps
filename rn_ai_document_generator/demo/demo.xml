@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_ai_doc" model="rn.ai.document">
+<field name="type_id" ref="rn_ai_doc_type_quotation"/>
+<field name="template_id" ref="rn_ai_doc_tpl_quotation"/>
+<field name="subject">Demo Quotation Letter</field>
+<field name="state">draft</field>
+<field name="language">en</field>
+<field name="style">corporate</field>
+</record>
+</data></odoo>

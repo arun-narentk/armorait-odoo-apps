@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_whatsapp_reminder_user,whatsapp.reminder.user,rn_whatsapp_integration.model_whatsapp_reminder,account.group_account_invoice,1,1,1,1
+access_whatsapp_reminder_manager,whatsapp.reminder.manager,rn_whatsapp_integration.model_whatsapp_reminder,account.group_account_manager,1,1,1,1

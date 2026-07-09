@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_ai_document_generator.Dashboard">
+        <div class="o_rn_ai_doc_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Document Automation</h1>
+                    <div class="text-muted small">AI-assisted documents | Edition: <t t-esc="state.edition"/></div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Generated</div><div class="value" t-esc="formatNumber(state.cards.generated)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Pending Approval</div><div class="value" t-esc="formatNumber(state.cards.pending_approval)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Signed</div><div class="value" t-esc="formatNumber(state.cards.signed)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Final</div><div class="value" t-esc="formatNumber(state.cards.final)"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Draft</div><div class="value" t-esc="formatNumber(state.cards.draft)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Templates</div><div class="value" t-esc="formatNumber(state.cards.templates)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_doc_card"><div class="label">Document Types</div><div class="value" t-esc="formatNumber(state.cards.types)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

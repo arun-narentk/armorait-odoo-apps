@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hms_appointment_list" model="ir.ui.view">
+        <field name="name">rn.hms.appointment.list</field>
+        <field name="model">rn.hms.appointment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="token_number"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="department_id"/>
+                <field name="start_datetime"/>
+                <field name="appointment_type"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hms_appointment_form" model="ir.ui.view">
+        <field name="name">rn.hms.appointment.form</field>
+        <field name="model">rn.hms.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_start_consult" type="object" string="Start Consult" invisible="state not in ('confirmed', 'waiting')"/>
+                    <button name="action_done" type="object" string="Done" invisible="state != 'in_consult'"/>
+                    <button name="action_no_show" type="object" string="No Show" invisible="state not in ('confirmed', 'waiting')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('cancel', 'done')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,waiting,in_consult,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="token_number"/>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                            <field name="department_id"/>
+                            <field name="appointment_type"/>
+                        </group>
+                        <group>
+                            <field name="start_datetime"/>
+                            <field name="stop_datetime"/>
+                            <field name="fee"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="calendar_event_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="chief_complaint"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_hms_appointment_calendar" model="ir.ui.view">
+        <field name="name">rn.hms.appointment.calendar</field>
+        <field name="model">rn.hms.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="start_datetime" date_stop="stop_datetime" color="doctor_id" mode="week">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="token_number"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="action_rn_hms_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">rn.hms.appointment</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+    <record id="view_rn_hms_quick_appointment_wizard_form" model="ir.ui.view">
+        <field name="name">rn.hms.quick.appointment.wizard.form</field>
+        <field name="model">rn.hms.quick.appointment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Appointment">
+                <group>
+                    <field name="patient_id"/>
+                    <field name="doctor_id"/>
+                    <field name="department_id"/>
+                    <field name="start_datetime"/>
+                    <field name="appointment_type"/>
+                    <field name="chief_complaint"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Create" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hms_quick_appointment_wizard" model="ir.actions.act_window">
+        <field name="name">Quick Appointment</field>
+        <field name="res_model">rn.hms.quick.appointment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

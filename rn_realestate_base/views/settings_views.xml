@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_realestate_settings_list" model="ir.ui.view">
+        <field name="name">rn.realestate.settings.list</field>
+        <field name="model">rn.realestate.settings</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="default_developer_id"/>
+                <field name="developer_label"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_settings_form" model="ir.ui.view">
+        <field name="name">rn.realestate.settings.form</field>
+        <field name="model">rn.realestate.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                            <field name="default_developer_id"/>
+                            <field name="developer_label"/>
+                            <field name="token_amount_default"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="enable_portal"/>
+                            <field name="enable_whatsapp"/>
+                            <field name="enable_site_visit"/>
+                            <field name="enable_commission"/>
+                            <field name="booking_prefix"/>
+                            <field name="receipt_prefix"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_settings" model="ir.actions.act_window">
+        <field name="name">Real Estate Settings</field>
+        <field name="res_model">rn.realestate.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_realestate_subscription_list" model="ir.ui.view">
+        <field name="name">rn.realestate.subscription.list</field>
+        <field name="model">rn.realestate.subscription</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="developer_id"/>
+                <field name="plan"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="monthly_fee"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_subscription_form" model="ir.ui.view">
+        <field name="name">rn.realestate.subscription.form</field>
+        <field name="model">rn.realestate.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="developer_id"/>
+                            <field name="plan"/>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="monthly_fee"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="max_projects"/>
+                            <field name="max_users"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_subscription" model="ir.actions.act_window">
+        <field name="name">SaaS Subscriptions</field>
+        <field name="res_model">rn.realestate.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_config_settings_view_form_rn_realestate" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.realestate</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Real Estate" name="rn_realestate_base">
+                    <block title="Builder Defaults">
+                        <setting string="Default Developer">
+                            <field name="realestate_default_developer_id"/>
+                        </setting>
+                        <setting string="Developer Label">
+                            <field name="realestate_developer_label"/>
+                        </setting>
+                        <setting string="Customer Portal">
+                            <field name="realestate_enable_portal"/>
+                        </setting>
+                        <setting string="Commission Module">
+                            <field name="realestate_enable_commission"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_realestate_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'rn_realestate_base'}</field>
+    </record>
+</odoo>

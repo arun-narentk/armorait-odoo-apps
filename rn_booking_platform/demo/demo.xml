@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_booking_location" model="rn.booking.location">
+<field name="name">Main Branch</field>
+<field name="code">MAIN</field>
+<field name="industry_id" ref="industry_clinic"/>
+<field name="timezone">UTC</field>
+</record>
+<record id="demo_rn_booking_staff" model="rn.booking.staff">
+<field name="name">Demo Provider</field>
+<field name="industry_id" ref="industry_clinic"/>
+<field name="timezone">UTC</field>
+</record>
+<record id="demo_rn_booking_service" model="rn.booking.service">
+<field name="name">General Consultation</field>
+<field name="industry_id" ref="industry_clinic"/>
+<field name="duration_minutes">30</field>
+<field name="list_price">49.0</field>
+</record>
+<record id="demo_rn_booking_hour_mon" model="rn.booking.working.hour">
+<field name="staff_id" ref="demo_rn_booking_staff"/>
+<field name="dayofweek">0</field>
+<field name="hour_from">9.0</field>
+<field name="hour_to">17.0</field>
+</record>
+</data></odoo>

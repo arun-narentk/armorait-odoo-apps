@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="mail_template_rn_crm_followup" model="mail.template">
+<field name="name">CRM Ultimate: Follow-up Reminder</field>
+<field name="model_id" ref="crm.model_crm_lead"/>
+<field name="subject">Follow-up reminder for {{ object.name }}</field>
+<field name="body_html" type="html"><p>Please follow up on this opportunity.</p></field>
+</record>
+</data></odoo>

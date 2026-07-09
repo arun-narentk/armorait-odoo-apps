@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_gst_validation_list" model="ir.ui.view">
+        <field name="name">rn.gst.validation.list</field>
+        <field name="model">rn.gst.validation</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="severity in ('error', 'critical')" decoration-warning="severity == 'warning'">
+                <field name="name"/>
+                <field name="return_id"/>
+                <field name="issue_type"/>
+                <field name="severity"/>
+                <field name="state"/>
+                <field name="partner_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_gst_validation" model="ir.actions.act_window">
+        <field name="name">Validation Issues</field>
+        <field name="res_model">rn.gst.validation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

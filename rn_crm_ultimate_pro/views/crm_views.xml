@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_crm_lead_form_rn_ultimate" model="ir.ui.view">
+        <field name="name">crm.lead.form.rn.ultimate</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_rn_recompute_score" type="object" class="oe_stat_button" icon="fa-star">
+                    <field name="rn_lead_score" widget="statinfo" string="Score"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="before">
+                <group string="CRM Ultimate Pro">
+                    <group>
+                        <field name="rn_score_badge"/>
+                        <field name="rn_risk_level"/>
+                        <field name="rn_stage_age_days"/>
+                        <field name="rn_enriched"/>
+                    </group>
+                    <group>
+                        <field name="rn_prediction_id"/>
+                        <field name="rn_stage_entered_at"/>
+                        <button name="action_rn_detect_duplicates" type="object" string="Find Duplicates" class="btn-secondary"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_list_rn_ultimate" model="ir.ui.view">
+        <field name="name">crm.lead.list.rn.ultimate</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="rn_lead_score" optional="show"/>
+                <field name="rn_score_badge" optional="show"/>
+                <field name="rn_risk_level" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

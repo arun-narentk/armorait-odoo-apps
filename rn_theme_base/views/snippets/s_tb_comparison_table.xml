@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_comparison_table" name="Comparison Table">
+    <section class="s_tb_comparison_table tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_comparison_table">
+        <div class="container table-responsive tb-reveal">
+            <table class="table table-bordered text-center"><thead><tr><th>Feature</th><th>Basic</th><th>Pro</th><th>Enterprise</th></tr></thead>
+            <tbody><tr><td>Snippets</td><td>10</td><td>25</td><td>40+</td></tr><tr><td>Support</td><td>Email</td><td>Priority</td><td>Dedicated</td></tr></tbody></table>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

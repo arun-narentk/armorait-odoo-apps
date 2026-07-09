@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hms_settings_form" model="ir.ui.view">
+        <field name="name">rn.hms.settings.form</field>
+        <field name="model">rn.hms.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="patient_code_prefix"/>
+                        <field name="default_slot_minutes"/>
+                        <field name="enable_token"/>
+                        <field name="enable_email"/>
+                        <field name="enable_sms"/>
+                        <field name="enable_whatsapp"/>
+                        <field name="timezone"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hms_settings" model="ir.actions.act_window">
+        <field name="name">Hospital Settings</field>
+        <field name="res_model">rn.hms.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_hms_subscription" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">rn.hms.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_hms" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.hms</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="ARMORA Hospital ERP" name="rn_hms_core" groups="rn_hms_core.group_rn_hms_manager">
+                    <block title="General">
+                        <setting string="Enable Hospital ERP"><field name="rn_hms_enabled"/></setting>
+                        <setting string="Patient Code Prefix"><field name="rn_hms_patient_prefix"/></setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_hms_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_hms_core'}</field>
+    </record>
+</odoo>

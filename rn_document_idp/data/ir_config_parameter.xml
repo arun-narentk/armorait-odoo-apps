@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_document_idp_enabled" model="ir.config_parameter">
+        <field name="key">rn_document_idp.enabled</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

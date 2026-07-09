@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_realestate_lead_list" model="ir.ui.view">
+        <field name="name">rn.realestate.lead.list</field>
+        <field name="model">rn.realestate.lead</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="stage == 'lost'" decoration-success="stage == 'booked'">
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="developer_id"/>
+                <field name="phone"/>
+                <field name="lead_source"/>
+                <field name="stage"/>
+                <field name="property_type"/>
+                <field name="budget_max"/>
+                <field name="user_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_lead_form" model="ir.ui.view">
+        <field name="name">rn.realestate.lead.form</field>
+        <field name="model">rn.realestate.lead</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_contact" type="object" string="Contacted" invisible="stage != 'new'"/>
+                    <button name="action_qualify" type="object" string="Qualify" invisible="stage not in ('new', 'contacted')"/>
+                    <button name="action_site_visit" type="object" string="Site Visit" invisible="stage not in ('contacted', 'qualified')"/>
+                    <button name="action_negotiate" type="object" string="Negotiate" invisible="stage not in ('qualified', 'site_visit')"/>
+                    <button name="action_book" type="object" string="Booked" class="btn-primary" invisible="stage not in ('negotiation', 'site_visit')"/>
+                    <button name="action_lost" type="object" string="Lost" invisible="stage in ('booked', 'lost')"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="new,contacted,qualified,site_visit,negotiation,booked"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference" readonly="1"/>
+                            <field name="name"/>
+                            <field name="developer_id"/>
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="lead_source"/>
+                        </group>
+                        <group>
+                            <field name="property_type"/>
+                            <field name="preferred_location"/>
+                            <field name="budget_min"/>
+                            <field name="budget_max"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="project_id"/>
+                            <field name="unit_id"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_lead" model="ir.actions.act_window">
+        <field name="name">Leads</field>
+        <field name="res_model">rn.realestate.lead</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_cloud_backup_tree" model="ir.ui.view"><field name="name">rn.cloud.backup.tree</field><field name="model">rn.cloud.backup</field><field name="arch" type="xml"><list><field name="instance_id"/><field name="backup_date"/><field name="backup_type"/><field name="size_mb"/><field name="restore_state" widget="badge"/></list></field></record>
+    <record id="action_rn_cloud_backup" model="ir.actions.act_window"><field name="name">Backups</field><field name="res_model">rn.cloud.backup</field><field name="view_mode">list</field></record>
+</odoo>

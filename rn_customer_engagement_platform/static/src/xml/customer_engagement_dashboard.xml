@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_customer_engagement_platform.Dashboard">
+        <div class="o_rn_customer_engagement_dashboard o_action p-3">
+            <h2>Customer Engagement Platform</h2>
+            <div t-if="state.loading" class="text-muted">Loading engagement metrics...</div>
+            <div t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Channels</div><h3 t-esc="state.data.channels"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Authenticated</div><h3 t-esc="state.data.authenticated_sessions"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Active Conversations</div><h3 t-esc="state.data.active_conversations"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Open Escalations</div><h3 t-esc="state.data.open_escalations"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Knowledge Articles</div><h3 t-esc="state.data.knowledge_articles"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6"><div class="card p-3"><h5>Channel Mix</h5><div t-if="state.data.channel_mix.length" class="list-group list-group-flush"><div class="list-group-item" t-foreach="state.data.channel_mix" t-as="item" t-key="item.id"><strong t-esc="item.name"/> - <t t-esc="item.type"/> - <t t-esc="item.auth"/></div></div><div t-else="" class="text-muted">No channels yet.</div></div></div>
+                    <div class="col-lg-6"><div class="card p-3"><h5>Recent Escalations</h5><div t-if="state.data.recent_escalations.length" class="list-group list-group-flush"><div class="list-group-item" t-foreach="state.data.recent_escalations" t-as="item" t-key="item.id"><strong t-esc="item.name"/> - <t t-esc="item.category"/> - <t t-esc="item.state"/><div class="small" t-esc="item.summary"/></div></div><div t-else="" class="text-muted">No escalations yet.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

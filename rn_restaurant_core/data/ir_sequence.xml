@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_restaurant" model="ir.sequence">
+        <field name="name">Restaurant</field>
+        <field name="code">rn.restaurant</field>
+        <field name="prefix">RST-</field>
+        <field name="padding">3</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_restaurant_branch" model="ir.sequence">
+        <field name="name">Restaurant Branch</field>
+        <field name="code">rn.restaurant.branch</field>
+        <field name="prefix">BR-</field>
+        <field name="padding">3</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_restaurant_table" model="ir.sequence">
+        <field name="name">Restaurant Table</field>
+        <field name="code">rn.restaurant.table</field>
+        <field name="prefix">T-</field>
+        <field name="padding">3</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_restaurant_menu_item" model="ir.sequence">
+        <field name="name">Restaurant Menu Item</field>
+        <field name="code">rn.restaurant.menu.item</field>
+        <field name="prefix">MI-</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

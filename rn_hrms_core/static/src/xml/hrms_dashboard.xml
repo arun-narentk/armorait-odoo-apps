@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_hrms_core.Dashboard">
+        <div class="o_rn_hrms_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA HRMS</h1>
+                    <div class="text-muted small">Modern HR &amp; Payroll Platform for SMBs</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Employees</div><div class="value" t-esc="state.cards.employee_count || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Departments</div><div class="value" t-esc="state.cards.departments || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Pending Approvals</div><div class="value" t-esc="state.cards.pending_approvals || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Announcements</div><div class="value" t-esc="state.cards.announcements || 0"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">New Hires (Month)</div><div class="value" t-esc="state.cards.new_hires || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Present Today</div><div class="value" t-esc="state.cards.present_today || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Open Vacancies</div><div class="value" t-esc="state.cards.open_vacancies || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_hrms_card"><div class="label">Payroll Cost</div><div class="value" t-esc="formatNumber(state.cards.payroll_cost)"/></div></div>
+                </div>
+                <div class="text-muted small mt-3">Attendance, leave, and payroll KPIs fill in when companion modules are installed. Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

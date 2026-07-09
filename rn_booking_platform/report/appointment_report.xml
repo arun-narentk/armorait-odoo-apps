@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_booking_appointment" model="ir.actions.report">
+        <field name="name">Appointment Confirmation</field>
+        <field name="model">rn.booking.appointment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_booking_platform.report_appointment_document</field>
+        <field name="report_file">rn_booking_platform.report_appointment_document</field>
+        <field name="binding_model_id" ref="model_rn_booking_appointment"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_appointment_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Appointment Confirmation</h2>
+                    <p><strong>Reference:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Customer:</strong> <span t-field="doc.partner_id"/></p>
+                    <p><strong>Service:</strong> <span t-field="doc.service_id"/></p>
+                    <p><strong>Staff:</strong> <span t-field="doc.staff_id"/></p>
+                    <p><strong>Start:</strong> <span t-field="doc.start_datetime"/></p>
+                    <p><strong>End:</strong> <span t-field="doc.stop_datetime"/></p>
+                    <p><strong>Status:</strong> <span t-field="doc.state"/></p>
+                    <p class="mt-4">ARMORA IT Technologies | https://www.armorait.com | info@armorait.com</p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="assistant_employee_ai" model="rn.conversational.erp.assistant">
+        <field name="name">Employee AI</field>
+        <field name="assistant_scope">employee</field>
+        <field name="keyword_hint">leave,attendance,holiday,policy</field>
+        <field name="welcome_message">I can help with leave, attendance, approvals, and internal requests.</field>
+    </record>
+    <record id="assistant_executive_ai" model="rn.conversational.erp.assistant">
+        <field name="name">Executive AI</field>
+        <field name="assistant_scope">executive</field>
+        <field name="keyword_hint">sales,cash,revenue,collection,approvals</field>
+        <field name="welcome_message">I can summarize sales, collections, risks, and urgent approvals.</field>
+        <field name="sensitive_actions" eval="True"/>
+    </record>
+    <record id="assistant_inventory_ai" model="rn.conversational.erp.assistant">
+        <field name="name">Inventory AI</field>
+        <field name="assistant_scope">inventory</field>
+        <field name="keyword_hint">stock,inventory,warehouse,reserved,incoming</field>
+        <field name="welcome_message">I can help with stock checks, incoming transfers, and warehouse visibility.</field>
+    </record>
+</odoo>

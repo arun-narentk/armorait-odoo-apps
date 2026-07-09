@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_ai_doc_root"
+              name="AI Documents"
+              web_icon="rn_ai_document_generator,static/description/icon.png"
+              groups="rn_ai_document_generator.group_rn_ai_doc_user"
+              sequence="42"/>
+    <menuitem id="menu_rn_ai_doc_dashboard" name="Dashboard" parent="menu_rn_ai_doc_root" action="action_rn_ai_doc_dashboard" sequence="1"/>
+    <menuitem id="menu_rn_ai_doc_ops" name="Operations" parent="menu_rn_ai_doc_root" sequence="10"/>
+    <menuitem id="menu_rn_ai_doc_generate" name="Generate Document" parent="menu_rn_ai_doc_ops" action="action_rn_ai_doc_generate" sequence="5"/>
+    <menuitem id="menu_rn_ai_doc_documents" name="Documents" parent="menu_rn_ai_doc_ops" action="action_rn_ai_document" sequence="10"/>
+    <menuitem id="menu_rn_ai_doc_approvals" name="Approvals" parent="menu_rn_ai_doc_ops" action="action_rn_ai_doc_approval" sequence="20"/>
+    <menuitem id="menu_rn_ai_doc_versions" name="Versions" parent="menu_rn_ai_doc_ops" action="action_rn_ai_doc_version" sequence="30"/>
+    <menuitem id="menu_rn_ai_doc_export" name="Export" parent="menu_rn_ai_doc_ops" action="action_rn_ai_doc_export" sequence="40"/>
+    <menuitem id="menu_rn_ai_doc_catalog" name="Catalog" parent="menu_rn_ai_doc_root" sequence="20"/>
+    <menuitem id="menu_rn_ai_doc_templates" name="Templates" parent="menu_rn_ai_doc_catalog" action="action_rn_ai_doc_template" sequence="10"/>
+    <menuitem id="menu_rn_ai_doc_types" name="Document Types" parent="menu_rn_ai_doc_catalog" action="action_rn_ai_doc_type" sequence="20"/>
+    <menuitem id="menu_rn_ai_doc_config" name="Configuration" parent="menu_rn_ai_doc_root" groups="rn_ai_document_generator.group_rn_ai_doc_manager" sequence="90"/>
+    <menuitem id="menu_rn_ai_doc_settings" name="Document Settings" parent="menu_rn_ai_doc_config" action="action_rn_ai_doc_settings" sequence="10"/>
+    <menuitem id="menu_rn_ai_doc_subscriptions" name="Subscriptions" parent="menu_rn_ai_doc_config" action="action_rn_ai_doc_subscription" sequence="20"/>
+    <menuitem id="menu_rn_ai_doc_config_settings" name="Settings" parent="menu_rn_ai_doc_config" action="action_rn_ai_doc_config_settings" sequence="100"/>
+</odoo>

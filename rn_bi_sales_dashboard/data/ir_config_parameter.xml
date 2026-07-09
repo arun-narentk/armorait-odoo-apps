@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_bi_enabled" model="ir.config_parameter">
+<field name="key">rn_bi_sales_dashboard.enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_bi_refresh" model="ir.config_parameter">
+<field name="key">rn_bi_sales_dashboard.refresh_interval</field><field name="value">300</field>
+</record>
+<record id="param_rn_bi_cache" model="ir.config_parameter">
+<field name="key">rn_bi_sales_dashboard.cache_ttl</field><field name="value">120</field>
+</record>
+</data></odoo>

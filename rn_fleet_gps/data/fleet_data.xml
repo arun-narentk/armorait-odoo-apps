@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="rn_fleet_settings_default" model="rn.fleet.settings">
+        <field name="overspeed_limit">80</field>
+        <field name="offline_minutes">10</field>
+        <field name="map_provider">leaflet</field>
+        <field name="auto_close_trip_idle_minutes">20</field>
+        <field name="enable_geofence_alerts" eval="True"/>
+    </record>
+    <record id="rn_fleet_subscription_trial" model="rn.fleet.subscription">
+        <field name="name">Fleet GPS Trial</field>
+        <field name="plan">base</field>
+        <field name="state">trial</field>
+        <field name="vehicle_limit">25</field>
+    </record>
+    <record id="rn_fleet_geofence_hq" model="rn.fleet.geofence">
+        <field name="name">HQ Warehouse</field>
+        <field name="zone_type">warehouse</field>
+        <field name="latitude">11.0168</field>
+        <field name="longitude">76.9558</field>
+        <field name="radius_m">300</field>
+    </record>
+</data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_crm_scoring" model="ir.config_parameter">
+<field name="key">rn_crm_ultimate_pro.scoring_enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_crm_dup" model="ir.config_parameter">
+<field name="key">rn_crm_ultimate_pro.duplicate_sensitivity</field><field name="value">balanced</field>
+</record>
+<record id="param_rn_crm_pred" model="ir.config_parameter">
+<field name="key">rn_crm_ultimate_pro.prediction_provider</field><field name="value">rule_engine</field>
+</record>
+<record id="param_rn_crm_rr" model="ir.config_parameter">
+<field name="key">rn_crm_ultimate_pro.round_robin</field><field name="value">False</field>
+</record>
+</data></odoo>

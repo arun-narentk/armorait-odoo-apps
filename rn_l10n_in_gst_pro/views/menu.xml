@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_gst_root"
+              name="GST Pro"
+              web_icon="rn_l10n_in_gst_pro,static/description/icon.png"
+              groups="rn_l10n_in_gst_pro.group_rn_gst_accountant"
+              sequence="47"/>
+
+    <menuitem id="menu_rn_gst_dashboard"
+              name="Dashboard"
+              parent="menu_rn_gst_root"
+              action="action_rn_gst_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_gst_returns"
+              name="GST Returns"
+              parent="menu_rn_gst_root"
+              action="action_rn_gst_return"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_gst_periods"
+              name="Periods"
+              parent="menu_rn_gst_root"
+              action="action_rn_gst_period"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_gst_validations"
+              name="Validation Issues"
+              parent="menu_rn_gst_root"
+              action="action_rn_gst_validation"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_gst_reconciliation"
+              name="Reconciliations"
+              parent="menu_rn_gst_root"
+              action="action_rn_gst_reconciliation"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_gst_operations"
+              name="Operations"
+              parent="menu_rn_gst_root"
+              sequence="50"/>
+
+    <menuitem id="menu_rn_gst_op_gstr1"
+              name="Generate GSTR-1"
+              parent="menu_rn_gst_operations"
+              action="action_rn_gst_gstr1_wizard"
+              sequence="10"/>
+    <menuitem id="menu_rn_gst_op_gstr3b"
+              name="Generate GSTR-3B"
+              parent="menu_rn_gst_operations"
+              action="action_rn_gst_gstr3b_wizard"
+              sequence="20"/>
+    <menuitem id="menu_rn_gst_op_gstr9"
+              name="Generate GSTR-9"
+              parent="menu_rn_gst_operations"
+              action="action_rn_gst_gstr9_wizard"
+              sequence="30"/>
+    <menuitem id="menu_rn_gst_op_recon"
+              name="Run Reconciliation"
+              parent="menu_rn_gst_operations"
+              action="action_rn_gst_reconciliation_wizard"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_gst_configuration"
+              name="Configuration"
+              parent="menu_rn_gst_root"
+              groups="rn_l10n_in_gst_pro.group_rn_gst_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_rn_gst_settings_menu"
+              name="GST Settings"
+              parent="menu_rn_gst_configuration"
+              action="action_rn_gst_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_gst_config_settings"
+              name="Settings"
+              parent="menu_rn_gst_configuration"
+              action="action_rn_gst_config_settings"
+              sequence="100"
+              groups="rn_l10n_in_gst_pro.group_rn_gst_admin"/>
+</odoo>

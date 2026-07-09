@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_erp_health_analyzer.Dashboard">
+        <div class="o_rn_erp_health_dashboard o_action p-3">
+            <h2>ERP Intelligence Dashboard</h2>
+            <div t-if="state.loading" class="text-muted">Loading health metrics...</div>
+            <div t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Latest Score</div><h3 t-esc="state.data.latest_score"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Targets</div><h3 t-esc="state.data.targets"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Scans</div><h3 t-esc="state.data.scan_count"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Open Findings</div><h3 t-esc="state.data.open_findings"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">High Risk</div><h3 t-esc="state.data.high_findings"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Critical</div><h3 t-esc="state.data.critical_findings"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="card p-3">
+                            <h5>Recent Scans</h5>
+                            <div class="list-group list-group-flush" t-if="state.data.recent_scans.length">
+                                <div class="list-group-item" t-foreach="state.data.recent_scans" t-as="scan" t-key="scan.id">
+                                    <strong t-esc="scan.name"/> - <t t-esc="scan.target"/> - Score <t t-esc="scan.score"/>
+                                </div>
+                            </div>
+                            <div t-else="" class="text-muted">No scans yet.</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3">
+                            <h5>Recent Findings</h5>
+                            <div class="list-group list-group-flush" t-if="state.data.recent_findings.length">
+                                <div class="list-group-item" t-foreach="state.data.recent_findings" t-as="finding" t-key="finding.id">
+                                    <strong t-esc="finding.name"/>
+                                    <div class="text-muted small"><t t-esc="finding.category"/> | <t t-esc="finding.severity"/></div>
+                                    <div class="small" t-esc="finding.recommendation"/>
+                                </div>
+                            </div>
+                            <div t-else="" class="text-muted">No findings yet.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_messaging_root"
+              name="Messaging Bot"
+              web_icon="rn_messaging_bot,static/description/icon.png"
+              sequence="46"
+              groups="rn_messaging_bot.group_rn_messaging_user"/>
+
+    <menuitem id="menu_rn_messaging_inbox"
+              name="Inbox"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_conversation"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_messaging_bots"
+              name="Bots"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_bot"
+              sequence="20"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
+    <menuitem id="menu_rn_messaging_templates"
+              name="Templates"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_template"
+              sequence="25"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
+    <menuitem id="menu_rn_messaging_campaigns"
+              name="Campaigns"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_campaign"
+              sequence="28"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
+    <menuitem id="menu_rn_messaging_connectors"
+              name="Connectors"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_connector"
+              sequence="30"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
+    <menuitem id="menu_rn_messaging_queue"
+              name="Outbound Queue"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_outbound_queue"
+              sequence="40"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+</odoo>

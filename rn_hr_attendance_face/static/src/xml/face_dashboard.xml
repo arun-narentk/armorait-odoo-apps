@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rn_hr_attendance_face.Dashboard">
+        <div class="o_rn_face_dashboard p-4">
+            <h1 class="mb-4">Face Attendance Dashboard</h1>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="text-muted">Successful Punches</div>
+                            <div class="display-6 text-success" t-esc="state.present"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="text-muted">Unknown Faces</div>
+                            <div class="display-6 text-warning" t-esc="state.unknown"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="text-muted">Spoof Attempts</div>
+                            <div class="display-6 text-danger" t-esc="state.spoof"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="text-muted">Low Confidence</div>
+                            <div class="display-6" t-esc="state.lowConfidence"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted mt-4">Phase 1 dashboard. Charts and accuracy metrics arrive in Phase 9.</p>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hall_hall_list" model="ir.ui.view">
+        <field name="name">rn.hall.hall.list</field>
+        <field name="model">rn.hall.hall</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="venue_id"/>
+                <field name="capacity_seated"/>
+                <field name="has_ac"/>
+                <field name="has_parking"/>
+                <field name="has_dining_hall"/>
+                <field name="has_kitchen"/>
+                <field name="has_stage"/>
+                <field name="booking_count"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hall_hall_form" model="ir.ui.view">
+        <field name="name">rn.hall.hall.form</field>
+        <field name="model">rn.hall.hall</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_bookings" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="booking_count" widget="statinfo" string="Bookings"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="venue_id"/>
+                            <field name="capacity_seated"/>
+                            <field name="capacity_standing"/>
+                            <field name="area_sqft"/>
+                            <field name="floor_level"/>
+                        </group>
+                        <group>
+                            <field name="has_ac"/>
+                            <field name="has_parking"/>
+                            <field name="parking_slots"/>
+                            <field name="has_dining_hall"/>
+                            <field name="has_kitchen"/>
+                            <field name="has_stage"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hall_hall" model="ir.actions.act_window">
+        <field name="name">Halls</field>
+        <field name="res_model">rn.hall.hall</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="rn_ai_doc_settings_default" model="rn.ai.document.settings">
+        <field name="ai_provider">builtin</field>
+        <field name="default_language">en</field>
+        <field name="default_style">formal</field>
+        <field name="auto_snapshot" eval="True"/>
+    </record>
+    <record id="rn_ai_doc_sub_trial" model="rn.ai.document.subscription">
+        <field name="name">Marketplace Trial</field>
+        <field name="plan">marketplace</field>
+        <field name="state">trial</field>
+        <field name="list_price">59.99</field>
+    </record>
+
+    <record id="rn_ai_doc_type_quotation" model="rn.ai.document.type">
+        <field name="name">Sales Quotation Letter</field>
+        <field name="code">sales_quotation</field>
+        <field name="category">sales</field>
+        <field name="default_style">corporate</field>
+    </record>
+    <record id="rn_ai_doc_type_offer" model="rn.ai.document.type">
+        <field name="name">Employment Offer Letter</field>
+        <field name="code">hr_offer</field>
+        <field name="category">hr</field>
+        <field name="default_style">formal</field>
+        <field name="require_approval" eval="True"/>
+    </record>
+    <record id="rn_ai_doc_type_nda" model="rn.ai.document.type">
+        <field name="name">NDA</field>
+        <field name="code">legal_nda</field>
+        <field name="category">legal</field>
+        <field name="default_style">legal</field>
+        <field name="require_approval" eval="True"/>
+    </record>
+    <record id="rn_ai_doc_type_payment" model="rn.ai.document.type">
+        <field name="name">Payment Reminder</field>
+        <field name="code">finance_reminder</field>
+        <field name="category">finance</field>
+        <field name="default_style">formal</field>
+    </record>
+
+    <record id="rn_ai_doc_tpl_quotation" model="rn.ai.document.template">
+        <field name="name">Quotation Cover Letter</field>
+        <field name="type_id" ref="rn_ai_doc_type_quotation"/>
+        <field name="language">en</field>
+        <field name="style">corporate</field>
+        <field name="ai_prompt">Write a concise commercial introduction for a quotation.</field>
+        <field name="body_html" type="html">
+            <div>
+                <p><strong>{{company_name}}</strong></p>
+                <p>To: {{customer_name}}</p>
+                <p>{{ai_introduction}}</p>
+                <h3>Items</h3>
+                <p>{{quotation_items}}</p>
+                <p>Valid until: {{valid_until}}</p>
+                <p>Currency: {{currency}}</p>
+                <h3>Scope</h3>
+                <p>{{ai_scope_of_work}}</p>
+                <h3>Terms</h3>
+                <p>{{ai_terms}}</p>
+                <p>{{ai_closing}}</p>
+            </div>
+        </field>
+    </record>
+    <record id="rn_ai_doc_tpl_offer" model="rn.ai.document.template">
+        <field name="name">Offer Letter Template</field>
+        <field name="type_id" ref="rn_ai_doc_type_offer"/>
+        <field name="language">en</field>
+        <field name="style">formal</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Dear {{employee_name}},</p>
+                <p>{{ai_introduction}}</p>
+                <p>Designation: {{designation}}</p>
+                <p>Department: {{department}}</p>
+                <p>Joining date: {{joining_date}}</p>
+                <p>Manager: {{manager}}</p>
+                <p>{{ai_scope_of_work}}</p>
+                <p>{{ai_terms}}</p>
+                <p>{{ai_closing}}</p>
+                <p>For {{company_name}}</p>
+            </div>
+        </field>
+    </record>
+    <record id="rn_ai_doc_tpl_nda" model="rn.ai.document.template">
+        <field name="name">Mutual NDA Template</field>
+        <field name="type_id" ref="rn_ai_doc_type_nda"/>
+        <field name="language">en</field>
+        <field name="style">legal</field>
+        <field name="body_html" type="html">
+            <div>
+                <h2>Non-Disclosure Agreement</h2>
+                <p>Between {{company_name}} and {{customer_name}}</p>
+                <p>{{ai_introduction}}</p>
+                <p>{{ai_scope_of_work}}</p>
+                <p>{{ai_terms}}</p>
+                <p>{{ai_closing}}</p>
+            </div>
+        </field>
+    </record>
+</data>
+</odoo>

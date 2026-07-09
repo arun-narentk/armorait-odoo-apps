@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="channel_demo_whatsapp" model="rn.conversational.erp.channel">
+        <field name="name">Demo WhatsApp Channel</field>
+        <field name="channel_type">whatsapp</field>
+        <field name="assistant_id" ref="assistant_employee_ai"/>
+        <field name="status">connected</field>
+        <field name="simulation_mode" eval="True"/>
+    </record>
+</odoo>

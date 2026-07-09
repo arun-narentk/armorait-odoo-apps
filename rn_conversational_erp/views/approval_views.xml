@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_conversational_approval_tree" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.approval.tree</field>
+        <field name="model">rn.conversational.erp.approval</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="approver_id"/>
+                <field name="amount"/>
+                <field name="state" widget="badge"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_conversational_approval_form" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.approval.form</field>
+        <field name="model">rn.conversational.erp.approval</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary" invisible="state != 'pending'"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'pending'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,approved,rejected"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="conversation_id"/>
+                        <field name="requester_id"/>
+                        <field name="approver_id"/>
+                        <field name="amount"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="request_model"/>
+                        <field name="request_res_id"/>
+                    </group>
+                    <field name="summary"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_conversational_approval" model="ir.actions.act_window">
+        <field name="name">Approval Center</field>
+        <field name="res_model">rn.conversational.erp.approval</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

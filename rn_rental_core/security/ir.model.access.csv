@@ -1,0 +1,22 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_rental_category_ro,rn.rental.category readonly,model_rn_rental_category,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_asset_ro,rn.rental.asset readonly,model_rn_rental_asset,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_pricing_ro,rn.rental.pricing readonly,model_rn_rental_pricing,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_booking_ro,rn.rental.booking readonly,model_rn_rental_booking,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_booking_line_ro,rn.rental.booking.line readonly,model_rn_rental_booking_line,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_settings_ro,rn.rental.settings readonly,model_rn_rental_settings,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_subscription_ro,rn.rental.subscription readonly,model_rn_rental_subscription,group_rn_rental_readonly,1,0,0,0
+access_rn_rental_category_user,rn.rental.category user,model_rn_rental_category,group_rn_rental_user,1,0,0,0
+access_rn_rental_asset_user,rn.rental.asset user,model_rn_rental_asset,group_rn_rental_user,1,1,1,0
+access_rn_rental_pricing_user,rn.rental.pricing user,model_rn_rental_pricing,group_rn_rental_user,1,1,1,0
+access_rn_rental_booking_user,rn.rental.booking user,model_rn_rental_booking,group_rn_rental_user,1,1,1,0
+access_rn_rental_booking_line_user,rn.rental.booking.line user,model_rn_rental_booking_line,group_rn_rental_user,1,1,1,0
+access_rn_rental_wiz_avail_user,rn.rental.availability.check.wizard user,model_rn_rental_availability_check_wizard,group_rn_rental_user,1,1,1,1
+access_rn_rental_wiz_quick_user,rn.rental.quick.booking.wizard user,model_rn_rental_quick_booking_wizard,group_rn_rental_user,1,1,1,1
+access_rn_rental_category_mgr,rn.rental.category manager,model_rn_rental_category,group_rn_rental_manager,1,1,1,1
+access_rn_rental_asset_mgr,rn.rental.asset manager,model_rn_rental_asset,group_rn_rental_manager,1,1,1,1
+access_rn_rental_pricing_mgr,rn.rental.pricing manager,model_rn_rental_pricing,group_rn_rental_manager,1,1,1,1
+access_rn_rental_booking_mgr,rn.rental.booking manager,model_rn_rental_booking,group_rn_rental_manager,1,1,1,1
+access_rn_rental_booking_line_mgr,rn.rental.booking.line manager,model_rn_rental_booking_line,group_rn_rental_manager,1,1,1,1
+access_rn_rental_settings_mgr,rn.rental.settings manager,model_rn_rental_settings,group_rn_rental_manager,1,1,1,1
+access_rn_rental_subscription_mgr,rn.rental.subscription manager,model_rn_rental_subscription,group_rn_rental_manager,1,1,1,1

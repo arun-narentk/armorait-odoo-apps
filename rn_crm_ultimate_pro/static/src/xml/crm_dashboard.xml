@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_crm_ultimate_pro.Dashboard">
+        <div class="o_rn_crm_dashboard p-4">
+            <h1 class="mb-4">CRM Ultimate Dashboard</h1>
+            <div class="row g-3">
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Leads</div><div class="display-6" t-esc="state.leads"/>
+                </div></div></div>
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Opportunities</div><div class="display-6" t-esc="state.opportunities"/>
+                </div></div></div>
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Won</div><div class="display-6 text-success" t-esc="state.won"/>
+                </div></div></div>
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Lost</div><div class="display-6 text-danger" t-esc="state.lost"/>
+                </div></div></div>
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Revenue</div><div class="display-6" t-esc="state.revenue"/>
+                </div></div></div>
+                <div class="col-md-2"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Forecast</div><div class="display-6 text-warning" t-esc="state.forecast"/>
+                </div></div></div>
+            </div>
+            <p class="text-muted mt-4">Phase 1 dashboard shell. Charts and funnel analytics arrive later.</p>
+        </div>
+    </t>
+</templates>

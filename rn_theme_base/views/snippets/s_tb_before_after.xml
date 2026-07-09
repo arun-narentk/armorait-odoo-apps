@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_before_after" name="Before After">
+    <section class="s_tb_before_after tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_before_after">
+        <div class="container">
+            <h2 class="text-center mb-4">Before and After</h2>
+            <div class="row g-4">
+                <div class="col-md-6 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Before"/><p class="text-center mt-2 fw-bold">Before</p></div>
+                <div class="col-md-6 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="After"/><p class="text-center mt-2 fw-bold">After</p></div>
+            </div>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

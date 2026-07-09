@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_crm_merge_lead_wizard_form" model="ir.ui.view">
+        <field name="name">rn.crm.merge.lead.wizard.form</field>
+        <field name="model">rn.crm.merge.lead.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Merge Leads">
+                <group>
+                    <field name="master_lead_id"/>
+                    <field name="lead_ids" widget="many2many_tags"/>
+                    <field name="preserve_chatter"/>
+                    <field name="preserve_activities"/>
+                    <field name="preserve_attachments"/>
+                </group>
+                <footer>
+                    <button name="action_merge" type="object" string="Merge" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_crm_merge_lead_wizard" model="ir.actions.act_window">
+        <field name="name">Merge Leads</field>
+        <field name="res_model">rn.crm.merge.lead.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_crm_bulk_followup_wizard_form" model="ir.ui.view">
+        <field name="name">rn.crm.bulk.followup.wizard.form</field>
+        <field name="model">rn.crm.bulk.followup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Follow-up">
+                <group>
+                    <field name="lead_ids" widget="many2many_tags"/>
+                    <field name="schedule_at"/>
+                    <field name="channel"/>
+                    <field name="body"/>
+                </group>
+                <footer>
+                    <button name="action_schedule" type="object" string="Schedule" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_crm_bulk_followup_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Follow-up</field>
+        <field name="res_model">rn.crm.bulk.followup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_crm_bulk_assign_wizard_form" model="ir.ui.view">
+        <field name="name">rn.crm.bulk.assign.wizard.form</field>
+        <field name="model">rn.crm.bulk.assign.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Assign">
+                <group>
+                    <field name="lead_ids" widget="many2many_tags"/>
+                    <field name="mode"/>
+                    <field name="user_id" invisible="mode != 'single'"/>
+                    <field name="user_ids" widget="many2many_tags" invisible="mode != 'round_robin'"/>
+                </group>
+                <footer>
+                    <button name="action_assign" type="object" string="Assign" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_crm_bulk_assign_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Assign</field>
+        <field name="res_model">rn.crm.bulk.assign.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

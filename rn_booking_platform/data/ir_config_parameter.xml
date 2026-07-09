@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_booking_enabled" model="ir.config_parameter">
+<field name="key">rn_booking_platform.enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_booking_slot" model="ir.config_parameter">
+<field name="key">rn_booking_platform.slot_interval</field><field name="value">15</field>
+</record>
+<record id="param_rn_booking_guest" model="ir.config_parameter">
+<field name="key">rn_booking_platform.allow_guest</field><field name="value">True</field>
+</record>
+</data></odoo>

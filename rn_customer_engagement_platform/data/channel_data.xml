@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="channel_customer_web" model="rn.customer.engagement.channel">
+        <field name="name">Customer Web Assistant</field>
+        <field name="channel_type">website</field>
+        <field name="authentication_mode">portal_login</field>
+        <field name="status">connected</field>
+    </record>
+    <record id="channel_customer_whatsapp" model="rn.customer.engagement.channel">
+        <field name="name">Customer WhatsApp Assistant</field>
+        <field name="channel_type">whatsapp</field>
+        <field name="authentication_mode">otp_mobile</field>
+        <field name="status">connected</field>
+    </record>
+</odoo>

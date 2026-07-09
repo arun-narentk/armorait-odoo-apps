@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_instagram_feed" name="Instagram Feed Placeholder">
+    <section class="s_tb_instagram_feed tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_instagram_feed">
+        <div class="container">
+            <h2 class="text-center mb-4">Instagram Feed</h2>
+            <div class="row g-2">
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 1"/></div>
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 2"/></div>
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 3"/></div>
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 4"/></div>
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 5"/></div>
+                <div class="col-4 col-md-2 tb-reveal"><img src="/web/image/website.s_cover_default_image" class="img-fluid rounded" alt="Instagram 6"/></div>
+            </div>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

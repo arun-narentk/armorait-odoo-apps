@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="param_rn_dashboard_version" model="ir.config_parameter">
+        <field name="key">rn_dashboard_core.version</field>
+        <field name="value">19.0.1.0.0</field>
+    </record>
+</odoo>

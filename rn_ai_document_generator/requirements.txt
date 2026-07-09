@@ -1,0 +1,2 @@
+# Optional: python-docx for DOCX export in a later phase
+# openai / anthropic connectors are optional via ir.config_parameter

@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_hall_venue_ro,rn.hall.venue readonly,model_rn_hall_venue,group_rn_hall_readonly,1,0,0,0
+access_rn_hall_hall_ro,rn.hall.hall readonly,model_rn_hall_hall,group_rn_hall_readonly,1,0,0,0
+access_rn_hall_booking_ro,rn.hall.booking readonly,model_rn_hall_booking,group_rn_hall_readonly,1,0,0,0
+access_rn_hall_settings_ro,rn.hall.settings readonly,model_rn_hall_settings,group_rn_hall_readonly,1,0,0,0
+access_rn_hall_subscription_ro,rn.hall.subscription readonly,model_rn_hall_subscription,group_rn_hall_readonly,1,0,0,0
+access_rn_hall_venue_counter,rn.hall.venue counter,model_rn_hall_venue,group_rn_hall_counter,1,0,0,0
+access_rn_hall_hall_counter,rn.hall.hall counter,model_rn_hall_hall,group_rn_hall_counter,1,0,0,0
+access_rn_hall_booking_counter,rn.hall.booking counter,model_rn_hall_booking,group_rn_hall_counter,1,1,1,0
+access_rn_hall_venue_office,rn.hall.venue office,model_rn_hall_venue,group_rn_hall_office,1,1,1,0
+access_rn_hall_hall_office,rn.hall.hall office,model_rn_hall_hall,group_rn_hall_office,1,1,1,0
+access_rn_hall_booking_office,rn.hall.booking office,model_rn_hall_booking,group_rn_hall_office,1,1,1,0
+access_rn_hall_venue_mgr,rn.hall.venue manager,model_rn_hall_venue,group_rn_hall_manager,1,1,1,1
+access_rn_hall_hall_mgr,rn.hall.hall manager,model_rn_hall_hall,group_rn_hall_manager,1,1,1,1
+access_rn_hall_booking_mgr,rn.hall.booking manager,model_rn_hall_booking,group_rn_hall_manager,1,1,1,1
+access_rn_hall_settings_mgr,rn.hall.settings manager,model_rn_hall_settings,group_rn_hall_manager,1,1,1,1
+access_rn_hall_subscription_mgr,rn.hall.subscription manager,model_rn_hall_subscription,group_rn_hall_manager,1,1,1,1

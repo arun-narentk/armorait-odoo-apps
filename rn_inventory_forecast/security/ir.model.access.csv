@@ -1,0 +1,23 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_inv_forecast_run_ro,rn.inv.forecast.run readonly,model_rn_inv_forecast_run,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_forecast_line_ro,rn.inv.forecast.line readonly,model_rn_inv_forecast_line,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_analysis_ro,rn.inv.analysis readonly,model_rn_inv_analysis,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_safety_ro,rn.inv.safety.stock readonly,model_rn_inv_safety_stock,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_reorder_ro,rn.inv.reorder.suggestion readonly,model_rn_inv_reorder_suggestion,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_alert_ro,rn.inv.stock.alert readonly,model_rn_inv_stock_alert,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_settings_ro,rn.inv.forecast.settings readonly,model_rn_inv_forecast_settings,group_rn_inv_forecast_readonly,1,0,0,0
+access_rn_inv_forecast_run_user,rn.inv.forecast.run user,model_rn_inv_forecast_run,group_rn_inv_forecast_user,1,1,1,0
+access_rn_inv_forecast_line_user,rn.inv.forecast.line user,model_rn_inv_forecast_line,group_rn_inv_forecast_user,1,1,1,0
+access_rn_inv_analysis_user,rn.inv.analysis user,model_rn_inv_analysis,group_rn_inv_forecast_user,1,0,0,0
+access_rn_inv_safety_user,rn.inv.safety.stock user,model_rn_inv_safety_stock,group_rn_inv_forecast_user,1,0,0,0
+access_rn_inv_reorder_user,rn.inv.reorder.suggestion user,model_rn_inv_reorder_suggestion,group_rn_inv_forecast_user,1,1,0,0
+access_rn_inv_alert_user,rn.inv.stock.alert user,model_rn_inv_stock_alert,group_rn_inv_forecast_user,1,1,0,0
+access_rn_inv_wiz_forecast_user,rn.inv.generate.forecast.wizard user,model_rn_inv_generate_forecast_wizard,group_rn_inv_forecast_user,1,1,1,1
+access_rn_inv_wiz_analysis_user,rn.inv.run.analysis.wizard user,model_rn_inv_run_analysis_wizard,group_rn_inv_forecast_user,1,1,1,1
+access_rn_inv_forecast_run_mgr,rn.inv.forecast.run manager,model_rn_inv_forecast_run,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_forecast_line_mgr,rn.inv.forecast.line manager,model_rn_inv_forecast_line,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_analysis_mgr,rn.inv.analysis manager,model_rn_inv_analysis,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_safety_mgr,rn.inv.safety.stock manager,model_rn_inv_safety_stock,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_reorder_mgr,rn.inv.reorder.suggestion manager,model_rn_inv_reorder_suggestion,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_alert_mgr,rn.inv.stock.alert manager,model_rn_inv_stock_alert,group_rn_inv_forecast_manager,1,1,1,1
+access_rn_inv_settings_admin,rn.inv.forecast.settings admin,model_rn_inv_forecast_settings,group_rn_inv_forecast_admin,1,1,1,1

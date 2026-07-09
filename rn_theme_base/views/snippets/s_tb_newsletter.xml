@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_newsletter" name="Newsletter">
+    <section class="s_tb_newsletter tb-snippet tb-reveal pt64 pb64 o_cc o_cc1" data-snippet="s_tb_newsletter">
+        <div class="container text-center">
+            <h2 class="tb-reveal">Subscribe to our newsletter</h2>
+            <p class="lead tb-reveal">Get updates on new features and offers.</p>
+            <form class="row g-2 justify-content-center mt-3 tb-reveal">
+                <div class="col-auto"><input type="email" class="form-control" placeholder="Email address"/></div>
+                <div class="col-auto"><button type="submit" class="btn btn-primary">Subscribe</button></div>
+            </form>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

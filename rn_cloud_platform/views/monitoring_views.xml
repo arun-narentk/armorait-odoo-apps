@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_cloud_monitoring_tree" model="ir.ui.view"><field name="name">rn.cloud.monitoring.tree</field><field name="model">rn.cloud.monitoring</field><field name="arch" type="xml"><list><field name="instance_id"/><field name="snapshot_time"/><field name="cpu_percent"/><field name="ram_percent"/><field name="storage_percent"/><field name="response_ms"/></list></field></record>
+    <record id="action_rn_cloud_monitoring" model="ir.actions.act_window"><field name="name">Monitoring</field><field name="res_model">rn.cloud.monitoring</field><field name="view_mode">list</field></record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_timing_form" model="ir.ui.view">
+        <field name="name">rn.temple.timing.form</field>
+        <field name="model">rn.temple.timing</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="temple_id"/>
+                        <field name="branch_id"/>
+                        <field name="day_of_week"/>
+                        <field name="session_type"/>
+                        <field name="time_open" widget="float_time"/>
+                        <field name="time_close" widget="float_time"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="param_rn_whatsapp_enabled" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.enabled</field>
+            <field name="value">False</field>
+        </record>
+        <record id="param_rn_whatsapp_timeout" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.timeout</field>
+            <field name="value">30</field>
+        </record>
+        <record id="param_rn_whatsapp_max_retries" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.max_retries</field>
+            <field name="value">3</field>
+        </record>
+        <record id="param_rn_whatsapp_rate_limit" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.rate_limit</field>
+            <field name="value">60</field>
+        </record>
+        <record id="param_rn_whatsapp_max_attachment_mb" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.max_attachment_mb</field>
+            <field name="value">16</field>
+        </record>
+        <record id="param_rn_whatsapp_allowed_extensions" model="ir.config_parameter">
+            <field name="key">rn_whatsapp_connector.allowed_extensions</field>
+            <field name="value">pdf,png,jpg,jpeg,mp4,doc,docx</field>
+        </record>
+
+    </data>
+</odoo>

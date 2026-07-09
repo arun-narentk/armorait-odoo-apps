@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="app_warehouse_mobile" model="rn.mobile.app">
+        <field name="app_scope">warehouse</field>
+        <field name="target_model">stock.picking</field>
+        <field name="platform_state">ready</field>
+        <field name="enable_offline" eval="True"/>
+        <field name="enable_barcode" eval="True"/>
+        <field name="enable_camera" eval="True"/>
+    </record>
+</odoo>

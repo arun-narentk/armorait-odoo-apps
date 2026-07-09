@@ -1,0 +1,24 @@
+.o_rn_hms_dashboard {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5fb 100%);
+  min-height: 100%;
+
+  .o_rn_hms_card {
+    background: #ffffff;
+    border: 1px solid #d6e4f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  }
+
+  .label {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .value {
+    color: #0B5F8A;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+}

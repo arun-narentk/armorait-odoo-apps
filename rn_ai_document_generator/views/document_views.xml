@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_document_list" model="ir.ui.view">
+        <field name="name">rn.ai.document.list</field>
+        <field name="model">rn.ai.document</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="type_id"/>
+                <field name="partner_id"/>
+                <field name="employee_id"/>
+                <field name="language"/>
+                <field name="style"/>
+                <field name="state"/>
+                <field name="user_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_ai_document_form" model="ir.ui.view">
+        <field name="name">rn.ai.document.form</field>
+        <field name="model">rn.ai.document</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate" type="object" string="Generate with AI" class="btn-primary" invisible="state not in ('draft','generated','rejected')"/>
+                    <button name="action_submit_approval" type="object" string="Submit Approval" invisible="state not in ('generated','draft')"/>
+                    <button name="action_approve" type="object" string="Approve" invisible="state != 'to_approve'" groups="rn_ai_document_generator.group_rn_ai_doc_manager"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'to_approve'" groups="rn_ai_document_generator.group_rn_ai_doc_manager"/>
+                    <button name="action_mark_final" type="object" string="Mark Final" invisible="state not in ('approved','generated')"/>
+                    <button name="action_mark_sent" type="object" string="Mark Sent" invisible="state not in ('final','approved')"/>
+                    <button name="action_mark_signed" type="object" string="Mark Signed" invisible="state not in ('sent','final')"/>
+                    <button name="action_print_pdf" type="object" string="Print PDF"/>
+                    <button name="action_open_versions" type="object" string="Versions"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,generated,to_approve,approved,final,sent,signed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_open_versions" icon="fa-history">
+                            <field name="version_count" widget="statinfo" string="Versions"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="type_id"/>
+                            <field name="template_id"/>
+                            <field name="subject"/>
+                            <field name="partner_id"/>
+                            <field name="employee_id"/>
+                        </group>
+                        <group>
+                            <field name="language"/>
+                            <field name="style"/>
+                            <field name="user_id"/>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="sent_date"/>
+                            <field name="signed_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Document">
+                            <field name="body_html"/>
+                        </page>
+                        <page string="AI Notes">
+                            <field name="ai_notes"/>
+                            <field name="placeholder_values"/>
+                        </page>
+                        <page string="Approvals">
+                            <field name="approval_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="role"/>
+                                    <field name="user_id"/>
+                                    <field name="state"/>
+                                    <field name="decision_date"/>
+                                    <field name="comment"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_ai_document" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">rn.ai.document</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_ai_doc_generate_form" model="ir.ui.view">
+        <field name="name">rn.ai.document.generate.wizard.form</field>
+        <field name="model">rn.ai.document.generate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Document">
+                <group>
+                    <field name="type_id"/>
+                    <field name="template_id"/>
+                    <field name="partner_id"/>
+                    <field name="employee_id"/>
+                    <field name="language"/>
+                    <field name="style"/>
+                    <field name="subject"/>
+                    <field name="generate_now"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_ai_doc_generate" model="ir.actions.act_window">
+        <field name="name">Generate Document</field>
+        <field name="res_model">rn.ai.document.generate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

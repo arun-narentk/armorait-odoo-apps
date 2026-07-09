@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_bi_sales_dashboard_list" model="ir.ui.view">
+        <field name="name">rn.bi.sales.dashboard.list</field>
+        <field name="model">rn.bi.sales.dashboard</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="theme"/>
+                <field name="is_default"/>
+                <field name="refresh_interval"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_bi_sales_dashboard_form" model="ir.ui.view">
+        <field name="name">rn.bi.sales.dashboard.form</field>
+        <field name="model">rn.bi.sales.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="theme"/>
+                            <field name="is_default"/>
+                            <field name="refresh_interval"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="filter_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                    <field name="widget_ids">
+                        <list>
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="widget_type"/>
+                            <field name="kpi_id"/>
+                            <field name="chart_key"/>
+                            <field name="width"/>
+                            <field name="active"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_bi_sales_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboards</field>
+        <field name="res_model">rn.bi.sales.dashboard</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_bi_sales_dashboard_client" model="ir.actions.client">
+        <field name="name">Sales BI Dashboard</field>
+        <field name="tag">rn_bi_sales_dashboard.dashboard</field>
+    </record>
+    <record id="view_rn_bi_sales_snapshot_list" model="ir.ui.view">
+        <field name="name">rn.bi.sales.snapshot.list</field>
+        <field name="model">rn.bi.sales.snapshot</field>
+        <field name="arch" type="xml">
+            <list create="0">
+                <field name="snapshot_date"/>
+                <field name="name"/>
+                <field name="period_key"/>
+                <field name="revenue"/>
+                <field name="orders"/>
+                <field name="aov"/>
+                <field name="customers"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_bi_sales_snapshot_form" model="ir.ui.view">
+        <field name="name">rn.bi.sales.snapshot.form</field>
+        <field name="model">rn.bi.sales.snapshot</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="snapshot_date"/>
+                        <field name="period_key"/>
+                        <field name="revenue"/>
+                        <field name="orders"/>
+                        <field name="quotations"/>
+                        <field name="quotation_value"/>
+                        <field name="customers"/>
+                        <field name="aov"/>
+                        <field name="won_opportunities"/>
+                        <field name="lost_opportunities"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_bi_sales_snapshot" model="ir.actions.act_window">
+        <field name="name">Snapshots</field>
+        <field name="res_model">rn.bi.sales.snapshot</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_bi_sales_kpi_list" model="ir.ui.view">
+        <field name="name">rn.bi.sales.kpi.list</field>
+        <field name="model">rn.bi.sales.kpi</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="kpi_type"/>
+                <field name="card_size"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_bi_sales_kpi_form" model="ir.ui.view">
+        <field name="name">rn.bi.sales.kpi.form</field>
+        <field name="model">rn.bi.sales.kpi</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="kpi_type"/>
+                        <field name="sequence"/>
+                        <field name="card_size"/>
+                        <field name="color_theme"/>
+                        <field name="refresh_interval"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

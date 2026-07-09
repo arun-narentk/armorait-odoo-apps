@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_temple_root"
+              name="Temple"
+              web_icon="rn_temple_base,static/description/icon.png"
+              groups="rn_temple_base.group_rn_temple_counter"
+              sequence="55"/>
+
+    <menuitem id="menu_rn_temple_dashboard"
+              name="Dashboard"
+              parent="menu_rn_temple_root"
+              action="action_rn_temple_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_temple_master"
+              name="Temple Master"
+              parent="menu_rn_temple_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_temple_temples"
+              name="Temples"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_temple"
+              sequence="10"/>
+    <menuitem id="menu_rn_temple_branches"
+              name="Branches"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_branch"
+              sequence="20"/>
+    <menuitem id="menu_rn_temple_trustees"
+              name="Trustees"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_trustee"
+              sequence="30"/>
+    <menuitem id="menu_rn_temple_priests"
+              name="Priests"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_priest"
+              sequence="40"/>
+    <menuitem id="menu_rn_temple_departments"
+              name="Departments"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_department"
+              sequence="50"/>
+    <menuitem id="menu_rn_temple_timings"
+              name="Daily Timings"
+              parent="menu_rn_temple_master"
+              action="action_rn_temple_timing"
+              sequence="60"/>
+
+    <menuitem id="menu_rn_temple_calendar"
+              name="Festival Calendar"
+              parent="menu_rn_temple_root"
+              action="action_rn_temple_festival"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_temple_configuration"
+              name="Configuration"
+              parent="menu_rn_temple_root"
+              groups="rn_temple_base.group_rn_temple_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_temple_settings"
+              name="Temple Settings"
+              parent="menu_rn_temple_configuration"
+              action="action_rn_temple_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_temple_subscriptions"
+              name="SaaS Subscriptions"
+              parent="menu_rn_temple_configuration"
+              action="action_rn_temple_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_temple_config_settings"
+              name="Settings"
+              parent="menu_rn_temple_configuration"
+              action="action_rn_temple_config_settings"
+              sequence="100"/>
+</odoo>

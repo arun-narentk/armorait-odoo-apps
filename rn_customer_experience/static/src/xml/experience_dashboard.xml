@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_customer_experience.Dashboard">
+        <div class="o_rn_customer_experience_dashboard o_action p-3">
+            <h2>Customer Experience Portal</h2>
+            <div t-if="state.loading" class="text-muted">Loading dashboard...</div>
+            <div t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Portal Logins</div><h3 t-esc="state.data.portal_logins"/></div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Payment Actions</div><h3 t-esc="state.data.payment_actions"/></div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Ticket Volume</div><h3 t-esc="state.data.ticket_volume"/></div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Open Tickets</div><h3 t-esc="state.data.open_tickets"/></div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Portal Partners</div><h3 t-esc="state.data.portal_partners"/></div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card p-3"><div class="text-muted small">Self-Service Rate</div><h3><t t-esc="state.data.self_service_rate"/>%</h3></div>
+                    </div>
+                </div>
+                <p class="text-muted">
+                    Track portal adoption, payment conversion, ticket volume, and self-service usage from one place.
+                </p>
+            </div>
+        </div>
+    </t>
+</templates>

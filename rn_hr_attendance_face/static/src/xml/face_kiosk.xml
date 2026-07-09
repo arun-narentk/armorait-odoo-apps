@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rn_hr_attendance_face.Kiosk">
+        <div class="o_rn_face_kiosk d-flex flex-column align-items-center justify-content-center text-center p-4">
+            <div class="o_rn_face_kiosk_clock display-3 mb-3" t-esc="state.clock"/>
+            <div class="o_rn_face_kiosk_camera border rounded bg-dark text-white d-flex align-items-center justify-content-center mb-3">
+                <span>Camera preview placeholder</span>
+            </div>
+            <h2 t-esc="state.status"/>
+            <p class="text-muted" t-esc="state.message"/>
+        </div>
+    </t>
+
+</templates>

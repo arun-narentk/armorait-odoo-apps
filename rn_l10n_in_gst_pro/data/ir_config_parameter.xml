@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_gst_enabled" model="ir.config_parameter">
+<field name="key">rn_l10n_in_gst_pro.enabled</field><field name="value">False</field>
+</record>
+<record id="param_rn_gst_json_version" model="ir.config_parameter">
+<field name="key">rn_l10n_in_gst_pro.json_version</field><field name="value">GST3.1.6</field>
+</record>
+<record id="param_rn_gst_auto_validate" model="ir.config_parameter">
+<field name="key">rn_l10n_in_gst_pro.auto_validate</field><field name="value">True</field>
+</record>
+<record id="param_rn_gst_return_frequency" model="ir.config_parameter">
+<field name="key">rn_l10n_in_gst_pro.return_frequency</field><field name="value">month</field>
+</record>
+</data></odoo>

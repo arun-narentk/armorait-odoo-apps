@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_rental_asset_camera" model="rn.rental.asset">
+<field name="name">Demo DSLR Camera</field>
+<field name="category_id" ref="rn_rental_cat_equipment"/>
+<field name="daily_price">50</field>
+<field name="weekly_price">280</field>
+<field name="deposit_amount">200</field>
+<field name="state">available</field>
+</record>
+<record id="demo_rn_rental_asset_bike" model="rn.rental.asset">
+<field name="name">Demo City Bike</field>
+<field name="category_id" ref="rn_rental_cat_vehicle"/>
+<field name="daily_price">20</field>
+<field name="weekly_price">100</field>
+<field name="deposit_amount">50</field>
+<field name="state">available</field>
+</record>
+</data></odoo>

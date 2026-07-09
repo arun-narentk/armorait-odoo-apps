@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_temple_list" model="ir.ui.view">
+        <field name="name">rn.temple.temple.list</field>
+        <field name="model">rn.temple.temple</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="institution_type"/>
+                <field name="trust_name"/>
+                <field name="city"/>
+                <field name="branch_count"/>
+                <field name="upcoming_festival_count"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_temple_temple_form" model="ir.ui.view">
+        <field name="name">rn.temple.temple.form</field>
+        <field name="model">rn.temple.temple</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_branches" type="object" class="oe_stat_button" icon="fa-building">
+                            <field name="branch_count" widget="statinfo" string="Branches"/>
+                        </button>
+                        <button name="action_open_festivals" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="upcoming_festival_count" widget="statinfo" string="Festivals"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="institution_type"/>
+                            <field name="deity_name"/>
+                            <field name="trust_name"/>
+                            <field name="registration_no"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="website"/>
+                            <field name="timezone"/>
+                            <field name="established_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Address">
+                        <group>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                        </group>
+                        <group>
+                            <field name="state_id"/>
+                            <field name="zip"/>
+                            <field name="country_id"/>
+                        </group>
+                    </group>
+                    <group string="Tax / Compliance">
+                        <field name="pan_no"/>
+                        <field name="tan_no"/>
+                        <field name="eighty_g_registration"/>
+                    </group>
+                    <notebook>
+                        <page string="Branches" name="branches">
+                            <field name="branch_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="is_head_office"/>
+                                    <field name="city"/>
+                                    <field name="phone"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Trustees" name="trustees">
+                            <field name="trustee_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="role"/>
+                                    <field name="phone"/>
+                                    <field name="is_signatory"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Priests" name="priests">
+                            <field name="priest_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="priest_type"/>
+                                    <field name="branch_id"/>
+                                    <field name="specialization"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Departments" name="departments">
+                            <field name="department_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="department_type"/>
+                                    <field name="branch_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Daily Timings" name="timings">
+                            <field name="timing_ids">
+                                <list editable="bottom">
+                                    <field name="day_of_week"/>
+                                    <field name="session_type"/>
+                                    <field name="time_open" widget="float_time"/>
+                                    <field name="time_close" widget="float_time"/>
+                                    <field name="branch_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_temple" model="ir.actions.act_window">
+        <field name="name">Temples</field>
+        <field name="res_model">rn.temple.temple</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

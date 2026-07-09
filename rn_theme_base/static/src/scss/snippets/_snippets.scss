@@ -1,0 +1,80 @@
+// Snippet-specific styles
+.s_tb_hero_banner {
+    .display-3 {
+        @include tb-heading;
+    }
+}
+
+.s_tb_video_banner {
+    min-height: 420px;
+    .tb-video-overlay {
+        @include tb-overlay(.45);
+    }
+}
+
+.s_tb_image_slider .carousel-item img {
+    object-fit: cover;
+    max-height: 520px;
+    width: 100%;
+}
+
+.s_tb_animated_counter .tb-counter-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--tb-primary);
+}
+
+.s_tb_pricing_table .card.border-primary {
+    border-color: var(--tb-secondary) !important;
+    transform: scale(1.03);
+}
+
+.s_tb_testimonials blockquote {
+    border-left: 4px solid var(--tb-accent);
+    padding-left: 1rem;
+}
+
+.s_tb_google_map iframe {
+    border: 0;
+    border-radius: var(--tb-border-radius);
+    width: 100%;
+    min-height: 360px;
+}
+
+.s_tb_before_after .tb-before-after-img {
+    object-fit: cover;
+    height: 280px;
+    width: 100%;
+}
+
+.s_tb_countdown .tb-countdown-box {
+    min-width: 4.5rem;
+    padding: .75rem;
+    border-radius: var(--tb-border-radius);
+    background: var(--tb-primary);
+    color: #fff;
+}
+
+.s_tb_whatsapp_button,
+.s_tb_floating_contact {
+    position: fixed;
+    bottom: 1.5rem;
+    z-index: 1040;
+}
+
+.s_tb_whatsapp_button {
+    right: 1.5rem;
+}
+
+.s_tb_floating_contact {
+    right: 5.5rem;
+}
+
+@include tb-mobile-only {
+    .s_tb_whatsapp_button,
+    .s_tb_floating_contact {
+        bottom: 1rem;
+    }
+    .s_tb_whatsapp_button { right: 1rem; }
+    .s_tb_floating_contact { right: 4.5rem; }
+}

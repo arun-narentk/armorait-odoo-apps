@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_realestate_block_list" model="ir.ui.view">
+        <field name="name">rn.realestate.block.list</field>
+        <field name="model">rn.realestate.block</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="total_floors"/>
+                <field name="unit_count"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_block_form" model="ir.ui.view">
+        <field name="name">rn.realestate.block.form</field>
+        <field name="model">rn.realestate.block</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="project_id"/>
+                        <field name="total_floors"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_block" model="ir.actions.act_window">
+        <field name="name">Blocks / Towers</field>
+        <field name="res_model">rn.realestate.block</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_rental_root"
+              name="Rental"
+              web_icon="rn_rental_core,static/description/icon.png"
+              groups="rn_rental_core.group_rn_rental_user"
+              sequence="48"/>
+
+    <menuitem id="menu_rn_rental_dashboard"
+              name="Dashboard"
+              parent="menu_rn_rental_root"
+              action="action_rn_rental_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_rental_operations"
+              name="Operations"
+              parent="menu_rn_rental_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_rental_bookings"
+              name="Bookings"
+              parent="menu_rn_rental_operations"
+              action="action_rn_rental_booking"
+              sequence="10"/>
+    <menuitem id="menu_rn_rental_quick"
+              name="Quick Booking"
+              parent="menu_rn_rental_operations"
+              action="action_rn_rental_quick_booking"
+              sequence="20"/>
+    <menuitem id="menu_rn_rental_availability"
+              name="Check Availability"
+              parent="menu_rn_rental_operations"
+              action="action_rn_rental_availability_check"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_rental_catalog"
+              name="Catalog"
+              parent="menu_rn_rental_root"
+              sequence="20"/>
+    <menuitem id="menu_rn_rental_assets"
+              name="Assets"
+              parent="menu_rn_rental_catalog"
+              action="action_rn_rental_asset"
+              sequence="10"/>
+    <menuitem id="menu_rn_rental_categories"
+              name="Categories"
+              parent="menu_rn_rental_catalog"
+              action="action_rn_rental_category"
+              sequence="20"/>
+    <menuitem id="menu_rn_rental_pricing"
+              name="Pricing Rules"
+              parent="menu_rn_rental_catalog"
+              action="action_rn_rental_pricing"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_rental_configuration"
+              name="Configuration"
+              parent="menu_rn_rental_root"
+              groups="rn_rental_core.group_rn_rental_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_rental_settings"
+              name="Rental Settings"
+              parent="menu_rn_rental_configuration"
+              action="action_rn_rental_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_rental_subscriptions"
+              name="Subscriptions"
+              parent="menu_rn_rental_configuration"
+              action="action_rn_rental_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_rental_config_settings"
+              name="Settings"
+              parent="menu_rn_rental_configuration"
+              action="action_rn_rental_config_settings"
+              sequence="100"/>
+</odoo>

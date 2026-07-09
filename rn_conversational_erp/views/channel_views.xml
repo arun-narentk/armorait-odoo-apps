@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_conversational_channel_tree" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.channel.tree</field>
+        <field name="model">rn.conversational.erp.channel</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="channel_type"/>
+                <field name="status" widget="badge"/>
+                <field name="assistant_id"/>
+                <field name="conversation_count"/>
+                <field name="simulation_mode"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_conversational_channel_form" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.channel.form</field>
+        <field name="model">rn.conversational.erp.channel</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_mark_connected" type="object" string="Mark Connected" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="channel_type"/>
+                        <field name="account_ref"/>
+                        <field name="assistant_id"/>
+                        <field name="status"/>
+                        <field name="simulation_mode"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_conversational_channel" model="ir.actions.act_window">
+        <field name="name">Channels</field>
+        <field name="res_model">rn.conversational.erp.channel</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_animated_counter" name="Animated Counter">
+    <section class="s_tb_animated_counter tb-snippet tb-reveal pt80 pb80 o_cc o_cc2" data-snippet="s_tb_animated_counter">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 tb-reveal"><span class="tb-counter display-3 fw-bold" data-target="120">0</span><p class="mt-2">Projects</p></div>
+                <div class="col-md-3 tb-reveal"><span class="tb-counter display-3 fw-bold" data-target="45">0</span><p class="mt-2">Clients</p></div>
+                <div class="col-md-3 tb-reveal"><span class="tb-counter display-3 fw-bold" data-target="8">0</span><p class="mt-2">Years</p></div>
+                <div class="col-md-3 tb-reveal"><span class="tb-counter display-3 fw-bold" data-target="99">0</span><p class="mt-2">Satisfaction</p></div>
+            </div>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

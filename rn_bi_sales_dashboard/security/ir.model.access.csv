@@ -1,0 +1,27 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_bi_dashboard_readonly,rn.bi.sales.dashboard readonly,model_rn_bi_sales_dashboard,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_filter_readonly,rn.bi.dashboard.filter readonly,model_rn_bi_dashboard_filter,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_kpi_readonly,rn.bi.sales.kpi readonly,model_rn_bi_sales_kpi,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_target_readonly,rn.bi.sales.target readonly,model_rn_bi_sales_target,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_snapshot_readonly,rn.bi.sales.snapshot readonly,model_rn_bi_sales_snapshot,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_widget_readonly,rn.bi.dashboard.widget readonly,model_rn_bi_dashboard_widget,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_favorite_readonly,rn.bi.dashboard.favorite readonly,model_rn_bi_dashboard_favorite,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_settings_readonly,rn.bi.dashboard.settings readonly,model_rn_bi_dashboard_settings,group_rn_bi_readonly,1,0,0,0
+access_rn_bi_dashboard_user,rn.bi.sales.dashboard user,model_rn_bi_sales_dashboard,group_rn_bi_sales_user,1,0,0,0
+access_rn_bi_filter_user,rn.bi.dashboard.filter user,model_rn_bi_dashboard_filter,group_rn_bi_sales_user,1,1,1,0
+access_rn_bi_kpi_user,rn.bi.sales.kpi user,model_rn_bi_sales_kpi,group_rn_bi_sales_user,1,0,0,0
+access_rn_bi_target_user,rn.bi.sales.target user,model_rn_bi_sales_target,group_rn_bi_sales_user,1,0,0,0
+access_rn_bi_snapshot_user,rn.bi.sales.snapshot user,model_rn_bi_sales_snapshot,group_rn_bi_sales_user,1,0,0,0
+access_rn_bi_favorite_user,rn.bi.dashboard.favorite user,model_rn_bi_dashboard_favorite,group_rn_bi_sales_user,1,1,1,1
+access_rn_bi_filter_wizard_user,rn.bi.sales.filter.wizard user,model_rn_bi_sales_filter_wizard,group_rn_bi_sales_user,1,1,1,1
+access_rn_bi_compare_wizard_user,rn.bi.compare.period.wizard user,model_rn_bi_compare_period_wizard,group_rn_bi_sales_user,1,1,1,1
+access_rn_bi_dashboard_manager,rn.bi.sales.dashboard manager,model_rn_bi_sales_dashboard,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_filter_manager,rn.bi.dashboard.filter manager,model_rn_bi_dashboard_filter,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_kpi_manager,rn.bi.sales.kpi manager,model_rn_bi_sales_kpi,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_target_manager,rn.bi.sales.target manager,model_rn_bi_sales_target,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_snapshot_manager,rn.bi.sales.snapshot manager,model_rn_bi_sales_snapshot,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_widget_manager,rn.bi.dashboard.widget manager,model_rn_bi_dashboard_widget,group_rn_bi_sales_manager,1,1,1,1
+access_rn_bi_settings_manager,rn.bi.dashboard.settings manager,model_rn_bi_dashboard_settings,group_rn_bi_dashboard_manager,1,1,1,1
+access_rn_bi_dashboard_admin,rn.bi.sales.dashboard admin,model_rn_bi_sales_dashboard,group_rn_bi_dashboard_manager,1,1,1,1
+access_rn_bi_kpi_admin,rn.bi.sales.kpi admin,model_rn_bi_sales_kpi,group_rn_bi_dashboard_manager,1,1,1,1
+access_rn_bi_target_admin,rn.bi.sales.target admin,model_rn_bi_sales_target,group_rn_bi_dashboard_manager,1,1,1,1

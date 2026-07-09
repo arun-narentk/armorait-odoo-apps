@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_textile_base.TextileDashboard">
+        <div class="o_rn_textile_dashboard p-4">
+            <h2>Plant Operations</h2>
+            <div class="row g-3 mt-2">
+                <div class="col-md-2" t-foreach="state.cards" t-as="card" t-key="card.key">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="fs-4 fw-bold" t-esc="card.value"/>
+                            <div class="text-muted" t-esc="card.label"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="mt-4">Machines by State</h4>
+            <ul class="list-group">
+                <li class="list-group-item" t-foreach="state.machineStates" t-as="row" t-key="row.state">
+                    <strong t-esc="row.label"/>:
+                    <span t-esc="row.count"/>
+                </li>
+            </ul>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_booking_appointment_list" model="ir.ui.view">
+        <field name="name">rn.booking.appointment.list</field>
+        <field name="model">rn.booking.appointment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="service_id"/>
+                <field name="staff_id"/>
+                <field name="location_id"/>
+                <field name="start_datetime"/>
+                <field name="stop_datetime"/>
+                <field name="payment_state"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_booking_appointment_form" model="ir.ui.view">
+        <field name="name">rn.booking.appointment.form</field>
+        <field name="model">rn.booking.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state not in ('draft', 'pending')"/>
+                    <button name="action_done" type="object" string="Mark Done" invisible="state != 'confirmed'"/>
+                    <button name="action_no_show" type="object" string="No Show" invisible="state != 'confirmed'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('cancel', 'done')"/>
+                    <button name="action_create_invoice" type="object" string="Create Invoice" invisible="invoice_id"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,confirmed,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="service_id"/>
+                            <field name="staff_id"/>
+                            <field name="location_id"/>
+                            <field name="resource_id"/>
+                            <field name="industry_id"/>
+                        </group>
+                        <group>
+                            <field name="start_datetime"/>
+                            <field name="stop_datetime"/>
+                            <field name="duration_minutes"/>
+                            <field name="booking_source"/>
+                            <field name="is_guest"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Payment">
+                        <field name="amount_total"/>
+                        <field name="amount_paid"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="payment_state"/>
+                        <field name="invoice_id"/>
+                    </group>
+                    <group string="Meeting">
+                        <field name="meeting_provider"/>
+                        <field name="meeting_url"/>
+                        <field name="calendar_event_id"/>
+                    </group>
+                    <group string="Feedback">
+                        <field name="rating"/>
+                        <field name="review"/>
+                        <field name="cancel_reason"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_booking_appointment_calendar" model="ir.ui.view">
+        <field name="name">rn.booking.appointment.calendar</field>
+        <field name="model">rn.booking.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="start_datetime" date_stop="stop_datetime" color="staff_id" mode="week">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="service_id"/>
+                <field name="staff_id"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="action_rn_booking_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">rn.booking.appointment</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+    <record id="view_rn_booking_quick_create_form" model="ir.ui.view">
+        <field name="name">rn.booking.quick.create.wizard.form</field>
+        <field name="model">rn.booking.quick.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Booking">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="service_id"/>
+                    <field name="staff_id"/>
+                    <field name="location_id"/>
+                    <field name="start_datetime"/>
+                    <field name="note"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Create" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_booking_quick_create" model="ir.actions.act_window">
+        <field name="name">Quick Booking</field>
+        <field name="res_model">rn.booking.quick.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="view_rn_booking_cancel_wizard_form" model="ir.ui.view">
+        <field name="name">rn.booking.cancel.wizard.form</field>
+        <field name="model">rn.booking.cancel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Appointment">
+                <group>
+                    <field name="appointment_id"/>
+                    <field name="cancel_reason"/>
+                </group>
+                <footer>
+                    <button name="action_cancel" type="object" string="Cancel Appointment" class="btn-primary"/>
+                    <button string="Close" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

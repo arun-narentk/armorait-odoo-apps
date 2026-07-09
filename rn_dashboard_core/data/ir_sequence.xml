@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_dashboard" model="ir.sequence">
+        <field name="name">Dashboard</field>
+        <field name="code">rn.dashboard</field>
+        <field name="prefix">DB-</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

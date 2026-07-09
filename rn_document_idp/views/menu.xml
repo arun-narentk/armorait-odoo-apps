@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_document_idp_root"
+              name="AI Document Processing"
+              web_icon="rn_document_idp,static/description/icon.png"
+              groups="group_rn_document_idp_user"
+              sequence="44"/>
+
+    <menuitem id="menu_rn_document_idp_dashboard"
+              name="Dashboard"
+              parent="menu_rn_document_idp_root"
+              action="action_rn_document_idp_dashboard"
+              sequence="5"/>
+
+    <menuitem id="menu_rn_document_idp_documents"
+              name="Review Queue"
+              parent="menu_rn_document_idp_root"
+              action="action_rn_document_idp_document"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_document_idp_config"
+              name="Configuration"
+              parent="menu_rn_document_idp_root"
+              groups="group_rn_document_idp_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_rn_document_idp_settings"
+              name="IDP Settings"
+              parent="menu_rn_document_idp_config"
+              action="action_rn_document_idp_settings"
+              sequence="10"/>
+</odoo>

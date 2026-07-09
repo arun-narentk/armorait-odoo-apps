@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_messaging_conversation_tree" model="ir.ui.view">
+        <field name="name">rn.messaging.conversation.tree</field>
+        <field name="model">rn.messaging.conversation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="channel_type"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+                <field name="message_count"/>
+                <field name="last_message_preview"/>
+                <field name="last_message_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_messaging_conversation_form" model="ir.ui.view">
+        <field name="name">rn.messaging.conversation.form</field>
+        <field name="model">rn.messaging.conversation</field>
+        <field name="arch" type="xml">
+            <form string="Conversation">
+                <header>
+                    <button name="action_open_reply_wizard" type="object" string="Send Reply" class="btn-primary"/>
+                    <button name="action_create_lead" type="object" string="Create Lead"/>
+                    <button name="action_handoff_human" type="object" string="Handoff to Agent"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="connector_id"/>
+                        <field name="partner_id"/>
+                        <field name="external_contact_id"/>
+                        <field name="lead_id"/>
+                        <field name="bot_session_id"/>
+                    </group>
+                    <widget name="rn_messaging_inbox_chat"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_messaging_conversation" model="ir.actions.act_window">
+        <field name="name">Inbox</field>
+        <field name="res_model">rn.messaging.conversation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

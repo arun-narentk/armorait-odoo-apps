@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="demo_rn_dashboard_tv" model="rn.dashboard">
+        <field name="name">Demo Live TV Board</field>
+        <field name="dashboard_type">tv</field>
+        <field name="theme">dark</field>
+        <field name="is_tv_mode" eval="True"/>
+        <field name="refresh_interval">10</field>
+        <field name="show_logo" eval="True"/>
+        <field name="show_clock" eval="True"/>
+        <field name="show_alerts" eval="True"/>
+    </record>
+    <record id="demo_rn_dashboard_alert" model="rn.dashboard.alert">
+        <field name="name">Demo: Efficiency below 60%</field>
+        <field name="kpi_key">generic.efficiency_pct</field>
+        <field name="value">55</field>
+        <field name="threshold">60</field>
+        <field name="severity">warning</field>
+        <field name="state">open</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+    </record>
+</data>
+</odoo>

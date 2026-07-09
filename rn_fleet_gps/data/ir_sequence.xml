@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_fleet_gps_device" model="ir.sequence">
+        <field name="name">GPS Device</field>
+        <field name="code">rn.fleet.gps.device</field>
+        <field name="prefix">GPS-</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_fleet_trip" model="ir.sequence">
+        <field name="name">Fleet Trip</field>
+        <field name="code">rn.fleet.trip</field>
+        <field name="prefix">TR-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

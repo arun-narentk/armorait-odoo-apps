@@ -1,8 +1,27 @@
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+.Python
+*.so
+.venv/
+venv/
 *.egg-info/
-.DS_Store
+.eggs/
+
+# IDE / editor
 .idea/
 .vscode/
-apps_store_zips/
+*.swp
+*.swo
+
+# Odoo
+*.pyc
 .tmp/
+
+# Local / env
+.env
+*.local
+
+# Apps Store zip staging (do not commit)
+apps_store_zips/

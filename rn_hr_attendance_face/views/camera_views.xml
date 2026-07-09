@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_rn_hr_camera_device_list" model="ir.ui.view">
+        <field name="name">rn.hr.camera.device.list</field>
+        <field name="model">rn.hr.camera.device</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="camera_type"/>
+                <field name="status"/>
+                <field name="fps"/>
+                <field name="resolution"/>
+                <field name="location"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_hr_camera_device_form" model="ir.ui.view">
+        <field name="name">rn.hr.camera.device.form</field>
+        <field name="model">rn.hr.camera.device</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_health_check" type="object" string="Health Check" class="btn-primary"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="camera_type"/>
+                            <field name="device_index"/>
+                            <field name="stream_url"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="fps"/>
+                            <field name="resolution"/>
+                            <field name="auto_reconnect"/>
+                            <field name="last_health_check"/>
+                            <field name="location"/>
+                            <field name="allowed_radius_m"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_camera_device" model="ir.actions.act_window">
+        <field name="name">Cameras</field>
+        <field name="res_model">rn.hr.camera.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_hr_recognition_device_list" model="ir.ui.view">
+        <field name="name">rn.hr.recognition.device.list</field>
+        <field name="model">rn.hr.recognition.device</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="serial_number"/>
+                <field name="state"/>
+                <field name="browser"/>
+                <field name="operating_system"/>
+                <field name="last_seen"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_rn_hr_recognition_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">rn.hr.recognition.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

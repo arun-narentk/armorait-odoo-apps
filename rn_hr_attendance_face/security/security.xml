@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_face">
+        <field name="name">Face Attendance</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+
+    <record id="group_rn_face_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_face"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_rn_face_employee" model="res.groups">
+        <field name="name">Employee</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_face"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_face_readonly'))]"/>
+    </record>
+
+    <record id="group_rn_face_officer" model="res.groups">
+        <field name="name">Attendance Officer</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_face"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_face_employee'))]"/>
+    </record>
+
+    <record id="group_rn_face_manager" model="res.groups">
+        <field name="name">HR Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_face"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_face_officer'))]"/>
+    </record>
+
+    <record id="group_rn_face_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_face"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_face_manager'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_face_employee_company" model="ir.rule">
+        <field name="name">Employee Face: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_employee_face"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_face_log_company" model="ir.rule">
+        <field name="name">Attendance Log: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_attendance_log"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_face_camera_company" model="ir.rule">
+        <field name="name">Camera: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_camera_device"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_face_device_company" model="ir.rule">
+        <field name="name">Recognition Device: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_recognition_device"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_face_settings_company" model="ir.rule">
+        <field name="name">Recognition Settings: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_recognition_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_face_session_company" model="ir.rule">
+        <field name="name">Attendance Session: multi-company</field>
+        <field name="model_id" ref="model_rn_hr_attendance_session"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+</odoo>

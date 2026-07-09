@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_ai_site_root"
+              name="AI Launch"
+              web_icon="rn_ai_site_base,static/description/icon.png"
+              groups="rn_ai_site_base.group_rn_ai_site_user"
+              sequence="59"/>
+
+    <menuitem id="menu_rn_ai_site_dashboard"
+              name="Dashboard"
+              parent="menu_rn_ai_site_root"
+              action="action_rn_ai_site_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_ai_site_briefs"
+              name="Business Briefs"
+              parent="menu_rn_ai_site_root"
+              action="action_rn_ai_site_brief"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_ai_site_websites"
+              name="Websites"
+              parent="menu_rn_ai_site_root"
+              action="action_rn_ai_site_site"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_ai_site_configuration"
+              name="Configuration"
+              parent="menu_rn_ai_site_root"
+              groups="rn_ai_site_base.group_rn_ai_site_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_ai_site_settings"
+              name="AI Site Settings"
+              parent="menu_rn_ai_site_configuration"
+              action="action_rn_ai_site_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_ai_site_subscriptions"
+              name="SaaS Subscriptions"
+              parent="menu_rn_ai_site_configuration"
+              action="action_rn_ai_site_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_ai_site_config_settings"
+              name="Settings"
+              parent="menu_rn_ai_site_configuration"
+              action="action_rn_ai_site_config_settings"
+              sequence="100"/>
+</odoo>

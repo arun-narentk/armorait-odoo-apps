@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_crm_lead_score" model="ir.actions.report">
+        <field name="name">Lead Score Summary</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_crm_ultimate_pro.report_lead_score_document</field>
+        <field name="report_file">rn_crm_ultimate_pro.report_lead_score_document</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_lead_score_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Lead Score Summary</h2>
+                    <p><strong>Lead:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Score:</strong> <span t-field="doc.rn_lead_score"/></p>
+                    <p><strong>Badge:</strong> <span t-field="doc.rn_score_badge"/></p>
+                    <p><strong>Risk:</strong> <span t-field="doc.rn_risk_level"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

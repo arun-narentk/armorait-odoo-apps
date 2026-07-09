@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="demo_rn_restaurant_table_3" model="rn.restaurant.table">
+        <field name="name">T3</field>
+        <field name="branch_id" ref="rn_restaurant_branch_main"/>
+        <field name="floor_id" ref="rn_restaurant_floor_indoor"/>
+        <field name="seats">4</field>
+        <field name="state">occupied</field>
+    </record>
+</data>
+</odoo>

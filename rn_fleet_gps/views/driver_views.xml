@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_fleet_driver_assignment" model="ir.actions.act_window">
+        <field name="name">Driver Assignments</field>
+        <field name="res_model">rn.fleet.driver.assignment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

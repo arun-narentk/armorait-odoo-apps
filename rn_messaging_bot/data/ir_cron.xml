@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_rn_messaging_process_queue" model="ir.cron">
+        <field name="name">Messaging Bot: Process Outbound Queue</field>
+        <field name="model_id" ref="model_rn_messaging_queue_service"/>
+        <field name="state">code</field>
+        <field name="code">model.process_queue()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="ir_cron_rn_messaging_retry_failed" model="ir.cron">
+        <field name="name">Messaging Bot: Retry Failed Messages</field>
+        <field name="model_id" ref="model_rn_messaging_queue_service"/>
+        <field name="state">code</field>
+        <field name="code">model.retry_failed()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="ir_cron_rn_messaging_campaigns" model="ir.cron">
+        <field name="name">Messaging Bot: Process Scheduled Campaigns</field>
+        <field name="model_id" ref="model_rn_messaging_campaign_service"/>
+        <field name="state">code</field>
+        <field name="code">model.process_scheduled_campaigns()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

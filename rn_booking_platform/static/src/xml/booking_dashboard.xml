@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_booking_platform.Dashboard">
+        <div class="o_rn_booking_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Appointment Booking Pro</h1>
+                    <div class="text-muted small">Online appointment scheduling for Odoo 19 Community</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_booking_card"><div class="label">Today</div><div class="value" t-esc="state.cards.today_appointments || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_booking_card"><div class="label">Upcoming</div><div class="value" t-esc="state.cards.upcoming_appointments || 0"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_booking_card"><div class="label">Revenue</div><div class="value" t-esc="formatNumber(state.cards.revenue)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_booking_card"><div class="label">No-shows</div><div class="value" t-esc="state.cards.no_shows || 0"/></div></div>
+                </div>
+                <div class="o_rn_booking_panel">
+                    <h2 class="h5">Recent Appointments</h2>
+                    <ul class="small mb-0">
+                        <t t-foreach="state.recent" t-as="row" t-key="row_index">
+                            <li>
+                                <t t-esc="row.name"/> |
+                                <t t-esc="row.partner"/> |
+                                <t t-esc="row.service"/> |
+                                <t t-esc="row.start"/> |
+                                <t t-esc="row.state"/>
+                            </li>
+                        </t>
+                    </ul>
+                    <div class="text-muted small mt-2">Updated: <t t-esc="state.updatedAt"/></div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

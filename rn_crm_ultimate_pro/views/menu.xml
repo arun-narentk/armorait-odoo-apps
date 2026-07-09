@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_crm_root"
+              name="CRM Ultimate"
+              web_icon="rn_crm_ultimate_pro,static/description/icon.png"
+              groups="rn_crm_ultimate_pro.group_rn_crm_salesperson"
+              sequence="48"/>
+
+    <menuitem id="menu_rn_crm_dashboard"
+              name="Dashboard"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_crm_score_rules"
+              name="Score Rules"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_score_rule"
+              sequence="10"
+              groups="rn_crm_ultimate_pro.group_rn_crm_manager"/>
+
+    <menuitem id="menu_rn_crm_duplicates"
+              name="Duplicates"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_duplicate_batch"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_crm_merge_logs"
+              name="Merge Logs"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_merge_log"
+              sequence="25"
+              groups="rn_crm_ultimate_pro.group_rn_crm_manager"/>
+
+    <menuitem id="menu_rn_crm_followups"
+              name="Follow-up Rules"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_followup_rule"
+              sequence="30"
+              groups="rn_crm_ultimate_pro.group_rn_crm_manager"/>
+
+    <menuitem id="menu_rn_crm_reminders"
+              name="Reminders"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_reminder"
+              sequence="35"/>
+
+    <menuitem id="menu_rn_crm_activity_templates"
+              name="Activity Templates"
+              parent="menu_rn_crm_root"
+              action="action_rn_crm_activity_template"
+              sequence="40"
+              groups="rn_crm_ultimate_pro.group_rn_crm_manager"/>
+
+    <menuitem id="menu_rn_crm_operations"
+              name="Operations"
+              parent="menu_rn_crm_root"
+              sequence="50"/>
+
+    <menuitem id="menu_rn_crm_op_merge"
+              name="Merge Leads"
+              parent="menu_rn_crm_operations"
+              action="action_rn_crm_merge_lead_wizard"
+              sequence="10"/>
+    <menuitem id="menu_rn_crm_op_followup"
+              name="Bulk Follow-up"
+              parent="menu_rn_crm_operations"
+              action="action_rn_crm_bulk_followup_wizard"
+              sequence="20"/>
+    <menuitem id="menu_rn_crm_op_assign"
+              name="Bulk Assign"
+              parent="menu_rn_crm_operations"
+              action="action_rn_crm_bulk_assign_wizard"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_crm_configuration"
+              name="Configuration"
+              parent="menu_rn_crm_root"
+              groups="rn_crm_ultimate_pro.group_rn_crm_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_crm_settings"
+              name="CRM Ultimate Settings"
+              parent="menu_rn_crm_configuration"
+              action="action_rn_crm_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_crm_config_settings"
+              name="Settings"
+              parent="menu_rn_crm_configuration"
+              action="action_rn_crm_config_settings"
+              sequence="100"
+              groups="rn_crm_ultimate_pro.group_rn_crm_admin"/>
+</odoo>

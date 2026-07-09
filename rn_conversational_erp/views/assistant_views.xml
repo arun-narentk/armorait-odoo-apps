@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_conversational_assistant_tree" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.assistant.tree</field>
+        <field name="model">rn.conversational.erp.assistant</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="assistant_scope"/>
+                <field name="sensitive_actions"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_conversational_assistant_form" model="ir.ui.view">
+        <field name="name">rn.conversational.erp.assistant.form</field>
+        <field name="model">rn.conversational.erp.assistant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="assistant_scope"/>
+                        <field name="keyword_hint"/>
+                        <field name="sensitive_actions"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <field name="welcome_message"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_conversational_assistant" model="ir.actions.act_window">
+        <field name="name">Assistants</field>
+        <field name="res_model">rn.conversational.erp.assistant</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

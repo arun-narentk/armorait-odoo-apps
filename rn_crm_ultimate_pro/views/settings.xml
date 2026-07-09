@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_crm_settings_form" model="ir.ui.view">
+        <field name="name">rn.crm.settings.form</field>
+        <field name="model">rn.crm.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="scoring_enabled"/>
+                        <field name="duplicate_sensitivity"/>
+                        <field name="prediction_provider"/>
+                        <field name="reminder_interval_hours"/>
+                        <field name="dashboard_refresh_minutes"/>
+                        <field name="round_robin_assignment"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_crm_settings" model="ir.actions.act_window">
+        <field name="name">CRM Ultimate Settings</field>
+        <field name="res_model">rn.crm.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_crm" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.crm</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="CRM Ultimate Pro" name="rn_crm_ultimate_pro" groups="rn_crm_ultimate_pro.group_rn_crm_admin">
+                    <block title="General">
+                        <setting string="Lead Scoring"><field name="rn_crm_scoring_enabled"/></setting>
+                        <setting string="Duplicate Sensitivity"><field name="rn_crm_duplicate_sensitivity"/></setting>
+                        <setting string="Prediction Provider"><field name="rn_crm_prediction_provider"/></setting>
+                        <setting string="Round Robin Assignment"><field name="rn_crm_round_robin"/></setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_crm_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_crm_ultimate_pro'}</field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_video_banner" name="Video Banner">
+    <section class="s_tb_video_banner tb-snippet tb-reveal pt0 pb0 position-relative" data-snippet="s_tb_video_banner">
+        <div class="ratio ratio-21x9">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video banner" allowfullscreen="allowfullscreen" class="border-0"/>
+        </div>
+        <div class="container position-absolute top-50 start-50 translate-middle text-center text-white">
+            <h2 class="display-4 fw-bold">Video Banner</h2>
+            <p class="lead">Tell your story with motion.</p>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

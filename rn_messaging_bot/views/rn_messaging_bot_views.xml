@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_messaging_bot_tree" model="ir.ui.view">
+        <field name="name">rn.messaging.bot.tree</field>
+        <field name="model">rn.messaging.bot</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="start_node_id"/>
+                <field name="session_count"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_messaging_bot_form" model="ir.ui.view">
+        <field name="name">rn.messaging.bot.form</field>
+        <field name="model">rn.messaging.bot</field>
+        <field name="arch" type="xml">
+            <form string="Messaging Bot">
+                <header>
+                    <button name="action_open_flow_designer" type="object" string="Open Flow Designer" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_nodes" type="object" class="oe_stat_button" icon="fa-sitemap">
+                            <span class="o_stat_text">Nodes</span>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="start_node_id"/>
+                        <field name="welcome_text"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <field name="description"/>
+                    <field name="node_ids">
+                        <list>
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="node_type"/>
+                            <field name="body_text"/>
+                            <field name="next_node_id"/>
+                        </list>
+                        <form>
+                            <group>
+                            <field name="name"/>
+                            <field name="node_type"/>
+                            <field name="body_text"/>
+                            <field name="pos_x"/>
+                            <field name="pos_y"/>
+                            <field name="action_code"/>
+                                <field name="next_node_id"/>
+                                <field name="fallback_node_id"/>
+                            </group>
+                            <field name="option_ids" invisible="node_type != 'menu'">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="keyword"/>
+                                    <field name="target_node_id"/>
+                                </list>
+                            </field>
+                        </form>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_messaging_bot" model="ir.actions.act_window">
+        <field name="name">Bots</field>
+        <field name="res_model">rn.messaging.bot</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

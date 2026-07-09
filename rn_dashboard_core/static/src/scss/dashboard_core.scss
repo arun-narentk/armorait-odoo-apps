@@ -1,0 +1,37 @@
+.o_rn_dashboard_shell {
+  background: linear-gradient(180deg, #f8fafc 0%, #ecfdf5 100%);
+  min-height: 100%;
+  &.o_rn_tv_mode {
+    background: #0f172a;
+    color: #e2e8f0;
+    .o_rn_dash_card, .o_rn_dash_panel {
+      background: #1e293b;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+    .label, .text-muted, .panel-title { color: #94a3b8 !important; }
+    .value { color: #5eead4 !important; }
+  }
+  .o_rn_dash_card, .o_rn_dash_panel {
+    background: #fff;
+    border: 1px solid #a7f3d0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+  .label { color: #64748b; font-size: 0.8rem; margin-bottom: 0.35rem; }
+  .value { color: #0F766E; font-size: 1.35rem; font-weight: 700; }
+  .panel-title { font-weight: 600; margin-bottom: 0.25rem; }
+  .o_rn_status_chip {
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+  }
+  .o_rn_widget_chip {
+    border: 2px solid #0F766E;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    background: #fff;
+  }
+}

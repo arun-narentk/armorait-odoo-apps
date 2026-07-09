@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="snippets_registry" inherit_id="website.snippets" name="ARMORAIT Theme Base Snippets">
+    <xpath expr="//t[@id='installed_snippets_hook']" position="after">
+        <t snippet-group="rn_theme_base" t-snippet="website.s_snippet_group" string="ARMORAIT"
+            t-thumbnail="/website/static/src/img/snippets_thumbs/s_three_columns.svg"/>
+    </xpath>
+    <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+        <t t-snippet="rn_theme_base.s_tb_hero_banner" string="Hero Banner" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_video_banner" string="Video Banner" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_image_slider" string="Image Slider" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_animated_counter" string="Animated Counter" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_services_grid" string="Services Grid" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_feature_cards" string="Feature Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_pricing_table" string="Pricing Table" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_testimonials" string="Testimonials" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_faq" string="FAQ" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_team_members" string="Team Members" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_call_to_action" string="Call To Action" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_partners_logo" string="Partners Logo" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_gallery" string="Gallery" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_timeline" string="Timeline" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_statistics" string="Statistics" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_newsletter" string="Newsletter" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_instagram_feed" string="Instagram Feed" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_google_map" string="Google Map" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_contact_form" string="Contact Form" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_blog_cards" string="Blog Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_portfolio_grid" string="Portfolio Grid" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_process_steps" string="Process Steps" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_before_after" string="Before After" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_accordion" string="Accordion" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_tabs" string="Tabs" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_comparison_table" string="Comparison Table" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_countdown" string="Countdown" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_product_showcase" string="Product Showcase" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_category_grid" string="Category Grid" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_restaurant_menu" string="Restaurant Menu" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_doctor_cards" string="Doctor Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_course_cards" string="Course Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_teacher_cards" string="Teacher Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_appointment_section" string="Appointment Section" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_event_cards" string="Event Cards" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_footer_variation" string="Footer Variation" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_header_variation" string="Header Variation" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_floating_contact" string="Floating Contact" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_whatsapp_button" string="WhatsApp Button" group="rn_theme_base"/>
+        <t t-snippet="rn_theme_base.s_tb_emergency_banner" string="Emergency Banner" group="rn_theme_base"/>
+    </xpath>
+</template>
+
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_conversational_erp">
+        <field name="name">Conversational ERP</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+
+    <record id="group_rn_conversational_erp_user" model="res.groups">
+        <field name="name">Conversational ERP User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_conversational_erp"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_rn_conversational_erp_manager" model="res.groups">
+        <field name="name">Conversational ERP Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_conversational_erp"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_conversational_erp_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_conversational_channel_company" model="ir.rule">
+        <field name="name">Conversational channel multi-company</field>
+        <field name="model_id" ref="model_rn_conversational_erp_channel"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_conversational_assistant_company" model="ir.rule">
+        <field name="name">Conversational assistant multi-company</field>
+        <field name="model_id" ref="model_rn_conversational_erp_assistant"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_conversational_conversation_company" model="ir.rule">
+        <field name="name">Conversational conversation multi-company</field>
+        <field name="model_id" ref="model_rn_conversational_erp_conversation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_conversational_message_company" model="ir.rule">
+        <field name="name">Conversational message multi-company</field>
+        <field name="model_id" ref="model_rn_conversational_erp_message"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_conversational_approval_company" model="ir.rule">
+        <field name="name">Conversational approval multi-company</field>
+        <field name="model_id" ref="model_rn_conversational_erp_approval"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

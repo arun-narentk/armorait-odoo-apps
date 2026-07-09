@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_appointment_section" name="Appointment Section">
+    <section class="s_tb_appointment_section tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_appointment_section">
+        <div class="container"><div class="row align-items-center"><div class="col-lg-6 tb-reveal"><h2>Book an Appointment</h2><p class="lead">Choose a time that works for you.</p></div>
+        <div class="col-lg-6 tb-reveal"><form><div class="mb-3"><input type="date" class="form-control"/></div><div class="mb-3"><input type="time" class="form-control"/></div><button class="btn btn-primary">Book Now</button></form></div></div></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

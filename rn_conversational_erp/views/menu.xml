@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_conversational_root" name="Conversational ERP"
+              web_icon="rn_conversational_erp,static/description/icon.png"
+              groups="group_rn_conversational_erp_user" sequence="49"/>
+    <menuitem id="menu_rn_conversational_dashboard" name="Dashboard" parent="menu_rn_conversational_root" action="action_rn_conversational_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_conversational_channel" name="Channels" parent="menu_rn_conversational_root" action="action_rn_conversational_channel" sequence="10"/>
+    <menuitem id="menu_rn_conversational_assistant" name="Assistants" parent="menu_rn_conversational_root" action="action_rn_conversational_assistant" sequence="20"/>
+    <menuitem id="menu_rn_conversational_conversation" name="Conversations" parent="menu_rn_conversational_root" action="action_rn_conversational_conversation" sequence="30"/>
+    <menuitem id="menu_rn_conversational_approval" name="Approval Center" parent="menu_rn_conversational_root" action="action_rn_conversational_approval" sequence="40"/>
+</odoo>

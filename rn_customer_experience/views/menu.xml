@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_customer_experience_root"
+              name="Customer Experience"
+              web_icon="rn_customer_experience,static/description/icon.png"
+              groups="group_rn_customer_experience_user"
+              sequence="47"/>
+
+    <menuitem id="menu_rn_customer_experience_dashboard"
+              name="Dashboard"
+              parent="menu_rn_customer_experience_root"
+              action="action_rn_customer_experience_dashboard"
+              sequence="5"/>
+
+    <menuitem id="menu_rn_customer_experience_operations"
+              name="Operations"
+              parent="menu_rn_customer_experience_root"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_customer_experience_tickets"
+              name="Support Tickets"
+              parent="menu_rn_customer_experience_operations"
+              action="action_rn_customer_experience_ticket"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_customer_experience_warranty"
+              name="Warranty"
+              parent="menu_rn_customer_experience_operations"
+              action="action_rn_customer_experience_warranty"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_customer_experience_amc"
+              name="AMC Contracts"
+              parent="menu_rn_customer_experience_operations"
+              action="action_rn_customer_experience_amc"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_customer_experience_analytics"
+              name="Analytics Events"
+              parent="menu_rn_customer_experience_operations"
+              action="action_rn_customer_experience_analytics"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_customer_experience_config_root"
+              name="Configuration"
+              parent="menu_rn_customer_experience_root"
+              groups="group_rn_customer_experience_admin"
+              sequence="90"/>
+
+    <menuitem id="menu_rn_customer_experience_config"
+              name="Portal Settings"
+              parent="menu_rn_customer_experience_config_root"
+              action="action_rn_customer_experience_config"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_customer_experience_widgets"
+              name="Widgets"
+              parent="menu_rn_customer_experience_config_root"
+              action="action_rn_customer_experience_widget"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_customer_experience_pages"
+              name="Pages"
+              parent="menu_rn_customer_experience_config_root"
+              action="action_rn_customer_experience_page"
+              sequence="30"/>
+</odoo>
