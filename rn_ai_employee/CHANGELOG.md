@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.3.1.0
+- Refresh Apps Store description for Phase 2: LLM routing, write tools, systray widget
+
 ## 19.0.3.0.0
 - Wire OpenAI-compatible LLM routing with rules fallback
 - Add write tools: create quotation and send payment reminder emails
