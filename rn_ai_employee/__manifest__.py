@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Chatbot',
-    'version': '19.0.2.7.0',
+    'version': '19.0.2.8.0',
     'category': 'Productivity',
     'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
     'description': """
@@ -54,7 +54,7 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
         'static/description/banner.png',
         'static/description/icon.png',
         'static/description/overview.png',
-        'static/description/dashboard.png',
+        'static/description/settings.png',
     ],
     'installable': True,
     'application': True,

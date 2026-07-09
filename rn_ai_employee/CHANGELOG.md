@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.0.2.8.0
+- Rebuilt Apps Store description page with accurate copilot copy and screenshots
+- Replaced broken error-page captures and placeholder GIFs with proper marketplace assets
+
 ## 19.0.2.7.0
 - Renamed technical models from `ai.employee.*` to `rn.ai.employee.*`
 - Aligned manifest, security groups, XML IDs, and settings fields with `rn_ai_employee` naming
