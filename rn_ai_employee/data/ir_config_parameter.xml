@@ -24,4 +24,12 @@
         <field name="key">rn_ai_employee.use_llm</field>
         <field name="value">True</field>
     </record>
+    <record id="config_rn_rn_ai_employee_require_write_confirmation" model="ir.config_parameter">
+        <field name="key">rn_ai_employee.require_write_confirmation</field>
+        <field name="value">True</field>
+    </record>
+    <record id="config_rn_rn_ai_employee_morning_briefing_enabled" model="ir.config_parameter">
+        <field name="key">rn_ai_employee.morning_briefing_enabled</field>
+        <field name="value">False</field>
+    </record>
 </odoo>

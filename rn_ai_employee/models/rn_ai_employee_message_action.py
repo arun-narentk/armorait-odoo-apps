@@ -30,6 +30,8 @@ class AiEmployeeMessageAction(models.Model):
             ('create_activity', 'Create Activity'),
             ('open_form', 'Open Record'),
             ('export_list', 'Export'),
+            ('confirm_write', 'Confirm Write'),
+            ('cancel_write', 'Cancel Write'),
             ('phase2', 'Coming Soon'),
         ],
         required=True,
@@ -51,6 +53,10 @@ class AiEmployeeMessageAction(models.Model):
             return self._action_create_activity()
         if self.action_type == 'export_list':
             return self._action_open_list()
+        if self.action_type == 'confirm_write':
+            return self._action_confirm_write()
+        if self.action_type == 'cancel_write':
+            return self._action_cancel_write()
         raise UserError(_('This action will be available in a future release.'))
 
     def _action_open_list(self):
@@ -99,6 +105,28 @@ class AiEmployeeMessageAction(models.Model):
                 'default_res_ids': res_ids[:50],
             },
         }
+
+    def _action_confirm_write(self):
+        self.ensure_one()
+        pending = self._get_pending_action()
+        pending.action_confirm()
+        return pending.chat_id._reload_form()
+
+    def _action_cancel_write(self):
+        self.ensure_one()
+        pending = self._get_pending_action()
+        pending.action_cancel()
+        return pending.chat_id._reload_form()
+
+    def _get_pending_action(self):
+        self.ensure_one()
+        res_ids = json.loads(self.res_ids or '[]')
+        if not res_ids:
+            raise UserError(_('No pending action is linked to this card.'))
+        pending = self.env['rn.ai.employee.pending.action'].browse(res_ids[0])
+        if not pending.exists():
+            raise UserError(_('The pending action is no longer available.'))
+        return pending
 
     @api.model
     def create_from_tool_result(self, message, result: dict) -> None:

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_rn_ai_employee_root"
-              name="AI Employee"
+              name="AI Copilot"
               web_icon="rn_ai_employee,static/description/icon.svg"
               sequence="45"
               groups="rn_ai_employee.group_rn_ai_employee_user"/>
 
     <menuitem id="menu_rn_ai_employee_chat"
-              name="Ask AI Employee"
+              name="Ask AI Copilot"
               parent="menu_rn_ai_employee_root"
               action="action_rn_ai_employee_chat"
               sequence="10"/>
@@ -18,6 +18,13 @@
               action="action_rn_ai_employee_conversations"
               sequence="20"/>
 
+    <menuitem id="menu_rn_ai_employee_audit_logs"
+              name="Audit Log"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_audit_logs"
+              sequence="28"
+              groups="rn_ai_employee.group_rn_ai_employee_manager"/>
+
     <menuitem id="menu_rn_ai_employee_suggestions"
               name="Suggested Questions"
               parent="menu_rn_ai_employee_root"
@@ -26,7 +33,7 @@
               groups="rn_ai_employee.group_rn_ai_employee_manager"/>
 
     <menuitem id="menu_rn_ai_employee_tools"
-              name="Tools"
+              name="Skills"
               parent="menu_rn_ai_employee_root"
               action="action_rn_ai_employee_tools"
               sequence="30"

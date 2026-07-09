@@ -1,13 +1,13 @@
 # User Guide
 
-## AI Employee
+## AI Copilot for Odoo
 
-AI Employee is an Odoo-native assistant that understands intent, calls registered tools, and returns answers with optional actions on CRM, sales, stock, and accounting.
+AI Copilot is the enterprise intelligence layer for Odoo. It routes questions to skills, supports follow-up memory, confirms writes, and audits every action.
 
 ## Typical workflow
-1. Install AI Employee
-2. Set API key in Settings
-3. Open Ask AI Employee
+1. Install AI Copilot for Odoo
+2. Set API key and platform options in Settings
+3. Open Ask AI Copilot
 4. Ask a question or pick a suggestion
 5. Review the answer and action cards
 6. Open lists or schedule follow-ups in Odoo

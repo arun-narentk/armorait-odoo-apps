@@ -1,23 +1,24 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Employee',
-    'version': '19.0.3.1.0',
+    'name': 'AI Copilot for Odoo',
+    'version': '19.0.4.0.0',
     'category': 'Productivity',
-    'summary': 'AI assistant for Odoo: analytics, LLM routing, quotations, reminders, systray chat',
+    'summary': 'Enterprise AI operating layer for Odoo: ask, reason, act, audit, and automate',
     'description': """
-AI Employee for Odoo 19
-=======================
+AI Copilot for Odoo 19
+======================
 
-Ask everyday business questions in plain language and get answers from live Odoo data.
+The intelligence layer for your Odoo ERP. Ask business questions, run guided
+write skills, and get proactive executive briefings from live company data.
 
-**Key points**
-* 20+ analytics and action tools across Sales, Accounting, Inventory, and CRM
+**Platform capabilities**
+* 25+ analytics and write skills across Sales, Finance, Inventory, CRM, and Purchase
+* Session memory for follow-up questions ("email the first three customers")
+* Confirmation gates and audit logs for every write action
 * OpenAI-compatible LLM routing with rules fallback
-* Backend systray chat widget
-* Guided write tools: create quotation, send payment reminders
-* Action cards: Open List, Open Record, Create Activity
-* Permission-aware ORM tools
-* Community, Enterprise, and Odoo.sh compatible
+* Backend systray copilot widget
+* Proactive morning briefing cron for managers
+* Permission-aware ORM skills
 
 **Self-service**
 Install, enable, and use it in your own Odoo environment.
@@ -38,6 +39,7 @@ Install, enable, and use it in your own Odoo environment.
         'stock',
         'account',
         'crm',
+        'purchase',
     ],
     'data': [
         'security/security.xml',
@@ -45,9 +47,11 @@ Install, enable, and use it in your own Odoo environment.
         'data/ir_config_parameter.xml',
         'data/rn_ai_employee_tool_data.xml',
         'data/rn_ai_employee_suggestion_data.xml',
+        'data/rn_ai_employee_cron.xml',
         'views/rn_ai_employee_chat_views.xml',
         'views/rn_ai_employee_tool_views.xml',
         'views/rn_ai_employee_suggestion_views.xml',
+        'views/rn_ai_employee_audit_log_views.xml',
         'views/res_config_settings_views.xml',
         'views/rn_ai_employee_menus.xml',
     ],

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from . import rn_ai_employee_audit_log
+from . import rn_ai_employee_pending_action
 from . import rn_ai_employee_chat
 from . import rn_ai_employee_message
 from . import rn_ai_employee_message_action
@@ -10,4 +12,4 @@ from . import rn_ai_employee_explainer
 from . import rn_ai_employee_suggestion
 from . import res_config_settings
 
-from ..tools import sales, accounting, inventory, crm, actions  # noqa: F401
+from ..tools import sales, accounting, inventory, crm, actions, phase3_actions  # noqa: F401

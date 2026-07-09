@@ -14,6 +14,8 @@ class BaseAITool(ABC):
 
     name: str = ''
     description: str = ''
+    is_write_tool: bool = False
+    requires_confirmation: bool = False
 
     def __init__(self, env: Environment):
         self.env = env

@@ -4,14 +4,14 @@
     <t t-name="rn_ai_employee.Systray">
         <div class="o_ai_employee_systray">
         <Dropdown position="'bottom-end'" menuClass="'o_ai_employee_systray_menu p-0'">
-            <button type="button" class="o-dropdown--narrow btn btn-link" title="AI Employee">
+            <button type="button" class="o-dropdown--narrow btn btn-link" title="AI Copilot">
                 <i class="fa fa-comments text-primary"/>
             </button>
             <t t-set-slot="content">
                 <div class="o_ai_employee_systray_panel">
                     <div class="o_ai_employee_systray_header px-3 py-2 border-bottom">
-                        <strong>AI Employee</strong>
-                        <div class="text-muted small">Ask business questions in plain language</div>
+                        <strong>AI Copilot for Odoo</strong>
+                        <div class="text-muted small">Enterprise intelligence layer for your ERP</div>
                     </div>
 
                     <div t-if="state.error" class="alert alert-warning m-2 mb-0 py-2 small">
@@ -52,7 +52,7 @@
                         <div class="o_ai_employee_systray_input border-top p-2">
                             <textarea class="form-control form-control-sm"
                                       rows="2"
-                                      placeholder="Ask AI Employee..."
+                                      placeholder="Ask AI Copilot..."
                                       t-model="state.draft"
                                       t-on-keydown="onKeydown"/>
                             <div class="d-flex justify-content-end mt-2">
