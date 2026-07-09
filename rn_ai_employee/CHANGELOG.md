@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.14.0
+- New professional app icon (chat bubble + AI sparkle) and hero banner for Apps Store
+
 ## 19.0.2.13.0
 - Set Apps Store price to 9.99 USD (Odoo minimum tier); note INR display on listing page
 
