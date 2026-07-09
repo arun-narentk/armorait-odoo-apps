@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_messaging_bot.FlowDesigner">
+        <div class="o_rn_messaging_flow_designer o_action p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h2 class="mb-0">Bot Flow Designer</h2>
+                    <p class="text-muted mb-0" t-if="state.bot.name">
+                        <t t-esc="state.bot.name"/>
+                    </p>
+                </div>
+                <button class="btn btn-primary" t-on-click="saveLayout">Save Layout</button>
+            </div>
+            <div t-if="state.loading" class="text-muted">Loading flow...</div>
+            <div t-else="" class="o_rn_flow_canvas card" t-ref="canvas">
+                <svg class="o_rn_flow_edges">
+                    <path t-foreach="state.edges" t-as="edge" t-key="edge.source + '-' + edge.target + '-' + edge.label"
+                          t-att-d="edgePath(edge)" class="o_rn_flow_edge"/>
+                </svg>
+                <div class="o_rn_flow_node card shadow-sm"
+                     t-foreach="state.nodes" t-as="node" t-key="node.id"
+                     t-att-style="nodeStyle(node)"
+                     t-on-mousedown="(ev) => this.onNodeMouseDown(ev, node)">
+                    <span class="badge text-bg-secondary mb-1" t-esc="node.node_type"/>
+                    <strong t-esc="node.name"/>
+                    <div class="small text-muted mt-1" t-if="node.body_text" t-esc="node.body_text"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

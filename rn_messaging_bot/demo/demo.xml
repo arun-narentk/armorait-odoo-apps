@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_connector_whatsapp" model="rn.messaging.connector">
+        <field name="name">Demo WhatsApp Connector</field>
+        <field name="channel_type">whatsapp</field>
+        <field name="simulation_mode" eval="True"/>
+        <field name="status">connected</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="webhook_verify_token">armora-demo-token</field>
+    </record>
+</odoo>

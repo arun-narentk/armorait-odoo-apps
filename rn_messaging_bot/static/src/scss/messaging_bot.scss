@@ -1,0 +1,39 @@
+.o_rn_messaging_flow_designer {
+    .o_rn_flow_canvas {
+        position: relative;
+        min-height: 640px;
+        overflow: auto;
+        background:
+            linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+            linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        background-size: 24px 24px;
+    }
+
+    .o_rn_flow_edges {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .o_rn_flow_edge {
+        fill: none;
+        stroke: #6c757d;
+        stroke-width: 2;
+    }
+
+    .o_rn_flow_node {
+        position: absolute;
+        width: 180px;
+        padding: 12px;
+        cursor: move;
+        user-select: none;
+        z-index: 2;
+    }
+}
+
+.o_rn_inbox_composer {
+    border-top: 1px solid #dee2e6;
+    padding-top: 12px;
+}

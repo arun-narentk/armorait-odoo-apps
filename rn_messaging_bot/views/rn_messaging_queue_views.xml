@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_messaging_message_tree" model="ir.ui.view">
+        <field name="name">rn.messaging.message.tree</field>
+        <field name="model">rn.messaging.message</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date"/>
+                <field name="conversation_id"/>
+                <field name="direction"/>
+                <field name="content"/>
+                <field name="delivery_state"/>
+                <field name="retry_count"/>
+                <field name="priority"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_rn_messaging_outbound_queue" model="ir.actions.act_window">
+        <field name="name">Outbound Queue</field>
+        <field name="res_model">rn.messaging.message</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('direction', '=', 'outbound')]</field>
+    </record>
+</odoo>
