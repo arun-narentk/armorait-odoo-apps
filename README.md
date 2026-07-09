@@ -7,7 +7,7 @@ Odoo Apps Store repository for Armorait modules.
 Each app is a top-level folder with its own `__manifest__.py`.
 
 ```text
-ai_employee/
+rn_ai_employee/
 ```
 
 ## Branch

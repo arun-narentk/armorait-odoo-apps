@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_ai_employee_chat_user,rn.ai.employee.chat user,model_rn_ai_employee_chat,rn_ai_employee.group_rn_ai_employee_user,1,1,1,0
+access_rn_ai_employee_chat_manager,rn.ai.employee.chat manager,model_rn_ai_employee_chat,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
+access_rn_ai_employee_message_user,rn.ai.employee.message user,model_rn_ai_employee_message,rn_ai_employee.group_rn_ai_employee_user,1,1,1,0
+access_rn_ai_employee_message_manager,rn.ai.employee.message manager,model_rn_ai_employee_message,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
+access_rn_ai_employee_tool_user,rn.ai.employee.tool user,model_rn_ai_employee_tool,rn_ai_employee.group_rn_ai_employee_user,1,0,0,0
+access_rn_ai_employee_tool_manager,rn.ai.employee.tool manager,model_rn_ai_employee_tool,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
+access_rn_ai_employee_suggestion_user,rn.ai.employee.suggestion user,model_rn_ai_employee_suggestion,rn_ai_employee.group_rn_ai_employee_user,1,0,0,0
+access_rn_ai_employee_suggestion_manager,rn.ai.employee.suggestion manager,model_rn_ai_employee_suggestion,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
+access_rn_ai_employee_message_action_user,rn.ai.employee.message.action user,model_rn_ai_employee_message_action,rn_ai_employee.group_rn_ai_employee_user,1,0,0,0
+access_rn_ai_employee_message_action_manager,rn.ai.employee.message.action manager,model_rn_ai_employee_message_action,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
