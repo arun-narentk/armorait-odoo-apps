@@ -13,12 +13,12 @@ _logger = logging.getLogger(__name__)
 
 
 class AiEmployeeMessageAction(models.Model):
-    _name = 'ai.employee.message.action'
-    _description = 'AI Copilot Message Action'
+    _name = 'rn.ai.employee.message.action'
+    _description = 'AI Employee Message Action'
     _order = 'sequence, id'
 
     message_id = fields.Many2one(
-        'ai.employee.message',
+        'rn.ai.employee.message',
         required=True,
         ondelete='cascade',
         index=True,

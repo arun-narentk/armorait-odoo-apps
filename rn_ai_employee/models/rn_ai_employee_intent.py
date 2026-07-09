@@ -10,7 +10,7 @@ from odoo import api, models
 
 
 class AiEmployeeIntent(models.AbstractModel):
-    _name = 'ai.employee.intent'
+    _name = 'rn.ai.employee.intent'
     _description = 'AI Employee Intent Detector'
 
     # Higher priority wins when multiple rules match.
@@ -103,7 +103,7 @@ class AiEmployeeIntent(models.AbstractModel):
 
     @api.model
     def _match_suggestion_question(self, user_text: str) -> tuple[str | None, dict[str, Any]] | None:
-        suggestion = self.env['ai.employee.suggestion'].search([
+        suggestion = self.env['rn.ai.employee.suggestion'].search([
             ('question', '=ilike', user_text.strip()),
             ('active', '=', True),
         ], limit=1)
@@ -115,7 +115,7 @@ class AiEmployeeIntent(models.AbstractModel):
     def _default_arguments(self, tool_name: str, normalized_text: str) -> dict[str, Any]:
         args: dict[str, Any] = {}
         if tool_name == 'overdue_invoices':
-            args['days_overdue'] = 90
+            args['days_overdue'] = 0
         if tool_name == 'find_customer':
             args['inactive_months'] = 6 if 'inactive' in normalized_text or '6 month' in normalized_text else 0
         if 'limit' not in args:

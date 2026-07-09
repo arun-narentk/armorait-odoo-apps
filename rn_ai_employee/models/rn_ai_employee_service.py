@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 
 
 class AiEmployeeService(models.AbstractModel):
-    _name = 'ai.employee.service'
+    _name = 'rn.ai.employee.service'
     _description = 'AI Employee Orchestration Service'
 
     @api.model
@@ -28,23 +28,23 @@ class AiEmployeeService(models.AbstractModel):
 
         self._ensure_enabled()
         self._create_message(chat, 'user', user_text)
-        _logger.info('AI Copilot prompt chat=%s user=%s', chat.id, self.env.user.login)
+        _logger.info('AI Employee prompt chat=%s user=%s', chat.id, self.env.user.login)
 
-        tool_name, arguments = self.env['ai.employee.intent'].detect(user_text)
+        tool_name, arguments = self.env['rn.ai.employee.intent'].detect(user_text)
         if not tool_name:
             self._reply_with_guidance(chat, user_text)
         else:
             self._run_tool_pipeline(chat, tool_name, arguments, user_text)
 
         elapsed = time.perf_counter() - started
-        _logger.info('AI Copilot processed chat=%s in %.3fs', chat.id, elapsed)
+        _logger.info('AI Employee processed chat=%s in %.3fs', chat.id, elapsed)
 
     @api.model
     def ensure_system_message(self, chat) -> None:
         if chat.message_ids.filtered(lambda msg: msg.role == 'system'):
             return
         content = _(
-            'You are AI Copilot for Odoo. I answer everyday business questions using '
+            'You are AI Employee for Odoo. I answer everyday business questions using '
             'live company data. Pick a suggested question or ask in your own words.'
         )
         self._create_message(chat, 'system', content)
@@ -53,7 +53,7 @@ class AiEmployeeService(models.AbstractModel):
     def _ensure_enabled(self) -> None:
         enabled = self.env['ir.config_parameter'].get_param('rn_ai_employee.enabled', 'False') == 'True'
         if not enabled:
-            raise UserError(_('AI Copilot is disabled. Enable it under AI Copilot > Settings.'))
+            raise UserError(_('AI Employee is disabled. Enable it under AI Employee > Settings.'))
 
     @api.model
     def _run_tool_pipeline(
@@ -64,23 +64,23 @@ class AiEmployeeService(models.AbstractModel):
         user_text: str,
     ) -> None:
         tool_started = time.perf_counter()
-        result = self.env['ai.employee.tool'].execute_by_name(tool_name, arguments)
+        result = self.env['rn.ai.employee.tool'].execute_by_name(tool_name, arguments)
         _logger.info(
-            'AI Copilot tool=%s finished in %.3fs',
+            'AI Employee tool=%s finished in %.3fs',
             tool_name,
             time.perf_counter() - tool_started,
         )
         self._create_tool_message(chat, tool_name, arguments, result)
 
-        explanation = self.env['ai.employee.explainer'].explain(tool_name, result)
+        explanation = self.env['rn.ai.employee.explainer'].explain(tool_name, result)
         headline = result.get('headline') if isinstance(result, dict) else None
         assistant_message = self._create_assistant_message(chat, explanation, headline=headline)
         if isinstance(result, dict) and not result.get('error'):
-            self.env['ai.employee.message.action'].create_from_tool_result(assistant_message, result)
+            self.env['rn.ai.employee.message.action'].create_from_tool_result(assistant_message, result)
 
     @api.model
     def _reply_with_guidance(self, chat, user_text: str) -> None:
-        suggestions = self.env['ai.employee.suggestion'].search([('active', '=', True)], limit=6)
+        suggestions = self.env['rn.ai.employee.suggestion'].search([('active', '=', True)], limit=6)
         labels = '\n'.join(f'- {item.name}' for item in suggestions)
         content = _(
             'I can help with everyday business questions such as:\n%(suggestions)s\n\n'
@@ -90,7 +90,7 @@ class AiEmployeeService(models.AbstractModel):
 
     @api.model
     def _create_message(self, chat, role: str, content: str, headline: str | None = None):
-        return self.env['ai.employee.message'].create({
+        return self.env['rn.ai.employee.message'].create({
             'chat_id': chat.id,
             'role': role,
             'content': content,
@@ -109,7 +109,7 @@ class AiEmployeeService(models.AbstractModel):
         arguments: dict[str, Any],
         result: dict[str, Any],
     ) -> None:
-        self.env['ai.employee.message'].create({
+        self.env['rn.ai.employee.message'].create({
             'chat_id': chat.id,
             'role': 'tool',
             'content': json.dumps(arguments, default=str),

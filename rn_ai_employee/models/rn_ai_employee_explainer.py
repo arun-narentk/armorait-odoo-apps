@@ -9,7 +9,7 @@ from odoo import _, api, models
 
 
 class AiEmployeeExplainer(models.AbstractModel):
-    _name = 'ai.employee.explainer'
+    _name = 'rn.ai.employee.explainer'
     _description = 'AI Employee Result Explainer'
 
     @api.model

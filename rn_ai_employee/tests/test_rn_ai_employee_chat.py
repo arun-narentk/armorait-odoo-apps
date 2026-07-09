@@ -10,8 +10,8 @@ class TestAiEmployeeChat(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.Chat = cls.env['ai.employee.chat']
-        cls.Service = cls.env['ai.employee.service']
+        cls.Chat = cls.env['rn.ai.employee.chat']
+        cls.Service = cls.env['rn.ai.employee.service']
         cls.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'True')
 
     def test_chat_creation_adds_system_message(self):
@@ -34,14 +34,14 @@ class TestAiEmployeeChat(TransactionCase):
         self.assertIn('business questions', assistant.content.lower())
 
     def test_suggested_question_routes_directly(self):
-        suggestion = self.env['ai.employee.suggestion'].search([], limit=1)
+        suggestion = self.env['rn.ai.employee.suggestion'].search([], limit=1)
         chat = self.Chat.create({'name': 'Suggestion test'})
         self.Service.process_chat_message(chat, suggestion.question)
         tool_messages = chat.message_ids.filtered(lambda msg: msg.role == 'tool')
         self.assertTrue(tool_messages)
         self.assertEqual(tool_messages[0].tool_name, suggestion.tool_name)
 
-    def test_disabled_copilot_blocks_processing(self):
+    def test_disabled_ai_employee_blocks_processing(self):
         chat = self.Chat.create({'name': 'Disabled test'})
         self.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'False')
         with self.assertRaises(UserError):

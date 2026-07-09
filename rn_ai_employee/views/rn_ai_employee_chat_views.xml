@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_ai_employee_chat_tree" model="ir.ui.view">
-        <field name="name">ai.employee.chat.tree</field>
-        <field name="model">ai.employee.chat</field>
+    <record id="view_rn_ai_employee_chat_tree" model="ir.ui.view">
+        <field name="name">rn.ai.employee.chat.tree</field>
+        <field name="model">rn.ai.employee.chat</field>
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
@@ -15,11 +15,11 @@
         </field>
     </record>
 
-    <record id="view_ai_employee_chat_form" model="ir.ui.view">
-        <field name="name">ai.employee.chat.form</field>
-        <field name="model">ai.employee.chat</field>
+    <record id="view_rn_ai_employee_chat_form" model="ir.ui.view">
+        <field name="name">rn.ai.employee.chat.form</field>
+        <field name="model">rn.ai.employee.chat</field>
         <field name="arch" type="xml">
-            <form string="AI Copilot">
+            <form string="AI Employee">
                 <header>
                     <button name="action_send_message"
                             type="object"
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <notebook>
-                        <page string="Copilot" name="copilot">
+                        <page string="Chat" name="chat">
                             <group col="12">
                                 <group col="8" colspan="8" string="Conversation">
                                     <field name="message_ids" readonly="1" nolabel="1" mode="kanban,list">
@@ -170,7 +170,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Conversation Info" name="details" groups="rn_ai_employee.group_ai_employee_manager">
+                        <page string="Conversation Info" name="details" groups="rn_ai_employee.group_rn_ai_employee_manager">
                             <group>
                                 <field name="user_id" readonly="1"/>
                                 <field name="company_id" groups="base.group_multi_company" readonly="1"/>
@@ -185,9 +185,9 @@
         </field>
     </record>
 
-    <record id="view_ai_employee_chat_search" model="ir.ui.view">
-        <field name="name">ai.employee.chat.search</field>
-        <field name="model">ai.employee.chat</field>
+    <record id="view_rn_ai_employee_chat_search" model="ir.ui.view">
+        <field name="name">rn.ai.employee.chat.search</field>
+        <field name="model">rn.ai.employee.chat</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
@@ -198,16 +198,16 @@
         </field>
     </record>
 
-    <record id="action_ai_employee_chat" model="ir.actions.server">
+    <record id="action_rn_ai_employee_chat" model="ir.actions.server">
         <field name="name">Chat</field>
-        <field name="model_id" ref="model_ai_employee_chat"/>
+        <field name="model_id" ref="model_rn_ai_employee_chat"/>
         <field name="state">code</field>
-        <field name="code">action = env['ai.employee.chat'].action_start_new_chat()</field>
+        <field name="code">action = env['rn.ai.employee.chat'].action_start_new_chat()</field>
     </record>
 
-    <record id="action_ai_employee_conversations" model="ir.actions.act_window">
+    <record id="action_rn_ai_employee_conversations" model="ir.actions.act_window">
         <field name="name">Conversations</field>
-        <field name="res_model">ai.employee.chat</field>
+        <field name="res_model">rn.ai.employee.chat</field>
         <field name="view_mode">list,form</field>
         <field name="context">{'search_default_my_chats': 1}</field>
     </record>

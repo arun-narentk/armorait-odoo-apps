@@ -1,28 +1,28 @@
-# AI Chatbot
+# AI Employee
 
-        Ask Odoo anything. Get answers and actions from an AI copilot
+Ask Odoo anything. Get answers and actions from an AI assistant that reads live business data.
 
-        ## Business problem
-        Users waste time clicking through menus to find data, run reports, or complete routine tasks.
+## Business problem
+Users waste time clicking through menus to find data, run reports, or complete routine tasks.
 
-        ## Solution
-        AI Chatbot is an Odoo-native copilot that understands intent, calls registered tools, and returns answers with optional actions on CRM, sales, stock, and accounting.
+## Solution
+AI Employee is an Odoo-native assistant that understands intent, calls registered tools, and returns answers with optional actions on CRM, sales, stock, and accounting.
 
-        ## Key benefits
-        - Natural language queries
+## Key benefits
+- Natural language queries
 - Tool-based actions on real data
 - Configurable AI provider
 - Audit-friendly chat history
 - Extensible tool registry
 
-        ## Installation
-        See INSTALL.md.
+## Installation
+See INSTALL.md.
 
-        ## Technical name
-        `rn_ai_employee`
+## Technical name
+`rn_ai_employee`
 
-        ## Support
-        ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
+## Support
+ARMORA IT Technologies | https://www.armorait.com | info@armorait.com
 
-        ## License
-        OPL-1. Proprietary to ARMORA IT Technologies.
+## License
+OPL-1. Proprietary to ARMORA IT Technologies.

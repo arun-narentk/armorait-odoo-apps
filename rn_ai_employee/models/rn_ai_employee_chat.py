@@ -6,7 +6,7 @@ from odoo.exceptions import UserError
 
 
 class AiEmployeeChat(models.Model):
-    _name = 'ai.employee.chat'
+    _name = 'rn.ai.employee.chat'
     _description = 'AI Employee Chat Session'
     _order = 'create_date desc'
 
@@ -31,18 +31,18 @@ class AiEmployeeChat(models.Model):
     )
     active = fields.Boolean(default=True)
     message_ids = fields.One2many(
-        'ai.employee.message',
+        'rn.ai.employee.message',
         'chat_id',
         string='Messages',
     )
     message_count = fields.Integer(compute='_compute_message_count')
     draft_message = fields.Text(string='Message', store=False)
-    suggested_question_id = fields.Many2one('ai.employee.suggestion', string='Suggested Question')
+    suggested_question_id = fields.Many2one('rn.ai.employee.suggestion', string='Suggested Question')
     last_message_preview = fields.Char(compute='_compute_last_message_preview')
 
     @api.depends('message_ids')
     def _compute_message_count(self):
-        grouped = self.env['ai.employee.message'].read_group(
+        grouped = self.env['rn.ai.employee.message'].read_group(
             [('chat_id', 'in', self.ids)],
             ['chat_id'],
             ['chat_id'],
@@ -62,7 +62,7 @@ class AiEmployeeChat(models.Model):
         """Send the draft message through the orchestration service."""
         self.ensure_one()
         if self.user_id != self.env.user and not self.env.user.has_group(
-            'rn_ai_employee.group_ai_employee_manager'
+            'rn_ai_employee.group_rn_ai_employee_manager'
         ):
             raise UserError(_('You can only send messages in your own conversations.'))
 
@@ -71,7 +71,7 @@ class AiEmployeeChat(models.Model):
             raise UserError(_('Please type a message before sending.'))
 
         try:
-            self.env['ai.employee.service'].process_chat_message(self, message)
+            self.env['rn.ai.employee.service'].process_chat_message(self, message)
         except UserError:
             raise
         except Exception as exc:
@@ -82,13 +82,13 @@ class AiEmployeeChat(models.Model):
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'title': _('AI Copilot'),
+                'title': _('AI Employee'),
                 'message': _('Response received.'),
                 'type': 'success',
                 'sticky': False,
                 'next': {
                     'type': 'ir.actions.act_window',
-                    'res_model': 'ai.employee.chat',
+                    'res_model': 'rn.ai.employee.chat',
                     'res_id': self.id,
                     'view_mode': 'form',
                     'target': 'current',
@@ -102,8 +102,8 @@ class AiEmployeeChat(models.Model):
         chat = self.create({'name': _('Business question')})
         return {
             'type': 'ir.actions.act_window',
-            'name': _('AI Copilot'),
-            'res_model': 'ai.employee.chat',
+            'name': _('AI Employee'),
+            'res_model': 'rn.ai.employee.chat',
             'res_id': chat.id,
             'view_mode': 'form',
             'target': 'current',
@@ -114,7 +114,7 @@ class AiEmployeeChat(models.Model):
         self.ensure_one()
         if not self.suggested_question_id:
             raise UserError(_('Pick a suggested question first.'))
-        self.env['ai.employee.service'].process_chat_message(
+        self.env['rn.ai.employee.service'].process_chat_message(
             self,
             self.suggested_question_id.question,
         )
@@ -127,13 +127,13 @@ class AiEmployeeChat(models.Model):
         question = self.env.context.get('suggested_question', '').strip()
         if not question:
             raise UserError(_('No suggested question provided.'))
-        self.env['ai.employee.service'].process_chat_message(self, question)
+        self.env['rn.ai.employee.service'].process_chat_message(self, question)
         return self._reload_form()
 
     def _reload_form(self):
         return {
             'type': 'ir.actions.act_window',
-            'res_model': 'ai.employee.chat',
+            'res_model': 'rn.ai.employee.chat',
             'res_id': self.id,
             'view_mode': 'form',
             'target': 'current',
@@ -142,7 +142,7 @@ class AiEmployeeChat(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         chats = super().create(vals_list)
-        service = self.env['ai.employee.service']
+        service = self.env['rn.ai.employee.service']
         for chat in chats:
             service.ensure_system_message(chat)
         return chats

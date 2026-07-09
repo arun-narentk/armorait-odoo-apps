@@ -5,8 +5,8 @@ from odoo import fields, models
 
 
 class AiEmployeeSuggestion(models.Model):
-    _name = 'ai.employee.suggestion'
-    _description = 'AI Copilot Suggested Question'
+    _name = 'rn.ai.employee.suggestion'
+    _description = 'AI Employee Suggested Question'
     _order = 'category, sequence, id'
 
     name = fields.Char(string='Label', required=True, translate=True)
@@ -45,15 +45,15 @@ class AiEmployeeSuggestion(models.Model):
         self.ensure_one()
         chat_id = self.env.context.get('active_id') or self.env.context.get('chat_id')
         if chat_id:
-            chat = self.env['ai.employee.chat'].browse(chat_id)
+            chat = self.env['rn.ai.employee.chat'].browse(chat_id)
         else:
-            action = self.env['ai.employee.chat'].action_start_new_chat()
-            chat = self.env['ai.employee.chat'].browse(action['res_id'])
+            action = self.env['rn.ai.employee.chat'].action_start_new_chat()
+            chat = self.env['rn.ai.employee.chat'].browse(action['res_id'])
         chat.ensure_one()
-        self.env['ai.employee.service'].process_chat_message(chat, self.question)
+        self.env['rn.ai.employee.service'].process_chat_message(chat, self.question)
         return {
             'type': 'ir.actions.act_window',
-            'res_model': 'ai.employee.chat',
+            'res_model': 'rn.ai.employee.chat',
             'res_id': chat.id,
             'view_mode': 'form',
             'target': 'current',

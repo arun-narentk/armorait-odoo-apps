@@ -1,6 +1,6 @@
 # FAQ
 
-## Does AI Chatbot work on Odoo Community?
+## Does AI Employee work on Odoo Community?
 Yes. It targets Odoo 19 Community.
 
 ## Multi-company?

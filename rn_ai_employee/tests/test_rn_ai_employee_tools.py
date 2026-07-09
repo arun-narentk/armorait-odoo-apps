@@ -10,7 +10,7 @@ class TestAiEmployeeTools(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.Tool = cls.env['ai.employee.tool']
+        cls.Tool = cls.env['rn.ai.employee.tool']
 
     def test_registry_contains_phase1_tools(self):
         technical_names = set(self.Tool.search([]).mapped('model_name'))
@@ -37,13 +37,13 @@ class TestAiEmployeeTools(TransactionCase):
 
     def test_open_list_action_card_opens_target_model(self):
         result = self.Tool.execute_by_name('overdue_invoices', {'days_overdue': 90})
-        message = self.env['ai.employee.message'].create({
-            'chat_id': self.env['ai.employee.chat'].create({'name': 'Action test'}).id,
+        message = self.env['rn.ai.employee.message'].create({
+            'chat_id': self.env['rn.ai.employee.chat'].create({'name': 'Action test'}).id,
             'role': 'assistant',
             'content': 'Action card test',
             'headline': result['headline'],
         })
-        self.env['ai.employee.message.action'].create_from_tool_result(message, result)
+        self.env['rn.ai.employee.message.action'].create_from_tool_result(message, result)
         action_card = message.action_ids.filtered(lambda rec: rec.action_type == 'open_list')[:1]
         self.assertTrue(action_card)
         action = action_card.action_run()
@@ -51,9 +51,9 @@ class TestAiEmployeeTools(TransactionCase):
         self.assertEqual(action['res_model'], result['model'])
 
     def test_create_activity_action_requires_records(self):
-        action = self.env['ai.employee.message.action'].create({
-            'message_id': self.env['ai.employee.message'].create({
-                'chat_id': self.env['ai.employee.chat'].create({'name': 'Empty activity test'}).id,
+        action = self.env['rn.ai.employee.message.action'].create({
+            'message_id': self.env['rn.ai.employee.message'].create({
+                'chat_id': self.env['rn.ai.employee.chat'].create({'name': 'Empty activity test'}).id,
                 'role': 'assistant',
                 'content': 'Missing records',
             }).id,

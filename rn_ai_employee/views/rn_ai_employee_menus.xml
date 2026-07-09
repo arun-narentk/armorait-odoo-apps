@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_ai_employee_root"
-              name="AI Copilot"
-              web_icon="ai_employee,static/description/icon.svg"
+    <menuitem id="menu_rn_ai_employee_root"
+              name="AI Employee"
+              web_icon="rn_ai_employee,static/description/icon.svg"
               sequence="45"
-              groups="rn_ai_employee.group_ai_employee_user"/>
+              groups="rn_ai_employee.group_rn_ai_employee_user"/>
 
-    <menuitem id="menu_ai_employee_chat"
-              name="Ask Copilot"
-              parent="menu_ai_employee_root"
-              action="action_ai_employee_chat"
+    <menuitem id="menu_rn_ai_employee_chat"
+              name="Ask AI Employee"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_chat"
               sequence="10"/>
 
-    <menuitem id="menu_ai_employee_conversations"
+    <menuitem id="menu_rn_ai_employee_conversations"
               name="Conversations"
-              parent="menu_ai_employee_root"
-              action="action_ai_employee_conversations"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_conversations"
               sequence="20"/>
 
-    <menuitem id="menu_ai_employee_suggestions"
+    <menuitem id="menu_rn_ai_employee_suggestions"
               name="Suggested Questions"
-              parent="menu_ai_employee_root"
-              action="action_ai_employee_suggestions"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_suggestions"
               sequence="25"
-              groups="rn_ai_employee.group_ai_employee_manager"/>
+              groups="rn_ai_employee.group_rn_ai_employee_manager"/>
 
-    <menuitem id="menu_ai_employee_tools"
+    <menuitem id="menu_rn_ai_employee_tools"
               name="Tools"
-              parent="menu_ai_employee_root"
-              action="action_ai_employee_tools"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_tools"
               sequence="30"
-              groups="rn_ai_employee.group_ai_employee_manager"/>
+              groups="rn_ai_employee.group_rn_ai_employee_manager"/>
 
-    <menuitem id="menu_ai_employee_settings"
+    <menuitem id="menu_rn_ai_employee_settings"
               name="Settings"
-              parent="menu_ai_employee_root"
-              action="action_ai_employee_settings"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_settings"
               sequence="40"
-              groups="rn_ai_employee.group_ai_employee_manager"/>
+              groups="rn_ai_employee.group_rn_ai_employee_manager"/>
 </odoo>

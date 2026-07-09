@@ -1,3 +1,3 @@
 # Screenshots
 
-Replace generated placeholders for **AI Chatbot** with real desktop, tablet, and mobile captures.
+Replace generated placeholders for **AI Employee** with real desktop, tablet, and mobile captures.

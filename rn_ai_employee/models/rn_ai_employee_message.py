@@ -5,12 +5,12 @@ from odoo import fields, models
 
 
 class AiEmployeeMessage(models.Model):
-    _name = 'ai.employee.message'
-    _description = 'AI Copilot Message'
+    _name = 'rn.ai.employee.message'
+    _description = 'AI Employee Message'
     _order = 'create_date asc, id asc'
 
     chat_id = fields.Many2one(
-        'ai.employee.chat',
+        'rn.ai.employee.chat',
         string='Chat',
         required=True,
         ondelete='cascade',
@@ -31,7 +31,7 @@ class AiEmployeeMessage(models.Model):
     tool_name = fields.Char(string='Tool')
     tool_result = fields.Text(string='Tool Result')
     action_ids = fields.One2many(
-        'ai.employee.message.action',
+        'rn.ai.employee.message.action',
         'message_id',
         string='Actions',
     )

@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 
 
 class AiEmployeeTool(models.Model):
-    _name = 'ai.employee.tool'
+    _name = 'rn.ai.employee.tool'
     _description = 'AI Employee Tool'
     _order = 'name'
 

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Chatbot',
-    'version': '19.0.2.6.0',
+    'name': 'AI Employee',
+    'version': '19.0.2.15.0',
     'category': 'Productivity',
-    'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
+    'summary': 'AI assistant for Odoo: ask business questions and get answers from live data',
     'description': """
-AI Copilot for Odoo 19
-======================
+AI Employee for Odoo 19
+=======================
 
 Ask everyday business questions in plain language and get answers from live Odoo data.
 
@@ -27,7 +27,7 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'OPL-1',
-    'price': 99.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'currency': 'USD',
     'depends': [
@@ -42,19 +42,20 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/ir_config_parameter.xml',
-        'data/ai_employee_tool_data.xml',
-        'data/ai_employee_suggestion_data.xml',
-        'views/ai_employee_chat_views.xml',
-        'views/ai_employee_tool_views.xml',
-        'views/ai_employee_suggestion_views.xml',
+        'data/rn_ai_employee_tool_data.xml',
+        'data/rn_ai_employee_suggestion_data.xml',
+        'views/rn_ai_employee_chat_views.xml',
+        'views/rn_ai_employee_tool_views.xml',
+        'views/rn_ai_employee_suggestion_views.xml',
         'views/res_config_settings_views.xml',
-        'views/ai_employee_menus.xml',
+        'views/rn_ai_employee_menus.xml',
     ],
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
         'static/description/overview.png',
-        'static/description/dashboard.png',
+        'static/description/settings.png',
+        'static/description/tools.png',
     ],
     'installable': True,
     'application': True,
