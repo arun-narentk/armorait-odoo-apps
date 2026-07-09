@@ -41,7 +41,7 @@ export class AiEmployeeSystray extends Component {
             this.state.messages = data.messages || [];
             this.state.suggestions = data.suggestions || [];
         } catch (error) {
-            this.state.error = error.message || "AI Employee is unavailable.";
+            this.state.error = error.message || "AI Copilot is unavailable.";
         } finally {
             this.state.loading = false;
             this._scrollToBottom();
@@ -77,6 +77,11 @@ export class AiEmployeeSystray extends Component {
             "widget_run_action",
             [actionId]
         );
+        if (clientAction && clientAction.messages) {
+            this.state.messages = clientAction.messages;
+            this._scrollToBottom();
+            return;
+        }
         if (clientAction) {
             this.action.doAction(clientAction);
         }

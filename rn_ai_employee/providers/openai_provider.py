@@ -109,12 +109,12 @@ class OpenAIProvider(BaseAIProvider):
             if (tool.get('function') or {}).get('name')
         )
         content = (
-            'AI Employee is running in rules-only mode. '
+            'AI Copilot is running in rules-only mode. '
             f'You asked: "{user_text}". '
         )
         if tool_hint:
             content += f'Available tools: {tool_hint}. '
-        content += 'Add an API key in AI Employee settings to enable LLM routing.'
+        content += 'Add an API key in AI Copilot settings to enable LLM routing.'
         return {
             'id': f'chatcmpl-mock-{uuid.uuid4().hex[:12]}',
             'object': 'chat.completion',

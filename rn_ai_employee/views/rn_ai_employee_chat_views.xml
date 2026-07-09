@@ -19,7 +19,7 @@
         <field name="name">rn.ai.employee.chat.form</field>
         <field name="model">rn.ai.employee.chat</field>
         <field name="arch" type="xml">
-            <form string="AI Employee">
+            <form string="AI Copilot">
                 <header>
                     <button name="action_send_message"
                             type="object"

@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 
 class AiEmployeeChat(models.Model):
     _name = 'rn.ai.employee.chat'
-    _description = 'AI Employee Chat Session'
+    _description = 'AI Copilot Chat Session'
     _order = 'create_date desc'
 
     name = fields.Char(
@@ -39,6 +39,11 @@ class AiEmployeeChat(models.Model):
     draft_message = fields.Text(string='Message', store=False)
     suggested_question_id = fields.Many2one('rn.ai.employee.suggestion', string='Suggested Question')
     last_message_preview = fields.Char(compute='_compute_last_message_preview')
+    memory_context = fields.Text(
+        string='Session Memory',
+        help='JSON context from recent tool results for follow-up questions.',
+        groups='rn_ai_employee.group_rn_ai_employee_manager',
+    )
 
     @api.depends('message_ids')
     def _compute_message_count(self):
@@ -82,7 +87,7 @@ class AiEmployeeChat(models.Model):
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'title': _('AI Employee'),
+                'title': _('AI Copilot'),
                 'message': _('Response received.'),
                 'type': 'success',
                 'sticky': False,
@@ -102,7 +107,7 @@ class AiEmployeeChat(models.Model):
         chat = self.create({'name': _('Business question')})
         return {
             'type': 'ir.actions.act_window',
-            'name': _('AI Employee'),
+            'name': _('AI Copilot'),
             'res_model': 'rn.ai.employee.chat',
             'res_id': chat.id,
             'view_mode': 'form',
@@ -142,10 +147,10 @@ class AiEmployeeChat(models.Model):
     @api.model
     def _widget_enabled(self) -> bool:
         if not self.env.user.has_group('rn_ai_employee.group_rn_ai_employee_user'):
-            raise UserError(_('You do not have access to AI Employee.'))
+            raise UserError(_('You do not have access to AI Copilot.'))
         enabled = self.env['ir.config_parameter'].sudo().get_param('rn_ai_employee.enabled', 'False') == 'True'
         if not enabled:
-            raise UserError(_('AI Employee is disabled. Enable it under AI Employee > Settings.'))
+            raise UserError(_('AI Copilot is disabled. Enable it under AI Copilot > Settings.'))
         return True
 
     @api.model
@@ -187,7 +192,7 @@ class AiEmployeeChat(models.Model):
         self._widget_enabled()
         chat = self.browse(chat_id)
         if chat.user_id != self.env.user:
-            raise UserError(_('You can only use your own AI Employee conversations.'))
+            raise UserError(_('You can only use your own AI Copilot conversations.'))
         self.env['rn.ai.employee.service'].process_chat_message(chat, message)
         return {
             'chat_id': chat.id,
@@ -200,6 +205,14 @@ class AiEmployeeChat(models.Model):
         self._widget_enabled()
         action = self.env['rn.ai.employee.message.action'].browse(action_id)
         action.message_id.chat_id._check_widget_access()
+        if action.action_type in ('confirm_write', 'cancel_write'):
+            client_action = action.action_run()
+            chat = action.message_id.chat_id
+            if isinstance(client_action, dict) and client_action.get('type') == 'ir.actions.act_window':
+                return {
+                    'chat_id': chat.id,
+                    'messages': self._serialize_widget_messages(chat),
+                }
         return action.action_run()
 
     def _check_widget_access(self):
@@ -207,7 +220,7 @@ class AiEmployeeChat(models.Model):
         if self.user_id != self.env.user and not self.env.user.has_group(
             'rn_ai_employee.group_rn_ai_employee_manager'
         ):
-            raise UserError(_('You can only open your own AI Employee conversations.'))
+            raise UserError(_('You can only open your own AI Copilot conversations.'))
 
     @api.model
     def _serialize_widget_messages(self, chat):

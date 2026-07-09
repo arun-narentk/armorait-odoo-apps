@@ -136,4 +136,41 @@
         <field name="description">Send payment reminder emails for overdue customer invoices.</field>
         <field name="active" eval="True"/>
     </record>
+
+    <record id="tool_morning_briefing" model="rn.ai.employee.tool">
+        <field name="name">Morning Briefing</field>
+        <field name="model_name">morning_briefing</field>
+        <field name="description">Executive briefing with revenue, collections, and suggested actions.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_create_rfq" model="rn.ai.employee.tool">
+        <field name="name">Create RFQ</field>
+        <field name="model_name">create_rfq</field>
+        <field name="description">Create a draft purchase RFQ for a vendor and product.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_schedule_activity" model="rn.ai.employee.tool">
+        <field name="name">Schedule Activity</field>
+        <field name="model_name">schedule_activity</field>
+        <field name="description">Schedule follow-up activities on business records.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_send_partner_email" model="rn.ai.employee.tool">
+        <field name="name">Send Partner Email</field>
+        <field name="model_name">send_partner_email</field>
+        <field name="description">Send follow-up emails to customers or partners.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_confirm_purchase_order" model="rn.ai.employee.tool">
+        <field name="name">Confirm Purchase Order</field>
+        <field name="model_name">confirm_purchase_order</field>
+        <field name="description">Confirm a draft purchase order.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_reserve_stock" model="rn.ai.employee.tool">
+        <field name="name">Reserve Stock</field>
+        <field name="model_name">reserve_stock</field>
+        <field name="description">Reserve available stock for a product.</field>
+        <field name="active" eval="True"/>
+    </record>
 </odoo>

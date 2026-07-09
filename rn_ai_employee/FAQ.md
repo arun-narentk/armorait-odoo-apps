@@ -1,6 +1,6 @@
 # FAQ
 
-## Does AI Employee work on Odoo Community?
+## Does AI Copilot work on Odoo Community?
 Yes. It targets Odoo 19 Community.
 
 ## Multi-company?
