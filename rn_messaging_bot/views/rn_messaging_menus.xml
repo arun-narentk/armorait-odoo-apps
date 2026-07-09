@@ -19,6 +19,20 @@
               sequence="20"
               groups="rn_messaging_bot.group_rn_messaging_manager"/>
 
+    <menuitem id="menu_rn_messaging_templates"
+              name="Templates"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_template"
+              sequence="25"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
+    <menuitem id="menu_rn_messaging_campaigns"
+              name="Campaigns"
+              parent="menu_rn_messaging_root"
+              action="action_rn_messaging_campaign"
+              sequence="28"
+              groups="rn_messaging_bot.group_rn_messaging_manager"/>
+
     <menuitem id="menu_rn_messaging_connectors"
               name="Connectors"
               parent="menu_rn_messaging_root"

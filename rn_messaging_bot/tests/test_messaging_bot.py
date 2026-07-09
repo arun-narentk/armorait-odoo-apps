@@ -134,3 +134,40 @@ class TestMessagingBot(TransactionCase):
         node.invalidate_recordset()
         self.assertEqual(node.pos_x, 150.0)
         self.assertEqual(node.pos_y, 250.0)
+
+    def test_template_rendering(self):
+        template = self.env.ref('rn_messaging_bot.template_welcome_followup')
+        partner = self.env['res.partner'].create({'name': 'Template User', 'phone': '911111111111'})
+        body = template.render_body(partner=partner)
+        self.assertIn('Template User', body)
+        self.assertIn(self.env.company.name, body)
+
+    def test_post_agent_reply_from_chat_api(self):
+        conversation = self.Webhook.ingest_payload(self.connector, {
+            'from': '915555555555',
+            'name': 'Chat API User',
+            'text': 'ping',
+        })[0]
+        data = conversation.post_agent_reply('Inline reply from agent')
+        self.assertTrue(any(msg['content'] == 'Inline reply from agent' for msg in data['messages']))
+        self.assertEqual(conversation.state, 'human')
+
+    def test_campaign_broadcast_sends_lines(self):
+        template = self.env.ref('rn_messaging_bot.template_promo_broadcast')
+        partner = self.env['res.partner'].create({
+            'name': 'Campaign User',
+            'phone': '914444444444',
+            'rn_messaging_external_ids': '914444444444',
+        })
+        campaign = self.env['rn.messaging.campaign'].create({
+            'name': 'Promo Blast',
+            'connector_id': self.connector.id,
+            'template_id': template.id,
+            'partner_ids': [(6, 0, partner.ids)],
+        })
+        campaign.action_send_now()
+        self.assertEqual(campaign.state, 'done')
+        self.assertEqual(campaign.sent_count, 1)
+        line = campaign.line_ids[0]
+        self.assertEqual(line.state, 'sent')
+        self.assertTrue(line.message_id)

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_messaging_campaign_tree" model="ir.ui.view">
+        <field name="name">rn.messaging.campaign.tree</field>
+        <field name="model">rn.messaging.campaign</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="connector_id"/>
+                <field name="template_id"/>
+                <field name="state"/>
+                <field name="schedule_at"/>
+                <field name="sent_count"/>
+                <field name="failed_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_messaging_campaign_form" model="ir.ui.view">
+        <field name="name">rn.messaging.campaign.form</field>
+        <field name="model">rn.messaging.campaign</field>
+        <field name="arch" type="xml">
+            <form string="Messaging Campaign">
+                <header>
+                    <button name="action_prepare_recipients" type="object" string="Prepare Recipients"/>
+                    <button name="action_schedule" type="object" string="Schedule" class="btn-primary"/>
+                    <button name="action_send_now" type="object" string="Send Now" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancel"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_lines" type="object" class="oe_stat_button" icon="fa-paper-plane">
+                            <field name="line_count" widget="statinfo" string="Lines"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="connector_id"/>
+                        <field name="template_id"/>
+                        <field name="schedule_at"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group>
+                        <field name="partner_ids" widget="many2many_tags"/>
+                    </group>
+                    <field name="line_ids" readonly="1">
+                        <list>
+                            <field name="partner_id"/>
+                            <field name="external_contact_id"/>
+                            <field name="state"/>
+                            <field name="error_message"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_messaging_campaign" model="ir.actions.act_window">
+        <field name="name">Campaigns</field>
+        <field name="res_model">rn.messaging.campaign</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

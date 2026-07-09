@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="template_welcome_followup" model="rn.messaging.template">
+        <field name="name">Welcome Follow-up</field>
+        <field name="body">Hello {{partner_name}}, thanks for contacting {{company}}. How can we help you today?</field>
+    </record>
+
+    <record id="template_promo_broadcast" model="rn.messaging.template">
+        <field name="name">Promo Broadcast</field>
+        <field name="body">Hi {{partner_name}}, we have a new offer for you from {{company}}. Reply YES to learn more.</field>
+    </record>
+</odoo>

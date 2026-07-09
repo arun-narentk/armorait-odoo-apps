@@ -1,5 +1,12 @@
 # Changelog
 
+## 19.0.3.0.0
+
+- Phase 3: inline inbox chat widget on conversation form.
+- Message templates with variable placeholders.
+- Campaign broadcasts with recipient lines and scheduled cron.
+- Template picker in chat composer.
+
 ## 19.0.2.0.0
 
 - Phase 2: Facebook and Instagram Meta Graph drivers.

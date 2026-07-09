@@ -37,3 +37,37 @@
     border-top: 1px solid #dee2e6;
     padding-top: 12px;
 }
+
+.o_rn_inbox_chat {
+    min-height: 420px;
+
+    .o_rn_chat_messages {
+        max-height: 360px;
+        overflow-y: auto;
+        background: #f8f9fa;
+    }
+
+    .o_rn_chat_bubble {
+        max-width: 80%;
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid #dee2e6;
+    }
+
+    .o_rn_chat_outbound {
+        margin-left: auto;
+        background: #e8f4fd;
+        border-color: #b6dfff;
+    }
+
+    .o_rn_chat_inbound {
+        margin-right: auto;
+    }
+
+    .o_rn_chat_text {
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+}

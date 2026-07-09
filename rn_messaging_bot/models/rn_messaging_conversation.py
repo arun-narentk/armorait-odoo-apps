@@ -2,6 +2,7 @@
 """Customer conversation thread per connector."""
 
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class RnMessagingConversation(models.Model):
@@ -113,3 +114,56 @@ class RnMessagingConversation(models.Model):
             'target': 'new',
             'context': {'default_conversation_id': self.id},
         }
+
+    def get_inbox_chat_data(self):
+        self.ensure_one()
+        templates = self.env['rn.messaging.template'].search([
+            ('active', '=', True),
+            '|',
+            ('connector_id', '=', False),
+            ('connector_id', '=', self.connector_id.id),
+        ], limit=50)
+        return {
+            'conversation': {
+                'id': self.id,
+                'name': self.name,
+                'state': self.state,
+                'channel_type': self.channel_type,
+                'partner_name': self.partner_id.name or '',
+            },
+            'messages': [
+                {
+                    'id': message.id,
+                    'direction': message.direction,
+                    'content': message.content,
+                    'create_date': fields.Datetime.to_string(message.create_date),
+                    'delivery_state': message.delivery_state,
+                }
+                for message in self.message_ids.sorted('create_date')
+            ],
+            'templates': [
+                {'id': template.id, 'name': template.name}
+                for template in templates
+            ],
+        }
+
+    def post_agent_reply(self, body, template_id=False):
+        self.ensure_one()
+        text = (body or '').strip()
+        template = self.env['rn.messaging.template']
+        if template_id:
+            template = template.browse(template_id)
+            if template.exists():
+                text = template.render_body(partner=self.partner_id, conversation=self)
+        if not text:
+            raise UserError('Please enter a message before sending.')
+        if self.state == 'closed':
+            raise UserError('This conversation is closed.')
+        if self.state == 'bot':
+            self.action_handoff_human()
+        queue = self.env['rn.messaging.queue.service']
+        message = queue.enqueue_text(self, text, priority=20)
+        if template_id and template.exists():
+            message.template_id = template.id
+        queue.deliver_message(message)
+        return self.get_inbox_chat_data()

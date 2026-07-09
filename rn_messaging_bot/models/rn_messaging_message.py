@@ -51,4 +51,5 @@ class RnMessagingMessage(models.Model):
     schedule_at = fields.Datetime(string='Send After')
     last_attempt_at = fields.Datetime()
     bot_node_id = fields.Many2one('rn.messaging.bot.node', ondelete='set null')
+    template_id = fields.Many2one('rn.messaging.template', ondelete='set null')
     error_message = fields.Char()

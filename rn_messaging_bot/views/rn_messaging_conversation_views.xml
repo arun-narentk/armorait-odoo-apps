@@ -36,21 +36,7 @@
                         <field name="lead_id"/>
                         <field name="bot_session_id"/>
                     </group>
-                    <notebook>
-                        <page string="Messages">
-                            <field name="message_ids" readonly="1">
-                                <list>
-                                    <field name="create_date"/>
-                                    <field name="direction"/>
-                                    <field name="message_type"/>
-                                    <field name="content"/>
-                                    <field name="delivery_state"/>
-                                    <field name="retry_count"/>
-                                    <field name="error_message"/>
-                                </list>
-                            </field>
-                        </page>
-                    </notebook>
+                    <widget name="rn_messaging_inbox_chat"/>
                 </sheet>
             </form>
         </field>
