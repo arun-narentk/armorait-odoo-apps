@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_erp_health_root"
+              name="ERP Intelligence"
+              web_icon="rn_erp_health_analyzer,static/description/icon.png"
+              groups="group_rn_erp_health_analyzer_user"
+              sequence="48"/>
+
+    <menuitem id="menu_rn_erp_health_dashboard"
+              name="Dashboard"
+              parent="menu_rn_erp_health_root"
+              action="action_rn_erp_health_dashboard"
+              sequence="5"/>
+
+    <menuitem id="menu_rn_erp_health_target"
+              name="Scan Targets"
+              parent="menu_rn_erp_health_root"
+              action="action_rn_erp_health_target"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_erp_health_scan"
+              name="Scans"
+              parent="menu_rn_erp_health_root"
+              action="action_rn_erp_health_scan"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_erp_health_finding"
+              name="Findings"
+              parent="menu_rn_erp_health_root"
+              action="action_rn_erp_health_finding"
+              sequence="30"/>
+</odoo>

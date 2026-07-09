@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rn_erp_health_target_default" model="rn.erp.health.target">
+        <field name="name">Default ERP Intelligence Scope</field>
+        <field name="target_type">database</field>
+        <field name="scope_note">Weekly baseline scan for performance, security, and data quality.</field>
+    </record>
+</odoo>

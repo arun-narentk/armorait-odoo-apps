@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_erp_health_scan_tree" model="ir.ui.view">
+        <field name="name">rn.erp.health.scan.tree</field>
+        <field name="model">rn.erp.health.scan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="target_id"/>
+                <field name="state" widget="badge"/>
+                <field name="overall_score"/>
+                <field name="risk_level" widget="badge"/>
+                <field name="started_at"/>
+                <field name="completed_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_erp_health_scan_form" model="ir.ui.view">
+        <field name="name">rn.erp.health.scan.form</field>
+        <field name="model">rn.erp.health.scan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="target_id" readonly="1"/>
+                        <field name="state"/>
+                        <field name="overall_score" readonly="1"/>
+                        <field name="risk_level" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="started_at" readonly="1"/>
+                        <field name="completed_at" readonly="1"/>
+                    </group>
+                    <field name="summary" readonly="1"/>
+                    <field name="finding_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="severity"/>
+                            <field name="score_impact"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_erp_health_scan" model="ir.actions.act_window">
+        <field name="name">Scans</field>
+        <field name="res_model">rn.erp.health.scan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
