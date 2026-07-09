@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Chatbot',
-    'version': '19.0.2.10.0',
+    'version': '19.0.2.11.0',
     'category': 'Productivity',
     'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
     'description': """
@@ -27,7 +27,7 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'OPL-1',
-    'price': 99.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'currency': 'USD',
     'depends': [

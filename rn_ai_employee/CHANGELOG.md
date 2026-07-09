@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.11.0
+- Reduced Apps Store price to 9.99 USD (ARMORA default marketplace tier)
+
 ## 19.0.2.10.0
 - Center-align Apps Store screenshots (stacked full-width, resized to 860px)
 
