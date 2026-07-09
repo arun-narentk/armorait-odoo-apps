@@ -331,21 +331,140 @@ def draw_briefing_scene() -> Image.Image:
     return img
 
 
+# Apps Store listing cover (Serpent-style diagonal card)
+MAROON = '#5C1F2E'
+MAROON_DARK = '#4A1824'
+TITLE_RED = '#D11F2F'
+BRAND_PURPLE = '#714B67'
+
+
+def _draw_diagonal_cover_background(draw: ImageDraw.ImageDraw, w: int, h: int) -> int:
+    """White right panel with maroon diagonal wedge on the left. Returns split x at mid-height."""
+    draw.rectangle((0, 0, w, h), fill=WHITE)
+    split_top = int(w * 0.54)
+    split_bottom = int(w * 0.34)
+    draw.polygon([
+        (0, 0),
+        (split_top, 0),
+        (split_bottom, h),
+        (0, h),
+    ], fill=MAROON_DARK)
+    draw.polygon([
+        (0, 0),
+        (split_top - int(w * 0.03), 0),
+        (split_bottom - int(w * 0.02), h),
+        (0, h),
+    ], fill=MAROON)
+    return (split_top + split_bottom) // 2
+
+
+def _draw_centered_title_block(
+    draw: ImageDraw.ImageDraw,
+    left: int,
+    right: int,
+    y: int,
+    lines: list[str],
+) -> int:
+    cy = y
+    for line in lines:
+        font = _font(48, True)
+        max_w = right - left - 24
+        tw, th = _text_size(draw, line, font)
+        while tw > max_w and (not hasattr(font, 'size') or font.size > 30):
+            size = font.size - 2 if hasattr(font, 'size') else 40
+            font = _font(size, True)
+            tw, th = _text_size(draw, line, font)
+        x = left + (right - left - tw) // 2
+        draw.text((x, cy), line, font=font, fill=TITLE_RED)
+        cy += th + 6
+    return cy
+
+
+def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int) -> None:
+    """Circular AI copilot illustration on the maroon side."""
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#E2E8F0', width=4)
+    inner = radius - 18
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#EDE9FE')
+
+    bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
+    bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
+    bx2, by2 = bx1 + bubble_w, by1 + bubble_h
+    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=PURPLE_LIGHT, width=3)
+    for dot_x in (cx - 22, cx, cx + 22):
+        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=BRAND_PURPLE)
+
+    # Sparkle nodes for AI platform feel
+    for sx, sy, color in ((cx - 58, cy - 48, ACCENT), (cx + 62, cy - 36, SUCCESS), (cx + 54, cy + 42, WARNING)):
+        draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
+        draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
+        draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
+
+    # Small ERP bars under bubble
+    bar_y = cy + bubble_h // 2 + 8
+    for i, color in enumerate((PURPLE, ACCENT, SUCCESS)):
+        draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
+
+
+def _draw_wrapped_title(draw: ImageDraw.ImageDraw, x: int, y: int, max_w: int, lines: list[str]) -> int:
+    return _draw_centered_title_block(draw, x, x + max_w, y, lines)
+
+
 def draw_banner(w: int, h: int) -> Image.Image:
-    img = Image.new('RGB', (w, h), PURPLE_DARK)
+    """Apps Store card cover: diagonal maroon panel, illustration, bold title."""
+    img = Image.new('RGB', (w, h), WHITE)
     draw = ImageDraw.Draw(img)
-    for i in range(0, w, 40):
-        draw.line((i, 0, i - 80, h), fill='#6D28D9', width=1)
-    draw.text((48, h // 2 - 54), 'AI Copilot for Odoo', font=_font(42, True), fill=WHITE)
-    draw.text((48, h // 2 + 4), 'The AI Operating Layer for your ERP', font=_font(20), fill='#DDD6FE')
-    draw.text((48, h // 2 + 40), 'Observe | Reason | Decide | Act | Explain | Audit', font=_font(14), fill='#C4B5FD')
-    # Decorative chat panel
-    _rounded_rect(draw, (w - 420, 40, w - 40, h - 40), 16, WHITE)
-    draw.text((w - 400, 60), 'Ask', font=_font(12, True), fill=PURPLE)
-    draw.text((w - 400, 82), 'Show pending quotations', font=_font(11), fill=TEXT)
-    _rounded_rect(draw, (w - 400, 110, w - 60, 170), 8, ASSIST_BG)
-    draw.text((w - 388, 122), '12 quotations waiting', font=_font(11, True), fill=PURPLE_DARK)
-    draw.text((w - 388, 142), 'Total: ₹ 18.6L', font=_font(10), fill=TEXT)
+    split_mid = _draw_diagonal_cover_background(draw, w, h)
+
+    radius = int(min(w, h) * 0.24)
+    _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
+
+    # ARMORA brand mark (top right, white panel)
+    brand_w = 230
+    draw.text((w - brand_w, 26), 'ARMORA', font=_font(22, True), fill=BRAND_PURPLE)
+    draw.text((w - brand_w, 52), 'IT Technologies', font=_font(12), fill=MUTED)
+
+    # Main title centered on white panel
+    panel_left = split_mid - 20
+    title_y = int(h * 0.30)
+    _draw_centered_title_block(
+        draw,
+        panel_left,
+        w - 24,
+        title_y,
+        ['AI COPILOT', 'FOR ODOO'],
+    )
+    sub = 'Enterprise AI Operating Layer'
+    sub_font = _font(17)
+    stw, sth = _text_size(draw, sub, sub_font)
+    draw.text(
+        (panel_left + (w - 24 - panel_left - stw) // 2, int(h * 0.68)),
+        sub,
+        font=sub_font,
+        fill=BRAND_PURPLE,
+    )
+
+    # Website pill with cursor (Serpent-style CTA strip)
+    pill_text = 'www.armorait.com'
+    pill_font = _font(14)
+    tw, th = _text_size(draw, pill_text, pill_font)
+    pill_w = tw + 78
+    pill_h = th + 18
+    pill_x = w - pill_w - 28
+    pill_y = h - pill_h - 24
+    _rounded_rect(draw, (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h), pill_h // 2, '#ECEFF3', outline='#D1D5DB')
+    draw.ellipse((pill_x + 14, pill_y + 8, pill_x + 30, pill_y + 24), fill=ACCENT)
+    draw.text((pill_x + 38, pill_y + 8), pill_text, font=pill_font, fill='#334155')
+    # Cursor pointer
+    cursor_x = pill_x + pill_w - 18
+    cursor_y = pill_y + pill_h - 6
+    draw.polygon([
+        (cursor_x, cursor_y),
+        (cursor_x + 14, cursor_y + 16),
+        (cursor_x + 4, cursor_y + 16),
+        (cursor_x + 8, cursor_y + 24),
+        (cursor_x - 2, cursor_y + 18),
+        (cursor_x + 2, cursor_y + 16),
+    ], fill='#111827', outline=WHITE)
     return img
 
 
@@ -498,12 +617,13 @@ def main() -> None:
     audit = draw_audit_scene()
     listing = draw_list_scene()
     briefing = draw_briefing_scene()
-    banner = draw_banner(1200, 400)
+    banner = draw_banner(1200, 600)
     icon = draw_icon(256)
 
     save_png(icon, 'icon.png')
-    save_png(icon, 'banner_small.png', (180, 180))
+    save_png(banner, 'banner_small.png', (360, 180))
     save_png(banner, 'banner.png')
+    save_png(banner, 'main_screenshot.png', (1200, 600))
     save_png(overview, 'overview.png')
     save_png(settings, 'settings.png')
     save_png(tools, 'tools.png')
