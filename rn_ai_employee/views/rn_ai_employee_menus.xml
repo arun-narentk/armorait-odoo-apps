@@ -6,6 +6,12 @@
               sequence="45"
               groups="rn_ai_employee.group_rn_ai_employee_user"/>
 
+    <menuitem id="menu_rn_ai_employee_agents"
+              name="Domain Agents"
+              parent="menu_rn_ai_employee_root"
+              action="action_rn_ai_employee_agents"
+              sequence="15"/>
+
     <menuitem id="menu_rn_ai_employee_chat"
               name="Ask AI Copilot"
               parent="menu_rn_ai_employee_root"

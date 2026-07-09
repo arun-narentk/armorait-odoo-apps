@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="agent_sales" model="rn.ai.employee.agent">
+        <field name="name">Sales AI</field>
+        <field name="code">sales</field>
+        <field name="tagline">Quotations, customers, pipeline, and CRM follow-up</field>
+        <field name="focus_label">sales, quotations, and CRM</field>
+        <field name="description">Domain agent for sales teams. Creates quotations, tracks pipeline, and follows up on customers without leaving Odoo.</field>
+        <field name="system_prompt">You are Sales AI for Odoo. You help sales teams with quotations, customers, pipeline revenue, and CRM follow-ups. Prefer read skills before write actions.</field>
+        <field name="icon">fa-shopping-cart</field>
+        <field name="color">4</field>
+        <field name="sequence">10</field>
+        <field name="tool_ids" eval="[(6, 0, [
+            ref('tool_today_sales'),
+            ref('tool_pending_quotations'),
+            ref('tool_lost_quotations'),
+            ref('tool_top_customers'),
+            ref('tool_best_selling_products'),
+            ref('tool_create_quotation'),
+            ref('tool_send_partner_email'),
+            ref('tool_schedule_activity'),
+            ref('tool_find_customer'),
+            ref('tool_top_opportunities'),
+            ref('tool_lost_leads'),
+            ref('tool_followup_overdue'),
+            ref('tool_pipeline_revenue'),
+        ])]"/>
+        <field name="suggestion_ids" eval="[(6, 0, [
+            ref('suggestion_today_sales'),
+            ref('suggestion_pending_quotations'),
+            ref('suggestion_top_customers'),
+            ref('suggestion_pipeline'),
+            ref('suggestion_create_quotation'),
+            ref('suggestion_inactive_customers'),
+        ])]"/>
+    </record>
+
+    <record id="agent_finance" model="rn.ai.employee.agent">
+        <field name="name">Finance AI</field>
+        <field name="code">finance</field>
+        <field name="tagline">Collections, revenue, profit, and payment reminders</field>
+        <field name="focus_label">finance, invoices, and collections</field>
+        <field name="description">Domain agent for finance teams. Surfaces overdue invoices, revenue trends, and payment reminders with audit-friendly write gates.</field>
+        <field name="system_prompt">You are Finance AI for Odoo. You help finance teams with invoices, collections, revenue analysis, and payment reminders. Highlight risk and cashflow impact.</field>
+        <field name="icon">fa-money</field>
+        <field name="color">10</field>
+        <field name="sequence">20</field>
+        <field name="tool_ids" eval="[(6, 0, [
+            ref('tool_overdue_invoices'),
+            ref('tool_customer_balance'),
+            ref('tool_revenue_this_month'),
+            ref('tool_expenses_this_month'),
+            ref('tool_profit_this_month'),
+            ref('tool_revenue_analysis'),
+            ref('tool_send_payment_reminders'),
+        ])]"/>
+        <field name="suggestion_ids" eval="[(6, 0, [
+            ref('suggestion_overdue_invoices'),
+            ref('suggestion_revenue_month'),
+            ref('suggestion_profit'),
+            ref('suggestion_payment_reminders'),
+            ref('suggestion_revenue_drop'),
+        ])]"/>
+    </record>
+
+    <record id="agent_executive" model="rn.ai.employee.agent">
+        <field name="name">Executive AI</field>
+        <field name="code">executive</field>
+        <field name="tagline">Briefings, KPIs, approvals, and cross-domain insights</field>
+        <field name="focus_label">executive KPIs, approvals, and operations</field>
+        <field name="description">Domain agent for managers and owners. Delivers morning briefings, revenue and collections insight, and suggested actions across departments.</field>
+        <field name="system_prompt">You are Executive AI for Odoo. You help managers with briefings, revenue trends, collections risk, pipeline outlook, and approval priorities. Be concise and action-oriented.</field>
+        <field name="icon">fa-briefcase</field>
+        <field name="color">2</field>
+        <field name="sequence">30</field>
+        <field name="tool_ids" eval="[(6, 0, [
+            ref('tool_morning_briefing'),
+            ref('tool_revenue_this_month'),
+            ref('tool_profit_this_month'),
+            ref('tool_revenue_analysis'),
+            ref('tool_overdue_invoices'),
+            ref('tool_pipeline_revenue'),
+            ref('tool_pending_quotations'),
+            ref('tool_confirm_purchase_order'),
+            ref('tool_low_stock'),
+            ref('tool_create_rfq'),
+            ref('tool_send_payment_reminders'),
+        ])]"/>
+        <field name="suggestion_ids" eval="[(6, 0, [
+            ref('suggestion_morning_briefing'),
+            ref('suggestion_revenue_month'),
+            ref('suggestion_profit'),
+            ref('suggestion_overdue_invoices'),
+            ref('suggestion_pending_quotations'),
+            ref('suggestion_pipeline'),
+        ])]"/>
+    </record>
+
+</odoo>

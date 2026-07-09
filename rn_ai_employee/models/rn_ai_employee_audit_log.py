@@ -17,6 +17,12 @@ class AiEmployeeAuditLog(models.Model):
     user_id = fields.Many2one('res.users', required=True, index=True, ondelete='restrict')
     company_id = fields.Many2one('res.company', required=True, index=True, ondelete='restrict')
     chat_id = fields.Many2one('rn.ai.employee.chat', index=True, ondelete='set null')
+    agent_id = fields.Many2one(
+        'rn.ai.employee.agent',
+        string='Domain Agent',
+        index=True,
+        ondelete='set null',
+    )
     pending_action_id = fields.Many2one(
         'rn.ai.employee.pending.action',
         index=True,
@@ -67,6 +73,7 @@ class AiEmployeeAuditLog(models.Model):
             'user_id': self.env.user.id,
             'company_id': self.env.company.id,
             'chat_id': chat.id if chat else False,
+            'agent_id': chat.agent_id.id if chat and chat.agent_id else False,
             'pending_action_id': pending_action.id if pending_action else False,
             'tool_name': tool_name,
             'arguments': json.dumps(arguments or {}, default=str),

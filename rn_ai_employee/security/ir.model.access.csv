@@ -13,3 +13,5 @@ access_rn_ai_employee_audit_log_user,rn.ai.employee.audit.log user,model_rn_ai_e
 access_rn_ai_employee_audit_log_manager,rn.ai.employee.audit.log manager,model_rn_ai_employee_audit_log,rn_ai_employee.group_rn_ai_employee_manager,1,0,0,0
 access_rn_ai_employee_pending_action_user,rn.ai.employee.pending.action user,model_rn_ai_employee_pending_action,rn_ai_employee.group_rn_ai_employee_user,1,1,1,0
 access_rn_ai_employee_pending_action_manager,rn.ai.employee.pending.action manager,model_rn_ai_employee_pending_action,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1
+access_rn_ai_employee_agent_user,rn.ai.employee.agent user,model_rn_ai_employee_agent,rn_ai_employee.group_rn_ai_employee_user,1,0,0,0
+access_rn_ai_employee_agent_manager,rn.ai.employee.agent manager,model_rn_ai_employee_agent,rn_ai_employee.group_rn_ai_employee_manager,1,1,1,1

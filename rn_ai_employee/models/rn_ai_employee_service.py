@@ -13,6 +13,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 from ..services.memory_service import get_memory_service
+from ..services.agent_service import get_agent_service
 from ..services.provider_factory import get_provider, llm_enabled
 from ..tools.registry import get_tool_class
 
@@ -77,10 +78,8 @@ class AiEmployeeService(models.AbstractModel):
     def ensure_system_message(self, chat) -> None:
         if chat.message_ids.filtered(lambda msg: msg.role == 'system'):
             return
-        content = _(
-            'You are %(product)s. I answer everyday business questions using live company data. '
-            'Pick a suggested question or ask in your own words.'
-        ) % {'product': PRODUCT_NAME}
+        agent = get_agent_service(self.env).get_chat_agent(chat)
+        content = get_agent_service(self.env).build_system_prompt(agent, PRODUCT_NAME)
         self._create_message(chat, 'system', content)
 
     @api.model
@@ -234,41 +233,57 @@ class AiEmployeeService(models.AbstractModel):
 
     @api.model
     def _resolve_tool(self, chat, user_text: str) -> tuple[str | None, dict[str, Any]]:
+        agent_service = get_agent_service(self.env)
+        agent = agent_service.get_chat_agent(chat)
+        allowed = agent_service.get_allowed_tool_names(agent) if chat.agent_id else None
+
         memory = get_memory_service(self.env)
         follow_tool, follow_args = memory.resolve_followup_tool(chat, user_text)
         if follow_tool:
-            return follow_tool, follow_args
+            follow_tool = agent_service.filter_tool_name(agent, follow_tool) if chat.agent_id else follow_tool
+            if follow_tool:
+                return follow_tool, follow_args
 
-        tool_name, arguments = self.env['rn.ai.employee.intent'].detect(user_text)
+        tool_name, arguments = self.env['rn.ai.employee.intent'].detect(
+            user_text,
+            allowed_tools=allowed,
+        )
         if tool_name:
             return tool_name, memory.enrich_arguments(chat, tool_name, arguments, user_text)
         if llm_enabled(self.env):
-            tool_name, arguments = self._detect_with_llm(chat, user_text)
+            tool_name, arguments = self._detect_with_llm(chat, user_text, agent)
             if tool_name:
                 return tool_name, memory.enrich_arguments(chat, tool_name, arguments, user_text)
         return None, {}
 
     @api.model
-    def _detect_with_llm(self, chat, user_text: str) -> tuple[str | None, dict[str, Any]]:
+    def _detect_with_llm(self, chat, user_text: str, agent=None) -> tuple[str | None, dict[str, Any]]:
         try:
             provider = get_provider(self.env)
-            tools = self.env['rn.ai.employee.tool'].get_openai_definitions()
+            agent_service = get_agent_service(self.env)
+            if chat.agent_id:
+                tools = agent_service.get_openai_definitions(agent)
+            else:
+                tools = self.env['rn.ai.employee.tool'].get_openai_definitions()
             if not tools:
                 return None, {}
-            messages = self._build_llm_messages(chat)
+            messages = self._build_llm_messages(chat, agent)
             response = provider.tool_call(messages, tools)
-            return self._parse_tool_call_response(response)
+            return self._parse_tool_call_response(response, allowed_tools=(
+                agent_service.get_allowed_tool_names(agent) if chat.agent_id else None
+            ))
         except Exception:
             _logger.exception('AI Copilot LLM routing failed for chat=%s', chat.id)
             return None, {}
 
     @api.model
-    def _build_llm_messages(self, chat) -> list[dict[str, Any]]:
+    def _build_llm_messages(self, chat, agent=None) -> list[dict[str, Any]]:
         memory_block = get_memory_service(self.env).build_llm_context(chat)
-        system_content = (
-            f'You are {PRODUCT_NAME}. Choose exactly one registered tool to answer '
-            'the latest user question. Use tool arguments that match the user request. '
-            'Do not invent records or data.'
+        agent_service = get_agent_service(self.env)
+        system_content = agent_service.build_system_prompt(agent, PRODUCT_NAME)
+        system_content += (
+            '\n\nChoose exactly one registered tool to answer the latest user question. '
+            'Use tool arguments that match the user request. Do not invent records or data.'
         )
         if memory_block:
             system_content += '\n\n' + memory_block
@@ -286,7 +301,11 @@ class AiEmployeeService(models.AbstractModel):
         return messages
 
     @api.model
-    def _parse_tool_call_response(self, response: dict[str, Any]) -> tuple[str | None, dict[str, Any]]:
+    def _parse_tool_call_response(
+        self,
+        response: dict[str, Any],
+        allowed_tools: set[str] | None = None,
+    ) -> tuple[str | None, dict[str, Any]]:
         choices = response.get('choices') or []
         if not choices:
             return None, {}
@@ -309,6 +328,8 @@ class AiEmployeeService(models.AbstractModel):
             ('active', '=', True),
         ], limit=1)
         if not active:
+            return None, {}
+        if allowed_tools is not None and tool_name not in allowed_tools:
             return None, {}
         return tool_name, arguments
 
@@ -396,13 +417,21 @@ class AiEmployeeService(models.AbstractModel):
 
     @api.model
     def _reply_with_guidance(self, chat, user_text: str) -> None:
-        suggestions = self.env['rn.ai.employee.suggestion'].search([('active', '=', True)], limit=6)
+        agent = get_agent_service(self.env).get_chat_agent(chat)
+        suggestions = get_agent_service(self.env).get_suggestions(agent, limit=6)
+        if chat.agent_id and not suggestions:
+            content = get_agent_service(self.env).agent_not_allowed_message(agent)
+            self._create_assistant_message(chat, content, headline=_('Try another question'))
+            return
         labels = '\n'.join(f'- {item.name}' for item in suggestions)
+        headline = _('What would you like to know?')
+        if chat.agent_id:
+            headline = _('%(agent)s is ready') % {'agent': agent.name}
         content = _(
             'I can help with everyday business questions such as:\n%(suggestions)s\n\n'
             'Try one of the suggested questions above or rephrase your request.'
         ) % {'suggestions': labels or '- Show overdue invoices'}
-        self._create_assistant_message(chat, content, headline=_('What would you like to know?'))
+        self._create_assistant_message(chat, content, headline=headline)
 
     @api.model
     def _create_message(self, chat, role: str, content: str, headline: str | None = None):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Copilot for Odoo',
-    'version': '19.0.4.0.0',
+    'version': '19.0.5.0.0',
     'category': 'Productivity',
     'summary': 'Enterprise AI operating layer for Odoo: ask, reason, act, audit, and automate',
     'description': """
@@ -13,6 +13,7 @@ write skills, and get proactive executive briefings from live company data.
 
 **Platform capabilities**
 * 25+ analytics and write skills across Sales, Finance, Inventory, CRM, and Purchase
+* Domain agents: Sales AI, Finance AI, and Executive AI with scoped skill packs
 * Session memory for follow-up questions ("email the first three customers")
 * Confirmation gates and audit logs for every write action
 * OpenAI-compatible LLM routing with rules fallback
@@ -47,8 +48,10 @@ Install, enable, and use it in your own Odoo environment.
         'data/ir_config_parameter.xml',
         'data/rn_ai_employee_tool_data.xml',
         'data/rn_ai_employee_suggestion_data.xml',
+        'data/rn_ai_employee_agent_data.xml',
         'data/rn_ai_employee_cron.xml',
         'views/rn_ai_employee_chat_views.xml',
+        'views/rn_ai_employee_agent_views.xml',
         'views/rn_ai_employee_tool_views.xml',
         'views/rn_ai_employee_suggestion_views.xml',
         'views/rn_ai_employee_audit_log_views.xml',
@@ -59,6 +62,7 @@ Install, enable, and use it in your own Odoo environment.
         'static/description/banner.png',
         'static/description/icon.png',
         'static/description/overview.png',
+        'static/description/dashboard.png',
         'static/description/settings.png',
         'static/description/tools.png',
     ],

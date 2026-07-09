@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_rn_ai_employee_agent_tree" model="ir.ui.view">
+        <field name="name">rn.ai.employee.agent.tree</field>
+        <field name="model">rn.ai.employee.agent</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="tagline"/>
+                <field name="tool_count"/>
+                <field name="chat_count"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_ai_employee_agent_form" model="ir.ui.view">
+        <field name="name">rn.ai.employee.agent.form</field>
+        <field name="model">rn.ai.employee.agent</field>
+        <field name="arch" type="xml">
+            <form string="Domain Agent">
+                <header>
+                    <button name="action_open_chat" type="object" string="Start Conversation" class="btn-primary"/>
+                    <button name="action_view_chats" type="object" string="Conversations" class="btn-secondary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_view_chats" icon="fa-comments">
+                            <field name="chat_count" widget="statinfo" string="Chats"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-warning" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="Sales AI"/></h1>
+                        <div class="text-muted"><field name="tagline" placeholder="Short positioning line"/></div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="focus_label"/>
+                            <field name="icon"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="tool_count"/>
+                            <field name="description" colspan="2"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Skills" name="skills">
+                            <field name="tool_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Suggested Questions" name="suggestions">
+                            <field name="suggestion_ids">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="question"/>
+                                    <field name="tool_name"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Persona" name="persona">
+                            <field name="system_prompt" nolabel="1" placeholder="Optional LLM and chat persona for this agent."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_ai_employee_agent_kanban" model="ir.ui.view">
+        <field name="name">rn.ai.employee.agent.kanban</field>
+        <field name="model">rn.ai.employee.agent</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="tagline"/>
+                <field name="code"/>
+                <field name="icon"/>
+                <field name="color"/>
+                <field name="tool_count"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-3">
+                            <div class="fw-bold fs-5"><field name="name"/></div>
+                            <div class="text-muted mb-2"><field name="tagline"/></div>
+                            <div class="text-muted small">
+                                <field name="tool_count"/> skills
+                            </div>
+                            <button type="object" name="action_open_chat" class="btn btn-primary btn-sm mt-2">
+                                Start chat
+                            </button>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_rn_ai_employee_agents" model="ir.actions.act_window">
+        <field name="name">Domain Agents</field>
+        <field name="res_model">rn.ai.employee.agent</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure domain agents that scope skills for Sales, Finance, and Executive teams.
+            </p>
+        </field>
+    </record>
+
+</odoo>

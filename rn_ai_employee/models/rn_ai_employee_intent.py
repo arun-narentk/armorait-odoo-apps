@@ -102,19 +102,25 @@ class AiEmployeeIntent(models.AbstractModel):
     )
 
     @api.model
-    def detect(self, user_text: str) -> tuple[str | None, dict[str, Any]]:
+    def detect(
+        self,
+        user_text: str,
+        allowed_tools: set[str] | None = None,
+    ) -> tuple[str | None, dict[str, Any]]:
         """Return (tool_name, arguments) for a user question."""
         normalized = self._normalize(user_text)
         if not normalized:
             return None, {}
 
-        direct = self._match_suggestion_question(user_text)
+        direct = self._match_suggestion_question(user_text, allowed_tools)
         if direct:
             return direct
 
         best_tool = None
         best_priority = -1
         for rule in self.INTENT_RULES:
+            if allowed_tools is not None and rule['tool'] not in allowed_tools:
+                continue
             if any(phrase in normalized for phrase in rule['phrases']):
                 if rule['priority'] > best_priority:
                     best_tool = rule['tool']
@@ -126,12 +132,18 @@ class AiEmployeeIntent(models.AbstractModel):
         return best_tool, self._default_arguments(best_tool, normalized)
 
     @api.model
-    def _match_suggestion_question(self, user_text: str) -> tuple[str | None, dict[str, Any]] | None:
+    def _match_suggestion_question(
+        self,
+        user_text: str,
+        allowed_tools: set[str] | None = None,
+    ) -> tuple[str | None, dict[str, Any]] | None:
         suggestion = self.env['rn.ai.employee.suggestion'].search([
             ('question', '=ilike', user_text.strip()),
             ('active', '=', True),
         ], limit=1)
         if suggestion and suggestion.tool_name:
+            if allowed_tools is not None and suggestion.tool_name not in allowed_tools:
+                return None
             return suggestion.tool_name, suggestion.get_tool_arguments()
         return None
 
