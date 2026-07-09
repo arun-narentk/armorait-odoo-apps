@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_cloud_recommendation_tree" model="ir.ui.view"><field name="name">rn.cloud.recommendation.tree</field><field name="model">rn.cloud.recommendation</field><field name="arch" type="xml"><list><field name="instance_id"/><field name="category"/><field name="severity" widget="badge"/><field name="title"/><field name="state" widget="badge"/></list></field></record>
+    <record id="view_rn_cloud_recommendation_form" model="ir.ui.view"><field name="name">rn.cloud.recommendation.form</field><field name="model">rn.cloud.recommendation</field><field name="arch" type="xml"><form><sheet><group><field name="instance_id"/><field name="category"/><field name="severity"/><field name="title"/><field name="state"/></group><field name="recommendation"/></sheet></form></field></record>
+    <record id="action_rn_cloud_recommendation" model="ir.actions.act_window"><field name="name">Recommendations</field><field name="res_model">rn.cloud.recommendation</field><field name="view_mode">list,form</field></record>
+</odoo>

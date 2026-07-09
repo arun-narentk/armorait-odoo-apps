@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_cloud_provider_user,rn.cloud.provider user,model_rn_cloud_provider,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_provider_manager,rn.cloud.provider manager,model_rn_cloud_provider,group_rn_cloud_platform_manager,1,1,1,1
+access_rn_cloud_instance_user,rn.cloud.instance user,model_rn_cloud_instance,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_instance_manager,rn.cloud.instance manager,model_rn_cloud_instance,group_rn_cloud_platform_manager,1,1,1,1
+access_rn_cloud_environment_user,rn.cloud.environment user,model_rn_cloud_environment,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_environment_manager,rn.cloud.environment manager,model_rn_cloud_environment,group_rn_cloud_platform_manager,1,1,1,1
+access_rn_cloud_backup_user,rn.cloud.backup user,model_rn_cloud_backup,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_backup_manager,rn.cloud.backup manager,model_rn_cloud_backup,group_rn_cloud_platform_manager,1,1,1,1
+access_rn_cloud_monitoring_user,rn.cloud.monitoring user,model_rn_cloud_monitoring,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_monitoring_manager,rn.cloud.monitoring manager,model_rn_cloud_monitoring,group_rn_cloud_platform_manager,1,1,1,1
+access_rn_cloud_recommendation_user,rn.cloud.recommendation user,model_rn_cloud_recommendation,group_rn_cloud_platform_user,1,1,1,0
+access_rn_cloud_recommendation_manager,rn.cloud.recommendation manager,model_rn_cloud_recommendation,group_rn_cloud_platform_manager,1,1,1,1
