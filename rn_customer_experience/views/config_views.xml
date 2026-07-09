@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_customer_experience_config_tree" model="ir.ui.view">
+        <field name="name">rn.customer.experience.config.tree</field>
+        <field name="model">rn.customer.experience.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="portal_title"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_customer_experience_config_form" model="ir.ui.view">
+        <field name="name">rn.customer.experience.config.form</field>
+        <field name="model">rn.customer.experience.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Portal name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Branding">
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="portal_title"/>
+                            <field name="primary_color" widget="color"/>
+                            <field name="secondary_color" widget="color"/>
+                            <field name="custom_domain"/>
+                            <field name="logo" widget="image"/>
+                            <field name="login_background" widget="image"/>
+                        </group>
+                        <group string="Features">
+                            <field name="enable_orders"/>
+                            <field name="enable_invoices"/>
+                            <field name="enable_payments"/>
+                            <field name="enable_downloads"/>
+                            <field name="enable_tickets"/>
+                            <field name="enable_warranty"/>
+                            <field name="enable_amc"/>
+                            <field name="enable_ai_assistant"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Welcome" name="welcome">
+                            <field name="welcome_message"/>
+                        </page>
+                        <page string="Pages" name="pages">
+                            <field name="page_ids">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="is_home"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_customer_experience_config" model="ir.actions.act_window">
+        <field name="name">Portal Configuration</field>
+        <field name="res_model">rn.customer.experience.config</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

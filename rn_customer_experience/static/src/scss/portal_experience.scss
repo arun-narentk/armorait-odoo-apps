@@ -1,0 +1,32 @@
+.rn-experience-portal {
+    --rn-exp-primary: #0d6efd;
+    --rn-exp-secondary: #6c757d;
+}
+
+.rn-experience-portal .rn-exp-hero {
+    border-left: 4px solid var(--rn-exp-primary);
+}
+
+.rn-experience-portal .btn-primary,
+.rn-experience-portal .btn-outline-primary:hover {
+    background-color: var(--rn-exp-primary);
+    border-color: var(--rn-exp-primary);
+}
+
+.rn-experience-portal .btn-outline-primary {
+    color: var(--rn-exp-primary);
+    border-color: var(--rn-exp-primary);
+}
+
+.rn-experience-portal .card {
+    border-radius: 0.75rem;
+}
+
+@media (max-width: 767.98px) {
+    .rn-experience-portal .rn-exp-hero h1 {
+        font-size: 1.35rem;
+    }
+    .rn-experience-portal .table {
+        font-size: 0.875rem;
+    }
+}
