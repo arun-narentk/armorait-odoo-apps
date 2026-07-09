@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_document_idp_validation_tree" model="ir.ui.view">
+        <field name="name">rn.document.idp.validation.tree</field>
+        <field name="model">rn.document.idp.validation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="document_id"/>
+                <field name="rule_code"/>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="message"/>
+            </list>
+        </field>
+    </record>
+</odoo>

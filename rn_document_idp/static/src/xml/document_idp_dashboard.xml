@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_document_idp.Dashboard">
+        <div class="o_rn_document_idp_dashboard o_action p-3">
+            <h2>AI Document Processing</h2>
+            <div t-if="state.loading" class="text-muted">Loading dashboard...</div>
+            <div t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card p-3"><div class="text-muted">Documents</div><h3 t-esc="state.data.total_documents"/></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3"><div class="text-muted">Review Queue</div><h3 t-esc="state.data.review_queue"/></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3"><div class="text-muted">Posted</div><h3 t-esc="state.data.posted_documents"/></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3"><div class="text-muted">Credits Left</div><h3 t-esc="state.data.credit_balance"/></div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4"><strong>Avg Confidence:</strong> <t t-esc="state.data.avg_confidence"/>%</div>
+                    <div class="col-md-4"><strong>Manual Review Rate:</strong> <t t-esc="state.data.manual_review_rate"/>%</div>
+                    <div class="col-md-4"><strong>Avg Processing:</strong> <t t-esc="state.data.avg_processing_seconds"/>s</div>
+                </div>
+                <div class="card p-3 mb-4">
+                    <h5>Conversational Search</h5>
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Show invoices pending validation this week"
+                               t-model="state.query" t-on-keydown="(ev) => ev.key === 'Enter' and this.runSearch()"/>
+                        <button class="btn btn-primary" t-on-click="runSearch">Search</button>
+                    </div>
+                    <div class="mt-3" t-if="state.searchResults.length">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action"
+                               t-foreach="state.searchResults" t-as="item" t-key="item.id"
+                               t-on-click.prevent="() => this.openDocument(item.id)">
+                                <strong t-esc="item.name"/> -
+                                <t t-esc="item.document_type"/> |
+                                <t t-esc="item.state"/> |
+                                <t t-esc="item.confidence"/>%
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3">
+                    <h5>Recent Documents</h5>
+                    <table class="table table-sm">
+                        <thead><tr><th>Reference</th><th>Type</th><th>State</th><th>Confidence</th></tr></thead>
+                        <tbody>
+                            <tr t-foreach="state.data.recent" t-as="doc" t-key="doc.id"
+                                class="o_cursor_pointer" t-on-click="() => this.openDocument(doc.id)">
+                                <td t-esc="doc.name"/>
+                                <td t-esc="doc.document_type"/>
+                                <td t-esc="doc.state"/>
+                                <td t-esc="doc.confidence"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

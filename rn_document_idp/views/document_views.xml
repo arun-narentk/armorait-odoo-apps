@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_document_idp_document_tree" model="ir.ui.view">
+        <field name="name">rn.document.idp.document.tree</field>
+        <field name="model">rn.document.idp.document</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="reference"/>
+                <field name="document_type"/>
+                <field name="capture_channel"/>
+                <field name="partner_id"/>
+                <field name="document_number"/>
+                <field name="amount_total"/>
+                <field name="overall_confidence"/>
+                <field name="validation_state"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_document_idp_document_form" model="ir.ui.view">
+        <field name="name">rn.document.idp.document.form</field>
+        <field name="model">rn.document.idp.document</field>
+        <field name="arch" type="xml">
+            <form string="Document">
+                <header>
+                    <button name="action_process" type="object" string="Process" class="btn-primary"/>
+                    <button name="action_approve" type="object" string="Approve"/>
+                    <button name="action_post_to_erp" type="object" string="Post to ERP" class="btn-primary"/>
+                    <button name="action_reject" type="object" string="Reject"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_validations" type="object" class="oe_stat_button" icon="fa-check-square-o">
+                            <field name="validation_state" widget="statinfo" string="Validation"/>
+                        </button>
+                        <button name="action_open_posted_record" type="object" class="oe_stat_button" icon="fa-file-text-o"
+                                invisible="not move_id">
+                            <span class="o_stat_text">ERP Record</span>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="reference"/>
+                            <field name="document_type"/>
+                            <field name="document_type_confidence"/>
+                            <field name="capture_channel"/>
+                            <field name="attachment_id"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="partner_name_extracted"/>
+                            <field name="gstin"/>
+                            <field name="document_number"/>
+                            <field name="document_date"/>
+                            <field name="due_date"/>
+                            <field name="purchase_order_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="amount_untaxed"/>
+                        <field name="amount_tax"/>
+                        <field name="amount_total"/>
+                        <field name="overall_confidence"/>
+                        <field name="match_state"/>
+                        <field name="match_score"/>
+                        <field name="fraud_score"/>
+                        <field name="is_duplicate"/>
+                    </group>
+                    <notebook>
+                        <page string="Lines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="description"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal"/>
+                                    <field name="confidence"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Validations">
+                            <field name="validation_ids" readonly="1">
+                                <list>
+                                    <field name="rule_code"/>
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                    <field name="message"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Extracted Text">
+                            <field name="raw_text" widget="text"/>
+                            <field name="fraud_notes" widget="text"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_document_idp_document" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">rn.document.idp.document</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
