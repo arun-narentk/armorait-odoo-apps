@@ -5,6 +5,8 @@ import logging
 
 from odoo import fields, models
 
+from .contract_compat import running_version_domain
+
 _logger = logging.getLogger(__name__)
 
 
@@ -20,10 +22,7 @@ class RnHrKpiService(models.AbstractModel):
             ('company_id', '=', company_id),
             ('active', '=', True),
         ])
-        contracts = self.env['hr.contract'].search([
-            ('company_id', '=', company_id),
-            ('state', '=', 'open'),
-        ])
+        contracts = self.env['hr.version'].search(running_version_domain(company_id))
         gross = sum(contracts.mapped('wage'))
         settings = self._get_settings(company_id)
         pf = gross * (settings.pf_rate / 100.0) if settings else 0.0

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Digital Document Platform',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'category': 'Productivity/Documents',
     'summary': 'Sign, approve, audit, and AI-analyze contracts and business documents',
     'description': """
@@ -46,7 +46,6 @@ integration, mobile signing.
         'sale',
         'purchase',
         'hr',
-        'hr_contract',
         'account',
     ],
     'data': [

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Workforce Intelligence',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'category': 'Human Resources',
     'summary': 'HR intelligence: payroll analytics, overtime, attrition, compliance KPIs',
     'description': """
@@ -45,7 +45,6 @@ consolidation, recruitment cost analytics.
         'hr',
         'hr_attendance',
         'hr_holidays',
-        'hr_contract',
     ],
     'data': [
         'security/security.xml',

@@ -3,7 +3,9 @@
 
 import logging
 
-from odoo import models
+from odoo import fields, models
+
+from .contract_compat import running_version_domain
 
 _logger = logging.getLogger(__name__)
 
@@ -29,10 +31,10 @@ class RnHrQualityService(models.AbstractModel):
                     company_id, 'missing_department', emp,
                     f'{emp.name} has no department assigned.',
                 ))
-            contract = self.env['hr.contract'].search([
-                ('employee_id', '=', emp.id),
-                ('state', '=', 'open'),
-            ], limit=1)
+            contract = self.env['hr.version'].search(
+                running_version_domain(company_id, [('employee_id', '=', emp.id)]),
+                limit=1,
+            )
             if not contract:
                 issues.append(self._create_check(
                     company_id, 'missing_contract', emp,

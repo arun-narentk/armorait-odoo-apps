@@ -132,16 +132,4 @@
             </xpath>
         </field>
     </record>
-
-    <record id="hr_contract_form_sign" model="ir.ui.view">
-        <field name="name">hr.contract.form.sign</field>
-        <field name="model">hr.contract</field>
-        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
-                <button name="action_send_for_signature" type="object" string="Send for Signature"
-                    groups="rn_document_platform.group_rn_doc_platform_user"/>
-            </xpath>
-        </field>
-    </record>
 </odoo>
