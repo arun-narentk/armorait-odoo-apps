@@ -123,4 +123,17 @@
         <field name="description">Summarize expected revenue from the open CRM pipeline.</field>
         <field name="active" eval="True"/>
     </record>
+
+    <record id="tool_create_quotation" model="rn.ai.employee.tool">
+        <field name="name">Create Quotation</field>
+        <field name="model_name">create_quotation</field>
+        <field name="description">Create a draft sales quotation for a customer and product.</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tool_send_payment_reminders" model="rn.ai.employee.tool">
+        <field name="name">Send Payment Reminders</field>
+        <field name="model_name">send_payment_reminders</field>
+        <field name="description">Send payment reminder emails for overdue customer invoices.</field>
+        <field name="active" eval="True"/>
+    </record>
 </odoo>

@@ -17,6 +17,7 @@ class TestAiEmployeeTools(TransactionCase):
         expected = {
             'today_sales', 'pending_quotations', 'overdue_invoices',
             'low_stock', 'revenue_this_month', 'top_customers',
+            'create_quotation', 'send_payment_reminders',
         }
         self.assertTrue(expected.issubset(technical_names))
 

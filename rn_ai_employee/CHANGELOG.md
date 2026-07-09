@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.0.3.0.0
+- Wire OpenAI-compatible LLM routing with rules fallback
+- Add write tools: create quotation and send payment reminder emails
+- Add OWL systray chat widget with suggested questions and action cards
+- Add open-form action cards for write tool results
+
 ## 19.0.2.15.0
 - Unified product branding to AI Employee across menus, settings, security, and Apps Store copy
 - Restored marketplace screenshot and GIF placeholders (removed oversized mobile.gif asset)

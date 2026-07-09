@@ -35,6 +35,10 @@
                                     <label for="rn_ai_employee_temperature" class="col-lg-3 o_light_label"/>
                                     <field name="rn_ai_employee_temperature" class="col-lg-9"/>
                                 </div>
+                                <div class="row">
+                                    <label for="rn_ai_employee_use_llm" class="col-lg-3 o_light_label"/>
+                                    <field name="rn_ai_employee_use_llm" class="col-lg-9"/>
+                                </div>
                             </div>
                         </setting>
                     </block>

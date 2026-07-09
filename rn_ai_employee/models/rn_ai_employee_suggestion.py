@@ -33,7 +33,10 @@ class AiEmployeeSuggestion(models.Model):
         self.ensure_one()
         args = {'limit': 20}
         if self.tool_name == 'overdue_invoices':
-            args['days_overdue'] = 90
+            args['days_overdue'] = 0
+        if self.tool_name == 'send_payment_reminders':
+            args['days_overdue'] = 0
+            args['limit'] = 10
         if self.tool_name == 'find_customer':
             args['inactive_months'] = 6
         if self.tool_name == 'products_not_moved':

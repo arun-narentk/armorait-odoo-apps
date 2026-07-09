@@ -1,0 +1,30 @@
+.o_ai_employee_systray_menu {
+    width: min(420px, 92vw);
+}
+
+.o_ai_employee_systray_panel {
+    width: 100%;
+}
+
+.o_ai_employee_systray_messages {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.o_ai_employee_message {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--o-view-background-color, #f8f9fa);
+}
+
+.o_ai_employee_message.is-assistant {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.o_ai_employee_message.is-user {
+    background: rgba(25, 135, 84, 0.08);
+}
+
+.o_ai_employee_message_content {
+    white-space: pre-wrap;
+}

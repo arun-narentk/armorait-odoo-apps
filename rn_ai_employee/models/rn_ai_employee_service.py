@@ -11,6 +11,8 @@ from typing import Any
 from odoo import _, api, models
 from odoo.exceptions import UserError
 
+from ..services.provider_factory import get_provider, llm_enabled
+
 _logger = logging.getLogger(__name__)
 
 
@@ -20,7 +22,7 @@ class AiEmployeeService(models.AbstractModel):
 
     @api.model
     def process_chat_message(self, chat, user_text: str) -> None:
-        """Business-first pipeline without delegating logic to the LLM."""
+        """Route the user question through rules, optional LLM, then tools."""
         started = time.perf_counter()
         user_text = (user_text or '').strip()
         if not user_text:
@@ -30,7 +32,7 @@ class AiEmployeeService(models.AbstractModel):
         self._create_message(chat, 'user', user_text)
         _logger.info('AI Employee prompt chat=%s user=%s', chat.id, self.env.user.login)
 
-        tool_name, arguments = self.env['rn.ai.employee.intent'].detect(user_text)
+        tool_name, arguments = self._resolve_tool(chat, user_text)
         if not tool_name:
             self._reply_with_guidance(chat, user_text)
         else:
@@ -54,6 +56,82 @@ class AiEmployeeService(models.AbstractModel):
         enabled = self.env['ir.config_parameter'].get_param('rn_ai_employee.enabled', 'False') == 'True'
         if not enabled:
             raise UserError(_('AI Employee is disabled. Enable it under AI Employee > Settings.'))
+
+    @api.model
+    def _resolve_tool(self, chat, user_text: str) -> tuple[str | None, dict[str, Any]]:
+        """Try rule-based intent first, then optional LLM tool routing."""
+        tool_name, arguments = self.env['rn.ai.employee.intent'].detect(user_text)
+        if tool_name:
+            return tool_name, arguments
+        if llm_enabled(self.env):
+            return self._detect_with_llm(chat, user_text)
+        return None, {}
+
+    @api.model
+    def _detect_with_llm(self, chat, user_text: str) -> tuple[str | None, dict[str, Any]]:
+        """Use the configured provider to map natural language to a registered tool."""
+        try:
+            provider = get_provider(self.env)
+            tools = self.env['rn.ai.employee.tool'].get_openai_definitions()
+            if not tools:
+                return None, {}
+            messages = self._build_llm_messages(chat)
+            response = provider.tool_call(messages, tools)
+            return self._parse_tool_call_response(response)
+        except Exception:
+            _logger.exception('AI Employee LLM routing failed for chat=%s', chat.id)
+            return None, {}
+
+    @api.model
+    def _build_llm_messages(self, chat) -> list[dict[str, Any]]:
+        """Serialize recent chat history for the provider."""
+        messages = [{
+            'role': 'system',
+            'content': (
+                'You are AI Employee for Odoo. Choose exactly one registered tool to answer '
+                'the latest user question. Use tool arguments that match the user request. '
+                'Do not invent records or data.'
+            ),
+        }]
+        history = chat.message_ids.filtered(
+            lambda msg: msg.role in ('user', 'assistant')
+        ).sorted('create_date')[-8:]
+        for message in history:
+            if message.role == 'assistant' and not message.content:
+                continue
+            messages.append({
+                'role': message.role,
+                'content': message.content or message.headline or '',
+            })
+        return messages
+
+    @api.model
+    def _parse_tool_call_response(self, response: dict[str, Any]) -> tuple[str | None, dict[str, Any]]:
+        """Extract tool name and arguments from an OpenAI-style completion payload."""
+        choices = response.get('choices') or []
+        if not choices:
+            return None, {}
+        message = choices[0].get('message') or {}
+        tool_calls = message.get('tool_calls') or []
+        if not tool_calls:
+            return None, {}
+        function = tool_calls[0].get('function') or {}
+        tool_name = function.get('name')
+        raw_args = function.get('arguments') or '{}'
+        try:
+            arguments = json.loads(raw_args) if isinstance(raw_args, str) else dict(raw_args or {})
+        except json.JSONDecodeError:
+            _logger.warning('Invalid tool arguments from provider: %s', raw_args)
+            arguments = {}
+        if not tool_name:
+            return None, {}
+        active = self.env['rn.ai.employee.tool'].search([
+            ('model_name', '=', tool_name),
+            ('active', '=', True),
+        ], limit=1)
+        if not active:
+            return None, {}
+        return tool_name, arguments
 
     @api.model
     def _run_tool_pipeline(
