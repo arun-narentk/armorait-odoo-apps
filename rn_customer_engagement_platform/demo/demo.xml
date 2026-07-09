@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_customer_partner" model="res.partner">
+        <field name="name">Demo Customer</field>
+        <field name="email">demo.customer@example.com</field>
+        <field name="customer_rank">1</field>
+    </record>
+    <record id="demo_customer_session" model="rn.customer.engagement.session">
+        <field name="channel_id" ref="channel_customer_web"/>
+        <field name="partner_id" ref="demo_customer_partner"/>
+        <field name="auth_state">authenticated</field>
+        <field name="external_contact">demo.customer@example.com</field>
+    </record>
+</odoo>

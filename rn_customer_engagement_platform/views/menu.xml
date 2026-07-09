@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_customer_engagement_root" name="Customer Engagement"
+              web_icon="rn_customer_engagement_platform,static/description/icon.png"
+              groups="group_rn_customer_engagement_user" sequence="50"/>
+    <menuitem id="menu_rn_customer_engagement_dashboard" name="Dashboard" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_customer_engagement_channel" name="Channels" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_channel" sequence="10"/>
+    <menuitem id="menu_rn_customer_engagement_session" name="Customer Sessions" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_session" sequence="20"/>
+    <menuitem id="menu_rn_customer_engagement_knowledge" name="Knowledge Base" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_knowledge" sequence="30"/>
+    <menuitem id="menu_rn_customer_engagement_conversation" name="Conversations" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_conversation" sequence="40"/>
+    <menuitem id="menu_rn_customer_engagement_escalation" name="Escalations" parent="menu_rn_customer_engagement_root" action="action_rn_customer_engagement_escalation" sequence="50"/>
+</odoo>

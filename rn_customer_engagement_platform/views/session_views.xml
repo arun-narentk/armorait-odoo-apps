@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_customer_engagement_session_tree" model="ir.ui.view">
+        <field name="name">rn.customer.engagement.session.tree</field>
+        <field name="model">rn.customer.engagement.session</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="channel_id"/>
+                <field name="partner_id"/>
+                <field name="auth_state" widget="badge"/>
+                <field name="external_contact"/>
+                <field name="expires_at"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_customer_engagement_session_form" model="ir.ui.view">
+        <field name="name">rn.customer.engagement.session.form</field>
+        <field name="model">rn.customer.engagement.session</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="channel_id"/>
+                        <field name="partner_id"/>
+                        <field name="auth_state"/>
+                        <field name="external_contact"/>
+                        <field name="auth_reference"/>
+                        <field name="expires_at"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_customer_engagement_session" model="ir.actions.act_window">
+        <field name="name">Customer Sessions</field>
+        <field name="res_model">rn.customer.engagement.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
