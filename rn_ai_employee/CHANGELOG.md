@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.12.0
+- Set Apps Store price to 5.99 USD (targets ~INR 499 at Odoo checkout conversion)
+
 ## 19.0.2.11.0
 - Reduced Apps Store price to 9.99 USD (ARMORA default marketplace tier)
 
