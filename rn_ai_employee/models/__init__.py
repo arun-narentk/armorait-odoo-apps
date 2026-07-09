@@ -10,4 +10,4 @@ from . import rn_ai_employee_explainer
 from . import rn_ai_employee_suggestion
 from . import res_config_settings
 
-from ..tools import sales, accounting, inventory, crm  # noqa: F401
+from ..tools import sales, accounting, inventory, crm, actions  # noqa: F401

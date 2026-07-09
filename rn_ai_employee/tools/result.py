@@ -53,3 +53,44 @@ def _default_actions(result: dict[str, Any]) -> list[dict[str, Any]]:
             'res_ids': result.get('record_ids') or [],
         })
     return actions
+
+
+def write_result(
+    headline: str,
+    summary: str,
+    *,
+    model: str,
+    record_ids: list[int] | None = None,
+    category: str = '',
+    open_label: str | None = None,
+) -> dict[str, Any]:
+    """Structured payload for write tools with a primary open-form action."""
+    record_ids = record_ids or []
+    result = {
+        'headline': headline,
+        'summary': summary,
+        'category': category,
+        'model': model,
+        'domain': [('id', 'in', record_ids)] if record_ids else [],
+        'record_ids': record_ids,
+        'metrics': [],
+        'lines': [],
+        'write_action': True,
+    }
+    actions = []
+    if record_ids:
+        actions.append({
+            'label': open_label or 'Open Record',
+            'action_type': 'open_form',
+            'res_model': model,
+            'res_ids': record_ids[:1],
+        })
+        actions.append({
+            'label': 'Open List',
+            'action_type': 'open_list',
+            'res_model': model,
+            'domain': [('id', 'in', record_ids)],
+            'res_ids': record_ids,
+        })
+    result['suggested_actions'] = actions
+    return result

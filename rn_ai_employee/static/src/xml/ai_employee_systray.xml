@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rn_ai_employee.Systray">
+        <div class="o_ai_employee_systray">
+        <Dropdown position="'bottom-end'" menuClass="'o_ai_employee_systray_menu p-0'">
+            <button type="button" class="o-dropdown--narrow btn btn-link" title="AI Employee">
+                <i class="fa fa-comments text-primary"/>
+            </button>
+            <t t-set-slot="content">
+                <div class="o_ai_employee_systray_panel">
+                    <div class="o_ai_employee_systray_header px-3 py-2 border-bottom">
+                        <strong>AI Employee</strong>
+                        <div class="text-muted small">Ask business questions in plain language</div>
+                    </div>
+
+                    <div t-if="state.error" class="alert alert-warning m-2 mb-0 py-2 small">
+                        <t t-esc="state.error"/>
+                    </div>
+
+                    <div t-if="state.loading" class="p-3 text-muted small">Loading conversation...</div>
+
+                    <div t-else="" class="o_ai_employee_systray_body">
+                        <div class="o_ai_employee_systray_messages px-3 py-2" t-ref="messages">
+                            <t t-foreach="state.messages" t-as="message" t-key="message.id">
+                                <div t-attf-class="o_ai_employee_message mb-2 #{message.role === 'assistant' ? 'is-assistant' : ''} #{message.role === 'user' ? 'is-user' : ''}">
+                                    <div class="small text-muted text-uppercase" t-esc="message.role"/>
+                                    <div t-if="message.headline" class="fw-semibold" t-esc="message.headline"/>
+                                    <div class="o_ai_employee_message_content" t-esc="message.content"/>
+                                    <div t-if="message.actions.length" class="mt-2 d-flex flex-wrap gap-1">
+                                        <button t-foreach="message.actions" t-as="action" t-key="action.id"
+                                                type="button"
+                                                class="btn btn-sm btn-outline-primary"
+                                                t-on-click="() => this.onRunAction(action.id)"
+                                                t-esc="action.label"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+
+                        <div t-if="state.suggestions.length" class="px-3 pb-2">
+                            <div class="small text-muted mb-1">Suggested</div>
+                            <div class="d-flex flex-wrap gap-1">
+                                <button t-foreach="state.suggestions" t-as="suggestion" t-key="suggestion.id"
+                                        type="button"
+                                        class="btn btn-sm btn-light border"
+                                        t-on-click="() => this.sendMessage(suggestion.question)"
+                                        t-esc="suggestion.label"/>
+                            </div>
+                        </div>
+
+                        <div class="o_ai_employee_systray_input border-top p-2">
+                            <textarea class="form-control form-control-sm"
+                                      rows="2"
+                                      placeholder="Ask AI Employee..."
+                                      t-model="state.draft"
+                                      t-on-keydown="onKeydown"/>
+                            <div class="d-flex justify-content-end mt-2">
+                                <button type="button"
+                                        class="btn btn-primary btn-sm"
+                                        t-att-disabled="state.sending or !state.draft"
+                                        t-on-click="() => this.sendMessage()">
+                                    <t t-if="state.sending">Sending...</t>
+                                    <t t-else="">Send</t>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </Dropdown>
+        </div>
+    </t>
+
+</templates>

@@ -82,7 +82,7 @@ class AiEmployeeChat(models.Model):
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'title': _('AI Copilot'),
+                'title': _('AI Employee'),
                 'message': _('Response received.'),
                 'type': 'success',
                 'sticky': False,
@@ -102,7 +102,7 @@ class AiEmployeeChat(models.Model):
         chat = self.create({'name': _('Business question')})
         return {
             'type': 'ir.actions.act_window',
-            'name': _('AI Copilot'),
+            'name': _('AI Employee'),
             'res_model': 'rn.ai.employee.chat',
             'res_id': chat.id,
             'view_mode': 'form',
@@ -138,6 +138,96 @@ class AiEmployeeChat(models.Model):
             'view_mode': 'form',
             'target': 'current',
         }
+
+    @api.model
+    def _widget_enabled(self) -> bool:
+        if not self.env.user.has_group('rn_ai_employee.group_rn_ai_employee_user'):
+            raise UserError(_('You do not have access to AI Employee.'))
+        enabled = self.env['ir.config_parameter'].sudo().get_param('rn_ai_employee.enabled', 'False') == 'True'
+        if not enabled:
+            raise UserError(_('AI Employee is disabled. Enable it under AI Employee > Settings.'))
+        return True
+
+    @api.model
+    def _get_or_create_widget_chat(self):
+        self._widget_enabled()
+        chat = self.search([
+            ('user_id', '=', self.env.user.id),
+            ('name', '=', 'Systray Chat'),
+            ('active', '=', True),
+        ], limit=1)
+        if not chat:
+            chat = self.create({'name': 'Systray Chat'})
+        else:
+            self.env['rn.ai.employee.service'].ensure_system_message(chat)
+        return chat
+
+    @api.model
+    def widget_bootstrap(self):
+        """Return chat state for the OWL systray widget."""
+        chat = self._get_or_create_widget_chat()
+        suggestions = self.env['rn.ai.employee.suggestion'].search(
+            [('active', '=', True)],
+            order='sequence, id',
+            limit=6,
+        )
+        return {
+            'chat_id': chat.id,
+            'messages': self._serialize_widget_messages(chat),
+            'suggestions': [{
+                'id': suggestion.id,
+                'label': suggestion.name,
+                'question': suggestion.question,
+            } for suggestion in suggestions],
+        }
+
+    @api.model
+    def widget_send_message(self, chat_id: int, message: str):
+        """Send a message from the systray widget and return refreshed state."""
+        self._widget_enabled()
+        chat = self.browse(chat_id)
+        if chat.user_id != self.env.user:
+            raise UserError(_('You can only use your own AI Employee conversations.'))
+        self.env['rn.ai.employee.service'].process_chat_message(chat, message)
+        return {
+            'chat_id': chat.id,
+            'messages': self._serialize_widget_messages(chat),
+        }
+
+    @api.model
+    def widget_run_action(self, action_id: int):
+        """Execute a message action card from the widget."""
+        self._widget_enabled()
+        action = self.env['rn.ai.employee.message.action'].browse(action_id)
+        action.message_id.chat_id._check_widget_access()
+        return action.action_run()
+
+    def _check_widget_access(self):
+        self.ensure_one()
+        if self.user_id != self.env.user and not self.env.user.has_group(
+            'rn_ai_employee.group_rn_ai_employee_manager'
+        ):
+            raise UserError(_('You can only open your own AI Employee conversations.'))
+
+    @api.model
+    def _serialize_widget_messages(self, chat):
+        visible = chat.message_ids.filtered(
+            lambda msg: msg.role in ('user', 'assistant', 'system')
+        ).sorted('create_date')
+        payload = []
+        for message in visible:
+            payload.append({
+                'id': message.id,
+                'role': message.role,
+                'headline': message.headline or '',
+                'content': message.content or '',
+                'actions': [{
+                    'id': action.id,
+                    'label': action.label,
+                    'type': action.action_type,
+                } for action in message.action_ids],
+            })
+        return payload
 
     @api.model_create_multi
     def create(self, vals_list):

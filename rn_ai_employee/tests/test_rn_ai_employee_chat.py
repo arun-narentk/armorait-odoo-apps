@@ -41,7 +41,7 @@ class TestAiEmployeeChat(TransactionCase):
         self.assertTrue(tool_messages)
         self.assertEqual(tool_messages[0].tool_name, suggestion.tool_name)
 
-    def test_disabled_copilot_blocks_processing(self):
+    def test_disabled_ai_employee_blocks_processing(self):
         chat = self.Chat.create({'name': 'Disabled test'})
         self.env['ir.config_parameter'].sudo().set_param('rn_ai_employee.enabled', 'False')
         with self.assertRaises(UserError):

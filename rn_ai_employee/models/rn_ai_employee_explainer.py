@@ -41,6 +41,8 @@ class AiEmployeeExplainer(models.AbstractModel):
             'lost_leads': self._explain_count_headline,
             'followup_overdue': self._explain_count_headline,
             'pipeline_revenue': self._explain_pipeline,
+            'create_quotation': self._explain_count_headline,
+            'send_payment_reminders': self._explain_count_headline,
         }
         handler = explainers.get(tool_name, self._explain_generic)
         return handler(result)

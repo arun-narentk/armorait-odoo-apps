@@ -14,7 +14,7 @@ _logger = logging.getLogger(__name__)
 
 class AiEmployeeMessageAction(models.Model):
     _name = 'rn.ai.employee.message.action'
-    _description = 'AI Copilot Message Action'
+    _description = 'AI Employee Message Action'
     _order = 'sequence, id'
 
     message_id = fields.Many2one(
@@ -28,6 +28,7 @@ class AiEmployeeMessageAction(models.Model):
         selection=[
             ('open_list', 'Open List'),
             ('create_activity', 'Create Activity'),
+            ('open_form', 'Open Record'),
             ('export_list', 'Export'),
             ('phase2', 'Coming Soon'),
         ],
@@ -44,6 +45,8 @@ class AiEmployeeMessageAction(models.Model):
         self.ensure_one()
         if self.action_type == 'open_list':
             return self._action_open_list()
+        if self.action_type == 'open_form':
+            return self._action_open_form()
         if self.action_type == 'create_activity':
             return self._action_create_activity()
         if self.action_type == 'export_list':
@@ -65,6 +68,20 @@ class AiEmployeeMessageAction(models.Model):
         if res_ids:
             action['domain'] = [('id', 'in', res_ids)]
         return action
+
+    def _action_open_form(self):
+        self.ensure_one()
+        res_ids = json.loads(self.res_ids or '[]')
+        if not res_ids or not self.res_model:
+            raise UserError(_('No record available to open.'))
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.label,
+            'res_model': self.res_model,
+            'res_id': res_ids[0],
+            'view_mode': 'form',
+            'target': 'current',
+        }
 
     def _action_create_activity(self):
         self.ensure_one()

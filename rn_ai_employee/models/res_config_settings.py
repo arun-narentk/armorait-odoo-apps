@@ -38,3 +38,9 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='rn_ai_employee.temperature',
         default=0.2,
     )
+    rn_ai_employee_use_llm = fields.Boolean(
+        string='Use LLM Routing',
+        help='When enabled and an API key is set, unmatched questions are routed through the AI provider.',
+        config_parameter='rn_ai_employee.use_llm',
+        default=True,
+    )

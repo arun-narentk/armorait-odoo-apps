@@ -6,7 +6,7 @@ from odoo import fields, models
 
 class AiEmployeeMessage(models.Model):
     _name = 'rn.ai.employee.message'
-    _description = 'AI Copilot Message'
+    _description = 'AI Employee Message'
     _order = 'create_date asc, id asc'
 
     chat_id = fields.Many2one(

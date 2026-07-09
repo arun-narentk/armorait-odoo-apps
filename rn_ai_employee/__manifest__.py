@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Chatbot',
-    'version': '19.0.2.14.0',
+    'name': 'AI Employee',
+    'version': '19.0.3.0.0',
     'category': 'Productivity',
-    'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
+    'summary': 'AI assistant for Odoo: ask business questions and get answers from live data',
     'description': """
-AI Copilot for Odoo 19
-======================
+AI Employee for Odoo 19
+=======================
 
 Ask everyday business questions in plain language and get answers from live Odoo data.
 
@@ -20,7 +20,8 @@ Ask everyday business questions in plain language and get answers from live Odoo
 **Self-service**
 Install, enable, and use it in your own Odoo environment.
 
-Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
+Phase 1 focuses on analytics (read-only). Phase 2 adds LLM routing, write tools,
+and the backend systray chat widget.
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
@@ -32,6 +33,7 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
     'currency': 'USD',
     'depends': [
         'base',
+        'web',
         'mail',
         'sale_management',
         'stock',
@@ -55,8 +57,16 @@ Phase 1 focuses on analytics (read-only). Guided write actions arrive later.
         'static/description/icon.png',
         'static/description/overview.png',
         'static/description/settings.png',
+        'static/description/tools.png',
     ],
     'installable': True,
     'application': True,
     'auto_install': False,
+    'assets': {
+        'web.assets_backend': [
+            'rn_ai_employee/static/src/scss/ai_employee_systray.scss',
+            'rn_ai_employee/static/src/xml/ai_employee_systray.xml',
+            'rn_ai_employee/static/src/js/ai_employee_systray.js',
+        ],
+    },
 }

@@ -19,7 +19,7 @@
         <field name="name">rn.ai.employee.chat.form</field>
         <field name="model">rn.ai.employee.chat</field>
         <field name="arch" type="xml">
-            <form string="AI Copilot">
+            <form string="AI Employee">
                 <header>
                     <button name="action_send_message"
                             type="object"
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <notebook>
-                        <page string="Copilot" name="copilot">
+                        <page string="Chat" name="chat">
                             <group col="12">
                                 <group col="8" colspan="8" string="Conversation">
                                     <field name="message_ids" readonly="1" nolabel="1" mode="kanban,list">

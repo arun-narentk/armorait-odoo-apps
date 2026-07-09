@@ -1,7 +1,7 @@
 # Release Checklist
 
 ## Marketplace assets
-- [ ] Professional app name: AI Chatbot
+- [ ] Professional app name: AI Employee
 - [ ] 512x512 icon.png
 - [ ] 1200x600 banner.png
 - [ ] 10-20 real screenshots

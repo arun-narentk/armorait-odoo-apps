@@ -18,6 +18,12 @@ class AiEmployeeIntent(models.AbstractModel):
         {'tool': 'overdue_invoices', 'priority': 100, 'phrases': (
             'overdue invoice', 'unpaid invoice', 'past due', 'not paid',
         )},
+        {'tool': 'send_payment_reminders', 'priority': 99, 'phrases': (
+            'send reminder', 'payment reminder', 'remind customer', 'reminder email',
+        )},
+        {'tool': 'create_quotation', 'priority': 98, 'phrases': (
+            'create quotation', 'create quote', 'quotation for', 'quote for',
+        )},
         {'tool': 'today_sales', 'priority': 95, 'phrases': (
             "today's sales", 'todays sales', 'sales today', 'today sales', 'show today sales',
         )},
@@ -115,7 +121,12 @@ class AiEmployeeIntent(models.AbstractModel):
     def _default_arguments(self, tool_name: str, normalized_text: str) -> dict[str, Any]:
         args: dict[str, Any] = {}
         if tool_name == 'overdue_invoices':
-            args['days_overdue'] = 90
+            args['days_overdue'] = 0
+        if tool_name == 'send_payment_reminders':
+            args['days_overdue'] = 0
+            args['limit'] = 10
+        if tool_name == 'create_quotation':
+            args['quantity'] = 1
         if tool_name == 'find_customer':
             args['inactive_months'] = 6 if 'inactive' in normalized_text or '6 month' in normalized_text else 0
         if 'limit' not in args:

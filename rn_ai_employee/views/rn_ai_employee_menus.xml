@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_rn_ai_employee_root"
-              name="AI Copilot"
+              name="AI Employee"
               web_icon="rn_ai_employee,static/description/icon.svg"
               sequence="45"
               groups="rn_ai_employee.group_rn_ai_employee_user"/>
 
     <menuitem id="menu_rn_ai_employee_chat"
-              name="Ask Copilot"
+              name="Ask AI Employee"
               parent="menu_rn_ai_employee_root"
               action="action_rn_ai_employee_chat"
               sequence="10"/>

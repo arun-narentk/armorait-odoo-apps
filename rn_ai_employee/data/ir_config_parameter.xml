@@ -20,4 +20,8 @@
         <field name="key">rn_ai_employee.temperature</field>
         <field name="value">0.2</field>
     </record>
+    <record id="config_rn_rn_ai_employee_use_llm" model="ir.config_parameter">
+        <field name="key">rn_ai_employee.use_llm</field>
+        <field name="value">True</field>
+    </record>
 </odoo>

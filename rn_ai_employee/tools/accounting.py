@@ -21,7 +21,7 @@ class OverdueInvoicesTool(BaseAITool):
     description = 'List posted customer invoices unpaid past their due date.'
 
     def execute(self, arguments: dict[str, Any]) -> dict[str, Any]:
-        days = int(arguments.get('days_overdue') or 90)
+        days = int(arguments.get('days_overdue') if arguments.get('days_overdue') is not None else 0)
         limit = min(int(arguments.get('limit') or 20), 50)
         cutoff = fields.Date.today() - timedelta(days=days)
         Move = self.env['account.move']
