@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Chatbot',
-    'version': '19.0.2.9.0',
+    'version': '19.0.2.10.0',
     'category': 'Productivity',
     'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
     'description': """

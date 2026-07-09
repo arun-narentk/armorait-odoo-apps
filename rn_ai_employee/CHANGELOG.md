@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.10.0
+- Center-align Apps Store screenshots (stacked full-width, resized to 860px)
+
 ## 19.0.2.9.0
 - Rebuilt Apps Store index.html using standard oe_container Bootstrap layout (Odoo Apps compatible)
 
