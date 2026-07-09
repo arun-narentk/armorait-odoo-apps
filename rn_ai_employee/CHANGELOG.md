@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.13.0
+- Set Apps Store price to 9.99 USD (Odoo minimum tier); note INR display on listing page
+
 ## 19.0.2.12.0
 - Set Apps Store price to 5.99 USD (targets ~INR 499 at Odoo checkout conversion)
 
