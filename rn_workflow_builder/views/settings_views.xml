@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_workflow_settings_form" model="ir.ui.view">
+        <field name="name">rn.workflow.settings.form</field>
+        <field name="model">rn.workflow.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="max_active_workflows"/>
+                        <field name="allow_python_actions"/>
+                        <field name="allow_external_webhooks"/>
+                        <field name="ai_builder_enabled"/>
+                        <field name="retry_failed_runs"/>
+                        <field name="max_retry_count"/>
+                        <field name="execution_log_days"/>
+                        <field name="webhook_secret"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_res_config_settings_workflow" model="ir.ui.view">
+        <field name="name">res.config.settings.workflow</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Workflow Builder" name="rn_workflow_builder" groups="rn_workflow_builder.group_rn_workflow_manager">
+                    <block title="Automation Platform">
+                        <setting string="AI workflow builder">
+                            <field name="wf_ai_builder_enabled"/>
+                        </setting>
+                        <setting string="Allow external webhooks">
+                            <field name="wf_allow_external_webhooks"/>
+                        </setting>
+                        <setting string="Auto retry failed runs">
+                            <field name="wf_retry_failed_runs"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_workflow_settings" model="ir.actions.act_window">
+        <field name="name">Workflow Settings</field>
+        <field name="res_model">rn.workflow.settings</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_construction_project" model="rn.construction.project">
+        <field name="name">Skyline Tower Phase 1</field>
+        <field name="code">STP-01</field>
+        <field name="date_start" eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+        <field name="date_end" eval="(DateTime.today() + relativedelta(months=10)).strftime('%Y-%m-%d')"/>
+        <field name="contract_value">12500000</field>
+        <field name="budget_total">11800000</field>
+        <field name="progress_pct">22</field>
+        <field name="state">active</field>
+    </record>
+    <record id="demo_construction_site" model="rn.construction.site">
+        <field name="name">Site A - Foundation</field>
+        <field name="code">STP-A</field>
+        <field name="construction_project_id" ref="demo_construction_project"/>
+        <field name="location">Pune, MH</field>
+    </record>
+    <record id="demo_construction_boq" model="rn.construction.boq">
+        <field name="name">BOQ Foundation Works</field>
+        <field name="construction_project_id" ref="demo_construction_project"/>
+        <field name="version">1</field>
+        <field name="state">approved</field>
+    </record>
+    <record id="demo_construction_boq_line_cement" model="rn.construction.boq.line">
+        <field name="boq_id" ref="demo_construction_boq"/>
+        <field name="item_type">material</field>
+        <field name="description">Cement OPC 53 Grade</field>
+        <field name="quantity">500</field>
+        <field name="uom">Bags</field>
+        <field name="unit_rate">380</field>
+    </record>
+    <record id="demo_construction_boq_line_labour" model="rn.construction.boq.line">
+        <field name="boq_id" ref="demo_construction_boq"/>
+        <field name="item_type">labour</field>
+        <field name="description">Mason team</field>
+        <field name="quantity">120</field>
+        <field name="uom">Days</field>
+        <field name="unit_rate">900</field>
+    </record>
+    <record id="demo_construction_milestone" model="rn.construction.milestone">
+        <field name="name">Foundation complete</field>
+        <field name="construction_project_id" ref="demo_construction_project"/>
+        <field name="target_date" eval="(DateTime.today() + relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+        <field name="billing_pct">15</field>
+    </record>
+</odoo>

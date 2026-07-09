@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_school_core.SchoolDashboard">
+        <div class="o_rn_school_dashboard o_action p-3">
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Principal Dashboard</h2>
+                <button class="btn btn-secondary" t-on-click="refresh">Refresh</button>
+            </div>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="" class="row g-3">
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Enrolled</div><div class="fs-3" t-esc="state.enrolled"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">New Enquiries</div><div class="fs-3" t-esc="state.enquiries"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Fees Outstanding</div><div class="fs-3" t-esc="formatNumber(state.feesDue)"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Attendance Today</div><div class="fs-3" t-esc="state.sessionsToday"/></div></div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_sign_document" name="Sign Document">
+        <t t-call="website.layout">
+            <div class="container mt-5 mb-5">
+                <h2>Sign Document</h2>
+                <p>Document: <t t-esc="sign_request.document_display"/></p>
+                <p>Signer: <t t-esc="signer.name"/> (<t t-esc="signer.email"/>)</p>
+                <form t-att-action="'/sign/document/%s/accept' % signer.access_token" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <p class="text-muted">Draw or upload signature in Phase 2. Click accept to record signature for demo.</p>
+                    <button type="submit" class="btn btn-primary">Accept and Sign</button>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_sign_thanks" name="Sign Thanks">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2>Thank you</h2>
+                <p>Your signature on <t t-esc="sign_request.reference"/> was recorded.</p>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_sign_invalid" name="Invalid Sign Link">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2>Invalid or expired link</h2>
+                <p>Contact the sender for a new signing invitation.</p>
+            </div>
+        </t>
+    </template>
+</odoo>

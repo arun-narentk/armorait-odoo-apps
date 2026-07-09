@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="purity_gold_22k" model="rn.jewellery.metal.purity">
+        <field name="name">Gold 22K</field>
+        <field name="metal_type">gold</field>
+        <field name="karat">22K</field>
+        <field name="purity_factor">0.916</field>
+    </record>
+    <record id="purity_gold_18k" model="rn.jewellery.metal.purity">
+        <field name="name">Gold 18K</field>
+        <field name="metal_type">gold</field>
+        <field name="karat">18K</field>
+        <field name="purity_factor">0.750</field>
+    </record>
+    <record id="purity_silver_925" model="rn.jewellery.metal.purity">
+        <field name="name">Silver 925</field>
+        <field name="metal_type">silver</field>
+        <field name="karat">925</field>
+        <field name="purity_factor">0.925</field>
+    </record>
+    <record id="purity_platinum_950" model="rn.jewellery.metal.purity">
+        <field name="name">Platinum 950</field>
+        <field name="metal_type">platinum</field>
+        <field name="karat">950</field>
+        <field name="purity_factor">0.950</field>
+    </record>
+</odoo>

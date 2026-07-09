@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_hr_payroll_snapshot_user,rn.hr.payroll.snapshot user,model_rn_hr_payroll_snapshot,group_rn_hr_intel_user,1,0,0,0
+access_rn_hr_overtime_user,rn.hr.overtime.log user,model_rn_hr_overtime_log,group_rn_hr_intel_user,1,0,0,0
+access_rn_hr_attrition_user,rn.hr.attrition.record user,model_rn_hr_attrition_record,group_rn_hr_intel_user,1,0,0,0
+access_rn_hr_insight_user,rn.hr.ai.insight user,model_rn_hr_ai_insight,group_rn_hr_intel_user,1,0,0,0
+access_rn_hr_quality_user,rn.hr.data.quality.check user,model_rn_hr_data_quality_check,group_rn_hr_intel_user,1,0,0,0
+access_rn_hr_payroll_snapshot_mgr,rn.hr.payroll.snapshot manager,model_rn_hr_payroll_snapshot,group_rn_hr_intel_manager,1,1,1,1
+access_rn_hr_overtime_mgr,rn.hr.overtime.log manager,model_rn_hr_overtime_log,group_rn_hr_intel_manager,1,1,1,1
+access_rn_hr_attrition_mgr,rn.hr.attrition.record manager,model_rn_hr_attrition_record,group_rn_hr_intel_manager,1,1,1,1
+access_rn_hr_insight_mgr,rn.hr.ai.insight manager,model_rn_hr_ai_insight,group_rn_hr_intel_manager,1,1,1,1
+access_rn_hr_quality_mgr,rn.hr.data.quality.check manager,model_rn_hr_data_quality_check,group_rn_hr_intel_manager,1,1,1,1
+access_rn_hr_intel_settings_mgr,rn.hr.intelligence.settings manager,model_rn_hr_intelligence_settings,group_rn_hr_intel_manager,1,1,1,1

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_workflow_build_wizard_form" model="ir.ui.view">
+        <field name="name">rn.workflow.build.from.text.wizard.form</field>
+        <field name="model">rn.workflow.build.from.text.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Build Workflow from Text">
+                <group>
+                    <field name="prompt" placeholder="When a sales order above 500000 is confirmed, request approval and send email..."/>
+                    <field name="model_id"/>
+                    <field name="workflow_id" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_build" type="object" string="Generate Workflow" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_workflow_build_wizard" model="ir.actions.act_window">
+        <field name="name">Build from Text</field>
+        <field name="res_model">rn.workflow.build.from.text.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

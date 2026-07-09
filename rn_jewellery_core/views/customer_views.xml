@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_profile_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.customer.profile.tree</field>
+        <field name="model">rn.jewellery.customer.profile</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="partner_id"/>
+                <field name="loyalty_points"/>
+                <field name="preferred_metal"/>
+                <field name="birthday"/>
+                <field name="anniversary"/>
+                <field name="last_purchase_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_profile" model="ir.actions.act_window">
+        <field name="name">Customer CRM</field>
+        <field name="res_model">rn.jewellery.customer.profile</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

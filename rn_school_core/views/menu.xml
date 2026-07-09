@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_school_root" name="School OS" sequence="65"
+              web_icon="rn_school_core,static/description/icon.png"
+              groups="rn_school_core.group_rn_school_staff"/>
+    <menuitem id="menu_rn_school_principal" name="Principal Dashboard" parent="menu_rn_school_root"
+              action="action_rn_school_dashboard" sequence="5" groups="rn_school_core.group_rn_school_admin"/>
+    <menuitem id="menu_rn_school_teacher_dash" name="Teacher Dashboard" parent="menu_rn_school_root"
+              action="action_rn_teacher_dashboard" sequence="6" groups="rn_school_core.group_rn_school_teacher"/>
+    <menuitem id="menu_rn_school_students" name="Students" parent="menu_rn_school_root"
+              action="action_rn_school_student" sequence="10"/>
+    <menuitem id="menu_rn_school_admissions" name="Admissions" parent="menu_rn_school_root" sequence="20"/>
+    <menuitem id="menu_rn_school_enquiries" name="Enquiries" parent="menu_rn_school_admissions"
+              action="action_rn_school_enquiry" sequence="10"/>
+    <menuitem id="menu_rn_school_applications" name="Applications" parent="menu_rn_school_admissions"
+              action="action_rn_school_application" sequence="20"/>
+    <menuitem id="menu_rn_school_academic" name="Academic" parent="menu_rn_school_root" sequence="30"/>
+    <menuitem id="menu_rn_school_classes" name="Classes" parent="menu_rn_school_academic"
+              action="action_rn_school_class" sequence="10"/>
+    <menuitem id="menu_rn_school_attendance" name="Attendance" parent="menu_rn_school_academic"
+              action="action_rn_school_attendance" sequence="20"/>
+    <menuitem id="menu_rn_school_timetable" name="Timetable" parent="menu_rn_school_academic"
+              action="action_rn_school_timetable" sequence="30"/>
+    <menuitem id="menu_rn_school_exams" name="Exams" parent="menu_rn_school_academic"
+              action="action_rn_school_exam" sequence="40"/>
+    <menuitem id="menu_rn_school_homework" name="Homework" parent="menu_rn_school_academic"
+              action="action_rn_school_homework" sequence="50" groups="rn_school_core.group_rn_school_teacher"/>
+    <menuitem id="menu_rn_school_fees" name="Fees" parent="menu_rn_school_root" sequence="40"/>
+    <menuitem id="menu_rn_school_fee_installments" name="Installments" parent="menu_rn_school_fees"
+              action="action_rn_school_fee_installment" sequence="10"/>
+    <menuitem id="menu_rn_school_notices" name="Notices" parent="menu_rn_school_root"
+              action="action_rn_school_notice" sequence="50"/>
+    <menuitem id="menu_rn_school_config" name="Configuration" parent="menu_rn_school_root" sequence="90"
+              groups="rn_school_core.group_rn_school_admin"/>
+    <menuitem id="menu_rn_school_years" name="Academic Years" parent="menu_rn_school_config"
+              action="action_rn_school_academic_year" sequence="10"/>
+    <menuitem id="menu_rn_school_fee_structures" name="Fee Structures" parent="menu_rn_school_config"
+              action="action_rn_school_fee_structure" sequence="20"/>
+    <menuitem id="menu_rn_school_settings" name="Settings" parent="menu_rn_school_config"
+              action="action_rn_school_settings" sequence="30"/>
+</odoo>

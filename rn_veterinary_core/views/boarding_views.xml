@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_vet_boarding_tree" model="ir.ui.view">
+        <field name="name">rn.vet.boarding.tree</field>
+        <field name="model">rn.vet.boarding</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="pet_id"/>
+                <field name="kennel_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_vet_boarding_form" model="ir.ui.view">
+        <field name="name">rn.vet.boarding.form</field>
+        <field name="model">rn.vet.boarding</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_check_in" type="object" string="Check In" invisible="state != 'reserved'"/>
+                    <button name="action_check_out" type="object" string="Check Out" invisible="state != 'checked_in'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pet_id"/>
+                        <field name="kennel_id"/>
+                        <field name="daily_rate"/>
+                    </group>
+                    <group>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                    </group>
+                    <field name="feeding_schedule"/>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_vet_boarding" model="ir.actions.act_window">
+        <field name="name">Boarding</field>
+        <field name="res_model">rn.vet.boarding</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_vet_kennel" model="ir.actions.act_window">
+        <field name="name">Kennels</field>
+        <field name="res_model">rn.vet.kennel</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

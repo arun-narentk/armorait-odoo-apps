@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_temple_trustee_dashboard" model="ir.actions.client">
+        <field name="name">Trustee Dashboard</field>
+        <field name="tag">rn_temple_core.trustee_dashboard</field>
+    </record>
+    <record id="action_rn_temple_office_dashboard" model="ir.actions.client">
+        <field name="name">Office Dashboard</field>
+        <field name="tag">rn_temple_core.office_dashboard</field>
+    </record>
+</odoo>

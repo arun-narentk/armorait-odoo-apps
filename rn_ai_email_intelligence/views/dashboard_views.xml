@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_ai_email_dashboard" model="ir.actions.client">
+        <field name="name">AI Email Dashboard</field>
+        <field name="tag">rn_ai_email_intelligence.dashboard</field>
+    </record>
+</odoo>

@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_approval_workflow_user,rn.approval.workflow user,model_rn_approval_workflow,group_rn_approval_user,1,0,0,0
+access_rn_approval_workflow_stage_user,rn.approval.workflow.stage user,model_rn_approval_workflow_stage,group_rn_approval_user,1,0,0,0
+access_rn_approval_rule_user,rn.approval.rule user,model_rn_approval_rule,group_rn_approval_user,1,0,0,0
+access_rn_approval_request_user,rn.approval.request user,model_rn_approval_request,group_rn_approval_user,1,1,1,0
+access_rn_approval_request_line_user,rn.approval.request.line user,model_rn_approval_request_line,group_rn_approval_user,1,1,0,0
+access_rn_approval_request_line_approver,rn.approval.request.line approver,model_rn_approval_request_line,group_rn_approval_approver,1,1,1,0
+access_rn_approval_history_user,rn.approval.history user,model_rn_approval_history,group_rn_approval_user,1,0,0,0
+access_rn_approval_delegation_user,rn.approval.delegation user,model_rn_approval_delegation,group_rn_approval_user,1,0,0,0
+access_rn_approval_submit_wizard_user,rn.approval.submit.wizard user,model_rn_approval_submit_wizard,group_rn_approval_user,1,1,1,1
+access_rn_approval_workflow_mgr,rn.approval.workflow manager,model_rn_approval_workflow,group_rn_approval_manager,1,1,1,1
+access_rn_approval_workflow_stage_mgr,rn.approval.workflow.stage manager,model_rn_approval_workflow_stage,group_rn_approval_manager,1,1,1,1
+access_rn_approval_rule_mgr,rn.approval.rule manager,model_rn_approval_rule,group_rn_approval_manager,1,1,1,1
+access_rn_approval_request_mgr,rn.approval.request manager,model_rn_approval_request,group_rn_approval_manager,1,1,1,1
+access_rn_approval_request_line_mgr,rn.approval.request.line manager,model_rn_approval_request_line,group_rn_approval_manager,1,1,1,1
+access_rn_approval_history_mgr,rn.approval.history manager,model_rn_approval_history,group_rn_approval_manager,1,1,1,0
+access_rn_approval_delegation_mgr,rn.approval.delegation manager,model_rn_approval_delegation,group_rn_approval_manager,1,1,1,1
+access_rn_approval_settings_mgr,rn.approval.settings manager,model_rn_approval_settings,group_rn_approval_manager,1,1,1,1

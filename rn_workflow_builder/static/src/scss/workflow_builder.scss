@@ -1,0 +1,15 @@
+.o_rn_workflow_designer,
+.o_rn_workflow_dashboard {
+    min-height: 100%;
+    background: var(--o-view-background-color, #f8f9fa);
+}
+
+.o_rn_workflow_designer .card,
+.o_rn_workflow_dashboard .card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.o_rn_workflow_nodes .card {
+    border-left: 4px solid #714b67;
+}

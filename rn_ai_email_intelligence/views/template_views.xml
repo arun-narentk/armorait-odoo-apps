@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_email_template_tree" model="ir.ui.view">
+        <field name="name">rn.ai.email.template.tree</field>
+        <field name="model">rn.ai.email.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category"/>
+                <field name="default_tone"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_ai_email_template" model="ir.actions.act_window">
+        <field name="name">Email Templates</field>
+        <field name="res_model">rn.ai.email.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

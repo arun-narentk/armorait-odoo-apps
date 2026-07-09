@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_approval_settings" model="rn.approval.settings">
+        <field name="name">Demo Approval Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="enable_email_notify" eval="True"/>
+        <field name="enable_ai_risk" eval="True"/>
+    </record>
+
+    <record id="demo_po_workflow" model="rn.approval.workflow">
+        <field name="name">Purchase Order Approval</field>
+        <field name="code">po_standard</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="demo_po_stage_manager" model="rn.approval.workflow.stage">
+        <field name="workflow_id" ref="demo_po_workflow"/>
+        <field name="name">Manager</field>
+        <field name="sequence">10</field>
+        <field name="approver_type">group</field>
+        <field name="group_id" ref="rn_approval_engine.group_rn_approval_approver"/>
+        <field name="sla_hours">24</field>
+    </record>
+
+    <record id="demo_po_stage_finance" model="rn.approval.workflow.stage">
+        <field name="workflow_id" ref="demo_po_workflow"/>
+        <field name="name">Finance</field>
+        <field name="sequence">20</field>
+        <field name="approver_type">group</field>
+        <field name="group_id" ref="rn_approval_engine.group_rn_approval_manager"/>
+        <field name="sla_hours">48</field>
+        <field name="skip_if_amount_below">50000</field>
+    </record>
+
+    <record id="demo_po_rule_low" model="rn.approval.rule">
+        <field name="name">PO under 5 lakh</field>
+        <field name="workflow_id" ref="demo_po_workflow"/>
+        <field name="rule_type">amount</field>
+        <field name="amount_max">500000</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="demo_po_rule_high" model="rn.approval.rule">
+        <field name="name">PO above 5 lakh</field>
+        <field name="workflow_id" ref="demo_po_workflow"/>
+        <field name="rule_type">amount</field>
+        <field name="amount_min">500000</field>
+        <field name="sequence">20</field>
+    </record>
+</odoo>

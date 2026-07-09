@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_dental_chair_1" model="rn.dental.chair">
+        <field name="name">Chair 1</field>
+        <field name="code">C1</field>
+    </record>
+    <record id="demo_dental_patient" model="rn.dental.patient">
+        <field name="name">Anitha R</field>
+        <field name="code">PAT-001</field>
+        <field name="mobile">9876501234</field>
+        <field name="consent_signed" eval="True"/>
+    </record>
+    <record id="demo_dental_tooth_16" model="rn.dental.tooth.record">
+        <field name="patient_id" ref="demo_dental_patient"/>
+        <field name="tooth_number">16</field>
+        <field name="condition">filled</field>
+    </record>
+    <record id="demo_dental_treatment_plan" model="rn.dental.treatment.plan">
+        <field name="name">RCT and Crown - Tooth 16</field>
+        <field name="patient_id" ref="demo_dental_patient"/>
+        <field name="state">approved</field>
+        <field name="consent_signed" eval="True"/>
+    </record>
+    <record id="demo_dental_plan_line_rct" model="rn.dental.treatment.plan.line">
+        <field name="plan_id" ref="demo_dental_treatment_plan"/>
+        <field name="procedure_id" ref="procedure_root_canal"/>
+        <field name="tooth_number">16</field>
+        <field name="planned_cost">8000</field>
+        <field name="state">done</field>
+    </record>
+    <record id="demo_dental_plan_line_crown" model="rn.dental.treatment.plan.line">
+        <field name="plan_id" ref="demo_dental_treatment_plan"/>
+        <field name="procedure_id" ref="procedure_crown"/>
+        <field name="tooth_number">16</field>
+        <field name="planned_cost">12000</field>
+        <field name="state">planned</field>
+    </record>
+</odoo>

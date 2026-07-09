@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_ai_email_template_user,rn.ai.email.template user,model_rn_ai_email_template,group_rn_ai_email_user,1,0,0,0
+access_rn_ai_email_draft_user,rn.ai.email.draft user,model_rn_ai_email_draft,group_rn_ai_email_user,1,1,1,0
+access_rn_ai_email_compose_wizard_user,rn.ai.email.compose.wizard user,model_rn_ai_email_compose_wizard,group_rn_ai_email_user,1,1,1,1
+access_rn_ai_email_template_mgr,rn.ai.email.template manager,model_rn_ai_email_template,group_rn_ai_email_manager,1,1,1,1
+access_rn_ai_email_draft_mgr,rn.ai.email.draft manager,model_rn_ai_email_draft,group_rn_ai_email_manager,1,1,1,1
+access_rn_ai_email_settings_mgr,rn.ai.email.settings manager,model_rn_ai_email_settings,group_rn_ai_email_manager,1,1,1,1

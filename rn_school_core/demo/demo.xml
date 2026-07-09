@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_school_class" model="rn.school.class">
+        <field name="name">Grade 1 A</field>
+        <field name="grade_level">1</field>
+        <field name="section">A</field>
+        <field name="academic_year_id" ref="academic_year_current"/>
+    </record>
+    <record id="demo_rn_school_student" model="rn.school.student">
+        <field name="name">Demo Student</field>
+        <field name="class_id" ref="demo_rn_school_class"/>
+        <field name="academic_year_id" ref="academic_year_current"/>
+        <field name="state">enrolled</field>
+    </record>
+</odoo>

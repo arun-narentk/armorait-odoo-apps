@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_ai_invoice_scan_user,rn.ai.invoice.scan user,model_rn_ai_invoice_scan,group_rn_invoice_ocr_user,1,1,1,0
+access_rn_ai_invoice_scan_line_user,rn.ai.invoice.scan.line user,model_rn_ai_invoice_scan_line,group_rn_invoice_ocr_user,1,1,1,0
+access_rn_ai_invoice_vendor_mapping_user,rn.ai.invoice.vendor.mapping user,model_rn_ai_invoice_vendor_mapping,group_rn_invoice_ocr_user,1,1,1,0
+access_rn_ai_invoice_product_mapping_user,rn.ai.invoice.product.mapping user,model_rn_ai_invoice_product_mapping,group_rn_invoice_ocr_user,1,1,1,0
+access_rn_ai_invoice_create_bill_wizard_user,rn.ai.invoice.create.bill.wizard user,model_rn_ai_invoice_create_bill_wizard,group_rn_invoice_ocr_user,1,1,1,1
+access_rn_ai_invoice_scan_mgr,rn.ai.invoice.scan manager,model_rn_ai_invoice_scan,group_rn_invoice_ocr_manager,1,1,1,1
+access_rn_ai_invoice_scan_line_mgr,rn.ai.invoice.scan.line manager,model_rn_ai_invoice_scan_line,group_rn_invoice_ocr_manager,1,1,1,1
+access_rn_ai_invoice_vendor_mapping_mgr,rn.ai.invoice.vendor.mapping manager,model_rn_ai_invoice_vendor_mapping,group_rn_invoice_ocr_manager,1,1,1,1
+access_rn_ai_invoice_product_mapping_mgr,rn.ai.invoice.product.mapping manager,model_rn_ai_invoice_product_mapping,group_rn_invoice_ocr_manager,1,1,1,1
+access_rn_ai_invoice_ocr_settings_mgr,rn.ai.invoice.ocr.settings manager,model_rn_ai_invoice_ocr_settings,group_rn_invoice_ocr_manager,1,1,1,1
+access_rn_ai_invoice_ocr_subscription_mgr,rn.ai.invoice.ocr.subscription manager,model_rn_ai_invoice_ocr_subscription,group_rn_invoice_ocr_manager,1,1,1,1

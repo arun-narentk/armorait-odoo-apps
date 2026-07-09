@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_mes_terminal" model="rn.mes.terminal">
+        <field name="name">Assembly Line Tablet</field>
+        <field name="code">TAB-ASM-01</field>
+    </record>
+    <record id="demo_rn_mes_checklist" model="rn.mes.quality.checklist">
+        <field name="name">In-Process Check</field>
+        <field name="line_ids" eval="[
+            (0, 0, {'name': 'Dimension OK', 'check_type': 'pass_fail', 'sequence': 10}),
+            (0, 0, {'name': 'Surface finish', 'check_type': 'pass_fail', 'sequence': 20}),
+        ]"/>
+    </record>
+    <record id="demo_rn_mes_device" model="rn.mes.machine.device">
+        <field name="name">Press Machine 01</field>
+        <field name="code">PRESS-01</field>
+        <field name="workcenter_id" ref="mrp.mrp_workcenter_1"/>
+        <field name="protocol">mqtt</field>
+        <field name="status">idle</field>
+    </record>
+</odoo>

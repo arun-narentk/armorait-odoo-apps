@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mes_checklist_tree" model="ir.ui.view">
+        <field name="name">rn.mes.quality.checklist.tree</field>
+        <field name="model">rn.mes.quality.checklist</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_mes_checklist_form" model="ir.ui.view">
+        <field name="name">rn.mes.quality.checklist.form</field>
+        <field name="model">rn.mes.quality.checklist</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="operation_id"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="check_type"/>
+                            <field name="min_value"/>
+                            <field name="max_value"/>
+                            <field name="uom"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_mes_inspection_tree" model="ir.ui.view">
+        <field name="name">rn.mes.quality.inspection.tree</field>
+        <field name="model">rn.mes.quality.inspection</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="workorder_id"/>
+                <field name="operator_id"/>
+                <field name="state"/>
+                <field name="inspection_time"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_mes_inspection_form" model="ir.ui.view">
+        <field name="name">rn.mes.quality.inspection.form</field>
+        <field name="model">rn.mes.quality.inspection</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="checklist_id"/>
+                        <field name="workorder_id"/>
+                        <field name="session_id"/>
+                        <field name="operator_id"/>
+                        <field name="inspection_time"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="check_type"/>
+                            <field name="result"/>
+                            <field name="measured_value"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_mes_checklist" model="ir.actions.act_window">
+        <field name="name">Quality Checklists</field>
+        <field name="res_model">rn.mes.quality.checklist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_mes_inspection" model="ir.actions.act_window">
+        <field name="name">Quality Inspections</field>
+        <field name="res_model">rn.mes.quality.inspection</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

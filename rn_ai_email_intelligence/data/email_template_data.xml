@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="template_sales_followup" model="rn.ai.email.template">
+        <field name="name">Quotation Follow-up</field>
+        <field name="code">sales_followup</field>
+        <field name="category">sales</field>
+        <field name="subject_pattern">Follow-up on quotation {{quotation}}</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="template_invoice_reminder" model="rn.ai.email.template">
+        <field name="name">Invoice Payment Reminder</field>
+        <field name="code">invoice_reminder</field>
+        <field name="category">accounting</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="template_crm_outreach" model="rn.ai.email.template">
+        <field name="name">CRM Lead Follow-up</field>
+        <field name="code">crm_followup</field>
+        <field name="category">crm</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

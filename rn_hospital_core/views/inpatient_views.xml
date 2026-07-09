@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hospital_ward_tree" model="ir.ui.view">
+        <field name="name">rn.hospital.ward.tree</field>
+        <field name="model">rn.hospital.ward</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="ward_type"/>
+                <field name="bed_count"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hospital_ward_form" model="ir.ui.view">
+        <field name="name">rn.hospital.ward.form</field>
+        <field name="model">rn.hospital.ward</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="ward_type"/>
+                    </group>
+                    <field name="bed_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="state"/>
+                            <field name="daily_charge"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_hospital_admission_tree" model="ir.ui.view">
+        <field name="name">rn.hospital.admission.tree</field>
+        <field name="model">rn.hospital.admission</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="bed_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hospital_admission_form" model="ir.ui.view">
+        <field name="name">rn.hospital.admission.form</field>
+        <field name="model">rn.hospital.admission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_discharge" type="object" string="Discharge" invisible="state != 'admitted'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="bed_id"/>
+                        <field name="ward_id"/>
+                        <field name="admission_datetime"/>
+                        <field name="discharge_datetime"/>
+                    </group>
+                    <field name="diagnosis"/>
+                    <field name="nursing_notes"/>
+                    <field name="diet_plan"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hospital_admission" model="ir.actions.act_window">
+        <field name="name">Admissions</field>
+        <field name="res_model">rn.hospital.admission</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_hospital_ward" model="ir.actions.act_window">
+        <field name="name">Wards and Beds</field>
+        <field name="res_model">rn.hospital.ward</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_hr_overtime" model="ir.sequence">
+        <field name="name">HR Overtime</field>
+        <field name="code">rn.hr.overtime.log</field>
+        <field name="prefix">OT</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

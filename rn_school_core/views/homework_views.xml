@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_school_homework" model="ir.actions.act_window">
+        <field name="name">Homework</field>
+        <field name="res_model">rn.school.homework</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

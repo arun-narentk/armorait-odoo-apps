@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_mes_core.Tablet">
+        <div class="o_rn_mes_tablet o_action">
+            <div class="o_rn_mes_tablet_header p-3 bg-primary text-white">
+                <h2 class="mb-0">Shop Floor Tablet</h2>
+                <small t-if="state.workorder.name">Job: <t t-esc="state.workorder.name"/></small>
+            </div>
+            <div class="p-4" t-if="state.loading">Loading...</div>
+            <div class="p-4" t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <div class="text-muted">Status</div>
+                            <div class="fs-4" t-esc="state.workorder.mes_state || 'pending'"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <div class="text-muted">Good Qty</div>
+                            <div class="fs-4" t-esc="formatQty(state.session.good_qty)"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <div class="text-muted">Scrap</div>
+                            <div class="fs-4" t-esc="formatQty(state.session.scrap_qty)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Barcode</label>
+                    <div class="input-group">
+                        <input class="form-control form-control-lg" t-model="state.barcode" placeholder="Scan barcode"/>
+                        <button class="btn btn-primary btn-lg" t-on-click="onScan">Scan</button>
+                    </div>
+                    <div class="text-success mt-2" t-if="state.message" t-esc="state.message"/>
+                </div>
+                <h4>Pending Work Orders</h4>
+                <ul class="list-group">
+                    <li class="list-group-item" t-foreach="state.pending" t-as="wo" t-key="wo.id">
+                        <strong t-esc="wo.name"/> - <t t-esc="wo.product"/> (<t t-esc="wo.workcenter"/>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_invoice_ocr_auto_extract" model="ir.config_parameter">
+        <field name="key">rn_ai_invoice_ocr.auto_extract</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

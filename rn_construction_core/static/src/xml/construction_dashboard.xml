@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_construction_core.ConstructionDashboard">
+        <div class="o_rn_construction_dashboard o_action p-3">
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Construction Management</h2>
+                <button class="btn btn-secondary" t-on-click="refresh">Refresh</button>
+            </div>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="" class="row g-3">
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Active Projects</div><div class="fs-3" t-esc="state.active"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Delayed</div><div class="fs-3" t-esc="state.delayed"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Open Issues</div><div class="fs-3" t-esc="state.issues"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Pending MR</div><div class="fs-3" t-esc="state.pendingMr"/></div></div>
+                <div class="col-md-4"><div class="card p-3"><div class="text-muted">Budget Total</div><div class="fs-4" t-esc="formatNumber(state.budget)"/></div></div>
+                <div class="col-md-4"><div class="card p-3"><div class="text-muted">Actual Cost</div><div class="fs-4" t-esc="formatNumber(state.actual)"/></div></div>
+                <div class="col-md-4"><div class="card p-3"><div class="text-muted">Variance</div><div class="fs-4" t-esc="formatNumber(state.variance)"/></div></div>
+            </div>
+        </div>
+    </t>
+</templates>

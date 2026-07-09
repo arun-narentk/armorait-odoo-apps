@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_hospital_dashboard" model="ir.actions.client">
+        <field name="name">Hospital Dashboard</field>
+        <field name="tag">rn_hospital_core.hospital_dashboard</field>
+    </record>
+    <record id="action_rn_doctor_dashboard" model="ir.actions.client">
+        <field name="name">Doctor Dashboard</field>
+        <field name="tag">rn_hospital_core.doctor_dashboard</field>
+    </record>
+</odoo>

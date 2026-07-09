@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Invoice OCR | ARMORA IT Technologies</title>
+<meta name="description" content="Upload supplier invoices, OCR extract fields, match vendor and products, create vendor bills in Odoo 19 Community">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f1f5f9;margin:0;color:#1e293b;line-height:1.55}
+.hero{background:linear-gradient(135deg,#0ea5e9,#0f172a);color:#fff;padding:56px 24px;text-align:center}
+.hero h1{font-size:2.4rem;margin:0 0 12px}
+.hero p{font-size:1.15rem;max-width:820px;margin:0 auto 16px}
+.badges span{display:inline-block;background:#ffffff22;border:1px solid #ffffff55;border-radius:999px;padding:6px 14px;margin:4px;font-size:.9rem}
+.section{background:#fff;margin:24px auto;width:92%;max-width:1120px;padding:28px 32px;border-radius:12px;box-shadow:0 2px 12px rgba(15,23,42,.08)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{border:1px solid #e2e8f0;border-radius:10px;padding:18px;background:#f8fafc}
+.workflow{text-align:center;font-weight:600;color:#0ea5e9;padding:16px;background:#f8fafc;border-radius:8px}
+.footer{background:#0f172a;color:#fff;text-align:center;padding:36px 24px;margin-top:32px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section class="hero">
+<h1>AI Invoice OCR</h1>
+<p>Upload supplier invoices. OCR reads everything. Review once. Create vendor bills in Odoo.</p>
+<div class="badges">
+<span>Odoo 19 Community</span><span>ARMORA IT Technologies</span><span>India GST</span><span>Vendor Matching</span>
+</div>
+<img src="banner.png" alt="AI Invoice OCR banner" style="max-width:100%;margin-top:24px;border-radius:12px">
+</section>
+
+<section class="section">
+<h2>Business Problem</h2>
+<p>Accounts teams spend minutes per invoice on manual vendor bill entry: supplier, number, dates, taxes, and line items.</p>
+<h2>Solution</h2>
+<p>AI Invoice OCR extracts fields from PDF and images, matches vendors and products, flags duplicates, and creates draft vendor bills after a quick review.</p>
+</section>
+
+<section class="section">
+<h2>Features</h2>
+<div class="grid">
+<div class="card"><h3>Drag and Drop Upload</h3><p>PDF, JPG, PNG, and multi-page PDF support.</p></div>
+<div class="card"><h3>Field Extraction</h3><p>Vendor, GSTIN, invoice number, dates, currency, totals, and tax amounts.</p></div>
+<div class="card"><h3>Line Items</h3><p>Product, quantity, unit price, discount, tax, and subtotal with confidence scores.</p></div>
+<div class="card"><h3>India GST</h3><p>CGST, SGST, IGST, CESS, and HSN/SAC recognition hooks.</p></div>
+<div class="card"><h3>Smart Matching</h3><p>Fuzzy vendor and product match plus learned mappings.</p></div>
+<div class="card"><h3>Duplicate Detection</h3><p>Warn before paying the same invoice twice.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Workflow</h2>
+<div class="workflow">Upload &darr; OCR Extract &darr; Vendor Match &darr; Product Match &darr; Review &darr; Vendor Bill</div>
+</section>
+
+<section class="section">
+<h2>Compatibility</h2>
+<ul>
+<li>Odoo 19 Community</li>
+<li>Depends on Accounting and Purchase</li>
+<li>Multi-company ready</li>
+<li>Optional pypdf / PyPDF2 for PDF text</li>
+</ul>
+</section>
+
+<section class="footer">
+<strong>ARMORA IT Technologies</strong><br>
+<a href="https://www.armorait.com" style="color:#7dd3fc">https://www.armorait.com</a><br>
+info@armorait.com
+</section>
+</body>
+</html>

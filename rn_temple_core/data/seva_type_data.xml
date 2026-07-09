@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seva_type_archana" model="rn.temple.seva.type">
+        <field name="name">Archana</field>
+        <field name="code">ARCH</field>
+        <field name="sequence">10</field>
+        <field name="amount">101</field>
+        <field name="duration_minutes">15</field>
+    </record>
+    <record id="seva_type_abhishekam" model="rn.temple.seva.type">
+        <field name="name">Abhishekam</field>
+        <field name="code">ABHI</field>
+        <field name="sequence">20</field>
+        <field name="amount">501</field>
+        <field name="duration_minutes">45</field>
+    </record>
+    <record id="seva_type_annadhanam" model="rn.temple.seva.type">
+        <field name="name">Annadhanam Sponsorship</field>
+        <field name="code">ANNA</field>
+        <field name="sequence">30</field>
+        <field name="amount">5000</field>
+        <field name="duration_minutes">0</field>
+    </record>
+    <record id="seva_type_homam" model="rn.temple.seva.type">
+        <field name="name">Homam</field>
+        <field name="code">HOMA</field>
+        <field name="sequence">40</field>
+        <field name="amount">2500</field>
+        <field name="duration_minutes">90</field>
+    </record>
+</odoo>

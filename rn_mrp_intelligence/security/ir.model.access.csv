@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_mrp_shift_user,rn.mrp.shift user,model_rn_mrp_shift,group_rn_mrp_intel_user,1,0,0,0
+access_rn_mrp_downtime_user,rn.mrp.downtime.log user,model_rn_mrp_downtime_log,group_rn_mrp_intel_user,1,0,0,0
+access_rn_mrp_oee_user,rn.mrp.oee.record user,model_rn_mrp_oee_record,group_rn_mrp_intel_user,1,0,0,0
+access_rn_mrp_insight_user,rn.mrp.ai.insight user,model_rn_mrp_ai_insight,group_rn_mrp_intel_user,1,0,0,0
+access_rn_mrp_wc_status_user,rn.mrp.workcenter.status user,model_rn_mrp_workcenter_status,group_rn_mrp_intel_user,1,0,0,0
+access_rn_mrp_shift_mgr,rn.mrp.shift manager,model_rn_mrp_shift,group_rn_mrp_intel_manager,1,1,1,1
+access_rn_mrp_downtime_mgr,rn.mrp.downtime.log manager,model_rn_mrp_downtime_log,group_rn_mrp_intel_manager,1,1,1,1
+access_rn_mrp_oee_mgr,rn.mrp.oee.record manager,model_rn_mrp_oee_record,group_rn_mrp_intel_manager,1,1,1,1
+access_rn_mrp_insight_mgr,rn.mrp.ai.insight manager,model_rn_mrp_ai_insight,group_rn_mrp_intel_manager,1,1,1,1
+access_rn_mrp_wc_status_mgr,rn.mrp.workcenter.status manager,model_rn_mrp_workcenter_status,group_rn_mrp_intel_manager,1,1,1,1
+access_rn_mrp_intel_settings_mgr,rn.mrp.intelligence.settings manager,model_rn_mrp_intelligence_settings,group_rn_mrp_intel_manager,1,1,1,1

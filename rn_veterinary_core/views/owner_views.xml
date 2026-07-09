@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_vet_owner_tree" model="ir.ui.view">
+        <field name="name">rn.vet.owner.tree</field>
+        <field name="model">rn.vet.owner</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="mobile"/>
+                <field name="pet_count"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_vet_owner_form" model="ir.ui.view">
+        <field name="name">rn.vet.owner.form</field>
+        <field name="model">rn.vet.owner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                        <field name="emergency_contact"/>
+                    </group>
+                    <field name="address"/>
+                    <field name="pet_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="species"/>
+                            <field name="breed"/>
+                            <field name="weight_kg"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_vet_owner" model="ir.actions.act_window">
+        <field name="name">Owners</field>
+        <field name="res_model">rn.vet.owner</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

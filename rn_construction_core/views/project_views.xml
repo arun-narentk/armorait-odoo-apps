@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_project_tree" model="ir.ui.view">
+        <field name="name">rn.construction.project.tree</field>
+        <field name="model">rn.construction.project</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="progress_pct"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_construction_project_form" model="ir.ui.view">
+        <field name="name">rn.construction.project.form</field>
+        <field name="model">rn.construction.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,completed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="client_id"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="contract_value"/>
+                            <field name="budget_total"/>
+                            <field name="progress_pct"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="estimated_cost"/>
+                        <field name="actual_cost"/>
+                    </group>
+                    <notebook>
+                        <page string="Sites">
+                            <field name="site_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="site_engineer_id"/>
+                                    <field name="location"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Phases">
+                            <field name="phase_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="progress_pct"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_construction_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">rn.construction.project</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_construction_site" model="ir.actions.act_window">
+        <field name="name">Sites</field>
+        <field name="res_model">rn.construction.site</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_construction_milestone" model="ir.actions.act_window">
+        <field name="name">Milestones</field>
+        <field name="res_model">rn.construction.milestone</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_construction_cost_estimate" model="ir.actions.act_window">
+        <field name="name">Cost Estimates</field>
+        <field name="res_model">rn.construction.cost.estimate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

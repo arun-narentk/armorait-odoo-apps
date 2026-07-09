@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_mrp_dashboard" model="ir.actions.client">
+        <field name="name">Factory Command Center</field>
+        <field name="tag">rn_mrp_intelligence.dashboard</field>
+    </record>
+</odoo>

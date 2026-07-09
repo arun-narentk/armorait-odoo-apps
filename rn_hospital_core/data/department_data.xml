@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="dept_general_opd" model="rn.hospital.department">
+        <field name="name">General OPD</field>
+        <field name="code">OPD</field>
+        <field name="department_type">opd</field>
+    </record>
+    <record id="dept_general_ipd" model="rn.hospital.department">
+        <field name="name">Inpatient</field>
+        <field name="code">IPD</field>
+        <field name="department_type">ipd</field>
+    </record>
+    <record id="dept_laboratory" model="rn.hospital.department">
+        <field name="name">Laboratory</field>
+        <field name="code">LAB</field>
+        <field name="department_type">lab</field>
+    </record>
+    <record id="dept_pharmacy" model="rn.hospital.department">
+        <field name="name">Pharmacy</field>
+        <field name="code">PHARM</field>
+        <field name="department_type">pharmacy</field>
+    </record>
+</odoo>

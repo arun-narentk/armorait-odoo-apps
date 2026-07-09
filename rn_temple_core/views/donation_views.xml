@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_donation_tree" model="ir.ui.view">
+        <field name="name">rn.temple.donation.tree</field>
+        <field name="model">rn.temple.donation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="donation_date"/>
+                <field name="donor_name"/>
+                <field name="amount"/>
+                <field name="payment_mode"/>
+                <field name="purpose"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_temple_donation_form" model="ir.ui.view">
+        <field name="name">rn.temple.donation.form</field>
+        <field name="model">rn.temple.donation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="donation_date"/>
+                        <field name="devotee_id"/>
+                        <field name="donor_name"/>
+                    </group>
+                    <group>
+                        <field name="amount"/>
+                        <field name="payment_mode"/>
+                        <field name="purpose"/>
+                        <field name="festival_id"/>
+                        <field name="tax_receipt"/>
+                        <field name="receipt_number"/>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_donation" model="ir.actions.act_window">
+        <field name="name">Donations</field>
+        <field name="res_model">rn.temple.donation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

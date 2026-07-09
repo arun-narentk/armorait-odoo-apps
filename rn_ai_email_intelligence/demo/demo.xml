@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_ai_email_settings" model="rn.ai.email.settings">
+        <field name="name">Demo AI Email</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="credit_balance">500</field>
+    </record>
+</odoo>

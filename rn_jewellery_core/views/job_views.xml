@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_job_card_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.job.card.tree</field>
+        <field name="model">rn.jewellery.job.card</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="karigar_id"/>
+                <field name="stage"/>
+                <field name="issue_weight"/>
+                <field name="receive_weight"/>
+                <field name="wastage_weight"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_jewellery_job_work_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.job.work.tree</field>
+        <field name="model">rn.jewellery.job.work</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="job_card_id"/>
+                <field name="karigar_id"/>
+                <field name="work_date"/>
+                <field name="issue_weight"/>
+                <field name="receive_weight"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_job_card" model="ir.actions.act_window">
+        <field name="name">Job Cards</field>
+        <field name="res_model">rn.jewellery.job.card</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_jewellery_job_work" model="ir.actions.act_window">
+        <field name="name">Job Work</field>
+        <field name="res_model">rn.jewellery.job.work</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

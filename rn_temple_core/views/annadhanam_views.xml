@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_annadhanam_tree" model="ir.ui.view">
+        <field name="name">rn.temple.annadhanam.tree</field>
+        <field name="model">rn.temple.annadhanam</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="meal_date"/>
+                <field name="name"/>
+                <field name="meal_type"/>
+                <field name="sponsor_name"/>
+                <field name="expected_count"/>
+                <field name="actual_count"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_annadhanam" model="ir.actions.act_window">
+        <field name="name">Annadhanam</field>
+        <field name="res_model">rn.temple.annadhanam</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

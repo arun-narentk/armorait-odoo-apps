@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_donation_wizard_form" model="ir.ui.view">
+        <field name="name">rn.temple.donation.wizard.form</field>
+        <field name="model">rn.temple.donation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Donation">
+                <group>
+                    <field name="devotee_id"/>
+                    <field name="donor_name"/>
+                    <field name="amount"/>
+                    <field name="payment_mode"/>
+                    <field name="purpose"/>
+                    <field name="tax_receipt"/>
+                </group>
+                <footer>
+                    <button name="action_record" type="object" string="Record Donation" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_donation_wizard" model="ir.actions.act_window">
+        <field name="name">Quick Donation</field>
+        <field name="res_model">rn.temple.donation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

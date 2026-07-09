@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_rn_dental_appointment" model="ir.sequence">
+        <field name="name">Dental Appointment</field>
+        <field name="code">rn.dental.appointment</field>
+        <field name="prefix">APT</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_dental_lab_request" model="ir.sequence">
+        <field name="name">Dental Lab Request</field>
+        <field name="code">rn.dental.lab.request</field>
+        <field name="prefix">LAB</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

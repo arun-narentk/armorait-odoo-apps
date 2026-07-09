@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_jewellery_mfg_dashboard" model="ir.actions.client">
+        <field name="name">Manufacturing Dashboard</field>
+        <field name="tag">rn_jewellery_core.manufacturing_dashboard</field>
+    </record>
+    <record id="action_rn_jewellery_retail_dashboard" model="ir.actions.client">
+        <field name="name">Retail Dashboard</field>
+        <field name="tag">rn_jewellery_core.retail_dashboard</field>
+    </record>
+</odoo>

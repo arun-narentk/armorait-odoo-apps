@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_material_request_wizard_form" model="ir.ui.view">
+        <field name="name">rn.construction.material.request.wizard.form</field>
+        <field name="model">rn.construction.material.request.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Material Request">
+                <group>
+                    <field name="site_id"/>
+                    <field name="product_id"/>
+                    <field name="quantity"/>
+                    <field name="note"/>
+                </group>
+                <footer>
+                    <button name="action_submit" type="object" string="Submit" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_construction_material_request_wizard" model="ir.actions.act_window">
+        <field name="name">Quick Material Request</field>
+        <field name="res_model">rn.construction.material.request.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

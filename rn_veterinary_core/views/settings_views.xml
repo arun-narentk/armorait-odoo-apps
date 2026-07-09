@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_veterinary_settings_form" model="ir.ui.view">
+        <field name="name">rn.veterinary.settings.form</field>
+        <field name="model">rn.veterinary.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="clinic_name"/>
+                        <field name="default_appointment_minutes"/>
+                        <field name="vaccination_reminder_days"/>
+                        <field name="ai_clinical_notes"/>
+                        <field name="ai_vaccination"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_veterinary_settings" model="ir.actions.act_window">
+        <field name="name">Clinic Settings</field>
+        <field name="res_model">rn.veterinary.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+    <record id="res_config_settings_view_form_vet" model="ir.ui.view">
+        <field name="name">res.config.settings.vet</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Veterinary" name="rn_veterinary_core">
+                    <block title="AI Features">
+                        <setting string="Clinical notes draft">
+                            <field name="vet_ai_notes"/>
+                        </setting>
+                        <setting string="Vaccination assistant">
+                            <field name="vet_ai_vaccination"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

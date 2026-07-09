@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_festival_tree" model="ir.ui.view">
+        <field name="name">rn.temple.festival.tree</field>
+        <field name="model">rn.temple.festival</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="budget"/>
+                <field name="donation_total"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_temple_festival_form" model="ir.ui.view">
+        <field name="name">rn.temple.festival.form</field>
+        <field name="model">rn.temple.festival</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="budget"/>
+                        <field name="donation_total"/>
+                    </group>
+                    <field name="description"/>
+                    <field name="sponsor_note"/>
+                    <field name="volunteer_ids" widget="many2many_tags"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_festival" model="ir.actions.act_window">
+        <field name="name">Festivals</field>
+        <field name="res_model">rn.temple.festival</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

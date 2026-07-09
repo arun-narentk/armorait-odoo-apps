@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mrp_intel_settings_form" model="ir.ui.view">
+        <field name="name">rn.mrp.intelligence.settings.form</field>
+        <field name="model">rn.mrp.intelligence.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="AI and Alerts">
+                        <field name="enable_ai_summary"/>
+                        <field name="enable_bottleneck_detection"/>
+                        <field name="oee_target"/>
+                        <field name="low_stock_days"/>
+                        <field name="dashboard_refresh_seconds"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_mrp_intel_settings" model="ir.actions.act_window">
+        <field name="name">Intelligence Settings</field>
+        <field name="res_model">rn.mrp.intelligence.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_config_settings_mrp_intel" model="ir.ui.view">
+        <field name="name">res.config.settings.mrp.intel</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mrp.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='mrp']" position="inside">
+                <block title="Manufacturing Intelligence" name="rn_mrp_intelligence_block">
+                    <setting string="AI factory summary">
+                        <field name="mrp_intel_enable_ai"/>
+                    </setting>
+                    <setting string="OEE target %">
+                        <field name="mrp_intel_oee_target"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

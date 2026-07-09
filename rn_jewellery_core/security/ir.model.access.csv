@@ -1,0 +1,19 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_jewellery_item_sales,rn.jewellery.item.spec sales,model_rn_jewellery_item_spec,group_rn_jewellery_sales,1,1,1,0
+access_rn_jewellery_rate_sales,rn.jewellery.metal.rate sales,model_rn_jewellery_metal_rate,group_rn_jewellery_sales,1,0,0,0
+access_rn_jewellery_purity_sales,rn.jewellery.metal.purity sales,model_rn_jewellery_metal_purity,group_rn_jewellery_sales,1,0,0,0
+access_rn_jewellery_karigar_prod,rn.jewellery.karigar production,model_rn_jewellery_karigar,group_rn_jewellery_production,1,1,1,0
+access_rn_jewellery_job_card_prod,rn.jewellery.job.card production,model_rn_jewellery_job_card,group_rn_jewellery_production,1,1,1,0
+access_rn_jewellery_job_work_prod,rn.jewellery.job.work production,model_rn_jewellery_job_work,group_rn_jewellery_production,1,1,1,0
+access_rn_jewellery_order_sales,rn.jewellery.customer.order sales,model_rn_jewellery_customer_order,group_rn_jewellery_sales,1,1,1,0
+access_rn_jewellery_repair_sales,rn.jewellery.repair.order sales,model_rn_jewellery_repair_order,group_rn_jewellery_sales,1,1,1,0
+access_rn_jewellery_profile_sales,rn.jewellery.customer.profile sales,model_rn_jewellery_customer_profile,group_rn_jewellery_sales,1,1,1,0
+access_rn_jewellery_item_mgr,rn.jewellery.item.spec manager,model_rn_jewellery_item_spec,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_rate_mgr,rn.jewellery.metal.rate manager,model_rn_jewellery_metal_rate,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_purity_mgr,rn.jewellery.metal.purity manager,model_rn_jewellery_metal_purity,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_karigar_mgr,rn.jewellery.karigar manager,model_rn_jewellery_karigar,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_job_card_mgr,rn.jewellery.job.card manager,model_rn_jewellery_job_card,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_order_mgr,rn.jewellery.customer.order manager,model_rn_jewellery_customer_order,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_repair_mgr,rn.jewellery.repair.order manager,model_rn_jewellery_repair_order,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_settings_mgr,rn.jewellery.settings manager,model_rn_jewellery_settings,group_rn_jewellery_manager,1,1,1,1
+access_rn_jewellery_job_issue_wizard,rn.jewellery.job.issue.wizard production,model_rn_jewellery_job_issue_wizard,group_rn_jewellery_production,1,1,1,1

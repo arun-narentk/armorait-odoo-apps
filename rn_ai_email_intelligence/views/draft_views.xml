@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_email_draft_tree" model="ir.ui.view">
+        <field name="name">rn.ai.email.draft.tree</field>
+        <field name="model">rn.ai.email.draft</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="reference"/>
+                <field name="partner_id"/>
+                <field name="subject"/>
+                <field name="category"/>
+                <field name="tone"/>
+                <field name="language"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_ai_email_draft_form" model="ir.ui.view">
+        <field name="name">rn.ai.email.draft.form</field>
+        <field name="model">rn.ai.email.draft</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_regenerate" type="object" string="Regenerate"/>
+                    <button name="action_send_email" type="object" string="Send" class="btn-primary" invisible="state == 'sent'"/>
+                    <button name="action_discard" type="object" string="Discard" invisible="state in ('sent', 'discarded')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,review,sent"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="partner_email"/>
+                        <field name="template_id"/>
+                        <field name="tone"/>
+                        <field name="language"/>
+                    </group>
+                    <field name="subject"/>
+                    <field name="body_html"/>
+                    <group string="AI Context">
+                        <field name="context_summary" nolabel="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_ai_email_draft" model="ir.actions.act_window">
+        <field name="name">Email Drafts</field>
+        <field name="res_model">rn.ai.email.draft</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

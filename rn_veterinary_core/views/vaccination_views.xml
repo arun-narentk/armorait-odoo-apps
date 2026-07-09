@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_vet_vaccination_tree" model="ir.ui.view">
+        <field name="name">rn.vet.vaccination.tree</field>
+        <field name="model">rn.vet.vaccination</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="pet_id"/>
+                <field name="vaccine_type_id"/>
+                <field name="administered_date"/>
+                <field name="next_due_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_vet_vaccination" model="ir.actions.act_window">
+        <field name="name">Vaccinations</field>
+        <field name="res_model">rn.vet.vaccination</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

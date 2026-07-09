@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_mrp_intel_settings" model="rn.mrp.intelligence.settings">
+        <field name="name">Demo Intelligence Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="oee_target">75</field>
+    </record>
+
+    <record id="demo_shift_a" model="rn.mrp.shift">
+        <field name="name">Shift A</field>
+        <field name="code">A</field>
+        <field name="time_start">6</field>
+        <field name="time_end">14</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_shift_b" model="rn.mrp.shift">
+        <field name="name">Shift B</field>
+        <field name="code">B</field>
+        <field name="time_start">14</field>
+        <field name="time_end">22</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_shift_c" model="rn.mrp.shift">
+        <field name="name">Shift C</field>
+        <field name="code">C</field>
+        <field name="time_start">22</field>
+        <field name="time_end">6</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="demo_ai_insight" model="rn.mrp.ai.insight">
+        <field name="name">Demo Daily Summary</field>
+        <field name="insight_type">daily_summary</field>
+        <field name="severity">info</field>
+        <field name="summary_html"><![CDATA[
+            <p>Production today reached 92% of plan. Two work centers had 48 minutes downtime due to maintenance. Raw material for Product X may fall below safety stock within three days.</p>
+        ]]></field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

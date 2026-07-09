@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hotel_root" name="Hotel" sequence="66"
+              web_icon="rn_hotel_core,static/description/icon.png"
+              groups="rn_hotel_core.group_rn_hotel_front"/>
+    <menuitem id="menu_rn_hotel_dashboard" name="GM Dashboard" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_dashboard" sequence="5" groups="rn_hotel_core.group_rn_hotel_manager"/>
+    <menuitem id="menu_rn_hotel_room_board" name="Room Board" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_room_board" sequence="6"/>
+    <menuitem id="menu_rn_hotel_guests" name="Guests" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_guest" sequence="10"/>
+    <menuitem id="menu_rn_hotel_reservations" name="Reservations" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_reservation" sequence="20"/>
+    <menuitem id="menu_rn_hotel_folios" name="Folios" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_folio" sequence="30"/>
+    <menuitem id="menu_rn_hotel_operations" name="Operations" parent="menu_rn_hotel_root" sequence="40"/>
+    <menuitem id="menu_rn_hotel_housekeeping" name="Housekeeping" parent="menu_rn_hotel_operations"
+              action="action_rn_hotel_housekeeping" sequence="10"/>
+    <menuitem id="menu_rn_hotel_maintenance" name="Maintenance" parent="menu_rn_hotel_operations"
+              action="action_rn_hotel_maintenance" sequence="20"/>
+    <menuitem id="menu_rn_hotel_room_service" name="Room Service" parent="menu_rn_hotel_operations"
+              action="action_rn_hotel_room_service" sequence="30"/>
+    <menuitem id="menu_rn_hotel_rooms" name="Rooms" parent="menu_rn_hotel_root"
+              action="action_rn_hotel_room" sequence="50"/>
+    <menuitem id="menu_rn_hotel_config" name="Configuration" parent="menu_rn_hotel_root" sequence="90"
+              groups="rn_hotel_core.group_rn_hotel_manager"/>
+    <menuitem id="menu_rn_hotel_room_types" name="Room Types" parent="menu_rn_hotel_config"
+              action="action_rn_hotel_room_type" sequence="10"/>
+    <menuitem id="menu_rn_hotel_settings" name="Settings" parent="menu_rn_hotel_config"
+              action="action_rn_hotel_settings" sequence="20"/>
+</odoo>

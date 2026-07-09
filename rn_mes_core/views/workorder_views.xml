@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrp_workorder_form_mes" model="ir.ui.view">
+        <field name="name">mrp.workorder.form.mes</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Shop Floor (MES)" groups="rn_mes_core.group_rn_mes_operator">
+                    <field name="mes_state"/>
+                    <field name="mes_good_qty"/>
+                    <field name="mes_scrap_qty"/>
+                    <field name="mes_reject_qty"/>
+                    <field name="mes_instruction_url"/>
+                    <field name="mes_session_id" readonly="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_open_mes_tablet" type="object" string="Shop Floor Tablet"
+                        class="btn-primary" groups="rn_mes_core.group_rn_mes_operator"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

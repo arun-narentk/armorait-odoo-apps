@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_mes_dashboard" model="ir.actions.client">
+        <field name="name">MES Plant Dashboard</field>
+        <field name="tag">rn_mes_core.dashboard</field>
+    </record>
+    <record id="action_rn_mes_tablet" model="ir.actions.client">
+        <field name="name">Shop Floor Tablet</field>
+        <field name="tag">rn_mes_core.tablet</field>
+    </record>
+</odoo>

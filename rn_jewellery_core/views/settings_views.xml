@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_settings_form" model="ir.ui.view">
+        <field name="name">rn.jewellery.settings.form</field>
+        <field name="model">rn.jewellery.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="default_wastage_pct"/>
+                        <field name="auto_price_from_rate"/>
+                        <field name="require_hallmark"/>
+                        <field name="ai_pricing"/>
+                        <field name="ai_fraud_detection"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_settings" model="ir.actions.act_window">
+        <field name="name">Jewellery Settings</field>
+        <field name="res_model">rn.jewellery.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+    <record id="res_config_settings_view_form_jewellery" model="ir.ui.view">
+        <field name="name">res.config.settings.jewellery</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Jewellery" name="rn_jewellery_core">
+                    <block title="AI Features">
+                        <setting string="Pricing assistant">
+                            <field name="jewellery_ai_pricing"/>
+                        </setting>
+                        <setting string="Fraud detection">
+                            <field name="jewellery_ai_fraud"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

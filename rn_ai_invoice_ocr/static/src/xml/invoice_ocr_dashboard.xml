@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_ai_invoice_ocr.Dashboard">
+        <div class="o_rn_invoice_ocr_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">AI Invoice OCR</h1>
+                    <div class="text-muted small">Upload invoices, extract fields, create vendor bills</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">Total Scans</div>
+                            <div class="value" t-esc="state.cards.total_scans || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">Pending Review</div>
+                            <div class="value" t-esc="state.cards.pending_review || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">Billed</div>
+                            <div class="value" t-esc="state.cards.billed || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">Duplicates</div>
+                            <div class="value" t-esc="state.cards.duplicates || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">Avg Confidence</div>
+                            <div class="value"><t t-esc="formatNumber(state.cards.avg_confidence)"/>%</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_ocr_card">
+                            <div class="label">OCR Credits</div>
+                            <div class="value" t-esc="state.cards.credits || 0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-muted small">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_workflow_node_tree" model="ir.ui.view">
+        <field name="name">rn.workflow.node.tree</field>
+        <field name="model">rn.workflow.node</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="workflow_id"/>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="node_type"/>
+                <field name="action_type"/>
+            </list>
+        </field>
+    </record>
+</odoo>

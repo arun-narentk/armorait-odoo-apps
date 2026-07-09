@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="procedure_checkup" model="rn.dental.procedure">
+        <field name="name">Routine Check-up</field>
+        <field name="code">CHK</field>
+        <field name="category">preventive</field>
+        <field name="default_duration_minutes">20</field>
+        <field name="list_price">500</field>
+    </record>
+    <record id="procedure_filling" model="rn.dental.procedure">
+        <field name="name">Composite Filling</field>
+        <field name="code">FILL</field>
+        <field name="category">restorative</field>
+        <field name="default_duration_minutes">45</field>
+        <field name="list_price">2500</field>
+    </record>
+    <record id="procedure_root_canal" model="rn.dental.procedure">
+        <field name="name">Root Canal Treatment</field>
+        <field name="code">RCT</field>
+        <field name="category">endodontic</field>
+        <field name="default_duration_minutes">90</field>
+        <field name="list_price">8000</field>
+    </record>
+    <record id="procedure_crown" model="rn.dental.procedure">
+        <field name="name">Crown Placement</field>
+        <field name="code">CRWN</field>
+        <field name="category">prosthetic</field>
+        <field name="default_duration_minutes">60</field>
+        <field name="list_price">12000</field>
+    </record>
+    <record id="procedure_scaling" model="rn.dental.procedure">
+        <field name="name">Scaling and Polishing</field>
+        <field name="code">SCAL</field>
+        <field name="category">preventive</field>
+        <field name="default_duration_minutes">40</field>
+        <field name="list_price">1500</field>
+    </record>
+</odoo>

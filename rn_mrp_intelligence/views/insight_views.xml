@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mrp_insight_tree" model="ir.ui.view">
+        <field name="name">rn.mrp.ai.insight.tree</field>
+        <field name="model">rn.mrp.ai.insight</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="insight_type"/>
+                <field name="severity" widget="badge"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_mrp_insight_form" model="ir.ui.view">
+        <field name="name">rn.mrp.ai.insight.form</field>
+        <field name="model">rn.mrp.ai.insight</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="insight_type"/>
+                        <field name="severity"/>
+                        <field name="date"/>
+                    </group>
+                    <field name="summary_html" nolabel="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_mrp_insight" model="ir.actions.act_window">
+        <field name="name">AI Insights</field>
+        <field name="res_model">rn.mrp.ai.insight</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

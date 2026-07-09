@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_hr_intelligence.Dashboard">
+        <div class="o_rn_hr_intel_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">Workforce Intelligence</h1>
+                    <div class="text-muted small">Payroll, overtime, attrition, and compliance insights</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading workforce data...</div>
+            </t>
+            <t t-else="">
+                <div class="o_rn_hr_ai_panel mb-3" t-if="state.aiSummary">
+                    <h2 class="h6">AI Workforce Summary</h2>
+                    <div t-out="aiSummaryMarkup"/>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">Headcount</div>
+                            <div class="value" t-esc="state.executive.headcount || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">Gross Payroll</div>
+                            <div class="value" t-esc="formatMoney(state.executive.gross_salary)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">Net Est.</div>
+                            <div class="value" t-esc="formatMoney(state.executive.net_salary)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">Overtime</div>
+                            <div class="value" t-esc="formatMoney(state.executive.overtime_cost)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">PF</div>
+                            <div class="value" t-esc="formatMoney(state.executive.pf_contribution)"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_hr_card">
+                            <div class="label">Avg Salary</div>
+                            <div class="value" t-esc="formatMoney(state.executive.avg_salary)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <div class="o_rn_hr_panel">
+                            <h2 class="h6">Overtime This Month</h2>
+                            <div>Hours: <t t-esc="state.overtime.total_hours || 0"/></div>
+                            <div>Cost: <t t-esc="formatMoney(state.overtime.total_cost)"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_hr_panel">
+                            <h2 class="h6">Attrition</h2>
+                            <div>New hires: <t t-esc="state.attrition.new_hires || 0"/></div>
+                            <div>Resignations: <t t-esc="state.attrition.resignations || 0"/></div>
+                            <div>Turnover: <t t-esc="state.attrition.turnover_rate || 0"/>%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_hr_panel">
+                            <h2 class="h6">Data Quality</h2>
+                            <div>Open issues: <t t-esc="state.qualityIssues"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_rn_hr_panel" t-if="state.departments.length">
+                    <h2 class="h6">Top Departments by Payroll</h2>
+                    <ul class="small mb-0">
+                        <t t-foreach="state.departments" t-as="dept" t-key="dept_index">
+                            <li><t t-esc="dept.department"/>: <t t-esc="formatMoney(dept.total)"/></li>
+                        </t>
+                    </ul>
+                </div>
+                <div class="text-muted small mt-2">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

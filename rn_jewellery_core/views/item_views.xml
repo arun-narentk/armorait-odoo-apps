@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_item_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.item.spec.tree</field>
+        <field name="model">rn.jewellery.item.spec</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="barcode"/>
+                <field name="name"/>
+                <field name="metal_type"/>
+                <field name="purity_id"/>
+                <field name="net_weight"/>
+                <field name="list_price_computed"/>
+                <field name="collection"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_jewellery_item_form" model="ir.ui.view">
+        <field name="name">rn.jewellery.item.spec.form</field>
+        <field name="model">rn.jewellery.item.spec</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="barcode"/>
+                        <field name="design_code"/>
+                        <field name="collection"/>
+                    </group>
+                    <group>
+                        <field name="metal_type"/>
+                        <field name="purity_id"/>
+                        <field name="gross_weight"/>
+                        <field name="net_weight"/>
+                        <field name="stone_weight"/>
+                        <field name="hallmark_number"/>
+                    </group>
+                    <group>
+                        <field name="making_charge"/>
+                        <field name="making_charge_type"/>
+                        <field name="wastage_pct"/>
+                        <field name="list_price_computed"/>
+                        <field name="branch_warehouse_id"/>
+                    </group>
+                    <field name="diamond_spec"/>
+                    <field name="gemstone_spec"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_item" model="ir.actions.act_window">
+        <field name="name">Jewellery Items</field>
+        <field name="res_model">rn.jewellery.item.spec</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

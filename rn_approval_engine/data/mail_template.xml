@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_approval_pending" model="mail.template">
+        <field name="name">Approval: Pending Approver</field>
+        <field name="model_id" ref="model_rn_approval_request"/>
+        <field name="subject">Approval required: {{ object.document_display }}</field>
+        <field name="body_html" type="html">
+            <p>Hello,</p>
+            <p>You have a pending approval request <strong><t t-out="object.reference"/></strong>.</p>
+            <p>Document: <t t-out="object.document_display"/></p>
+            <p>Amount: <t t-out="object.amount"/> <t t-out="object.currency_id.name"/></p>
+            <p>Please review in Odoo under Workflow Approval Engine.</p>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

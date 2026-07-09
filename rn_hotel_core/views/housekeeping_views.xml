@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_hotel_housekeeping" model="ir.actions.act_window">
+        <field name="name">Housekeeping</field>
+        <field name="res_model">rn.hotel.housekeeping.task</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

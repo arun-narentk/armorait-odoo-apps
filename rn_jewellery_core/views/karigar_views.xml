@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_karigar_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.karigar.tree</field>
+        <field name="model">rn.jewellery.karigar</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="skill"/>
+                <field name="wastage_avg_pct"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_karigar" model="ir.actions.act_window">
+        <field name="name">Karigars</field>
+        <field name="res_model">rn.jewellery.karigar</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

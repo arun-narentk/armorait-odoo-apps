@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_vet_owner_reception,rn.vet.owner reception,model_rn_vet_owner,group_rn_vet_reception,1,1,1,0
+access_rn_vet_pet_reception,rn.vet.pet reception,model_rn_vet_pet,group_rn_vet_reception,1,1,1,0
+access_rn_vet_appointment_reception,rn.vet.appointment reception,model_rn_vet_appointment,group_rn_vet_reception,1,1,1,0
+access_rn_vet_vaccine_type_reception,rn.vet.vaccine.type reception,model_rn_vet_vaccine_type,group_rn_vet_reception,1,0,0,0
+access_rn_vet_vaccination_reception,rn.vet.vaccination reception,model_rn_vet_vaccination,group_rn_vet_reception,1,1,1,0
+access_rn_vet_medical_record_vet,rn.vet.medical.record vet,model_rn_vet_medical_record,group_rn_vet_veterinarian,1,1,1,0
+access_rn_vet_lab_result_vet,rn.vet.lab.result vet,model_rn_vet_lab_result,group_rn_vet_veterinarian,1,1,1,0
+access_rn_vet_surgery_vet,rn.vet.surgery vet,model_rn_vet_surgery,group_rn_vet_veterinarian,1,1,1,0
+access_rn_vet_grooming_reception,rn.vet.grooming reception,model_rn_vet_grooming,group_rn_vet_reception,1,1,1,0
+access_rn_vet_kennel_reception,rn.vet.kennel reception,model_rn_vet_kennel,group_rn_vet_reception,1,0,0,0
+access_rn_vet_boarding_reception,rn.vet.boarding reception,model_rn_vet_boarding,group_rn_vet_reception,1,1,1,0
+access_rn_vet_owner_mgr,rn.vet.owner manager,model_rn_vet_owner,group_rn_vet_manager,1,1,1,1
+access_rn_vet_pet_mgr,rn.vet.pet manager,model_rn_vet_pet,group_rn_vet_manager,1,1,1,1
+access_rn_vet_vaccine_type_mgr,rn.vet.vaccine.type manager,model_rn_vet_vaccine_type,group_rn_vet_manager,1,1,1,1
+access_rn_vet_kennel_mgr,rn.vet.kennel manager,model_rn_vet_kennel,group_rn_vet_manager,1,1,1,1
+access_rn_vet_settings_mgr,rn.veterinary.settings manager,model_rn_veterinary_settings,group_rn_vet_manager,1,1,1,1
+access_rn_vet_appointment_wizard,rn.vet.appointment.wizard reception,model_rn_vet_appointment_wizard,group_rn_vet_reception,1,1,1,1

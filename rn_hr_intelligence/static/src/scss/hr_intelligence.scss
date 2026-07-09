@@ -1,0 +1,34 @@
+.o_rn_hr_intel_dashboard {
+    .o_rn_hr_card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 16px;
+        height: 100%;
+
+        .label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+    }
+
+    .o_rn_hr_panel,
+    .o_rn_hr_ai_panel {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 16px;
+        height: 100%;
+    }
+
+    .o_rn_hr_ai_panel {
+        border-left: 4px solid #0d9488;
+    }
+}

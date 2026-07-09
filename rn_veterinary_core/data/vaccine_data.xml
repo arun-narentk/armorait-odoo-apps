@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="vaccine_rabies" model="rn.vet.vaccine.type">
+        <field name="name">Rabies</field>
+        <field name="code">RAB</field>
+        <field name="species">all</field>
+        <field name="interval_months">12</field>
+    </record>
+    <record id="vaccine_dhpp" model="rn.vet.vaccine.type">
+        <field name="name">DHPP</field>
+        <field name="code">DHPP</field>
+        <field name="species">dog</field>
+        <field name="interval_months">12</field>
+    </record>
+    <record id="vaccine_fvrcp" model="rn.vet.vaccine.type">
+        <field name="name">FVRCP</field>
+        <field name="code">FVRCP</field>
+        <field name="species">cat</field>
+        <field name="interval_months">12</field>
+    </record>
+    <record id="vaccine_deworm" model="rn.vet.vaccine.type">
+        <field name="name">Deworming</field>
+        <field name="code">DEW</field>
+        <field name="species">all</field>
+        <field name="interval_months">3</field>
+    </record>
+</odoo>

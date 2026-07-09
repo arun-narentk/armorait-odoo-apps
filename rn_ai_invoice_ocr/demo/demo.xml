@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_ai_invoice_ocr_settings" model="rn.ai.invoice.ocr.settings">
+        <field name="name">Demo OCR Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="credit_balance">500</field>
+        <field name="enable_gst_india" eval="True"/>
+    </record>
+
+    <record id="demo_vendor_acme" model="res.partner">
+        <field name="name">ABC Industries Private Limited</field>
+        <field name="supplier_rank">1</field>
+        <field name="vat">29ABCDE1234F1Z5</field>
+    </record>
+
+    <record id="demo_vendor_mapping" model="rn.ai.invoice.vendor.mapping">
+        <field name="ocr_text">ABC Industries Pvt Ltd</field>
+        <field name="partner_id" ref="demo_vendor_acme"/>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="hit_count">3</field>
+    </record>
+
+    <record id="demo_product_fabric" model="product.product">
+        <field name="name">Cotton Fabric</field>
+        <field name="type">consu</field>
+        <field name="purchase_ok" eval="True"/>
+    </record>
+
+    <record id="demo_product_mapping" model="rn.ai.invoice.product.mapping">
+        <field name="ocr_text">Cotton Yarn 30s</field>
+        <field name="product_id" ref="demo_product_fabric"/>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="demo_rn_ai_invoice_scan_attachment" model="ir.attachment">
+        <field name="name">demo_invoice.txt</field>
+        <field name="type">binary</field>
+        <field name="mimetype">text/plain</field>
+        <field name="datas" type="base64">VGV4dCBkZW1vIGludm9pY2UgZm9yIEFJQyBPQ1I=</field>
+    </record>
+
+    <record id="demo_rn_ai_invoice_scan" model="rn.ai.invoice.scan">
+        <field name="name">OCR00001</field>
+        <field name="reference">OCR00001</field>
+        <field name="state">review</field>
+        <field name="attachment_id" ref="demo_rn_ai_invoice_scan_attachment"/>
+        <field name="partner_id" ref="demo_vendor_acme"/>
+        <field name="partner_name_extracted">ABC Industries Pvt Ltd</field>
+        <field name="partner_confidence">99.0</field>
+        <field name="gstin">29ABCDE1234F1Z5</field>
+        <field name="gstin_confidence">100.0</field>
+        <field name="invoice_number">INV-2026-0042</field>
+        <field name="invoice_number_confidence">95.0</field>
+        <field name="amount_total">1475.0</field>
+        <field name="amount_confidence">100.0</field>
+        <field name="line_confidence">96.0</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+    <record id="demo_rn_ai_invoice_scan_line" model="rn.ai.invoice.scan.line">
+        <field name="scan_id" ref="demo_rn_ai_invoice_scan"/>
+        <field name="description">5 x Cotton Fabric</field>
+        <field name="product_id" ref="demo_product_fabric"/>
+        <field name="quantity">5</field>
+        <field name="price_unit">250.0</field>
+        <field name="tax_percent">18.0</field>
+        <field name="price_subtotal">1250.0</field>
+        <field name="confidence">96.0</field>
+    </record>
+</odoo>

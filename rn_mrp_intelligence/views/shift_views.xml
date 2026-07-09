@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mrp_shift_tree" model="ir.ui.view">
+        <field name="name">rn.mrp.shift.tree</field>
+        <field name="model">rn.mrp.shift</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="time_start"/>
+                <field name="time_end"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_mrp_shift" model="ir.actions.act_window">
+        <field name="name">Shifts</field>
+        <field name="res_model">rn.mrp.shift</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

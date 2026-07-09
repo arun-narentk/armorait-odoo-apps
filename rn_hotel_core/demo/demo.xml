@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_hotel_room_102" model="rn.hotel.room">
+        <field name="name">102</field>
+        <field name="room_type_id" ref="room_type_deluxe"/>
+        <field name="floor">1</field>
+    </record>
+    <record id="demo_rn_hotel_guest" model="rn.hotel.guest">
+        <field name="name">Demo Guest</field>
+        <field name="mobile">9876543210</field>
+    </record>
+</odoo>

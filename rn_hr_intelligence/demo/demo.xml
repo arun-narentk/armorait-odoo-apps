@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_hr_intel_settings" model="rn.hr.intelligence.settings">
+        <field name="name">Demo HR Intelligence</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="pf_rate">12</field>
+        <field name="esi_rate">3.25</field>
+    </record>
+
+    <record id="demo_hr_insight" model="rn.hr.ai.insight">
+        <field name="name">Demo Payroll Summary</field>
+        <field name="insight_type">payroll_summary</field>
+        <field name="severity">info</field>
+        <field name="summary_html"><![CDATA[
+            <p>Payroll increased by 6.8% this month, primarily due to seasonal overtime in Production and annual increments in Engineering.</p>
+        ]]></field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

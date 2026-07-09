@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_construction_root" name="Construction" sequence="68"
+              web_icon="rn_construction_core,static/description/icon.png"
+              groups="rn_construction_core.group_rn_construction_site_engineer"/>
+    <menuitem id="menu_rn_construction_dashboard" name="Management Dashboard" parent="menu_rn_construction_root"
+              action="action_rn_construction_dashboard" sequence="5"
+              groups="rn_construction_core.group_rn_construction_manager"/>
+    <menuitem id="menu_rn_construction_site_dashboard" name="Site Dashboard" parent="menu_rn_construction_root"
+              action="action_rn_construction_site_dashboard" sequence="6"/>
+    <menuitem id="menu_rn_construction_projects" name="Projects" parent="menu_rn_construction_root"
+              action="action_rn_construction_project" sequence="10"/>
+    <menuitem id="menu_rn_construction_sites" name="Sites" parent="menu_rn_construction_root"
+              action="action_rn_construction_site" sequence="15"/>
+    <menuitem id="menu_rn_construction_boq" name="BOQ" parent="menu_rn_construction_root"
+              action="action_rn_construction_boq" sequence="20"/>
+    <menuitem id="menu_rn_construction_estimates" name="Cost Estimates" parent="menu_rn_construction_root"
+              action="action_rn_construction_cost_estimate" sequence="25"/>
+    <menuitem id="menu_rn_construction_site_ops" name="Site Operations" parent="menu_rn_construction_root" sequence="30"/>
+    <menuitem id="menu_rn_construction_daily_logs" name="Daily Logs" parent="menu_rn_construction_site_ops"
+              action="action_rn_construction_daily_log" sequence="10"/>
+    <menuitem id="menu_rn_construction_site_issues" name="Site Issues" parent="menu_rn_construction_site_ops"
+              action="action_rn_construction_site_issue" sequence="20"/>
+    <menuitem id="menu_rn_construction_material_requests" name="Material Requests" parent="menu_rn_construction_site_ops"
+              action="action_rn_construction_material_request" sequence="30"/>
+    <menuitem id="menu_rn_construction_labour" name="Labour Attendance" parent="menu_rn_construction_site_ops"
+              action="action_rn_construction_labour_attendance" sequence="40"/>
+    <menuitem id="menu_rn_construction_equipment" name="Equipment" parent="menu_rn_construction_root" sequence="40"/>
+    <menuitem id="menu_rn_construction_equipment_registry" name="Equipment Registry" parent="menu_rn_construction_equipment"
+              action="action_rn_construction_equipment" sequence="10"/>
+    <menuitem id="menu_rn_construction_equipment_usage" name="Usage Logs" parent="menu_rn_construction_equipment"
+              action="action_rn_construction_equipment_usage" sequence="20"/>
+    <menuitem id="menu_rn_construction_billing" name="Running Bills" parent="menu_rn_construction_root"
+              action="action_rn_construction_running_bill" sequence="50"/>
+    <menuitem id="menu_rn_construction_milestones" name="Milestones" parent="menu_rn_construction_root"
+              action="action_rn_construction_milestone" sequence="55"/>
+    <menuitem id="menu_rn_construction_config" name="Configuration" parent="menu_rn_construction_root" sequence="90"
+              groups="rn_construction_core.group_rn_construction_manager"/>
+    <menuitem id="menu_rn_construction_settings" name="Settings" parent="menu_rn_construction_config"
+              action="action_rn_construction_settings" sequence="10"/>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_ai_invoice_ocr_root"
+        name="AI Invoice OCR"
+        web_icon="rn_ai_invoice_ocr,static/description/icon.png"
+        groups="group_rn_invoice_ocr_user"
+        sequence="45"/>
+
+    <menuitem id="menu_rn_ai_invoice_ocr_dashboard"
+        name="Dashboard"
+        parent="menu_rn_ai_invoice_ocr_root"
+        action="action_rn_ai_invoice_ocr_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_ai_invoice_scan"
+        name="Invoice Scans"
+        parent="menu_rn_ai_invoice_ocr_root"
+        action="action_rn_ai_invoice_scan"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_ai_invoice_ocr_config"
+        name="Configuration"
+        parent="menu_rn_ai_invoice_ocr_root"
+        groups="group_rn_invoice_ocr_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_ai_invoice_ocr_settings"
+        name="OCR Settings"
+        parent="menu_rn_ai_invoice_ocr_config"
+        action="action_rn_ai_invoice_ocr_settings"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_ai_invoice_vendor_mapping"
+        name="Vendor Mappings"
+        parent="menu_rn_ai_invoice_ocr_config"
+        action="action_rn_ai_invoice_vendor_mapping"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_ai_invoice_product_mapping"
+        name="Product Mappings"
+        parent="menu_rn_ai_invoice_ocr_config"
+        action="action_rn_ai_invoice_product_mapping"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_ai_invoice_ocr_subscription"
+        name="Subscriptions"
+        parent="menu_rn_ai_invoice_ocr_config"
+        action="action_rn_ai_invoice_ocr_subscription"
+        sequence="40"/>
+</odoo>

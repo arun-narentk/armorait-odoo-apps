@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_approval_root"
+        name="Approval Engine"
+        web_icon="rn_approval_engine,static/description/icon.png"
+        groups="group_rn_approval_user"
+        sequence="40"/>
+
+    <menuitem id="menu_rn_approval_dashboard"
+        name="Dashboard"
+        parent="menu_rn_approval_root"
+        action="action_rn_approval_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_approval_my_pending"
+        name="My Pending"
+        parent="menu_rn_approval_root"
+        action="action_rn_approval_my_pending"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_approval_requests"
+        name="All Requests"
+        parent="menu_rn_approval_root"
+        action="action_rn_approval_request"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_approval_config"
+        name="Configuration"
+        parent="menu_rn_approval_root"
+        groups="group_rn_approval_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_approval_workflows"
+        name="Workflows"
+        parent="menu_rn_approval_config"
+        action="action_rn_approval_workflow"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_approval_rules"
+        name="Rules"
+        parent="menu_rn_approval_config"
+        action="action_rn_approval_rule"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_approval_delegations"
+        name="Delegations"
+        parent="menu_rn_approval_config"
+        action="action_rn_approval_delegation"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_approval_settings"
+        name="Settings"
+        parent="menu_rn_approval_config"
+        action="action_rn_approval_settings"
+        sequence="40"/>
+</odoo>

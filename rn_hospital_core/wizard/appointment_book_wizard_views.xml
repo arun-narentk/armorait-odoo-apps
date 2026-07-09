@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hospital_book_wizard_form" model="ir.ui.view">
+        <field name="name">rn.hospital.appointment.book.wizard.form</field>
+        <field name="model">rn.hospital.appointment.book.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Book Appointment">
+                <group>
+                    <field name="patient_id"/>
+                    <field name="doctor_id"/>
+                    <field name="department_id"/>
+                    <field name="appointment_datetime"/>
+                    <field name="chief_complaint"/>
+                </group>
+                <footer>
+                    <button name="action_book" type="object" string="Book" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hospital_book_wizard" model="ir.actions.act_window">
+        <field name="name">Book Appointment</field>
+        <field name="res_model">rn.hospital.appointment.book.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

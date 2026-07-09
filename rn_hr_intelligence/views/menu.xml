@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hr_intel_root"
+        name="Workforce Intelligence"
+        web_icon="rn_hr_intelligence,static/description/icon.png"
+        groups="group_rn_hr_intel_user"
+        sequence="38"/>
+
+    <menuitem id="menu_rn_hr_dashboard"
+        name="Command Center"
+        parent="menu_rn_hr_intel_root"
+        action="action_rn_hr_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_hr_analytics"
+        name="Analytics"
+        parent="menu_rn_hr_intel_root"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_hr_payroll_snapshots"
+        name="Payroll Snapshots"
+        parent="menu_rn_hr_analytics"
+        action="action_rn_hr_payroll_snapshot"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_hr_overtime"
+        name="Overtime"
+        parent="menu_rn_hr_analytics"
+        action="action_rn_hr_overtime"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_hr_attrition"
+        name="Attrition"
+        parent="menu_rn_hr_analytics"
+        action="action_rn_hr_attrition"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_hr_insights"
+        name="AI Insights"
+        parent="menu_rn_hr_intel_root"
+        action="action_rn_hr_insight"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_hr_quality"
+        name="Data Quality"
+        parent="menu_rn_hr_intel_root"
+        action="action_rn_hr_quality"
+        sequence="40"/>
+
+    <menuitem id="menu_rn_hr_config"
+        name="Configuration"
+        parent="menu_rn_hr_intel_root"
+        groups="group_rn_hr_intel_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_hr_settings"
+        name="Settings"
+        parent="menu_rn_hr_config"
+        action="action_rn_hr_intel_settings"
+        sequence="10"/>
+</odoo>

@@ -1,0 +1,11 @@
+.o_rn_school_dashboard,
+.o_rn_teacher_dashboard {
+    min-height: 100%;
+    background: var(--o-view-background-color, #f8f9fa);
+}
+
+.o_rn_school_dashboard .card,
+.o_rn_teacher_dashboard .card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}

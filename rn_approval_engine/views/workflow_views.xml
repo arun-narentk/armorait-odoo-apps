@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_approval_workflow_tree" model="ir.ui.view">
+        <field name="name">rn.approval.workflow.tree</field>
+        <field name="model">rn.approval.workflow</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="model_id"/>
+                <field name="stage_count"/>
+                <field name="active"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_approval_workflow_form" model="ir.ui.view">
+        <field name="name">rn.approval.workflow.form</field>
+        <field name="model">rn.approval.workflow</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Workflow name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="model_id"/>
+                            <field name="model_name" invisible="1"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Stages" name="stages">
+                            <field name="stage_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="stage_mode"/>
+                                    <field name="approver_type"/>
+                                    <field name="user_id" invisible="approver_type != 'user'"/>
+                                    <field name="group_id" invisible="approver_type != 'group'"/>
+                                    <field name="required_approvals"/>
+                                    <field name="sla_hours"/>
+                                    <field name="skip_if_amount_below"/>
+                                    <field name="require_if_new_vendor"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Description" name="description">
+                            <field name="description" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_approval_workflow" model="ir.actions.act_window">
+        <field name="name">Approval Workflows</field>
+        <field name="res_model">rn.approval.workflow</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

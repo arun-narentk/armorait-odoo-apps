@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_ai_email_root"
+        name="AI Email Intelligence"
+        web_icon="rn_ai_email_intelligence,static/description/icon.png"
+        groups="group_rn_ai_email_user"
+        sequence="43"/>
+
+    <menuitem id="menu_rn_ai_email_dashboard"
+        name="Dashboard"
+        parent="menu_rn_ai_email_root"
+        action="action_rn_ai_email_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_ai_email_drafts"
+        name="Email Drafts"
+        parent="menu_rn_ai_email_root"
+        action="action_rn_ai_email_draft"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_ai_email_compose"
+        name="Compose AI Email"
+        parent="menu_rn_ai_email_root"
+        action="action_rn_ai_email_compose_wizard"
+        sequence="15"/>
+
+    <menuitem id="menu_rn_ai_email_config"
+        name="Configuration"
+        parent="menu_rn_ai_email_root"
+        groups="group_rn_ai_email_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_ai_email_templates"
+        name="Templates"
+        parent="menu_rn_ai_email_config"
+        action="action_rn_ai_email_template"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_ai_email_settings"
+        name="Settings"
+        parent="menu_rn_ai_email_config"
+        action="action_rn_ai_email_settings"
+        sequence="20"/>
+</odoo>

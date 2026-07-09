@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_vet_root" name="Veterinary" sequence="72"
+              web_icon="rn_veterinary_core,static/description/icon.png"
+              groups="rn_veterinary_core.group_rn_vet_reception"/>
+    <menuitem id="menu_rn_vet_clinic_dashboard" name="Clinic Dashboard" parent="menu_rn_vet_root"
+              action="action_rn_vet_clinic_dashboard" sequence="5"
+              groups="rn_veterinary_core.group_rn_vet_manager"/>
+    <menuitem id="menu_rn_vet_vet_dashboard" name="My Schedule" parent="menu_rn_vet_root"
+              action="action_rn_vet_vet_dashboard" sequence="6"
+              groups="rn_veterinary_core.group_rn_vet_veterinarian"/>
+    <menuitem id="menu_rn_vet_owners" name="Owners" parent="menu_rn_vet_root"
+              action="action_rn_vet_owner" sequence="10"/>
+    <menuitem id="menu_rn_vet_pets" name="Pets" parent="menu_rn_vet_root"
+              action="action_rn_vet_pet" sequence="15"/>
+    <menuitem id="menu_rn_vet_appointments" name="Appointments" parent="menu_rn_vet_root"
+              action="action_rn_vet_appointment" sequence="20"/>
+    <menuitem id="menu_rn_vet_clinical" name="Clinical" parent="menu_rn_vet_root" sequence="30"/>
+    <menuitem id="menu_rn_vet_vaccinations" name="Vaccinations" parent="menu_rn_vet_clinical"
+              action="action_rn_vet_vaccination" sequence="10"/>
+    <menuitem id="menu_rn_vet_medical_records" name="Medical Records" parent="menu_rn_vet_clinical"
+              action="action_rn_vet_medical_record" sequence="20"/>
+    <menuitem id="menu_rn_vet_lab_results" name="Lab Results" parent="menu_rn_vet_clinical"
+              action="action_rn_vet_lab_result" sequence="30"/>
+    <menuitem id="menu_rn_vet_surgeries" name="Surgeries" parent="menu_rn_vet_clinical"
+              action="action_rn_vet_surgery" sequence="40"/>
+    <menuitem id="menu_rn_vet_services" name="Services" parent="menu_rn_vet_root" sequence="40"/>
+    <menuitem id="menu_rn_vet_grooming" name="Grooming" parent="menu_rn_vet_services"
+              action="action_rn_vet_grooming" sequence="10"/>
+    <menuitem id="menu_rn_vet_boarding" name="Boarding" parent="menu_rn_vet_services"
+              action="action_rn_vet_boarding" sequence="20"/>
+    <menuitem id="menu_rn_vet_config" name="Configuration" parent="menu_rn_vet_root" sequence="90"
+              groups="rn_veterinary_core.group_rn_vet_manager"/>
+    <menuitem id="menu_rn_vet_vaccine_types" name="Vaccine Types" parent="menu_rn_vet_config"
+              action="action_rn_vet_vaccine_type" sequence="10"/>
+    <menuitem id="menu_rn_vet_kennels" name="Kennels" parent="menu_rn_vet_config"
+              action="action_rn_vet_kennel" sequence="20"/>
+    <menuitem id="menu_rn_vet_settings" name="Settings" parent="menu_rn_vet_config"
+              action="action_rn_veterinary_settings" sequence="30"/>
+</odoo>

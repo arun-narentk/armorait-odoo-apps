@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_workflow_root" name="Workflow Builder" sequence="42"
+              web_icon="rn_workflow_builder,static/description/icon.png"
+              groups="rn_workflow_builder.group_rn_workflow_user"/>
+    <menuitem id="menu_rn_workflow_dashboard" name="Monitor" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_workflow_designer" name="Designer" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_designer" sequence="10"
+              groups="rn_workflow_builder.group_rn_workflow_designer"/>
+    <menuitem id="menu_rn_workflow_list" name="Workflows" parent="menu_rn_workflow_root"
+              action="action_rn_workflow" sequence="20"
+              groups="rn_workflow_builder.group_rn_workflow_designer"/>
+    <menuitem id="menu_rn_workflow_runs" name="Execution History" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_run" sequence="30"/>
+    <menuitem id="menu_rn_workflow_failed" name="Failed / Retry" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_run_failed" sequence="35"/>
+    <menuitem id="menu_rn_workflow_templates" name="Templates" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_template" sequence="40"/>
+    <menuitem id="menu_rn_workflow_connectors" name="Connectors" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_connector" sequence="50"
+              groups="rn_workflow_builder.group_rn_workflow_manager"/>
+    <menuitem id="menu_rn_workflow_config" name="Configuration" parent="menu_rn_workflow_root" sequence="90"
+              groups="rn_workflow_builder.group_rn_workflow_manager"/>
+    <menuitem id="menu_rn_workflow_settings" name="Settings" parent="menu_rn_workflow_config"
+              action="action_rn_workflow_settings" sequence="10"/>
+    <menuitem id="menu_rn_workflow_ai_build" name="Build from Text" parent="menu_rn_workflow_root"
+              action="action_rn_workflow_build_wizard" sequence="15"
+              groups="rn_workflow_builder.group_rn_workflow_designer"/>
+</odoo>

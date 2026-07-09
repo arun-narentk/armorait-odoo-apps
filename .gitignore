@@ -22,3 +22,6 @@ venv/
 # Local / env
 .env
 *.local
+
+# Apps Store zip staging (do not commit)
+apps_store_zips/

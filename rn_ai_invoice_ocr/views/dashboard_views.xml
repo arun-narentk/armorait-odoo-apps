@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_ai_invoice_ocr_dashboard" model="ir.actions.client">
+        <field name="name">Invoice OCR Dashboard</field>
+        <field name="tag">rn_ai_invoice_ocr.dashboard</field>
+    </record>
+</odoo>

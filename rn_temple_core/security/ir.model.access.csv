@@ -1,0 +1,21 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_temple_devotee_office,rn.temple.devotee office,model_rn_temple_devotee,group_rn_temple_office,1,1,1,0
+access_rn_temple_donation_office,rn.temple.donation office,model_rn_temple_donation,group_rn_temple_office,1,1,1,0
+access_rn_temple_seva_type_office,rn.temple.seva.type office,model_rn_temple_seva_type,group_rn_temple_office,1,0,0,0
+access_rn_temple_seva_booking_office,rn.temple.seva.booking office,model_rn_temple_seva_booking,group_rn_temple_office,1,1,1,0
+access_rn_temple_festival_office,rn.temple.festival office,model_rn_temple_festival,group_rn_temple_office,1,1,1,0
+access_rn_temple_annadhanam_office,rn.temple.annadhanam office,model_rn_temple_annadhanam,group_rn_temple_office,1,1,1,0
+access_rn_temple_hundi_office,rn.temple.hundi.collection office,model_rn_temple_hundi_collection,group_rn_temple_office,1,1,1,0
+access_rn_temple_volunteer_office,rn.temple.volunteer office,model_rn_temple_volunteer,group_rn_temple_office,1,1,1,0
+access_rn_temple_asset_office,rn.temple.asset office,model_rn_temple_asset,group_rn_temple_office,1,1,1,0
+access_rn_temple_devotee_mgr,rn.temple.devotee manager,model_rn_temple_devotee,group_rn_temple_manager,1,1,1,1
+access_rn_temple_donation_mgr,rn.temple.donation manager,model_rn_temple_donation,group_rn_temple_manager,1,1,1,1
+access_rn_temple_seva_type_mgr,rn.temple.seva.type manager,model_rn_temple_seva_type,group_rn_temple_manager,1,1,1,1
+access_rn_temple_seva_booking_mgr,rn.temple.seva.booking manager,model_rn_temple_seva_booking,group_rn_temple_manager,1,1,1,1
+access_rn_temple_festival_mgr,rn.temple.festival manager,model_rn_temple_festival,group_rn_temple_manager,1,1,1,1
+access_rn_temple_annadhanam_mgr,rn.temple.annadhanam manager,model_rn_temple_annadhanam,group_rn_temple_manager,1,1,1,1
+access_rn_temple_hundi_mgr,rn.temple.hundi.collection manager,model_rn_temple_hundi_collection,group_rn_temple_manager,1,1,1,1
+access_rn_temple_volunteer_mgr,rn.temple.volunteer manager,model_rn_temple_volunteer,group_rn_temple_manager,1,1,1,1
+access_rn_temple_asset_mgr,rn.temple.asset manager,model_rn_temple_asset,group_rn_temple_manager,1,1,1,1
+access_rn_temple_settings_mgr,rn.temple.settings manager,model_rn_temple_settings,group_rn_temple_manager,1,1,1,1
+access_rn_temple_donation_wizard,rn.temple.donation.wizard office,model_rn_temple_donation_wizard,group_rn_temple_office,1,1,1,1

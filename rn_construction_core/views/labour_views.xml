@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_labour_attendance_tree" model="ir.ui.view">
+        <field name="name">rn.construction.labour.attendance.tree</field>
+        <field name="model">rn.construction.labour.attendance</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="attendance_date"/>
+                <field name="site_id"/>
+                <field name="contractor_id"/>
+                <field name="worker_name"/>
+                <field name="state"/>
+                <field name="hours"/>
+                <field name="overtime_hours"/>
+                <field name="daily_wage"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_construction_labour_attendance" model="ir.actions.act_window">
+        <field name="name">Labour Attendance</field>
+        <field name="res_model">rn.construction.labour.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

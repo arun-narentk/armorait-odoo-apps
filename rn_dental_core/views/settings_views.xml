@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dental_settings_form" model="ir.ui.view">
+        <field name="name">rn.dental.settings.form</field>
+        <field name="model">rn.dental.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="clinic_name"/>
+                        <field name="default_appointment_minutes"/>
+                        <field name="enable_online_booking"/>
+                        <field name="recall_checkup_months"/>
+                        <field name="ai_clinical_notes"/>
+                        <field name="ai_recall"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_dental_settings" model="ir.actions.act_window">
+        <field name="name">Clinic Settings</field>
+        <field name="res_model">rn.dental.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+    <record id="res_config_settings_view_form_dental" model="ir.ui.view">
+        <field name="name">res.config.settings.dental</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Dental" name="rn_dental_core">
+                    <block title="AI Features">
+                        <setting string="Clinical notes draft">
+                            <field name="dental_ai_notes"/>
+                        </setting>
+                        <setting string="Recall suggestions">
+                            <field name="dental_ai_recall"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

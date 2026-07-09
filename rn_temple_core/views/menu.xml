@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_temple_root" name="Temple" sequence="69"
+              web_icon="rn_temple_core,static/description/icon.png"
+              groups="rn_temple_core.group_rn_temple_office"/>
+    <menuitem id="menu_rn_temple_trustee_dashboard" name="Trustee Dashboard" parent="menu_rn_temple_root"
+              action="action_rn_temple_trustee_dashboard" sequence="5"
+              groups="rn_temple_core.group_rn_temple_trustee"/>
+    <menuitem id="menu_rn_temple_office_dashboard" name="Office Dashboard" parent="menu_rn_temple_root"
+              action="action_rn_temple_office_dashboard" sequence="6"/>
+    <menuitem id="menu_rn_temple_devotees" name="Devotees" parent="menu_rn_temple_root"
+              action="action_rn_temple_devotee" sequence="10"/>
+    <menuitem id="menu_rn_temple_donations" name="Donations" parent="menu_rn_temple_root"
+              action="action_rn_temple_donation" sequence="20"/>
+    <menuitem id="menu_rn_temple_sevas" name="Sevas" parent="menu_rn_temple_root" sequence="30"/>
+    <menuitem id="menu_rn_temple_seva_bookings" name="Bookings" parent="menu_rn_temple_sevas"
+              action="action_rn_temple_seva_booking" sequence="10"/>
+    <menuitem id="menu_rn_temple_seva_types" name="Seva Types" parent="menu_rn_temple_sevas"
+              action="action_rn_temple_seva_type" sequence="20"
+              groups="rn_temple_core.group_rn_temple_manager"/>
+    <menuitem id="menu_rn_temple_festivals" name="Festivals" parent="menu_rn_temple_root"
+              action="action_rn_temple_festival" sequence="40"/>
+    <menuitem id="menu_rn_temple_annadhanam" name="Annadhanam" parent="menu_rn_temple_root"
+              action="action_rn_temple_annadhanam" sequence="50"/>
+    <menuitem id="menu_rn_temple_hundi" name="Hundi" parent="menu_rn_temple_root"
+              action="action_rn_temple_hundi" sequence="55"/>
+    <menuitem id="menu_rn_temple_volunteers" name="Volunteers" parent="menu_rn_temple_root"
+              action="action_rn_temple_volunteer" sequence="60"/>
+    <menuitem id="menu_rn_temple_assets" name="Assets" parent="menu_rn_temple_root"
+              action="action_rn_temple_asset" sequence="70"/>
+    <menuitem id="menu_rn_temple_config" name="Configuration" parent="menu_rn_temple_root" sequence="90"
+              groups="rn_temple_core.group_rn_temple_manager"/>
+    <menuitem id="menu_rn_temple_settings" name="Settings" parent="menu_rn_temple_config"
+              action="action_rn_temple_settings" sequence="10"/>
+</odoo>

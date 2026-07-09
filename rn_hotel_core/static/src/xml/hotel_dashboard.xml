@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_hotel_core.HotelDashboard">
+        <div class="o_rn_hotel_dashboard o_action p-3">
+            <div class="d-flex justify-content-between mb-3">
+                <h2>GM Dashboard</h2>
+                <button class="btn btn-secondary" t-on-click="refresh">Refresh</button>
+            </div>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="" class="row g-3">
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Occupancy</div><div class="fs-3"><t t-esc="state.occupancy"/>%</div></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Arrivals</div><div class="fs-3" t-esc="state.arrivals"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Departures</div><div class="fs-3" t-esc="state.departures"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">ADR</div><div class="fs-3" t-esc="formatNumber(state.adr)"/></div></div>
+                <div class="col-md-6"><div class="card p-3"><div class="text-muted">Revenue Today</div><div class="fs-4" t-esc="formatNumber(state.revenue)"/></div></div>
+                <div class="col-md-6"><div class="card p-3"><div class="text-muted">Dirty / Cleaning Rooms</div><div class="fs-4" t-esc="state.dirty"/></div></div>
+            </div>
+        </div>
+    </t>
+</templates>
