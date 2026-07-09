@@ -1,176 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AI Chatbot | ARMORA IT Technologies</title>
-<meta name="description" content="Ask Odoo anything in plain language. AI Copilot answers from live sales, accounting, inventory, and CRM data on Odoo 19 Community.">
-<style>
-body{font-family:Arial,Helvetica,sans-serif;background:#f1f5f9;margin:0;color:#1e293b;line-height:1.6}
-.hero{background:linear-gradient(135deg,#6c5ce7 0%,#0f172a 100%);color:#fff;padding:48px 24px 40px;text-align:center}
-.hero h1{font-size:2.35rem;margin:0 0 10px;font-weight:700}
-.hero .tagline{font-size:1.1rem;max-width:760px;margin:0 auto 20px;opacity:.95}
-.badges span{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;margin:4px;font-size:.85rem}
-.section{background:#fff;margin:20px auto;width:92%;max-width:1080px;padding:28px 32px;border-radius:12px;box-shadow:0 2px 10px rgba(15,23,42,.07)}
-.section h2{margin:0 0 14px;font-size:1.45rem;color:#0f172a}
-.section h3{margin:0 0 8px;font-size:1.05rem;color:#334155}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{border:1px solid #e2e8f0;border-radius:10px;padding:18px;background:#f8fafc}
-.card p{margin:0;font-size:.95rem}
-ul.clean{margin:0;padding-left:20px}
-ul.clean li{margin-bottom:6px}
-.workflow{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:18px;background:#f8fafc;border-radius:10px;font-weight:600;color:#6c5ce7}
-.workflow span{background:#ede9fe;border-radius:8px;padding:8px 14px;font-size:.9rem}
-.shot{width:100%;border-radius:10px;border:1px solid #e2e8f0;display:block}
-.caption{font-size:.85rem;color:#64748b;margin-top:8px;text-align:center}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-.faq dt{font-weight:700;margin-top:14px;color:#0f172a}
-.faq dd{margin:4px 0 0 0;color:#475569}
-.footer{background:#0f172a;color:#fff;text-align:center;padding:32px 24px;margin-top:24px}
-.footer a{color:#a5b4fc;text-decoration:none}
-@media(max-width:900px){.grid,.grid-3,.two-col{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-
-<section class="hero">
-<h1>AI Chatbot</h1>
-<p class="tagline">Ask everyday business questions in plain language. Get answers from live Odoo data with one-click actions.</p>
-<div class="badges">
-<span>Odoo 19 Community</span>
-<span>ARMORA IT Technologies</span>
-<span>Sales, Accounting, Inventory, CRM</span>
-<span>Multi-company</span>
-</div>
-<img src="banner.png" alt="AI Chatbot for Odoo 19" class="shot" style="max-width:920px;margin:28px auto 0">
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">AI Chatbot</h2>
+        <h3 class="oe_slogan">Ask Odoo anything. Get answers from live business data.</h3>
+        <p class="oe_mt32 text-center">
+            AI Copilot for Odoo 19. Managers ask plain-language questions on sales, accounting,
+            inventory, and CRM. The intent engine calls registered tools and returns answers with
+            optional action cards to open lists or create follow-ups.
+        </p>
+        <p class="text-center">
+            <img src="banner.png" class="img img-responsive center-block" alt="AI Chatbot for Odoo 19" style="max-width:900px;margin-top:16px;border-radius:8px"/>
+        </p>
+    </div>
 </section>
 
-<section class="section">
-<h2>Business Problem</h2>
-<p>Managers lose time opening menus, building filters, and jumping between apps to answer simple questions like overdue invoices, today's sales, or low stock.</p>
-<h2 style="margin-top:22px">Solution</h2>
-<p>AI Chatbot is an Odoo-native copilot. Users ask in natural language, the intent engine picks the right tool, and Odoo returns a clear answer with optional action cards to open lists or create follow-ups.</p>
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Key Benefits</h3>
+        <ul>
+            <li>Plain-language questions on real company data</li>
+            <li>Built-in analytics for sales, accounting, inventory, and CRM</li>
+            <li>Suggested questions so managers start fast</li>
+            <li>Action cards: Open List and Create Activity</li>
+            <li>Permission-aware tools and full conversation history</li>
+            <li>Works on Community, Enterprise, and Odoo.sh</li>
+        </ul>
+    </div>
 </section>
 
-<section class="section">
-<h2>Key Benefits</h2>
-<ul class="clean">
-<li>Plain-language questions on real company data</li>
-<li>Built-in analytics for sales, accounting, inventory, and CRM</li>
-<li>Suggested questions so managers start fast</li>
-<li>Action cards: Open List and Create Activity</li>
-<li>Permission-aware tools and full conversation history</li>
-<li>Works on Community, Enterprise, and Odoo.sh</li>
-</ul>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Features</h3>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Intent Engine</h4>
+                <p>Maps questions like "Show overdue invoices" or "Why did revenue drop?" to the right Odoo tool.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Tool Registry</h4>
+                <p>20+ read-only helpers across sales orders, invoices, stock, and CRM leads.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Copilot Chat</h4>
+                <p>Conversation view with suggested questions, draft input, and assistant replies.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Action Cards</h4>
+                <p>Jump to filtered lists or schedule activities without leaving the chat.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Provider Settings</h4>
+                <p>Configure OpenAI or compatible API endpoints from Odoo Settings.</p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16">
+                <h4>Security Groups</h4>
+                <p>Separate user and manager roles with access rules on chats and tools.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="section">
-<h2>Features</h2>
-<div class="grid">
-<div class="card"><h3>Intent Engine</h3><p>Maps questions like "Show overdue invoices" or "Why did revenue drop?" to the right Odoo tool.</p></div>
-<div class="card"><h3>Tool Registry</h3><p>20+ read-only helpers across sales orders, invoices, stock, and CRM leads.</p></div>
-<div class="card"><h3>Copilot Chat</h3><p>Conversation view with suggested questions, draft input, and assistant replies.</p></div>
-<div class="card"><h3>Action Cards</h3><p>Jump to filtered lists or schedule activities without leaving the chat.</p></div>
-<div class="card"><h3>Provider Settings</h3><p>Configure OpenAI or compatible API endpoints from Odoo Settings.</p></div>
-<div class="card"><h3>Security Groups</h3><p>Separate user and manager roles with access rules on chats and tools.</p></div>
-</div>
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">How It Works</h3>
+        <ol>
+            <li>Install AI Chatbot from Apps (technical name: <code>rn_ai_employee</code>)</li>
+            <li>Go to AI Copilot &gt; Settings and enable the copilot</li>
+            <li>Enter your AI provider API key and model name</li>
+            <li>Assign AI Copilot User or Manager groups to your team</li>
+            <li>Open Ask Copilot and try a suggested question</li>
+            <li>Review the answer and run an action card if needed</li>
+        </ol>
+    </div>
 </section>
 
-<section class="section">
-<h2>How It Works</h2>
-<div class="workflow">
-<span>Install AI Chatbot</span>
-<span>Set API key</span>
-<span>Open Ask Copilot</span>
-<span>Pick a question</span>
-<span>Review answer</span>
-<span>Run action</span>
-</div>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Screenshots</h3>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 oe_mt16 text-center">
+                <img src="overview.png" class="img img-responsive center-block" alt="AI Copilot conversation"/>
+                <p><em>Ask Copilot with suggested questions and action cards</em></p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16 text-center">
+                <img src="settings.png" class="img img-responsive center-block" alt="AI Copilot settings"/>
+                <p><em>Enable the copilot and configure your AI provider</em></p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16 text-center">
+                <img src="list.png" class="img img-responsive center-block" alt="Conversation history"/>
+                <p><em>Conversation history per user</em></p>
+            </div>
+            <div class="col-md-6 col-sm-12 oe_mt16 text-center">
+                <img src="tools.png" class="img img-responsive center-block" alt="Registered tools"/>
+                <p><em>Extensible tool registry for managers</em></p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="section">
-<h2>Screenshots</h2>
-<div class="two-col" style="margin-bottom:20px">
-<div>
-<img src="overview.png" alt="AI Copilot conversation" class="shot">
-<p class="caption">Ask Copilot with suggested questions and action cards</p>
-</div>
-<div>
-<img src="settings.png" alt="AI Copilot settings" class="shot">
-<p class="caption">Enable the copilot and configure your AI provider</p>
-</div>
-</div>
-<div class="two-col">
-<div>
-<img src="list.png" alt="Conversation history" class="shot">
-<p class="caption">Conversation history per user</p>
-</div>
-<div>
-<img src="tools.png" alt="Registered tools" class="shot">
-<p class="caption">Extensible tool registry for managers</p>
-</div>
-</div>
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Example Questions</h3>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 oe_mt16">
+                <h4>Sales</h4>
+                <p>Today's sales, pending quotations, top customers, best-selling products.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 oe_mt16">
+                <h4>Accounting</h4>
+                <p>Overdue invoices, revenue this month, expenses, profit, revenue analysis.</p>
+            </div>
+            <div class="col-md-4 col-sm-12 oe_mt16">
+                <h4>Inventory</h4>
+                <p>Low stock, negative stock, products not moved, stock valuation.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="section">
-<h2>Example Questions</h2>
-<div class="grid-3">
-<div class="card"><h3>Sales</h3><p>Today's sales, pending quotations, top customers, best-selling products.</p></div>
-<div class="card"><h3>Accounting</h3><p>Overdue invoices, revenue this month, expenses, profit, revenue analysis.</p></div>
-<div class="card"><h3>Inventory</h3><p>Low stock, negative stock, products not moved, stock valuation.</p></div>
-</div>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">Technical Details</h3>
+        <ul>
+            <li>Odoo 19 Community compatible</li>
+            <li>Python 3.12, PostgreSQL, Bootstrap 5 form views</li>
+            <li>Depends on Sales, Invoicing, Inventory, CRM, and Discuss</li>
+            <li>Service-layer architecture with automated tests</li>
+            <li>Multi-company ready on company-aware models</li>
+            <li>Translation-ready user-facing strings</li>
+        </ul>
+    </div>
 </section>
 
-<section class="section">
-<h2>Installation</h2>
-<ol>
-<li>Install <strong>AI Chatbot</strong> from Apps (technical name: <code>rn_ai_employee</code>).</li>
-<li>Go to <strong>AI Copilot &gt; Settings</strong> and enable the copilot.</li>
-<li>Enter your AI provider API key and model name.</li>
-<li>Assign <strong>AI Copilot User</strong> or <strong>Manager</strong> groups to your team.</li>
-<li>Open <strong>Ask Copilot</strong> and try a suggested question.</li>
-</ol>
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan">FAQ</h3>
+        <p><strong>Does it work on Odoo Community?</strong><br/>
+        Yes. Built and tested for Odoo 19 Community. Also works on Enterprise and Odoo.sh.</p>
+        <p><strong>Does it change data automatically?</strong><br/>
+        Phase 1 focuses on read-only analytics. Action cards open lists or create activities with user confirmation.</p>
+        <p><strong>Can I add custom tools?</strong><br/>
+        Yes. Extend the tool registry using standard Odoo inheritance patterns.</p>
+        <p><strong>Support?</strong><br/>
+        Contact <a href="mailto:info@armorait.com">info@armorait.com</a> for commercial support.</p>
+    </div>
 </section>
 
-<section class="section">
-<h2>Technical Details</h2>
-<ul class="clean">
-<li>Odoo 19 Community compatible</li>
-<li>Python 3.12, PostgreSQL, Bootstrap 5 form views</li>
-<li>Depends on Sales, Invoicing, Inventory, CRM, and Discuss</li>
-<li>Service-layer architecture with automated tests</li>
-<li>Multi-company ready on company-aware models</li>
-<li>Translation-ready user-facing strings</li>
-</ul>
+<section class="oe_container">
+    <div class="oe_row oe_spaced text-center">
+        <h3 class="oe_slogan">ARMORA IT Technologies</h3>
+        <p>
+            <a href="https://www.armorait.com">https://www.armorait.com</a><br/>
+            info@armorait.com
+        </p>
+        <p><em>(c) ARMORA IT Technologies | Odoo 19 Community | OPL-1</em></p>
+    </div>
 </section>
-
-<section class="section faq">
-<h2>FAQ</h2>
-<dl>
-<dt>Does it work on Odoo Community?</dt>
-<dd>Yes. Built and tested for Odoo 19 Community. Also works on Enterprise and Odoo.sh.</dd>
-<dt>Does it change data automatically?</dt>
-<dd>Phase 1 focuses on read-only analytics. Action cards open lists or create activities with user confirmation.</dd>
-<dt>Can I add custom tools?</dt>
-<dd>Yes. Extend the tool registry using standard Odoo inheritance patterns. See DEVELOPER_GUIDE.md.</dd>
-<dt>Is documentation included?</dt>
-<dd>README, INSTALL, USER_GUIDE, FAQ, SECURITY, and ROADMAP are bundled with the module.</dd>
-<dt>Support?</dt>
-<dd>Contact <a href="mailto:info@armorait.com">info@armorait.com</a> for commercial support.</dd>
-</dl>
-</section>
-
-<section class="section">
-<h2>Changelog</h2>
-<p><strong>19.0.2.7.0</strong> Renamed models to <code>rn.ai.employee.*</code>, aligned security and settings with module technical name.</p>
-<p><strong>19.0.1.0.0</strong> Initial commercial release with copilot chat, tool registry, and Apps Store assets.</p>
-</section>
-
-<footer class="footer">
-<h3 style="margin:0 0 10px">ARMORA IT Technologies</h3>
-<p>Website: <a href="https://www.armorait.com">https://www.armorait.com</a></p>
-<p>Support: <a href="mailto:info@armorait.com">info@armorait.com</a></p>
-<p style="margin-top:14px;opacity:.8">(c) ARMORA IT Technologies</p>
-</footer>
-</body>
-</html>

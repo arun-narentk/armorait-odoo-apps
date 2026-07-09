@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.2.9.0
+- Rebuilt Apps Store index.html using standard oe_container Bootstrap layout (Odoo Apps compatible)
+
 ## 19.0.2.8.0
 - Rebuilt Apps Store description page with accurate copilot copy and screenshots
 - Replaced broken error-page captures and placeholder GIFs with proper marketplace assets
