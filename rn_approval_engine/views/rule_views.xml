@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_approval_rule_tree" model="ir.ui.view">
+        <field name="name">rn.approval.rule.tree</field>
+        <field name="model">rn.approval.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="workflow_id"/>
+                <field name="rule_type"/>
+                <field name="amount_min"/>
+                <field name="amount_max"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_approval_rule_form" model="ir.ui.view">
+        <field name="name">rn.approval.rule.form</field>
+        <field name="model">rn.approval.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="workflow_id"/>
+                        <field name="sequence"/>
+                        <field name="rule_type"/>
+                        <field name="active"/>
+                    </group>
+                    <group invisible="rule_type != 'amount'">
+                        <field name="amount_min"/>
+                        <field name="amount_max"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <group invisible="rule_type != 'department'">
+                        <field name="department_id"/>
+                    </group>
+                    <group invisible="rule_type != 'category'">
+                        <field name="category_id"/>
+                    </group>
+                    <group invisible="rule_type != 'partner'">
+                        <field name="partner_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_approval_rule" model="ir.actions.act_window">
+        <field name="name">Approval Rules</field>
+        <field name="res_model">rn.approval.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_rn_temple_donation" model="ir.sequence">
+        <field name="name">Temple Donation</field>
+        <field name="code">rn.temple.donation</field>
+        <field name="prefix">DON</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_temple_receipt" model="ir.sequence">
+        <field name="name">Donation Receipt</field>
+        <field name="code">rn.temple.receipt</field>
+        <field name="prefix">RCP</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_temple_seva_booking" model="ir.sequence">
+        <field name="name">Seva Booking</field>
+        <field name="code">rn.temple.seva.booking</field>
+        <field name="prefix">SEVA</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_temple_hundi" model="ir.sequence">
+        <field name="name">Hundi Collection</field>
+        <field name="code">rn.temple.hundi.collection</field>
+        <field name="prefix">HUN</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

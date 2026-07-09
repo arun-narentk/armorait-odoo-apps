@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hr_intel_settings_form" model="ir.ui.view">
+        <field name="name">rn.hr.intelligence.settings.form</field>
+        <field name="model">rn.hr.intelligence.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="AI and Alerts">
+                        <field name="enable_ai_summary"/>
+                        <field name="enable_anomaly_detection"/>
+                        <field name="overtime_threshold_hours"/>
+                    </group>
+                    <group string="India Compliance Rates">
+                        <field name="pf_rate"/>
+                        <field name="esi_rate"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hr_intel_settings" model="ir.actions.act_window">
+        <field name="name">Intelligence Settings</field>
+        <field name="res_model">rn.hr.intelligence.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_config_settings_hr_intel" model="ir.ui.view">
+        <field name="name">res.config.settings.hr.intel</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='hr']" position="inside">
+                <block title="Workforce Intelligence" name="rn_hr_intelligence_block">
+                    <setting string="AI workforce summary">
+                        <field name="hr_intel_enable_ai"/>
+                    </setting>
+                    <setting string="Overtime alert threshold (hours/month)">
+                        <field name="hr_intel_overtime_threshold"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="academic_year_current" model="rn.school.academic.year">
+        <field name="name">2025-2026</field>
+        <field name="code">AY2526</field>
+        <field name="date_start">2025-04-01</field>
+        <field name="date_end">2026-03-31</field>
+    </record>
+</odoo>

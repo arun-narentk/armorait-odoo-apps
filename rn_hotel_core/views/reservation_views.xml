@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hotel_reservation_form" model="ir.ui.view">
+        <field name="name">rn.hotel.reservation.form</field>
+        <field name="model">rn.hotel.reservation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" invisible="state != 'draft'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('checked_out','cancelled')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="guest_id"/>
+                        <field name="room_type_id"/>
+                        <field name="room_id"/>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                        <field name="rate_per_night"/>
+                        <field name="booking_type"/>
+                        <field name="folio_id" readonly="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hotel_reservation" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="res_model">rn.hotel.reservation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_approval_engine.Dashboard">
+        <div class="o_rn_approval_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">Workflow Approval Engine</h1>
+                    <div class="text-muted small">Pending approvals, SLA, and bottlenecks</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading dashboard...</div>
+            </t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="o_rn_appr_card">
+                            <div class="label">Pending</div>
+                            <div class="value" t-esc="state.cards.pending || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="o_rn_appr_card">
+                            <div class="label">My Pending</div>
+                            <div class="value" t-esc="state.cards.my_pending || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="o_rn_appr_card">
+                            <div class="label">Overdue</div>
+                            <div class="value" t-esc="state.cards.overdue || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="o_rn_appr_card">
+                            <div class="label">Approved</div>
+                            <div class="value" t-esc="state.cards.approved || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="o_rn_appr_card">
+                            <div class="label">Rejected</div>
+                            <div class="value" t-esc="state.cards.rejected || 0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-muted small">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_hundi_tree" model="ir.ui.view">
+        <field name="name">rn.temple.hundi.collection.tree</field>
+        <field name="model">rn.temple.hundi.collection</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="collection_date"/>
+                <field name="amount_counted"/>
+                <field name="amount_verified"/>
+                <field name="deposited_amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_hundi" model="ir.actions.act_window">
+        <field name="name">Hundi Collections</field>
+        <field name="res_model">rn.temple.hundi.collection</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

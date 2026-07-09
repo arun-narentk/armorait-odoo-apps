@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_vet">
+        <field name="name">ARMORA Veterinary ERP</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+    <record id="group_rn_vet_reception" model="res.groups">
+        <field name="name">Reception</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_vet"/>
+    </record>
+    <record id="group_rn_vet_veterinarian" model="res.groups">
+        <field name="name">Veterinarian</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_vet"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_vet_reception'))]"/>
+    </record>
+    <record id="group_rn_vet_manager" model="res.groups">
+        <field name="name">Clinic Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_vet"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_vet_veterinarian'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_vet_owner_company" model="ir.rule">
+        <field name="name">Owner multi-company</field>
+        <field name="model_id" ref="model_rn_vet_owner"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_vet_pet_company" model="ir.rule">
+        <field name="name">Pet multi-company</field>
+        <field name="model_id" ref="model_rn_vet_pet"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_vet_appointment_company" model="ir.rule">
+        <field name="name">Appointment multi-company</field>
+        <field name="model_id" ref="model_rn_vet_appointment"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_vet_settings_company" model="ir.rule">
+        <field name="name">Vet Settings multi-company</field>
+        <field name="model_id" ref="model_rn_veterinary_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

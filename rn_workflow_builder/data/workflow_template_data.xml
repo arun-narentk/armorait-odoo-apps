@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="template_so_confirmed_notify" model="rn.workflow.template">
+        <field name="name">Notify on Sales Order Confirmed</field>
+        <field name="code">so_confirmed_notify</field>
+        <field name="category">sales</field>
+        <field name="trigger_type">on_write</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="description">Send email when a quotation is confirmed to sale order.</field>
+    </record>
+    <record id="template_low_stock_rfq" model="rn.workflow.template">
+        <field name="name">Low Stock RFQ Reminder</field>
+        <field name="code">low_stock_rfq</field>
+        <field name="category">inventory</field>
+        <field name="trigger_type">on_schedule</field>
+        <field name="model_id" ref="product.model_product_product"/>
+        <field name="description">Scheduled check for products below minimum stock.</field>
+    </record>
+    <record id="template_overdue_invoice" model="rn.workflow.template">
+        <field name="name">Overdue Invoice Reminder</field>
+        <field name="code">overdue_invoice</field>
+        <field name="category">accounting</field>
+        <field name="trigger_type">on_schedule</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="description">Weekly reminder for unpaid customer invoices.</field>
+    </record>
+</odoo>

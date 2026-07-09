@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mes_oee_tree" model="ir.ui.view">
+        <field name="name">rn.mes.oee.snapshot.tree</field>
+        <field name="model">rn.mes.oee.snapshot</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="workcenter_id"/>
+                <field name="snapshot_date"/>
+                <field name="availability"/>
+                <field name="performance"/>
+                <field name="quality"/>
+                <field name="oee"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_mes_oee_form" model="ir.ui.view">
+        <field name="name">rn.mes.oee.snapshot.form</field>
+        <field name="model">rn.mes.oee.snapshot</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="workcenter_id"/>
+                        <field name="snapshot_date"/>
+                        <field name="shift_label"/>
+                    </group>
+                    <group>
+                        <field name="availability"/>
+                        <field name="performance"/>
+                        <field name="quality"/>
+                        <field name="oee"/>
+                    </group>
+                    <group>
+                        <field name="planned_minutes"/>
+                        <field name="running_minutes"/>
+                        <field name="downtime_minutes"/>
+                        <field name="good_qty"/>
+                        <field name="total_qty"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_mes_oee" model="ir.actions.act_window">
+        <field name="name">OEE Snapshots</field>
+        <field name="res_model">rn.mes.oee.snapshot</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

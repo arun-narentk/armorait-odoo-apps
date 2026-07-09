@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_document_platform.Dashboard">
+        <div class="o_rn_doc_platform_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">Digital Document Platform</h1>
+                    <div class="text-muted small">Signatures, audit trail, and AI contract intelligence</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading...</div></t>
+            <t t-else="">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-lg-2"><div class="o_rn_doc_card"><div class="label">Pending</div><div class="value" t-esc="state.cards.pending || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg-2"><div class="o_rn_doc_card"><div class="label">Completed</div><div class="value" t-esc="state.cards.completed || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg-2"><div class="o_rn_doc_card"><div class="label">Declined</div><div class="value" t-esc="state.cards.declined || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg-2"><div class="o_rn_doc_card"><div class="label">High Risk</div><div class="value" t-esc="state.cards.high_risk || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg-2"><div class="o_rn_doc_card"><div class="label">Credits</div><div class="value" t-esc="state.cards.credits || 0"/></div></div>
+                </div>
+                <div class="text-muted small mt-2">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

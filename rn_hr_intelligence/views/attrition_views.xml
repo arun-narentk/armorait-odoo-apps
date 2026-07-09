@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hr_attrition_tree" model="ir.ui.view">
+        <field name="name">rn.hr.attrition.record.tree</field>
+        <field name="model">rn.hr.attrition.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="period"/>
+                <field name="new_hires"/>
+                <field name="resignations"/>
+                <field name="turnover_rate"/>
+                <field name="retention_rate"/>
+                <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_hr_attrition" model="ir.actions.act_window">
+        <field name="name">Attrition Records</field>
+        <field name="res_model">rn.hr.attrition.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

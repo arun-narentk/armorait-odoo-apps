@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_mrp_intel_root"
+        name="Manufacturing Intelligence"
+        web_icon="rn_mrp_intelligence,static/description/icon.png"
+        groups="group_rn_mrp_intel_user"
+        sequence="35"/>
+
+    <menuitem id="menu_rn_mrp_dashboard"
+        name="Command Center"
+        parent="menu_rn_mrp_intel_root"
+        action="action_rn_mrp_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_mrp_operations"
+        name="Operations"
+        parent="menu_rn_mrp_intel_root"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_mrp_downtime"
+        name="Downtime"
+        parent="menu_rn_mrp_operations"
+        action="action_rn_mrp_downtime"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_mrp_oee"
+        name="OEE"
+        parent="menu_rn_mrp_operations"
+        action="action_rn_mrp_oee"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_mrp_wc_status"
+        name="Work Center Status"
+        parent="menu_rn_mrp_operations"
+        action="action_rn_mrp_wc_status"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_mrp_insights"
+        name="AI Insights"
+        parent="menu_rn_mrp_intel_root"
+        action="action_rn_mrp_insight"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_mrp_config"
+        name="Configuration"
+        parent="menu_rn_mrp_intel_root"
+        groups="group_rn_mrp_intel_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_mrp_shifts"
+        name="Shifts"
+        parent="menu_rn_mrp_config"
+        action="action_rn_mrp_shift"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_mrp_settings"
+        name="Settings"
+        parent="menu_rn_mrp_config"
+        action="action_rn_mrp_intel_settings"
+        sequence="20"/>
+</odoo>

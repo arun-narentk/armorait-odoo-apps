@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dental_appointment_tree" model="ir.ui.view">
+        <field name="name">rn.dental.appointment.tree</field>
+        <field name="model">rn.dental.appointment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="start_datetime"/>
+                <field name="patient_id"/>
+                <field name="dentist_id"/>
+                <field name="chair_id"/>
+                <field name="procedure_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_dental_appointment_form" model="ir.ui.view">
+        <field name="name">rn.dental.appointment.form</field>
+        <field name="model">rn.dental.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_check_in" type="object" string="Check In" invisible="state != 'scheduled'"/>
+                    <button name="action_complete" type="object" string="Complete" invisible="state not in ('checked_in', 'in_chair')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="scheduled,checked_in,completed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="patient_id"/>
+                        <field name="dentist_id"/>
+                        <field name="chair_id"/>
+                        <field name="procedure_id"/>
+                    </group>
+                    <group>
+                        <field name="start_datetime"/>
+                        <field name="end_datetime"/>
+                        <field name="duration_minutes"/>
+                        <field name="treatment_plan_id"/>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_dental_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">rn.dental.appointment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_dental_procedure" model="ir.actions.act_window">
+        <field name="name">Procedures</field>
+        <field name="res_model">rn.dental.procedure</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

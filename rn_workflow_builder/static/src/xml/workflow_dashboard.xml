@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_workflow_builder.Dashboard">
+        <div class="o_rn_workflow_dashboard o_action p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="mb-0">Workflow Monitor</h2>
+                <button class="btn btn-secondary" t-on-click="refresh">Refresh</button>
+            </div>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="" class="row g-3">
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="text-muted">Active Workflows</div>
+                        <div class="fs-3"><t t-esc="state.activeWorkflows"/> / <t t-esc="state.totalWorkflows"/></div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="text-muted">Runs (7 days)</div>
+                        <div class="fs-3" t-esc="state.runs7d"/>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="text-muted">Success Rate</div>
+                        <div class="fs-3"><t t-esc="formatNumber(state.successRate)"/>%</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="text-muted">Failed / Retry</div>
+                        <div class="fs-3"><t t-esc="state.failedRuns"/> / <t t-esc="state.retryQueue"/></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card p-3">
+                        <div class="text-muted mb-2">AI Suggestions</div>
+                        <ul class="mb-0">
+                            <li t-foreach="state.suggestions" t-as="tip" t-key="tip_index" t-esc="tip"/>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

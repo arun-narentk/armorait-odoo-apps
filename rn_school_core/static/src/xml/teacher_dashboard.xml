@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_school_core.TeacherDashboard">
+        <div class="o_rn_teacher_dashboard o_action p-3">
+            <h2>Teacher Dashboard <small t-if="state.teacherName" t-esc="state.teacherName"/></h2>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="">
+                <p>Homework to grade: <strong t-esc="state.homeworkPending"/></p>
+                <h4>Today's Classes</h4>
+                <ul class="list-group">
+                    <li class="list-group-item" t-foreach="state.classes" t-as="cls" t-key="cls_index">
+                        <t t-esc="cls.subject"/> - <t t-esc="cls.class"/> <span t-if="cls.room">(<t t-esc="cls.room"/>)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </t>
+</templates>

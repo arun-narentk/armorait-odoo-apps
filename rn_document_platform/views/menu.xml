@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_doc_platform_root"
+        name="Document Platform"
+        web_icon="rn_document_platform,static/description/icon.png"
+        groups="group_rn_doc_platform_user"
+        sequence="44"/>
+
+    <menuitem id="menu_rn_doc_dashboard"
+        name="Dashboard"
+        parent="menu_rn_doc_platform_root"
+        action="action_rn_doc_dashboard"
+        sequence="5"/>
+
+    <menuitem id="menu_rn_doc_sign_requests"
+        name="Sign Requests"
+        parent="menu_rn_doc_platform_root"
+        action="action_rn_doc_sign_request"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_doc_ai_analysis"
+        name="AI Analysis"
+        parent="menu_rn_doc_platform_root"
+        action="action_rn_doc_ai_analysis"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_doc_audit"
+        name="Audit Trail"
+        parent="menu_rn_doc_platform_root"
+        action="action_rn_doc_audit"
+        sequence="30"/>
+
+    <menuitem id="menu_rn_doc_config"
+        name="Configuration"
+        parent="menu_rn_doc_platform_root"
+        groups="group_rn_doc_platform_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_doc_templates"
+        name="Templates"
+        parent="menu_rn_doc_config"
+        action="action_rn_doc_template"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_doc_settings"
+        name="Settings"
+        parent="menu_rn_doc_config"
+        action="action_rn_doc_platform_settings"
+        sequence="20"/>
+</odoo>

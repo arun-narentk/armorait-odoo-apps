@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_repair_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.repair.order.tree</field>
+        <field name="model">rn.jewellery.repair.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="repair_type"/>
+                <field name="receive_date"/>
+                <field name="promised_date"/>
+                <field name="charge_amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_repair" model="ir.actions.act_window">
+        <field name="name">Repairs</field>
+        <field name="res_model">rn.jewellery.repair.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

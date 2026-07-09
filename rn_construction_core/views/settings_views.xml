@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_settings_form" model="ir.ui.view">
+        <field name="name">rn.construction.settings.form</field>
+        <field name="model">rn.construction.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="default_retention_pct"/>
+                        <field name="require_boq_approval"/>
+                        <field name="ai_cost_prediction"/>
+                        <field name="ai_daily_summary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_construction_settings" model="ir.actions.act_window">
+        <field name="name">Construction Settings</field>
+        <field name="res_model">rn.construction.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+    <record id="res_config_settings_view_form_construction" model="ir.ui.view">
+        <field name="name">res.config.settings.construction</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Construction" name="rn_construction_core">
+                    <block title="AI Features">
+                        <setting string="Cost prediction">
+                            <field name="construction_ai_cost"/>
+                        </setting>
+                        <setting string="Daily log summaries">
+                            <field name="construction_ai_summary"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

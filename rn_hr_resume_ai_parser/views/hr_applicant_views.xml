@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List view for hr.resume.similarity (used in applicant form one2many) -->
+    <record id="hr_resume_similarity_tree" model="ir.ui.view">
+        <field name="name">hr.resume.similarity.list</field>
+        <field name="model">hr.resume.similarity</field>
+        <field name="arch" type="xml">
+            <list decoration-warning="similarity_score &gt;= 0.8" create="0" delete="0">
+                <field name="other_applicant_id"/>
+                <field name="similarity_score" widget="progressbar"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Extend kanban: show match score on card -->
+    <record id="hr_applicant_view_kanban_resume_parser" model="ir.ui.view">
+        <field name="name">hr.applicant.kanban.resume.parser</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="arch" type="xml">
+            <xpath expr="//progressbar[@field='kanban_state']" position="after">
+                <field name="match_score"/>
+                <field name="parsing_status" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//footer" position="inside">
+                <div class="d-flex align-items-center" invisible="not match_score">
+                    <span class="text-muted small me-1">Match:</span>
+                    <field name="match_score" widget="progressbar" class="o_kanban_progressbar"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend list view: show parsing status and match score -->
+    <record id="hr_applicant_view_list_resume_parser" model="ir.ui.view">
+        <field name="name">hr.applicant.list.resume.parser</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='priority']" position="after">
+                <field name="parsing_status" widget="badge" optional="hide"/>
+                <field name="match_score" optional="hide" widget="progressbar"/>
+                <field name="parsing_confidence" optional="hide" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend form: button box, status ribbon, and Parsed Resume tab -->
+    <record id="hr_applicant_view_form_resume_parser" model="ir.ui.view">
+        <field name="name">hr.applicant.form.resume.parser</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_parsed_data"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o"
+                        invisible="parsing_status != 'done'"
+                        title="View Parsed Resume Data">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Parsed Data</span>
+                    </div>
+                </button>
+                <button name="action_view_duplicates"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-copy"
+                        invisible="duplicate_count == 0"
+                        title="View possible duplicates">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="duplicate_count" widget="statinfo" string="Duplicates"/></span>
+                    </div>
+                </button>
+                <button name="action_view_similar_resumes"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-files-o"
+                        invisible="resume_similarity_count == 0"
+                        title="Similar resumes">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="resume_similarity_count" widget="statinfo" string="Similar"/></span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="resume_text" invisible="1"/>
+                <field name="parsed_json" invisible="1"/>
+                <field name="extracted_skill_ids" invisible="1"/>
+                <field name="total_experience_years" invisible="1"/>
+                <field name="match_score" invisible="1"/>
+                <field name="parsing_status" invisible="1"/>
+                <field name="parsing_error_message" invisible="1"/>
+                <field name="resume_attachment_id" invisible="1"/>
+                <field name="parsing_confidence" invisible="1"/>
+                <field name="duplicate_applicant_ids" invisible="1"/>
+                <field name="duplicate_count" invisible="1"/>
+                <field name="duplicate_warning" invisible="1"/>
+                <field name="resume_similarity_count" invisible="1"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Parsed Resume" name="parsed_resume">
+                    <group>
+                        <group string="Status">
+                            <field name="parsing_status" widget="badge" readonly="1"/>
+                            <field name="match_score" widget="progressbar" readonly="1"/>
+                            <field name="parsing_confidence" widget="progressbar" readonly="1"/>
+                            <field name="total_experience_years" readonly="1"/>
+                            <field name="parsing_error_message" invisible="parsing_status != 'error'" readonly="1" nolabel="1"/>
+                            <button name="action_reprocess_resume" string="Reprocess Resume" type="object" class="btn-secondary" invisible="parsing_status not in ('done', 'error')"/>
+                            <button name="action_compute_similarities" string="Compute similar resumes" type="object" class="btn-secondary" invisible="parsing_status != 'done'"/>
+                        </group>
+                        <group string="Duplicates &amp; similarity">
+                            <field name="duplicate_warning" invisible="not duplicate_warning" nolabel="1" colspan="2"/>
+                            <field name="duplicate_applicant_ids" widget="many2many_tags" readonly="1" invisible="not duplicate_applicant_ids" options="{'no_create': True}"/>
+                            <field name="resume_similarity_ids" widget="one2many" readonly="1" invisible="not resume_similarity_ids" nolabel="1" colspan="2"/>
+                        </group>
+                        <group string="Extracted Skills">
+                            <field name="extracted_skill_ids" widget="many2many_tags" readonly="1" nolabel="1"/>
+                        </group>
+                    </group>
+                    <group string="Parsed JSON" invisible="not parsed_json">
+                        <field name="parsed_json" widget="json" readonly="1" nolabel="1"/>
+                    </group>
+                    <group string="Resume Text (excerpt)" invisible="not resume_text">
+                        <field name="resume_text" readonly="1" nolabel="1" style="height: 200px; white-space: pre-wrap;"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Dialog form for "View Parsed Data" smart button -->
+    <record id="hr_applicant_form_parsed_view" model="ir.ui.view">
+        <field name="name">hr.applicant.form.parsed.dialog</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <form string="Parsed Resume Data" create="0" delete="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="parsing_status" readonly="1"/>
+                            <field name="match_score" widget="progressbar" readonly="1"/>
+                            <field name="parsing_confidence" widget="progressbar" readonly="1"/>
+                            <field name="total_experience_years" readonly="1"/>
+                            <field name="extracted_skill_ids" widget="many2many_tags" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Full parsed data">
+                        <field name="parsed_json" widget="json" readonly="1" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_email_compose_wizard_form" model="ir.ui.view">
+        <field name="name">rn.ai.email.compose.wizard.form</field>
+        <field name="model">rn.ai.email.compose.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Compose AI Email">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="template_id"/>
+                    <field name="tone"/>
+                    <field name="language"/>
+                    <field name="custom_prompt"/>
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                </group>
+                <field name="subject"/>
+                <field name="body_html"/>
+                <footer>
+                    <button name="action_save_draft" type="object" string="Save Draft" class="btn-primary"/>
+                    <button name="action_send_now" type="object" string="Send Now"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_ai_email_compose_wizard" model="ir.actions.act_window">
+        <field name="name">Compose AI Email</field>
+        <field name="res_model">rn.ai.email.compose.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

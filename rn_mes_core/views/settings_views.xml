@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mes_settings_form" model="ir.ui.view">
+        <field name="name">rn.mes.settings.form</field>
+        <field name="model">rn.mes.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="auto_oee_snapshot"/>
+                        <field name="require_quality_on_complete"/>
+                        <field name="tablet_pin_required"/>
+                        <field name="ai_insights_enabled"/>
+                    </group>
+                    <group>
+                        <field name="default_checklist_id"/>
+                        <field name="iot_gateway_url"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_res_config_settings_mes" model="ir.ui.view">
+        <field name="name">res.config.settings.mes</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mrp.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='mrp']" position="inside">
+                <block title="Manufacturing MES" groups="rn_mes_core.group_rn_mes_manager">
+                    <setting string="Daily OEE snapshots">
+                        <field name="mes_auto_oee_snapshot"/>
+                    </setting>
+                    <setting string="Require quality check before job complete">
+                        <field name="mes_require_quality_on_complete"/>
+                    </setting>
+                    <setting string="AI production insights">
+                        <field name="mes_ai_insights_enabled"/>
+                    </setting>
+                    <setting string="IoT gateway URL">
+                        <field name="mes_iot_gateway_url"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_mes_settings" model="ir.actions.act_window">
+        <field name="name">MES Settings</field>
+        <field name="res_model">rn.mes.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

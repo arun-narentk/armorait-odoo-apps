@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_construction_dashboard" model="ir.actions.client">
+        <field name="name">Management Dashboard</field>
+        <field name="tag">rn_construction_core.construction_dashboard</field>
+    </record>
+    <record id="action_rn_construction_site_dashboard" model="ir.actions.client">
+        <field name="name">Site Engineer Dashboard</field>
+        <field name="tag">rn_construction_core.site_dashboard</field>
+    </record>
+</odoo>

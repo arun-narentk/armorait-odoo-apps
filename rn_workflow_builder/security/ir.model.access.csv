@@ -1,0 +1,21 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_workflow_user,rn.workflow user,model_rn_workflow,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_node_user,rn.workflow.node user,model_rn_workflow_node,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_run_user,rn.workflow.run user,model_rn_workflow_run,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_run_log_user,rn.workflow.run.log user,model_rn_workflow_run_log,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_connector_user,rn.workflow.connector user,model_rn_workflow_connector,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_template_user,rn.workflow.template user,model_rn_workflow_template,group_rn_workflow_user,1,0,0,0
+access_rn_workflow_designer,rn.workflow designer,model_rn_workflow,group_rn_workflow_designer,1,1,1,0
+access_rn_workflow_node_designer,rn.workflow.node designer,model_rn_workflow_node,group_rn_workflow_designer,1,1,1,1
+access_rn_workflow_run_designer,rn.workflow.run designer,model_rn_workflow_run,group_rn_workflow_designer,1,1,1,0
+access_rn_workflow_run_log_designer,rn.workflow.run.log designer,model_rn_workflow_run_log,group_rn_workflow_designer,1,0,0,0
+access_rn_workflow_connector_designer,rn.workflow.connector designer,model_rn_workflow_connector,group_rn_workflow_designer,1,0,0,0
+access_rn_workflow_template_designer,rn.workflow.template designer,model_rn_workflow_template,group_rn_workflow_designer,1,1,0,0
+access_rn_workflow_mgr,rn.workflow manager,model_rn_workflow,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_node_mgr,rn.workflow.node manager,model_rn_workflow_node,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_run_mgr,rn.workflow.run manager,model_rn_workflow_run,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_run_log_mgr,rn.workflow.run.log manager,model_rn_workflow_run_log,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_connector_mgr,rn.workflow.connector manager,model_rn_workflow_connector,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_template_mgr,rn.workflow.template manager,model_rn_workflow_template,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_settings_mgr,rn.workflow.settings manager,model_rn_workflow_settings,group_rn_workflow_manager,1,1,1,1
+access_rn_workflow_build_wizard,rn.workflow.build.from.text.wizard designer,model_rn_workflow_build_from_text_wizard,group_rn_workflow_designer,1,1,1,1

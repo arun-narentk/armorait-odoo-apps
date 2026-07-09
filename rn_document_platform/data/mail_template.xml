@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_sign_invitation" model="mail.template">
+        <field name="name">Document: Signature Invitation</field>
+        <field name="model_id" ref="model_rn_doc_sign_request"/>
+        <field name="subject">Please sign: {{ object.document_display }}</field>
+        <field name="body_html" type="html">
+            <p>Hello,</p>
+            <p>You are invited to sign document <strong><t t-out="object.reference"/></strong>.</p>
+            <p>Document: <t t-out="object.document_display"/></p>
+            <p>Please open the signing link sent by your administrator or portal invitation.</p>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

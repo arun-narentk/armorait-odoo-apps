@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_temple">
+        <field name="name">ARMORA Temple Platform</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+    <record id="group_rn_temple_office" model="res.groups">
+        <field name="name">Temple Office</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_temple"/>
+    </record>
+    <record id="group_rn_temple_trustee" model="res.groups">
+        <field name="name">Trustee</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_temple"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_temple_office'))]"/>
+    </record>
+    <record id="group_rn_temple_manager" model="res.groups">
+        <field name="name">Temple Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_temple"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_temple_trustee'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_temple_devotee_company" model="ir.rule">
+        <field name="name">Devotee multi-company</field>
+        <field name="model_id" ref="model_rn_temple_devotee"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_temple_donation_company" model="ir.rule">
+        <field name="name">Donation multi-company</field>
+        <field name="model_id" ref="model_rn_temple_donation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_temple_seva_booking_company" model="ir.rule">
+        <field name="name">Seva Booking multi-company</field>
+        <field name="model_id" ref="model_rn_temple_seva_booking"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_temple_festival_company" model="ir.rule">
+        <field name="name">Festival multi-company</field>
+        <field name="model_id" ref="model_rn_temple_festival"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_temple_settings_company" model="ir.rule">
+        <field name="name">Temple Settings multi-company</field>
+        <field name="model_id" ref="model_rn_temple_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_ai_email_intelligence.Dashboard">
+        <div class="o_rn_ai_email_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">AI Email Intelligence</h1>
+                    <div class="text-muted small">Context-aware drafts for CRM, sales, and accounting</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading...</div></t>
+            <t t-else="">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-lg"><div class="o_rn_email_card"><div class="label">Drafts</div><div class="value" t-esc="state.cards.total_drafts || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg"><div class="o_rn_email_card"><div class="label">Sent</div><div class="value" t-esc="state.cards.sent || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg"><div class="o_rn_email_card"><div class="label">In Review</div><div class="value" t-esc="state.cards.review || 0"/></div></div>
+                    <div class="col-6 col-md-4 col-lg"><div class="o_rn_email_card"><div class="label">Credits</div><div class="value" t-esc="state.cards.credits || 0"/></div></div>
+                </div>
+                <div class="text-muted small mt-2">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

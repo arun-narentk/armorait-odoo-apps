@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_doc_platform_settings" model="rn.doc.platform.settings">
+        <field name="name">Demo Document Platform</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="signature_credit_balance">500</field>
+    </record>
+
+    <record id="demo_doc_template_nda" model="rn.doc.platform.template">
+        <field name="name">Standard NDA</field>
+        <field name="code">nda_standard</field>
+        <field name="category">legal</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

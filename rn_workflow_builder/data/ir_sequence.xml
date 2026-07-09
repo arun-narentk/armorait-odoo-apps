@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_rn_workflow_run" model="ir.sequence">
+        <field name="name">Workflow Run</field>
+        <field name="code">rn.workflow.run</field>
+        <field name="prefix">WR</field>
+        <field name="padding">6</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_workflow_webhook" model="ir.sequence">
+        <field name="name">Workflow Webhook Token</field>
+        <field name="code">rn.workflow.webhook</field>
+        <field name="prefix">wh_</field>
+        <field name="padding">12</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

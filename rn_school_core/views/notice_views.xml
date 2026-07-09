@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_school_notice" model="ir.actions.act_window">
+        <field name="name">Notices</field>
+        <field name="res_model">rn.school.notice</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

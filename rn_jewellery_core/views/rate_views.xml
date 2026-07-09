@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_jewellery_rate_tree" model="ir.ui.view">
+        <field name="name">rn.jewellery.metal.rate.tree</field>
+        <field name="model">rn.jewellery.metal.rate</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="rate_date"/>
+                <field name="metal_type"/>
+                <field name="rate_per_gram"/>
+                <field name="source"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_jewellery_rate" model="ir.actions.act_window">
+        <field name="name">Metal Rates</field>
+        <field name="res_model">rn.jewellery.metal.rate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_jewellery_purity" model="ir.actions.act_window">
+        <field name="name">Metal Purity</field>
+        <field name="res_model">rn.jewellery.metal.purity</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

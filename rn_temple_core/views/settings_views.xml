@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_settings_form" model="ir.ui.view">
+        <field name="name">rn.temple.settings.form</field>
+        <field name="model">rn.temple.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="temple_name"/>
+                        <field name="enable_online_seva"/>
+                        <field name="enable_tax_receipts"/>
+                        <field name="default_seva_capacity"/>
+                        <field name="ai_assistant"/>
+                        <field name="ai_donation_analytics"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_settings" model="ir.actions.act_window">
+        <field name="name">Temple Settings</field>
+        <field name="res_model">rn.temple.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+    <record id="res_config_settings_view_form_temple" model="ir.ui.view">
+        <field name="name">res.config.settings.temple</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Temple" name="rn_temple_core">
+                    <block title="AI Features">
+                        <setting string="Temple assistant">
+                            <field name="temple_ai_assistant"/>
+                        </setting>
+                        <setting string="Donation analytics">
+                            <field name="temple_ai_analytics"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

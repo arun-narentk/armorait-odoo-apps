@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_asset_tree" model="ir.ui.view">
+        <field name="name">rn.temple.asset.tree</field>
+        <field name="model">rn.temple.asset</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="asset_type"/>
+                <field name="location"/>
+                <field name="value"/>
+                <field name="maintenance_due"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_temple_asset" model="ir.actions.act_window">
+        <field name="name">Temple Assets</field>
+        <field name="res_model">rn.temple.asset</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

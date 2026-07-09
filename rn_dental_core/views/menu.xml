@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_dental_root" name="Dental" sequence="71"
+              web_icon="rn_dental_core,static/description/icon.png"
+              groups="rn_dental_core.group_rn_dental_reception"/>
+    <menuitem id="menu_rn_dental_clinic_dashboard" name="Clinic Dashboard" parent="menu_rn_dental_root"
+              action="action_rn_dental_clinic_dashboard" sequence="5"
+              groups="rn_dental_core.group_rn_dental_manager"/>
+    <menuitem id="menu_rn_dental_dentist_dashboard" name="My Schedule" parent="menu_rn_dental_root"
+              action="action_rn_dental_dentist_dashboard" sequence="6"
+              groups="rn_dental_core.group_rn_dental_dentist"/>
+    <menuitem id="menu_rn_dental_patients" name="Patients" parent="menu_rn_dental_root"
+              action="action_rn_dental_patient" sequence="10"/>
+    <menuitem id="menu_rn_dental_appointments" name="Appointments" parent="menu_rn_dental_root"
+              action="action_rn_dental_appointment" sequence="20"/>
+    <menuitem id="menu_rn_dental_clinical" name="Clinical" parent="menu_rn_dental_root" sequence="30"/>
+    <menuitem id="menu_rn_dental_tooth_chart" name="Tooth Chart" parent="menu_rn_dental_clinical"
+              action="action_rn_dental_tooth_record" sequence="10"/>
+    <menuitem id="menu_rn_dental_treatment_plans" name="Treatment Plans" parent="menu_rn_dental_clinical"
+              action="action_rn_dental_treatment_plan" sequence="20"/>
+    <menuitem id="menu_rn_dental_imaging" name="Imaging" parent="menu_rn_dental_clinical"
+              action="action_rn_dental_imaging" sequence="30"/>
+    <menuitem id="menu_rn_dental_lab" name="Lab Requests" parent="menu_rn_dental_clinical"
+              action="action_rn_dental_lab_request" sequence="40"/>
+    <menuitem id="menu_rn_dental_recalls" name="Recalls" parent="menu_rn_dental_root"
+              action="action_rn_dental_recall" sequence="40"/>
+    <menuitem id="menu_rn_dental_config" name="Configuration" parent="menu_rn_dental_root" sequence="90"
+              groups="rn_dental_core.group_rn_dental_manager"/>
+    <menuitem id="menu_rn_dental_procedures" name="Procedures" parent="menu_rn_dental_config"
+              action="action_rn_dental_procedure" sequence="10"/>
+    <menuitem id="menu_rn_dental_chairs" name="Chairs" parent="menu_rn_dental_config"
+              action="action_rn_dental_chair" sequence="20"/>
+    <menuitem id="menu_rn_dental_settings" name="Settings" parent="menu_rn_dental_config"
+              action="action_rn_dental_settings" sequence="30"/>
+</odoo>

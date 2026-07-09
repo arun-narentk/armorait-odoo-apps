@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_dental_core.ClinicDashboard">
+        <div class="o_rn_dental_clinic_dashboard o_action p-3">
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Clinic Dashboard</h2>
+                <button class="btn btn-secondary" t-on-click="refresh">Refresh</button>
+            </div>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="" class="row g-3">
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Appointments Today</div><div class="fs-3" t-esc="state.appointments"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">In Chair</div><div class="fs-3" t-esc="state.inChair"/></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Chair Utilization</div><div class="fs-3"><t t-esc="state.utilization"/>%</div></div></div>
+                <div class="col-md-3"><div class="card p-3"><div class="text-muted">Pending Recalls</div><div class="fs-3" t-esc="state.recalls"/></div></div>
+                <div class="col-md-12"><div class="card p-3"><div class="text-muted">New Patients This Month</div><div class="fs-4" t-esc="state.newPatients"/></div></div>
+            </div>
+        </div>
+    </t>
+</templates>

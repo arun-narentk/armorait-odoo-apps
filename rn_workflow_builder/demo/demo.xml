@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_workflow_so" model="rn.workflow">
+        <field name="name">Demo: SO Created Notification</field>
+        <field name="code">demo_so_notify</field>
+        <field name="trigger_type">on_create</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="state">draft</field>
+    </record>
+    <record id="demo_rn_workflow_so_node" model="rn.workflow.node">
+        <field name="workflow_id" ref="demo_rn_workflow_so"/>
+        <field name="name">Send internal notification</field>
+        <field name="sequence">10</field>
+        <field name="node_type">action</field>
+        <field name="action_type">send_notification</field>
+        <field name="config_json">{"message": "New sales order created via demo workflow."}</field>
+    </record>
+</odoo>

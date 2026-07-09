@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_approval_delegation_tree" model="ir.ui.view">
+        <field name="name">rn.approval.delegation.tree</field>
+        <field name="model">rn.approval.delegation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="delegate_user_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="active"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_approval_delegation_form" model="ir.ui.view">
+        <field name="name">rn.approval.delegation.form</field>
+        <field name="model">rn.approval.delegation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="delegate_user_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_approval_delegation" model="ir.actions.act_window">
+        <field name="name">Delegations</field>
+        <field name="res_model">rn.approval.delegation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

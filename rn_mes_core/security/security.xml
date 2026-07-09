@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_mes">
+        <field name="name">ARMORA Manufacturing MES</field>
+        <field name="category_id" ref="base.module_category_manufacturing"/>
+    </record>
+    <record id="group_rn_mes_operator" model="res.groups">
+        <field name="name">Shop Floor Operator</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_mes"/>
+        <field name="implied_ids" eval="[(4, ref('mrp.group_mrp_user'))]"/>
+    </record>
+    <record id="group_rn_mes_supervisor" model="res.groups">
+        <field name="name">Production Supervisor</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_mes"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_mes_operator'))]"/>
+    </record>
+    <record id="group_rn_mes_manager" model="res.groups">
+        <field name="name">MES Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_mes"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_mes_supervisor'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_mes_terminal_company" model="ir.rule">
+        <field name="name">MES Terminal multi-company</field>
+        <field name="model_id" ref="model_rn_mes_terminal"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_session_company" model="ir.rule">
+        <field name="name">MES Session multi-company</field>
+        <field name="model_id" ref="model_rn_mes_production_session"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_event_company" model="ir.rule">
+        <field name="name">MES Event multi-company</field>
+        <field name="model_id" ref="model_rn_mes_production_event"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_scrap_company" model="ir.rule">
+        <field name="name">MES Scrap multi-company</field>
+        <field name="model_id" ref="model_rn_mes_scrap_record"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_checklist_company" model="ir.rule">
+        <field name="name">MES Checklist multi-company</field>
+        <field name="model_id" ref="model_rn_mes_quality_checklist"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_inspection_company" model="ir.rule">
+        <field name="name">MES Inspection multi-company</field>
+        <field name="model_id" ref="model_rn_mes_quality_inspection"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_downtime_company" model="ir.rule">
+        <field name="name">MES Downtime multi-company</field>
+        <field name="model_id" ref="model_rn_mes_downtime_event"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_device_company" model="ir.rule">
+        <field name="name">MES Device multi-company</field>
+        <field name="model_id" ref="model_rn_mes_machine_device"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_reading_company" model="ir.rule">
+        <field name="name">MES Reading multi-company</field>
+        <field name="model_id" ref="model_rn_mes_machine_reading"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_barcode_company" model="ir.rule">
+        <field name="name">MES Barcode Scan multi-company</field>
+        <field name="model_id" ref="model_rn_mes_barcode_scan"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_oee_company" model="ir.rule">
+        <field name="name">MES OEE multi-company</field>
+        <field name="model_id" ref="model_rn_mes_oee_snapshot"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_mes_settings_company" model="ir.rule">
+        <field name="name">MES Settings multi-company</field>
+        <field name="model_id" ref="model_rn_mes_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

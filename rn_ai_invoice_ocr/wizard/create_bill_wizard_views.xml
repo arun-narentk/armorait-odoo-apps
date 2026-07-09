@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_invoice_create_bill_wizard_form" model="ir.ui.view">
+        <field name="name">rn.ai.invoice.create.bill.wizard.form</field>
+        <field name="model">rn.ai.invoice.create.bill.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Vendor Bill">
+                <group>
+                    <field name="scan_id" readonly="1"/>
+                    <field name="partner_id"/>
+                    <field name="invoice_number"/>
+                    <field name="amount_total"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="confirm_duplicate" invisible="not is_duplicate"/>
+                </group>
+                <footer>
+                    <button name="action_create_bill" type="object" string="Create Bill" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

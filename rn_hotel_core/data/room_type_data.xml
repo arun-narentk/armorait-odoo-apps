@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="room_type_standard" model="rn.hotel.room.type">
+        <field name="name">Standard</field>
+        <field name="code">STD</field>
+        <field name="base_rate">3500</field>
+        <field name="max_occupancy">2</field>
+    </record>
+    <record id="room_type_deluxe" model="rn.hotel.room.type">
+        <field name="name">Deluxe</field>
+        <field name="code">DLX</field>
+        <field name="base_rate">5500</field>
+        <field name="max_occupancy">3</field>
+    </record>
+    <record id="room_type_suite" model="rn.hotel.room.type">
+        <field name="name">Suite</field>
+        <field name="code">STE</field>
+        <field name="base_rate">9000</field>
+        <field name="max_occupancy">4</field>
+    </record>
+</odoo>

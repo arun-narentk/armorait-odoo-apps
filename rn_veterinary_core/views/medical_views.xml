@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_vet_medical_record_tree" model="ir.ui.view">
+        <field name="name">rn.vet.medical.record.tree</field>
+        <field name="model">rn.vet.medical.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="record_date"/>
+                <field name="name"/>
+                <field name="pet_id"/>
+                <field name="veterinarian_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_vet_medical_record_form" model="ir.ui.view">
+        <field name="name">rn.vet.medical.record.form</field>
+        <field name="model">rn.vet.medical.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_ai_note" type="object" string="AI Note Draft" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pet_id"/>
+                        <field name="record_date"/>
+                        <field name="veterinarian_id"/>
+                    </group>
+                    <field name="diagnosis"/>
+                    <field name="prescription"/>
+                    <field name="follow_up_plan"/>
+                    <field name="ai_note_draft" readonly="1"/>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_vet_medical_record" model="ir.actions.act_window">
+        <field name="name">Medical Records</field>
+        <field name="res_model">rn.vet.medical.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_vet_lab_result" model="ir.actions.act_window">
+        <field name="name">Lab Results</field>
+        <field name="res_model">rn.vet.lab.result</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

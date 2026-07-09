@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_hotel_guest_front,rn.hotel.guest front,model_rn_hotel_guest,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_reservation_front,rn.hotel.reservation front,model_rn_hotel_reservation,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_room_front,rn.hotel.room front,model_rn_hotel_room,group_rn_hotel_front,1,1,0,0
+access_rn_hotel_room_type_front,rn.hotel.room.type front,model_rn_hotel_room_type,group_rn_hotel_front,1,0,0,0
+access_rn_hotel_folio_front,rn.hotel.folio front,model_rn_hotel_folio,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_folio_line_front,rn.hotel.folio.line front,model_rn_hotel_folio_line,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_hk_task,rn.hotel.housekeeping.task hk,model_rn_hotel_housekeeping_task,group_rn_hotel_housekeeping,1,1,1,0
+access_rn_hotel_maintenance_front,rn.hotel.maintenance.request front,model_rn_hotel_maintenance_request,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_room_service_front,rn.hotel.room.service.order front,model_rn_hotel_room_service_order,group_rn_hotel_front,1,1,1,0
+access_rn_hotel_room_mgr,rn.hotel.room manager,model_rn_hotel_room,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_room_type_mgr,rn.hotel.room.type manager,model_rn_hotel_room_type,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_guest_mgr,rn.hotel.guest manager,model_rn_hotel_guest,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_reservation_mgr,rn.hotel.reservation manager,model_rn_hotel_reservation,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_folio_mgr,rn.hotel.folio manager,model_rn_hotel_folio,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_settings_mgr,rn.hotel.settings manager,model_rn_hotel_settings,group_rn_hotel_manager,1,1,1,1
+access_rn_hotel_checkin_wizard,rn.hotel.checkin.wizard front,model_rn_hotel_checkin_wizard,group_rn_hotel_front,1,1,1,1

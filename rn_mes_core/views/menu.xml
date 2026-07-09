@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_mes_root" name="Manufacturing MES" sequence="45"
+              web_icon="rn_mes_core,static/description/icon.png"
+              groups="rn_mes_core.group_rn_mes_operator"/>
+    <menuitem id="menu_rn_mes_dashboard" name="Plant Dashboard" parent="menu_rn_mes_root"
+              action="action_rn_mes_dashboard" sequence="5"
+              groups="rn_mes_core.group_rn_mes_supervisor"/>
+    <menuitem id="menu_rn_mes_tablet" name="Shop Floor Tablet" parent="menu_rn_mes_root"
+              action="action_rn_mes_tablet" sequence="10"
+              groups="rn_mes_core.group_rn_mes_operator"/>
+    <menuitem id="menu_rn_mes_execution" name="Execution" parent="menu_rn_mes_root" sequence="20"/>
+    <menuitem id="menu_rn_mes_sessions" name="Production Sessions" parent="menu_rn_mes_execution"
+              action="action_rn_mes_session" sequence="10"/>
+    <menuitem id="menu_rn_mes_terminals" name="Terminals" parent="menu_rn_mes_execution"
+              action="action_rn_mes_terminal" sequence="20"
+              groups="rn_mes_core.group_rn_mes_supervisor"/>
+    <menuitem id="menu_rn_mes_quality" name="Quality" parent="menu_rn_mes_root" sequence="30"/>
+    <menuitem id="menu_rn_mes_checklists" name="Checklists" parent="menu_rn_mes_quality"
+              action="action_rn_mes_checklist" sequence="10"/>
+    <menuitem id="menu_rn_mes_inspections" name="Inspections" parent="menu_rn_mes_quality"
+              action="action_rn_mes_inspection" sequence="20"/>
+    <menuitem id="menu_rn_mes_downtime_root" name="Downtime" parent="menu_rn_mes_root" sequence="40"/>
+    <menuitem id="menu_rn_mes_downtime" name="Downtime Events" parent="menu_rn_mes_downtime_root"
+              action="action_rn_mes_downtime" sequence="10"/>
+    <menuitem id="menu_rn_mes_downtime_reasons" name="Reasons" parent="menu_rn_mes_downtime_root"
+              action="action_rn_mes_downtime_reason" sequence="20"
+              groups="rn_mes_core.group_rn_mes_supervisor"/>
+    <menuitem id="menu_rn_mes_oee" name="OEE Snapshots" parent="menu_rn_mes_root"
+              action="action_rn_mes_oee" sequence="50"
+              groups="rn_mes_core.group_rn_mes_supervisor"/>
+    <menuitem id="menu_rn_mes_iot" name="Machine Devices" parent="menu_rn_mes_root"
+              action="action_rn_mes_device" sequence="60"
+              groups="rn_mes_core.group_rn_mes_supervisor"/>
+    <menuitem id="menu_rn_mes_config" name="Configuration" parent="menu_rn_mes_root" sequence="90"
+              groups="rn_mes_core.group_rn_mes_manager"/>
+    <menuitem id="menu_rn_mes_settings" name="MES Settings" parent="menu_rn_mes_config"
+              action="action_rn_mes_settings" sequence="10"/>
+</odoo>

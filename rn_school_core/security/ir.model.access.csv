@@ -1,0 +1,23 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_school_student_staff,rn.school.student staff,model_rn_school_student,group_rn_school_staff,1,1,1,0
+access_rn_school_parent_staff,rn.school.parent.guardian staff,model_rn_school_parent_guardian,group_rn_school_staff,1,1,1,0
+access_rn_school_enquiry_staff,rn.school.admission.enquiry staff,model_rn_school_admission_enquiry,group_rn_school_staff,1,1,1,0
+access_rn_school_application_staff,rn.school.admission.application staff,model_rn_school_admission_application,group_rn_school_staff,1,1,1,0
+access_rn_school_class_staff,rn.school.class staff,model_rn_school_class,group_rn_school_staff,1,0,0,0
+access_rn_school_year_staff,rn.school.academic.year staff,model_rn_school_academic_year,group_rn_school_staff,1,0,0,0
+access_rn_school_fee_staff,rn.school.fee.installment staff,model_rn_school_fee_installment,group_rn_school_staff,1,1,1,0
+access_rn_school_attendance_staff,rn.school.attendance.session staff,model_rn_school_attendance_session,group_rn_school_staff,1,1,1,0
+access_rn_school_att_line_staff,rn.school.attendance.line staff,model_rn_school_attendance_line,group_rn_school_staff,1,1,1,0
+access_rn_school_teacher_hw,rn.school.homework teacher,model_rn_school_homework,group_rn_school_teacher,1,1,1,0
+access_rn_school_teacher_exam,rn.school.exam teacher,model_rn_school_exam,group_rn_school_teacher,1,1,1,0
+access_rn_school_teacher_result,rn.school.exam.result teacher,model_rn_school_exam_result,group_rn_school_teacher,1,1,1,0
+access_rn_school_teacher_tt,rn.school.timetable teacher,model_rn_school_timetable,group_rn_school_teacher,1,1,1,0
+access_rn_school_teacher_sub,rn.school.homework.submission teacher,model_rn_school_homework_submission,group_rn_school_teacher,1,1,1,0
+access_rn_school_notice_staff,rn.school.notice staff,model_rn_school_notice,group_rn_school_staff,1,0,0,0
+access_rn_school_admin_all,rn.school.admin manager,model_rn_school_class,group_rn_school_admin,1,1,1,1
+access_rn_school_year_admin,rn.school.academic.year admin,model_rn_school_academic_year,group_rn_school_admin,1,1,1,1
+access_rn_school_fee_struct_admin,rn.school.fee.structure admin,model_rn_school_fee_structure,group_rn_school_admin,1,1,1,1
+access_rn_school_student_admin,rn.school.student admin,model_rn_school_student,group_rn_school_admin,1,1,1,1
+access_rn_school_settings_admin,rn.school.settings admin,model_rn_school_settings,group_rn_school_admin,1,1,1,1
+access_rn_school_notice_admin,rn.school.notice admin,model_rn_school_notice,group_rn_school_admin,1,1,1,1
+access_rn_school_approve_wizard,rn.school.admission.approve.wizard admin,model_rn_school_admission_approve_wizard,group_rn_school_admin,1,1,1,1

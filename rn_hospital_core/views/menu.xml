@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hospital_root" name="Hospital" sequence="60"
+              web_icon="rn_hospital_core,static/description/icon.png"
+              groups="rn_hospital_core.group_rn_hospital_reception"/>
+    <menuitem id="menu_rn_hospital_mgmt_dashboard" name="Hospital Dashboard" parent="menu_rn_hospital_root"
+              action="action_rn_hospital_dashboard" sequence="5"
+              groups="rn_hospital_core.group_rn_hospital_manager"/>
+    <menuitem id="menu_rn_doctor_dashboard" name="Doctor Dashboard" parent="menu_rn_hospital_root"
+              action="action_rn_doctor_dashboard" sequence="6"
+              groups="rn_hospital_core.group_rn_hospital_doctor"/>
+    <menuitem id="menu_rn_hospital_patients" name="Patients" parent="menu_rn_hospital_root"
+              action="action_rn_hospital_patient" sequence="10"/>
+    <menuitem id="menu_rn_hospital_appointments" name="Appointments" parent="menu_rn_hospital_root"
+              action="action_rn_hospital_appointment" sequence="20"/>
+    <menuitem id="menu_rn_hospital_book" name="Book Appointment" parent="menu_rn_hospital_root"
+              action="action_rn_hospital_book_wizard" sequence="21"/>
+    <menuitem id="menu_rn_hospital_emr" name="EMR" parent="menu_rn_hospital_root" sequence="30"
+              groups="rn_hospital_core.group_rn_hospital_doctor"/>
+    <menuitem id="menu_rn_hospital_encounters" name="Encounters" parent="menu_rn_hospital_emr"
+              action="action_rn_hospital_encounter" sequence="10"/>
+    <menuitem id="menu_rn_hospital_ipd" name="Inpatient" parent="menu_rn_hospital_root" sequence="40"
+              groups="rn_hospital_core.group_rn_hospital_nurse"/>
+    <menuitem id="menu_rn_hospital_admissions" name="Admissions" parent="menu_rn_hospital_ipd"
+              action="action_rn_hospital_admission" sequence="10"/>
+    <menuitem id="menu_rn_hospital_wards" name="Wards" parent="menu_rn_hospital_ipd"
+              action="action_rn_hospital_ward" sequence="20"/>
+    <menuitem id="menu_rn_hospital_billing" name="Billing" parent="menu_rn_hospital_root"
+              action="action_rn_hospital_billing" sequence="50"/>
+    <menuitem id="menu_rn_hospital_config" name="Configuration" parent="menu_rn_hospital_root" sequence="90"
+              groups="rn_hospital_core.group_rn_hospital_manager"/>
+    <menuitem id="menu_rn_hospital_schedules" name="Doctor Schedules" parent="menu_rn_hospital_config"
+              action="action_rn_hospital_doctor_schedule" sequence="10"/>
+    <menuitem id="menu_rn_hospital_settings" name="Settings" parent="menu_rn_hospital_config"
+              action="action_rn_hospital_settings" sequence="20"/>
+</odoo>

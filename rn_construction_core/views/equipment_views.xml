@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_equipment_tree" model="ir.ui.view">
+        <field name="name">rn.construction.equipment.tree</field>
+        <field name="model">rn.construction.equipment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="equipment_type"/>
+                <field name="status"/>
+                <field name="site_id"/>
+                <field name="operator_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_construction_equipment_usage_tree" model="ir.ui.view">
+        <field name="name">rn.construction.equipment.usage.tree</field>
+        <field name="model">rn.construction.equipment.usage</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="usage_date"/>
+                <field name="equipment_id"/>
+                <field name="site_id"/>
+                <field name="hours"/>
+                <field name="fuel_liters"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_construction_equipment" model="ir.actions.act_window">
+        <field name="name">Equipment</field>
+        <field name="res_model">rn.construction.equipment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_construction_equipment_usage" model="ir.actions.act_window">
+        <field name="name">Equipment Usage</field>
+        <field name="res_model">rn.construction.equipment.usage</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

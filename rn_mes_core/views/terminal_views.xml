@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mes_terminal_tree" model="ir.ui.view">
+        <field name="name">rn.mes.terminal.tree</field>
+        <field name="model">rn.mes.terminal</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="workcenter_id"/>
+                <field name="session_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_mes_terminal_form" model="ir.ui.view">
+        <field name="name">rn.mes.terminal.form</field>
+        <field name="model">rn.mes.terminal</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="workcenter_id"/>
+                        <field name="location_id"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Features">
+                        <field name="allow_barcode"/>
+                        <field name="allow_photo"/>
+                        <field name="allow_quality"/>
+                    </group>
+                    <group>
+                        <field name="session_id" readonly="1"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_mes_terminal" model="ir.actions.act_window">
+        <field name="name">Shop Floor Terminals</field>
+        <field name="res_model">rn.mes.terminal</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_workflow_builder.Designer">
+        <div class="o_rn_workflow_designer o_action p-3">
+            <h2>Workflow Designer</h2>
+            <div t-if="state.loading">Loading...</div>
+            <div t-else="">
+                <p t-if="state.workflow.name">
+                    <strong t-esc="state.workflow.name"/>
+                    (<t t-esc="state.workflow.trigger_type"/>)
+                </p>
+                <p t-else="">Select a workflow and click Open Designer, or create nodes on the workflow form.</p>
+                <div class="o_rn_workflow_nodes mt-3">
+                    <div class="card mb-2 p-3" t-foreach="state.nodes" t-as="node" t-key="node.id">
+                        <span class="badge text-bg-secondary me-2" t-esc="node.node_type"/>
+                        <strong t-esc="node.name"/>
+                        <span t-if="node.action_type" class="text-muted ms-2">(<t t-esc="node.action_type"/>)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

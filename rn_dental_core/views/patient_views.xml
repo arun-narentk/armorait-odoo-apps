@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dental_patient_tree" model="ir.ui.view">
+        <field name="name">rn.dental.patient.tree</field>
+        <field name="model">rn.dental.patient</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="mobile"/>
+                <field name="consent_signed"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_dental_patient_form" model="ir.ui.view">
+        <field name="name">rn.dental.patient.form</field>
+        <field name="model">rn.dental.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                        <field name="date_of_birth"/>
+                        <field name="gender"/>
+                        <field name="consent_signed"/>
+                    </group>
+                    <notebook>
+                        <page string="Clinical">
+                            <field name="allergies"/>
+                            <field name="medical_history"/>
+                            <field name="dental_history"/>
+                            <field name="clinical_notes"/>
+                        </page>
+                        <page string="Tooth Chart">
+                            <field name="tooth_record_ids">
+                                <list editable="bottom">
+                                    <field name="tooth_number"/>
+                                    <field name="condition"/>
+                                    <field name="surface"/>
+                                    <field name="last_treatment_date"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Appointments">
+                            <field name="appointment_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="start_datetime"/>
+                                    <field name="dentist_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_dental_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">rn.dental.patient</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_dental_chair" model="ir.actions.act_window">
+        <field name="name">Chairs</field>
+        <field name="res_model">rn.dental.chair</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

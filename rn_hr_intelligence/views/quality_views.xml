@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hr_quality_tree" model="ir.ui.view">
+        <field name="name">rn.hr.data.quality.check.tree</field>
+        <field name="model">rn.hr.data.quality.check</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="resolved">
+                <field name="name"/>
+                <field name="check_type"/>
+                <field name="employee_id"/>
+                <field name="message"/>
+                <field name="resolved"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_hr_quality" model="ir.actions.act_window">
+        <field name="name">Data Quality</field>
+        <field name="res_model">rn.hr.data.quality.check</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

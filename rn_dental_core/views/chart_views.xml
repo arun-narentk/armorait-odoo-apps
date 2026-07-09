@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dental_tooth_record_tree" model="ir.ui.view">
+        <field name="name">rn.dental.tooth.record.tree</field>
+        <field name="model">rn.dental.tooth.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="patient_id"/>
+                <field name="tooth_number"/>
+                <field name="condition"/>
+                <field name="surface"/>
+                <field name="last_treatment_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_dental_tooth_record" model="ir.actions.act_window">
+        <field name="name">Tooth Chart</field>
+        <field name="res_model">rn.dental.tooth.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

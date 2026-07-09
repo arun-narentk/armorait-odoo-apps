@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_vet_owner" model="rn.vet.owner">
+        <field name="name">Priya Menon</field>
+        <field name="mobile">9876512345</field>
+    </record>
+    <record id="demo_vet_pet" model="rn.vet.pet">
+        <field name="name">Bruno</field>
+        <field name="owner_id" ref="demo_vet_owner"/>
+        <field name="species">dog</field>
+        <field name="breed">Labrador</field>
+        <field name="weight_kg">28.5</field>
+        <field name="microchip">CHIP-DEMO-001</field>
+    </record>
+    <record id="demo_vet_kennel" model="rn.vet.kennel">
+        <field name="name">Kennel A1</field>
+        <field name="code">A1</field>
+        <field name="size">large</field>
+    </record>
+    <record id="demo_vet_vaccination" model="rn.vet.vaccination">
+        <field name="pet_id" ref="demo_vet_pet"/>
+        <field name="vaccine_type_id" ref="vaccine_rabies"/>
+        <field name="administered_date" eval="(DateTime.today() - relativedelta(months=11)).strftime('%Y-%m-%d')"/>
+        <field name="next_due_date" eval="(DateTime.today() + relativedelta(days=30)).strftime('%Y-%m-%d')"/>
+        <field name="state">done</field>
+    </record>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_approval">
+        <field name="name">ARMORA Approval Engine</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+    <record id="group_rn_approval_user" model="res.groups">
+        <field name="name">Approval User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_approval"/>
+    </record>
+    <record id="group_rn_approval_approver" model="res.groups">
+        <field name="name">Approver</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_approval"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_approval_user'))]"/>
+    </record>
+    <record id="group_rn_approval_manager" model="res.groups">
+        <field name="name">Approval Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_approval"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_approval_approver'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_approval_workflow_company" model="ir.rule">
+        <field name="name">Approval Workflow multi-company</field>
+        <field name="model_id" ref="model_rn_approval_workflow"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_approval_request_company" model="ir.rule">
+        <field name="name">Approval Request multi-company</field>
+        <field name="model_id" ref="model_rn_approval_request"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_approval_request_line_company" model="ir.rule">
+        <field name="name">Approval Request Line multi-company</field>
+        <field name="model_id" ref="model_rn_approval_request_line"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_approval_delegation_company" model="ir.rule">
+        <field name="name">Approval Delegation multi-company</field>
+        <field name="model_id" ref="model_rn_approval_delegation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_approval_settings_company" model="ir.rule">
+        <field name="name">Approval Settings multi-company</field>
+        <field name="model_id" ref="model_rn_approval_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

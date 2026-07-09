@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hospital_billing_tree" model="ir.ui.view">
+        <field name="name">rn.hospital.billing.line.tree</field>
+        <field name="model">rn.hospital.billing.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="patient_id"/>
+                <field name="charge_type"/>
+                <field name="description"/>
+                <field name="amount"/>
+                <field name="state"/>
+                <field name="invoice_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_hospital_billing" model="ir.actions.act_window">
+        <field name="name">Billing Lines</field>
+        <field name="res_model">rn.hospital.billing.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

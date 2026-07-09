@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_workflow_connector_tree" model="ir.ui.view">
+        <field name="name">rn.workflow.connector.tree</field>
+        <field name="model">rn.workflow.connector</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="connector_type"/>
+                <field name="is_external"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_workflow_connector" model="ir.actions.act_window">
+        <field name="name">Connectors</field>
+        <field name="res_model">rn.workflow.connector</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

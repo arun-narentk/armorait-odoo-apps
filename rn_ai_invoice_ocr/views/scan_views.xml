@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_invoice_scan_tree" model="ir.ui.view">
+        <field name="name">rn.ai.invoice.scan.tree</field>
+        <field name="model">rn.ai.invoice.scan</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="is_duplicate" decoration-muted="state == 'rejected'">
+                <field name="reference"/>
+                <field name="attachment_name"/>
+                <field name="partner_id"/>
+                <field name="invoice_number"/>
+                <field name="invoice_date"/>
+                <field name="amount_total"/>
+                <field name="overall_confidence"/>
+                <field name="state" widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-warning="state in ('extracting', 'review')"
+                    decoration-success="state in ('approved', 'billed')"
+                    decoration-danger="state == 'duplicate'"/>
+                <field name="is_duplicate" column_invisible="True"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_ai_invoice_scan_form" model="ir.ui.view">
+        <field name="name">rn.ai.invoice.scan.form</field>
+        <field name="model">rn.ai.invoice.scan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_extract" type="object" string="Run OCR"
+                        invisible="state not in ('draft', 'rejected')" class="btn-primary"/>
+                    <button name="action_mark_review" type="object" string="Mark Review"
+                        invisible="state != 'extracting'"/>
+                    <button name="action_approve" type="object" string="Approve"
+                        invisible="state not in ('review', 'duplicate')" class="btn-primary"/>
+                    <button name="action_create_vendor_bill" type="object" string="Create Vendor Bill"
+                        invisible="state not in ('review', 'approved', 'duplicate')" class="btn-primary"/>
+                    <button name="action_open_bill" type="object" string="Open Vendor Bill"
+                        invisible="not move_id"/>
+                    <button name="action_reject" type="object" string="Reject"
+                        invisible="state in ('billed', 'rejected')"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,extracting,review,approved,billed"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-warning" role="alert" invisible="not is_duplicate">
+                        Duplicate invoice detected. Review before creating a bill.
+                    </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_bill" type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                            invisible="not move_id">
+                            <field name="move_id" widget="statinfo" string="Vendor Bill"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="reference" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="attachment_id" widget="binary"/>
+                            <field name="partner_id"/>
+                            <field name="partner_name_extracted" readonly="1"/>
+                            <field name="partner_confidence" widget="progressbar"/>
+                            <field name="purchase_order_id"/>
+                        </group>
+                        <group>
+                            <field name="invoice_number"/>
+                            <field name="invoice_number_confidence" widget="progressbar"/>
+                            <field name="invoice_date"/>
+                            <field name="due_date"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="overall_confidence" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <group string="Amounts">
+                        <group>
+                            <field name="amount_untaxed"/>
+                            <field name="amount_tax"/>
+                            <field name="amount_total"/>
+                            <field name="amount_confidence" widget="progressbar"/>
+                        </group>
+                        <group string="India GST">
+                            <field name="gstin"/>
+                            <field name="gstin_confidence" widget="progressbar"/>
+                            <field name="cgst_amount"/>
+                            <field name="sgst_amount"/>
+                            <field name="igst_amount"/>
+                            <field name="hsn_code"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Line Items" name="lines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="description"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="discount"/>
+                                    <field name="tax_percent"/>
+                                    <field name="price_subtotal"/>
+                                    <field name="hsn_code"/>
+                                    <field name="confidence" widget="progressbar"/>
+                                </list>
+                            </field>
+                            <field name="line_confidence" widget="progressbar"/>
+                        </page>
+                        <page string="Extracted Text" name="raw_text">
+                            <field name="raw_text" nolabel="1"/>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" nolabel="1"/>
+                        </page>
+                    </notebook>
+                    <field name="is_duplicate" invisible="1"/>
+                    <field name="duplicate_move_id" invisible="not is_duplicate"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_ai_invoice_scan_search" model="ir.ui.view">
+        <field name="name">rn.ai.invoice.scan.search</field>
+        <field name="model">rn.ai.invoice.scan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reference"/>
+                <field name="partner_id"/>
+                <field name="invoice_number"/>
+                <filter name="review" string="Ready for Review" domain="[('state', '=', 'review')]"/>
+                <filter name="duplicate" string="Duplicates" domain="[('is_duplicate', '=', True)]"/>
+                <filter name="billed" string="Billed" domain="[('state', '=', 'billed')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_partner" string="Vendor" context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_ai_invoice_scan" model="ir.actions.act_window">
+        <field name="name">Invoice Scans</field>
+        <field name="res_model">rn.ai.invoice.scan</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_review': 0}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Upload a supplier invoice</p>
+            <p>Drag and drop PDF or image files. OCR extracts vendor, GST, amounts, and line items.</p>
+        </field>
+    </record>
+</odoo>

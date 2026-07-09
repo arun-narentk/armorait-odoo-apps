@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_construction_daily_log_tree" model="ir.ui.view">
+        <field name="name">rn.construction.site.daily.log.tree</field>
+        <field name="model">rn.construction.site.daily.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="log_date"/>
+                <field name="name"/>
+                <field name="site_id"/>
+                <field name="labour_count"/>
+                <field name="weather"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_construction_daily_log_form" model="ir.ui.view">
+        <field name="name">rn.construction.site.daily.log.form</field>
+        <field name="model">rn.construction.site.daily.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_ai_summary" type="object" string="AI Summary" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="site_id"/>
+                        <field name="log_date"/>
+                        <field name="weather"/>
+                        <field name="labour_count"/>
+                    </group>
+                    <field name="progress_note"/>
+                    <field name="material_received"/>
+                    <field name="incidents"/>
+                    <field name="ai_summary" readonly="1"/>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_construction_site_issue_tree" model="ir.ui.view">
+        <field name="name">rn.construction.site.issue.tree</field>
+        <field name="model">rn.construction.site.issue</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="site_id"/>
+                <field name="issue_type"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_construction_daily_log" model="ir.actions.act_window">
+        <field name="name">Daily Logs</field>
+        <field name="res_model">rn.construction.site.daily.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_construction_site_issue" model="ir.actions.act_window">
+        <field name="name">Site Issues</field>
+        <field name="res_model">rn.construction.site.issue</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

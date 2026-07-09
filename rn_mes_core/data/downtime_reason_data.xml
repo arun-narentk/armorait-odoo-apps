@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="downtime_reason_power" model="rn.mes.downtime.reason">
+        <field name="name">Power Failure</field>
+        <field name="code">POWER</field>
+        <field name="category">unplanned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="downtime_reason_material" model="rn.mes.downtime.reason">
+        <field name="name">Material Shortage</field>
+        <field name="code">MATERIAL</field>
+        <field name="category">unplanned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="downtime_reason_breakdown" model="rn.mes.downtime.reason">
+        <field name="name">Machine Breakdown</field>
+        <field name="code">BREAKDOWN</field>
+        <field name="category">unplanned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="downtime_reason_tool" model="rn.mes.downtime.reason">
+        <field name="name">Tool Change</field>
+        <field name="code">TOOL</field>
+        <field name="category">planned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="downtime_reason_setup" model="rn.mes.downtime.reason">
+        <field name="name">Setup / Changeover</field>
+        <field name="code">SETUP</field>
+        <field name="category">planned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="downtime_reason_quality" model="rn.mes.downtime.reason">
+        <field name="name">Quality Issue</field>
+        <field name="code">QUALITY</field>
+        <field name="category">unplanned</field>
+        <field name="loss_type">quality</field>
+        <field name="sequence">60</field>
+    </record>
+    <record id="downtime_reason_operator" model="rn.mes.downtime.reason">
+        <field name="name">Operator Absence</field>
+        <field name="code">OPERATOR</field>
+        <field name="category">unplanned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">70</field>
+    </record>
+    <record id="downtime_reason_maintenance" model="rn.mes.downtime.reason">
+        <field name="name">Maintenance</field>
+        <field name="code">MAINT</field>
+        <field name="category">planned</field>
+        <field name="loss_type">availability</field>
+        <field name="sequence">80</field>
+    </record>
+</odoo>

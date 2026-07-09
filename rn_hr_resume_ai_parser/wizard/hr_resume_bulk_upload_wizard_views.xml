@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_resume_bulk_upload_wizard_form" model="ir.ui.view">
+        <field name="name">hr.resume.bulk.upload.wizard.form</field>
+        <field name="model">hr.resume.bulk.upload.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Resume Upload">
+                <sheet>
+                    <group invisible="state != 'upload'">
+                        <group>
+                            <field name="job_id" options="{'no_create': True}"/>
+                            <field name="state" invisible="1"/>
+                        </group>
+                    </group>
+                    <group invisible="state != 'upload'">
+                        <group string="Upload PDF resumes">
+                            <field name="attachment_ids" nolabel="1" options="{'accepted_file_extensions': '.pdf'}"/>
+                        </group>
+                    </group>
+                    <group invisible="state != 'done'">
+                        <field name="result_message" nolabel="1"/>
+                        <field name="result_count" invisible="1"/>
+                        <field name="created_applicant_ids" invisible="1"/>
+                    </group>
+                </sheet>
+                <footer invisible="state != 'upload'">
+                    <button name="action_confirm" string="Create applicants and parse" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+                <footer invisible="state != 'done'">
+                    <button name="action_view_created" string="View applicants" type="object" class="btn-primary" invisible="result_count == 0"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+.o_rn_hotel_dashboard,
+.o_rn_hotel_room_board {
+    min-height: 100%;
+    background: var(--o-view-background-color, #f8f9fa);
+}
+
+.o_rn_hotel_dashboard .card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.o_rn_room_tile {
+    min-width: 120px;
+    border: none;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_doc_platform_settings_form" model="ir.ui.view">
+        <field name="name">rn.doc.platform.settings.form</field>
+        <field name="model">rn.doc.platform.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Signing">
+                        <field name="signature_credit_balance"/>
+                        <field name="default_expiry_days"/>
+                        <field name="require_audit_hash"/>
+                    </group>
+                    <group string="Delivery and AI">
+                        <field name="enable_email_invite"/>
+                        <field name="enable_whatsapp_delivery"/>
+                        <field name="enable_ai_analysis"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_doc_platform_settings" model="ir.actions.act_window">
+        <field name="name">Platform Settings</field>
+        <field name="res_model">rn.doc.platform.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

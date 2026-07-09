@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_rn_vet_appointment" model="ir.sequence">
+        <field name="name">Vet Appointment</field>
+        <field name="code">rn.vet.appointment</field>
+        <field name="prefix">VAP</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_vet_boarding" model="ir.sequence">
+        <field name="name">Pet Boarding</field>
+        <field name="code">rn.vet.boarding</field>
+        <field name="prefix">BRD</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

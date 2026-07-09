@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_temple_devotee" model="rn.temple.devotee">
+        <field name="name">R. Kumar</field>
+        <field name="mobile">9876543210</field>
+        <field name="membership_type">patron</field>
+    </record>
+    <record id="demo_temple_festival" model="rn.temple.festival">
+        <field name="name">Navaratri Utsavam</field>
+        <field name="date_start" eval="(DateTime.today() + relativedelta(days=30)).strftime('%Y-%m-%d')"/>
+        <field name="date_end" eval="(DateTime.today() + relativedelta(days=39)).strftime('%Y-%m-%d')"/>
+        <field name="budget">250000</field>
+        <field name="state">planned</field>
+    </record>
+    <record id="demo_temple_donation" model="rn.temple.donation">
+        <field name="devotee_id" ref="demo_temple_devotee"/>
+        <field name="donor_name">R. Kumar</field>
+        <field name="amount">5001</field>
+        <field name="payment_mode">upi</field>
+        <field name="purpose">festival</field>
+        <field name="festival_id" ref="demo_temple_festival"/>
+        <field name="state">confirmed</field>
+        <field name="receipt_number">RCP-DEMO-001</field>
+    </record>
+    <record id="demo_temple_seva_booking" model="rn.temple.seva.booking">
+        <field name="devotee_id" ref="demo_temple_devotee"/>
+        <field name="seva_type_id" ref="seva_type_abhishekam"/>
+        <field name="booking_date" eval="(DateTime.now() + relativedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        <field name="slot_label">Morning 8:00</field>
+        <field name="amount">501</field>
+        <field name="state">confirmed</field>
+    </record>
+</odoo>

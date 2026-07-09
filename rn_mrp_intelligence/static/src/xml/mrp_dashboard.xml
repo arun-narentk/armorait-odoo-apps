@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_mrp_intelligence.Dashboard">
+        <div class="o_rn_mrp_intel_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">Manufacturing Intelligence</h1>
+                    <div class="text-muted small">Factory command center for production, OEE, and bottlenecks</div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading">
+                <div class="text-muted">Loading factory data...</div>
+            </t>
+            <t t-else="">
+                <div class="o_rn_mrp_ai_panel mb-3" t-if="state.aiSummary">
+                    <h2 class="h6">AI Factory Summary</h2>
+                    <div t-out="aiSummaryMarkup"/>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">Production %</div>
+                            <div class="value"><t t-esc="formatNumber(state.executive.today_production_pct)"/>%</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">Completed</div>
+                            <div class="value" t-esc="state.executive.orders_completed || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">Delayed</div>
+                            <div class="value" t-esc="state.executive.orders_delayed || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">Utilization</div>
+                            <div class="value"><t t-esc="formatNumber(state.executive.machine_utilization)"/>%</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">WIP Orders</div>
+                            <div class="value" t-esc="state.executive.wip_orders || 0"/>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="o_rn_mrp_card">
+                            <div class="label">Avg OEE</div>
+                            <div class="value"><t t-esc="formatNumber(state.oeeAvg)"/>%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <div class="o_rn_mrp_panel">
+                            <h2 class="h6">Production Output</h2>
+                            <div>Today: <t t-esc="formatNumber(state.production.today)"/></div>
+                            <div>Week: <t t-esc="formatNumber(state.production.week)"/></div>
+                            <div>Month: <t t-esc="formatNumber(state.production.month)"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_mrp_panel">
+                            <h2 class="h6">Work Centers</h2>
+                            <div>Running: <t t-esc="state.workcenters.running || 0"/></div>
+                            <div>Idle: <t t-esc="state.workcenters.idle || 0"/></div>
+                            <div>Breakdown: <t t-esc="state.workcenters.breakdown || 0"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_rn_mrp_panel">
+                            <h2 class="h6">Inventory and Purchase</h2>
+                            <div>Low stock: <t t-esc="state.inventory.low_stock_items || 0"/></div>
+                            <div>Pending PO: <t t-esc="state.inventory.pending_purchase_orders || 0"/></div>
+                            <div>Late PO: <t t-esc="state.inventory.late_purchase_orders || 0"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-muted small">Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

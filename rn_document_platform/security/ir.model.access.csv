@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_doc_template_user,rn.doc.platform.template user,model_rn_doc_platform_template,group_rn_doc_platform_user,1,0,0,0
+access_rn_doc_sign_request_user,rn.doc.sign.request user,model_rn_doc_sign_request,group_rn_doc_platform_user,1,1,1,0
+access_rn_doc_sign_signer_user,rn.doc.sign.signer user,model_rn_doc_sign_signer,group_rn_doc_platform_user,1,1,1,0
+access_rn_doc_sign_field_user,rn.doc.sign.field user,model_rn_doc_sign_field,group_rn_doc_platform_user,1,1,1,0
+access_rn_doc_sign_audit_user,rn.doc.sign.audit user,model_rn_doc_sign_audit,group_rn_doc_platform_user,1,0,0,0
+access_rn_doc_ai_analysis_user,rn.doc.ai.analysis user,model_rn_doc_ai_analysis,group_rn_doc_platform_user,1,0,0,0
+access_rn_doc_send_wizard_user,rn.doc.send.signature.wizard user,model_rn_doc_send_signature_wizard,group_rn_doc_platform_user,1,1,1,1
+access_rn_doc_template_mgr,rn.doc.platform.template manager,model_rn_doc_platform_template,group_rn_doc_platform_manager,1,1,1,1
+access_rn_doc_sign_request_mgr,rn.doc.sign.request manager,model_rn_doc_sign_request,group_rn_doc_platform_manager,1,1,1,1
+access_rn_doc_sign_signer_mgr,rn.doc.sign.signer manager,model_rn_doc_sign_signer,group_rn_doc_platform_manager,1,1,1,1
+access_rn_doc_sign_field_mgr,rn.doc.sign.field manager,model_rn_doc_sign_field,group_rn_doc_platform_manager,1,1,1,1
+access_rn_doc_sign_audit_mgr,rn.doc.sign.audit manager,model_rn_doc_sign_audit,group_rn_doc_platform_manager,1,1,1,0
+access_rn_doc_ai_analysis_mgr,rn.doc.ai.analysis manager,model_rn_doc_ai_analysis,group_rn_doc_platform_manager,1,1,1,1
+access_rn_doc_platform_settings_mgr,rn.doc.platform.settings manager,model_rn_doc_platform_settings,group_rn_doc_platform_manager,1,1,1,1

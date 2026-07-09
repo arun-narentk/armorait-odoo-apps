@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_dental_patient_reception,rn.dental.patient reception,model_rn_dental_patient,group_rn_dental_reception,1,1,1,0
+access_rn_dental_appointment_reception,rn.dental.appointment reception,model_rn_dental_appointment,group_rn_dental_reception,1,1,1,0
+access_rn_dental_chair_reception,rn.dental.chair reception,model_rn_dental_chair,group_rn_dental_reception,1,0,0,0
+access_rn_dental_procedure_reception,rn.dental.procedure reception,model_rn_dental_procedure,group_rn_dental_reception,1,0,0,0
+access_rn_dental_tooth_record_dentist,rn.dental.tooth.record dentist,model_rn_dental_tooth_record,group_rn_dental_dentist,1,1,1,0
+access_rn_dental_treatment_plan_dentist,rn.dental.treatment.plan dentist,model_rn_dental_treatment_plan,group_rn_dental_dentist,1,1,1,0
+access_rn_dental_treatment_plan_line_dentist,rn.dental.treatment.plan.line dentist,model_rn_dental_treatment_plan_line,group_rn_dental_dentist,1,1,1,0
+access_rn_dental_lab_request_dentist,rn.dental.lab.request dentist,model_rn_dental_lab_request,group_rn_dental_dentist,1,1,1,0
+access_rn_dental_imaging_dentist,rn.dental.imaging dentist,model_rn_dental_imaging,group_rn_dental_dentist,1,1,1,0
+access_rn_dental_recall_reception,rn.dental.recall reception,model_rn_dental_recall,group_rn_dental_reception,1,1,1,0
+access_rn_dental_patient_mgr,rn.dental.patient manager,model_rn_dental_patient,group_rn_dental_manager,1,1,1,1
+access_rn_dental_appointment_mgr,rn.dental.appointment manager,model_rn_dental_appointment,group_rn_dental_manager,1,1,1,1
+access_rn_dental_chair_mgr,rn.dental.chair manager,model_rn_dental_chair,group_rn_dental_manager,1,1,1,1
+access_rn_dental_procedure_mgr,rn.dental.procedure manager,model_rn_dental_procedure,group_rn_dental_manager,1,1,1,1
+access_rn_dental_settings_mgr,rn.dental.settings manager,model_rn_dental_settings,group_rn_dental_manager,1,1,1,1
+access_rn_dental_lab_request_mgr,rn.dental.lab.request manager,model_rn_dental_lab_request,group_rn_dental_manager,1,1,1,1
+access_rn_dental_appointment_wizard,rn.dental.appointment.wizard reception,model_rn_dental_appointment_wizard,group_rn_dental_reception,1,1,1,1

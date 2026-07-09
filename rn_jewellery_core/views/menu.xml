@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_jewellery_root" name="Jewellery" sequence="70"
+              web_icon="rn_jewellery_core,static/description/icon.png"
+              groups="rn_jewellery_core.group_rn_jewellery_sales"/>
+    <menuitem id="menu_rn_jewellery_retail_dashboard" name="Retail Dashboard" parent="menu_rn_jewellery_root"
+              action="action_rn_jewellery_retail_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_jewellery_mfg_dashboard" name="Manufacturing Dashboard" parent="menu_rn_jewellery_root"
+              action="action_rn_jewellery_mfg_dashboard" sequence="6"
+              groups="rn_jewellery_core.group_rn_jewellery_production"/>
+    <menuitem id="menu_rn_jewellery_inventory" name="Inventory" parent="menu_rn_jewellery_root" sequence="10"/>
+    <menuitem id="menu_rn_jewellery_items" name="Jewellery Items" parent="menu_rn_jewellery_inventory"
+              action="action_rn_jewellery_item" sequence="10"/>
+    <menuitem id="menu_rn_jewellery_rates" name="Metal Rates" parent="menu_rn_jewellery_inventory"
+              action="action_rn_jewellery_rate" sequence="20"/>
+    <menuitem id="menu_rn_jewellery_sales" name="Sales" parent="menu_rn_jewellery_root" sequence="20"/>
+    <menuitem id="menu_rn_jewellery_orders" name="Custom Orders" parent="menu_rn_jewellery_sales"
+              action="action_rn_jewellery_order" sequence="10"/>
+    <menuitem id="menu_rn_jewellery_repairs" name="Repairs" parent="menu_rn_jewellery_sales"
+              action="action_rn_jewellery_repair" sequence="20"/>
+    <menuitem id="menu_rn_jewellery_crm" name="Customer CRM" parent="menu_rn_jewellery_sales"
+              action="action_rn_jewellery_profile" sequence="30"/>
+    <menuitem id="menu_rn_jewellery_production" name="Production" parent="menu_rn_jewellery_root" sequence="30"
+              groups="rn_jewellery_core.group_rn_jewellery_production"/>
+    <menuitem id="menu_rn_jewellery_karigars" name="Karigars" parent="menu_rn_jewellery_production"
+              action="action_rn_jewellery_karigar" sequence="10"/>
+    <menuitem id="menu_rn_jewellery_job_cards" name="Job Cards" parent="menu_rn_jewellery_production"
+              action="action_rn_jewellery_job_card" sequence="20"/>
+    <menuitem id="menu_rn_jewellery_job_work" name="Job Work" parent="menu_rn_jewellery_production"
+              action="action_rn_jewellery_job_work" sequence="30"/>
+    <menuitem id="menu_rn_jewellery_config" name="Configuration" parent="menu_rn_jewellery_root" sequence="90"
+              groups="rn_jewellery_core.group_rn_jewellery_manager"/>
+    <menuitem id="menu_rn_jewellery_purity" name="Metal Purity" parent="menu_rn_jewellery_config"
+              action="action_rn_jewellery_purity" sequence="10"/>
+    <menuitem id="menu_rn_jewellery_settings" name="Settings" parent="menu_rn_jewellery_config"
+              action="action_rn_jewellery_settings" sequence="20"/>
+</odoo>

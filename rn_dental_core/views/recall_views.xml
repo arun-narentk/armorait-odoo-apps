@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dental_recall_tree" model="ir.ui.view">
+        <field name="name">rn.dental.recall.tree</field>
+        <field name="model">rn.dental.recall</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="due_date"/>
+                <field name="patient_id"/>
+                <field name="recall_type"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_dental_recall" model="ir.actions.act_window">
+        <field name="name">Recalls</field>
+        <field name="res_model">rn.dental.recall</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_doc_send_wizard_form" model="ir.ui.view">
+        <field name="name">rn.doc.send.signature.wizard.form</field>
+        <field name="model">rn.doc.send.signature.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send for Signature">
+                <group>
+                    <field name="document_name" readonly="1"/>
+                    <field name="attachment_id"/>
+                    <field name="template_id"/>
+                    <field name="sign_mode"/>
+                    <field name="signer_name"/>
+                    <field name="signer_email"/>
+                    <field name="signer_partner_id"/>
+                    <field name="note"/>
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_send" type="object" string="Send" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

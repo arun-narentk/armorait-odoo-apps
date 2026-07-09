@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_mrp_oee_tree" model="ir.ui.view">
+        <field name="name">rn.mrp.oee.record.tree</field>
+        <field name="model">rn.mrp.oee.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="date"/>
+                <field name="workcenter_id"/>
+                <field name="availability"/>
+                <field name="performance"/>
+                <field name="quality"/>
+                <field name="oee"/>
+                <field name="shift_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_mrp_oee" model="ir.actions.act_window">
+        <field name="name">OEE Records</field>
+        <field name="res_model">rn.mrp.oee.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

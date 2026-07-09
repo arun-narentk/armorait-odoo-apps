@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_hospital_patient" model="rn.hospital.patient">
+        <field name="name">Demo Patient</field>
+        <field name="gender">male</field>
+        <field name="mobile">9876543210</field>
+    </record>
+    <record id="demo_rn_hospital_doctor" model="hr.employee">
+        <field name="name">Dr Demo Physician</field>
+        <field name="is_doctor" eval="True"/>
+        <field name="specialization">General Medicine</field>
+    </record>
+    <record id="demo_rn_hospital_ward" model="rn.hospital.ward">
+        <field name="name">General Ward A</field>
+        <field name="ward_type">general</field>
+    </record>
+    <record id="demo_rn_hospital_bed" model="rn.hospital.bed">
+        <field name="name">Bed 01</field>
+        <field name="ward_id" ref="demo_rn_hospital_ward"/>
+        <field name="daily_charge">1500</field>
+    </record>
+</odoo>

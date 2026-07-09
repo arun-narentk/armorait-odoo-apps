@@ -1,21 +1,21 @@
-# Armorait Odoo Apps
+# armorait-odoo-apps
 
-Odoo Apps Store repository for Armorait modules.
+ARMORA IT Technologies Odoo 19 commercial modules.
 
-## Structure
+- **GitHub:** `arun-narentk/armorait-odoo-apps`
+- **Apps branch:** `19.0`
+- **Website:** https://www.armorait.com
+- **Support:** info@armorait.com
 
-Each app is a top-level folder with its own `__manifest__.py`.
+## Layout
 
-```text
-rn_ai_employee/
-```
+One folder per installable Odoo module (`rn_*`). Develop locally, commit here, publish to the Odoo Apps Store from branch `19.0`.
 
-## Branch
-
-Branch name must match the Odoo series, for example `19.0`.
-
-Odoo Apps URL format:
+## Install
 
 ```text
-ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0
+git clone git@github.com:arun-narentk/armorait-odoo-apps.git
+# checkout 19.0 for Apps Store parity
 ```
+
+Add module paths to your Odoo `addons_path` and install from Apps.

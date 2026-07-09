@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_vet_grooming_tree" model="ir.ui.view">
+        <field name="name">rn.vet.grooming.tree</field>
+        <field name="model">rn.vet.grooming</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="grooming_date"/>
+                <field name="name"/>
+                <field name="pet_id"/>
+                <field name="service_type"/>
+                <field name="amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_vet_grooming" model="ir.actions.act_window">
+        <field name="name">Grooming</field>
+        <field name="res_model">rn.vet.grooming</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
