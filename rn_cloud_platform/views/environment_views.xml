@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_cloud_environment_tree" model="ir.ui.view"><field name="name">rn.cloud.environment.tree</field><field name="model">rn.cloud.environment</field><field name="arch" type="xml"><list><field name="instance_id"/><field name="environment_type"/><field name="url"/><field name="database_name"/><field name="status"/></list></field></record>
+    <record id="action_rn_cloud_environment" model="ir.actions.act_window"><field name="name">Environments</field><field name="res_model">rn.cloud.environment</field><field name="view_mode">list</field></record>
+</odoo>

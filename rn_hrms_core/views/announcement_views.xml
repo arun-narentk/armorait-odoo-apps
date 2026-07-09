@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hrms_announcement_list" model="ir.ui.view">
+        <field name="name">rn.hrms.announcement.list</field>
+        <field name="model">rn.hrms.announcement</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="audience"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hrms_announcement_form" model="ir.ui.view">
+        <field name="name">rn.hrms.announcement.form</field>
+        <field name="model">rn.hrms.announcement</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_publish" type="object" string="Publish" class="btn-primary" invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="audience"/>
+                        <field name="department_id"/>
+                        <field name="branch_id"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="body"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hrms_announcement" model="ir.actions.act_window">
+        <field name="name">Announcements</field>
+        <field name="res_model">rn.hrms.announcement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

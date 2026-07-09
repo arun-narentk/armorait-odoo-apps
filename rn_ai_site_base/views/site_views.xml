@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_site_site_list" model="ir.ui.view">
+        <field name="name">rn.ai.site.site.list</field>
+        <field name="model">rn.ai.site.site</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="business_name"/>
+                <field name="business_type"/>
+                <field name="location"/>
+                <field name="page_count"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_ai_site_site_form" model="ir.ui.view">
+        <field name="name">rn.ai.site.site.form</field>
+        <field name="model">rn.ai.site.site</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_mark_ready" type="object" string="Mark Ready" invisible="state != 'draft'"/>
+                    <button name="action_publish" type="object" string="Publish" class="btn-primary" invisible="state not in ('ready', 'draft')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,ready,published"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_pages" type="object" class="oe_stat_button" icon="fa-file-text">
+                            <field name="page_count" widget="statinfo" string="Pages"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="business_name"/>
+                            <field name="business_type"/>
+                            <field name="location"/>
+                            <field name="domain"/>
+                            <field name="brief_id"/>
+                        </group>
+                        <group>
+                            <field name="theme_id"/>
+                            <field name="primary_color" widget="color"/>
+                            <field name="secondary_color" widget="color"/>
+                            <field name="font_heading"/>
+                            <field name="font_body"/>
+                            <field name="enable_crm_sync"/>
+                            <field name="enable_whatsapp"/>
+                            <field name="enable_contact_form"/>
+                            <field name="odoo_website_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Pages" name="pages">
+                            <field name="page_ids">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="slug"/>
+                                    <field name="page_type"/>
+                                    <field name="seo_title"/>
+                                    <field name="is_published"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_ai_site_site" model="ir.actions.act_window">
+        <field name="name">Websites</field>
+        <field name="res_model">rn.ai.site.site</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

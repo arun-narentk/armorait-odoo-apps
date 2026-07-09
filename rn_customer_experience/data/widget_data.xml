@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="widget_invoice_list" model="rn.customer.experience.widget">
+        <field name="name">Invoice List</field>
+        <field name="code">invoice_list</field>
+        <field name="widget_type">invoice_list</field>
+        <field name="template_key">rn_customer_experience.widget_invoice_list</field>
+        <field name="icon">fa-file-text-o</field>
+    </record>
+    <record id="widget_order_list" model="rn.customer.experience.widget">
+        <field name="name">Order List</field>
+        <field name="code">order_list</field>
+        <field name="widget_type">order_list</field>
+        <field name="template_key">rn_customer_experience.widget_order_list</field>
+        <field name="icon">fa-shopping-cart</field>
+    </record>
+    <record id="widget_payment_button" model="rn.customer.experience.widget">
+        <field name="name">Payment Button</field>
+        <field name="code">payment_button</field>
+        <field name="widget_type">payment_button</field>
+        <field name="template_key">rn_customer_experience.widget_payment_button</field>
+        <field name="icon">fa-credit-card</field>
+    </record>
+    <record id="widget_download_center" model="rn.customer.experience.widget">
+        <field name="name">Download Center</field>
+        <field name="code">download_center</field>
+        <field name="widget_type">download_center</field>
+        <field name="template_key">rn_customer_experience.widget_download_center</field>
+        <field name="icon">fa-download</field>
+    </record>
+    <record id="widget_order_timeline" model="rn.customer.experience.widget">
+        <field name="name">Order Timeline</field>
+        <field name="code">order_timeline</field>
+        <field name="widget_type">order_timeline</field>
+        <field name="template_key">rn_customer_experience.widget_order_timeline</field>
+        <field name="icon">fa-truck</field>
+    </record>
+    <record id="widget_ai_chat" model="rn.customer.experience.widget">
+        <field name="name">AI Assistant</field>
+        <field name="code">ai_chat</field>
+        <field name="widget_type">ai_chat</field>
+        <field name="template_key">rn_customer_experience.widget_ai_chat</field>
+        <field name="icon">fa-comments</field>
+    </record>
+</odoo>

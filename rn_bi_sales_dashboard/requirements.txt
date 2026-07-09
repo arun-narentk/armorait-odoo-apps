@@ -1,0 +1,3 @@
+# Phase 1 has no mandatory third-party Python deps.
+# Chart.js ships via CDN/static in later chart phases.
+# Optional later: openpyxl for Excel export, reportlab helpers.

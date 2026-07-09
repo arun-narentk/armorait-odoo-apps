@@ -1,0 +1,14 @@
+.o_rn_face_dashboard .card {
+    border-radius: 12px;
+}
+
+.o_rn_face_kiosk {
+    min-height: 80vh;
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 55%, #0f766e 100%);
+    color: #f8fafc;
+}
+
+.o_rn_face_kiosk_camera {
+    width: min(720px, 90vw);
+    height: 405px;
+}

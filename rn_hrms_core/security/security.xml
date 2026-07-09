@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_hrms">
+        <field name="name">ARMORA HRMS</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+    <record id="group_rn_hrms_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hrms"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_hrms_officer" model="res.groups">
+        <field name="name">Officer</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hrms"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_hrms_readonly'))]"/>
+    </record>
+    <record id="group_rn_hrms_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hrms"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_hrms_officer'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_hrms_branch_company" model="ir.rule">
+        <field name="name">HRMS Branch multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_branch"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_designation_company" model="ir.rule">
+        <field name="name">HRMS Designation multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_designation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_document_company" model="ir.rule">
+        <field name="name">HRMS Document multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_document"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_announcement_company" model="ir.rule">
+        <field name="name">HRMS Announcement multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_announcement"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_approval_company" model="ir.rule">
+        <field name="name">HRMS Approval multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_approval"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_settings_company" model="ir.rule">
+        <field name="name">HRMS Settings multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hrms_subscription_company" model="ir.rule">
+        <field name="name">HRMS Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_hrms_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

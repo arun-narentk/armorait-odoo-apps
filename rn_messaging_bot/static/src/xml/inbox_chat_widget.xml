@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_messaging_bot.InboxChat">
+        <div class="o_rn_inbox_chat card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <strong t-esc="state.conversation.partner_name or state.conversation.name"/>
+                <span class="badge text-bg-secondary" t-esc="state.conversation.channel_type"/>
+            </div>
+            <div class="card-body o_rn_chat_messages">
+                <div t-if="state.loading" class="text-muted">Loading messages...</div>
+                <div t-else="">
+                    <div t-if="!state.messages.length" class="text-muted">No messages yet.</div>
+                    <div t-foreach="state.messages" t-as="message" t-key="message.id"
+                         t-att-class="messageClass(message)">
+                        <div class="o_rn_chat_meta small text-muted" t-esc="message.create_date"/>
+                        <div class="o_rn_chat_text" t-esc="message.content"/>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer o_rn_inbox_composer">
+                <div class="row g-2">
+                    <div class="col-md-4" t-if="state.templates.length">
+                        <select class="form-select form-select-sm" t-on-change="onTemplateChange">
+                            <option value="">Use template (optional)</option>
+                            <option t-foreach="state.templates" t-as="template" t-key="template.id"
+                                    t-att-value="template.id" t-esc="template.name"/>
+                        </select>
+                    </div>
+                    <div t-att-class="state.templates.length ? 'col-md-8' : 'col-12'">
+                        <textarea class="form-control" rows="2"
+                                  placeholder="Type a reply and press Enter..."
+                                  t-model="state.draft"
+                                  t-on-keydown="onKeydown"/>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button class="btn btn-primary btn-sm"
+                            t-att-disabled="state.sending or !state.draft.trim()"
+                            t-on-click="sendMessage">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

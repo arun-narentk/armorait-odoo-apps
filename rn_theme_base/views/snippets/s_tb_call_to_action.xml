@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_call_to_action" name="Call To Action">
+    <section class="s_tb_call_to_action tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_call_to_action">
+        <div class="container tb-reveal"><h2>Call To Action</h2><p class="lead">Editable content block powered by rn_theme_base.</p></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

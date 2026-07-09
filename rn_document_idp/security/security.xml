@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_document_idp">
+        <field name="name">AI Document Processing</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+    <record id="group_rn_document_idp_user" model="res.groups">
+        <field name="name">IDP User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_document_idp"/>
+        <field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>
+    </record>
+    <record id="group_rn_document_idp_manager" model="res.groups">
+        <field name="name">IDP Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_document_idp"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_document_idp_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_document_idp_document_company" model="ir.rule">
+        <field name="name">IDP Document multi-company</field>
+        <field name="model_id" ref="model_rn_document_idp_document"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_document_idp_line_company" model="ir.rule">
+        <field name="name">IDP Line multi-company</field>
+        <field name="model_id" ref="model_rn_document_idp_line"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_document_idp_validation_company" model="ir.rule">
+        <field name="name">IDP Validation multi-company</field>
+        <field name="model_id" ref="model_rn_document_idp_validation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_document_idp_settings_company" model="ir.rule">
+        <field name="name">IDP Settings multi-company</field>
+        <field name="model_id" ref="model_rn_document_idp_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

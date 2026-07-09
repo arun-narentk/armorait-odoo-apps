@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_messaging_template_tree" model="ir.ui.view">
+        <field name="name">rn.messaging.template.tree</field>
+        <field name="model">rn.messaging.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="connector_id"/>
+                <field name="channel_type"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_messaging_template_form" model="ir.ui.view">
+        <field name="name">rn.messaging.template.form</field>
+        <field name="model">rn.messaging.template</field>
+        <field name="arch" type="xml">
+            <form string="Message Template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="connector_id"/>
+                        <field name="channel_type"/>
+                        <field name="external_template_name"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group>
+                        <field name="body" widget="text"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_messaging_template" model="ir.actions.act_window">
+        <field name="name">Message Templates</field>
+        <field name="res_model">rn.messaging.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

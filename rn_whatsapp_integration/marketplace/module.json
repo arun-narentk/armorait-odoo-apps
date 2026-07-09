@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_whatsapp_integration",
+  "app_name": "WhatsApp Integration",
+  "tagline": "Share invoices, payments, and order updates via WhatsApp",
+  "category_type": "productivity",
+  "price": 59.99,
+  "accent": "#16a34a",
+  "problem": "Customers miss invoice and delivery emails, slowing collections and support.",
+  "solution": "WhatsApp Integration lets staff send invoices, payment links, and shipment updates from Odoo forms in one click.",
+  "benefits": [
+    "Send invoices on WhatsApp",
+    "Payment link messages",
+    "Delivery notifications",
+    "Reminder scheduling",
+    "Message history in Odoo"
+  ],
+  "features": [
+    {
+      "title": "Invoice Sharing",
+      "text": "Push PDF invoices to customer WhatsApp numbers."
+    },
+    {
+      "title": "Sales & Delivery",
+      "text": "Order confirmations and picking updates."
+    },
+    {
+      "title": "Reminders",
+      "text": "Scheduled payment and follow-up reminders."
+    },
+    {
+      "title": "Company Settings",
+      "text": "Per-company API credentials and defaults."
+    }
+  ],
+  "workflow": [
+    "Configure API",
+    "Open invoice or order",
+    "Send WhatsApp",
+    "Log message",
+    "Track reminders"
+  ],
+  "seo_keywords": "Odoo WhatsApp, invoice WhatsApp, payment reminder, Odoo 19 Community",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

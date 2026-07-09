@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="demo_rn_fleet_vehicle" model="fleet.vehicle">
+        <field name="model_id" ref="fleet.model_focus"/>
+        <field name="license_plate">ARMORA-GPS-01</field>
+    </record>
+    <record id="demo_rn_fleet_device" model="rn.fleet.gps.device">
+        <field name="name">Demo Tracker 01</field>
+        <field name="provider">manual</field>
+        <field name="vehicle_id" ref="demo_rn_fleet_vehicle"/>
+        <field name="imei">860000000000001</field>
+        <field name="state">active</field>
+    </record>
+</data>
+</odoo>

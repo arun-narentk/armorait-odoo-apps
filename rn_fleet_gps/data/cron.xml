@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_rn_fleet_poll" model="ir.cron">
+        <field name="name">Fleet GPS: Poll Providers</field>
+        <field name="model_id" ref="model_rn_fleet_scheduler_service"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_poll_providers()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="ir_cron_rn_fleet_close_trips" model="ir.cron">
+        <field name="name">Fleet GPS: Auto Close Trips</field>
+        <field name="model_id" ref="model_rn_fleet_scheduler_service"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_auto_close_trips()</field>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="ir_cron_rn_fleet_offline" model="ir.cron">
+        <field name="name">Fleet GPS: Offline Alerts</field>
+        <field name="model_id" ref="model_rn_fleet_scheduler_service"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_offline_alerts()</field>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

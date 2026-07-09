@@ -1,0 +1,26 @@
+@import 'mixins';
+
+.btn-primary {
+    --bs-btn-bg: var(--tb-primary, #{$tb-primary});
+    --bs-btn-border-color: var(--tb-primary, #{$tb-primary});
+    --bs-btn-hover-bg: var(--tb-secondary, #{$tb-secondary});
+    --bs-btn-hover-border-color: var(--tb-secondary, #{$tb-secondary});
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--tb-primary, #{$tb-primary});
+    --bs-btn-border-color: var(--tb-primary, #{$tb-primary});
+    --bs-btn-hover-bg: var(--tb-primary, #{$tb-primary});
+    --bs-btn-hover-border-color: var(--tb-primary, #{$tb-primary});
+}
+
+.tb-btn-accent {
+    background-color: var(--tb-accent, #{$tb-accent});
+    border-color: var(--tb-accent, #{$tb-accent});
+    color: #fff;
+    @include tb-transition;
+    &:hover {
+        filter: brightness(1.05);
+        color: #fff;
+    }
+}

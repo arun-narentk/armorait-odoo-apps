@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_cloud_root" name="Cloud Platform" web_icon="rn_cloud_platform,static/description/icon.png" groups="group_rn_cloud_platform_user" sequence="51"/>
+    <menuitem id="menu_rn_cloud_dashboard" name="Dashboard" parent="menu_rn_cloud_root" action="action_rn_cloud_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_cloud_provider" name="Providers" parent="menu_rn_cloud_root" action="action_rn_cloud_provider" sequence="10"/>
+    <menuitem id="menu_rn_cloud_instance" name="Instances" parent="menu_rn_cloud_root" action="action_rn_cloud_instance" sequence="20"/>
+    <menuitem id="menu_rn_cloud_environment" name="Environments" parent="menu_rn_cloud_root" action="action_rn_cloud_environment" sequence="30"/>
+    <menuitem id="menu_rn_cloud_backup" name="Backups" parent="menu_rn_cloud_root" action="action_rn_cloud_backup" sequence="40"/>
+    <menuitem id="menu_rn_cloud_monitoring" name="Monitoring" parent="menu_rn_cloud_root" action="action_rn_cloud_monitoring" sequence="50"/>
+    <menuitem id="menu_rn_cloud_recommendation" name="Recommendations" parent="menu_rn_cloud_root" action="action_rn_cloud_recommendation" sequence="60"/>
+</odoo>

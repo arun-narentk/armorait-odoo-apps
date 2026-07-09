@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_hall_venue_list" model="ir.ui.view">
+        <field name="name">rn.hall.venue.list</field>
+        <field name="model">rn.hall.venue</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="venue_type"/>
+                <field name="city"/>
+                <field name="hall_count"/>
+                <field name="upcoming_booking_count"/>
+                <field name="total_capacity"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_hall_venue_form" model="ir.ui.view">
+        <field name="name">rn.hall.venue.form</field>
+        <field name="model">rn.hall.venue</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_halls" type="object" class="oe_stat_button" icon="fa-building">
+                            <field name="hall_count" widget="statinfo" string="Halls"/>
+                        </button>
+                        <button name="action_open_bookings" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="upcoming_booking_count" widget="statinfo" string="Bookings"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="venue_type"/>
+                            <field name="trust_name"/>
+                            <field name="registration_no"/>
+                            <field name="gstin"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="website"/>
+                            <field name="timezone"/>
+                            <field name="established_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Address">
+                        <group>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                        </group>
+                        <group>
+                            <field name="state_id"/>
+                            <field name="zip"/>
+                            <field name="country_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Halls" name="halls">
+                            <field name="hall_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="capacity_seated"/>
+                                    <field name="has_ac"/>
+                                    <field name="has_parking"/>
+                                    <field name="has_stage"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_hall_venue" model="ir.actions.act_window">
+        <field name="name">Venues</field>
+        <field name="res_model">rn.hall.venue</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

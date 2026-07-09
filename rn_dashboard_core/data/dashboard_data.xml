@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="rn_dashboard_settings_default" model="rn.dashboard.settings">
+        <field name="default_refresh_seconds">30</field>
+        <field name="tv_refresh_seconds">10</field>
+        <field name="cache_ttl_seconds">60</field>
+        <field name="enable_alerts" eval="True"/>
+        <field name="retention_days">90</field>
+    </record>
+    <record id="rn_dashboard_subscription_trial" model="rn.dashboard.subscription">
+        <field name="name">Trial Dashboard Basic</field>
+        <field name="plan">basic</field>
+        <field name="state">trial</field>
+        <field name="monthly_price">29</field>
+        <field name="seats">5</field>
+    </record>
+    <record id="rn_dashboard_filter_today" model="rn.dashboard.filter">
+        <field name="name">Today</field>
+        <field name="date_preset">today</field>
+        <field name="shift">all</field>
+    </record>
+    <record id="rn_dashboard_kpi_efficiency" model="rn.dashboard.kpi">
+        <field name="name">Efficiency %</field>
+        <field name="key">generic.efficiency_pct</field>
+        <field name="domain">generic</field>
+        <field name="unit">%</field>
+    </record>
+    <record id="rn_dashboard_kpi_progress" model="rn.dashboard.kpi">
+        <field name="name">Progress %</field>
+        <field name="key">generic.progress_pct</field>
+        <field name="domain">generic</field>
+        <field name="unit">%</field>
+    </record>
+    <record id="rn_dashboard_kpi_oee" model="rn.dashboard.kpi">
+        <field name="name">Overall OEE</field>
+        <field name="key">mrp.oee</field>
+        <field name="domain">mrp</field>
+        <field name="unit">%</field>
+        <field name="description">Filled by rn_mrp_oee when installed.</field>
+    </record>
+    <record id="rn_dashboard_main" model="rn.dashboard">
+        <field name="name">Operations Overview</field>
+        <field name="dashboard_type">factory</field>
+        <field name="theme">factory</field>
+        <field name="is_default" eval="True"/>
+        <field name="refresh_interval">30</field>
+        <field name="filter_id" ref="rn_dashboard_filter_today"/>
+        <field name="show_logo" eval="True"/>
+        <field name="show_clock" eval="True"/>
+        <field name="show_alerts" eval="True"/>
+    </record>
+    <record id="rn_dashboard_widget_target" model="rn.dashboard.widget">
+        <field name="name">Target</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+        <field name="widget_type">kpi_card</field>
+        <field name="kpi_key">generic.target</field>
+        <field name="sequence">10</field>
+        <field name="size">s</field>
+    </record>
+    <record id="rn_dashboard_widget_actual" model="rn.dashboard.widget">
+        <field name="name">Actual</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+        <field name="widget_type">kpi_card</field>
+        <field name="kpi_key">generic.actual</field>
+        <field name="sequence">20</field>
+        <field name="size">s</field>
+    </record>
+    <record id="rn_dashboard_widget_efficiency" model="rn.dashboard.widget">
+        <field name="name">Efficiency</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+        <field name="widget_type">gauge</field>
+        <field name="kpi_key">generic.efficiency_pct</field>
+        <field name="sequence">30</field>
+        <field name="size">m</field>
+        <field name="threshold_warn">70</field>
+        <field name="threshold_crit">50</field>
+    </record>
+    <record id="rn_dashboard_widget_status" model="rn.dashboard.widget">
+        <field name="name">Machine Status</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+        <field name="widget_type">status_grid</field>
+        <field name="kpi_key">mrp.machine_status</field>
+        <field name="sequence">40</field>
+        <field name="size">l</field>
+    </record>
+    <record id="rn_dashboard_alert_rule_efficiency" model="rn.dashboard.alert.rule">
+        <field name="name">Efficiency Below Threshold</field>
+        <field name="dashboard_id" ref="rn_dashboard_main"/>
+        <field name="kpi_key">generic.efficiency_pct</field>
+        <field name="operator">lt</field>
+        <field name="threshold">60</field>
+        <field name="severity">warning</field>
+        <field name="channel_activity" eval="True"/>
+    </record>
+</data>
+</odoo>

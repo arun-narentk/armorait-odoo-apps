@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cron_rn_temple_festival_reminder" model="ir.cron">
+        <field name="name">Temple: Upcoming Festival Reminder</field>
+        <field name="model_id" ref="model_rn_temple_festival"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_upcoming_festival_reminder()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

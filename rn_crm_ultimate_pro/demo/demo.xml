@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_crm_settings" model="rn.crm.settings">
+<field name="name">Demo CRM Settings</field>
+<field name="scoring_enabled" eval="True"/>
+<field name="duplicate_sensitivity">balanced</field>
+<field name="prediction_provider">rule_engine</field>
+</record>
+<record id="demo_rn_crm_activity_call" model="rn.crm.activity.template">
+<field name="name">Discovery Call</field>
+<field name="activity_kind">call</field>
+<field name="summary">Introduce product and qualify need</field>
+<field name="delay_days">1</field>
+</record>
+</data></odoo>

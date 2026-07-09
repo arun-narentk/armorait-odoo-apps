@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_customer_experience_widget_tree" model="ir.ui.view">
+        <field name="name">rn.customer.experience.widget.tree</field>
+        <field name="model">rn.customer.experience.widget</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="widget_type"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_customer_experience_widget_form" model="ir.ui.view">
+        <field name="name">rn.customer.experience.widget.form</field>
+        <field name="model">rn.customer.experience.widget</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="widget_type"/>
+                        <field name="template_key"/>
+                        <field name="icon"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_customer_experience_page_form" model="ir.ui.view">
+        <field name="name">rn.customer.experience.page.form</field>
+        <field name="model">rn.customer.experience.page</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="config_id"/>
+                        <field name="is_home"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="widget_line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="widget_id"/>
+                            <field name="column"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_customer_experience_widget" model="ir.actions.act_window">
+        <field name="name">Portal Widgets</field>
+        <field name="res_model">rn.customer.experience.widget</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_rn_customer_experience_page" model="ir.actions.act_window">
+        <field name="name">Portal Pages</field>
+        <field name="res_model">rn.customer.experience.page</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_erp_health_finding_tree" model="ir.ui.view">
+        <field name="name">rn.erp.health.finding.tree</field>
+        <field name="model">rn.erp.health.finding</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="severity" widget="badge"/>
+                <field name="score_impact"/>
+                <field name="state" widget="badge"/>
+                <field name="scan_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_erp_health_finding_form" model="ir.ui.view">
+        <field name="name">rn.erp.health.finding.form</field>
+        <field name="model">rn.erp.health.finding</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code" readonly="1"/>
+                        <field name="scan_id" readonly="1"/>
+                        <field name="category"/>
+                        <field name="severity"/>
+                        <field name="state"/>
+                        <field name="score_impact"/>
+                        <field name="model_name"/>
+                        <field name="metric_value"/>
+                    </group>
+                    <group string="Recommendation">
+                        <field name="recommendation"/>
+                        <field name="technical_details"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_erp_health_finding" model="ir.actions.act_window">
+        <field name="name">Findings</field>
+        <field name="res_model">rn.erp.health.finding</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

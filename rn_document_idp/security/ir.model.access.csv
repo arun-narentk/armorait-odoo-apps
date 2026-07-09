@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_document_idp_document_user,rn.document.idp.document user,model_rn_document_idp_document,group_rn_document_idp_user,1,1,1,0
+access_rn_document_idp_document_manager,rn.document.idp.document manager,model_rn_document_idp_document,group_rn_document_idp_manager,1,1,1,1
+access_rn_document_idp_line_user,rn.document.idp.line user,model_rn_document_idp_line,group_rn_document_idp_user,1,1,1,0
+access_rn_document_idp_line_manager,rn.document.idp.line manager,model_rn_document_idp_line,group_rn_document_idp_manager,1,1,1,1
+access_rn_document_idp_validation_user,rn.document.idp.validation user,model_rn_document_idp_validation,group_rn_document_idp_user,1,0,0,0
+access_rn_document_idp_validation_manager,rn.document.idp.validation manager,model_rn_document_idp_validation,group_rn_document_idp_manager,1,1,1,1
+access_rn_document_idp_settings_manager,rn.document.idp.settings manager,model_rn_document_idp_settings,group_rn_document_idp_manager,1,1,1,1
+access_rn_document_idp_subscription_manager,rn.document.idp.subscription manager,model_rn_document_idp_subscription,group_rn_document_idp_manager,1,1,1,1
+access_rn_document_idp_correction_user,rn.document.idp.correction user,model_rn_document_idp_correction,group_rn_document_idp_user,1,1,1,0
+access_rn_document_idp_post_wizard_user,rn.document.idp.post.wizard user,model_rn_document_idp_post_wizard,group_rn_document_idp_user,1,1,1,1

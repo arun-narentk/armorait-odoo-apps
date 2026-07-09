@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_inv_enabled" model="ir.config_parameter">
+<field name="key">rn_inventory_forecast.enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_inv_horizon" model="ir.config_parameter">
+<field name="key">rn_inventory_forecast.horizon_days</field><field name="value">30</field>
+</record>
+<record id="param_rn_inv_history" model="ir.config_parameter">
+<field name="key">rn_inventory_forecast.history_days</field><field name="value">90</field>
+</record>
+</data></odoo>

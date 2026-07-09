@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_rn_face_root"
+              name="Face Attendance"
+              web_icon="rn_hr_attendance_face,static/description/icon.png"
+              groups="rn_hr_attendance_face.group_rn_face_officer"
+              sequence="46"/>
+
+    <menuitem id="menu_rn_face_dashboard"
+              name="Dashboard"
+              parent="menu_rn_face_root"
+              action="action_rn_hr_face_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_face_kiosk"
+              name="Kiosk"
+              parent="menu_rn_face_root"
+              action="action_rn_hr_face_kiosk"
+              sequence="5"/>
+
+    <menuitem id="menu_rn_face_employees"
+              name="Employee Faces"
+              parent="menu_rn_face_root"
+              action="action_rn_hr_employee_face"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_face_logs"
+              name="Recognition Logs"
+              parent="menu_rn_face_root"
+              action="action_rn_hr_attendance_log"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_face_sessions"
+              name="Kiosk Sessions"
+              parent="menu_rn_face_root"
+              action="action_rn_hr_attendance_session"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_face_configuration"
+              name="Configuration"
+              parent="menu_rn_face_root"
+              groups="rn_hr_attendance_face.group_rn_face_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_rn_face_cameras"
+              name="Cameras"
+              parent="menu_rn_face_configuration"
+              action="action_rn_hr_camera_device"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_face_devices"
+              name="Devices"
+              parent="menu_rn_face_configuration"
+              action="action_rn_hr_recognition_device"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_face_recognition_settings"
+              name="Recognition Settings"
+              parent="menu_rn_face_configuration"
+              action="action_rn_hr_recognition_settings"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_face_settings"
+              name="Settings"
+              parent="menu_rn_face_configuration"
+              action="action_rn_hr_face_settings"
+              sequence="100"
+              groups="rn_hr_attendance_face.group_rn_face_admin"/>
+
+</odoo>

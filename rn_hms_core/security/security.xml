@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_hms">
+        <field name="name">ARMORA Hospital ERP</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+    <record id="group_rn_hms_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hms"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_hms_receptionist" model="res.groups">
+        <field name="name">Receptionist</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hms"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_hms_readonly'))]"/>
+    </record>
+    <record id="group_rn_hms_doctor" model="res.groups">
+        <field name="name">Doctor</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hms"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_hms_receptionist'))]"/>
+    </record>
+    <record id="group_rn_hms_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_hms"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_hms_doctor'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_hms_patient_company" model="ir.rule">
+        <field name="name">HMS Patient multi-company</field>
+        <field name="model_id" ref="model_rn_hms_patient"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_doctor_company" model="ir.rule">
+        <field name="name">HMS Doctor multi-company</field>
+        <field name="model_id" ref="model_rn_hms_doctor"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_appointment_company" model="ir.rule">
+        <field name="name">HMS Appointment multi-company</field>
+        <field name="model_id" ref="model_rn_hms_appointment"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_ward_company" model="ir.rule">
+        <field name="name">HMS Ward multi-company</field>
+        <field name="model_id" ref="model_rn_hms_ward"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_bed_company" model="ir.rule">
+        <field name="name">HMS Bed multi-company</field>
+        <field name="model_id" ref="model_rn_hms_bed"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_department_company" model="ir.rule">
+        <field name="name">HMS Department multi-company</field>
+        <field name="model_id" ref="model_rn_hms_department"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_settings_company" model="ir.rule">
+        <field name="name">HMS Settings multi-company</field>
+        <field name="model_id" ref="model_rn_hms_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_hms_subscription_company" model="ir.rule">
+        <field name="name">HMS Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_hms_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

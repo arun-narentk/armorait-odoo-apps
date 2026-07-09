@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_realestate">
+        <field name="name">ARMORA Real Estate ERP</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+    <record id="group_rn_realestate_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_realestate"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_realestate_sales" model="res.groups">
+        <field name="name">Sales Executive</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_realestate"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_realestate_readonly'))]"/>
+    </record>
+    <record id="group_rn_realestate_manager" model="res.groups">
+        <field name="name">Sales Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_realestate"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_realestate_sales'))]"/>
+    </record>
+    <record id="group_rn_realestate_admin" model="res.groups">
+        <field name="name">Project Admin</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_realestate"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_realestate_manager'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rule_rn_realestate_developer_company" model="ir.rule">
+        <field name="name">Real Estate Developer multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_developer"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_project_company" model="ir.rule">
+        <field name="name">Real Estate Project multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_project"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_block_company" model="ir.rule">
+        <field name="name">Real Estate Block multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_block"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_unit_company" model="ir.rule">
+        <field name="name">Real Estate Unit multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_unit"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_lead_company" model="ir.rule">
+        <field name="name">Real Estate Lead multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_lead"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_settings_company" model="ir.rule">
+        <field name="name">Real Estate Settings multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_settings"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_rn_realestate_subscription_company" model="ir.rule">
+        <field name="name">Real Estate Subscription multi-company</field>
+        <field name="model_id" ref="model_rn_realestate_subscription"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

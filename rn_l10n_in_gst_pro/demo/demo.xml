@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="demo_rn_gst_settings" model="rn.gst.settings">
+            <field name="name">Demo GST Settings</field>
+            <field name="gstin">29AABCU9603R1ZM</field>
+            <field name="pan">AABCU9603R</field>
+            <field name="default_state_code">29</field>
+            <field name="return_frequency">month</field>
+            <field name="financial_year">2025-26</field>
+        </record>
+    </data>
+</odoo>

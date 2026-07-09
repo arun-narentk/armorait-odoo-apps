@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="rn_gst_period_2025_04" model="rn.gst.period">
+<field name="name">April 2025</field><field name="code">042025</field>
+<field name="financial_year">2025-26</field><field name="period_type">month</field>
+<field name="date_start">2025-04-01</field><field name="date_end">2025-04-30</field>
+</record>
+<record id="rn_gst_period_2025_05" model="rn.gst.period">
+<field name="name">May 2025</field><field name="code">052025</field>
+<field name="financial_year">2025-26</field><field name="period_type">month</field>
+<field name="date_start">2025-05-01</field><field name="date_end">2025-05-31</field>
+</record>
+<record id="rn_gst_period_2025_06" model="rn.gst.period">
+<field name="name">June 2025</field><field name="code">062025</field>
+<field name="financial_year">2025-26</field><field name="period_type">month</field>
+<field name="date_start">2025-06-01</field><field name="date_end">2025-06-30</field>
+</record>
+</data></odoo>

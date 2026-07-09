@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rn_erp_health_target_finance_demo" model="rn.erp.health.target">
+        <field name="name">Finance and Risk Monitoring</field>
+        <field name="target_type">finance</field>
+        <field name="scope_note">Weekly finance, reconciliation, and role review scan.</field>
+    </record>
+</odoo>

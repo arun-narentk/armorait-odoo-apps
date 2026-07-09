@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="demo_rn_face_camera" model="rn.hr.camera.device">
+            <field name="name">Main Lobby Webcam</field>
+            <field name="camera_type">browser</field>
+            <field name="status">offline</field>
+            <field name="resolution">1280x720</field>
+            <field name="location">Lobby</field>
+        </record>
+
+        <record id="demo_rn_face_settings" model="rn.hr.recognition.settings">
+            <field name="name">Demo Recognition Settings</field>
+            <field name="detection_model">opencv</field>
+            <field name="embedding_model">insightface</field>
+            <field name="matching_threshold">0.45</field>
+            <field name="anti_spoof_enabled" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

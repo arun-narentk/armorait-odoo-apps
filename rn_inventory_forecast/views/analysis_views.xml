@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_inv_analysis_list" model="ir.ui.view">
+        <field name="name">rn.inv.analysis.list</field>
+        <field name="model">rn.inv.analysis</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="analysis_date"/>
+                <field name="analysis_type"/>
+                <field name="product_id"/>
+                <field name="class_code"/>
+                <field name="qty"/>
+                <field name="value"/>
+                <field name="warehouse_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_inv_analysis_form" model="ir.ui.view">
+        <field name="name">rn.inv.analysis.form</field>
+        <field name="model">rn.inv.analysis</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="analysis_type"/>
+                        <field name="analysis_date"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="product_id"/>
+                        <field name="class_code"/>
+                        <field name="qty"/>
+                        <field name="value"/>
+                        <field name="warehouse_id"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_inv_analysis" model="ir.actions.act_window">
+        <field name="name">Inventory Analysis</field>
+        <field name="res_model">rn.inv.analysis</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_rn_inv_run_analysis_wizard_form" model="ir.ui.view">
+        <field name="name">rn.inv.run.analysis.wizard.form</field>
+        <field name="model">rn.inv.run.analysis.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Run Analysis">
+                <group>
+                    <field name="analysis_type"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="warehouse_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </group>
+                <footer>
+                    <button name="action_run" type="object" string="Run" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_inv_run_analysis_wizard" model="ir.actions.act_window">
+        <field name="name">Run Analysis</field>
+        <field name="res_model">rn.inv.run.analysis.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="view_product_product_form_rn_inv" model="ir.ui.view">
+        <field name="name">product.product.form.rn.inv</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Inventory Forecast" groups="rn_inventory_forecast.group_rn_inv_forecast_user">
+                    <field name="rn_inv_abc_class"/>
+                    <field name="rn_inv_xyz_class"/>
+                    <field name="rn_inv_fsn_class"/>
+                    <field name="rn_inv_is_dead_stock"/>
+                    <field name="rn_inv_avg_daily_demand"/>
+                    <field name="rn_inv_safety_stock"/>
+                    <field name="rn_inv_reorder_point"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_temple_main" model="rn.temple.temple">
+        <field name="name">Sri Venkateswara Temple</field>
+        <field name="institution_type">hindu_temple</field>
+        <field name="trust_name">SVT Trust Board</field>
+        <field name="deity_name">Lord Venkateswara</field>
+        <field name="city">Coimbatore</field>
+        <field name="phone">+91 422 000 0000</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_temple_branch_main" model="rn.temple.branch">
+        <field name="name">Main Shrine</field>
+        <field name="temple_id" ref="demo_temple_main"/>
+        <field name="is_head_office" eval="True"/>
+        <field name="city">Coimbatore</field>
+    </record>
+    <record id="demo_temple_trustee_chair" model="rn.temple.trustee">
+        <field name="name">Trust Chairperson</field>
+        <field name="temple_id" ref="demo_temple_main"/>
+        <field name="role">chairperson</field>
+        <field name="is_signatory" eval="True"/>
+    </record>
+    <record id="demo_temple_priest_head" model="rn.temple.priest">
+        <field name="name">Head Priest</field>
+        <field name="temple_id" ref="demo_temple_main"/>
+        <field name="branch_id" ref="demo_temple_branch_main"/>
+        <field name="priest_type">head</field>
+        <field name="specialization">Archana, Homam</field>
+    </record>
+    <record id="demo_temple_timing_morning" model="rn.temple.timing">
+        <field name="temple_id" ref="demo_temple_main"/>
+        <field name="branch_id" ref="demo_temple_branch_main"/>
+        <field name="day_of_week">all</field>
+        <field name="session_type">morning</field>
+        <field name="time_open">6.0</field>
+        <field name="time_close">12.0</field>
+    </record>
+    <record id="demo_temple_festival_navaratri" model="rn.temple.festival">
+        <field name="name">Navaratri Utsavam</field>
+        <field name="temple_id" ref="demo_temple_main"/>
+        <field name="branch_id" ref="demo_temple_branch_main"/>
+        <field name="festival_type">navaratri</field>
+        <field name="date_start" eval="(DateTime.today() + relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+        <field name="date_end" eval="(DateTime.today() + relativedelta(months=2, days=9)).strftime('%Y-%m-%d')"/>
+        <field name="state">confirmed</field>
+        <field name="budget_estimate">500000</field>
+    </record>
+    <record id="demo_temple_settings" model="rn.temple.settings">
+        <field name="name">Temple Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="default_temple_id" ref="demo_temple_main"/>
+        <field name="institution_label">Temple</field>
+    </record>
+</odoo>

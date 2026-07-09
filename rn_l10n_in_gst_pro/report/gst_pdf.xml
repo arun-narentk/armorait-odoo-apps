@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_gst_return" model="ir.actions.report">
+        <field name="name">GST Return Summary</field>
+        <field name="model">rn.gst.return</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_l10n_in_gst_pro.report_gst_return_document</field>
+        <field name="report_file">rn_l10n_in_gst_pro.report_gst_return_document</field>
+        <field name="binding_model_id" ref="model_rn_gst_return"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_gst_return_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>GST Return Summary</h2>
+                    <p><strong>Name:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Type:</strong> <span t-field="doc.return_type"/></p>
+                    <p><strong>Period:</strong> <span t-field="doc.period_id"/></p>
+                    <p><strong>Total Tax:</strong> <span t-field="doc.total_tax"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

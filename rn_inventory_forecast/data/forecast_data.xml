@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="rn_inv_default_settings" model="rn.inv.forecast.settings">
+<field name="name">Default Inventory Forecast Settings</field>
+<field name="default_horizon_days">30</field>
+<field name="default_lead_time_days">7</field>
+<field name="history_days">90</field>
+<field name="dead_stock_days">90</field>
+<field name="enable_alerts" eval="True"/>
+<field name="enable_auto_forecast" eval="True"/>
+</record>
+</data></odoo>

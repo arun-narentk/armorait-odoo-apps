@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_booking_dashboard" model="ir.actions.client">
+        <field name="name">Booking Dashboard</field>
+        <field name="tag">rn_booking_platform.dashboard</field>
+    </record>
+    <template id="portal_my_appointments" name="My Appointments">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-3">
+                <h3>My Appointments</h3>
+                <t t-if="not appointments">
+                    <p>No appointments yet.</p>
+                </t>
+                <t t-else="">
+                    <ul class="list-group">
+                        <t t-foreach="appointments" t-as="appt">
+                            <li class="list-group-item">
+                                <strong t-esc="appt.name"/> -
+                                <t t-esc="appt.service_id.name"/> -
+                                <t t-esc="appt.start_datetime"/> -
+                                <t t-esc="appt.state"/>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

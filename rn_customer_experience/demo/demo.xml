@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_partner_experience" model="res.partner">
+        <field name="name">Experience Demo Customer</field>
+        <field name="email">experience.demo@example.com</field>
+        <field name="customer_rank">1</field>
+    </record>
+
+    <record id="demo_download_manual" model="ir.attachment">
+        <field name="name">product_manual.pdf</field>
+        <field name="type">binary</field>
+        <field name="datas" eval="b'UHJvZHVjdCBtYW51YWwgcGxhY2Vob2xkZXI='"/>
+        <field name="mimetype">application/pdf</field>
+    </record>
+
+    <record id="demo_experience_download" model="rn.customer.experience.download">
+        <field name="name">Product Manual</field>
+        <field name="document_type">manual</field>
+        <field name="partner_id" ref="demo_partner_experience"/>
+        <field name="attachment_id" ref="demo_download_manual"/>
+        <field name="is_public" eval="True"/>
+    </record>
+
+    <record id="demo_experience_warranty" model="rn.customer.experience.warranty">
+        <field name="name">WR-2026-001</field>
+        <field name="partner_id" ref="demo_partner_experience"/>
+        <field name="start_date" eval="DateTime.today().strftime('%Y-%m-%d')"/>
+        <field name="end_date" eval="(DateTime.today() + relativedelta(years=1)).strftime('%Y-%m-%d')"/>
+        <field name="state">active</field>
+    </record>
+
+    <record id="demo_experience_amc" model="rn.customer.experience.amc">
+        <field name="name">AMC-2026-001</field>
+        <field name="partner_id" ref="demo_partner_experience"/>
+        <field name="renewal_date" eval="(DateTime.today() + relativedelta(months=6)).strftime('%Y-%m-%d')"/>
+        <field name="next_visit_date" eval="(DateTime.today() + relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+        <field name="state">active</field>
+        <field name="amount">12000</field>
+    </record>
+</odoo>

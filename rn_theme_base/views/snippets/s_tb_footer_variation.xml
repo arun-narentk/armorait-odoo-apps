@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_footer_variation" name="Footer Variation">
+    <section class="s_tb_footer_variation tb-snippet tb-reveal pt48 pb48 o_cc o_cc5" data-snippet="s_tb_footer_variation">
+        <div class="container tb-reveal"><h2 class="h4">Footer Variation</h2><p>Drop this block to preview footer variation styling in the page editor.</p></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

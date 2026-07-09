@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_fleet_gps.Dashboard">
+        <div class="o_rn_fleet_dashboard p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="h3 mb-0">ARMORA Fleet GPS</h1>
+                    <div class="text-muted small">Live board | Edition: <t t-esc="state.edition"/></div>
+                </div>
+                <button class="btn btn-primary btn-sm" t-on-click="refresh">Refresh</button>
+            </div>
+            <t t-if="state.loading"><div class="text-muted">Loading fleet board...</div></t>
+            <t t-else="">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Active Vehicles</div><div class="value" t-esc="formatNumber(state.cards.active_vehicles)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Moving</div><div class="value" t-esc="formatNumber(state.cards.moving)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Idle</div><div class="value" t-esc="formatNumber(state.cards.idle)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Offline</div><div class="value" t-esc="formatNumber(state.cards.offline)"/></div></div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Trips Today</div><div class="value" t-esc="formatNumber(state.cards.trips_today)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Distance Today</div><div class="value" t-esc="formatNumber(state.cards.distance_today)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Open Alerts</div><div class="value" t-esc="formatNumber(state.cards.open_alerts)"/></div></div>
+                    <div class="col-6 col-md-3"><div class="o_rn_fleet_card"><div class="label">Fuel Cost (30d)</div><div class="value" t-esc="formatNumber(state.cards.fuel_cost_month)"/></div></div>
+                </div>
+                <div class="o_rn_fleet_panel">
+                    <div class="panel-title">Last Known Positions</div>
+                    <t t-if="!state.mapPoints.length"><div class="text-muted small">No GPS points yet. Use Push GPS Point or a provider connector.</div></t>
+                    <ul class="mb-0">
+                        <t t-foreach="state.mapPoints" t-as="p" t-key="p.id">
+                            <li>
+                                <strong t-esc="p.name"/>
+                                <span class="text-muted"> lat <t t-esc="p.lat"/>, lng <t t-esc="p.lng"/>, speed <t t-esc="p.speed"/></span>
+                                <t t-if="p.online"> (online)</t><t t-else=""> (offline)</t>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+                <div class="text-muted small mt-3">Leaflet/Google map canvas ships with rn_fleet_dashboard. Updated: <t t-esc="state.updatedAt"/></div>
+            </t>
+        </div>
+    </t>
+</templates>

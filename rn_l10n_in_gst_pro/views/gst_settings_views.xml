@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_gst_settings_form" model="ir.ui.view">
+        <field name="name">rn.gst.settings.form</field>
+        <field name="model">rn.gst.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="gstin"/>
+                            <field name="pan"/>
+                            <field name="default_state_code"/>
+                        </group>
+                        <group>
+                            <field name="return_frequency"/>
+                            <field name="json_version"/>
+                            <field name="financial_year"/>
+                            <field name="auto_validate"/>
+                            <field name="auto_lock_after_export"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_gst_settings" model="ir.actions.act_window">
+        <field name="name">GST Settings</field>
+        <field name="res_model">rn.gst.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="res_config_settings_view_form_rn_gst" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.gst</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="GST Compliance Pro" name="rn_l10n_in_gst_pro" groups="rn_l10n_in_gst_pro.group_rn_gst_admin">
+                    <block title="General">
+                        <setting string="Enable GST Compliance Pro">
+                            <field name="rn_gst_enabled"/>
+                        </setting>
+                        <setting string="Auto Validate Returns">
+                            <field name="rn_gst_auto_validate"/>
+                        </setting>
+                        <setting string="JSON Version">
+                            <field name="rn_gst_json_version"/>
+                        </setting>
+                        <setting string="Return Frequency">
+                            <field name="rn_gst_return_frequency"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_gst_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'rn_l10n_in_gst_pro'}</field>
+    </record>
+</odoo>

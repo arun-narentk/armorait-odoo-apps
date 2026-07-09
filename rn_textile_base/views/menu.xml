@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_textile_root"
+              name="Textile"
+              web_icon="rn_textile_base,static/description/icon.png"
+              groups="rn_textile_base.group_rn_textile_operator"
+              sequence="57"/>
+
+    <menuitem id="menu_rn_textile_dashboard"
+              name="Dashboard"
+              parent="menu_rn_textile_root"
+              action="action_rn_textile_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_textile_master"
+              name="Plant Master"
+              parent="menu_rn_textile_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_textile_factories"
+              name="Factories"
+              parent="menu_rn_textile_master"
+              action="action_rn_textile_factory"
+              sequence="10"/>
+    <menuitem id="menu_rn_textile_departments"
+              name="Departments"
+              parent="menu_rn_textile_master"
+              action="action_rn_textile_department"
+              sequence="20"/>
+    <menuitem id="menu_rn_textile_machines"
+              name="Machines"
+              parent="menu_rn_textile_master"
+              action="action_rn_textile_machine"
+              sequence="30"/>
+    <menuitem id="menu_rn_textile_yarn_specs"
+              name="Yarn Specifications"
+              parent="menu_rn_textile_master"
+              action="action_rn_textile_yarn_spec"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_textile_configuration"
+              name="Configuration"
+              parent="menu_rn_textile_root"
+              groups="rn_textile_base.group_rn_textile_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_textile_settings"
+              name="Textile Settings"
+              parent="menu_rn_textile_configuration"
+              action="action_rn_textile_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_textile_subscriptions"
+              name="SaaS Subscriptions"
+              parent="menu_rn_textile_configuration"
+              action="action_rn_textile_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_textile_config_settings"
+              name="Settings"
+              parent="menu_rn_textile_configuration"
+              action="action_rn_textile_config_settings"
+              sequence="100"/>
+</odoo>

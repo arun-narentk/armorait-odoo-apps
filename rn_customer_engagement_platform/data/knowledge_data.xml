@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="knowledge_return_policy" model="rn.customer.engagement.knowledge">
+        <field name="name">Return Policy</field>
+        <field name="category">policy</field>
+        <field name="keyword_hint">return,refund,exchange</field>
+        <field name="content">Returns are accepted based on the approved return policy and product condition. A support specialist will confirm eligibility when needed.</field>
+    </record>
+    <record id="knowledge_warranty_policy" model="rn.customer.engagement.knowledge">
+        <field name="name">Warranty Support</field>
+        <field name="category">support</field>
+        <field name="keyword_hint">warranty,repair,issue,problem</field>
+        <field name="content">Warranty questions are checked against purchase date, product coverage, and service status before the final reply is shared.</field>
+    </record>
+</odoo>

@@ -1,0 +1,25 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_hrms_branch_ro,rn.hrms.branch readonly,model_rn_hrms_branch,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_designation_ro,rn.hrms.designation readonly,model_rn_hrms_designation,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_skill_ro,rn.hrms.skill readonly,model_rn_hrms_skill,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_document_ro,rn.hrms.document readonly,model_rn_hrms_document,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_announcement_ro,rn.hrms.announcement readonly,model_rn_hrms_announcement,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_approval_ro,rn.hrms.approval readonly,model_rn_hrms_approval,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_settings_ro,rn.hrms.settings readonly,model_rn_hrms_settings,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_subscription_ro,rn.hrms.subscription readonly,model_rn_hrms_subscription,group_rn_hrms_readonly,1,0,0,0
+access_rn_hrms_branch_officer,rn.hrms.branch officer,model_rn_hrms_branch,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_designation_officer,rn.hrms.designation officer,model_rn_hrms_designation,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_skill_officer,rn.hrms.skill officer,model_rn_hrms_skill,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_document_officer,rn.hrms.document officer,model_rn_hrms_document,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_announcement_officer,rn.hrms.announcement officer,model_rn_hrms_announcement,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_approval_officer,rn.hrms.approval officer,model_rn_hrms_approval,group_rn_hrms_officer,1,1,1,0
+access_rn_hrms_wiz_approval_officer,rn.hrms.approval.action.wizard officer,model_rn_hrms_approval_action_wizard,group_rn_hrms_officer,1,1,1,1
+access_rn_hrms_wiz_onboard_officer,rn.hrms.employee.onboarding.wizard officer,model_rn_hrms_employee_onboarding_wizard,group_rn_hrms_officer,1,1,1,1
+access_rn_hrms_branch_manager,rn.hrms.branch manager,model_rn_hrms_branch,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_designation_manager,rn.hrms.designation manager,model_rn_hrms_designation,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_skill_manager,rn.hrms.skill manager,model_rn_hrms_skill,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_document_manager,rn.hrms.document manager,model_rn_hrms_document,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_announcement_manager,rn.hrms.announcement manager,model_rn_hrms_announcement,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_approval_manager,rn.hrms.approval manager,model_rn_hrms_approval,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_settings_manager,rn.hrms.settings manager,model_rn_hrms_settings,group_rn_hrms_manager,1,1,1,1
+access_rn_hrms_subscription_manager,rn.hrms.subscription manager,model_rn_hrms_subscription,group_rn_hrms_manager,1,1,1,1

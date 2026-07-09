@@ -1,0 +1,18 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_ai_site_brief_user,rn.ai.site.brief user,model_rn_ai_site_brief,group_rn_ai_site_user,1,1,1,0
+access_rn_ai_site_site_user,rn.ai.site.site user,model_rn_ai_site_site,group_rn_ai_site_user,1,0,0,0
+access_rn_ai_site_page_user,rn.ai.site.page user,model_rn_ai_site_page,group_rn_ai_site_user,1,0,0,0
+access_rn_ai_site_block_user,rn.ai.site.block user,model_rn_ai_site_block,group_rn_ai_site_user,1,0,0,0
+access_rn_ai_site_theme_user,rn.ai.site.theme user,model_rn_ai_site_theme,group_rn_ai_site_user,1,0,0,0
+access_rn_ai_site_site_editor,rn.ai.site.site editor,model_rn_ai_site_site,group_rn_ai_site_editor,1,1,1,0
+access_rn_ai_site_page_editor,rn.ai.site.page editor,model_rn_ai_site_page,group_rn_ai_site_editor,1,1,1,0
+access_rn_ai_site_block_editor,rn.ai.site.block editor,model_rn_ai_site_block,group_rn_ai_site_editor,1,1,1,0
+access_rn_ai_site_brief_mgr,rn.ai.site.brief manager,model_rn_ai_site_brief,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_site_mgr,rn.ai.site.site manager,model_rn_ai_site_site,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_page_mgr,rn.ai.site.page manager,model_rn_ai_site_page,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_block_mgr,rn.ai.site.block manager,model_rn_ai_site_block,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_theme_mgr,rn.ai.site.theme manager,model_rn_ai_site_theme,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_settings_mgr,rn.ai.site.settings manager,model_rn_ai_site_settings,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_subscription_mgr,rn.ai.site.subscription manager,model_rn_ai_site_subscription,group_rn_ai_site_manager,1,1,1,1
+access_rn_ai_site_settings_ro,rn.ai.site.settings readonly,model_rn_ai_site_settings,group_rn_ai_site_user,1,0,0,0
+access_rn_ai_site_subscription_ro,rn.ai.site.subscription readonly,model_rn_ai_site_subscription,group_rn_ai_site_user,1,0,0,0

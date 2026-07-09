@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="tb_seo_head" inherit_id="website.layout" name="ARMORAIT SEO Head">
+    <xpath expr="//head/meta[@name='generator']" position="after">
+        <meta property="og:site_name" t-att-content="website.name"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta t-if="website.social_twitter" name="twitter:site" t-att-content="website.social_twitter"/>
+        <script type="application/ld+json" t-out="website._tb_get_organization_schema()"/>
+        <t t-if="seo_object and 'website_meta_description' in seo_object and seo_object.sudo().website_meta_description">
+            <meta property="og:description" t-att-content="seo_object.sudo().website_meta_description"/>
+            <meta name="twitter:description" t-att-content="seo_object.sudo().website_meta_description"/>
+        </t>
+    </xpath>
+</template>
+
+<template id="tb_customizer_body" inherit_id="website.layout" name="ARMORAIT Customizer Body Data">
+    <xpath expr="//body" position="attributes">
+        <attribute name="t-att-data-tb-primary">website.tb_primary_color or '#1a3a5c'</attribute>
+        <attribute name="t-att-data-tb-secondary">website.tb_secondary_color or '#2d7dd2'</attribute>
+        <attribute name="t-att-data-tb-accent">website.tb_accent_color or '#f4a261'</attribute>
+        <attribute name="t-att-data-tb-heading-font">website.tb_heading_font or 'Poppins'</attribute>
+        <attribute name="t-att-data-tb-body-font">website.tb_body_font or 'Inter'</attribute>
+        <attribute name="t-att-data-tb-animations">website.tb_enable_animations and '1' or '0'</attribute>
+        <attribute name="t-att-data-tb-sticky-header">website.tb_sticky_header and '1' or '0'</attribute>
+        <attribute name="t-att-data-tb-whatsapp">website.tb_whatsapp_number or ''</attribute>
+        <attribute name="t-att-data-tb-emergency">website.tb_show_emergency_banner and '1' or '0'</attribute>
+        <attribute name="t-att-data-tb-emergency-text">website.tb_emergency_banner_text or ''</attribute>
+    </xpath>
+</template>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_google_map" name="Google Map">
+    <section class="s_tb_google_map tb-snippet tb-reveal pt48 pb48" data-snippet="s_tb_google_map">
+        <div class="container-fluid px-0">
+            <iframe class="w-100" style="height:400px;border:0;" loading="lazy" src="https://maps.google.com/maps?q=Odoo&amp;output=embed" title="Map"/>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

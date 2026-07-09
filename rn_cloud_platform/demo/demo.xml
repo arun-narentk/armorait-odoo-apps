@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_instance_cloud" model="rn.cloud.instance">
+        <field name="provider_id" ref="provider_aws_default"/>
+        <field name="customer_name">Demo Customer</field>
+        <field name="domain_name">demo.customer.cloud</field>
+        <field name="status">running</field>
+    </record>
+</odoo>

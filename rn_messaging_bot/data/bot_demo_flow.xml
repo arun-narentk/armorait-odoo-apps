@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="bot_support_flow" model="rn.messaging.bot">
+        <field name="name">Support Assistant</field>
+        <field name="welcome_text">Welcome to ARMORA support. Reply with sales, support, or human.</field>
+    </record>
+
+    <record id="bot_node_welcome_menu" model="rn.messaging.bot.node">
+        <field name="name">Main Menu</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="sequence">10</field>
+        <field name="node_type">menu</field>
+        <field name="body_text">How can we help you today?</field>
+        <field name="pos_x">80</field>
+        <field name="pos_y">80</field>
+    </record>
+
+    <record id="bot_node_create_lead" model="rn.messaging.bot.node">
+        <field name="name">Create Lead</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="sequence">40</field>
+        <field name="node_type">action</field>
+        <field name="action_code">create_lead</field>
+        <field name="pos_x">640</field>
+        <field name="pos_y">110</field>
+    </record>
+
+    <record id="bot_node_handoff" model="rn.messaging.bot.node">
+        <field name="name">Human Handoff</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="sequence">50</field>
+        <field name="node_type">handoff</field>
+        <field name="pos_x">360</field>
+        <field name="pos_y">320</field>
+    </record>
+
+    <record id="bot_node_sales" model="rn.messaging.bot.node">
+        <field name="name">Sales Info</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="sequence">20</field>
+        <field name="node_type">message</field>
+        <field name="body_text">Share your requirement and our sales team will contact you shortly.</field>
+        <field name="pos_x">360</field>
+        <field name="pos_y">40</field>
+        <field name="next_node_id" ref="bot_node_create_lead"/>
+    </record>
+
+    <record id="bot_node_support" model="rn.messaging.bot.node">
+        <field name="name">Support Info</field>
+        <field name="bot_id" ref="bot_support_flow"/>
+        <field name="sequence">30</field>
+        <field name="node_type">message</field>
+        <field name="body_text">Please describe your issue. We will open a ticket for you.</field>
+        <field name="pos_x">360</field>
+        <field name="pos_y">180</field>
+        <field name="next_node_id" ref="bot_node_create_lead"/>
+    </record>
+
+    <record id="bot_option_sales" model="rn.messaging.bot.node.option">
+        <field name="name">Sales</field>
+        <field name="keyword">sales</field>
+        <field name="node_id" ref="bot_node_welcome_menu"/>
+        <field name="target_node_id" ref="bot_node_sales"/>
+    </record>
+
+    <record id="bot_option_support" model="rn.messaging.bot.node.option">
+        <field name="name">Support</field>
+        <field name="keyword">support</field>
+        <field name="node_id" ref="bot_node_welcome_menu"/>
+        <field name="target_node_id" ref="bot_node_support"/>
+    </record>
+
+    <record id="bot_option_human" model="rn.messaging.bot.node.option">
+        <field name="name">Talk to Human</field>
+        <field name="keyword">human</field>
+        <field name="node_id" ref="bot_node_welcome_menu"/>
+        <field name="target_node_id" ref="bot_node_handoff"/>
+    </record>
+
+    <record id="bot_support_flow" model="rn.messaging.bot">
+        <field name="start_node_id" ref="bot_node_welcome_menu"/>
+    </record>
+</odoo>

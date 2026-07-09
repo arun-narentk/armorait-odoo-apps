@@ -1,0 +1,2 @@
+# Phase 1 has no mandatory third-party Python deps.
+# Optional later: biometrics / face recognition in companion modules.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_erp_health_target_tree" model="ir.ui.view">
+        <field name="name">rn.erp.health.target.tree</field>
+        <field name="model">rn.erp.health.target</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="target_type"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="last_score"/>
+                <field name="finding_open_count"/>
+                <field name="scan_count"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_erp_health_target_form" model="ir.ui.view">
+        <field name="name">rn.erp.health.target.form</field>
+        <field name="model">rn.erp.health.target</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_run_scan" type="object" string="Run Scan" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <field name="target_type"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="last_scan_id" readonly="1"/>
+                        <field name="last_score" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="scope_note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_erp_health_target" model="ir.actions.act_window">
+        <field name="name">Scan Targets</field>
+        <field name="res_model">rn.erp.health.target</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

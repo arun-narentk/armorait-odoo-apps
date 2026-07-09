@@ -1,0 +1,1 @@
+# No mandatory third-party packages. Map tiles use Leaflet CDN later.

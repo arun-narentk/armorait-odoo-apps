@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_idp_settings" model="rn.document.idp.settings">
+        <field name="name">Demo IDP Settings</field>
+        <field name="credit_balance">500</field>
+    </record>
+</odoo>

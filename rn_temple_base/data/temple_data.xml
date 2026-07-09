@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="temple_institution_types_note" model="ir.config_parameter">
+        <field name="key">rn_temple_base.institution_types</field>
+        <field name="value">hindu_temple,jain_temple,gurudwara,church,mosque,ashram,mutt,trust</field>
+    </record>
+</odoo>

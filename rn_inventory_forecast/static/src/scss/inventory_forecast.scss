@@ -1,0 +1,25 @@
+.o_rn_inv_forecast_dashboard {
+  background: linear-gradient(180deg, #f8fafc 0%, #f3eef5 100%);
+  min-height: 100%;
+
+  .o_rn_inv_card,
+  .o_rn_inv_panel {
+    background: #ffffff;
+    border: 1px solid #e7e0ea;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(63, 36, 58, 0.06);
+  }
+
+  .label {
+    color: #6b5b69;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .value {
+    color: #714B67;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+}

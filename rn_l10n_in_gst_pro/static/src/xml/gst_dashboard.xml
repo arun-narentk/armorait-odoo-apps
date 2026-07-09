@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_l10n_in_gst_pro.Dashboard">
+        <div class="o_rn_gst_dashboard p-4">
+            <h1 class="mb-4">GST Compliance Dashboard</h1>
+            <div class="row g-3">
+                <div class="col-md-3"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Returns</div>
+                    <div class="display-6" t-esc="state.returnCount"/>
+                </div></div></div>
+                <div class="col-md-3"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Pending</div>
+                    <div class="display-6 text-warning" t-esc="state.pending"/>
+                </div></div></div>
+                <div class="col-md-3"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Validated</div>
+                    <div class="display-6 text-success" t-esc="state.validated"/>
+                </div></div></div>
+                <div class="col-md-3"><div class="card shadow-sm border-0"><div class="card-body">
+                    <div class="text-muted">Open Mismatches</div>
+                    <div class="display-6 text-danger" t-esc="state.mismatches"/>
+                </div></div></div>
+            </div>
+            <p class="text-muted mt-4">Phase 1 dashboard shell. Charts and filing calendar arrive in Phase 9.</p>
+        </div>
+    </t>
+</templates>

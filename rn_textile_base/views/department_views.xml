@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_textile_department_list" model="ir.ui.view">
+        <field name="name">rn.textile.department.list</field>
+        <field name="model">rn.textile.department</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="factory_id"/>
+                <field name="department_type"/>
+                <field name="manager_id"/>
+                <field name="machine_count"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_textile_department_form" model="ir.ui.view">
+        <field name="name">rn.textile.department.form</field>
+        <field name="model">rn.textile.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_machines" type="object" class="oe_stat_button" icon="fa-cogs">
+                            <field name="machine_count" widget="statinfo" string="Machines"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="factory_id"/>
+                            <field name="department_type"/>
+                        </group>
+                        <group>
+                            <field name="manager_id"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_textile_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">rn.textile.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

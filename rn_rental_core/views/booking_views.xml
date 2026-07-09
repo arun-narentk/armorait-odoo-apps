@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_rental_booking_list" model="ir.ui.view">
+        <field name="name">rn.rental.booking.list</field>
+        <field name="model">rn.rental.booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="plan"/>
+                <field name="amount_total"/>
+                <field name="payment_state"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_rental_booking_form" model="ir.ui.view">
+        <field name="name">rn.rental.booking.form</field>
+        <field name="model">rn.rental.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_check_availability" type="object" string="Check Availability"/>
+                    <button name="action_recompute_prices" type="object" string="Recompute Prices"/>
+                    <button name="action_reserve" type="object" string="Reserve" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state not in ('draft', 'reserved')"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('cancel', 'done')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,reserved,confirmed,picked_up,returned,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="plan"/>
+                            <field name="payment_state"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="deposit_amount"/>
+                            <field name="amount_untaxed"/>
+                            <field name="amount_total"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="asset_id"/>
+                            <field name="unit_price"/>
+                            <field name="duration"/>
+                            <field name="quantity"/>
+                            <field name="subtotal"/>
+                        </list>
+                    </field>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="view_rn_rental_booking_calendar" model="ir.ui.view">
+        <field name="name">rn.rental.booking.calendar</field>
+        <field name="model">rn.rental.booking</field>
+        <field name="arch" type="xml">
+            <calendar string="Rentals" date_start="date_start" date_stop="date_end" color="partner_id" mode="month">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="action_rn_rental_booking" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">rn.rental.booking</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+    <record id="view_rn_rental_availability_check_form" model="ir.ui.view">
+        <field name="name">rn.rental.availability.check.wizard.form</field>
+        <field name="model">rn.rental.availability.check.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Check Availability">
+                <group>
+                    <field name="asset_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="result"/>
+                </group>
+                <footer>
+                    <button name="action_check" type="object" string="Check" class="btn-primary"/>
+                    <button string="Close" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_rental_availability_check" model="ir.actions.act_window">
+        <field name="name">Check Availability</field>
+        <field name="res_model">rn.rental.availability.check.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="view_rn_rental_quick_booking_form" model="ir.ui.view">
+        <field name="name">rn.rental.quick.booking.wizard.form</field>
+        <field name="model">rn.rental.quick.booking.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Quick Booking">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="asset_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="plan"/>
+                </group>
+                <footer>
+                    <button name="action_create" type="object" string="Reserve" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_rental_quick_booking" model="ir.actions.act_window">
+        <field name="name">Quick Booking</field>
+        <field name="res_model">rn.rental.quick.booking.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

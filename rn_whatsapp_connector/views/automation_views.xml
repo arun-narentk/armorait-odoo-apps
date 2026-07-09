@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_whatsapp_automation_list" model="ir.ui.view">
+        <field name="name">rn.whatsapp.automation.rule.list</field>
+        <field name="model">rn.whatsapp.automation.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="trigger"/>
+                <field name="template_id"/>
+                <field name="delay_minutes"/>
+                <field name="active"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_whatsapp_automation_form" model="ir.ui.view">
+        <field name="name">rn.whatsapp.automation.rule.form</field>
+        <field name="model">rn.whatsapp.automation.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_rule" type="object" string="Validate Rule" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="trigger"/>
+                            <field name="model_id"/>
+                            <field name="domain"/>
+                            <field name="state_field"/>
+                            <field name="state_value"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="account_id"/>
+                            <field name="template_id"/>
+                            <field name="delay_minutes"/>
+                            <field name="phone_field"/>
+                            <field name="partner_field"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_whatsapp_automation" model="ir.actions.act_window">
+        <field name="name">Automation Rules</field>
+        <field name="res_model">rn.whatsapp.automation.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_whatsapp_subscription" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">rn.whatsapp.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

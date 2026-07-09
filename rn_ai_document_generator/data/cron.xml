@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_rn_ai_doc_versions" model="ir.cron">
+        <field name="name">AI Documents: Version Retention Scan</field>
+        <field name="model_id" ref="model_rn_ai_document_scheduler_service"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_cleanup_old_versions()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">weeks</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_crm_followup_rule_list" model="ir.ui.view">
+        <field name="name">rn.crm.followup.rule.list</field>
+        <field name="model">rn.crm.followup.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="trigger"/>
+                <field name="delay_days"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_rn_crm_followup_rule" model="ir.actions.act_window">
+        <field name="name">Follow-up Rules</field>
+        <field name="res_model">rn.crm.followup.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_crm_reminder" model="ir.actions.act_window">
+        <field name="name">Reminders</field>
+        <field name="res_model">rn.crm.reminder</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_rn_crm_activity_template" model="ir.actions.act_window">
+        <field name="name">Activity Templates</field>
+        <field name="res_model">rn.crm.activity.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="demo_rn_hms_doctor" model="rn.hms.doctor">
+<field name="name">Dr. Demo Consultant</field>
+<field name="specialization">General Medicine</field>
+<field name="consulting_fee">500</field>
+<field name="consultation_minutes">15</field>
+</record>
+<record id="demo_rn_hms_ward" model="rn.hms.ward">
+<field name="name">General Ward A</field>
+<field name="code">GWA</field>
+<field name="ward_type">general</field>
+<field name="department_id" ref="rn_hms_dept_ipd"/>
+</record>
+<record id="demo_rn_hms_bed_1" model="rn.hms.bed">
+<field name="name">A-01</field>
+<field name="code">A01</field>
+<field name="ward_id" ref="demo_rn_hms_ward"/>
+<field name="state">available</field>
+</record>
+<record id="demo_rn_hms_bed_2" model="rn.hms.bed">
+<field name="name">A-02</field>
+<field name="code">A02</field>
+<field name="ward_id" ref="demo_rn_hms_ward"/>
+<field name="state">available</field>
+</record>
+<record id="demo_rn_hms_patient" model="rn.hms.patient">
+<field name="name">Demo Patient</field>
+<field name="phone">9999999999</field>
+<field name="gender">male</field>
+<field name="blood_group">o+</field>
+</record>
+</data></odoo>

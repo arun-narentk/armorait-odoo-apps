@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_fleet_trip" model="ir.actions.report">
+        <field name="name">Trip Summary</field>
+        <field name="model">rn.fleet.trip</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_fleet_gps.report_rn_fleet_trip_document</field>
+        <field name="report_file">rn_fleet_gps.report_rn_fleet_trip_document</field>
+        <field name="print_report_name">'Trip - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_rn_fleet_trip"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_rn_fleet_trip_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="doc.name"/>
+                        <p>Vehicle: <t t-esc="doc.vehicle_id.name"/></p>
+                        <p>Driver: <t t-esc="doc.driver_id.name"/></p>
+                        <p>Distance: <t t-esc="doc.distance_km"/> km</p>
+                        <p>Max speed: <t t-esc="doc.max_speed"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_mobile_platform">
+        <field name="name">Mobile Platform</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+    <record id="group_rn_mobile_platform_user" model="res.groups">
+        <field name="name">Mobile Platform User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_mobile_platform"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_mobile_platform_manager" model="res.groups">
+        <field name="name">Mobile Platform Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_mobile_platform"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_mobile_platform_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="rule_rn_mobile_app_company" model="ir.rule"><field name="name">Mobile app multi-company</field><field name="model_id" ref="model_rn_mobile_app"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+    <record id="rule_rn_mobile_screen_company" model="ir.rule"><field name="name">Mobile screen multi-company</field><field name="model_id" ref="model_rn_mobile_screen"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+    <record id="rule_rn_mobile_sync_company" model="ir.rule"><field name="name">Mobile sync multi-company</field><field name="model_id" ref="model_rn_mobile_sync_profile"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+    <record id="rule_rn_mobile_theme_company" model="ir.rule"><field name="name">Mobile theme multi-company</field><field name="model_id" ref="model_rn_mobile_theme"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+</odoo>

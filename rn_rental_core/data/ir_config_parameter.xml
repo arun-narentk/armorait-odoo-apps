@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_rental_enabled" model="ir.config_parameter">
+<field name="key">rn_rental_core.enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_rental_plan" model="ir.config_parameter">
+<field name="key">rn_rental_core.default_plan</field><field name="value">daily</field>
+</record>
+</data></odoo>

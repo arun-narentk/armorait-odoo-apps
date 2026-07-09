@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_experience_layout" name="Experience Portal Layout">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <style t-if="portal_config">
+                :root {
+                    --rn-exp-primary: <t t-esc="portal_config.get('primary_color', '#0d6efd')"/>;
+                    --rn-exp-secondary: <t t-esc="portal_config.get('secondary_color', '#6c757d')"/>;
+                }
+            </style>
+            <div class="rn-experience-portal container py-3">
+                <div class="rn-exp-hero card border-0 shadow-sm mb-4 p-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                        <div>
+                            <h1 class="h3 mb-1" t-esc="portal_config.get('portal_title', 'My Experience')"/>
+                            <div class="text-muted" t-if="portal_config.get('welcome_message')" t-out="portal_config.get('welcome_message')"/>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="/my/experience" class="btn btn-outline-primary btn-sm">Dashboard</a>
+                            <a t-if="portal_config.get('enable_orders', True)" href="/my/experience/orders" class="btn btn-outline-primary btn-sm">Orders</a>
+                            <a t-if="portal_config.get('enable_invoices', True)" href="/my/experience/invoices" class="btn btn-outline-primary btn-sm">Invoices</a>
+                            <a t-if="portal_config.get('enable_downloads', True)" href="/my/experience/downloads" class="btn btn-outline-primary btn-sm">Downloads</a>
+                            <a t-if="portal_config.get('enable_tickets', True)" href="/my/experience/tickets" class="btn btn-outline-primary btn-sm">Support</a>
+                            <a t-if="portal_config.get('enable_warranty', True)" href="/my/experience/warranty" class="btn btn-outline-primary btn-sm">Warranty</a>
+                            <a t-if="portal_config.get('enable_amc', True)" href="/my/experience/amc" class="btn btn-outline-primary btn-sm">AMC</a>
+                        </div>
+                    </div>
+                </div>
+                <t t-out="0"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_summary_cards" name="Experience Summary Cards">
+        <div class="row g-3 mb-4" t-if="dashboard">
+            <div class="col-6 col-md-3">
+                <div class="card h-100 p-3 text-center">
+                    <div class="text-muted small">Outstanding</div>
+                    <div class="h4 mb-0" t-esc="dashboard['summary']['outstanding_invoices']"/>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card h-100 p-3 text-center">
+                    <div class="text-muted small">Open Orders</div>
+                    <div class="h4 mb-0" t-esc="dashboard['summary']['open_orders']"/>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card h-100 p-3 text-center">
+                    <div class="text-muted small">Open Tickets</div>
+                    <div class="h4 mb-0" t-esc="dashboard['summary']['open_tickets']"/>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card h-100 p-3 text-center">
+                    <div class="text-muted small">Active AMC</div>
+                    <div class="h4 mb-0" t-esc="dashboard['summary']['active_amcs']"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="portal_experience_home" name="Experience Home">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <t t-call="rn_customer_experience.portal_experience_summary_cards"/>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <div class="card p-3 h-100">
+                        <h5>Recent Orders</h5>
+                        <t t-if="dashboard and dashboard['orders']">
+                            <div class="list-group list-group-flush">
+                                <a t-foreach="dashboard['orders']" t-as="order" t-key="order['id']"
+                                   t-attf-href="/my/orders/#{order['id']}"
+                                   class="list-group-item list-group-item-action d-flex justify-content-between">
+                                    <span t-esc="order['name']"/>
+                                    <span class="badge text-bg-secondary" t-esc="order['state']"/>
+                                </a>
+                            </div>
+                        </t>
+                        <p t-else="" class="text-muted mb-0">No recent orders.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card p-3 h-100">
+                        <h5>Outstanding Invoices</h5>
+                        <t t-if="dashboard and dashboard['outstanding_invoices']">
+                            <div class="list-group list-group-flush">
+                                <a t-foreach="dashboard['outstanding_invoices']" t-as="inv" t-key="inv['id']"
+                                   t-att-href="inv['portal_url']"
+                                   class="list-group-item list-group-item-action d-flex justify-content-between">
+                                    <span t-esc="inv['name']"/>
+                                    <span t-esc="inv['amount_residual']"/>
+                                </a>
+                            </div>
+                        </t>
+                        <p t-else="" class="text-muted mb-0">No outstanding invoices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-4" t-if="portal_config.get('enable_ai_assistant', True)">
+                <h5>AI Assistant</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control rn-exp-assistant-input" placeholder="Ask about orders, invoices, AMC, warranty..."/>
+                    <button class="btn btn-primary rn-exp-assistant-send" type="button">Ask</button>
+                </div>
+                <div class="rn-exp-assistant-answer mt-3 text-muted small"></div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_orders" name="Experience Orders">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-3">
+                <h5>Orders and Quotations</h5>
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Reference</th><th>Date</th><th>Status</th><th class="text-end">Total</th></tr></thead>
+                    <tbody>
+                        <tr t-foreach="(dashboard or {}).get('orders', []) + (dashboard or {}).get('quotations', [])" t-as="order" t-key="order['id']">
+                            <td><a t-attf-href="/my/orders/#{order['id']}" t-esc="order['name']"/></td>
+                            <td t-esc="order['date']"/>
+                            <td t-esc="order['state']"/>
+                            <td class="text-end" t-esc="order['amount_total']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_invoices" name="Experience Invoices">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-3">
+                <h5>Invoices</h5>
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Invoice</th><th>Date</th><th>Payment</th><th class="text-end">Due</th></tr></thead>
+                    <tbody>
+                        <tr t-foreach="(dashboard or {}).get('invoices', [])" t-as="inv" t-key="inv['id']">
+                            <td><a t-att-href="inv['portal_url']" t-esc="inv['name']"/></td>
+                            <td t-esc="inv['invoice_date']"/>
+                            <td t-esc="inv['payment_state']"/>
+                            <td class="text-end" t-esc="inv['amount_residual']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_downloads" name="Experience Downloads">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-3">
+                <h5>Download Center</h5>
+                <div class="list-group list-group-flush">
+                    <a t-foreach="(dashboard or {}).get('downloads', [])" t-as="dl" t-key="dl['id']"
+                       t-att-href="dl['url']"
+                       class="list-group-item list-group-item-action d-flex justify-content-between">
+                        <span t-esc="dl['name']"/>
+                        <span class="badge text-bg-light" t-esc="dl['document_type']"/>
+                    </a>
+                </div>
+                <p t-if="not (dashboard or {}).get('downloads')" class="text-muted mb-0">No documents available.</p>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_tickets" name="Experience Tickets">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0">Support Tickets</h5>
+                <a href="/my/experience/tickets/new" class="btn btn-primary btn-sm">New Ticket</a>
+            </div>
+            <div class="card p-3">
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Reference</th><th>Subject</th><th>Category</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr t-foreach="(dashboard or {}).get('tickets', [])" t-as="ticket" t-key="ticket['id']">
+                            <td t-esc="ticket['reference']"/>
+                            <td t-esc="ticket['name']"/>
+                            <td t-esc="ticket['category']"/>
+                            <td t-esc="ticket['state']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_ticket_form" name="Experience Ticket Form">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-4">
+                <h5>Raise a Support Ticket</h5>
+                <form action="/my/experience/tickets/new" method="post" class="mt-3">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" name="name" class="form-control" required="required"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select name="category" class="form-select">
+                            <option value="service">Service</option>
+                            <option value="warranty">Warranty</option>
+                            <option value="billing">Billing</option>
+                            <option value="delivery">Delivery</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="5" required="required"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_warranty" name="Experience Warranty">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-3">
+                <h5>Warranty Coverage</h5>
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Reference</th><th>Product</th><th>End Date</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr t-foreach="(dashboard or {}).get('warranties', [])" t-as="war" t-key="war['id']">
+                            <td t-esc="war['name']"/>
+                            <td t-esc="war['product']"/>
+                            <td t-esc="war['end_date']"/>
+                            <td t-esc="war['state']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_experience_amc" name="Experience AMC">
+        <t t-call="rn_customer_experience.portal_experience_layout">
+            <div class="card p-3">
+                <h5>AMC Contracts</h5>
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Contract</th><th>Renewal</th><th>Next Visit</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr t-foreach="(dashboard or {}).get('amcs', [])" t-as="amc" t-key="amc['id']">
+                            <td t-esc="amc['name']"/>
+                            <td t-esc="amc['renewal_date']"/>
+                            <td t-esc="amc['next_visit_date']"/>
+                            <td t-esc="amc['state']"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_home_experience_link" inherit_id="portal.portal_my_home" name="Portal Home Experience Link" priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/rn_customer_experience/static/description/icon.png'"/>
+                <t t-set="title">My Experience</t>
+                <t t-set="url" t-value="'/my/experience'"/>
+                <t t-set="text">Orders, invoices, payments, downloads, and support in one place.</t>
+            </t>
+        </div>
+    </template>
+</odoo>

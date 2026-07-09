@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_pricing_table" name="Pricing Table">
+    <section class="s_tb_pricing_table tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_pricing_table">
+        <div class="container"><h2 class="text-center mb-4">Pricing Plans</h2><div class="row g-4 justify-content-center">
+                <div class="col-md-4 tb-reveal">
+                    <div class="card h-100 shadow-sm">
+                        <img src="/web/image/website.s_cover_default_image" class="card-img-top" alt="Pricing Table 1"/>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Pricing Table 1</h3>
+                            <p class="card-text">Editable description for this block.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 tb-reveal">
+                    <div class="card h-100 shadow-sm">
+                        <img src="/web/image/website.s_cover_default_image" class="card-img-top" alt="Pricing Table 2"/>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Pricing Table 2</h3>
+                            <p class="card-text">Editable description for this block.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 tb-reveal">
+                    <div class="card h-100 shadow-sm">
+                        <img src="/web/image/website.s_cover_default_image" class="card-img-top" alt="Pricing Table 3"/>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Pricing Table 3</h3>
+                            <p class="card-text">Editable description for this block.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Learn more</a>
+                        </div>
+                    </div>
+                </div></div></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

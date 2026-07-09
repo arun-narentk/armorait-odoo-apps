@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_textile_settings_list" model="ir.ui.view">
+        <field name="name">rn.textile.settings.list</field>
+        <field name="model">rn.textile.settings</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="default_factory_id"/>
+                <field name="unit_label"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_textile_settings_form" model="ir.ui.view">
+        <field name="name">rn.textile.settings.form</field>
+        <field name="model">rn.textile.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                            <field name="default_factory_id"/>
+                            <field name="unit_label"/>
+                            <field name="timezone"/>
+                        </group>
+                        <group>
+                            <field name="enable_lot_traceability"/>
+                            <field name="enable_job_work"/>
+                            <field name="enable_export_docs"/>
+                            <field name="enable_piece_rate"/>
+                            <field name="lot_prefix"/>
+                            <field name="batch_prefix"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_textile_settings" model="ir.actions.act_window">
+        <field name="name">Textile Settings</field>
+        <field name="res_model">rn.textile.settings</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_textile_subscription_list" model="ir.ui.view">
+        <field name="name">rn.textile.subscription.list</field>
+        <field name="model">rn.textile.subscription</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="factory_id"/>
+                <field name="plan"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="monthly_fee"/>
+                <field name="includes_amc"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_textile_subscription_form" model="ir.ui.view">
+        <field name="name">rn.textile.subscription.form</field>
+        <field name="model">rn.textile.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="factory_id"/>
+                            <field name="plan"/>
+                            <field name="state"/>
+                            <field name="includes_amc"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="monthly_fee"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="max_machines"/>
+                            <field name="max_users"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_textile_subscription" model="ir.actions.act_window">
+        <field name="name">SaaS Subscriptions</field>
+        <field name="res_model">rn.textile.subscription</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="res_config_settings_view_form_rn_textile" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.textile</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Textile" name="rn_textile_base">
+                    <block title="Plant Defaults">
+                        <setting string="Default Factory">
+                            <field name="textile_default_factory_id"/>
+                        </setting>
+                        <setting string="Unit Label">
+                            <field name="textile_unit_label"/>
+                        </setting>
+                        <setting string="Lot Traceability">
+                            <field name="textile_enable_lot_traceability"/>
+                        </setting>
+                        <setting string="Job Work">
+                            <field name="textile_enable_job_work"/>
+                        </setting>
+                        <setting string="Export Documents">
+                            <field name="textile_enable_export_docs"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_rn_textile_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'rn_textile_base'}</field>
+    </record>
+</odoo>

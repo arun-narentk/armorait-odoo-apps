@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_messaging_bot">
+        <field name="name">Messaging Bot</field>
+        <field name="sequence">26</field>
+        <field name="category_id" ref="base.module_category_marketing"/>
+    </record>
+
+    <record id="group_rn_messaging_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_messaging_bot"/>
+        <field name="comment">Handle customer conversations and reply from the inbox.</field>
+    </record>
+
+    <record id="group_rn_messaging_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_messaging_bot"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_messaging_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <field name="comment">Configure connectors, bots, and all conversations.</field>
+    </record>
+
+    <record id="group_rn_messaging_admin" model="res.groups">
+        <field name="name">Technical</field>
+        <field name="sequence">30</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_messaging_bot"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_messaging_manager'))]"/>
+        <field name="comment">Access API tokens and webhook secrets.</field>
+    </record>
+
+    <record id="rule_rn_messaging_connector_company" model="ir.rule">
+        <field name="name">Messaging Connector: multi-company</field>
+        <field name="model_id" ref="model_rn_messaging_connector"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_messaging_conversation_company" model="ir.rule">
+        <field name="name">Messaging Conversation: multi-company</field>
+        <field name="model_id" ref="model_rn_messaging_conversation"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_messaging_message_company" model="ir.rule">
+        <field name="name">Messaging Message: multi-company</field>
+        <field name="model_id" ref="model_rn_messaging_message"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="rule_rn_messaging_bot_company" model="ir.rule">
+        <field name="name">Messaging Bot: multi-company</field>
+        <field name="model_id" ref="model_rn_messaging_bot"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

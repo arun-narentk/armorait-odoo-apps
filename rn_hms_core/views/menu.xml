@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_hms_root"
+              name="Hospital"
+              web_icon="rn_hms_core,static/description/icon.png"
+              groups="rn_hms_core.group_rn_hms_receptionist"
+              sequence="42"/>
+
+    <menuitem id="menu_rn_hms_dashboard"
+              name="Dashboard"
+              parent="menu_rn_hms_root"
+              action="action_rn_hms_dashboard"
+              sequence="1"/>
+
+    <menuitem id="menu_rn_hms_front_office"
+              name="Front Office"
+              parent="menu_rn_hms_root"
+              sequence="10"/>
+    <menuitem id="menu_rn_hms_patients"
+              name="Patients"
+              parent="menu_rn_hms_front_office"
+              action="action_rn_hms_patient"
+              sequence="10"/>
+    <menuitem id="menu_rn_hms_register_patient"
+              name="Register Patient"
+              parent="menu_rn_hms_front_office"
+              action="action_rn_hms_register_patient_wizard"
+              sequence="20"/>
+    <menuitem id="menu_rn_hms_appointments"
+              name="Appointments"
+              parent="menu_rn_hms_front_office"
+              action="action_rn_hms_appointment"
+              sequence="30"/>
+    <menuitem id="menu_rn_hms_quick_appointment"
+              name="Quick Appointment"
+              parent="menu_rn_hms_front_office"
+              action="action_rn_hms_quick_appointment_wizard"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_hms_clinical"
+              name="Clinical Setup"
+              parent="menu_rn_hms_root"
+              sequence="20"/>
+    <menuitem id="menu_rn_hms_doctors"
+              name="Doctors"
+              parent="menu_rn_hms_clinical"
+              action="action_rn_hms_doctor"
+              sequence="10"/>
+    <menuitem id="menu_rn_hms_departments"
+              name="Departments"
+              parent="menu_rn_hms_clinical"
+              action="action_rn_hms_department"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_hms_ipd"
+              name="IPD / Beds"
+              parent="menu_rn_hms_root"
+              sequence="30"/>
+    <menuitem id="menu_rn_hms_wards"
+              name="Wards"
+              parent="menu_rn_hms_ipd"
+              action="action_rn_hms_ward"
+              sequence="10"/>
+    <menuitem id="menu_rn_hms_beds"
+              name="Beds"
+              parent="menu_rn_hms_ipd"
+              action="action_rn_hms_bed"
+              sequence="20"/>
+    <menuitem id="menu_rn_hms_admit"
+              name="Allocate Bed"
+              parent="menu_rn_hms_ipd"
+              action="action_rn_hms_admit_patient_wizard"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_hms_configuration"
+              name="Configuration"
+              parent="menu_rn_hms_root"
+              groups="rn_hms_core.group_rn_hms_manager"
+              sequence="90"/>
+    <menuitem id="menu_rn_hms_settings"
+              name="Hospital Settings"
+              parent="menu_rn_hms_configuration"
+              action="action_rn_hms_settings"
+              sequence="10"/>
+    <menuitem id="menu_rn_hms_subscriptions"
+              name="Subscriptions"
+              parent="menu_rn_hms_configuration"
+              action="action_rn_hms_subscription"
+              sequence="20"/>
+    <menuitem id="menu_rn_hms_config_settings"
+              name="Settings"
+              parent="menu_rn_hms_configuration"
+              action="action_rn_hms_config_settings"
+              sequence="100"/>
+</odoo>

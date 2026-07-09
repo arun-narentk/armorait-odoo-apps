@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_restaurant_branch_list" model="ir.ui.view">
+        <field name="name">rn.restaurant.branch.list</field>
+        <field name="model">rn.restaurant.branch</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="restaurant_id"/>
+                <field name="is_cloud_kitchen"/>
+                <field name="phone"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_restaurant_branch_form" model="ir.ui.view">
+        <field name="name">rn.restaurant.branch.form</field>
+        <field name="model">rn.restaurant.branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="restaurant_id"/>
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="is_cloud_kitchen"/>
+                            <field name="opens_at" widget="float_time"/>
+                            <field name="closes_at" widget="float_time"/>
+                            <field name="active"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Dining Areas">
+                            <field name="floor_ids"/>
+                        </page>
+                        <page string="Tables">
+                            <field name="table_ids"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_restaurant_branch" model="ir.actions.act_window">
+        <field name="name">Branches</field>
+        <field name="res_model">rn.restaurant.branch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

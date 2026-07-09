@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_hall_venue" model="ir.sequence">
+        <field name="name">Hall Venue</field>
+        <field name="code">rn.hall.venue</field>
+        <field name="prefix">VEN</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_hall_hall" model="ir.sequence">
+        <field name="name">Event Hall</field>
+        <field name="code">rn.hall.hall</field>
+        <field name="prefix">HALL</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_hall_booking" model="ir.sequence">
+        <field name="name">Hall Booking</field>
+        <field name="code">rn.hall.booking</field>
+        <field name="prefix">BK</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

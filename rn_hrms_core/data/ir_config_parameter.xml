@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+<record id="param_rn_hrms_enabled" model="ir.config_parameter">
+<field name="key">rn_hrms_core.enabled</field><field name="value">True</field>
+</record>
+<record id="param_rn_hrms_prefix" model="ir.config_parameter">
+<field name="key">rn_hrms_core.employee_code_prefix</field><field name="value">EMP</field>
+</record>
+</data></odoo>

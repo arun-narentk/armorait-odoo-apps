@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="tb_mega_menu_enhance" inherit_id="website.submenu" name="ARMORAIT Mega Menu Enhance">
+    <xpath expr="//div[hasclass('o_mega_menu')]" position="attributes">
+        <attribute name="class" add="tb-mega-menu tb-mega-menu-columns" separator=" "/>
+    </xpath>
+</template>
+
+</odoo>

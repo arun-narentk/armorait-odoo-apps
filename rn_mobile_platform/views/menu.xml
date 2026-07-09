@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_mobile_root" name="Mobile Platform" web_icon="rn_mobile_platform,static/description/icon.png" groups="group_rn_mobile_platform_user" sequence="52"/>
+    <menuitem id="menu_rn_mobile_dashboard" name="Dashboard" parent="menu_rn_mobile_root" action="action_rn_mobile_dashboard" sequence="5"/>
+    <menuitem id="menu_rn_mobile_app" name="Mobile Apps" parent="menu_rn_mobile_root" action="action_rn_mobile_app" sequence="10"/>
+    <menuitem id="menu_rn_mobile_screen" name="Screens" parent="menu_rn_mobile_root" action="action_rn_mobile_screen" sequence="20"/>
+    <menuitem id="menu_rn_mobile_sync" name="Sync Profiles" parent="menu_rn_mobile_root" action="action_rn_mobile_sync" sequence="30"/>
+    <menuitem id="menu_rn_mobile_theme" name="Themes" parent="menu_rn_mobile_root" action="action_rn_mobile_theme" sequence="40"/>
+</odoo>

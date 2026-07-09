@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_restaurant_table_list" model="ir.ui.view">
+        <field name="name">rn.restaurant.table.list</field>
+        <field name="model">rn.restaurant.table</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="branch_id"/>
+                <field name="floor_id"/>
+                <field name="seats"/>
+                <field name="state"/>
+                <field name="pos_ready"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_restaurant_table_kanban" model="ir.ui.view">
+        <field name="name">rn.restaurant.table.kanban</field>
+        <field name="model">rn.restaurant.table</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="seats"/>
+                <field name="state"/>
+                <field name="branch_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_card">
+                            <strong><field name="name"/></strong>
+                            <div><field name="branch_id"/></div>
+                            <div>Seats: <field name="seats"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_rn_restaurant_table_form" model="ir.ui.view">
+        <field name="name">rn.restaurant.table.form</field>
+        <field name="model">rn.restaurant.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_set_available" type="object" string="Available" invisible="state == 'available'"/>
+                    <button name="action_set_occupied" type="object" string="Occupy" class="btn-primary" invisible="state == 'occupied'"/>
+                    <button name="action_set_dirty" type="object" string="Needs Cleaning"/>
+                    <field name="state" widget="statusbar" statusbar_visible="available,occupied,reserved,dirty,blocked"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="branch_id"/>
+                            <field name="floor_id"/>
+                            <field name="restaurant_id"/>
+                        </group>
+                        <group>
+                            <field name="seats"/>
+                            <field name="shape"/>
+                            <field name="pos_ready"/>
+                            <field name="qr_token" groups="rn_restaurant_core.group_rn_restaurant_manager"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_restaurant_table" model="ir.actions.act_window">
+        <field name="name">Tables</field>
+        <field name="res_model">rn.restaurant.table</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+</odoo>

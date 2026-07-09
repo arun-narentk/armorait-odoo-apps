@@ -1,0 +1,11 @@
+@import '../mixins';
+
+.tb-snippet .card {
+    border-radius: var(--tb-radius, #{$tb-radius});
+    @include tb-card-hover;
+}
+
+.tb-snippet .card-img-top {
+    border-top-left-radius: var(--tb-radius, #{$tb-radius});
+    border-top-right-radius: var(--tb-radius, #{$tb-radius});
+}

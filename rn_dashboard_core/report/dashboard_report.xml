@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_dashboard" model="ir.actions.report">
+        <field name="name">Dashboard Summary</field>
+        <field name="model">rn.dashboard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_dashboard_core.report_rn_dashboard_document</field>
+        <field name="report_file">rn_dashboard_core.report_rn_dashboard_document</field>
+        <field name="print_report_name">'Dashboard - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_rn_dashboard"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_rn_dashboard_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-esc="doc.name"/>
+                        <p>Type: <t t-esc="doc.dashboard_type"/> | Theme: <t t-esc="doc.theme"/></p>
+                        <p>Refresh: <t t-esc="doc.refresh_interval"/> seconds</p>
+                        <h3>Widgets</h3>
+                        <ul>
+                            <t t-foreach="doc.widget_ids" t-as="w">
+                                <li><t t-esc="w.name"/> (<t t-esc="w.widget_type"/> / <t t-esc="w.kpi_key"/>)</li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

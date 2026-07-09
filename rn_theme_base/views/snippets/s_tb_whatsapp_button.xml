@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_whatsapp_button" name="WhatsApp Button">
+    <section class="s_tb_whatsapp_button tb-snippet tb-reveal" data-snippet="s_tb_whatsapp_button">
+        <a href="https://wa.me/1234567890" data-auto-link="1" class="tb-whatsapp-btn btn btn-success rounded-circle position-fixed bottom-0 end-0 m-4" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <i class="fa fa-whatsapp fa-2x"/>
+        </a>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

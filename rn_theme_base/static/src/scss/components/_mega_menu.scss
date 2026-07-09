@@ -1,0 +1,26 @@
+@import '../mixins';
+
+.o_mega_menu.tb-mega-menu {
+    padding: 1.5rem;
+    border-radius: 0 0 var(--tb-border-radius) var(--tb-border-radius);
+    box-shadow: var(--tb-shadow);
+
+    .dropdown-item {
+        @include tb-transition(background-color color);
+        border-radius: var(--tb-border-radius);
+        &:hover, &:focus {
+            background-color: rgba(var(--tb-secondary-rgb, 45, 125, 210), .1);
+            color: var(--tb-primary);
+        }
+    }
+}
+
+.o_mega_menu_toggle:focus-visible {
+    @include tb-focus-ring;
+}
+
+@include tb-desktop-up {
+    .tb-mega-menu-columns {
+        min-width: 640px;
+    }
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_customer_engagement_conversation_tree" model="ir.ui.view">
+        <field name="name">rn.customer.engagement.conversation.tree</field>
+        <field name="model">rn.customer.engagement.conversation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="channel_id"/>
+                <field name="partner_id"/>
+                <field name="topic" widget="badge"/>
+                <field name="state" widget="badge"/>
+                <field name="external_contact"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_customer_engagement_conversation_form" model="ir.ui.view">
+        <field name="name">rn.customer.engagement.conversation.form</field>
+        <field name="model">rn.customer.engagement.conversation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="channel_id"/>
+                        <field name="session_id"/>
+                        <field name="partner_id"/>
+                        <field name="topic"/>
+                        <field name="state"/>
+                        <field name="external_contact"/>
+                        <field name="escalation_id"/>
+                    </group>
+                    <field name="last_message" readonly="1"/>
+                    <field name="line_ids" readonly="1">
+                        <list>
+                            <field name="direction"/>
+                            <field name="actor_name"/>
+                            <field name="content"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_customer_engagement_conversation" model="ir.actions.act_window">
+        <field name="name">Conversations</field>
+        <field name="res_model">rn.customer.engagement.conversation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

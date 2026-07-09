@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_timeline" name="Timeline">
+    <section class="s_tb_timeline tb-snippet tb-reveal pt64 pb64" data-snippet="s_tb_timeline">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Timeline</h2>
+            <div class="row"><div class="col-md-4 tb-reveal"><h3 class="h5">2020</h3><p>Company founded.</p></div>
+            <div class="col-md-4 tb-reveal"><h3 class="h5">2023</h3><p>Expanded to new markets.</p></div>
+            <div class="col-md-4 tb-reveal"><h3 class="h5">2026</h3><p>Launched theme_base framework.</p></div></div>
+        </div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

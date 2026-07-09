@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_realestate_unit_list" model="ir.ui.view">
+        <field name="name">rn.realestate.unit.list</field>
+        <field name="model">rn.realestate.unit</field>
+        <field name="arch" type="xml">
+            <list decoration-success="status == 'available'" decoration-warning="status == 'booked'" decoration-muted="status == 'sold'">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="block_id"/>
+                <field name="floor_no"/>
+                <field name="unit_type"/>
+                <field name="facing"/>
+                <field name="carpet_area"/>
+                <field name="base_price"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_realestate_unit_form" model="ir.ui.view">
+        <field name="name">rn.realestate.unit.form</field>
+        <field name="model">rn.realestate.unit</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_block" type="object" string="Block" invisible="status != 'available'"/>
+                    <button name="action_release" type="object" string="Release" invisible="status != 'blocked'"/>
+                    <button name="action_mark_booked" type="object" string="Mark Booked" invisible="status not in ('available', 'blocked')"/>
+                    <button name="action_mark_sold" type="object" string="Mark Sold" invisible="status != 'booked'"/>
+                    <field name="status" widget="statusbar" statusbar_visible="available,blocked,booked,sold"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code" readonly="1"/>
+                            <field name="developer_id"/>
+                            <field name="project_id"/>
+                            <field name="block_id"/>
+                            <field name="floor_no"/>
+                            <field name="unit_type"/>
+                        </group>
+                        <group>
+                            <field name="facing"/>
+                            <field name="carpet_area"/>
+                            <field name="builtup_area"/>
+                            <field name="plot_area"/>
+                            <field name="base_price"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="partner_id"/>
+                            <field name="lead_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_realestate_unit" model="ir.actions.act_window">
+        <field name="name">Property Inventory</field>
+        <field name="res_model">rn.realestate.unit</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

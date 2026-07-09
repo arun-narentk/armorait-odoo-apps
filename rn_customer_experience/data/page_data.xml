@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="experience_config_default" model="rn.customer.experience.config">
+        <field name="name">Default Experience Portal</field>
+        <field name="portal_title">My Experience</field>
+        <field name="welcome_message"><![CDATA[<p>Welcome back. Manage orders, invoices, payments, and support in one place.</p>]]></field>
+    </record>
+    <record id="experience_page_home" model="rn.customer.experience.page">
+        <field name="name">Home Dashboard</field>
+        <field name="code">home</field>
+        <field name="is_home" eval="True"/>
+        <field name="config_id" ref="experience_config_default"/>
+    </record>
+    <record id="experience_page_home_invoice" model="rn.customer.experience.page.widget">
+        <field name="page_id" ref="experience_page_home"/>
+        <field name="widget_id" ref="widget_invoice_list"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="experience_page_home_orders" model="rn.customer.experience.page.widget">
+        <field name="page_id" ref="experience_page_home"/>
+        <field name="widget_id" ref="widget_order_list"/>
+        <field name="sequence">20</field>
+    </record>
+    <record id="experience_page_home_downloads" model="rn.customer.experience.page.widget">
+        <field name="page_id" ref="experience_page_home"/>
+        <field name="widget_id" ref="widget_download_center"/>
+        <field name="sequence">30</field>
+    </record>
+    <record id="experience_page_home_ai" model="rn.customer.experience.page.widget">
+        <field name="page_id" ref="experience_page_home"/>
+        <field name="widget_id" ref="widget_ai_chat"/>
+        <field name="sequence">40</field>
+    </record>
+</odoo>

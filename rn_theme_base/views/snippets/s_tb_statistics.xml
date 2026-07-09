@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="s_tb_statistics" name="Statistics">
+    <section class="s_tb_statistics tb-snippet tb-reveal pt80 pb80 o_cc o_cc1" data-snippet="s_tb_statistics">
+        <div class="container"><div class="row text-center g-4">
+            <div class="col-6 col-md-3 tb-reveal"><span class="display-4 fw-bold">98%</span><p>Retention</p></div>
+            <div class="col-6 col-md-3 tb-reveal"><span class="display-4 fw-bold">250+</span><p>Deployments</p></div>
+            <div class="col-6 col-md-3 tb-reveal"><span class="display-4 fw-bold">15</span><p>Countries</p></div>
+            <div class="col-6 col-md-3 tb-reveal"><span class="display-4 fw-bold">24/7</span><p>Support</p></div>
+        </div></div>
+        <div class="oe_structure oe_empty"/>
+    </section>
+</template>
+
+</odoo>

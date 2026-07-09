@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_temple_priest_list" model="ir.ui.view">
+        <field name="name">rn.temple.priest.list</field>
+        <field name="model">rn.temple.priest</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="temple_id"/>
+                <field name="branch_id"/>
+                <field name="priest_type"/>
+                <field name="specialization"/>
+                <field name="phone"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_rn_temple_priest_form" model="ir.ui.view">
+        <field name="name">rn.temple.priest.form</field>
+        <field name="model">rn.temple.priest</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="temple_id"/>
+                        <field name="branch_id"/>
+                        <field name="priest_type"/>
+                        <field name="employee_id"/>
+                        <field name="specialization"/>
+                        <field name="languages"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rn_temple_priest" model="ir.actions.act_window">
+        <field name="name">Priests</field>
+        <field name="res_model">rn.temple.priest</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

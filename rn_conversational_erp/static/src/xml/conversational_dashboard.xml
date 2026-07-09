@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_conversational_erp.Dashboard">
+        <div class="o_rn_conversational_dashboard o_action p-3">
+            <h2>Conversational ERP</h2>
+            <div t-if="state.loading" class="text-muted">Loading channel and approval metrics...</div>
+            <div t-else="">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Channels</div><h3 t-esc="state.data.channels"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Connected</div><h3 t-esc="state.data.connected_channels"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Open Conversations</div><h3 t-esc="state.data.open_conversations"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Pending Approvals</div><h3 t-esc="state.data.pending_approvals"/></div></div>
+                    <div class="col-md-4 col-lg-2"><div class="card p-3"><div class="text-muted small">Assistants</div><h3 t-esc="state.data.assistant_count"/></div></div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-6"><div class="card p-3"><h5>Channel Mix</h5><div t-if="state.data.channel_mix.length" class="list-group list-group-flush"><div class="list-group-item" t-foreach="state.data.channel_mix" t-as="channel" t-key="channel.id"><strong t-esc="channel.name"/> - <t t-esc="channel.type"/> - <t t-esc="channel.status"/></div></div><div t-else="" class="text-muted">No channels yet.</div></div></div>
+                    <div class="col-lg-6"><div class="card p-3"><h5>Recent Approvals</h5><div t-if="state.data.recent_approvals.length" class="list-group list-group-flush"><div class="list-group-item" t-foreach="state.data.recent_approvals" t-as="approval" t-key="approval.id"><strong t-esc="approval.name"/> - <t t-esc="approval.state"/><div class="small" t-esc="approval.summary"/></div></div><div t-else="" class="text-muted">No approvals yet.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

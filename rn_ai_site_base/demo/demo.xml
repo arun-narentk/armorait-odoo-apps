@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_ai_site_brief_bakery" model="rn.ai.site.brief">
+        <field name="name">Coimbatore Bakery Launch</field>
+        <field name="business_name">Sweet Crust Bakery</field>
+        <field name="business_type">bakery</field>
+        <field name="location">Coimbatore</field>
+        <field name="description">We specialize in birthday cakes, custom wedding cakes, and daily fresh breads for families in Coimbatore.</field>
+        <field name="services">Birthday cakes, Wedding cakes, Cupcakes, Custom designs, Home delivery</field>
+        <field name="tone">friendly</field>
+        <field name="phone">+91 98765 00001</field>
+        <field name="email">hello@sweetcrust.example</field>
+        <field name="whatsapp">+91 98765 00001</field>
+        <field name="language">en</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="demo_ai_site_settings" model="rn.ai.site.settings">
+        <field name="name">AI Site Settings</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="publisher_mode">both</field>
+        <field name="enable_auto_crm" eval="True"/>
+        <field name="enable_auto_seo" eval="True"/>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_ai_site_brief" model="ir.sequence">
+        <field name="name">AI Site Brief</field>
+        <field name="code">rn.ai.site.brief</field>
+        <field name="prefix">BRF</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_rn_ai_site_site" model="ir.sequence">
+        <field name="name">AI Website</field>
+        <field name="code">rn.ai.site.site</field>
+        <field name="prefix">WEB</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

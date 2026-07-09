@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rn_hrms_employee" model="ir.actions.report">
+        <field name="name">Employee Profile</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_hrms_core.report_employee_document</field>
+        <field name="report_file">rn_hrms_core.report_employee_document</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_employee_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Employee Profile</h2>
+                    <p><strong>Name:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Code:</strong> <span t-field="doc.rn_hrms_employee_code"/></p>
+                    <p><strong>Department:</strong> <span t-field="doc.department_id"/></p>
+                    <p><strong>Branch:</strong> <span t-field="doc.rn_hrms_branch_id"/></p>
+                    <p><strong>Designation:</strong> <span t-field="doc.rn_hrms_designation_id"/></p>
+                    <p class="mt-4">ARMORA IT Technologies | https://www.armorait.com | info@armorait.com</p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

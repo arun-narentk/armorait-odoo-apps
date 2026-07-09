@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_conversational_dashboard" model="ir.actions.client">
+        <field name="name">Conversational Dashboard</field>
+        <field name="tag">rn_conversational_erp.dashboard</field>
+    </record>
+</odoo>

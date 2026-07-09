@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_ai_site_block_list" model="ir.ui.view">
+        <field name="name">rn.ai.site.block.list</field>
+        <field name="model">rn.ai.site.block</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="page_id"/>
+                <field name="block_type"/>
+                <field name="headline"/>
+                <field name="sequence"/>
+            </list>
+        </field>
+    </record>
+</odoo>

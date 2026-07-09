@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="theme_modern_blue" model="rn.ai.site.theme">
+        <field name="name">Modern Blue</field>
+        <field name="code">modern_blue</field>
+        <field name="primary_color">#2563eb</field>
+        <field name="secondary_color">#1e293b</field>
+        <field name="accent_color">#f59e0b</field>
+        <field name="layout_style">modern</field>
+    </record>
+    <record id="theme_bakery" model="rn.ai.site.theme">
+        <field name="name">Warm Bakery</field>
+        <field name="code">bakery</field>
+        <field name="primary_color">#b45309</field>
+        <field name="secondary_color">#78350f</field>
+        <field name="accent_color">#fcd34d</field>
+        <field name="layout_style">classic</field>
+        <field name="business_types">bakery</field>
+    </record>
+    <record id="theme_clinic" model="rn.ai.site.theme">
+        <field name="name">Clean Clinic</field>
+        <field name="code">clinic</field>
+        <field name="primary_color">#0891b2</field>
+        <field name="secondary_color">#164e63</field>
+        <field name="accent_color">#22d3ee</field>
+        <field name="layout_style">minimal</field>
+        <field name="business_types">clinic,hospital</field>
+    </record>
+    <record id="theme_restaurant" model="rn.ai.site.theme">
+        <field name="name">Bold Restaurant</field>
+        <field name="code">restaurant</field>
+        <field name="primary_color">#dc2626</field>
+        <field name="secondary_color">#1c1917</field>
+        <field name="accent_color">#fbbf24</field>
+        <field name="layout_style">bold</field>
+        <field name="business_types">restaurant,hotel</field>
+    </record>
+</odoo>
