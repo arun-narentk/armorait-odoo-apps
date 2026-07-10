@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_bi_sales_dashboard",
+  "app_name": "Sales Dashboard",
+  "tagline": "Revenue KPIs, targets, charts, and sales analytics",
+  "category_type": "dashboard",
+  "price": 39.99,
+  "accent": "#4f46e5",
+  "problem": "Managers export spreadsheets to understand revenue, pipeline, and team performance.",
+  "solution": "Sales Dashboard delivers KPI cards, filters, targets, Chart.js-ready datasets, and an OWL analytics shell for Odoo sales data.",
+  "benefits": [
+    "Revenue and order KPIs",
+    "Configurable widgets",
+    "Sales targets tracking",
+    "Export-ready architecture",
+    "Built for BI suite expansion"
+  ],
+  "features": [
+    {
+      "title": "KPI Cards",
+      "text": "Revenue, orders, AOV, quotes, and opportunities."
+    },
+    {
+      "title": "Filters",
+      "text": "Saved filters and favorites for teams."
+    },
+    {
+      "title": "Targets",
+      "text": "Goal tracking by period and salesperson."
+    },
+    {
+      "title": "Charts",
+      "text": "Chart.js hooks for trend and breakdown views."
+    }
+  ],
+  "workflow": [
+    "Open dashboard",
+    "Pick period filter",
+    "Review KPIs",
+    "Drill into targets",
+    "Export snapshot"
+  ],
+  "seo_keywords": "Odoo sales dashboard, BI dashboard, sales KPI, revenue analytics, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-bi-sales-dashboard"
+}

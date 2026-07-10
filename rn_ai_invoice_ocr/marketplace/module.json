@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_ai_invoice_ocr",
+  "app_name": "AI Invoice OCR",
+  "tagline": "Upload supplier invoices, OCR extract fields, match vendor, create vendor bill",
+  "category_type": "ai",
+  "price": 99.0,
+  "accent": "#2563eb",
+  "problem": "Teams running Odoo 19 need a reliable way to manage ai invoice ocr without spreadsheets or disconnected tools.",
+  "solution": "Upload supplier invoices, OCR extract fields, match vendor, create vendor bill",
+  "benefits": [
+    "Streamline ai invoice ocr workflows in Odoo",
+    "Built for Odoo 19 Community",
+    "Production-ready ARMORA architecture",
+    "Multi-company aware where applicable",
+    "Support from ARMORA IT Technologies"
+  ],
+  "features": [
+    {
+      "title": "Odoo-native",
+      "text": "AI Invoice OCR extends standard Odoo models and views."
+    },
+    {
+      "title": "Configurable",
+      "text": "Settings, security groups, and menus included."
+    },
+    {
+      "title": "Documented",
+      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+    },
+    {
+      "title": "Commercial support",
+      "text": "Contact info@armorait.com for rollout help."
+    }
+  ],
+  "workflow": [
+    "Install module",
+    "Configure settings",
+    "Assign user groups",
+    "Run daily workflows",
+    "Review KPIs and reports",
+    "Scale across companies"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, AI Invoice OCR, rn_ai_invoice_ocr, ARMORA IT Technologies",
+  "has_dashboard": false,
+  "has_reports": true,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

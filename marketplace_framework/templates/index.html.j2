@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ app_name }} | {{ brand.company }}</title>
+<meta name="description" content="{{ tagline }}. {{ seo_keywords }}">
+<style>
+:root { --module-accent: {{ accent }}; }
+{{ inline_css }}
+</style>
+</head>
+<body>
+
+<section class="armora-hero" id="top">
+  <h1>{{ app_name }}</h1>
+  <p class="tagline">{{ tagline }}</p>
+  <div class="armora-badges">
+    <span>Odoo {{ brand.odoo_version }} Community</span>
+    <span>{{ brand.company }}</span>
+    <span>Production Ready</span>
+    <span>Multi-company</span>
+    {% if has_dashboard %}<span>Dashboard</span>{% endif %}
+    {% if has_reports %}<span>Reports</span>{% endif %}
+  </div>
+  <img class="banner" src="banner.png" alt="{{ app_name }} banner">
+</section>
+
+<section class="armora-section" id="overview">
+  <h2>App Overview</h2>
+  <p>{{ solution }}</p>
+  <ul class="armora-list-check">
+    {% for benefit in benefits %}
+    <li>{{ benefit }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="armora-section" id="problem">
+  <h2>Business Problem</h2>
+  <p>{{ problem }}</p>
+</section>
+
+<section class="armora-section" id="solution">
+  <h2>Business Solution</h2>
+  <p>{{ solution }}</p>
+</section>
+
+<section class="armora-section" id="features">
+  <h2>Feature Highlights</h2>
+  <div class="armora-grid-2">
+    {% for feature in features %}
+    <div class="armora-card">
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="armora-section" id="workflow">
+  <h2>Workflow</h2>
+  <div class="armora-workflow">
+    {% for step in workflow %}
+    {% if not loop.first %}<span class="arrow">&#8595;</span>{% endif %}
+    <span class="step">{{ step }}</span>
+    {% endfor %}
+  </div>
+</section>
+
+{% if has_dashboard %}
+<section class="armora-section" id="dashboard">
+  <h2>Dashboard</h2>
+  <p>KPI cards, filters, and operational views designed for managers and daily reviews.</p>
+  <img class="armora-shot-wide" src="{{ screenshots.dashboard }}" alt="Dashboard">
+  {% if gifs.dashboard %}
+  <p><img class="armora-shot-wide" src="{{ gifs.dashboard }}" alt="Dashboard demo"></p>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if has_reports %}
+<section class="armora-section" id="reports">
+  <h2>Reports</h2>
+  <p>PDF, pivot, and export-ready outputs for audits and management reviews.</p>
+  <img class="armora-shot-wide" src="{{ screenshots.report }}" alt="Report">
+  {% if gifs.reports %}
+  <p><img class="armora-shot-wide" src="{{ gifs.reports }}" alt="Reports demo"></p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="armora-section" id="screenshots">
+  <h2>Screenshots</h2>
+  <p>Real Odoo backend captures from a working instance. Desktop and mobile views included.</p>
+  <div class="armora-gallery">
+    {% for shot in screenshot_gallery %}
+    <figure>
+      <img src="{{ shot.file }}" alt="{{ shot.label }}">
+      <figcaption>{{ shot.label }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="armora-section" id="demos">
+  <h2>Product Demonstrations</h2>
+  <p>20 to 30 second GIF recordings for hero, workflow, settings, and mobile flows.</p>
+  <div class="armora-gallery">
+    {% for gif in gif_gallery %}
+    <figure>
+      <img src="{{ gif.file }}" alt="{{ gif.label }}">
+      <figcaption>{{ gif.label }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+{% if has_mobile %}
+<section class="armora-section" id="mobile">
+  <h2>Mobile Friendly</h2>
+  <p>Responsive layouts for phones and tablets.</p>
+  <img class="armora-shot" src="{{ screenshots.mobile }}" alt="Mobile view">
+  {% if gifs.mobile %}
+  <p><img class="armora-shot-wide" src="{{ gifs.mobile }}" alt="Mobile demo"></p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="armora-section armora-faq" id="faq">
+  <h2>FAQ</h2>
+  <dl>
+    {% for item in faq %}
+    <dt>{{ item.q }}</dt>
+    <dd>{{ item.a }}</dd>
+    {% endfor %}
+  </dl>
+</section>
+
+<section class="armora-section" id="testimonials">
+  <h2>Customer Testimonials</h2>
+  {% for t in testimonials %}
+  <blockquote class="armora-testimonial">
+    <p>&ldquo;{{ t.quote }}&rdquo;</p>
+    <cite>{{ t.role }}, {{ t.company }}</cite>
+  </blockquote>
+  {% endfor %}
+</section>
+
+<section class="armora-section" id="maturity">
+  <h2>Why Product Maturity Matters</h2>
+  <p>Apps Store buyers need confidence that a module will survive upgrades, permissions, and real data volumes.</p>
+  <ul class="armora-list-check">
+    {% for point in brand.maturity_points %}
+    <li>{{ point }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="armora-section" id="why-armora">
+  <h2>Why {{ brand.company }}</h2>
+  <div class="armora-grid-2">
+    {% for item in brand.why_armora %}
+    <div class="armora-card">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="armora-section armora-cta" id="try">
+  <h2>{{ brand.try_before_buy.headline }}</h2>
+  <p>{{ brand.try_before_buy.text }}</p>
+  {% if live_test_url %}
+  <p><strong>Live demo:</strong> <a href="{{ live_test_url }}">{{ live_test_url }}</a></p>
+  {% endif %}
+  <a class="btn" href="{{ brand.try_before_buy.cta_url }}">{{ brand.try_before_buy.cta_label }}</a>
+</section>
+
+<section class="armora-section" id="purchase">
+  <h2>Purchase Includes</h2>
+  <ul class="armora-list-check">
+    {% for item in brand.purchase_includes %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="armora-section" id="activation">
+  <h2>Activation Guide</h2>
+  <ol>
+    {% for step in brand.activation_steps %}
+    <li>{{ step }}</li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="armora-section" id="installation">
+  <h2>Installation Details</h2>
+  <ol>
+    <li>Copy the module into your custom addons path.</li>
+    <li>Restart Odoo and update the Apps list.</li>
+    <li>Install <strong>{{ app_name }}</strong> (technical name: <code>{{ technical_name }}</code>).</li>
+    <li>Open Settings and complete module configuration.</li>
+    <li>Assign security groups to users.</li>
+    <li>Optional: load demo data for evaluation.</li>
+  </ol>
+</section>
+
+<section class="armora-section" id="compatibility">
+  <h2>Compatibility</h2>
+  <ul>
+    <li><strong>Odoo:</strong> {{ brand.compatibility.odoo }}</li>
+    <li><strong>Python:</strong> {{ brand.compatibility.python }}</li>
+    <li><strong>Database:</strong> {{ brand.compatibility.database }}</li>
+    <li><strong>UI:</strong> {{ brand.compatibility.ui }}</li>
+    <li><strong>Deployment:</strong> {{ brand.compatibility.deployment }}</li>
+  </ul>
+  <p><strong>SEO:</strong> {{ seo_keywords }}</p>
+  <p><strong>Version:</strong> {{ version }}</p>
+</section>
+
+{% if related_products %}
+<section class="armora-section armora-related" id="related">
+  <h2>You May Also Like</h2>
+  <p>Other {{ category_label }} modules from {{ brand.company }}:</p>
+  {% for product in related_products %}
+  <a href="#">{{ product.app_name }}</a>
+  {% endfor %}
+</section>
+{% endif %}
+
+<section class="armora-section" id="support">
+  <h2>Support</h2>
+  <p>Commercial support and rollout guidance from {{ brand.company }}.</p>
+  <ul>
+    <li>Website: <a href="{{ brand.website }}">{{ brand.website }}</a></li>
+    <li>Email: <a href="mailto:{{ brand.support_email }}">{{ brand.support_email }}</a></li>
+    <li>License: {{ brand.license }}</li>
+  </ul>
+</section>
+
+<footer class="armora-footer">
+  <h3>{{ brand.company }}</h3>
+  <p>Website: <a href="{{ brand.website }}">{{ brand.website }}</a></p>
+  <p>Support: <a href="mailto:{{ brand.support_email }}">{{ brand.support_email }}</a></p>
+  <p>&copy; {{ brand.copyright }}</p>
+</footer>
+
+<script>
+{{ inline_js }}
+</script>
+</body>
+</html>

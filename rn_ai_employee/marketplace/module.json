@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_ai_employee",
+  "app_name": "AI Chatbot",
+  "tagline": "Ask Odoo anything. Get answers and actions from an AI copilot",
+  "category_type": "ai",
+  "price": 99.99,
+  "accent": "#7c3aed",
+  "problem": "Users waste time clicking through menus to find data, run reports, or complete routine tasks.",
+  "solution": "AI Chatbot is an Odoo-native copilot that understands intent, calls registered tools, and returns answers with optional actions on CRM, sales, stock, and accounting.",
+  "benefits": [
+    "Natural language queries",
+    "Tool-based actions on real data",
+    "Configurable AI provider",
+    "Audit-friendly chat history",
+    "Extensible tool registry"
+  ],
+  "features": [
+    {
+      "title": "Intent Engine",
+      "text": "Routes questions to the right Odoo tools and models."
+    },
+    {
+      "title": "Tool Registry",
+      "text": "Sales, CRM, inventory, and accounting helpers."
+    },
+    {
+      "title": "Chat UI",
+      "text": "OWL copilot panel with suggestions and follow-ups."
+    },
+    {
+      "title": "Provider Layer",
+      "text": "OpenAI-ready with swappable AI backends."
+    }
+  ],
+  "workflow": [
+    "Install copilot",
+    "Set API key",
+    "Open chat",
+    "Ask a question",
+    "Review action",
+    "Confirm in Odoo"
+  ],
+  "seo_keywords": "Odoo AI, AI chatbot, Odoo copilot, OpenAI Odoo, Odoo 19 Community",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/ai-employee"
+}

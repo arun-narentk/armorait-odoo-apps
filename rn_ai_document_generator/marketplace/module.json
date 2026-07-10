@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_ai_document_generator",
+  "app_name": "AI Document Automation",
+  "tagline": "Templates, AI drafts, approvals, and PDF output",
+  "category_type": "ai",
+  "price": 59.99,
+  "accent": "#7c3aed",
+  "problem": "Teams recreate contracts, letters, and proposals manually for every customer.",
+  "solution": "AI Document Automation combines templates, placeholders, AI-assisted drafts, approval workflow, versioning, and PDF generation in Odoo.",
+  "benefits": [
+    "Faster document creation",
+    "Consistent branding",
+    "Approval before send",
+    "Version history",
+    "Optional OpenAI drafts"
+  ],
+  "features": [
+    {
+      "title": "Templates",
+      "text": "Reusable layouts with dynamic placeholders."
+    },
+    {
+      "title": "AI Drafts",
+      "text": "Builtin and OpenAI-assisted content generation."
+    },
+    {
+      "title": "Approvals",
+      "text": "Review and sign-off before publishing."
+    },
+    {
+      "title": "PDF Export",
+      "text": "Professional PDF output from approved drafts."
+    }
+  ],
+  "workflow": [
+    "Pick template",
+    "Fill placeholders",
+    "Generate AI draft",
+    "Approve",
+    "Export PDF"
+  ],
+  "seo_keywords": "Odoo document generator, AI documents, PDF templates, Odoo 19 Community",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-ai-document-generator"
+}

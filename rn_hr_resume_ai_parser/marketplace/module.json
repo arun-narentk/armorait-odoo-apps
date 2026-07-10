@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_hr_resume_ai_parser",
+  "app_name": "Resume AI Parser",
+  "tagline": "Parse CVs into skills, experience, and applicant records",
+  "category_type": "ai",
+  "price": 79.99,
+  "accent": "#4f46e5",
+  "problem": "Recruiters manually retype CV data into Odoo Recruitment for every applicant.",
+  "solution": "Resume AI Parser extracts skills, experience, and contact details from uploads and ranks applicants for faster shortlisting.",
+  "benefits": [
+    "Save recruiter hours",
+    "Structured applicant data",
+    "Skill normalization",
+    "Bulk CV upload",
+    "AI ranking hooks"
+  ],
+  "features": [
+    {
+      "title": "CV Parsing",
+      "text": "Extract text and structure from PDF and DOCX."
+    },
+    {
+      "title": "Skill Mapping",
+      "text": "Normalize skills against Odoo skill types."
+    },
+    {
+      "title": "Bulk Upload",
+      "text": "Wizard for many resumes at once."
+    },
+    {
+      "title": "Ranking View",
+      "text": "Sort applicants by parsed fit signals."
+    }
+  ],
+  "workflow": [
+    "Upload CV",
+    "Parse content",
+    "Map skills",
+    "Create applicant",
+    "Rank and interview"
+  ],
+  "seo_keywords": "Odoo recruitment, resume parser, CV AI, applicant tracking Odoo 19",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/ai-employee"
+}

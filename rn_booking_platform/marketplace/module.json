@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_booking_platform",
+  "app_name": "Appointment Booking",
+  "tagline": "Online booking, resources, and calendar sync",
+  "category_type": "productivity",
+  "price": 49.0,
+  "accent": "#0d9488",
+  "problem": "Service businesses lose leads when booking happens outside Odoo on phone calls and DMs.",
+  "solution": "Appointment Booking provides services, resources, slots, confirmations, and calendar integration for Odoo-based scheduling.",
+  "benefits": [
+    "Fewer no-shows",
+    "Resource-aware slots",
+    "Staff calendars in sync",
+    "Customer self-booking ready",
+    "Reminder automation hooks"
+  ],
+  "features": [
+    {
+      "title": "Services & Resources",
+      "text": "Define what can be booked and who delivers it."
+    },
+    {
+      "title": "Slot Engine",
+      "text": "Availability rules and conflict prevention."
+    },
+    {
+      "title": "Confirmations",
+      "text": "Email and status workflow for appointments."
+    },
+    {
+      "title": "Calendar Views",
+      "text": "Planner-friendly backend and portal hooks."
+    }
+  ],
+  "workflow": [
+    "Define service",
+    "Set availability",
+    "Customer books",
+    "Confirm slot",
+    "Deliver service"
+  ],
+  "seo_keywords": "Odoo appointment booking, online scheduling, calendar booking, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-booking-platform"
+}

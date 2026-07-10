@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_hms_core",
+  "app_name": "Hospital ERP",
+  "tagline": "Patients, appointments, and hospital operations foundation",
+  "category_type": "erp",
+  "price": 99.0,
+  "accent": "#dc2626",
+  "problem": "Clinics need an Odoo-native hospital core before adding billing, lab, and pharmacy modules.",
+  "solution": "Hospital ERP provides the ARMORA HMS foundation: patients, departments, appointments, and dashboard shell for healthcare workflows.",
+  "benefits": [
+    "Healthcare-ready data model",
+    "Appointment scheduling base",
+    "Department structure",
+    "Extend with HMS packs",
+    "Multi-company clinics"
+  ],
+  "features": [
+    {
+      "title": "Patients",
+      "text": "Core patient registry and demographics."
+    },
+    {
+      "title": "Appointments",
+      "text": "Scheduling foundation for OPD workflows."
+    },
+    {
+      "title": "Departments",
+      "text": "Clinical department and service structure."
+    },
+    {
+      "title": "Dashboard",
+      "text": "Operations overview for hospital admins."
+    }
+  ],
+  "workflow": [
+    "Register patient",
+    "Book appointment",
+    "Assign department",
+    "Serve visit",
+    "Bill via extensions"
+  ],
+  "seo_keywords": "Odoo hospital, HMS, clinic management, patient appointments, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-hms-core"
+}
