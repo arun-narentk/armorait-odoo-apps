@@ -15,20 +15,17 @@ except AttributeError:
     RESAMPLE = getattr(Image, 'LANCZOS', Image.ANTIALIAS)
 
 WHITE = '#FFFFFF'
-BLACK_BASE = '#081120'
-NAVY_BLACK = '#0a1628'
-NAVY_DEEP = '#0f172a'
-TEAL_MAIN = '#0d9488'
-TEAL_MID = '#14b8a6'
-TEAL_LIGHT = '#2dd4bf'
-TEAL_SHADOW = '#042f2e'
 NAVY_SHADOW = '#0a1628'
-CTA_START = '#6366f1'
-CTA_MID = '#7c3aed'
-CTA_END = '#0ea5e9'
+PEACOCK_TEAL = '#0d9488'
+PEACOCK_TEAL_LIGHT = '#14b8a6'
+PEACOCK_CYAN = '#06b6d4'
+PEACOCK_BLUE = '#1d4ed8'
+PEACOCK_BLUE_LIGHT = '#2563eb'
+PEACOCK_INDIGO = '#1e3a8a'
+PEACOCK_DEEP = '#042f2e'
+PEACOCK_EMERALD = '#10b981'
 TITLE_COLOR = WHITE
-PANEL_GLOW = '#115e59'
-TEAL_CYAN = '#06b6d4'
+PANEL_GLOW = '#1e40af'
 WEBSITE_PILL = 'www.armorait.com'
 
 DEFAULT_BRAND_LOGO = (
@@ -73,12 +70,37 @@ def _lerp_rgb(a: tuple[int, int, int], b: tuple[int, int, int], t: float) -> tup
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
-def _cta_gradient_rgb(t: float) -> tuple[int, int, int]:
-    t = max(0.0, min(1.0, t))
-    start, mid, end = _hex_to_rgb(CTA_START), _hex_to_rgb(CTA_MID), _hex_to_rgb(CTA_END)
-    if t <= 0.42:
-        return _lerp_rgb(start, mid, t / 0.42)
-    return _lerp_rgb(mid, end, (t - 0.42) / 0.58)
+def _peacock_gradient_rgb(tx: float, ty: float) -> tuple[int, int, int]:
+    """Teal-to-blue peacock blend with navy shadow toward bottom-right."""
+    tx = max(0.0, min(1.0, tx))
+    ty = max(0.0, min(1.0, ty))
+    teal = _hex_to_rgb(PEACOCK_TEAL_LIGHT)
+    blue = _hex_to_rgb(PEACOCK_BLUE_LIGHT)
+    indigo = _hex_to_rgb(PEACOCK_INDIGO)
+    navy = _hex_to_rgb(NAVY_SHADOW)
+    deep = _hex_to_rgb(PEACOCK_DEEP)
+    base = _lerp_rgb(teal, blue, tx ** 0.82)
+    base = _lerp_rgb(base, _lerp_rgb(indigo, blue, 0.35), ty * 0.18)
+    shadow = max((ty - 0.42) * 1.55, 0.0) * 0.48 + max((tx - 0.58) * 1.25, 0.0) * 0.32
+    if shadow > 0:
+        return _lerp_rgb(base, _lerp_rgb(navy, deep, ty * 0.65), min(1.0, shadow))
+    return base
+
+
+def _build_peacock_cover_background(w: int, h: int) -> Image.Image:
+    """Unified peacock teal + blue field with navy shadow (no diagonal split)."""
+    panel = Image.new('RGB', (w, h))
+    px = panel.load()
+    for y in range(h):
+        ty = y / max(h - 1, 1)
+        for x in range(w):
+            tx = x / max(w - 1, 1)
+            px[x, y] = _peacock_gradient_rgb(tx, ty)
+    return panel
+
+
+def _draw_cover_background(img: Image.Image, w: int, h: int) -> None:
+    img.paste(_build_peacock_cover_background(w, h), (0, 0))
 
 
 def title_lines_from_name(name: str) -> list[str]:
@@ -157,32 +179,6 @@ def read_manifest_fields(manifest_path: Path) -> tuple[str, str]:
     return name, summary
 
 
-def _build_teal_cover_background(w: int, h: int) -> Image.Image:
-    """Solid teal field with navy shadow vignette (no diagonal split)."""
-    panel = Image.new('RGB', (w, h))
-    px = panel.load()
-    teal = _hex_to_rgb(TEAL_MAIN)
-    teal_mid = _hex_to_rgb(TEAL_MID)
-    navy = _hex_to_rgb(NAVY_SHADOW)
-    deep = _hex_to_rgb(TEAL_SHADOW)
-    for y in range(h):
-        ty = y / max(h - 1, 1)
-        for x in range(w):
-            tx = x / max(w - 1, 1)
-            base = _lerp_rgb(teal_mid, teal, 0.35 + tx * 0.25)
-            shadow = max((ty - 0.45) * 1.8, 0.0) * 0.55 + max((tx - 0.55) * 1.4, 0.0) * 0.35
-            if shadow > 0:
-                mix = _lerp_rgb(base, _lerp_rgb(navy, deep, ty * 0.6), min(1.0, shadow))
-                px[x, y] = mix
-            else:
-                px[x, y] = base
-    return panel
-
-
-def _draw_cover_background(img: Image.Image, w: int, h: int) -> None:
-    img.paste(_build_teal_cover_background(w, h), (0, 0))
-
-
 DEFAULT_BRAND_STRIP = DEFAULT_BRAND_LOGO
 ODOO_VERSION_LABEL = 'V19'
 
@@ -212,7 +208,7 @@ def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
     y1 = 16
     y2 = y1 + box_h
     _rounded_rect(draw, (x1, y1, x2, y2), 6, WHITE)
-    draw.text((x1 + pad_x, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill='#1d4ed8')
+    draw.text((x1 + pad_x, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill=PEACOCK_BLUE)
 
 
 def _draw_top_brand_mark(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
@@ -231,7 +227,7 @@ def _draw_top_brand_mark(img: Image.Image, w: int, h: int, cover_logo: Path | No
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
-    """Website label for teal background."""
+    """Website label on peacock background."""
     draw = ImageDraw.Draw(img)
     pill_font = _font(max(14, int(h * 0.024)), True)
     tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
@@ -245,7 +241,7 @@ def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
         max(8, pill_h // 2),
         NAVY_SHADOW,
-        outline=TEAL_LIGHT,
+        outline=PEACOCK_CYAN,
         width=2,
     )
     draw.text(
@@ -271,7 +267,7 @@ def _draw_gradient_rounded_rect(
     grad = Image.new('RGB', (width, height))
     px = grad.load()
     for x in range(width):
-        color = _cta_gradient_rgb(x / max(width - 1, 1))
+        color = _peacock_gradient_rgb(x / max(width - 1, 1), 0.35)
         for y in range(height):
             px[x, y] = color
     mask = Image.new('L', (width, height), 0)
@@ -309,25 +305,25 @@ def _draw_centered_title_block(
 def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int) -> None:
     glow_r = radius + 10
     draw.ellipse((cx - glow_r, cy - glow_r, cx + glow_r, cy + glow_r), fill=PANEL_GLOW)
-    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=TEAL_LIGHT, width=4)
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=PEACOCK_CYAN, width=4)
     inner = radius - 18
-    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#ecfeff')
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#e0f2fe')
     bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
     bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
     bx2, by2 = bx1 + bubble_w, by1 + bubble_h
-    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=TEAL_MAIN, width=3)
+    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=PEACOCK_BLUE, width=3)
     for dot_x in (cx - 22, cx, cx + 22):
-        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=TEAL_MAIN)
+        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=PEACOCK_TEAL)
     for sx, sy, color in (
-        (cx - 58, cy - 48, TEAL_LIGHT),
-        (cx + 62, cy - 36, TEAL_CYAN),
-        (cx + 54, cy + 42, TEAL_MID),
+        (cx - 58, cy - 48, PEACOCK_CYAN),
+        (cx + 62, cy - 36, PEACOCK_BLUE_LIGHT),
+        (cx + 54, cy + 42, PEACOCK_EMERALD),
     ):
         draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
         draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
         draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
     bar_y = cy + bubble_h // 2 + 8
-    for i, color in enumerate((TEAL_MAIN, TEAL_MID, TEAL_LIGHT)):
+    for i, color in enumerate((PEACOCK_TEAL, PEACOCK_BLUE, PEACOCK_CYAN)):
         draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
 
 
@@ -366,7 +362,7 @@ def draw_app_cover(
     """Render loempia_app_cover style banner for one module."""
     logo_path = cover_logo or DEFAULT_COVER_LOGO
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
-    img = Image.new('RGB', (w, h), TEAL_MAIN)
+    img = Image.new('RGB', (w, h), PEACOCK_TEAL)
     draw = ImageDraw.Draw(img)
     _draw_cover_background(img, w, h)
     _draw_top_brand_mark(img, w, h, cover_logo=logo_path)
@@ -401,7 +397,7 @@ def draw_app_cover(
             (content_left + (content_w - stw) // 2, sub_y),
             line,
             font=sub_font,
-            fill='#ccfbf1',
+            fill='#dbeafe',
         )
         sub_y += sub_line_h
 
