@@ -33,6 +33,8 @@ DEFAULT_BRAND_LOGO = (
     / 'description'
     / 'armorait_brand_logo.png'
 )
+DEFAULT_COVER_LOGO = Path(__file__).resolve().parent / 'armorait_cover_logo.png'
+LOGO_MARK_CROP = (0.16, 0.02, 0.84, 0.78)
 
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -187,56 +189,19 @@ def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
 
 
 DEFAULT_BRAND_STRIP = DEFAULT_BRAND_LOGO
-ICON_CROP_RATIO = 0.14
 ODOO_VERSION_LABEL = 'V19'
 
 
-def _is_brand_mark_pixel(r: int, g: int, b: int, a: int) -> bool:
-    """Keep only purple/white logo strokes from the brand strip."""
-    if a < 20:
-        return False
-    if r > 185 and g > 185 and b > 185:
-        return True
-    return r > 75 and b > 75 and g < 145
-
-
-def _clean_brand_icon(icon: Image.Image) -> Image.Image:
-    """Remove dark strip background so only the A mark remains."""
-    cleaned = icon.copy()
-    px = cleaned.load()
-    for y in range(cleaned.height):
-        for x in range(cleaned.width):
-            r, g, b, a = px[x, y]
-            if _is_brand_mark_pixel(r, g, b, a):
-                continue
-            px[x, y] = (0, 0, 0, 0)
-    return cleaned
-
-
-def _trim_brand_icon(icon: Image.Image) -> Image.Image:
-    """Trim transparent margins around the logo mark."""
-    px = icon.load()
-    xs: list[int] = []
-    ys: list[int] = []
-    for y in range(icon.height):
-        for x in range(icon.width):
-            if px[x, y][3] > 20:
-                xs.append(x)
-                ys.append(y)
-    if not xs:
-        return icon
-    return icon.crop((min(xs), min(ys), max(xs) + 1, max(ys) + 1))
-
-
-def _extract_brand_icon(brand_logo: Path, target_h: int) -> Image.Image | None:
-    """Crop original ARMORA A mark from brand strip (old design icon)."""
-    if not brand_logo.is_file():
+def _load_cover_logo_mark(cover_logo: Path, target_h: int) -> Image.Image | None:
+    """Crop and scale the 3D ARMORA mark (icon + wordmark) for the cover badge."""
+    if not cover_logo.is_file():
         return None
-    strip = Image.open(brand_logo).convert('RGBA')
-    crop_w = max(1, int(strip.width * ICON_CROP_RATIO))
-    icon = _trim_brand_icon(_clean_brand_icon(strip.crop((0, 0, crop_w, strip.height))))
-    target_w = max(1, int(icon.width * (target_h / icon.height)))
-    return icon.resize((target_w, target_h), RESAMPLE)
+    source = Image.open(cover_logo).convert('RGBA')
+    sw, sh = source.size
+    left, top, right, bottom = LOGO_MARK_CROP
+    mark = source.crop((int(sw * left), int(sh * top), int(sw * right), int(sh * bottom)))
+    target_w = max(1, int(mark.width * (target_h / mark.height)))
+    return mark.resize((target_w, target_h), RESAMPLE)
 
 
 def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
@@ -367,39 +332,30 @@ def _diagonal_split_x(w: int, h: int, y: int) -> int:
     return split_top + int((split_bottom - split_top) * (y / h))
 
 
-def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
-    """ARMORA badge: original A icon + readable vector text."""
-    draw = ImageDraw.Draw(img)
-    logo_path = brand_logo or DEFAULT_BRAND_LOGO
-    pad_bottom = 20
-    badge_h = max(76, int(h * 0.15))
-    icon_size = int(badge_h * 0.84)
-    badge_w = int(badge_h * 2.88)
+def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
+    """ARMORA badge using the 3D cover logo mark."""
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    pad_bottom = 16
+    inner_h = max(94, int(h * 0.162))
+    mark = _load_cover_logo_mark(logo_path, inner_h)
+    if mark is None:
+        return
 
+    pad_x = 12
+    badge_w = mark.width + pad_x * 2
+    badge_h = mark.height + 10
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
-    x = split_x + max(20, (w - split_x - badge_w) // 2)
-    x = min(x, w - badge_w - 20)
+    x = split_x + max(14, (w - split_x - badge_w) // 2)
+    x = min(x, w - badge_w - 14)
 
-    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 7), '#0a1628')
-
-    icon = _extract_brand_icon(logo_path, icon_size)
-    ix = x + int(badge_h * 0.12)
-    iy = y + (badge_h - icon_size) // 2
-    if icon is not None:
-        img.paste(icon, (ix, iy), icon)
-        tx = ix + icon_size + int(badge_h * 0.08)
-    else:
-        tx = x + int(badge_h * 0.18)
-
-    armora_font = _font(max(18, int(badge_h * 0.36)), True)
-    sub_font = _font(max(9, int(badge_h * 0.16)), True)
-    draw.text((tx, y + int(badge_h * 0.20)), 'ARMORA', font=armora_font, fill=WHITE)
-    draw.text((tx, y + int(badge_h * 0.54)), 'IT TECHNOLOGIES', font=sub_font, fill='#E2E8F0')
+    draw = ImageDraw.Draw(img)
+    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 8), '#0a1628')
+    img.paste(mark, (x + pad_x, y + 5), mark)
 
 
-def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
-    _draw_armorait_logo_badge(img, w, h, brand_logo=brand_logo)
+def _paste_armorait_logo(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
+    _draw_armorait_logo_badge(img, w, h, cover_logo=cover_logo)
 
 
 def draw_app_cover(
@@ -408,9 +364,10 @@ def draw_app_cover(
     w: int = 1200,
     h: int = 600,
     brand_logo: Path | None = None,
+    cover_logo: Path | None = None,
 ) -> Image.Image:
     """Render loempia_app_cover style banner for one module."""
-    logo_path = brand_logo or DEFAULT_BRAND_LOGO
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
     img = Image.new('RGB', (w, h), '#F8FAFC')
     draw = ImageDraw.Draw(img)
@@ -418,7 +375,7 @@ def draw_app_cover(
     _draw_odoo_version_badge(img, w, h)
     radius = int(min(w, h) * 0.24)
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
-    _paste_armorait_logo(img, w, h, brand_logo=logo_path)
+    _paste_armorait_logo(img, w, h, cover_logo=logo_path)
 
     content_left = split_mid + 8
     content_right = w - 28
@@ -459,22 +416,22 @@ def save_cover_assets(
     module_dir: Path,
     title_lines: list[str],
     subtitle: str | list[str],
-    brand_logo: Path | None = None,
+    cover_logo: Path | None = None,
 ) -> None:
-    """Write banner.png, banner_small.png, and brand logo into module static/description."""
+    """Write banner.png, banner_small.png, and cover logo into module static/description."""
     out = module_dir / 'static' / 'description'
     out.mkdir(parents=True, exist_ok=True)
-    logo_src = brand_logo or DEFAULT_BRAND_LOGO
+    logo_src = cover_logo or DEFAULT_COVER_LOGO
     if logo_src.is_file():
-        dest = out / 'armorait_brand_logo.png'
+        dest = out / 'armorait_cover_logo.png'
         if logo_src.resolve() != dest.resolve():
             shutil.copy2(logo_src, dest)
-    banner = draw_app_cover(title_lines, subtitle)
+    banner = draw_app_cover(title_lines, subtitle, cover_logo=logo_src)
     banner.save(out / 'banner.png', 'PNG', optimize=True)
     banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
 
 
-def generate_covers_for_repo(repo_root: Path, brand_logo: Path | None = None) -> list[str]:
+def generate_covers_for_repo(repo_root: Path, cover_logo: Path | None = None) -> list[str]:
     """Generate covers for every Odoo module folder under repo_root."""
     generated: list[str] = []
     skip = {'tools', 'armorait2_site', '.git', '.github', '.tmp'}
@@ -485,6 +442,6 @@ def generate_covers_for_repo(repo_root: Path, brand_logo: Path | None = None) ->
         name, summary = read_manifest_fields(manifest)
         title_lines = title_lines_from_name(name)
         subtitle = subtitle_lines_from_summary(summary)
-        save_cover_assets(module_dir, title_lines, subtitle, brand_logo=brand_logo)
+        save_cover_assets(module_dir, title_lines, subtitle, cover_logo=cover_logo)
         generated.append(module_dir.name)
     return generated

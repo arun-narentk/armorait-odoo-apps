@@ -11,7 +11,7 @@ TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
-from apps_store_cover import DEFAULT_BRAND_LOGO, generate_covers_for_repo
+from apps_store_cover import DEFAULT_COVER_LOGO, generate_covers_for_repo
 
 
 def main() -> None:
@@ -23,18 +23,18 @@ def main() -> None:
         help='Path to armorait-odoo-apps repo (default: sibling clone)',
     )
     parser.add_argument(
-        '--brand-logo',
-        default=str(DEFAULT_BRAND_LOGO),
-        help='Path to armorait_brand_logo.png',
+        '--cover-logo',
+        default=str(DEFAULT_COVER_LOGO),
+        help='Path to armorait_cover_logo.png',
     )
     args = parser.parse_args()
     repo_root = Path(args.repo_root).resolve()
-    brand_logo = Path(args.brand_logo).resolve()
+    cover_logo = Path(args.cover_logo).resolve()
     if not repo_root.is_dir():
         raise SystemExit(f'Repo not found: {repo_root}')
-    if not brand_logo.is_file():
-        raise SystemExit(f'Brand logo not found: {brand_logo}')
-    modules = generate_covers_for_repo(repo_root, brand_logo=brand_logo)
+    if not cover_logo.is_file():
+        raise SystemExit(f'Cover logo not found: {cover_logo}')
+    modules = generate_covers_for_repo(repo_root, cover_logo=cover_logo)
     print(f'Generated covers for {len(modules)} modules in {repo_root}')
     for name in modules:
         print(f'  {name}')
