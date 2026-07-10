@@ -37,6 +37,7 @@ DEFAULT_BRAND_LOGO = (
 )
 DEFAULT_COVER_LOGO = Path(__file__).resolve().parent / 'armorait_cover_logo.png'
 LOGO_MARK_CROP = (0.16, 0.02, 0.84, 0.78)
+LOGO_LEFT_CROP = (0.18, 0.02, 0.82, 0.56)
 
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -195,6 +196,20 @@ def _load_cover_logo_mark(cover_logo: Path, target_h: int) -> Image.Image | None
     return mark.resize((target_w, target_h), RESAMPLE)
 
 
+def _load_cover_logo_left(cover_logo: Path, max_size: int) -> Image.Image | None:
+    """Crop ARMORA puzzle icon + wordmark for the left disc panel."""
+    if not cover_logo.is_file():
+        return None
+    source = Image.open(cover_logo).convert('RGBA')
+    sw, sh = source.size
+    left, top, right, bottom = LOGO_LEFT_CROP
+    mark = source.crop((int(sw * left), int(sh * top), int(sw * right), int(sh * bottom)))
+    scale = min(max_size / max(mark.width, 1), max_size / max(mark.height, 1))
+    target_w = max(1, int(mark.width * scale))
+    target_h = max(1, int(mark.height * scale))
+    return mark.resize((target_w, target_h), RESAMPLE)
+
+
 def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
     """Top-right Odoo 19 version tag (Serpent-style ribbon)."""
     draw = ImageDraw.Draw(img)
@@ -211,19 +226,36 @@ def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
     draw.text((x1 + pad_x, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill=PEACOCK_BLUE)
 
 
-def _draw_top_brand_mark(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
-    """Compact ARMORA mark at top-left like Serpent logo placement."""
+def _draw_left_logo_disc(
+    img: Image.Image,
+    w: int,
+    h: int,
+    cover_logo: Path | None = None,
+) -> None:
+    """loempia_app_cover shadow-sm left panel with the ARMORA 3D logo."""
     logo_path = cover_logo or DEFAULT_COVER_LOGO
-    mark_h = max(46, int(h * 0.085))
-    mark = _load_cover_logo_mark(logo_path, mark_h)
-    if mark is None:
-        return
-    pad_x, pad_y = 18, 14
-    badge_w = mark.width + 16
-    badge_h = mark.height + 10
+    cx = int(w * 0.28)
+    cy = int(h * 0.48)
+    radius = int(min(w, h) * 0.22)
+    inner = radius - 16
+
+    shadow_layer = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(shadow_layer)
+    for offset, alpha in ((6, 42), (10, 24), (14, 12)):
+        shadow_draw.ellipse(
+            (cx - radius + offset, cy - radius + offset + 3, cx + radius + offset, cy + radius + offset + 3),
+            fill=(8, 18, 38, alpha),
+        )
+    img.paste(shadow_layer, (0, 0), shadow_layer)
+
     draw = ImageDraw.Draw(img)
-    _rounded_rect(draw, (pad_x, pad_y, pad_x + badge_w, pad_y + badge_h), 8, NAVY_SHADOW)
-    img.paste(mark, (pad_x + 8, pad_y + 5), mark)
+    draw.ellipse((cx - radius - 3, cy - radius - 3, cx + radius + 3, cy + radius + 3), fill=PANEL_GLOW)
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=PEACOCK_CYAN, width=4)
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#e0f2fe')
+
+    mark = _load_cover_logo_left(logo_path, inner * 2 - 20)
+    if mark is not None:
+        img.paste(mark, (cx - mark.width // 2, cy - mark.height // 2), mark)
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
@@ -302,55 +334,6 @@ def _draw_centered_title_block(
     return cy
 
 
-def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int) -> None:
-    glow_r = radius + 10
-    draw.ellipse((cx - glow_r, cy - glow_r, cx + glow_r, cy + glow_r), fill=PANEL_GLOW)
-    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=PEACOCK_CYAN, width=4)
-    inner = radius - 18
-    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#e0f2fe')
-    bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
-    bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
-    bx2, by2 = bx1 + bubble_w, by1 + bubble_h
-    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=PEACOCK_BLUE, width=3)
-    for dot_x in (cx - 22, cx, cx + 22):
-        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=PEACOCK_TEAL)
-    for sx, sy, color in (
-        (cx - 58, cy - 48, PEACOCK_CYAN),
-        (cx + 62, cy - 36, PEACOCK_BLUE_LIGHT),
-        (cx + 54, cy + 42, PEACOCK_EMERALD),
-    ):
-        draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
-        draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
-        draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
-    bar_y = cy + bubble_h // 2 + 8
-    for i, color in enumerate((PEACOCK_TEAL, PEACOCK_BLUE, PEACOCK_CYAN)):
-        draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
-
-
-def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
-    """Bottom-center ARMORA mark on unified teal background."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
-    pad_bottom = 14
-    inner_h = max(82, int(h * 0.14))
-    mark = _load_cover_logo_mark(logo_path, inner_h)
-    if mark is None:
-        return
-
-    pad_x = 12
-    badge_w = mark.width + pad_x * 2
-    badge_h = mark.height + 10
-    y = h - badge_h - pad_bottom
-    x = max(14, (w - badge_w) // 2)
-
-    draw = ImageDraw.Draw(img)
-    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 8), NAVY_SHADOW)
-    img.paste(mark, (x + pad_x, y + 5), mark)
-
-
-def _paste_armorait_logo(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
-    _draw_armorait_logo_badge(img, w, h, cover_logo=cover_logo)
-
-
 def draw_app_cover(
     title_lines: list[str],
     subtitle: str | list[str],
@@ -365,10 +348,8 @@ def draw_app_cover(
     img = Image.new('RGB', (w, h), PEACOCK_TEAL)
     draw = ImageDraw.Draw(img)
     _draw_cover_background(img, w, h)
-    _draw_top_brand_mark(img, w, h, cover_logo=logo_path)
     _draw_odoo_version_badge(img, w, h)
-    radius = int(min(w, h) * 0.22)
-    _draw_cover_illustration(draw, int(w * 0.28), int(h * 0.46), radius)
+    _draw_left_logo_disc(img, w, h, cover_logo=logo_path)
 
     content_left = int(w * 0.50)
     content_right = w - 32
