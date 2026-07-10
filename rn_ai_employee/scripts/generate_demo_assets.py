@@ -410,21 +410,36 @@ def _draw_wrapped_title(draw: ImageDraw.ImageDraw, x: int, y: int, max_w: int, l
     return _draw_centered_title_block(draw, x, x + max_w, y, lines)
 
 
-def _paste_armorait_logo(img: Image.Image, w: int, h: int, pad: int = 22) -> None:
-    """Paste ARMORA brand strip (screen 1 logo) top-right on Apps Store cover."""
+def _diagonal_split_x(w: int, h: int, y: int) -> int:
+    """X coordinate of maroon/white diagonal at height y."""
+    split_top = int(w * 0.54)
+    split_bottom = int(w * 0.34)
+    if h <= 0:
+        return split_bottom
+    return split_top + int((split_bottom - split_top) * (y / h))
+
+
+def _paste_armorait_logo(img: Image.Image, w: int, h: int) -> None:
+    """Paste large ARMORA logo bottom-center on white panel, beside maroon diagonal."""
     if not BRAND_LOGO.is_file():
         return
     logo = Image.open(BRAND_LOGO).convert('RGBA')
-    crop_w = max(1, int(logo.width * 0.56))
-    logo = logo.crop((0, 0, crop_w, logo.height))
-    target_h = max(34, int(h * 0.08))
+    pad_bottom = 16
+    target_h = max(88, int(h * 0.22))
     target_w = int(logo.width * (target_h / logo.height))
-    max_w = int(w * 0.34)
+    split_bottom = int(w * 0.34)
+    max_w = int(w * 0.42)
     if target_w > max_w:
         target_w = max_w
         target_h = int(logo.height * (target_w / logo.width))
     logo = logo.resize((target_w, target_h), RESAMPLE)
-    img.paste(logo, (w - target_w - pad, pad), logo)
+
+    y = h - target_h - pad_bottom
+    split_x = _diagonal_split_x(w, h, y + target_h // 2)
+    # Bottom center of cover, tucked beside maroon diagonal
+    x = split_x + max(16, (w - split_x - target_w) // 2)
+    x = min(x, w - target_w - 16)
+    img.paste(logo, (x, y), logo)
 
 
 def draw_banner(w: int, h: int) -> Image.Image:
@@ -436,12 +451,12 @@ def draw_banner(w: int, h: int) -> Image.Image:
     radius = int(min(w, h) * 0.24)
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
 
-    # ARMORA logo badge (top right, white panel) for loempia_app_cover card
+    # ARMORA logo badge bottom-center beside maroon diagonal (loempia_app_cover)
     _paste_armorait_logo(img, w, h)
 
     # Main title centered on white panel
     panel_left = split_mid - 20
-    title_y = int(h * 0.30)
+    title_y = int(h * 0.26)
     _draw_centered_title_block(
         draw,
         panel_left,
@@ -453,7 +468,7 @@ def draw_banner(w: int, h: int) -> Image.Image:
     sub_font = _font(17)
     stw, sth = _text_size(draw, sub, sub_font)
     draw.text(
-        (panel_left + (w - 24 - panel_left - stw) // 2, int(h * 0.68)),
+        (panel_left + (w - 24 - panel_left - stw) // 2, int(h * 0.58)),
         sub,
         font=sub_font,
         fill=BRAND_PURPLE,
