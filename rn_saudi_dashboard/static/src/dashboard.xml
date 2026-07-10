@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-name="rn_saudi_dashboard.Dashboard">
+    <div class="o_rn_dashboard" t-att-class="{ 'o_rn_rtl': isRTL }"
+         t-att-dir="isRTL ? 'rtl' : 'ltr'"
+         t-on-mouseover="onTipOver" t-on-mouseout="onTipOut">
+        <div t-if="state.loading" class="o_rn_loading">
+            <i class="fa fa-circle-o-notch fa-spin fa-2x"/>
+            <span class="ms-2">Loading dashboard...</span>
+        </div>
+        <div t-else="">
+            <!-- Header -->
+            <div class="o_rn_header">
+                <div class="o_rn_header_text">
+                    <h1 class="o_rn_title">
+                        <span class="o_rn_lbl_en">Finance Dashboard</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">لوحة المعلومات المالية</span>
+                    </h1>
+                    <div class="o_rn_subtitle">
+                        <span class="o_rn_company" t-esc="state.data.company_name"/>
+                    </div>
+                </div>
+                <div class="o_rn_header_right">
+                    <span class="o_rn_period">
+                        <i class="fa fa-calendar me-1"/>
+                        <t t-esc="state.data.period_label"/>
+                    </span>
+                    <button class="btn o_rn_action o_rn_action--primary"
+                            t-on-click="() => this.createCustomerInvoice()">
+                        <i class="fa fa-plus me-1"/>
+                        <span class="o_rn_lbl_en">Create Invoice</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">إنشاء فاتورة</span>
+                    </button>
+                    <button class="btn o_rn_action" t-on-click="() => this.createVendorBill()">
+                        <i class="fa fa-file-text-o me-1"/>
+                        <span class="o_rn_lbl_en">Vendor Bill</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">فاتورة مورد</span>
+                    </button>
+                    <button class="btn o_rn_action" t-on-click="() => this.openReports()">
+                        <i class="fa fa-bar-chart me-1"/>
+                        <span class="o_rn_lbl_en">Reports</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">التقارير</span>
+                    </button>
+                    <button class="btn o_rn_lang" t-on-click="() => this.toggleLang()"
+                            t-att-title="isRTL ? 'Switch to English' : 'التبديل إلى العربية'">
+                        <i class="fa fa-globe me-1"/>
+                        <t t-esc="isRTL ? 'English' : 'العربية'"/>
+                    </button>
+                    <button class="btn o_rn_refresh" t-on-click="() => this.loadData()">
+                        <i class="fa fa-refresh me-1"/>
+                        <span class="o_rn_lbl_en">Refresh</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">تحديث</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI cards -->
+            <div class="o_rn_kpis">
+                <!-- 1. Total Revenue (Current Month) -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#0ea5e9;"
+                     t-on-click="() => this.openAllInvoices()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-line-chart"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Total Revenue (This Month)</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">إجمالي الإيرادات (هذا الشهر)</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.month_revenue)"/>
+                    <div class="o_rn_card_foot"><t t-esc="state.data.period_label"/> net of VAT</div>
+                </div>
+
+                <!-- 2. VAT Collected (15%) -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#8b5cf6;"
+                     t-on-click="() => this.openTaxReport()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-bank"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">VAT Collected (15%)</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">ضريبة القيمة المضافة (١٥٪)</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.vat_collected)"/>
+                    <div class="o_rn_card_foot">Output VAT due to ZATCA</div>
+                </div>
+
+                <!-- 3. Outstanding Customer Receivables -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#f59e0b;"
+                     t-on-click="() => this.openReceivables()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-hourglass-half"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Customer Receivables</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">الذمم المدينة</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.receivables)"/>
+                    <div class="o_rn_card_foot">Money customers still owe</div>
+                </div>
+
+                <!-- 4. Outstanding Vendor Payables -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#ef4444;"
+                     t-on-click="() => this.openPayables()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-credit-card"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Vendor Payables</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">الذمم الدائنة</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.payables)"/>
+                    <div class="o_rn_card_foot">Money owed to suppliers</div>
+                </div>
+
+                <!-- 5. Net Cash Position -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#10b981;"
+                     t-on-click="() => this.openBankEntries()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-money"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Net Cash Position</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">المركز النقدي</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.cash)"/>
+                    <div class="o_rn_card_foot">Bank and cash on hand</div>
+                </div>
+
+                <!-- 6. Total Posted Invoices -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#3b82f6;"
+                     t-on-click="() => this.openAllInvoices()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-file-text-o"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Total Posted Invoices</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">إجمالي الفواتير المرحّلة</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="state.data.posted_invoices"/>
+                    <div class="o_rn_card_foot">Confirmed customer invoices</div>
+                </div>
+
+                <!-- 7. Overdue Customer Payments -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#e11d48;"
+                     t-on-click="() => this.openOverdue()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-exclamation-triangle"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Overdue Payments</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">المدفوعات المتأخرة</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value" t-esc="formatCurrency(state.data.overdue)"/>
+                    <div class="o_rn_card_foot">Past due date, not paid</div>
+                </div>
+
+                <!-- 8. Monthly Profit Estimate -->
+                <div class="o_rn_card o_rn_clickable" style="--rn-accent:#0d9488;"
+                     t-on-click="() => this.openProfitAndLoss()">
+                    <div class="o_rn_card_top">
+                        <div class="o_rn_icon"><i class="fa fa-balance-scale"/></div>
+                        <div class="o_rn_card_label">
+                            <span class="o_rn_lbl_en">Monthly Profit Estimate</span>
+                            <span class="o_rn_lbl_ar" dir="rtl">تقدير الربح الشهري</span>
+                        </div>
+                    </div>
+                    <div class="o_rn_card_value"
+                         t-att-class="{'o_rn_negative': state.data.profit_estimate &lt; 0}"
+                         t-esc="formatCurrency(state.data.profit_estimate)"/>
+                    <div class="o_rn_card_foot">Revenue minus costs, <t t-esc="state.data.period_label"/></div>
+                </div>
+            </div>
+
+            <!-- Saudi compliance section -->
+            <div class="o_rn_section_head">
+                <span class="o_rn_section_title">Saudi Compliance</span>
+                <span class="o_rn_section_ar" dir="rtl">الامتثال الضريبي السعودي</span>
+            </div>
+
+            <div class="o_rn_compliance">
+                <!-- 1. VAT Liability This Month -->
+                <div class="o_rn_panel o_rn_comp_card">
+                    <div class="o_rn_comp_label">
+                        VAT Liability This Month
+                        <span class="o_rn_ar" dir="rtl">ضريبة القيمة المضافة المستحقة هذا الشهر</span>
+                    </div>
+                    <div class="o_rn_comp_value" t-esc="formatCurrency(compliance.vat_liability_month)"/>
+                    <div class="o_rn_card_foot">Net VAT payable to ZATCA — <t t-esc="state.data.period_label"/></div>
+                </div>
+
+                <!-- 3. Saudi Invoice Configuration Status -->
+                <div class="o_rn_panel o_rn_comp_card">
+                    <div class="o_rn_comp_label">
+                        Saudi Invoice Configuration Status
+                        <span class="o_rn_ar" dir="rtl">حالة إعداد الفاتورة السعودية</span>
+                    </div>
+                    <div t-attf-class="o_rn_status o_rn_status--{{ compliance.zatca_level }}">
+                        <span class="o_rn_status_dot"/>
+                        <span>
+                            <t t-esc="compliance.zatca_label_en"/>
+                            <span class="o_rn_ar_inline" dir="rtl"> · <t t-esc="compliance.zatca_label_ar"/></span>
+                        </span>
+                    </div>
+                    <div class="o_rn_card_foot">
+                        <t t-esc="compliance.ready_count"/> active ·
+                        <t t-esc="compliance.pending_count"/> pending ·
+                        <t t-esc="compliance.review_count"/> review
+                    </div>
+                </div>
+
+                <!-- 4. Invoice Validation Status -->
+                <div class="o_rn_panel o_rn_comp_card">
+                    <div class="o_rn_comp_label">
+                        Invoice Validation Status
+                        <span class="o_rn_ar" dir="rtl">حالة التحقق من الفواتير</span>
+                    </div>
+                    <div class="o_rn_comp_value" t-esc="compliance.compliant_count"/>
+                    <div class="o_rn_progress">
+                        <div class="o_rn_progress_fill" t-attf-style="width: {{ compliance.compliance_rate }}%;"/>
+                    </div>
+                    <div class="o_rn_card_foot">
+                        invoices configured successfully
+                        <span class="o_rn_ar_inline" dir="rtl"> · فاتورة تم إعدادها بنجاح</span>
+                    </div>
+                </div>
+
+                <!-- 5. Tax Filing Reminder -->
+                <div t-attf-class="o_rn_panel o_rn_comp_card o_rn_filing o_rn_filing--{{ compliance.filing.status }}">
+                    <div class="o_rn_comp_label">
+                        VAT Filing Reminder
+                        <span class="o_rn_ar" dir="rtl">تذكير الإقرار الضريبي</span>
+                    </div>
+                    <div class="o_rn_filing_status">
+                        <i class="fa fa-file-text-o me-1"/>
+                        <t t-esc="compliance.filing.status_en"/>
+                        <span class="o_rn_ar_inline" dir="rtl"> · <t t-esc="compliance.filing.status_ar"/></span>
+                    </div>
+                    <div class="o_rn_card_foot">
+                        <t t-esc="compliance.filing.period_label"/> return · due <t t-esc="compliance.filing.due_label"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. VAT Collected vs VAT Paid -->
+            <div class="o_rn_panel o_rn_vat_compare">
+                <div class="o_rn_panel_title">
+                    VAT Collected vs VAT Paid
+                    <span class="o_rn_ar_inline" dir="rtl"> · ضريبة محصلة مقابل مدفوعة</span>
+                </div>
+                <div class="o_rn_vat_row">
+                    <div class="o_rn_vat_name">
+                        VAT Collected (Output)
+                        <span class="o_rn_ar_inline" dir="rtl">الضريبة المحصلة</span>
+                    </div>
+                    <div class="o_rn_bar_track">
+                        <div class="o_rn_bar_fill o_rn_bar_out" t-attf-style="width: {{ vatBarWidth(compliance.vat_output_month) }};"/>
+                    </div>
+                    <div class="o_rn_bar_value" t-esc="formatCurrency(compliance.vat_output_month)"/>
+                </div>
+                <div class="o_rn_vat_row">
+                    <div class="o_rn_vat_name">
+                        VAT Paid (Input)
+                        <span class="o_rn_ar_inline" dir="rtl">الضريبة المدفوعة</span>
+                    </div>
+                    <div class="o_rn_bar_track">
+                        <div class="o_rn_bar_fill o_rn_bar_in" t-attf-style="width: {{ vatBarWidth(compliance.vat_input_month) }};"/>
+                    </div>
+                    <div class="o_rn_bar_value" t-esc="formatCurrency(compliance.vat_input_month)"/>
+                </div>
+                <div class="o_rn_vat_net">
+                    Net VAT Payable <span class="o_rn_ar_inline" dir="rtl">· صافي الضريبة المستحقة</span>:
+                    <span class="fw-bold" t-esc="formatCurrency(compliance.vat_liability_month)"/>
+                </div>
+            </div>
+
+            <!-- Latest Saudi Invoice QR Preview -->
+            <div t-if="latestInvoice.id" class="o_rn_panel o_rn_qr o_rn_clickable"
+                 t-on-click="() => this.openInvoice(latestInvoice.id)">
+                <div class="o_rn_panel_title">
+                    Latest Saudi Invoice — QR Preview
+                    <span class="o_rn_ar_inline" dir="rtl"> · آخر فاتورة سعودية — معاينة رمز QR</span>
+                </div>
+                <div class="o_rn_qr_body">
+                    <div class="o_rn_qr_info">
+                        <div class="o_rn_qr_number" t-esc="latestInvoice.name"/>
+                        <div class="o_rn_qr_row">
+                            <span class="o_rn_qr_k">Customer <span class="o_rn_ar_inline" dir="rtl">العميل</span></span>
+                            <span class="o_rn_qr_v" t-esc="latestInvoice.partner"/>
+                        </div>
+                        <div class="o_rn_qr_row">
+                            <span class="o_rn_qr_k">Amount <span class="o_rn_ar_inline" dir="rtl">المبلغ</span></span>
+                            <span class="o_rn_qr_v fw-bold" t-esc="formatCurrency(latestInvoice.amount)"/>
+                        </div>
+                        <div class="o_rn_qr_row">
+                            <span class="o_rn_qr_k">Date <span class="o_rn_ar_inline" dir="rtl">التاريخ</span></span>
+                            <span class="o_rn_qr_v" t-esc="latestInvoice.date"/>
+                        </div>
+                        <div class="o_rn_qr_row">
+                            <span class="o_rn_qr_k">Status <span class="o_rn_ar_inline" dir="rtl">الحالة</span></span>
+                            <span class="o_rn_badge">
+                                <t t-esc="latestInvoice.status_en"/>
+                                <span class="o_rn_ar_inline" dir="rtl"> · <t t-esc="latestInvoice.status_ar"/></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="o_rn_qr_code">
+                        <img t-if="latestInvoice.qr" t-att-src="latestInvoice.qr" alt="Invoice QR preview"/>
+                        <div class="o_rn_qr_hint">Scan / click to open</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body: chart + top customers -->
+            <div class="o_rn_body">
+                <div class="o_rn_panel o_rn_panel--chart">
+                    <div class="o_rn_panel_title">
+                        <span class="o_rn_lbl_en">Invoiced by Month</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">الفواتير حسب الشهر</span>
+                    </div>
+                    <div class="o_rn_chart">
+                        <t t-foreach="state.data.monthly" t-as="month" t-key="month.label">
+                            <div class="o_rn_bar_row">
+                                <div class="o_rn_bar_label" t-esc="month.label"/>
+                                <div class="o_rn_bar_track">
+                                    <div class="o_rn_bar_fill" t-attf-style="width: {{ barWidth(month.amount) }};"/>
+                                </div>
+                                <div class="o_rn_bar_value" t-esc="formatCurrency(month.amount)"/>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <div class="o_rn_panel o_rn_panel--customers">
+                    <div class="o_rn_panel_title">
+                        <span class="o_rn_lbl_en">Top Customers</span>
+                        <span class="o_rn_lbl_ar" dir="rtl">أكبر العملاء</span>
+                    </div>
+                    <div t-if="!state.data.top_customers.length" class="o_rn_empty">No customer invoices yet.</div>
+                    <table t-else="" class="o_rn_table">
+                        <thead>
+                            <tr>
+                                <th>Customer <span class="o_rn_th_ar" dir="rtl">العميل</span></th>
+                                <th class="text-end">Invoiced <span class="o_rn_th_ar" dir="rtl">المبلغ</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="state.data.top_customers" t-as="cust" t-key="cust_index">
+                                <td t-esc="cust.name"/>
+                                <td class="text-end fw-bold" t-esc="formatCurrency(cust.amount)"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Top invoices -->
+            <div class="o_rn_panel o_rn_panel--invoices">
+                <div class="o_rn_panel_title">
+                    <span class="o_rn_lbl_en">Top Invoices</span>
+                    <span class="o_rn_lbl_ar" dir="rtl">أكبر الفواتير</span>
+                </div>
+                <div t-if="!state.data.top_invoices.length" class="o_rn_empty">No invoices to show.</div>
+                <table t-else="" class="o_rn_table">
+                    <thead>
+                        <tr>
+                            <th>Reference <span class="o_rn_th_ar" dir="rtl">المرجع</span></th>
+                            <th>Customer <span class="o_rn_th_ar" dir="rtl">العميل</span></th>
+                            <th>Date <span class="o_rn_th_ar" dir="rtl">التاريخ</span></th>
+                            <th>Status <span class="o_rn_th_ar" dir="rtl">الحالة</span></th>
+                            <th class="text-end">Amount <span class="o_rn_th_ar" dir="rtl">المبلغ</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.data.top_invoices" t-as="inv" t-key="inv.id"
+                            class="o_rn_row_click" t-on-click="() => this.openInvoice(inv.id)">
+                            <td class="fw-bold" t-esc="inv.name"/>
+                            <td t-esc="inv.partner"/>
+                            <td t-esc="inv.date"/>
+                            <td><span class="o_rn_badge" t-esc="inv.state"/></td>
+                            <td class="text-end fw-bold" t-esc="formatCurrency(inv.amount)"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Custom bilingual hover tooltip (no browser title attribute) -->
+        <div class="o_rn_tip" t-att-class="{ 'o_rn_tip--show': state.tip.visible }"
+             t-attf-style="left:{{state.tip.x}}px; top:{{state.tip.y}}px;" aria-hidden="true">
+            <span class="o_rn_tip_en" t-esc="state.tip.en"/>
+            <span class="o_rn_tip_ar" dir="rtl" t-esc="state.tip.ar"/>
+        </div>
+    </div>
+</t>
+
+</templates>

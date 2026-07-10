@@ -1,0 +1,16 @@
+id,move_type,partner_id,invoice_date,invoice_date_due,invoice_line_ids/product_id,invoice_line_ids/quantity,invoice_line_ids/price_unit,invoice_line_ids/tax_ids
+rn_saudi_demo.inv_001,out_invoice,Al Rajhi Trading LLC,2026-01-15,2026-02-14,ERP Consulting Service,1,10000.00,15%
+rn_saudi_demo.inv_002,out_invoice,Riyadh Industrial Group,2026-01-15,2026-02-14,Inventory Management Service,1,8000.00,15%
+rn_saudi_demo.inv_003,out_invoice,Jeddah Electronics Co,2026-02-15,2026-03-17,Accounting Implementation Service,1,15000.00,15%
+rn_saudi_demo.inv_004,out_invoice,Al Noor Logistics,2026-02-15,2026-03-17,Business Process Consulting,1,12000.00,15%
+rn_saudi_demo.inv_005,out_invoice,Saudi Business Solutions,2026-03-15,2026-04-14,ERP Consulting Service,1,10000.00,15%
+,,,,,Inventory Management Service,1,8000.00,15%
+rn_saudi_demo.inv_006,out_invoice,Al Rajhi Trading LLC,2026-03-15,2026-04-14,Annual ERP Support Contract,1,20000.00,15%
+rn_saudi_demo.inv_007,out_invoice,Riyadh Industrial Group,2026-04-15,2026-05-15,Business Process Consulting,2,12000.00,15%
+rn_saudi_demo.inv_008,out_invoice,Jeddah Electronics Co,2026-04-15,2026-05-15,ERP Consulting Service,1,10000.00,15%
+rn_saudi_demo.inv_009,out_invoice,Al Noor Logistics,2026-05-15,2026-06-14,Accounting Implementation Service,1,15000.00,15%
+rn_saudi_demo.inv_010,out_invoice,Saudi Business Solutions,2026-05-15,2026-06-14,Inventory Management Service,2,8000.00,15%
+rn_saudi_demo.inv_011,out_invoice,Al Rajhi Trading LLC,2026-06-15,2026-07-15,ERP Consulting Service,1,10000.00,15%
+,,,,,Business Process Consulting,1,12000.00,15%
+rn_saudi_demo.inv_012,out_invoice,Riyadh Industrial Group,2026-06-15,2026-07-15,Annual ERP Support Contract,1,20000.00,15%
+rn_saudi_demo.inv_013,out_invoice,Jeddah Electronics Co,2026-06-15,2026-07-15,Accounting Implementation Service,1,15000.00,15%

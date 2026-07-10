@@ -1,0 +1,6 @@
+id,name,is_company,city,country_id,vat,customer_rank
+rn_saudi_demo.cust_al_rajhi,Al Rajhi Trading LLC,True,Riyadh,Saudi Arabia,310111111100003,1
+rn_saudi_demo.cust_riyadh_industrial,Riyadh Industrial Group,True,Riyadh,Saudi Arabia,310222222200003,1
+rn_saudi_demo.cust_jeddah_electronics,Jeddah Electronics Co,True,Jeddah,Saudi Arabia,310333333300003,1
+rn_saudi_demo.cust_al_noor,Al Noor Logistics,True,Dammam,Saudi Arabia,310444444400003,1
+rn_saudi_demo.cust_saudi_business,Saudi Business Solutions,True,Riyadh,Saudi Arabia,310555555500003,1

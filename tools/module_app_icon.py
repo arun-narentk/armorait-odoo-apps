@@ -48,7 +48,8 @@ def _slug_palette(module_slug: str) -> tuple[str, str, str]:
 def _match_glyph(module_slug: str, name: str, summary: str) -> str:
     blob = f'{module_slug} {name} {summary}'.lower()
     rules: list[tuple[str, str]] = [
-        (r'whatsapp|messaging_bot', 'whatsapp'),
+        (r'arabic|tooltip', 'document'),
+        (r'saudi_dashboard|saudi finance', 'gauge'),
         (r'ai_employee|copilot|conversational', 'chatbot'),
         (r'workflow_builder|workflow', 'workflow'),
         (r'approval_engine|approval', 'approval'),

@@ -1,0 +1,71 @@
+// ===========================================================================
+// RN Arabic Tooltip — custom hover tooltip for the rn_arabic_hint field widget
+// ===========================================================================
+
+// Labels that the rn_arabic_hint widget has bound a tooltip to.
+.o_rn_ar_hint_label {
+    cursor: help;
+}
+
+.o_rn_ar_hint {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+
+    .o_rn_field_tip {
+        position: fixed;
+        z-index: 1080;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 120px;
+        max-width: 280px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: #0f172a;
+        color: #f8fafc;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.32);
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, calc(-100% - 4px));
+        transition: opacity 0.16s ease, transform 0.16s ease;
+        text-align: start;
+
+        .o_rn_tip_en {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #e2e8f0;
+        }
+        .o_rn_tip_ar {
+            font-family: "Noto Kufi Arabic", "Noto Sans Arabic", "Cairo", "Segoe UI", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #ffffff;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: #0f172a;
+            transform: translateX(-50%) rotate(45deg);
+            border-radius: 2px;
+        }
+
+        &.o_rn_tip--show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, calc(-100% - 12px));
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .o_rn_ar_hint .o_rn_field_tip { transition: opacity 0.16s ease; }
+}
