@@ -13,6 +13,7 @@ except AttributeError:
     RESAMPLE = getattr(Image, 'LANCZOS', Image.ANTIALIAS)
 
 OUT = Path(__file__).resolve().parents[1] / 'static' / 'description'
+BRAND_LOGO = OUT / 'armorait_brand_logo.png'
 
 # Odoo 19 / ARMORA palette
 PURPLE = '#714B67'
@@ -409,6 +410,23 @@ def _draw_wrapped_title(draw: ImageDraw.ImageDraw, x: int, y: int, max_w: int, l
     return _draw_centered_title_block(draw, x, x + max_w, y, lines)
 
 
+def _paste_armorait_logo(img: Image.Image, w: int, h: int, pad: int = 22) -> None:
+    """Paste ARMORA brand strip (screen 1 logo) top-right on Apps Store cover."""
+    if not BRAND_LOGO.is_file():
+        return
+    logo = Image.open(BRAND_LOGO).convert('RGBA')
+    crop_w = max(1, int(logo.width * 0.56))
+    logo = logo.crop((0, 0, crop_w, logo.height))
+    target_h = max(34, int(h * 0.08))
+    target_w = int(logo.width * (target_h / logo.height))
+    max_w = int(w * 0.34)
+    if target_w > max_w:
+        target_w = max_w
+        target_h = int(logo.height * (target_w / logo.width))
+    logo = logo.resize((target_w, target_h), RESAMPLE)
+    img.paste(logo, (w - target_w - pad, pad), logo)
+
+
 def draw_banner(w: int, h: int) -> Image.Image:
     """Apps Store card cover: diagonal maroon panel, illustration, bold title."""
     img = Image.new('RGB', (w, h), WHITE)
@@ -418,10 +436,8 @@ def draw_banner(w: int, h: int) -> Image.Image:
     radius = int(min(w, h) * 0.24)
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
 
-    # ARMORA brand mark (top right, white panel)
-    brand_w = 230
-    draw.text((w - brand_w, 26), 'ARMORA', font=_font(22, True), fill=BRAND_PURPLE)
-    draw.text((w - brand_w, 52), 'IT Technologies', font=_font(12), fill=MUTED)
+    # ARMORA logo badge (top right, white panel) for loempia_app_cover card
+    _paste_armorait_logo(img, w, h)
 
     # Main title centered on white panel
     panel_left = split_mid - 20
