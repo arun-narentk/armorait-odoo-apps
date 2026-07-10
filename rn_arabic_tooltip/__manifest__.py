@@ -1,29 +1,12 @@
 {
     'name': 'Arabic Tooltip',
-    'version': '19.0.1.1.0',
+    'version': '19.0.1.2.0',
     'category': 'Tools',
     'summary': 'Arabic hover translations for Odoo backend labels and the rn_arabic_hint field widget',
     'description': """
-Arabic Tooltip for Odoo 19 Community
-====================================
-
-Arabic hover translations for Odoo backend labels and field values. Built for
-bilingual finance teams in Saudi Arabia and GCC who run Odoo in English but need
-accurate Arabic terminology on demand.
-
-Features
---------
-
-✓ Global backend label tooltips on forms and lists
-✓ Reusable rn_arabic_hint field widget
-✓ Uses Odoo standard Arabic translations when installed
-✓ Built-in accounting fallback dictionary
-✓ Demo on customer invoice fields
-✓ OWL 2 service with cached lookups
-✓ No UI language switch required
-
-Ideal for finance, shared services, and Odoo partners delivering Arabic-ready
-accounting on Odoo 19 Community.
+Arabic hover translations for Odoo backend labels and field values. Global
+label tooltips, rn_arabic_hint field widget, Odoo translation support, and an
+accounting fallback dictionary for bilingual Saudi and GCC teams.
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
