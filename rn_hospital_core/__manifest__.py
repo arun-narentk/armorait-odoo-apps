@@ -76,6 +76,8 @@ Roadmap: pharmacy, laboratory, radiology, OT, specialty verticals (dental, eye).
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

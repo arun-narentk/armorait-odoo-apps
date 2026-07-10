@@ -65,6 +65,8 @@ widget-based page builder foundation, and analytics.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

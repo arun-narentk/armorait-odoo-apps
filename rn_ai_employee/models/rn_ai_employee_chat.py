@@ -29,13 +29,6 @@ class AiEmployeeChat(models.Model):
         default=lambda self: self.env.company,
         index=True,
     )
-    agent_id = fields.Many2one(
-        'rn.ai.employee.agent',
-        string='Domain Agent',
-        index=True,
-        ondelete='set null',
-        help='When set, only skills assigned to this domain agent are available.',
-    )
     active = fields.Boolean(default=True)
     message_ids = fields.One2many(
         'rn.ai.employee.message',
@@ -111,11 +104,7 @@ class AiEmployeeChat(models.Model):
     @api.model
     def action_start_new_chat(self):
         """Create a chat and open its form view."""
-        agent_id = self.env.context.get('default_agent_id')
-        chat = self.create({
-            'name': _('Business question'),
-            'agent_id': agent_id,
-        })
+        chat = self.create({'name': _('Business question')})
         return {
             'type': 'ir.actions.act_window',
             'name': _('AI Copilot'),
@@ -165,49 +154,30 @@ class AiEmployeeChat(models.Model):
         return True
 
     @api.model
-    def _get_or_create_widget_chat(self, agent=None):
+    def _get_or_create_widget_chat(self):
         self._widget_enabled()
-        agent = agent or self.env['rn.ai.employee.agent'].get_default_agent()
-        domain = [
+        chat = self.search([
             ('user_id', '=', self.env.user.id),
             ('name', '=', 'Systray Chat'),
             ('active', '=', True),
-        ]
-        if agent:
-            domain.append(('agent_id', '=', agent.id))
-        chat = self.search(domain, limit=1)
+        ], limit=1)
         if not chat:
-            chat = self.create({
-                'name': 'Systray Chat',
-                'agent_id': agent.id if agent else False,
-            })
+            chat = self.create({'name': 'Systray Chat'})
         else:
             self.env['rn.ai.employee.service'].ensure_system_message(chat)
         return chat
 
     @api.model
-    def widget_bootstrap(self, agent_id=None):
+    def widget_bootstrap(self):
         """Return chat state for the OWL systray widget."""
-        Agent = self.env['rn.ai.employee.agent']
-        agents = Agent.search([('active', '=', True)], order='sequence, id')
-        agent = Agent.browse(agent_id) if agent_id else Agent.get_default_agent()
-        if agent_id and (not agent or not agent.active):
-            raise UserError(_('This domain agent is not available.'))
-        chat = self._get_or_create_widget_chat(agent)
-        if agent and chat.agent_id != agent:
-            chat.agent_id = agent.id
-            chat.message_ids.filtered(lambda msg: msg.role == 'system').unlink()
-            self.env['rn.ai.employee.service'].ensure_system_message(chat)
-
-        from ..services.agent_service import get_agent_service
-
-        agent_service = get_agent_service(self.env)
-        active_agent = agent_service.get_chat_agent(chat)
-        suggestions = agent_service.get_suggestions(active_agent, limit=6)
+        chat = self._get_or_create_widget_chat()
+        suggestions = self.env['rn.ai.employee.suggestion'].search(
+            [('active', '=', True)],
+            order='sequence, id',
+            limit=6,
+        )
         return {
             'chat_id': chat.id,
-            'agent_id': chat.agent_id.id if chat.agent_id else False,
-            'agents': Agent.serialize_for_widget(agents),
             'messages': self._serialize_widget_messages(chat),
             'suggestions': [{
                 'id': suggestion.id,
@@ -215,21 +185,6 @@ class AiEmployeeChat(models.Model):
                 'question': suggestion.question,
             } for suggestion in suggestions],
         }
-
-    @api.model
-    def widget_set_agent(self, chat_id: int, agent_id: int):
-        """Switch the systray conversation to another domain agent."""
-        self._widget_enabled()
-        chat = self.browse(chat_id)
-        if chat.user_id != self.env.user:
-            raise UserError(_('You can only use your own AI Copilot conversations.'))
-        agent = self.env['rn.ai.employee.agent'].browse(agent_id)
-        if not agent or not agent.active:
-            raise UserError(_('This domain agent is not available.'))
-        chat.agent_id = agent.id
-        chat.message_ids.filtered(lambda msg: msg.role == 'system').unlink()
-        self.env['rn.ai.employee.service'].ensure_system_message(chat)
-        return self.widget_bootstrap(agent_id=agent.id)
 
     @api.model
     def widget_send_message(self, chat_id: int, message: str):

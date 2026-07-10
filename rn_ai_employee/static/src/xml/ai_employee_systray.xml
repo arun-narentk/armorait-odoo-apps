@@ -12,13 +12,6 @@
                     <div class="o_ai_employee_systray_header px-3 py-2 border-bottom">
                         <strong>AI Copilot for Odoo</strong>
                         <div class="text-muted small">Enterprise intelligence layer for your ERP</div>
-                        <div t-if="state.agents.length" class="o_ai_employee_agent_tabs d-flex flex-wrap gap-1 mt-2">
-                            <button t-foreach="state.agents" t-as="agent" t-key="agent.id"
-                                    type="button"
-                                    t-attf-class="btn btn-sm #{state.agentId === agent.id ? 'btn-primary' : 'btn-light border'}"
-                                    t-on-click="() => this.switchAgent(agent.id)"
-                                    t-esc="agent.name"/>
-                        </div>
                     </div>
 
                     <div t-if="state.error" class="alert alert-warning m-2 mb-0 py-2 small">

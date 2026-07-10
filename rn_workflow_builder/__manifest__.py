@@ -1,31 +1,69 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Workflow Builder',
-    'version': '19.0.1.0.0',
-    'category': 'Productivity/Automation',
-    'summary': 'Visual automation platform: triggers, conditions, actions, AI workflow builder',
+    'name': 'AI Automation Platform',
+    'version': '19.0.1.1.0',
+    'category': 'Automation',
+    'summary': 'Enterprise AI Automation Platform for Odoo with Visual Workflows, AI Builder, Approvals, Webhooks, and Smart Connectors',
     'description': """
-ARMORA AI Workflow Builder for Odoo 19 Community
-================================================
+ARMORA AI Automation Platform for Odoo 19 Community
+=====================================================
 
-Automation engine for your Odoo ecosystem (Zapier/Make style, native to Odoo).
+Enterprise AI automation platform for Odoo. Orchestrate business processes with
+visual workflows, AI builder, approvals, webhooks, and smart connectors in one
+native layer.
 
-Phase 1 (rn_workflow_builder) delivers:
+Go beyond a basic workflow tool. Unify OCR, WhatsApp, IoT and MES signals, AI
+agents, and external systems under a single ARMORA automation brand for process
+orchestration across sales, purchase, inventory, HR, accounting, and CRM.
 
-* Workflow definitions with trigger, condition, and action nodes
-* Execution engine with run history and error logs
-* Core triggers: record created, record updated, scheduled, webhook
-* Core conditions: field rules, amount thresholds, domain filters
-* Core actions: create/update records, send email, start approval hook, call webhook
-* Connector registry (Odoo models, email, webhook; WhatsApp/MES ready)
-* AI workflow draft from plain English (heuristic parser)
-* AI validation: loops, missing steps, permission warnings
-* Monitoring dashboard: success rate, failures, retry queue
-* Example hooks on sales orders and purchase orders
+Visual workflow builder for workflow automation and business automation across your
+Odoo stack. A practical Zapier alternative and Make.com alternative for teams that
+want Odoo automation without external tools.
 
-Companion to rn_approval_engine (approvals) and platform for OCR, MES, WhatsApp modules.
+Features
+--------
 
-Roadmap: drag-and-drop canvas, external connectors, AI optimization, workflow marketplace.
+✓ Visual Workflow Builder
+✓ AI Workflow Generation
+✓ AI Workflow Validation
+✓ Trigger Engine
+✓ Conditional Logic
+✓ Scheduled Automation
+✓ Incoming Webhooks
+✓ Outgoing Webhooks
+✓ Approval Integration
+✓ Smart Connector Framework
+✓ Retry Queue
+✓ Error Logs
+✓ Execution Timeline
+✓ Sales Automation
+✓ Purchase Automation
+✓ Inventory Automation
+✓ HR Automation
+✓ Accounting Automation
+✓ Native Odoo Architecture
+
+Upcoming
+--------
+
+• Drag and Drop Canvas
+• AI Optimization and AI Agents
+• WhatsApp Automation
+• OCR Automation
+• IoT and MES Connectors
+• Marketplace
+• SAP Connector
+• Shopify Connector
+• Power BI Connector
+• Google Sheets
+• Slack
+• Microsoft Teams
+• REST API
+• MQTT
+
+Prebuilt starter workflows for sales approval, purchase approval, invoicing,
+lead assignment, stock reorder, leave and expense approval, customer welcome,
+and follow-up reminders are included at install.
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
@@ -45,6 +83,9 @@ Roadmap: drag-and-drop canvas, external connectors, AI optimization, workflow ma
         'account',
         'hr',
         'stock',
+        'crm',
+        'hr_holidays',
+        'hr_expense',
     ],
     'data': [
         'security/security.xml',
@@ -52,6 +93,7 @@ Roadmap: drag-and-drop canvas, external connectors, AI optimization, workflow ma
         'data/ir_sequence.xml',
         'data/connector_data.xml',
         'data/workflow_template_data.xml',
+        'data/workflow_starter_data.xml',
         'views/workflow_views.xml',
         'views/node_views.xml',
         'views/execution_views.xml',
@@ -77,6 +119,8 @@ Roadmap: drag-and-drop canvas, external connectors, AI optimization, workflow ma
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

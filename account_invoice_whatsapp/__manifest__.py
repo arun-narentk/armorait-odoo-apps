@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'WhatsApp Odoo Integration',
-    'version': '1.0',
+    'version': '19.0.1.0.0',
     'category': 'Accounting/Accounting',
     'summary': 'Send Sale Orders, Purchase Orders, Invoices & Delivery via WhatsApp',
     'description': """
@@ -27,7 +27,7 @@ One-on-one communication via WhatsApp from Odoo, with automation and logging.
 
 Uses the contact's Phone or Mobile. No API required — opens wa.me. Optional document links use Odoo portal.
     """,
-    'author': 'ARMORAIT',
+    'author': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
     'depends': ['account', 'sale_management', 'purchase', 'stock'],
     'data': [
@@ -40,8 +40,16 @@ Uses the contact's Phone or Mobile. No API required — opens wa.me. Optional do
         'views/whatsapp_reminder_views.xml',
         'views/res_config_settings_views.xml',
     ],
-    'images': ['static/description/icon.svg'],
+    'images': [
+        'static/description/banner.png',
+        'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
+    ],
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 79.99,
+    'live_test_url': 'https://www.armorait.com',
 }

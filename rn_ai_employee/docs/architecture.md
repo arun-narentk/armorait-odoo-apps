@@ -12,9 +12,6 @@ Users interact through chat, systray, and proactive briefings. Behind the UI, on
 User (chat / systray / briefing)
         |
         v
-Domain Agent (Sales / Finance / Executive)  [Phase 4]
-        |
-        v
 Orchestrator (rn.ai.employee.service)
         |
    +----+----+---------+----------+
@@ -89,7 +86,6 @@ Rules-first intent detection. Optional OpenAI-compatible tool calling when API k
 
 | Model | Purpose |
 |-------|---------|
-| `rn.ai.employee.agent` | Domain agent with scoped skills and persona |
 | `rn.ai.employee.chat` | Conversation session |
 | `rn.ai.employee.message` | User, assistant, tool, system messages |
 | `rn.ai.employee.message.action` | Open list, open form, confirm write, cancel write |
@@ -107,33 +103,13 @@ Rules-first intent detection. Optional OpenAI-compatible tool calling when API k
 | `rn_ai_employee.require_write_confirmation` | True | Confirmation gate |
 | `rn_ai_employee.morning_briefing_enabled` | False | Proactive cron |
 
-## Roadmap (post Phase 4)
+## Roadmap (post Phase 3)
 
 | Phase | Focus |
 |-------|-------|
-| 5 | AI dashboard widgets, skills marketplace UI, knowledge base hooks |
-| 6 | Workflow engine, approval center, WhatsApp/voice interfaces |
-| 7 | Private LLM, on-prem packaging, SaaS metering |
-
-## Shipped in Phase 4
-
-Domain agents scope the existing skill registry without duplicating tools:
-
-| Agent | Code | Focus |
-|-------|------|-------|
-| Sales AI | `sales` | Quotations, customers, CRM, pipeline |
-| Finance AI | `finance` | Invoices, revenue, profit, collections |
-| Executive AI | `executive` | Briefings, KPIs, approvals, cross-domain insight |
-
-```text
-User -> Domain Agent -> Scoped Skill Registry -> Orchestrator -> Odoo ORM
-```
-
-## Roadmap (historical)
-
-| Phase | Focus |
-|-------|-------|
-| 4 | Domain agents (Sales AI, Finance AI, Executive AI) |
+| 4 | Domain agents (Sales AI, Finance AI, HR AI, Manufacturing AI) |
+| 4 | AI dashboard widgets, document AI hooks |
+| 5 | Private LLM, on-prem, SaaS metering, WhatsApp/voice interfaces |
 
 ## Moat
 

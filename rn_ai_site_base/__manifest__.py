@@ -69,6 +69,8 @@ publisher, chatbot, analytics, CRM auto-setup, standalone SaaS API.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

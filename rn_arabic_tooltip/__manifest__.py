@@ -1,21 +1,30 @@
 {
     'name': 'Arabic Tooltip',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Tools',
-    'summary': 'Hover Arabic translations for backend labels and a reusable field widget',
+    'summary': 'Arabic hover translations for Odoo backend labels and the rn_arabic_hint field widget',
     'description': """
-Arabic Tooltip
-==============
+Arabic Tooltip for Odoo 19 Community
+====================================
 
-Reusable Arabic hover-translation system for the Odoo backend:
+Arabic hover translations for Odoo backend labels and field values. Built for
+bilingual finance teams in Saudi Arabia and GCC who run Odoo in English but need
+accurate Arabic terminology on demand.
 
-* A global service that adds Arabic tooltips to standard form/list labels.
-* A field widget ``rn_arabic_hint`` that shows a custom Arabic tooltip on the
-  field value and its label.
+Features
+--------
 
-Arabic text is taken from Odoo's standard translation when the Arabic language
-is installed, otherwise it falls back to a built-in accounting dictionary.
-""",
+✓ Global backend label tooltips on forms and lists
+✓ Reusable rn_arabic_hint field widget
+✓ Uses Odoo standard Arabic translations when installed
+✓ Built-in accounting fallback dictionary
+✓ Demo on customer invoice fields
+✓ OWL 2 service with cached lookups
+✓ No UI language switch required
+
+Ideal for finance, shared services, and Odoo partners delivering Arabic-ready
+accounting on Odoo 19 Community.
+    """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
     'website': 'https://www.armorait.com',
@@ -34,9 +43,16 @@ is installed, otherwise it falls back to a built-in accounting dictionary.
     },
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
+    'currency': 'USD',
+    'price': 9.99,
+    'live_test_url': 'https://www.armorait.com',
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/workflow.png',
+        'static/description/dashboard.png',
+        'static/description/monitoring.png',
+        'static/description/execution.png',
     ],
 }

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from . import rn_ai_employee_agent
 from . import rn_ai_employee_audit_log
 from . import rn_ai_employee_pending_action
 from . import rn_ai_employee_chat

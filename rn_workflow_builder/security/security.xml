@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="res.groups.privilege" id="res_groups_privilege_rn_workflow">
-        <field name="name">ARMORA Workflow Builder</field>
+        <field name="name">ARMORA AI Automation</field>
         <field name="category_id" ref="base.module_category_productivity"/>
     </record>
     <record id="group_rn_workflow_user" model="res.groups">

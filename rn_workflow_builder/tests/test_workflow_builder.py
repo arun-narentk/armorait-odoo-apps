@@ -86,3 +86,15 @@ class TestRnWorkflowBuilder(TransactionCase):
     def test_connector_data(self):
         connector = self.env.ref('rn_workflow_builder.connector_odoo')
         self.assertEqual(connector.connector_type, 'odoo')
+
+    def test_template_creates_workflow_nodes(self):
+        template = self.env.ref('rn_workflow_builder.template_sales_approval')
+        workflow = template.create_workflow_from_template()
+        self.assertEqual(workflow.name, 'Sales Approval')
+        self.assertGreaterEqual(len(workflow.node_ids), 3)
+        self.assertEqual(workflow.model_name, 'sale.order')
+
+    def test_starter_workflows_installed(self):
+        starter = self.env.ref('rn_workflow_builder.starter_sales_approval')
+        self.assertEqual(starter.state, 'draft')
+        self.assertTrue(starter.node_ids)

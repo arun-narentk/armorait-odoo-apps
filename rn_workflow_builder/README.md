@@ -1,4 +1,4 @@
-# AI Workflow Builder
+# AI Automation Platform
 
 ARMORA IT Technologies automation platform for Odoo 19 Community.
 
@@ -32,7 +32,7 @@ Companies need automation (confirm SO, create project, low stock RFQ, overdue re
 ## Installation
 
 1. Install Sales, Purchase, Accounting, HR, Inventory.
-2. Install **AI Workflow Builder**.
+2. Install **AI Automation Platform**.
 3. Assign **Workflow Designer** or **Workflow Manager** groups.
 
 ## Usage

@@ -1,11 +1,5 @@
 # Changelog
 
-## 19.0.5.0.0
-- Phase 4: domain agents (Sales AI, Finance AI, Executive AI)
-- Scoped skill packs per agent without duplicating the tool registry
-- Systray agent picker and Domain Agents menu for managers
-- Agent-aware intent routing, LLM schemas, suggestions, and audit logs
-
 ## 19.0.4.0.0
 - Rebrand product to **AI Copilot for Odoo** (enterprise intelligence layer)
 - Phase 3: session memory for follow-up questions

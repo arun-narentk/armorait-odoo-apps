@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+  <!-- Ready-to-activate starter workflows installed with the module. -->
+
+  <record id="starter_sales_approval" model="rn.workflow">
+    <field name="name">Sales Approval</field>
+    <field name="code">starter_sales_approval</field>
+    <field name="description">Route confirmed sales orders above threshold to manager approval.</field>
+    <field name="trigger_type">on_write</field>
+    <field name="model_id" ref="sale.model_sale_order"/>
+    <field name="state">draft</field>
+    <field name="sequence">10</field>
+  </record>
+  <record id="starter_sales_approval_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_sales_approval"/>
+    <field name="name">Check order confirmed</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">state</field>
+    <field name="condition_operator">equals</field>
+    <field name="compare_value">sale</field>
+  </record>
+  <record id="starter_sales_approval_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_sales_approval"/>
+    <field name="name">Check amount threshold</field>
+    <field name="sequence">20</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">amount_total</field>
+    <field name="condition_operator">greater</field>
+    <field name="compare_value">5000</field>
+  </record>
+  <record id="starter_sales_approval_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_sales_approval"/>
+    <field name="name">Start sales approval</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">start_approval</field>
+  </record>
+  <record id="starter_sales_approval_node_4" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_sales_approval"/>
+    <field name="name">Notify sales team</field>
+    <field name="sequence">40</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Sales order submitted for approval."}</field>
+  </record>
+
+  <record id="starter_purchase_approval" model="rn.workflow">
+    <field name="name">Purchase Approval</field>
+    <field name="code">starter_purchase_approval</field>
+    <field name="description">Send purchase orders for approval once confirmed.</field>
+    <field name="trigger_type">on_write</field>
+    <field name="model_id" ref="purchase.model_purchase_order"/>
+    <field name="state">draft</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="starter_purchase_approval_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_purchase_approval"/>
+    <field name="name">Check PO confirmed</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">state</field>
+    <field name="condition_operator">equals</field>
+    <field name="compare_value">purchase</field>
+  </record>
+  <record id="starter_purchase_approval_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_purchase_approval"/>
+    <field name="name">Check amount threshold</field>
+    <field name="sequence">20</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">amount_total</field>
+    <field name="condition_operator">greater</field>
+    <field name="compare_value">2500</field>
+  </record>
+  <record id="starter_purchase_approval_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_purchase_approval"/>
+    <field name="name">Start purchase approval</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">start_approval</field>
+  </record>
+  <record id="starter_purchase_approval_node_4" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_purchase_approval"/>
+    <field name="name">Notify purchasing</field>
+    <field name="sequence">40</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Purchase order submitted for approval."}</field>
+  </record>
+
+  <record id="starter_auto_invoice" model="rn.workflow">
+    <field name="name">Auto Invoice</field>
+    <field name="code">starter_auto_invoice</field>
+    <field name="description">Notify finance to invoice when a sales order is confirmed.</field>
+    <field name="trigger_type">on_write</field>
+    <field name="model_id" ref="sale.model_sale_order"/>
+    <field name="state">draft</field>
+    <field name="sequence">30</field>
+  </record>
+  <record id="starter_auto_invoice_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_auto_invoice"/>
+    <field name="name">Check order confirmed</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">state</field>
+    <field name="condition_operator">equals</field>
+    <field name="compare_value">sale</field>
+  </record>
+  <record id="starter_auto_invoice_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_auto_invoice"/>
+    <field name="name">Notify finance team</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Sales order ready to invoice."}</field>
+  </record>
+  <record id="starter_auto_invoice_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_auto_invoice"/>
+    <field name="name">Email finance</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_email</field>
+    <field name="config_json">{"subject": "Invoice ready: sales order confirmed", "body": "&lt;p&gt;Review and create the customer invoice.&lt;/p&gt;"}</field>
+  </record>
+
+  <record id="starter_lead_assignment" model="rn.workflow">
+    <field name="name">Lead Assignment</field>
+    <field name="code">starter_lead_assignment</field>
+    <field name="description">Alert the sales team when a new lead is created without a salesperson.</field>
+    <field name="trigger_type">on_create</field>
+    <field name="model_id" ref="crm.model_crm_lead"/>
+    <field name="state">draft</field>
+    <field name="sequence">40</field>
+  </record>
+  <record id="starter_lead_assignment_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_lead_assignment"/>
+    <field name="name">Notify sales manager</field>
+    <field name="sequence">10</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "New lead created. Assign a salesperson."}</field>
+  </record>
+  <record id="starter_lead_assignment_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_lead_assignment"/>
+    <field name="name">Email sales team</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_email</field>
+    <field name="config_json">{"subject": "New lead needs assignment", "body": "&lt;p&gt;A new lead was captured. Please assign an owner.&lt;/p&gt;"}</field>
+  </record>
+
+  <record id="starter_stock_reorder" model="rn.workflow">
+    <field name="name">Stock Reorder</field>
+    <field name="code">starter_stock_reorder</field>
+    <field name="description">Scheduled reminder for replenishment rules that need ordering.</field>
+    <field name="trigger_type">on_schedule</field>
+    <field name="model_id" ref="stock.model_stock_warehouse_orderpoint"/>
+    <field name="schedule_interval">1440</field>
+    <field name="state">draft</field>
+    <field name="sequence">50</field>
+  </record>
+  <record id="starter_stock_reorder_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_stock_reorder"/>
+    <field name="name">Check reorder quantity</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">qty_to_order_computed</field>
+    <field name="condition_operator">greater</field>
+    <field name="compare_value">0</field>
+  </record>
+  <record id="starter_stock_reorder_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_stock_reorder"/>
+    <field name="name">Notify inventory team</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Products are below minimum stock. Review reorder rules."}</field>
+  </record>
+  <record id="starter_stock_reorder_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_stock_reorder"/>
+    <field name="name">Email warehouse</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_email</field>
+    <field name="config_json">{"subject": "Stock reorder reminder", "body": "&lt;p&gt;One or more products need replenishment.&lt;/p&gt;"}</field>
+  </record>
+
+  <record id="starter_leave_approval" model="rn.workflow">
+    <field name="name">Leave Approval</field>
+    <field name="code">starter_leave_approval</field>
+    <field name="description">Start manager approval when an employee submits time off.</field>
+    <field name="trigger_type">on_create</field>
+    <field name="model_id" ref="hr_holidays.model_hr_leave"/>
+    <field name="state">draft</field>
+    <field name="sequence">60</field>
+  </record>
+  <record id="starter_leave_approval_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_leave_approval"/>
+    <field name="name">Check leave submitted</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">state</field>
+    <field name="condition_operator">equals</field>
+    <field name="compare_value">confirm</field>
+  </record>
+  <record id="starter_leave_approval_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_leave_approval"/>
+    <field name="name">Start leave approval</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">start_approval</field>
+  </record>
+  <record id="starter_leave_approval_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_leave_approval"/>
+    <field name="name">Notify manager</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Leave request waiting for approval."}</field>
+  </record>
+
+  <record id="starter_expense_approval" model="rn.workflow">
+    <field name="name">Expense Approval</field>
+    <field name="code">starter_expense_approval</field>
+    <field name="description">Route submitted employee expenses to approvers.</field>
+    <field name="trigger_type">on_write</field>
+    <field name="model_id" ref="hr_expense.model_hr_expense"/>
+    <field name="state">draft</field>
+    <field name="sequence">70</field>
+  </record>
+  <record id="starter_expense_approval_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_expense_approval"/>
+    <field name="name">Check expense submitted</field>
+    <field name="sequence">10</field>
+    <field name="node_type">condition</field>
+    <field name="field_name">state</field>
+    <field name="condition_operator">equals</field>
+    <field name="compare_value">submitted</field>
+  </record>
+  <record id="starter_expense_approval_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_expense_approval"/>
+    <field name="name">Start expense approval</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">start_approval</field>
+  </record>
+  <record id="starter_expense_approval_node_3" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_expense_approval"/>
+    <field name="name">Notify approver</field>
+    <field name="sequence">30</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Expense report submitted for approval."}</field>
+  </record>
+
+  <record id="starter_customer_welcome" model="rn.workflow">
+    <field name="name">Customer Welcome</field>
+    <field name="code">starter_customer_welcome</field>
+    <field name="description">Send a welcome email when a new customer contact is created.</field>
+    <field name="trigger_type">on_create</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="state">draft</field>
+    <field name="sequence">80</field>
+  </record>
+  <record id="starter_customer_welcome_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_customer_welcome"/>
+    <field name="name">Send welcome email</field>
+    <field name="sequence">10</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_email</field>
+    <field name="config_json">{"subject": "Welcome to our company", "body": "&lt;p&gt;Thank you for connecting with us. Our team will reach out shortly.&lt;/p&gt;"}</field>
+  </record>
+  <record id="starter_customer_welcome_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_customer_welcome"/>
+    <field name="name">Log welcome activity</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Welcome email queued for new customer."}</field>
+  </record>
+
+  <record id="starter_followup_reminder" model="rn.workflow">
+    <field name="name">Follow-up Reminder</field>
+    <field name="code">starter_followup_reminder</field>
+    <field name="description">Remind owners to follow up when a lead stage changes.</field>
+    <field name="trigger_type">on_write</field>
+    <field name="model_id" ref="crm.model_crm_lead"/>
+    <field name="state">draft</field>
+    <field name="sequence">90</field>
+  </record>
+  <record id="starter_followup_reminder_node_1" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_followup_reminder"/>
+    <field name="name">Notify lead owner</field>
+    <field name="sequence">10</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_notification</field>
+    <field name="config_json">{"message": "Lead stage updated. Schedule your follow-up."}</field>
+  </record>
+  <record id="starter_followup_reminder_node_2" model="rn.workflow.node">
+    <field name="workflow_id" ref="starter_followup_reminder"/>
+    <field name="name">Send follow-up email</field>
+    <field name="sequence">20</field>
+    <field name="node_type">action</field>
+    <field name="action_type">send_email</field>
+    <field name="config_json">{"subject": "Following up on your request", "body": "&lt;p&gt;We are following up on your recent inquiry.&lt;/p&gt;"}</field>
+  </record>
+</odoo>

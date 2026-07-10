@@ -84,11 +84,4 @@
         <field name="category">accounting</field>
         <field name="sequence">120</field>
     </record>
-    <record id="suggestion_morning_briefing" model="rn.ai.employee.suggestion">
-        <field name="name">Morning briefing</field>
-        <field name="question">Show my morning briefing</field>
-        <field name="tool_name">morning_briefing</field>
-        <field name="category">accounting</field>
-        <field name="sequence">5</field>
-    </record>
 </odoo>

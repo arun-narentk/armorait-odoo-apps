@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="agent_id"/>
                 <field name="user_id"/>
                 <field name="message_count"/>
                 <field name="last_message_preview"/>
@@ -39,9 +38,6 @@
                         <h1>
                             <field name="name" placeholder="Conversation subject"/>
                         </h1>
-                        <group>
-                            <field name="agent_id" options="{'no_create': True}"/>
-                        </group>
                         <div class="text-muted">
                             Ask a business question, review the answer, then use the suggested actions.
                         </div>

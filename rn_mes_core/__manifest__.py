@@ -77,6 +77,8 @@ tool management, shift handover, energy monitoring, AI root cause analysis.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

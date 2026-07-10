@@ -19,8 +19,6 @@ export class AiEmployeeSystray extends Component {
             loading: true,
             sending: false,
             chatId: null,
-            agentId: null,
-            agents: [],
             messages: [],
             suggestions: [],
             draft: "",
@@ -40,37 +38,10 @@ export class AiEmployeeSystray extends Component {
         try {
             const data = await this.orm.call("rn.ai.employee.chat", "widget_bootstrap", []);
             this.state.chatId = data.chat_id;
-            this.state.agentId = data.agent_id || null;
-            this.state.agents = data.agents || [];
             this.state.messages = data.messages || [];
             this.state.suggestions = data.suggestions || [];
         } catch (error) {
             this.state.error = error.message || "AI Copilot is unavailable.";
-        } finally {
-            this.state.loading = false;
-            this._scrollToBottom();
-        }
-    }
-
-    async switchAgent(agentId) {
-        if (!this.state.chatId || this.state.agentId === agentId || this.state.sending) {
-            return;
-        }
-        this.state.loading = true;
-        this.state.error = "";
-        try {
-            const data = await this.orm.call(
-                "rn.ai.employee.chat",
-                "widget_set_agent",
-                [this.state.chatId, agentId]
-            );
-            this.state.chatId = data.chat_id;
-            this.state.agentId = data.agent_id || null;
-            this.state.agents = data.agents || [];
-            this.state.messages = data.messages || [];
-            this.state.suggestions = data.suggestions || [];
-        } catch (error) {
-            this.state.error = error.message || "Could not switch domain agent.";
         } finally {
             this.state.loading = false;
             this._scrollToBottom();

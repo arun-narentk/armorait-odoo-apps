@@ -2,7 +2,6 @@
 
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
-from odoo import fields
 
 
 @tagged('post_install', '-at_install')
@@ -24,10 +23,11 @@ class TestRnHrIntelligence(TransactionCase):
             'department_id': cls.department.id,
             'company_id': cls.env.company.id,
         })
-        cls.env['hr.version'].create({
+        cls.env['hr.contract'].create({
+            'name': 'Test Contract',
             'employee_id': cls.employee.id,
-            'contract_date_start': fields.Date.today(),
             'wage': 25000,
+            'state': 'open',
             'company_id': cls.env.company.id,
         })
 

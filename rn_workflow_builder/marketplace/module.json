@@ -1,31 +1,31 @@
 {
   "technical_name": "rn_workflow_builder",
-  "app_name": "AI Workflow Builder",
-  "tagline": "Visual automation platform: triggers, conditions, actions, AI workflow builder",
-  "category_type": "productivity",
+  "app_name": "AI Automation Platform",
+  "tagline": "Enterprise AI Automation Platform for Odoo with Visual Workflows, AI Builder, Approvals, Webhooks, and Smart Connectors",
+  "category_type": "automation",
   "price": 199.0,
   "accent": "#2563eb",
-  "problem": "Teams running Odoo 19 need a reliable way to manage ai workflow builder without spreadsheets or disconnected tools.",
-  "solution": "Visual automation platform: triggers, conditions, actions, AI workflow builder",
+  "problem": "Teams need more than isolated automations. They need one platform to connect Odoo records, approvals, messaging, documents, shop floor signals, and third-party apps without brittle custom code.",
+  "solution": "ARMORA AI Automation Platform unifies visual workflows, AI-assisted building, approval routing, webhooks, and connector-ready architecture for OCR, WhatsApp, IoT, MES, and AI agents.",
   "benefits": [
-    "Streamline ai workflow builder workflows in Odoo",
+    "Visual workflows, AI builder, and process orchestration in Odoo",
     "Built for Odoo 19 Community",
-    "Production-ready ARMORA architecture",
+    "Connector-ready for OCR, WhatsApp, IoT, and MES",
     "Multi-company aware where applicable",
     "Support from ARMORA IT Technologies"
   ],
   "features": [
     {
-      "title": "Odoo-native",
-      "text": "AI Workflow Builder extends standard Odoo models and views."
+      "title": "Platform breadth",
+      "text": "Workflows, approvals, webhooks, and smart connectors in one Odoo-native app."
     },
     {
-      "title": "Configurable",
-      "text": "Settings, security groups, and menus included."
+      "title": "AI-assisted building",
+      "text": "Draft and validate automations faster with the built-in AI builder."
     },
     {
-      "title": "Documented",
-      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      "title": "Connector-ready",
+      "text": "Designed for OCR, WhatsApp, IoT, MES, and external REST integrations."
     },
     {
       "title": "Commercial support",
@@ -34,17 +34,17 @@
   ],
   "workflow": [
     "Install module",
-    "Configure settings",
-    "Assign user groups",
-    "Run daily workflows",
-    "Review KPIs and reports",
+    "Activate starter workflows",
+    "Configure connectors and approvals",
+    "Run automations across departments",
+    "Monitor execution and failures",
     "Scale across companies"
   ],
-  "seo_keywords": "Odoo 19, Odoo Community, AI Workflow Builder, rn_workflow_builder, ARMORA IT Technologies",
-  "has_dashboard": false,
+  "seo_keywords": "Odoo 19, Odoo Community, AI Automation Platform, Enterprise AI Automation, rn_workflow_builder, ARMORA IT Technologies",
+  "has_dashboard": true,
   "has_reports": false,
   "has_mobile": false,
   "live_test_url": "https://www.armorait.com",
-  "version": "19.0.1.0.0",
+  "version": "19.0.1.1.0",
   "branch": null
 }

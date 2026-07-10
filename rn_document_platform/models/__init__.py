@@ -10,5 +10,5 @@ from . import platform_settings
 from . import document_mixin
 from . import sale_order
 from . import purchase_order
-from . import hr_version
+from . import hr_contract
 from . import res_config_settings

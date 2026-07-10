@@ -6,8 +6,6 @@ from datetime import timedelta
 
 from odoo import fields, models
 
-from .contract_compat import running_version_domain
-
 _logger = logging.getLogger(__name__)
 
 
@@ -22,10 +20,11 @@ class RnHrPayrollAnalyticsService(models.AbstractModel):
         departments = self.env['hr.department'].search([('company_id', '=', company_id)])
         result = []
         for dept in departments:
-            contracts = self.env['hr.version'].search(running_version_domain(
-                company_id,
-                [('employee_id.department_id', '=', dept.id)],
-            ))
+            contracts = self.env['hr.contract'].search([
+                ('employee_id.department_id', '=', dept.id),
+                ('state', '=', 'open'),
+                ('company_id', '=', company_id),
+            ])
             payroll = sum(contracts.mapped('wage'))
             ot = sum(self.env['rn.hr.overtime.log'].search([
                 ('department_id', '=', dept.id),
