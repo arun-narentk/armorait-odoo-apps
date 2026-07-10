@@ -187,8 +187,30 @@ def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
 
 
 DEFAULT_BRAND_STRIP = DEFAULT_BRAND_LOGO
-ICON_CROP_RATIO = 0.24
+ICON_CROP_RATIO = 0.14
 ODOO_VERSION_LABEL = 'V19'
+
+
+def _trim_brand_icon(icon: Image.Image) -> Image.Image:
+    """Drop white footer and empty margins from cropped brand strip icon."""
+    px = icon.load()
+    w, h = icon.size
+    xs: list[int] = []
+    ys: list[int] = []
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            if a < 20:
+                continue
+            if r > 228 and g > 228 and b > 228:
+                continue
+            if r + g + b < 35:
+                continue
+            xs.append(x)
+            ys.append(y)
+    if not xs:
+        return icon
+    return icon.crop((min(xs), min(ys), max(xs) + 1, max(ys) + 1))
 
 
 def _extract_brand_icon(brand_logo: Path, target_h: int) -> Image.Image | None:
@@ -197,7 +219,7 @@ def _extract_brand_icon(brand_logo: Path, target_h: int) -> Image.Image | None:
         return None
     strip = Image.open(brand_logo).convert('RGBA')
     crop_w = max(1, int(strip.width * ICON_CROP_RATIO))
-    icon = strip.crop((0, 0, crop_w, strip.height))
+    icon = _trim_brand_icon(strip.crop((0, 0, crop_w, strip.height)))
     target_w = max(1, int(icon.width * (target_h / icon.height)))
     return icon.resize((target_w, target_h), RESAMPLE)
 
@@ -336,8 +358,8 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
     pad_bottom = 20
     badge_h = max(68, int(h * 0.13))
-    icon_size = int(badge_h * 0.52)
-    badge_w = int(badge_h * 2.95)
+    icon_size = int(badge_h * 0.58)
+    badge_w = int(badge_h * 2.85)
 
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
