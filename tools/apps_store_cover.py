@@ -89,12 +89,56 @@ def title_lines_from_name(name: str) -> list[str]:
     return [' '.join(words[:mid]), ' '.join(words[mid:])]
 
 
-def subtitle_from_summary(summary: str, max_len: int = 52) -> str:
+def subtitle_lines_from_summary(
+    summary: str,
+    max_lines: int = 2,
+    max_chars: int = 46,
+) -> list[str]:
+    """Wrap manifest summary into 1-2 readable lines (no mid-phrase comma cuts)."""
     text = re.sub(r'\s+', ' ', summary.strip())
-    if len(text) <= max_len:
-        return text
-    cut = text[:max_len].rsplit(' ', 1)[0]
-    return cut or text[:max_len]
+    if not text:
+        return ['']
+
+    if len(text) <= max_chars:
+        return [text]
+
+    if ':' in text:
+        head, tail = text.split(':', 1)
+        line1 = f'{head.strip()}:'
+        line2 = tail.strip()
+        if line1 and line2 and len(line1) <= max_chars:
+            if len(line2) > max_chars:
+                cut = line2[: max_chars - 1].rsplit(' ', 1)[0]
+                line2 = cut.rstrip(',:;') if cut else line2[:max_chars]
+            return [line1, line2][:max_lines]
+
+    words = text.split()
+    lines: list[str] = []
+    current: list[str] = []
+    for word in words:
+        trial = ' '.join(current + [word])
+        if len(trial) <= max_chars or not current:
+            current.append(word)
+            continue
+        lines.append(' '.join(current))
+        current = [word]
+        if len(lines) >= max_lines:
+            break
+    if len(lines) < max_lines and current:
+        lines.append(' '.join(current))
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+    if lines:
+        last = lines[-1].rstrip(',:;')
+        if last != lines[-1]:
+            lines[-1] = last
+        return lines
+    return [text[:max_chars].rsplit(' ', 1)[0].rstrip(',:;')]
+
+
+def subtitle_from_summary(summary: str, max_len: int = 52) -> str:
+    """Single-line subtitle helper (legacy callers)."""
+    return subtitle_lines_from_summary(summary, max_lines=1, max_chars=max_len)[0]
 
 
 def read_manifest_fields(manifest_path: Path) -> tuple[str, str]:
@@ -177,30 +221,29 @@ def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int, panel_left: int) -> None:
-    """Serpent-style website strip with readable padding on the white panel."""
+    """Clean website label aligned to the white content column."""
     draw = ImageDraw.Draw(img)
-    pill_font = _font(max(14, int(h * 0.028)), True)
+    pill_font = _font(max(15, int(h * 0.026)), True)
     tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
-    pad_x, pad_y = 22, 11
-    pill_w = tw + pad_x * 2 + 8
+    pad_x, pad_y = 18, 9
+    pill_w = tw + pad_x * 2
     pill_h = th + pad_y * 2
-    pill_x = w - pill_w - 22
-    pill_y = 18
-    shadow = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-    shadow_draw = ImageDraw.Draw(shadow)
-    shadow_draw.rounded_rectangle(
-        (pill_x + 2, pill_y + 3, pill_x + pill_w + 2, pill_y + pill_h + 3),
-        radius=pill_h // 2,
-        fill=(15, 23, 42, 55),
-    )
-    img.paste(shadow, (0, 0), shadow)
-    _draw_gradient_rounded_rect(
-        img,
+    content_right = w - 28
+    pill_x = content_right - pill_w
+    pill_y = 22
+    _rounded_rect(
+        draw,
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
-        pill_h // 2,
+        max(8, pill_h // 2),
+        '#EEF2FF',
+        outline=CTA_START,
+        width=2,
+    )
+    draw.text(
+        (pill_x + pad_x, pill_y + (pill_h - th) // 2 - 1),
         WEBSITE_PILL,
-        pill_font,
-        text_x_offset=pad_x,
+        font=pill_font,
+        fill=CTA_MID,
     )
 
 
@@ -291,31 +334,31 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     """ARMORA badge: original A icon + readable vector text."""
     draw = ImageDraw.Draw(img)
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
-    pad_bottom = 16
-    badge_h = max(92, int(h * 0.22))
-    icon_size = int(badge_h * 0.50)
-    badge_w = int(badge_h * 3.05)
+    pad_bottom = 20
+    badge_h = max(68, int(h * 0.13))
+    icon_size = int(badge_h * 0.52)
+    badge_w = int(badge_h * 2.95)
 
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
-    x = split_x + max(16, (w - split_x - badge_w) // 2)
-    x = min(x, w - badge_w - 16)
+    x = split_x + max(20, (w - split_x - badge_w) // 2)
+    x = min(x, w - badge_w - 20)
 
-    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(10, badge_h // 8), '#0a1628')
+    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 7), '#0a1628')
 
     icon = _extract_brand_icon(logo_path, icon_size)
-    ix = x + int(badge_h * 0.16)
+    ix = x + int(badge_h * 0.14)
     iy = y + (badge_h - icon_size) // 2
     if icon is not None:
         img.paste(icon, (ix, iy), icon)
-        tx = ix + icon_size + int(badge_h * 0.12)
+        tx = ix + icon_size + int(badge_h * 0.10)
     else:
-        tx = x + int(badge_h * 0.20)
+        tx = x + int(badge_h * 0.18)
 
-    armora_font = _font(max(22, int(badge_h * 0.34)), True)
-    sub_font = _font(max(11, int(badge_h * 0.145)), True)
-    draw.text((tx, y + int(badge_h * 0.22)), 'ARMORA', font=armora_font, fill=WHITE)
-    draw.text((tx, y + int(badge_h * 0.56)), 'IT TECHNOLOGIES', font=sub_font, fill='#E2E8F0')
+    armora_font = _font(max(18, int(badge_h * 0.36)), True)
+    sub_font = _font(max(9, int(badge_h * 0.16)), True)
+    draw.text((tx, y + int(badge_h * 0.20)), 'ARMORA', font=armora_font, fill=WHITE)
+    draw.text((tx, y + int(badge_h * 0.54)), 'IT TECHNOLOGIES', font=sub_font, fill='#E2E8F0')
 
 
 def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
@@ -324,13 +367,14 @@ def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path | No
 
 def draw_app_cover(
     title_lines: list[str],
-    subtitle: str,
+    subtitle: str | list[str],
     w: int = 1200,
     h: int = 600,
     brand_logo: Path | None = None,
 ) -> Image.Image:
     """Render loempia_app_cover style banner for one module."""
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
+    subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
     img = Image.new('RGB', (w, h), '#F8FAFC')
     draw = ImageDraw.Draw(img)
     split_mid = _draw_diagonal_cover_background(img, w, h)
@@ -339,27 +383,45 @@ def draw_app_cover(
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
     _paste_armorait_logo(img, w, h, brand_logo=logo_path)
 
-    panel_left = split_mid - 20
-    title_y = int(h * 0.26)
-    _draw_centered_title_block(draw, panel_left, w - 24, title_y, title_lines)
+    content_left = split_mid + 8
+    content_right = w - 28
+    content_w = content_right - content_left
 
-    sub_font = _font(17)
-    stw, sth = _text_size(draw, subtitle, sub_font)
-    draw.text(
-        (panel_left + (w - 24 - panel_left - stw) // 2, int(h * 0.58)),
-        subtitle,
-        font=sub_font,
-        fill='#475569',
-    )
+    sub_font = _font(16)
+    sub_line_h = _text_size(draw, 'Ag', sub_font)[1] + 4
+    title_block_h = 0
+    for line in title_lines:
+        font = _font(48, True)
+        tw, th = _text_size(draw, line, font)
+        while tw > content_w and (not hasattr(font, 'size') or font.size > 28):
+            size = font.size - 2 if hasattr(font, 'size') else 38
+            font = _font(size, True)
+            tw, th = _text_size(draw, line, font)
+        title_block_h += th + 6
+    subtitle_block_h = len(subtitle_lines) * sub_line_h
+    block_h = title_block_h + 12 + subtitle_block_h
+    title_y = max(72, int((h - block_h) * 0.42))
+    title_end_y = _draw_centered_title_block(draw, content_left, content_right, title_y, title_lines)
 
-    _draw_website_pill(img, w, h, panel_left)
+    sub_y = title_end_y + 10
+    for line in subtitle_lines:
+        stw, sth = _text_size(draw, line, sub_font)
+        draw.text(
+            (content_left + (content_w - stw) // 2, sub_y),
+            line,
+            font=sub_font,
+            fill='#475569',
+        )
+        sub_y += sub_line_h
+
+    _draw_website_pill(img, w, h, content_left)
     return img
 
 
 def save_cover_assets(
     module_dir: Path,
     title_lines: list[str],
-    subtitle: str,
+    subtitle: str | list[str],
     brand_logo: Path | None = None,
 ) -> None:
     """Write banner.png, banner_small.png, and brand logo into module static/description."""
@@ -385,7 +447,7 @@ def generate_covers_for_repo(repo_root: Path, brand_logo: Path | None = None) ->
             continue
         name, summary = read_manifest_fields(manifest)
         title_lines = title_lines_from_name(name)
-        subtitle = subtitle_from_summary(summary)
+        subtitle = subtitle_lines_from_summary(summary)
         save_cover_assets(module_dir, title_lines, subtitle, brand_logo=brand_logo)
         generated.append(module_dir.name)
     return generated
