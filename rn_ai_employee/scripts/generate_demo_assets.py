@@ -332,15 +332,16 @@ def draw_briefing_scene() -> Image.Image:
     return img
 
 
-# Apps Store listing cover (Serpent layout + Armorait rich gradient palette)
-NAVY_BLACK = '#081120'
+# Apps Store listing cover (Serpent layout + teal/black Armorait palette)
+BLACK_TEAL = '#041015'
+NAVY_BLACK = '#0a1628'
 NAVY_DEEP = '#0f172a'
-GRAD_START = '#6366f1'
-GRAD_MID = '#7c3aed'
-GRAD_END = '#0ea5e9'
-TITLE_INDIGO = '#4f46e5'
-TITLE_VIOLET = '#6d28d9'
-PANEL_GLOW = '#312e81'
+TEAL_DEEP = '#0f766e'
+TEAL_MAIN = '#017E84'
+TEAL_BRIGHT = '#14b8a6'
+TEAL_CYAN = '#06b6d4'
+TITLE_TEAL = '#017E84'
+PANEL_GLOW = '#134e4a'
 
 
 def _hex_to_rgb(value: str) -> tuple[int, int, int]:
@@ -353,28 +354,29 @@ def _lerp_rgb(a: tuple[int, int, int], b: tuple[int, int, int], t: float) -> tup
 
 
 def _gradient_rgb(t: float) -> tuple[int, int, int]:
-    """Armorait CTA gradient: indigo -> violet -> cyan."""
+    """Teal gradient wash: deep teal -> brand teal -> bright cyan."""
     t = max(0.0, min(1.0, t))
-    start, mid, end = _hex_to_rgb(GRAD_START), _hex_to_rgb(GRAD_MID), _hex_to_rgb(GRAD_END)
-    if t <= 0.42:
-        return _lerp_rgb(start, mid, t / 0.42)
-    return _lerp_rgb(mid, end, (t - 0.42) / 0.58)
+    start, mid, end = _hex_to_rgb(TEAL_DEEP), _hex_to_rgb(TEAL_MAIN), _hex_to_rgb(TEAL_BRIGHT)
+    if t <= 0.45:
+        return _lerp_rgb(start, mid, t / 0.45)
+    return _lerp_rgb(mid, end, (t - 0.45) / 0.55)
 
 
 def _build_rich_panel_gradient(w: int, h: int) -> Image.Image:
-    """Navy-black base with purple/cyan wash for a premium left panel."""
+    """Black-teal base with cyan/teal wash for a premium left panel."""
     panel = Image.new('RGB', (w, h))
     px = panel.load()
+    black = _hex_to_rgb(BLACK_TEAL)
     navy = _hex_to_rgb(NAVY_BLACK)
     deep = _hex_to_rgb(NAVY_DEEP)
     for y in range(h):
         ty = y / max(h - 1, 1)
         for x in range(w):
             tx = x / max(w - 1, 1)
-            glow_t = min(1.0, tx * 0.72 + (1.0 - ty) * 0.28)
+            glow_t = min(1.0, tx * 0.68 + (1.0 - ty) * 0.32)
             glow = _gradient_rgb(glow_t)
-            base = _lerp_rgb(navy, deep, ty * 0.55)
-            shade = 0.58 if tx < 0.55 else 0.72
+            base = _lerp_rgb(black, _lerp_rgb(navy, deep, ty * 0.5), tx * 0.35)
+            shade = 0.64 if tx < 0.55 else 0.78
             color = tuple(int(base[i] * shade + glow[i] * (1.0 - shade)) for i in range(3))
             px[x, y] = color
     return panel
@@ -403,7 +405,7 @@ def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
         (split_top, 0),
         (split_bottom, h),
         (0, h),
-    ], fill=(99, 102, 241, 28))
+    ], fill=(1, 126, 132, 30))
     img.paste(glow, (0, 0), glow)
     return (split_top + split_bottom) // 2
 
@@ -415,7 +417,6 @@ def _draw_gradient_rounded_rect(
     text: str,
     font,
     text_color: str = WHITE,
-    arrow: bool = True,
 ) -> None:
     x1, y1, x2, y2 = box
     width = max(2, x2 - x1)
@@ -431,14 +432,9 @@ def _draw_gradient_rounded_rect(
     img.paste(grad, (x1, y1), mask)
     draw = ImageDraw.Draw(img)
     tw, th = _text_size(draw, text, font)
-    tx = x1 + 18
+    tx = x1 + (width - tw) // 2
     ty = y1 + (height - th) // 2
     draw.text((tx, ty), text, font=font, fill=text_color)
-    if arrow:
-        ax = x2 - 24
-        ay = y1 + height // 2
-        draw.line((ax, ay, ax + 12, ay), fill=text_color, width=2)
-        draw.polygon([(ax + 12, ay), (ax + 6, ay - 5), (ax + 6, ay + 5)], fill=text_color)
 
 
 def _draw_centered_title_block(
@@ -458,7 +454,7 @@ def _draw_centered_title_block(
             font = _font(size, True)
             tw, th = _text_size(draw, line, font)
         x = left + (right - left - tw) // 2
-        draw.text((x, cy), line, font=font, fill=TITLE_INDIGO)
+        draw.text((x, cy), line, font=font, fill=TITLE_TEAL)
         cy += th + 6
     return cy
 
@@ -467,24 +463,24 @@ def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius
     """Circular AI copilot illustration on the rich navy panel."""
     glow_r = radius + 10
     draw.ellipse((cx - glow_r, cy - glow_r, cx + glow_r, cy + glow_r), fill=PANEL_GLOW)
-    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#C7D2FE', width=4)
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#99F6E4', width=4)
     inner = radius - 18
-    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#EEF2FF')
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#ECFEFF')
 
     bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
     bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
     bx2, by2 = bx1 + bubble_w, by1 + bubble_h
-    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=GRAD_START, width=3)
+    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=TEAL_MAIN, width=3)
     for dot_x in (cx - 22, cx, cx + 22):
-        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=TITLE_VIOLET)
+        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=TEAL_DEEP)
 
-    for sx, sy, color in ((cx - 58, cy - 48, GRAD_END), (cx + 62, cy - 36, '#22D3EE'), (cx + 54, cy + 42, GRAD_MID)):
+    for sx, sy, color in ((cx - 58, cy - 48, TEAL_CYAN), (cx + 62, cy - 36, TEAL_BRIGHT), (cx + 54, cy + 42, TEAL_MAIN)):
         draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
         draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
         draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
 
     bar_y = cy + bubble_h // 2 + 8
-    for i, color in enumerate((GRAD_START, GRAD_MID, GRAD_END)):
+    for i, color in enumerate((TEAL_DEEP, TEAL_MAIN, TEAL_BRIGHT)):
         draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
 
 
@@ -501,16 +497,15 @@ def _diagonal_split_x(w: int, h: int, y: int) -> int:
     return split_top + int((split_bottom - split_top) * (y / h))
 
 
-def _paste_armorait_logo(img: Image.Image, w: int, h: int) -> None:
-    """Paste large ARMORA logo bottom-center on white panel, beside navy diagonal."""
+def _paste_armorait_logo(img: Image.Image, w: int, h: int) -> tuple[int, int, int, int] | None:
+    """Paste large ARMORA logo bottom-center on white panel. Returns bounding box."""
     if not BRAND_LOGO.is_file():
-        return
+        return None
     logo = Image.open(BRAND_LOGO).convert('RGBA')
     pad_bottom = 16
     target_h = max(88, int(h * 0.22))
     target_w = int(logo.width * (target_h / logo.height))
-    split_bottom = int(w * 0.34)
-    max_w = int(w * 0.42)
+    max_w = int(w * 0.40)
     if target_w > max_w:
         target_w = max_w
         target_h = int(logo.height * (target_w / logo.width))
@@ -518,10 +513,10 @@ def _paste_armorait_logo(img: Image.Image, w: int, h: int) -> None:
 
     y = h - target_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + target_h // 2)
-    # Bottom center of cover, tucked beside navy diagonal
     x = split_x + max(16, (w - split_x - target_w) // 2)
     x = min(x, w - target_w - 16)
     img.paste(logo, (x, y), logo)
+    return (x, y, target_w, target_h)
 
 
 def draw_banner(w: int, h: int) -> Image.Image:
@@ -554,13 +549,14 @@ def draw_banner(w: int, h: int) -> Image.Image:
         fill='#475569',
     )
 
+    # Website pill top-right on white panel (avoids overlap with bottom logo)
     pill_text = 'www.armorait.com'
-    pill_font = _font(14, True)
+    pill_font = _font(13, True)
     tw, th = _text_size(draw, pill_text, pill_font)
-    pill_w = tw + 56
-    pill_h = th + 20
-    pill_x = w - pill_w - 28
-    pill_y = h - pill_h - 24
+    pill_w = tw + 36
+    pill_h = th + 16
+    pill_x = w - pill_w - 24
+    pill_y = 20
     _draw_gradient_rounded_rect(
         img,
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
