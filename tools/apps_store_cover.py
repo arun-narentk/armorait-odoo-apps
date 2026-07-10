@@ -224,23 +224,37 @@ def _diagonal_split_x(w: int, h: int, y: int) -> int:
     return split_top + int((split_bottom - split_top) * (y / h))
 
 
-def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path) -> None:
-    if not brand_logo.is_file():
-        return
-    logo = Image.open(brand_logo).convert('RGBA')
+def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int) -> None:
+    """Draw high-contrast ARMORA badge (IT TECHNOLOGIES readable on dark bar)."""
+    draw = ImageDraw.Draw(img)
     pad_bottom = 16
-    target_h = max(88, int(h * 0.22))
-    target_w = int(logo.width * (target_h / logo.height))
-    max_w = int(w * 0.40)
-    if target_w > max_w:
-        target_w = max_w
-        target_h = int(logo.height * (target_w / logo.width))
-    logo = logo.resize((target_w, target_h), RESAMPLE)
-    y = h - target_h - pad_bottom
-    split_x = _diagonal_split_x(w, h, y + target_h // 2)
-    x = split_x + max(16, (w - split_x - target_w) // 2)
-    x = min(x, w - target_w - 16)
-    img.paste(logo, (x, y), logo)
+    badge_h = max(92, int(h * 0.22))
+    icon_size = int(badge_h * 0.46)
+    badge_w = int(badge_h * 3.15)
+
+    y = h - badge_h - pad_bottom
+    split_x = _diagonal_split_x(w, h, y + badge_h // 2)
+    x = split_x + max(16, (w - split_x - badge_w) // 2)
+    x = min(x, w - badge_w - 16)
+
+    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(10, badge_h // 8), '#0a1628')
+
+    ix = x + int(badge_h * 0.20)
+    iy = y + (badge_h - icon_size) // 2
+    half = icon_size // 2
+    draw.polygon([(ix, iy + icon_size), (ix + half, iy), (ix + half, iy + icon_size)], fill=CTA_MID)
+    draw.polygon([(ix + half, iy), (ix + icon_size, iy + icon_size), (ix + half, iy + icon_size)], fill=WHITE)
+
+    tx = ix + icon_size + int(badge_h * 0.16)
+    armora_font = _font(max(22, int(badge_h * 0.34)), True)
+    sub_font = _font(max(11, int(badge_h * 0.145)), True)
+    draw.text((tx, y + int(badge_h * 0.22)), 'ARMORA', font=armora_font, fill=WHITE)
+    draw.text((tx, y + int(badge_h * 0.56)), 'IT TECHNOLOGIES', font=sub_font, fill='#E2E8F0')
+
+
+def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
+    """Draw ARMORA logo badge on cover (vector, not low-contrast PNG)."""
+    _draw_armorait_logo_badge(img, w, h)
 
 
 def draw_app_cover(
@@ -257,7 +271,7 @@ def draw_app_cover(
     split_mid = _draw_diagonal_cover_background(img, w, h)
     radius = int(min(w, h) * 0.24)
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
-    _paste_armorait_logo(img, w, h, logo_path)
+    _paste_armorait_logo(img, w, h)
 
     panel_left = split_mid - 20
     title_y = int(h * 0.26)
@@ -302,7 +316,7 @@ def save_cover_assets(
         dest = out / 'armorait_brand_logo.png'
         if logo_src.resolve() != dest.resolve():
             shutil.copy2(logo_src, dest)
-    banner = draw_app_cover(title_lines, subtitle, brand_logo=logo_src)
+    banner = draw_app_cover(title_lines, subtitle)
     banner.save(out / 'banner.png', 'PNG', optimize=True)
     banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
 
