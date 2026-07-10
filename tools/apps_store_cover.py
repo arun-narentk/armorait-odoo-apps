@@ -191,23 +191,38 @@ ICON_CROP_RATIO = 0.14
 ODOO_VERSION_LABEL = 'V19'
 
 
+def _is_brand_mark_pixel(r: int, g: int, b: int, a: int) -> bool:
+    """Keep only purple/white logo strokes from the brand strip."""
+    if a < 20:
+        return False
+    if r > 185 and g > 185 and b > 185:
+        return True
+    return r > 75 and b > 75 and g < 145
+
+
+def _clean_brand_icon(icon: Image.Image) -> Image.Image:
+    """Remove dark strip background so only the A mark remains."""
+    cleaned = icon.copy()
+    px = cleaned.load()
+    for y in range(cleaned.height):
+        for x in range(cleaned.width):
+            r, g, b, a = px[x, y]
+            if _is_brand_mark_pixel(r, g, b, a):
+                continue
+            px[x, y] = (0, 0, 0, 0)
+    return cleaned
+
+
 def _trim_brand_icon(icon: Image.Image) -> Image.Image:
-    """Drop white footer and empty margins from cropped brand strip icon."""
+    """Trim transparent margins around the logo mark."""
     px = icon.load()
-    w, h = icon.size
     xs: list[int] = []
     ys: list[int] = []
-    for y in range(h):
-        for x in range(w):
-            r, g, b, a = px[x, y]
-            if a < 20:
-                continue
-            if r > 228 and g > 228 and b > 228:
-                continue
-            if r + g + b < 35:
-                continue
-            xs.append(x)
-            ys.append(y)
+    for y in range(icon.height):
+        for x in range(icon.width):
+            if px[x, y][3] > 20:
+                xs.append(x)
+                ys.append(y)
     if not xs:
         return icon
     return icon.crop((min(xs), min(ys), max(xs) + 1, max(ys) + 1))
@@ -219,7 +234,7 @@ def _extract_brand_icon(brand_logo: Path, target_h: int) -> Image.Image | None:
         return None
     strip = Image.open(brand_logo).convert('RGBA')
     crop_w = max(1, int(strip.width * ICON_CROP_RATIO))
-    icon = _trim_brand_icon(strip.crop((0, 0, crop_w, strip.height)))
+    icon = _trim_brand_icon(_clean_brand_icon(strip.crop((0, 0, crop_w, strip.height))))
     target_w = max(1, int(icon.width * (target_h / icon.height)))
     return icon.resize((target_w, target_h), RESAMPLE)
 
@@ -357,9 +372,9 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     draw = ImageDraw.Draw(img)
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
     pad_bottom = 20
-    badge_h = max(72, int(h * 0.14))
-    icon_size = int(badge_h * 0.76)
-    badge_w = int(badge_h * 2.92)
+    badge_h = max(76, int(h * 0.15))
+    icon_size = int(badge_h * 0.84)
+    badge_w = int(badge_h * 2.88)
 
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
@@ -369,7 +384,7 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 7), '#0a1628')
 
     icon = _extract_brand_icon(logo_path, icon_size)
-    ix = x + int(badge_h * 0.10)
+    ix = x + int(badge_h * 0.12)
     iy = y + (badge_h - icon_size) // 2
     if icon is not None:
         img.paste(icon, (ix, iy), icon)
