@@ -357,9 +357,9 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     draw = ImageDraw.Draw(img)
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
     pad_bottom = 20
-    badge_h = max(68, int(h * 0.13))
-    icon_size = int(badge_h * 0.58)
-    badge_w = int(badge_h * 2.85)
+    badge_h = max(72, int(h * 0.14))
+    icon_size = int(badge_h * 0.76)
+    badge_w = int(badge_h * 2.92)
 
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
@@ -369,11 +369,11 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path
     _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 7), '#0a1628')
 
     icon = _extract_brand_icon(logo_path, icon_size)
-    ix = x + int(badge_h * 0.14)
+    ix = x + int(badge_h * 0.10)
     iy = y + (badge_h - icon_size) // 2
     if icon is not None:
         img.paste(icon, (ix, iy), icon)
-        tx = ix + icon_size + int(badge_h * 0.10)
+        tx = ix + icon_size + int(badge_h * 0.08)
     else:
         tx = x + int(badge_h * 0.18)
 
