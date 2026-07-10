@@ -142,6 +142,68 @@ def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
     return (split_top + split_bottom) // 2
 
 
+DEFAULT_BRAND_STRIP = DEFAULT_BRAND_LOGO
+ICON_CROP_RATIO = 0.24
+ODOO_VERSION_LABEL = 'V19'
+
+
+def _extract_brand_icon(brand_logo: Path, target_h: int) -> Image.Image | None:
+    """Crop original ARMORA A mark from brand strip (old design icon)."""
+    if not brand_logo.is_file():
+        return None
+    strip = Image.open(brand_logo).convert('RGBA')
+    crop_w = max(1, int(strip.width * ICON_CROP_RATIO))
+    icon = strip.crop((0, 0, crop_w, strip.height))
+    target_w = max(1, int(icon.width * (target_h / icon.height)))
+    return icon.resize((target_w, target_h), RESAMPLE)
+
+
+def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
+    """Top-left Odoo 19 version tag on the gradient panel."""
+    draw = ImageDraw.Draw(img)
+    label_font = _font(max(15, int(h * 0.034)), True)
+    hint_font = _font(max(9, int(h * 0.018)), True)
+    lw, lh = _text_size(draw, ODOO_VERSION_LABEL, label_font)
+    hw, hh = _text_size(draw, 'Odoo 19', hint_font)
+    inner_w = max(lw, hw)
+    pad_x, pad_y = 14, 10
+    box_w = inner_w + pad_x * 2
+    box_h = lh + hh + pad_y * 2 + 4
+    x1, y1 = 18, 16
+    x2, y2 = x1 + box_w, y1 + box_h
+    _rounded_rect(draw, (x1, y1, x2, y2), 10, '#0a1628', outline='#C7D2FE', width=2)
+    draw.text((x1 + (box_w - lw) // 2, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill=WHITE)
+    draw.text((x1 + (box_w - hw) // 2, y1 + pad_y + lh + 2), 'Odoo 19', font=hint_font, fill='#CBD5E1')
+
+
+def _draw_website_pill(img: Image.Image, w: int, h: int, panel_left: int) -> None:
+    """Serpent-style website strip with readable padding on the white panel."""
+    draw = ImageDraw.Draw(img)
+    pill_font = _font(max(14, int(h * 0.028)), True)
+    tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
+    pad_x, pad_y = 22, 11
+    pill_w = tw + pad_x * 2 + 8
+    pill_h = th + pad_y * 2
+    pill_x = w - pill_w - 22
+    pill_y = 18
+    shadow = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(shadow)
+    shadow_draw.rounded_rectangle(
+        (pill_x + 2, pill_y + 3, pill_x + pill_w + 2, pill_y + pill_h + 3),
+        radius=pill_h // 2,
+        fill=(15, 23, 42, 55),
+    )
+    img.paste(shadow, (0, 0), shadow)
+    _draw_gradient_rounded_rect(
+        img,
+        (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
+        pill_h // 2,
+        WEBSITE_PILL,
+        pill_font,
+        text_x_offset=pad_x,
+    )
+
+
 def _draw_gradient_rounded_rect(
     img: Image.Image,
     box: tuple[int, int, int, int],
@@ -149,6 +211,7 @@ def _draw_gradient_rounded_rect(
     text: str,
     font,
     text_color: str = WHITE,
+    text_x_offset: int | None = None,
 ) -> None:
     x1, y1, x2, y2 = box
     width = max(2, x2 - x1)
@@ -164,8 +227,8 @@ def _draw_gradient_rounded_rect(
     img.paste(grad, (x1, y1), mask)
     draw = ImageDraw.Draw(img)
     tw, th = _text_size(draw, text, font)
-    tx = x1 + (width - tw) // 2
-    ty = y1 + (height - th) // 2
+    tx = x1 + (text_x_offset if text_x_offset is not None else (width - tw) // 2)
+    ty = y1 + (height - th) // 2 - 1
     draw.text((tx, ty), text, font=font, fill=text_color)
 
 
@@ -224,13 +287,14 @@ def _diagonal_split_x(w: int, h: int, y: int) -> int:
     return split_top + int((split_bottom - split_top) * (y / h))
 
 
-def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int) -> None:
-    """Draw high-contrast ARMORA badge (IT TECHNOLOGIES readable on dark bar)."""
+def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
+    """ARMORA badge: original A icon + readable vector text."""
     draw = ImageDraw.Draw(img)
+    logo_path = brand_logo or DEFAULT_BRAND_LOGO
     pad_bottom = 16
     badge_h = max(92, int(h * 0.22))
-    icon_size = int(badge_h * 0.46)
-    badge_w = int(badge_h * 3.15)
+    icon_size = int(badge_h * 0.50)
+    badge_w = int(badge_h * 3.05)
 
     y = h - badge_h - pad_bottom
     split_x = _diagonal_split_x(w, h, y + badge_h // 2)
@@ -239,13 +303,15 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int) -> None:
 
     _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(10, badge_h // 8), '#0a1628')
 
-    ix = x + int(badge_h * 0.20)
+    icon = _extract_brand_icon(logo_path, icon_size)
+    ix = x + int(badge_h * 0.16)
     iy = y + (badge_h - icon_size) // 2
-    half = icon_size // 2
-    draw.polygon([(ix, iy + icon_size), (ix + half, iy), (ix + half, iy + icon_size)], fill=CTA_MID)
-    draw.polygon([(ix + half, iy), (ix + icon_size, iy + icon_size), (ix + half, iy + icon_size)], fill=WHITE)
+    if icon is not None:
+        img.paste(icon, (ix, iy), icon)
+        tx = ix + icon_size + int(badge_h * 0.12)
+    else:
+        tx = x + int(badge_h * 0.20)
 
-    tx = ix + icon_size + int(badge_h * 0.16)
     armora_font = _font(max(22, int(badge_h * 0.34)), True)
     sub_font = _font(max(11, int(badge_h * 0.145)), True)
     draw.text((tx, y + int(badge_h * 0.22)), 'ARMORA', font=armora_font, fill=WHITE)
@@ -253,8 +319,7 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int) -> None:
 
 
 def _paste_armorait_logo(img: Image.Image, w: int, h: int, brand_logo: Path | None = None) -> None:
-    """Draw ARMORA logo badge on cover (vector, not low-contrast PNG)."""
-    _draw_armorait_logo_badge(img, w, h)
+    _draw_armorait_logo_badge(img, w, h, brand_logo=brand_logo)
 
 
 def draw_app_cover(
@@ -269,9 +334,10 @@ def draw_app_cover(
     img = Image.new('RGB', (w, h), '#F8FAFC')
     draw = ImageDraw.Draw(img)
     split_mid = _draw_diagonal_cover_background(img, w, h)
+    _draw_odoo_version_badge(img, w, h)
     radius = int(min(w, h) * 0.24)
     _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
-    _paste_armorait_logo(img, w, h)
+    _paste_armorait_logo(img, w, h, brand_logo=logo_path)
 
     panel_left = split_mid - 20
     title_y = int(h * 0.26)
@@ -286,19 +352,7 @@ def draw_app_cover(
         fill='#475569',
     )
 
-    pill_font = _font(13, True)
-    tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
-    pill_w = tw + 36
-    pill_h = th + 16
-    pill_x = w - pill_w - 24
-    pill_y = 20
-    _draw_gradient_rounded_rect(
-        img,
-        (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
-        pill_h // 2,
-        WEBSITE_PILL,
-        pill_font,
-    )
+    _draw_website_pill(img, w, h, panel_left)
     return img
 
 
