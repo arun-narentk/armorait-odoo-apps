@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import math
 import re
 import shutil
 from pathlib import Path
@@ -38,6 +39,13 @@ DEFAULT_BRAND_LOGO = (
 DEFAULT_COVER_LOGO = Path(__file__).resolve().parent / 'armorait_cover_logo.png'
 LOGO_MARK_CROP = (0.16, 0.02, 0.84, 0.78)
 LOGO_LEFT_CROP = (0.18, 0.02, 0.82, 0.56)
+COVER_GIF_FRAMES = 18
+COVER_GIF_FRAME_MS = 90
+SHIMMER_BASE = (229, 231, 235, 255)
+SHIMMER_BAR = (209, 213, 219, 210)
+SHIMMER_BAND = (255, 255, 255, 165)
+
+_BACKGROUND_CACHE: dict[tuple[int, int], Image.Image] = {}
 
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -71,6 +79,24 @@ def _lerp_rgb(a: tuple[int, int, int], b: tuple[int, int, int], t: float) -> tup
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
+def _ease_out_cubic(t: float) -> float:
+    t = max(0.0, min(1.0, t))
+    return 1.0 - (1.0 - t) ** 3
+
+
+def _apply_alpha_rgba(image: Image.Image, alpha: float) -> Image.Image:
+    """Scale overall alpha of an RGBA image."""
+    if alpha >= 1.0:
+        return image
+    out = image.convert('RGBA')
+    if alpha <= 0.0:
+        return Image.new('RGBA', out.size, (0, 0, 0, 0))
+    r, g, b, a = out.split()
+    a = a.point(lambda value: int(value * alpha))
+    out.putalpha(a)
+    return out
+
+
 def _peacock_gradient_rgb(tx: float, ty: float) -> tuple[int, int, int]:
     """Teal-to-blue peacock blend with navy shadow toward bottom-right."""
     tx = max(0.0, min(1.0, tx))
@@ -90,6 +116,10 @@ def _peacock_gradient_rgb(tx: float, ty: float) -> tuple[int, int, int]:
 
 def _build_peacock_cover_background(w: int, h: int) -> Image.Image:
     """Unified peacock teal + blue field with navy shadow (no diagonal split)."""
+    key = (w, h)
+    cached = _BACKGROUND_CACHE.get(key)
+    if cached is not None:
+        return cached.copy()
     panel = Image.new('RGB', (w, h))
     px = panel.load()
     for y in range(h):
@@ -97,7 +127,8 @@ def _build_peacock_cover_background(w: int, h: int) -> Image.Image:
         for x in range(w):
             tx = x / max(w - 1, 1)
             px[x, y] = _peacock_gradient_rgb(tx, ty)
-    return panel
+    _BACKGROUND_CACHE[key] = panel
+    return panel.copy()
 
 
 def _draw_cover_background(img: Image.Image, w: int, h: int) -> None:
@@ -226,18 +257,18 @@ def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
     draw.text((x1 + pad_x, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill=PEACOCK_BLUE)
 
 
-def _draw_left_logo_disc(
-    img: Image.Image,
-    w: int,
-    h: int,
-    cover_logo: Path | None = None,
-) -> None:
-    """loempia_app_cover shadow-sm left panel with the ARMORA 3D logo."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
+def _disc_geometry(w: int, h: int) -> tuple[int, int, int, int]:
+    """Center, outer radius, and inner radius for the left cover disc."""
     cx = int(w * 0.28)
     cy = int(h * 0.48)
     radius = int(min(w, h) * 0.22)
     inner = radius - 16
+    return cx, cy, radius, inner
+
+
+def _draw_disc_shell(img: Image.Image, w: int, h: int) -> tuple[int, int, int, int]:
+    """Shadow-sm rings around the left disc. Returns cx, cy, radius, inner."""
+    cx, cy, radius, inner = _disc_geometry(w, h)
 
     shadow_layer = Image.new('RGBA', (w, h), (0, 0, 0, 0))
     shadow_draw = ImageDraw.Draw(shadow_layer)
@@ -252,10 +283,108 @@ def _draw_left_logo_disc(
     draw.ellipse((cx - radius - 3, cy - radius - 3, cx + radius + 3, cy + radius + 3), fill=PANEL_GLOW)
     draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=PEACOCK_CYAN, width=4)
     draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#e0f2fe')
+    return cx, cy, radius, inner
 
-    mark = _load_cover_logo_left(logo_path, inner * 2 - 20)
-    if mark is not None:
-        img.paste(mark, (cx - mark.width // 2, cy - mark.height // 2), mark)
+
+def _make_shimmer_tile(size: int, sweep_phase: float) -> Image.Image:
+    """POS self-order style grey skeleton tile with a moving shimmer band."""
+    size = max(32, size)
+    corner = max(8, size // 10)
+    tile = Image.new('RGBA', (size, size), SHIMMER_BASE)
+    draw = ImageDraw.Draw(tile)
+
+    bar_h = max(4, size // 12)
+    for index, y_frac in enumerate((0.34, 0.50, 0.66)):
+        y = int(size * y_frac)
+        bar_w = int(size * (0.58 - index * 0.07))
+        x1 = (size - bar_w) // 2
+        draw.rounded_rectangle((x1, y, x1 + bar_w, y + bar_h), radius=2, fill=SHIMMER_BAR)
+
+    shimmer = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    shimmer_draw = ImageDraw.Draw(shimmer)
+    band_w = max(size // 3, 28)
+    sweep = max(0.0, min(1.0, sweep_phase))
+    x = int((size + band_w * 2) * sweep) - band_w
+    shimmer_draw.rectangle((x, 0, x + band_w, size), fill=SHIMMER_BAND)
+    tile = Image.alpha_composite(tile, shimmer)
+
+    mask = Image.new('L', (size, size), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, size, size), radius=corner, fill=255)
+    tile.putalpha(mask)
+    return tile
+
+
+def _disc_animation_state(
+    phase: float,
+) -> tuple[float, float, float, float]:
+    """
+    Map loop phase 0..1 to shimmer sweep, shimmer alpha, logo alpha, logo scale.
+
+    Mimics POS self-order product thumbnails: skeleton shimmer, then fade-in.
+    """
+    phase = max(0.0, min(1.0, phase))
+    if phase < 0.28:
+        local = phase / 0.28
+        return (local * 1.35) % 1.0, 1.0, 0.0, 0.95
+    if phase < 0.52:
+        local = (phase - 0.28) / 0.24
+        eased = _ease_out_cubic(local)
+        return 1.0, 1.0 - eased, eased, 0.95 + 0.05 * eased
+    if phase < 0.88:
+        local = (phase - 0.52) / 0.36
+        pulse = 1.0 + 0.012 * math.sin(local * math.pi * 2)
+        return 0.0, 0.0, 1.0, pulse
+    local = (phase - 0.88) / 0.12
+    eased = _ease_out_cubic(local)
+    return eased * 0.4, eased, 1.0 - eased, 1.0
+
+
+def _draw_disc_content(
+    img: Image.Image,
+    w: int,
+    h: int,
+    cover_logo: Path,
+    disc_phase: float,
+    logo_mark: Image.Image | None = None,
+) -> None:
+    """Shimmer placeholder and logo reveal inside an existing disc shell."""
+    cx, cy, _, inner = _disc_geometry(w, h)
+    tile_size = inner * 2 - 24
+
+    sweep, shimmer_alpha, logo_alpha, logo_scale = _disc_animation_state(disc_phase)
+
+    if shimmer_alpha > 0.01:
+        shimmer = _make_shimmer_tile(tile_size, sweep)
+        shimmer = _apply_alpha_rgba(shimmer, shimmer_alpha)
+        img.paste(shimmer, (cx - tile_size // 2, cy - tile_size // 2), shimmer)
+
+    if logo_alpha > 0.01:
+        mark = logo_mark
+        if mark is None:
+            mark = _load_cover_logo_left(cover_logo, int(tile_size * logo_scale))
+        if mark is not None:
+            if logo_scale != 1.0 and abs(logo_scale - 1.0) > 0.005:
+                target_w = max(1, int(mark.width * logo_scale))
+                target_h = max(1, int(mark.height * logo_scale))
+                mark = mark.resize((target_w, target_h), RESAMPLE)
+            faded = _apply_alpha_rgba(mark, logo_alpha)
+            img.paste(faded, (cx - faded.width // 2, cy - faded.height // 2), faded)
+
+
+def _draw_left_logo_disc(
+    img: Image.Image,
+    w: int,
+    h: int,
+    cover_logo: Path | None = None,
+    disc_phase: float = 1.0,
+    logo_mark: Image.Image | None = None,
+    shell_only: bool = False,
+) -> None:
+    """loempia_app_cover shadow-sm left panel with shimmer-to-logo reveal."""
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    _draw_disc_shell(img, w, h)
+    if not shell_only:
+        _draw_disc_content(img, w, h, logo_path, disc_phase, logo_mark=logo_mark)
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
@@ -334,22 +463,21 @@ def _draw_centered_title_block(
     return cy
 
 
-def draw_app_cover(
+def _draw_app_cover_layout(
     title_lines: list[str],
     subtitle: str | list[str],
     w: int = 1200,
     h: int = 600,
-    brand_logo: Path | None = None,
     cover_logo: Path | None = None,
 ) -> Image.Image:
-    """Render loempia_app_cover style banner for one module."""
+    """Cover art with disc shell only (no shimmer or logo). Used as GIF base."""
     logo_path = cover_logo or DEFAULT_COVER_LOGO
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
     img = Image.new('RGB', (w, h), PEACOCK_TEAL)
     draw = ImageDraw.Draw(img)
     _draw_cover_background(img, w, h)
     _draw_odoo_version_badge(img, w, h)
-    _draw_left_logo_disc(img, w, h, cover_logo=logo_path)
+    _draw_left_logo_disc(img, w, h, cover_logo=logo_path, shell_only=True)
 
     content_left = int(w * 0.50)
     content_right = w - 32
@@ -386,13 +514,69 @@ def draw_app_cover(
     return img
 
 
+def draw_app_cover(
+    title_lines: list[str],
+    subtitle: str | list[str],
+    w: int = 1200,
+    h: int = 600,
+    brand_logo: Path | None = None,
+    cover_logo: Path | None = None,
+    disc_phase: float = 1.0,
+    logo_mark: Image.Image | None = None,
+) -> Image.Image:
+    """Render loempia_app_cover style banner for one module."""
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    img = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, cover_logo=logo_path)
+    _draw_disc_content(img, w, h, logo_path, disc_phase, logo_mark=logo_mark)
+    return img
+
+
+def draw_app_cover_gif_frames(
+    title_lines: list[str],
+    subtitle: str | list[str],
+    w: int = 1200,
+    h: int = 600,
+    brand_logo: Path | None = None,
+    cover_logo: Path | None = None,
+    frame_count: int = COVER_GIF_FRAMES,
+) -> list[Image.Image]:
+    """Build looping cover frames with POS-style shimmer then logo reveal."""
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    _, _, _, inner = _disc_geometry(w, h)
+    logo_mark = _load_cover_logo_left(logo_path, inner * 2 - 20)
+    layout = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, cover_logo=logo_path)
+    frames: list[Image.Image] = []
+    for index in range(frame_count):
+        phase = index / max(frame_count - 1, 1)
+        frame = layout.copy()
+        _draw_disc_content(frame, w, h, logo_path, phase, logo_mark=logo_mark)
+        frames.append(frame)
+    return frames
+
+
+def save_cover_gif(frames: list[Image.Image], path: Path, duration_ms: int = COVER_GIF_FRAME_MS) -> None:
+    """Write an optimized looping GIF from RGB frames."""
+    if not frames:
+        return
+    rgb_frames = [frame.convert('RGB') for frame in frames]
+    rgb_frames[0].save(
+        path,
+        save_all=True,
+        append_images=rgb_frames[1:],
+        duration=duration_ms,
+        loop=0,
+        optimize=True,
+    )
+
+
 def save_cover_assets(
     module_dir: Path,
     title_lines: list[str],
     subtitle: str | list[str],
     cover_logo: Path | None = None,
+    animated: bool = True,
 ) -> None:
-    """Write banner.png, banner_small.png, and cover logo into module static/description."""
+    """Write banner.png, banner.gif, banner_small assets into static/description."""
     out = module_dir / 'static' / 'description'
     out.mkdir(parents=True, exist_ok=True)
     logo_src = cover_logo or DEFAULT_COVER_LOGO
@@ -403,9 +587,18 @@ def save_cover_assets(
     banner = draw_app_cover(title_lines, subtitle, cover_logo=logo_src)
     banner.save(out / 'banner.png', 'PNG', optimize=True)
     banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
+    if animated:
+        frames = draw_app_cover_gif_frames(title_lines, subtitle, cover_logo=logo_src)
+        save_cover_gif(frames, out / 'banner.gif')
+        small_frames = [frame.resize((360, 180), RESAMPLE) for frame in frames]
+        save_cover_gif(small_frames, out / 'banner_small.gif')
 
 
-def generate_covers_for_repo(repo_root: Path, cover_logo: Path | None = None) -> list[str]:
+def generate_covers_for_repo(
+    repo_root: Path,
+    cover_logo: Path | None = None,
+    animated: bool = True,
+) -> list[str]:
     """Generate covers for every Odoo module folder under repo_root."""
     generated: list[str] = []
     skip = {'tools', 'armorait2_site', '.git', '.github', '.tmp'}
@@ -416,6 +609,12 @@ def generate_covers_for_repo(repo_root: Path, cover_logo: Path | None = None) ->
         name, summary = read_manifest_fields(manifest)
         title_lines = title_lines_from_name(name)
         subtitle = subtitle_lines_from_summary(summary)
-        save_cover_assets(module_dir, title_lines, subtitle, cover_logo=cover_logo)
+        save_cover_assets(
+            module_dir,
+            title_lines,
+            subtitle,
+            cover_logo=cover_logo,
+            animated=animated,
+        )
         generated.append(module_dir.name)
     return generated

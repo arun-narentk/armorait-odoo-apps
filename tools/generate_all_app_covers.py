@@ -20,12 +20,17 @@ def main() -> None:
         'repo_root',
         nargs='?',
         default=str(Path(__file__).resolve().parents[1]),
-        help='Path to armorait-odoo-apps repo (default: sibling clone)',
+        help='Path to armorait-odoo-apps repo (default: repo root)',
     )
     parser.add_argument(
         '--cover-logo',
         default=str(DEFAULT_COVER_LOGO),
         help='Path to armorait_cover_logo.png',
+    )
+    parser.add_argument(
+        '--static-only',
+        action='store_true',
+        help='Skip banner.gif generation (PNG only)',
     )
     args = parser.parse_args()
     repo_root = Path(args.repo_root).resolve()
@@ -34,7 +39,11 @@ def main() -> None:
         raise SystemExit(f'Repo not found: {repo_root}')
     if not cover_logo.is_file():
         raise SystemExit(f'Cover logo not found: {cover_logo}')
-    modules = generate_covers_for_repo(repo_root, cover_logo=cover_logo)
+    modules = generate_covers_for_repo(
+        repo_root,
+        cover_logo=cover_logo,
+        animated=not args.static_only,
+    )
     print(f'Generated covers for {len(modules)} modules in {repo_root}')
     for name in modules:
         print(f'  {name}')
