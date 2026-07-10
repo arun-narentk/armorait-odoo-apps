@@ -18,11 +18,16 @@ WHITE = '#FFFFFF'
 BLACK_BASE = '#081120'
 NAVY_BLACK = '#0a1628'
 NAVY_DEEP = '#0f172a'
+TEAL_MAIN = '#0d9488'
+TEAL_MID = '#14b8a6'
+TEAL_LIGHT = '#2dd4bf'
+TEAL_SHADOW = '#042f2e'
+NAVY_SHADOW = '#0a1628'
 CTA_START = '#6366f1'
 CTA_MID = '#7c3aed'
 CTA_END = '#0ea5e9'
-TITLE_INDIGO = '#4f46e5'
-PANEL_GLOW = '#312e81'
+TITLE_COLOR = WHITE
+PANEL_GLOW = '#115e59'
 TEAL_CYAN = '#06b6d4'
 WEBSITE_PILL = 'www.armorait.com'
 
@@ -152,40 +157,30 @@ def read_manifest_fields(manifest_path: Path) -> tuple[str, str]:
     return name, summary
 
 
-def _build_rich_panel_gradient(w: int, h: int) -> Image.Image:
+def _build_teal_cover_background(w: int, h: int) -> Image.Image:
+    """Solid teal field with navy shadow vignette (no diagonal split)."""
     panel = Image.new('RGB', (w, h))
     px = panel.load()
-    black = _hex_to_rgb(BLACK_BASE)
-    navy = _hex_to_rgb(NAVY_BLACK)
-    deep = _hex_to_rgb(NAVY_DEEP)
+    teal = _hex_to_rgb(TEAL_MAIN)
+    teal_mid = _hex_to_rgb(TEAL_MID)
+    navy = _hex_to_rgb(NAVY_SHADOW)
+    deep = _hex_to_rgb(TEAL_SHADOW)
     for y in range(h):
         ty = y / max(h - 1, 1)
         for x in range(w):
             tx = x / max(w - 1, 1)
-            glow_t = min(1.0, tx * 0.72 + (1.0 - ty) * 0.28)
-            glow = _cta_gradient_rgb(glow_t)
-            base = _lerp_rgb(black, _lerp_rgb(navy, deep, ty * 0.55), 0.25)
-            shade = 0.56 if tx < 0.55 else 0.70
-            color = tuple(int(base[i] * shade + glow[i] * (1.0 - shade)) for i in range(3))
-            px[x, y] = color
+            base = _lerp_rgb(teal_mid, teal, 0.35 + tx * 0.25)
+            shadow = max((ty - 0.45) * 1.8, 0.0) * 0.55 + max((tx - 0.55) * 1.4, 0.0) * 0.35
+            if shadow > 0:
+                mix = _lerp_rgb(base, _lerp_rgb(navy, deep, ty * 0.6), min(1.0, shadow))
+                px[x, y] = mix
+            else:
+                px[x, y] = base
     return panel
 
 
-def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
-    draw = ImageDraw.Draw(img)
-    draw.rectangle((0, 0, w, h), fill='#F8FAFC')
-    split_top = int(w * 0.54)
-    split_bottom = int(w * 0.34)
-    panel = _build_rich_panel_gradient(w, h)
-    mask = Image.new('L', (w, h), 0)
-    mask_draw = ImageDraw.Draw(mask)
-    mask_draw.polygon([(0, 0), (split_top, 0), (split_bottom, h), (0, h)], fill=255)
-    img.paste(panel, (0, 0), mask)
-    glow = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-    glow_draw = ImageDraw.Draw(glow)
-    glow_draw.polygon([(0, 0), (split_top, 0), (split_bottom, h), (0, h)], fill=(99, 102, 241, 32))
-    img.paste(glow, (0, 0), glow)
-    return (split_top + split_bottom) // 2
+def _draw_cover_background(img: Image.Image, w: int, h: int) -> None:
+    img.paste(_build_teal_cover_background(w, h), (0, 0))
 
 
 DEFAULT_BRAND_STRIP = DEFAULT_BRAND_LOGO
@@ -205,47 +200,59 @@ def _load_cover_logo_mark(cover_logo: Path, target_h: int) -> Image.Image | None
 
 
 def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
-    """Top-left Odoo 19 version tag on the gradient panel."""
+    """Top-right Odoo 19 version tag (Serpent-style ribbon)."""
     draw = ImageDraw.Draw(img)
-    label_font = _font(max(15, int(h * 0.034)), True)
-    hint_font = _font(max(9, int(h * 0.018)), True)
+    label_font = _font(max(16, int(h * 0.036)), True)
     lw, lh = _text_size(draw, ODOO_VERSION_LABEL, label_font)
-    hw, hh = _text_size(draw, 'Odoo 19', hint_font)
-    inner_w = max(lw, hw)
-    pad_x, pad_y = 14, 10
-    box_w = inner_w + pad_x * 2
-    box_h = lh + hh + pad_y * 2 + 4
-    x1, y1 = 18, 16
-    x2, y2 = x1 + box_w, y1 + box_h
-    _rounded_rect(draw, (x1, y1, x2, y2), 10, '#0a1628', outline='#C7D2FE', width=2)
-    draw.text((x1 + (box_w - lw) // 2, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill=WHITE)
-    draw.text((x1 + (box_w - hw) // 2, y1 + pad_y + lh + 2), 'Odoo 19', font=hint_font, fill='#CBD5E1')
+    pad_x, pad_y = 16, 8
+    box_w = lw + pad_x * 2
+    box_h = lh + pad_y * 2
+    x2 = w - 18
+    x1 = x2 - box_w
+    y1 = 16
+    y2 = y1 + box_h
+    _rounded_rect(draw, (x1, y1, x2, y2), 6, WHITE)
+    draw.text((x1 + pad_x, y1 + pad_y - 1), ODOO_VERSION_LABEL, font=label_font, fill='#1d4ed8')
 
 
-def _draw_website_pill(img: Image.Image, w: int, h: int, panel_left: int) -> None:
-    """Clean website label aligned to the white content column."""
+def _draw_top_brand_mark(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
+    """Compact ARMORA mark at top-left like Serpent logo placement."""
+    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    mark_h = max(46, int(h * 0.085))
+    mark = _load_cover_logo_mark(logo_path, mark_h)
+    if mark is None:
+        return
+    pad_x, pad_y = 18, 14
+    badge_w = mark.width + 16
+    badge_h = mark.height + 10
     draw = ImageDraw.Draw(img)
-    pill_font = _font(max(15, int(h * 0.026)), True)
+    _rounded_rect(draw, (pad_x, pad_y, pad_x + badge_w, pad_y + badge_h), 8, NAVY_SHADOW)
+    img.paste(mark, (pad_x + 8, pad_y + 5), mark)
+
+
+def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
+    """Website label for teal background."""
+    draw = ImageDraw.Draw(img)
+    pill_font = _font(max(14, int(h * 0.024)), True)
     tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
-    pad_x, pad_y = 18, 9
+    pad_x, pad_y = 16, 8
     pill_w = tw + pad_x * 2
     pill_h = th + pad_y * 2
-    content_right = w - 28
-    pill_x = content_right - pill_w
-    pill_y = 22
+    pill_x = w - pill_w - 22
+    pill_y = 62
     _rounded_rect(
         draw,
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
         max(8, pill_h // 2),
-        '#EEF2FF',
-        outline=CTA_START,
+        NAVY_SHADOW,
+        outline=TEAL_LIGHT,
         width=2,
     )
     draw.text(
         (pill_x + pad_x, pill_y + (pill_h - th) // 2 - 1),
         WEBSITE_PILL,
         font=pill_font,
-        fill=CTA_MID,
+        fill=WHITE,
     )
 
 
@@ -294,7 +301,7 @@ def _draw_centered_title_block(
             font = _font(size, True)
             tw, th = _text_size(draw, line, font)
         x = left + (right - left - tw) // 2
-        draw.text((x, cy), line, font=font, fill=TITLE_INDIGO)
+        draw.text((x, cy), line, font=font, fill=TITLE_COLOR)
         cy += th + 6
     return cy
 
@@ -302,41 +309,33 @@ def _draw_centered_title_block(
 def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int) -> None:
     glow_r = radius + 10
     draw.ellipse((cx - glow_r, cy - glow_r, cx + glow_r, cy + glow_r), fill=PANEL_GLOW)
-    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#C7D2FE', width=4)
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=WHITE, outline=TEAL_LIGHT, width=4)
     inner = radius - 18
-    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#EEF2FF')
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#ecfeff')
     bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
     bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
     bx2, by2 = bx1 + bubble_w, by1 + bubble_h
-    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=CTA_START, width=3)
+    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=TEAL_MAIN, width=3)
     for dot_x in (cx - 22, cx, cx + 22):
-        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=CTA_MID)
+        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=TEAL_MAIN)
     for sx, sy, color in (
-        (cx - 58, cy - 48, CTA_END),
+        (cx - 58, cy - 48, TEAL_LIGHT),
         (cx + 62, cy - 36, TEAL_CYAN),
-        (cx + 54, cy + 42, CTA_MID),
+        (cx + 54, cy + 42, TEAL_MID),
     ):
         draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
         draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
         draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
     bar_y = cy + bubble_h // 2 + 8
-    for i, color in enumerate((CTA_START, CTA_MID, CTA_END)):
+    for i, color in enumerate((TEAL_MAIN, TEAL_MID, TEAL_LIGHT)):
         draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
 
 
-def _diagonal_split_x(w: int, h: int, y: int) -> int:
-    split_top = int(w * 0.54)
-    split_bottom = int(w * 0.34)
-    if h <= 0:
-        return split_bottom
-    return split_top + int((split_bottom - split_top) * (y / h))
-
-
 def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, cover_logo: Path | None = None) -> None:
-    """ARMORA badge using the 3D cover logo mark."""
+    """Bottom-center ARMORA mark on unified teal background."""
     logo_path = cover_logo or DEFAULT_COVER_LOGO
-    pad_bottom = 16
-    inner_h = max(94, int(h * 0.162))
+    pad_bottom = 14
+    inner_h = max(82, int(h * 0.14))
     mark = _load_cover_logo_mark(logo_path, inner_h)
     if mark is None:
         return
@@ -345,12 +344,10 @@ def _draw_armorait_logo_badge(img: Image.Image, w: int, h: int, cover_logo: Path
     badge_w = mark.width + pad_x * 2
     badge_h = mark.height + 10
     y = h - badge_h - pad_bottom
-    split_x = _diagonal_split_x(w, h, y + badge_h // 2)
-    x = split_x + max(14, (w - split_x - badge_w) // 2)
-    x = min(x, w - badge_w - 14)
+    x = max(14, (w - badge_w) // 2)
 
     draw = ImageDraw.Draw(img)
-    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 8), '#0a1628')
+    _rounded_rect(draw, (x, y, x + badge_w, y + badge_h), max(8, badge_h // 8), NAVY_SHADOW)
     img.paste(mark, (x + pad_x, y + 5), mark)
 
 
@@ -369,16 +366,16 @@ def draw_app_cover(
     """Render loempia_app_cover style banner for one module."""
     logo_path = cover_logo or DEFAULT_COVER_LOGO
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
-    img = Image.new('RGB', (w, h), '#F8FAFC')
+    img = Image.new('RGB', (w, h), TEAL_MAIN)
     draw = ImageDraw.Draw(img)
-    split_mid = _draw_diagonal_cover_background(img, w, h)
+    _draw_cover_background(img, w, h)
+    _draw_top_brand_mark(img, w, h, cover_logo=logo_path)
     _draw_odoo_version_badge(img, w, h)
-    radius = int(min(w, h) * 0.24)
-    _draw_cover_illustration(draw, int(w * 0.27), h // 2, radius)
-    _paste_armorait_logo(img, w, h, cover_logo=logo_path)
+    radius = int(min(w, h) * 0.22)
+    _draw_cover_illustration(draw, int(w * 0.28), int(h * 0.46), radius)
 
-    content_left = split_mid + 8
-    content_right = w - 28
+    content_left = int(w * 0.50)
+    content_right = w - 32
     content_w = content_right - content_left
 
     sub_font = _font(16)
@@ -394,7 +391,7 @@ def draw_app_cover(
         title_block_h += th + 6
     subtitle_block_h = len(subtitle_lines) * sub_line_h
     block_h = title_block_h + 12 + subtitle_block_h
-    title_y = max(72, int((h - block_h) * 0.42))
+    title_y = max(96, int((h - block_h) * 0.40))
     title_end_y = _draw_centered_title_block(draw, content_left, content_right, title_y, title_lines)
 
     sub_y = title_end_y + 10
@@ -404,11 +401,11 @@ def draw_app_cover(
             (content_left + (content_w - stw) // 2, sub_y),
             line,
             font=sub_font,
-            fill='#475569',
+            fill='#ccfbf1',
         )
         sub_y += sub_line_h
 
-    _draw_website_pill(img, w, h, content_left)
+    _draw_website_pill(img, w, h)
     return img
 
 
