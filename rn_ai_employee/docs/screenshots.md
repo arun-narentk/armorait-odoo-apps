@@ -14,7 +14,7 @@ This builds Odoo-style screenshots and workflow GIFs for the Apps Store page.
 
 | File | Purpose |
 |------|---------|
-| `banner.png` | Apps Store cover card (1200x600, Serpent-style diagonal layout) |
+| `banner.png` | Apps Store cover card (1200x600, navy gradient + indigo/cyan palette) |
 | `banner_small.png` | Listing thumbnail (360x180) |
 | `icon.png` | Module icon |
 | `overview.png` | Systray copilot conversation |
