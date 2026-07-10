@@ -332,16 +332,18 @@ def draw_briefing_scene() -> Image.Image:
     return img
 
 
-# Apps Store listing cover (Serpent layout + teal/black Armorait palette)
-BLACK_TEAL = '#041015'
+# Apps Store listing cover (Serpent layout + Armorait CTA gradient on black)
+BLACK_BASE = '#081120'
 NAVY_BLACK = '#0a1628'
 NAVY_DEEP = '#0f172a'
-TEAL_DEEP = '#0f766e'
-TEAL_MAIN = '#017E84'
-TEAL_BRIGHT = '#14b8a6'
-TEAL_CYAN = '#06b6d4'
+CTA_START = '#6366f1'
+CTA_MID = '#7c3aed'
+CTA_END = '#0ea5e9'
 TITLE_TEAL = '#017E84'
-PANEL_GLOW = '#134e4a'
+TITLE_INDIGO = '#4f46e5'
+PANEL_GLOW = '#312e81'
+TEAL_MAIN = '#017E84'
+TEAL_CYAN = '#06b6d4'
 
 
 def _hex_to_rgb(value: str) -> tuple[int, int, int]:
@@ -353,30 +355,34 @@ def _lerp_rgb(a: tuple[int, int, int], b: tuple[int, int, int], t: float) -> tup
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
-def _gradient_rgb(t: float) -> tuple[int, int, int]:
-    """Teal gradient wash: deep teal -> brand teal -> bright cyan."""
+def _cta_gradient_rgb(t: float) -> tuple[int, int, int]:
+    """Screen 1 CTA pill: indigo -> violet -> cyan."""
     t = max(0.0, min(1.0, t))
-    start, mid, end = _hex_to_rgb(TEAL_DEEP), _hex_to_rgb(TEAL_MAIN), _hex_to_rgb(TEAL_BRIGHT)
-    if t <= 0.45:
-        return _lerp_rgb(start, mid, t / 0.45)
-    return _lerp_rgb(mid, end, (t - 0.45) / 0.55)
+    start, mid, end = _hex_to_rgb(CTA_START), _hex_to_rgb(CTA_MID), _hex_to_rgb(CTA_END)
+    if t <= 0.42:
+        return _lerp_rgb(start, mid, t / 0.42)
+    return _lerp_rgb(mid, end, (t - 0.42) / 0.58)
+
+
+def _gradient_rgb(t: float) -> tuple[int, int, int]:
+    return _cta_gradient_rgb(t)
 
 
 def _build_rich_panel_gradient(w: int, h: int) -> Image.Image:
-    """Black-teal base with cyan/teal wash for a premium left panel."""
+    """Black-navy base with screen 1 purple-blue CTA wash on the left panel."""
     panel = Image.new('RGB', (w, h))
     px = panel.load()
-    black = _hex_to_rgb(BLACK_TEAL)
+    black = _hex_to_rgb(BLACK_BASE)
     navy = _hex_to_rgb(NAVY_BLACK)
     deep = _hex_to_rgb(NAVY_DEEP)
     for y in range(h):
         ty = y / max(h - 1, 1)
         for x in range(w):
             tx = x / max(w - 1, 1)
-            glow_t = min(1.0, tx * 0.68 + (1.0 - ty) * 0.32)
-            glow = _gradient_rgb(glow_t)
-            base = _lerp_rgb(black, _lerp_rgb(navy, deep, ty * 0.5), tx * 0.35)
-            shade = 0.64 if tx < 0.55 else 0.78
+            glow_t = min(1.0, tx * 0.72 + (1.0 - ty) * 0.28)
+            glow = _cta_gradient_rgb(glow_t)
+            base = _lerp_rgb(black, _lerp_rgb(navy, deep, ty * 0.55), 0.25)
+            shade = 0.56 if tx < 0.55 else 0.70
             color = tuple(int(base[i] * shade + glow[i] * (1.0 - shade)) for i in range(3))
             px[x, y] = color
     return panel
@@ -405,7 +411,7 @@ def _draw_diagonal_cover_background(img: Image.Image, w: int, h: int) -> int:
         (split_top, 0),
         (split_bottom, h),
         (0, h),
-    ], fill=(1, 126, 132, 30))
+    ], fill=(99, 102, 241, 32))
     img.paste(glow, (0, 0), glow)
     return (split_top + split_bottom) // 2
 
@@ -454,7 +460,7 @@ def _draw_centered_title_block(
             font = _font(size, True)
             tw, th = _text_size(draw, line, font)
         x = left + (right - left - tw) // 2
-        draw.text((x, cy), line, font=font, fill=TITLE_TEAL)
+        draw.text((x, cy), line, font=font, fill=TITLE_INDIGO)
         cy += th + 6
     return cy
 
@@ -463,24 +469,24 @@ def _draw_cover_illustration(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius
     """Circular AI copilot illustration on the rich navy panel."""
     glow_r = radius + 10
     draw.ellipse((cx - glow_r, cy - glow_r, cx + glow_r, cy + glow_r), fill=PANEL_GLOW)
-    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#99F6E4', width=4)
+    draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill='#F8FAFC', outline='#C7D2FE', width=4)
     inner = radius - 18
-    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#ECFEFF')
+    draw.ellipse((cx - inner, cy - inner, cx + inner, cy + inner), fill='#EEF2FF')
 
     bubble_w, bubble_h = int(radius * 1.05), int(radius * 0.72)
     bx1, by1 = cx - bubble_w // 2, cy - bubble_h // 2 - 8
     bx2, by2 = bx1 + bubble_w, by1 + bubble_h
-    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=TEAL_MAIN, width=3)
+    _rounded_rect(draw, (bx1, by1, bx2, by2), 18, WHITE, outline=CTA_START, width=3)
     for dot_x in (cx - 22, cx, cx + 22):
-        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=TEAL_DEEP)
+        draw.ellipse((dot_x - 7, cy - 10, dot_x + 7, cy + 4), fill=CTA_MID)
 
-    for sx, sy, color in ((cx - 58, cy - 48, TEAL_CYAN), (cx + 62, cy - 36, TEAL_BRIGHT), (cx + 54, cy + 42, TEAL_MAIN)):
+    for sx, sy, color in ((cx - 58, cy - 48, CTA_END), (cx + 62, cy - 36, TEAL_CYAN), (cx + 54, cy + 42, CTA_MID)):
         draw.ellipse((sx - 10, sy - 10, sx + 10, sy + 10), fill=color)
         draw.line((sx - 14, sy, sx + 14, sy), fill=WHITE, width=2)
         draw.line((sx, sy - 14, sx, sy + 14), fill=WHITE, width=2)
 
     bar_y = cy + bubble_h // 2 + 8
-    for i, color in enumerate((TEAL_DEEP, TEAL_MAIN, TEAL_BRIGHT)):
+    for i, color in enumerate((CTA_START, CTA_MID, CTA_END)):
         draw.rounded_rectangle((cx - 36 + i * 26, bar_y, cx - 18 + i * 26, bar_y + 18), radius=4, fill=color)
 
 
