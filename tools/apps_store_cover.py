@@ -6,9 +6,16 @@ from __future__ import annotations
 import math
 import re
 import shutil
+import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
+
+TOOLS_DIR = Path(__file__).resolve().parent
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
+
+from module_app_icon import draw_module_icon, module_icon_for_disc, ImageFont
 
 try:
     RESAMPLE = Image.Resampling.LANCZOS  # type: ignore[attr-defined]
@@ -41,6 +48,7 @@ LOGO_MARK_CROP = (0.16, 0.02, 0.84, 0.78)
 LOGO_LEFT_CROP = (0.18, 0.02, 0.82, 0.56)
 COVER_GIF_FRAMES = 18
 COVER_GIF_FRAME_MS = 90
+COVER_STATIC_DISC_PHASE = 0.70
 SHIMMER_BASE = (229, 231, 235, 255)
 SHIMMER_BAR = (209, 213, 219, 210)
 SHIMMER_BAND = (255, 255, 255, 165)
@@ -343,11 +351,10 @@ def _draw_disc_content(
     img: Image.Image,
     w: int,
     h: int,
-    cover_logo: Path,
     disc_phase: float,
-    logo_mark: Image.Image | None = None,
+    module_mark: Image.Image | None = None,
 ) -> None:
-    """Shimmer placeholder and logo reveal inside an existing disc shell."""
+    """Shimmer placeholder and module icon reveal inside an existing disc shell."""
     cx, cy, _, inner = _disc_geometry(w, h)
     tile_size = inner * 2 - 24
 
@@ -358,33 +365,28 @@ def _draw_disc_content(
         shimmer = _apply_alpha_rgba(shimmer, shimmer_alpha)
         img.paste(shimmer, (cx - tile_size // 2, cy - tile_size // 2), shimmer)
 
-    if logo_alpha > 0.01:
-        mark = logo_mark
-        if mark is None:
-            mark = _load_cover_logo_left(cover_logo, int(tile_size * logo_scale))
-        if mark is not None:
-            if logo_scale != 1.0 and abs(logo_scale - 1.0) > 0.005:
-                target_w = max(1, int(mark.width * logo_scale))
-                target_h = max(1, int(mark.height * logo_scale))
-                mark = mark.resize((target_w, target_h), RESAMPLE)
-            faded = _apply_alpha_rgba(mark, logo_alpha)
-            img.paste(faded, (cx - faded.width // 2, cy - faded.height // 2), faded)
+    if logo_alpha > 0.01 and module_mark is not None:
+        mark = module_mark
+        if logo_scale != 1.0 and abs(logo_scale - 1.0) > 0.005:
+            target_w = max(1, int(mark.width * logo_scale))
+            target_h = max(1, int(mark.height * logo_scale))
+            mark = mark.resize((target_w, target_h), RESAMPLE)
+        faded = _apply_alpha_rgba(mark, logo_alpha)
+        img.paste(faded, (cx - faded.width // 2, cy - faded.height // 2), faded)
 
 
 def _draw_left_logo_disc(
     img: Image.Image,
     w: int,
     h: int,
-    cover_logo: Path | None = None,
-    disc_phase: float = 1.0,
-    logo_mark: Image.Image | None = None,
+    disc_phase: float = COVER_STATIC_DISC_PHASE,
+    module_mark: Image.Image | None = None,
     shell_only: bool = False,
 ) -> None:
-    """loempia_app_cover shadow-sm left panel with shimmer-to-logo reveal."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    """loempia_app_cover shadow-sm left panel with shimmer-to-module-icon reveal."""
     _draw_disc_shell(img, w, h)
     if not shell_only:
-        _draw_disc_content(img, w, h, logo_path, disc_phase, logo_mark=logo_mark)
+        _draw_disc_content(img, w, h, disc_phase, module_mark=module_mark)
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
@@ -468,16 +470,14 @@ def _draw_app_cover_layout(
     subtitle: str | list[str],
     w: int = 1200,
     h: int = 600,
-    cover_logo: Path | None = None,
 ) -> Image.Image:
-    """Cover art with disc shell only (no shimmer or logo). Used as GIF base."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    """Cover art with disc shell only (no shimmer or module icon). Used as GIF base."""
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
     img = Image.new('RGB', (w, h), PEACOCK_TEAL)
     draw = ImageDraw.Draw(img)
     _draw_cover_background(img, w, h)
     _draw_odoo_version_badge(img, w, h)
-    _draw_left_logo_disc(img, w, h, cover_logo=logo_path, shell_only=True)
+    _draw_left_logo_disc(img, w, h, shell_only=True)
 
     content_left = int(w * 0.50)
     content_right = w - 32
@@ -521,13 +521,12 @@ def draw_app_cover(
     h: int = 600,
     brand_logo: Path | None = None,
     cover_logo: Path | None = None,
-    disc_phase: float = 1.0,
-    logo_mark: Image.Image | None = None,
+    disc_phase: float = COVER_STATIC_DISC_PHASE,
+    module_mark: Image.Image | None = None,
 ) -> Image.Image:
     """Render loempia_app_cover style banner for one module."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
-    img = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, cover_logo=logo_path)
-    _draw_disc_content(img, w, h, logo_path, disc_phase, logo_mark=logo_mark)
+    img = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h)
+    _draw_disc_content(img, w, h, disc_phase, module_mark=module_mark)
     return img
 
 
@@ -539,17 +538,18 @@ def draw_app_cover_gif_frames(
     brand_logo: Path | None = None,
     cover_logo: Path | None = None,
     frame_count: int = COVER_GIF_FRAMES,
+    module_mark: Image.Image | None = None,
 ) -> list[Image.Image]:
-    """Build looping cover frames with POS-style shimmer then logo reveal."""
-    logo_path = cover_logo or DEFAULT_COVER_LOGO
+    """Build looping cover frames with POS-style shimmer then module icon reveal."""
     _, _, _, inner = _disc_geometry(w, h)
-    logo_mark = _load_cover_logo_left(logo_path, inner * 2 - 20)
-    layout = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, cover_logo=logo_path)
+    if module_mark is None:
+        module_mark = Image.new('RGBA', (inner * 2, inner * 2), (0, 0, 0, 0))
+    layout = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h)
     frames: list[Image.Image] = []
     for index in range(frame_count):
         phase = index / max(frame_count - 1, 1)
         frame = layout.copy()
-        _draw_disc_content(frame, w, h, logo_path, phase, logo_mark=logo_mark)
+        _draw_disc_content(frame, w, h, phase, module_mark=module_mark)
         frames.append(frame)
     return frames
 
@@ -573,22 +573,32 @@ def save_cover_assets(
     module_dir: Path,
     title_lines: list[str],
     subtitle: str | list[str],
+    module_name: str,
+    module_summary: str,
     cover_logo: Path | None = None,
     animated: bool = True,
 ) -> None:
-    """Write banner.png, banner.gif, banner_small assets into static/description."""
+    """Write icon.png, banner assets, and cover logo into static/description."""
     out = module_dir / 'static' / 'description'
     out.mkdir(parents=True, exist_ok=True)
+    module_slug = module_dir.name
     logo_src = cover_logo or DEFAULT_COVER_LOGO
     if logo_src.is_file():
         dest = out / 'armorait_cover_logo.png'
         if logo_src.resolve() != dest.resolve():
             shutil.copy2(logo_src, dest)
-    banner = draw_app_cover(title_lines, subtitle, cover_logo=logo_src)
+
+    icon = draw_module_icon(module_slug, module_name, module_summary)
+    icon.save(out / 'icon.png', 'PNG', optimize=True)
+
+    _, _, _, inner = _disc_geometry(1200, 600)
+    module_mark = module_icon_for_disc(module_slug, module_name, module_summary, inner * 2 - 28)
+
+    banner = draw_app_cover(title_lines, subtitle, module_mark=module_mark)
     banner.save(out / 'banner.png', 'PNG', optimize=True)
     banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
     if animated:
-        frames = draw_app_cover_gif_frames(title_lines, subtitle, cover_logo=logo_src)
+        frames = draw_app_cover_gif_frames(title_lines, subtitle, module_mark=module_mark)
         save_cover_gif(frames, out / 'banner.gif')
         small_frames = [frame.resize((360, 180), RESAMPLE) for frame in frames]
         save_cover_gif(small_frames, out / 'banner_small.gif')
@@ -613,6 +623,8 @@ def generate_covers_for_repo(
             module_dir,
             title_lines,
             subtitle,
+            module_name=name,
+            module_summary=summary,
             cover_logo=cover_logo,
             animated=animated,
         )
