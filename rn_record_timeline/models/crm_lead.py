@@ -7,7 +7,7 @@ class CrmLead(models.Model):
     _inherit = ['crm.lead', 'rn.timeline.mixin']
 
     def _timeline_state_field(self):
-        return 'stage_id'
+        return ''
 
     def write(self, vals):
         old_stages = {}

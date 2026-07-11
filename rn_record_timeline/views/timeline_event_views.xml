@@ -59,19 +59,13 @@
         <field name="name">rn.timeline.event.search</field>
         <field name="model">rn.timeline.event</field>
         <field name="arch" type="xml">
-            <search string="Timeline Events">
+            <search>
                 <field name="name"/>
                 <field name="model"/>
                 <field name="user_id"/>
                 <filter string="Financial" name="filter_financial" domain="[('filter_category', '=', 'financial')]"/>
                 <filter string="Logistics" name="filter_logistics" domain="[('filter_category', '=', 'logistics')]"/>
                 <filter string="Approval" name="filter_approval" domain="[('filter_category', '=', 'approval')]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Model" name="group_model" context="{'group_by': 'model'}"/>
-                    <filter string="Category" name="group_filter_category" context="{'group_by': 'filter_category'}"/>
-                    <filter string="Event Type" name="group_event_type" context="{'group_by': 'event_type'}"/>
-                    <filter string="User" name="group_user" context="{'group_by': 'user_id'}"/>
-                </group>
             </search>
         </field>
     </record>
