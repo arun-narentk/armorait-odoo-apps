@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_dup_rule_user,rn.dup.rule user,model_rn_dup_rule,group_rn_dup_finder_user,1,0,0,0
+access_rn_dup_rule_field_user,rn.dup.rule.field user,model_rn_dup_rule_field,group_rn_dup_finder_user,1,0,0,0
+access_rn_dup_scan_user,rn.dup.scan user,model_rn_dup_scan,group_rn_dup_finder_user,1,0,0,0
+access_rn_dup_result_user,rn.dup.result user,model_rn_dup_result,group_rn_dup_finder_user,1,0,0,0
+access_rn_dup_ignore_user,rn.dup.ignore user,model_rn_dup_ignore,group_rn_dup_finder_user,1,0,0,0
+access_rn_dup_merge_wizard_user,rn.dup.merge.wizard user,model_rn_dup_merge_wizard,group_rn_dup_finder_user,1,1,1,1
+access_rn_dup_rule_manager,rn.dup.rule manager,model_rn_dup_rule,group_rn_dup_finder_manager,1,1,1,1
+access_rn_dup_rule_field_manager,rn.dup.rule.field manager,model_rn_dup_rule_field,group_rn_dup_finder_manager,1,1,1,1
+access_rn_dup_scan_manager,rn.dup.scan manager,model_rn_dup_scan,group_rn_dup_finder_manager,1,1,1,1
+access_rn_dup_result_manager,rn.dup.result manager,model_rn_dup_result,group_rn_dup_finder_manager,1,1,1,1
+access_rn_dup_ignore_manager,rn.dup.ignore manager,model_rn_dup_ignore,group_rn_dup_finder_manager,1,1,1,1

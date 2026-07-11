@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dup_merge_wizard_form" model="ir.ui.view">
+        <field name="name">rn.dup.merge.wizard.form</field>
+        <field name="model">rn.dup.merge.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Merge Duplicates">
+                <group>
+                    <field name="result_id" invisible="1"/>
+                    <field name="model_name" readonly="1"/>
+                    <field name="master_ref" readonly="1"/>
+                    <field name="duplicate_ref" readonly="1"/>
+                    <field name="master_res_id" invisible="1"/>
+                    <field name="duplicate_res_id" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_merge" type="object" string="Merge" class="btn-primary"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

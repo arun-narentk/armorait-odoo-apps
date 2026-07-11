@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dup_scan_list" model="ir.ui.view">
+        <field name="name">rn.dup.scan.list</field>
+        <field name="model">rn.dup.scan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="rule_id"/>
+                <field name="model_name"/>
+                <field name="scan_date"/>
+                <field name="state"/>
+                <field name="record_count"/>
+                <field name="match_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_dup_scan_form" model="ir.ui.view">
+        <field name="name">rn.dup.scan.form</field>
+        <field name="model">rn.dup.scan</field>
+        <field name="arch" type="xml">
+            <form string="Duplicate Scan">
+                <header>
+                    <button name="action_open_results" type="object" string="Open Matches" class="btn-primary"
+                        invisible="match_count == 0"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="rule_id" readonly="1"/>
+                            <field name="model_name" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="scan_date" readonly="1"/>
+                            <field name="record_count" readonly="1"/>
+                            <field name="match_count" readonly="1"/>
+                            <field name="error_message" readonly="1" invisible="not error_message"/>
+                        </group>
+                    </group>
+                    <field name="result_ids">
+                        <list>
+                            <field name="record_ref"/>
+                            <field name="duplicate_ref"/>
+                            <field name="score"/>
+                            <field name="match_summary"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_dup_scan" model="ir.actions.act_window">
+        <field name="name">Duplicate Scans</field>
+        <field name="res_model">rn.dup.scan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

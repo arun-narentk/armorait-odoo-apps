@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_dup_finder_root"
+        name="Duplicate Finder"
+        web_icon="rn_duplicate_finder,static/description/icon.png"
+        groups="rn_duplicate_finder.group_rn_dup_finder_user"
+        sequence="46"/>
+
+    <menuitem id="menu_rn_dup_result"
+        name="Matches"
+        parent="menu_rn_dup_finder_root"
+        action="action_rn_dup_result"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_dup_scan"
+        name="Scans"
+        parent="menu_rn_dup_finder_root"
+        action="action_rn_dup_scan"
+        sequence="20"/>
+
+    <menuitem id="menu_rn_dup_config"
+        name="Configuration"
+        parent="menu_rn_dup_finder_root"
+        groups="rn_duplicate_finder.group_rn_dup_finder_manager"
+        sequence="90"/>
+
+    <menuitem id="menu_rn_dup_rule"
+        name="Rules"
+        parent="menu_rn_dup_config"
+        action="action_rn_dup_rule"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_dup_ignore"
+        name="Ignored Pairs"
+        parent="menu_rn_dup_config"
+        action="action_rn_dup_ignore"
+        sequence="20"/>
+</odoo>

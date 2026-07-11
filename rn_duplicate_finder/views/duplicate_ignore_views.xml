@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dup_ignore_list" model="ir.ui.view">
+        <field name="name">rn.dup.ignore.list</field>
+        <field name="model">rn.dup.ignore</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="rule_id"/>
+                <field name="model_name"/>
+                <field name="res_id"/>
+                <field name="duplicate_res_id"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_rn_dup_ignore" model="ir.actions.act_window">
+        <field name="name">Ignored Pairs</field>
+        <field name="res_model">rn.dup.ignore</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

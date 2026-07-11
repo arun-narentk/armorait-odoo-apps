@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_rn_dup_scan" model="ir.sequence">
+        <field name="name">Duplicate Scan</field>
+        <field name="code">rn.dup.scan</field>
+        <field name="prefix">DUP/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_dup_result_list" model="ir.ui.view">
+        <field name="name">rn.dup.result.list</field>
+        <field name="model">rn.dup.result</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="scan_id"/>
+                <field name="model_name"/>
+                <field name="record_ref"/>
+                <field name="duplicate_ref"/>
+                <field name="score"/>
+                <field name="match_summary"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_dup_result_form" model="ir.ui.view">
+        <field name="name">rn.dup.result.form</field>
+        <field name="model">rn.dup.result</field>
+        <field name="arch" type="xml">
+            <form string="Duplicate Match">
+                <header>
+                    <button name="action_open_merge_wizard" type="object" string="Merge" class="btn-primary"
+                        invisible="state != 'new'"/>
+                    <button name="action_ignore_pair" type="object" string="Ignore Pair"
+                        invisible="state != 'new'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="scan_id" readonly="1"/>
+                            <field name="rule_id" readonly="1"/>
+                            <field name="model_name" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="record_ref" readonly="1"/>
+                            <field name="duplicate_ref" readonly="1"/>
+                            <field name="score" readonly="1"/>
+                            <field name="match_summary" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_dup_result" model="ir.actions.act_window">
+        <field name="name">Duplicate Matches</field>
+        <field name="res_model">rn.dup.result</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_new': 1}</field>
+    </record>
+</odoo>
