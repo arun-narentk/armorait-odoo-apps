@@ -45,5 +45,6 @@
   "has_mobile": true,
   "live_test_url": "https://www.armorait.com",
   "version": "19.0.1.0.0",
-  "branch": "feature/rn-universal-qr"
+  "branch": "19.0",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0"
 }
