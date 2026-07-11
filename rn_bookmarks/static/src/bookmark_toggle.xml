@@ -3,10 +3,10 @@
     <t t-name="rn_bookmarks.BookmarkToggle">
         <button type="button"
                 class="btn btn-link o_rn_bookmark_toggle"
-                t-att-class="{'text-warning': state.bookmarked}"
+                t-att-class="{'text-warning': state.bookmarked, 'is-loading': state.loading, 'o_rn_bookmark_star_pop': state.bookmarked and !state.loading}"
                 t-att-title="state.bookmarked ? 'Remove bookmark' : 'Bookmark (Ctrl+B)'"
                 t-on-click="onToggle">
-            <i t-att-class="state.bookmarked ? 'fa fa-star' : 'fa fa-star-o'"/>
+            <i t-att-class="(state.bookmarked ? 'fa fa-star' : 'fa fa-star-o') + ' o_rn_bookmark_star_icon'"/>
             <span class="ms-1">Bookmark</span>
         </button>
     </t>

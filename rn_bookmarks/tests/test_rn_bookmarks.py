@@ -105,7 +105,7 @@ class TestRnBookmarks(TransactionCase):
             'bookmark_type': 'list',
             'name': 'BMTEST Wizard List',
             'res_model': 'sale.order',
-            'domain': "[('state', '=', 'draft')]",
+            'domain': '[["state", "=", "draft"]]',
             'context_data': '{}',
             'folder_id': self.folder_sales.id,
             'is_pinned': True,
@@ -142,6 +142,21 @@ class TestRnBookmarks(TransactionCase):
         bookmark = self.env['rn.bookmark'].browse(action['res_id'])
         self.assertEqual(bookmark.bookmark_type, 'report')
         self.assertEqual(bookmark.report_action_id, report)
+
+    def test_bookmark_states_batch(self):
+        self.service.toggle_record_bookmark(self.partner)
+        states = self.service.get_bookmark_states_batch('res.partner', [self.partner.id, self.sale_order.id])
+        self.assertTrue(states[str(self.partner.id)])
+        self.assertFalse(states[str(self.sale_order.id)])
+
+    def test_reorder_bookmarks(self):
+        first = self.service.toggle_record_bookmark(self.partner)
+        second = self.service.toggle_record_bookmark(self.sale_order)
+        bookmark_ids = [first['bookmark_id'], second['bookmark_id']]
+        self.service.reorder_bookmarks(list(reversed(bookmark_ids)))
+        bookmarks = self.env['rn.bookmark'].browse(bookmark_ids).sorted('sequence')
+        self.assertEqual(bookmarks[0].id, second['bookmark_id'])
+        self.assertEqual(bookmarks[1].id, first['bookmark_id'])
 
 
 @tagged('post_install', '-at_install', 'rn_bookmarks')

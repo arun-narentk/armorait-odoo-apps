@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
     <t t-name="rn_bookmarks.Sidebar">
         <Dropdown>
-            <button class="o_rn_bookmarks_systray btn btn-link" title="Bookmarks">
+            <button class="o_rn_bookmarks_systray btn btn-link" title="Universal Bookmark">
                 <i class="fa fa-star"/>
             </button>
             <t t-set-slot="content">
@@ -18,39 +18,84 @@
                     <div class="small text-muted mb-2" t-if="!state.loading">
                         <span t-esc="state.stats.total"/> bookmarks |
                         <span t-esc="state.stats.pinned"/> pinned |
-                        <span t-esc="state.stats.folders"/> folders
+                        <span t-esc="state.stats.favorites"/> favorites
                     </div>
                     <div t-if="state.loading" class="text-muted small">Loading...</div>
+
                     <section t-if="state.pinned.length" class="mb-2">
                         <div class="fw-bold small text-uppercase">Pinned</div>
                         <t t-foreach="state.pinned" t-as="item" t-key="item.id">
-                            <div class="o_rn_bookmark_item d-flex align-items-center gap-2 py-1"
+                            <div t-att-class="bookmarkItemClass(item)"
+                                 draggable="true"
+                                 t-on-dragstart="(ev) => this.onDragStart(item, ev)"
+                                 t-on-dragover="(ev) => this.onDragOver(item, ev)"
+                                 t-on-dragleave="onDragLeave"
+                                 t-on-drop="(ev) => this.onDrop(state.pinned, item, ev)"
                                  t-on-click="() => this.openBookmark(item.id)">
                                 <i class="fa fa-thumb-tack text-warning"/>
-                                <span t-esc="item.name"/>
+                                <span class="flex-grow-1 text-truncate" t-esc="item.name"/>
                             </div>
                         </t>
                     </section>
+
+                    <section t-if="state.favorites.length" class="mb-2">
+                        <div class="fw-bold small text-uppercase">Favorites</div>
+                        <t t-foreach="state.favorites" t-as="item" t-key="item.id">
+                            <div t-att-class="bookmarkItemClass(item)"
+                                 draggable="true"
+                                 t-on-dragstart="(ev) => this.onDragStart(item, ev)"
+                                 t-on-dragover="(ev) => this.onDragOver(item, ev)"
+                                 t-on-dragleave="onDragLeave"
+                                 t-on-drop="(ev) => this.onDrop(state.favorites, item, ev)"
+                                 t-on-click="() => this.openBookmark(item.id)">
+                                <i class="fa fa-heart text-danger"/>
+                                <span class="flex-grow-1 text-truncate" t-esc="item.name"/>
+                            </div>
+                        </t>
+                    </section>
+
+                    <section t-if="state.recent.length" class="mb-2">
+                        <div class="fw-bold small text-uppercase">Recent</div>
+                        <t t-foreach="state.recent" t-as="item" t-key="item.id">
+                            <div t-att-class="bookmarkItemClass(item)"
+                                 t-on-click="() => this.openBookmark(item.id)">
+                                <i class="fa fa-clock-o text-muted"/>
+                                <span class="flex-grow-1 text-truncate" t-esc="item.name"/>
+                            </div>
+                        </t>
+                    </section>
+
                     <section t-foreach="state.folders" t-as="folder" t-key="folder.id" class="mb-2">
                         <div class="fw-bold small">
-                            <i t-att-class="'fa ' + (folder.icon || 'fa-folder')"/>
+                            <i t-att-class="'fa ' + (folder.icon || 'fa-folder') + ' ' + colorClass(folder.color)"/>
                             <span class="ms-1" t-esc="folder.name"/>
                         </div>
                         <t t-foreach="folder.bookmarks" t-as="item" t-key="item.id">
-                            <div class="o_rn_bookmark_item ps-3 py-1"
+                            <div t-att-class="bookmarkItemClass(item) + ' ps-3'"
+                                 draggable="true"
+                                 t-on-dragstart="(ev) => this.onDragStart(item, ev)"
+                                 t-on-dragover="(ev) => this.onDragOver(item, ev)"
+                                 t-on-dragleave="onDragLeave"
+                                 t-on-drop="(ev) => this.onDrop(folder.bookmarks, item, ev)"
                                  t-on-click="() => this.openBookmark(item.id)">
-                                <i class="fa fa-star text-warning me-1"/>
-                                <span t-esc="item.name"/>
+                                <i t-att-class="'fa fa-star ' + colorClass(item.color)"/>
+                                <span class="flex-grow-1 text-truncate" t-esc="item.name"/>
                             </div>
                         </t>
                     </section>
+
                     <section t-if="state.unfiled.length" class="mb-2">
                         <div class="fw-bold small text-uppercase">Unfiled</div>
                         <t t-foreach="state.unfiled" t-as="item" t-key="item.id">
-                            <div class="o_rn_bookmark_item py-1"
+                            <div t-att-class="bookmarkItemClass(item)"
+                                 draggable="true"
+                                 t-on-dragstart="(ev) => this.onDragStart(item, ev)"
+                                 t-on-dragover="(ev) => this.onDragOver(item, ev)"
+                                 t-on-dragleave="onDragLeave"
+                                 t-on-drop="(ev) => this.onDrop(state.unfiled, item, ev)"
                                  t-on-click="() => this.openBookmark(item.id)">
                                 <i class="fa fa-star-o me-1"/>
-                                <span t-esc="item.name"/>
+                                <span class="flex-grow-1 text-truncate" t-esc="item.name"/>
                             </div>
                         </t>
                     </section>

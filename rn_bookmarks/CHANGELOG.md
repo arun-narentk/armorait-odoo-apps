@@ -1,5 +1,13 @@
 # Changelog
 
+## 19.0.1.2.0 - 2026-07-11
+
+- Rebrand Apps Store listing to Universal Bookmark
+- Add list and Kanban star columns with batch bookmark state lookup
+- Add sidebar drag-and-drop reordering for pinned, folder, and unfiled bookmarks
+- Add favorites and recent sections in the systray sidebar
+- Add bookmark toggle pop animation and refreshed marketplace assets
+
 ## 19.0.1.1.0 - 2026-07-11
 
 - Add Create Bookmark wizard for list views, menus, reports, and dashboards

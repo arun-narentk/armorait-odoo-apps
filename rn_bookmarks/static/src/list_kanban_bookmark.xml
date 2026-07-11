@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.ListRenderer" t-inherit-mode="extension">
+        <xpath expr="//table//thead//tr/th[1]" position="before">
+            <th t-if="showBookmarkColumn"
+                class="o_rn_bookmark_list_header w-print-0 p-print-0 text-center"
+                title="Bookmark">
+                <i class="fa fa-star text-warning"/>
+            </th>
+        </xpath>
+    </t>
+
+    <t t-name="rn_bookmarks.ListRenderer.RecordRow" t-inherit="web.ListRenderer.RecordRow" t-inherit-mode="extension">
+        <xpath expr=".//td[1]" position="before">
+            <td t-if="showBookmarkColumn"
+                class="o_rn_bookmark_list_cell text-center user-select-none w-print-0 p-print-0"
+                t-on-click.stop="(ev) => this.onRnBookmarkStarClick(record, ev)">
+                <i role="button"
+                   t-att-title="record.rnBookmarked ? 'Remove bookmark' : 'Bookmark'"
+                   t-attf-class="fa o_rn_bookmark_star_icon #{record.rnBookmarked ? 'fa-star text-warning' : 'fa-star-o text-muted'}"/>
+            </td>
+        </xpath>
+    </t>
+
+    <t t-inherit="web.KanbanRecord" t-inherit-mode="extension">
+        <xpath expr="//article" position="inside">
+            <button type="button"
+                    class="o_rn_bookmark_kanban_star btn btn-link p-0 position-absolute top-0 end-0 m-1"
+                    t-att-title="rnBookmarked ? 'Remove bookmark' : 'Bookmark'"
+                    t-on-click="onRnKanbanBookmarkClick">
+                <i t-attf-class="fa o_rn_bookmark_star_icon #{rnBookmarked ? 'fa-star text-warning' : 'fa-star-o text-muted'}"/>
+            </button>
+        </xpath>
+    </t>
+
+</templates>

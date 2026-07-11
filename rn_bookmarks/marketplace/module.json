@@ -1,58 +1,72 @@
 {
   "technical_name": "rn_bookmarks",
-  "app_name": "Bookmarks",
-  "tagline": "Bookmark any Odoo record, list view, menu, or report and open it instantly from a sidebar",
+  "app_name": "Universal Bookmark",
+  "tagline": "Bookmark any Odoo record and open it instantly from a personal sidebar",
   "category_type": "productivity",
   "price": 9.99,
   "accent": "#f59e0b",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0",
   "problem": "Odoo has no universal bookmark system. Users juggle browser tabs, stars, and copy-paste links to reopen the same records every day.",
-  "solution": "Bookmarks adds a cross-model bookmark hub with folders, pins, colors, notes, tags, Ctrl+B hotkey, and a systray sidebar for instant navigation.",
+  "solution": "Universal Bookmark adds one-click stars on form, list, and Kanban views, a searchable personal sidebar with drag-and-drop ordering, folders, pins, favorites, recent history, and Ctrl+B navigation.",
   "benefits": [
-    "Bookmark any record on any model, including custom apps",
-    "Organize bookmarks into Sales, Invoices, CRM, and custom folders",
-    "Pin urgent items and add notes for context",
-    "Search bookmarks from the sidebar without leaving your screen",
-    "Actionable bookmark types for records, list views, menus, and reports"
+    "Bookmark any record on any model with one click",
+    "List and Kanban star columns for fast marking",
+    "Personal sidebar with search, pins, favorites, and recent",
+    "Drag-and-drop ordering and color-coded folders",
+    "Ctrl+B hotkey and duplicate-safe toggling"
   ],
   "features": [
     {
-      "title": "Universal record bookmarks",
-      "text": "Star any form view record with one click or Ctrl+B."
+      "title": "Bookmark anywhere",
+      "text": "Star records from form headers, list rows, Kanban cards, or Ctrl+B."
     },
     {
-      "title": "Folder sidebar",
-      "text": "Browser-style folders with drag-ready ordering and color tags."
+      "title": "Personal sidebar",
+      "text": "Search and reopen bookmarks from the systray panel without leaving your screen."
     },
     {
-      "title": "Pin and favorite",
-      "text": "Keep critical bookmarks on top across sessions."
+      "title": "Pins, favorites, recent",
+      "text": "Keep urgent records on top and revisit recent work quickly."
     },
     {
-      "title": "Notes and tags",
-      "text": "Add context like Urgent or VIP without leaving the record."
+      "title": "Drag-and-drop ordering",
+      "text": "Reorder pinned, folder, and unfiled bookmarks in the sidebar."
     },
     {
-      "title": "List view bookmarks",
-      "text": "Save filtered list views such as Overdue Invoices for one-click reopen."
+      "title": "Folders and colors",
+      "text": "Group customers, sales, invoices, and projects with color labels."
     },
     {
-      "title": "Smart button",
-      "text": "See bookmark count on sale orders, partners, invoices, and leads."
+      "title": "List and menu bookmarks",
+      "text": "Save filtered list views, menus, and reports for one-click reopen."
     }
   ],
   "workflow": [
     "Open any record",
-    "Click Bookmark or press Ctrl+B",
-    "Organize into folders",
-    "Pin urgent items",
-    "Search from sidebar",
+    "Click the star or press Ctrl+B",
+    "Find it in the sidebar",
+    "Drag to reorder or pin",
     "Reopen in one click"
   ],
-  "seo_keywords": "Odoo 19 bookmarks, record bookmarks, productivity sidebar, ARMORA IT Technologies, quick navigation",
+  "seo_keywords": "Odoo 19 universal bookmark, record bookmarks, productivity sidebar, list view star, kanban bookmark, ARMORA",
   "has_dashboard": true,
   "has_reports": true,
   "has_mobile": true,
   "live_test_url": "https://www.armorait.com",
-  "version": "19.0.1.0.0",
-  "branch": "19.0"
+  "version": "19.0.1.2.0",
+  "branch": "19.0",
+  "screenshot_labels": {
+    "overview.png": "Universal Bookmark Overview",
+    "list.png": "Bookmark List",
+    "form.png": "Form Star Button",
+    "dashboard.png": "Bookmark Dashboard",
+    "wizard.png": "Create Bookmark Wizard",
+    "settings.png": "Folder Settings",
+    "report.png": "Report Bookmarks",
+    "search.png": "Sidebar Search",
+    "kanban.png": "Kanban Star",
+    "mobile.png": "Mobile Sidebar",
+    "workflow.png": "Bookmark Workflow",
+    "designer.png": "Folder Designer"
+  }
 }

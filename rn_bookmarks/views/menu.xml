@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_rn_bookmarks_root"
-              name="Bookmarks"
+              name="Universal Bookmark"
               sequence="55"
               groups="rn_bookmarks.group_rn_bookmarks_user"
               web_icon="rn_bookmarks,static/description/icon.png"/>

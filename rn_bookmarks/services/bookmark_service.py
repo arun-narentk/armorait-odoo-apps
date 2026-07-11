@@ -237,6 +237,33 @@ class BookmarkService(models.AbstractModel):
         return True
 
     @api.model
+    def get_bookmark_states_batch(self, res_model, res_ids):
+        if not res_model or not res_ids:
+            return {}
+        bookmarks = self.env['rn.bookmark'].search([
+            ('user_id', '=', self.env.user.id),
+            ('bookmark_type', '=', 'record'),
+            ('res_model', '=', res_model),
+            ('res_id', 'in', list(res_ids)),
+            ('active', '=', True),
+        ])
+        bookmarked_ids = set(bookmarks.mapped('res_id'))
+        return {str(res_id): res_id in bookmarked_ids for res_id in res_ids}
+
+    @api.model
+    def reorder_bookmarks(self, bookmark_ids):
+        if not bookmark_ids:
+            return True
+        Bookmark = self.env['rn.bookmark']
+        sequence = 10
+        for bookmark_id in bookmark_ids:
+            bookmark = Bookmark.browse(bookmark_id)
+            if bookmark.exists() and bookmark.user_id == self.env.user:
+                bookmark.sequence = sequence
+                sequence += 10
+        return True
+
+    @api.model
     def get_current_context_bookmark_state(self, res_model, res_id):
         if not res_model or not res_id:
             return {'bookmarked': False, 'bookmark_id': False}

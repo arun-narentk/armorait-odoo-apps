@@ -4,6 +4,7 @@ import { registry } from "@web/core/registry";
 import { standardWidgetProps } from "@web/views/widgets/standard_widget_props";
 import { useService } from "@web/core/utils/hooks";
 import { Component, useState, onWillStart, useEffect } from "@odoo/owl";
+import { clearBookmarkStateCache } from "./bookmark_helpers";
 
 export class RnBookmarkToggleWidget extends Component {
     static template = "rn_bookmarks.BookmarkToggle";
@@ -61,6 +62,7 @@ export class RnBookmarkToggleWidget extends Component {
         const wasBookmarked = this.state.bookmarked;
         try {
             await this.orm.call(this.resModel, "action_toggle_rn_bookmark", [[this.resId]]);
+            clearBookmarkStateCache();
             await this.refresh();
             await this.props.record.load();
             this.notification.add(

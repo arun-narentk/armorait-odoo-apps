@@ -40,6 +40,15 @@ class BookmarkController(http.Controller):
         request.env['rn.bookmark.service'].move_bookmark(bookmark_id, folder_id=folder_id, sequence=sequence)
         return {'status': 'ok'}
 
+    @http.route('/rn/bookmark/reorder', type='json', auth='user')
+    def reorder(self, bookmark_ids):
+        request.env['rn.bookmark.service'].reorder_bookmarks(bookmark_ids)
+        return {'status': 'ok'}
+
+    @http.route('/rn/bookmark/states', type='json', auth='user')
+    def states_batch(self, res_model, res_ids):
+        return request.env['rn.bookmark.service'].get_bookmark_states_batch(res_model, res_ids)
+
     @http.route('/rn/bookmark/state', type='json', auth='user')
     def state(self, res_model, res_id):
         return request.env['rn.bookmark.service'].get_current_context_bookmark_state(res_model, res_id)

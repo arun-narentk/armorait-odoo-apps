@@ -5,12 +5,61 @@
 .o_rn_bookmarks_panel .o_rn_bookmark_item {
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.15s ease;
 }
 
 .o_rn_bookmarks_panel .o_rn_bookmark_item:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
+.o_rn_bookmarks_panel .o_rn_bookmark_drag_over {
+    background: rgba(245, 158, 11, 0.15);
+    outline: 1px dashed #f59e0b;
+}
+
 .o_rn_bookmark_toggle {
     font-weight: 500;
+}
+
+.o_rn_bookmark_toggle.o_rn_bookmark_star_pop .o_rn_bookmark_star_icon,
+.o_rn_bookmark_star_icon.o_rn_bookmark_star_pop {
+    animation: rnBookmarkPop 0.45s ease;
+}
+
+.o_rn_bookmark_kanban_star {
+    z-index: 2;
+    line-height: 1;
+}
+
+.o_rn_bookmark_list_cell .o_rn_bookmark_star_icon {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+@keyframes rnBookmarkPop {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    35% {
+        transform: scale(1.35) rotate(-12deg);
+    }
+    70% {
+        transform: scale(1.15) rotate(8deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes rnBookmarkSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.o_rn_bookmark_toggle.is-loading .o_rn_bookmark_star_icon {
+    animation: rnBookmarkSpin 0.6s linear;
 }

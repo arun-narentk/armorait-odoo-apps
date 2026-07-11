@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Bookmarks',
-    'version': '19.0.1.1.0',
+    'name': 'Universal Bookmark',
+    'version': '19.0.1.2.0',
     'category': 'Productivity',
-    'summary': 'Bookmark any Odoo record, list view, menu, or report and open it instantly from a sidebar',
+    'summary': 'Bookmark any Odoo record and open it instantly from a personal sidebar',
     'description': """
-Bookmarks for Odoo 19 Community
-=================================
-Universal bookmarking with folders, pins, colors, notes, tags, and quick navigation.
+Universal Bookmark for Odoo 19 Community
+=========================================
+
+Never search for the same record twice.
+
+* One-click bookmark on form, list, and Kanban views
+* Personal sidebar with search, pins, favorites, and recent
+* Drag-and-drop ordering in the sidebar
+* Folders, colors, tags, and notes
+* Ctrl+B hotkey on any record form
+* List view and menu bookmarks
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
@@ -34,10 +42,14 @@ Universal bookmarking with folders, pins, colors, notes, tags, and quick navigat
     'demo': ['demo/demo.xml'],
     'assets': {
         'web.assets_backend': [
+            'rn_bookmarks/static/src/bookmark_helpers.js',
             'rn_bookmarks/static/src/bookmarks_systray.js',
             'rn_bookmarks/static/src/bookmarks_sidebar.scss',
             'rn_bookmarks/static/src/bookmark_toggle.xml',
             'rn_bookmarks/static/src/bookmark_toggle.js',
+            'rn_bookmarks/static/src/list_kanban_bookmark.xml',
+            'rn_bookmarks/static/src/list_renderer_patch.js',
+            'rn_bookmarks/static/src/kanban_record_patch.js',
             'rn_bookmarks/static/src/bookmarks_sidebar.xml',
             'rn_bookmarks/static/src/bookmarks_sidebar.js',
         ],
