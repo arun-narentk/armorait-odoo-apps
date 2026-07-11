@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="demo_field_diff_partner_a" model="res.partner">
+            <field name="name">FIELDDIFF Capture Customer A</field>
+            <field name="email">fielddiff.a@armorait.com</field>
+        </record>
+        <record id="demo_field_diff_partner_b" model="res.partner">
+            <field name="name">FIELDDIFF Capture Customer B</field>
+            <field name="email">fielddiff.b@armorait.com</field>
+        </record>
+    </data>
+</odoo>

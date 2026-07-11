@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_field_diff" model="ir.actions.report">
+        <field name="name">Field Changes</field>
+        <field name="model">rn.field.diff</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_field_diff.report_field_diff_document</field>
+        <field name="report_file">rn_field_diff.report_field_diff_document</field>
+        <field name="print_report_name">'Field Changes - %s' % (object.field_label)</field>
+    </record>
+</odoo>

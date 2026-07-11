@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_field_diff_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2>Field Change Report</h2>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Before</th>
+                            <th>After</th>
+                            <th>Difference</th>
+                            <th>Changed By</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="docs" t-as="diff">
+                            <td><t t-esc="diff.field_label"/></td>
+                            <td><t t-esc="diff.old_value_display"/></td>
+                            <td><t t-esc="diff.new_value_display"/></td>
+                            <td><t t-esc="diff.difference_display"/></td>
+                            <td><t t-esc="diff.user_id.display_name"/></td>
+                            <td><t t-esc="diff.changed_on"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
