@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_parameter_rn_filter_recent_limit" model="ir.config_parameter">
+        <field name="key">rn_filter_manager.recent_limit</field>
+        <field name="value">50</field>
+    </record>
+    <record id="ir_config_parameter_rn_filter_remember_searches" model="ir.config_parameter">
+        <field name="key">rn_filter_manager.remember_searches</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_parameter_rn_filter_enable_teams" model="ir.config_parameter">
+        <field name="key">rn_filter_manager.enable_teams</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_parameter_rn_filter_enable_folders" model="ir.config_parameter">
+        <field name="key">rn_filter_manager.enable_folders</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_parameter_rn_filter_duplicate_detection" model="ir.config_parameter">
+        <field name="key">rn_filter_manager.duplicate_detection</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

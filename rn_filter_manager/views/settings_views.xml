@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_filter_manager" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.filter.manager</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Filter Manager" name="rn_filter_manager" groups="rn_filter_manager.group_rn_filter_manager_manager">
+                    <block title="Filter Manager">
+                        <setting string="Maximum Recent Filters">
+                            <field name="rn_filter_recent_limit"/>
+                        </setting>
+                        <setting string="Remember Searches">
+                            <field name="rn_filter_remember_searches"/>
+                        </setting>
+                        <setting string="Enable Team Folders">
+                            <field name="rn_filter_enable_teams"/>
+                        </setting>
+                        <setting string="Enable Folders">
+                            <field name="rn_filter_enable_folders"/>
+                        </setting>
+                        <setting string="Duplicate Detection">
+                            <field name="rn_filter_duplicate_detection"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

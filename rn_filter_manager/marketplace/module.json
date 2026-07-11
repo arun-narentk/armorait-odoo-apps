@@ -1,0 +1,80 @@
+{
+  "technical_name": "rn_filter_manager",
+  "app_name": "Filter Manager",
+  "tagline": "Organize, share, pin, and manage Odoo filters with folders, favorites, recent history, and team sharing",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#2563eb",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0",
+  "branch": "19.0",
+  "problem": "Odoo favorites have no folders, weak sharing, no recent history, and poor discoverability when teams collect dozens of filters.",
+  "solution": "Filter Manager turns favorites into a navigation hub with Outlook-style folders, pinning, color tags, usage analytics, JSON import/export, and duplicate detection.",
+  "benefits": [
+    "Folder organization for Sales, CRM, Invoices, and custom models",
+    "Pin critical filters like Today's Sales or Overdue Invoices",
+    "Recent history with automatic cleanup limits",
+    "Private, shared, team, company, and global visibility",
+    "Export and import JSON when migrating databases"
+  ],
+  "features": [
+    {
+      "title": "Folder sidebar",
+      "text": "Group filters into Sales, Invoices, CRM, Warehouse, and nested folders."
+    },
+    {
+      "title": "Pin and favorite",
+      "text": "Keep high-value filters on top with pins and star favorites."
+    },
+    {
+      "title": "Recent filters",
+      "text": "Automatic recent history with configurable retention."
+    },
+    {
+      "title": "Sharing scopes",
+      "text": "Private, shared, team, company, and global filter types."
+    },
+    {
+      "title": "Usage analytics",
+      "text": "See how many times a filter was used and when it was last opened."
+    },
+    {
+      "title": "Import and export",
+      "text": "Move filter libraries between databases with JSON bundles."
+    }
+  ],
+  "workflow": [
+    "Create folders",
+    "Save or import filters",
+    "Pin favorites",
+    "Share with team",
+    "Track recent usage",
+    "Export for migration"
+  ],
+  "screenshot_labels": {
+    "overview": "Filter library overview",
+    "list": "All filters list",
+    "form": "Filter form with domain",
+    "dashboard": "Recent usage dashboard",
+    "wizard": "JSON import export wizard",
+    "settings": "Filter Manager settings",
+    "search": "Search and group filters",
+    "kanban": "Folder kanban view",
+    "mobile": "Mobile filter list",
+    "workflow": "Pin and share workflow",
+    "designer": "Folder designer"
+  },
+  "gif_labels": {
+    "hero": "Create folder and pin filter",
+    "workflow": "Favorites to folders workflow",
+    "dashboard": "Recent filters dashboard",
+    "settings": "Configure recent limit and sharing",
+    "reports": "Export JSON bundle",
+    "mobile": "Mobile filter manager"
+  },
+  "seo_keywords": "Odoo 19 filter manager, favorite filters, shared filters, filter folders, ARMORA IT Technologies",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0"
+}
