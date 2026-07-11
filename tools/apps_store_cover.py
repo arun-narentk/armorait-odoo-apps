@@ -230,6 +230,42 @@ def _load_cover_logo_mark(cover_logo: Path, target_h: int) -> Image.Image | None
     return mark.resize((target_w, target_h), RESAMPLE)
 
 
+def _trim_brand_logo_underline(source: Image.Image) -> Image.Image:
+    """Drop the bottom white decorative strip from armorait_brand_logo.png."""
+    img = source.convert('RGBA')
+    w, h = img.size
+    if h < 8:
+        return img
+    pixels = img.load()
+    cutoff = h
+    for y in range(h - 1, -1, -1):
+        bright = sum(
+            1 for x in range(w)
+            if pixels[x, y][3] > 32
+            and pixels[x, y][0] > 200
+            and pixels[x, y][1] > 200
+            and pixels[x, y][2] > 200
+        )
+        if bright >= w * 0.55:
+            cutoff = y
+            continue
+        break
+    if cutoff < h:
+        cutoff = max(1, cutoff - 1)
+        img = img.crop((0, 0, w, cutoff))
+    return img
+
+
+def _load_brand_logo_for_badge(logo_path: Path, target_h: int) -> Image.Image | None:
+    """Load ARMORA wordmark for the bottom-right badge without the white underline."""
+    if not logo_path.is_file():
+        return None
+    source = _trim_brand_logo_underline(Image.open(logo_path))
+    scale = target_h / max(source.height, 1)
+    target_w = max(1, int(source.width * scale))
+    return source.resize((target_w, target_h), RESAMPLE)
+
+
 def _load_cover_logo_left(cover_logo: Path, max_size: int) -> Image.Image | None:
     """Crop ARMORA puzzle icon + wordmark for the left disc panel."""
     if not cover_logo.is_file():
@@ -385,15 +421,15 @@ def _draw_left_logo_disc(
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
-    """Website label below the V19 badge (top-right)."""
+    """Website label in the top-right corner."""
     draw = ImageDraw.Draw(img)
     pill_font = _font(max(12, int(h * 0.022)), True)
     tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
     pad_x, pad_y = 14, 7
     pill_w = tw + pad_x * 2
     pill_h = th + pad_y * 2
-    pill_x = w - pill_w - 22
-    pill_y = 58
+    pill_x = w - pill_w - 18
+    pill_y = 16
     _rounded_rect(
         draw,
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
@@ -418,13 +454,11 @@ def _draw_company_logo_badge(
 ) -> None:
     """Bottom-right ARMORA company logo strip on every loempia_app_cover."""
     logo_path = brand_logo or DEFAULT_BRAND_LOGO
-    if not logo_path.is_file():
-        return
-    source = Image.open(logo_path).convert('RGBA')
     target_h = max(40, int(h * 0.105))
-    scale = target_h / max(source.height, 1)
-    target_w = max(1, int(source.width * scale))
-    mark = source.resize((target_w, target_h), RESAMPLE)
+    mark = _load_brand_logo_for_badge(logo_path, target_h)
+    if mark is None:
+        return
+    target_w = mark.width
 
     pad_x, pad_y = 14, 10
     badge_x2 = w - 18

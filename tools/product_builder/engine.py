@@ -7,6 +7,7 @@ import ast
 import json
 import re
 import shutil
+import sys
 import textwrap
 import zipfile
 from pathlib import Path
@@ -15,6 +16,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ARMORA_ROOT = Path(__file__).resolve().parents[2]
 FRAMEWORK = ARMORA_ROOT / 'marketplace_framework'
+TOOLS_DIR = ARMORA_ROOT / 'tools'
 LEGACY_CATALOG = ARMORA_ROOT / 'tools' / 'apps_marketplace' / 'catalog.json'
 ZIP_OUT = ARMORA_ROOT / 'apps_store_zips'
 
@@ -536,11 +538,48 @@ def patch_manifest(manifest_path: Path, config: dict, brand: dict) -> None:
     manifest_path.write_text(text, encoding='utf-8')
 
 
-def build_module(mod_dir: Path, brand: dict, catalog: dict, docs: bool = True) -> Path:
+def generate_cover_assets(mod_dir: Path, animated: bool = False) -> None:
+    """Regenerate icon.png and banner assets using the shared Apps Store cover generator."""
+    if str(TOOLS_DIR) not in sys.path:
+        sys.path.insert(0, str(TOOLS_DIR))
+    from apps_store_cover import (  # noqa: WPS433
+        DEFAULT_COVER_LOGO,
+        read_manifest_fields,
+        save_cover_assets,
+        subtitle_lines_from_summary,
+        title_lines_from_name,
+    )
+
+    manifest = mod_dir / '__manifest__.py'
+    if not manifest.is_file():
+        return
+    name, summary = read_manifest_fields(manifest)
+    save_cover_assets(
+        mod_dir,
+        title_lines_from_name(name),
+        subtitle_lines_from_summary(summary),
+        module_name=name,
+        module_summary=summary,
+        cover_logo=DEFAULT_COVER_LOGO,
+        animated=animated,
+    )
+
+
+def build_module(
+    mod_dir: Path,
+    brand: dict,
+    catalog: dict,
+    docs: bool = True,
+    covers: bool = True,
+    animated_covers: bool = False,
+) -> Path:
     config = load_module_config(mod_dir)
     config.setdefault('technical_name', mod_dir.name)
     (mod_dir / 'marketplace').mkdir(parents=True, exist_ok=True)
     (mod_dir / 'docs').mkdir(parents=True, exist_ok=True)
+
+    if covers:
+        generate_cover_assets(mod_dir, animated=animated_covers)
 
     html = render_index_html(config, brand, catalog, mod_dir)
     out = mod_dir / 'static' / 'description' / 'index.html'
@@ -630,6 +669,16 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument('--zip', action='store_true', help='Package Apps Store ZIP after build')
     parser.add_argument('--no-docs', action='store_true', help='Skip README/FAQ regeneration')
+    parser.add_argument(
+        '--no-covers',
+        action='store_true',
+        help='Skip icon.png and banner regeneration (index.html only)',
+    )
+    parser.add_argument(
+        '--animated-covers',
+        action='store_true',
+        help='Also generate banner.gif and banner_small.gif',
+    )
     args = parser.parse_args(argv)
 
     brand = load_json(FRAMEWORK / 'branding.json')
@@ -660,7 +709,14 @@ def main(argv: list[str] | None = None) -> int:
             continue
         if not (mod_dir / 'marketplace' / 'module.json').exists() and not (mod_dir / 'marketplace' / 'module.yaml').exists():
             init_module_from_catalog(mod_dir, catalog, brand)
-        out = build_module(mod_dir, brand, catalog, docs=not args.no_docs)
+        out = build_module(
+            mod_dir,
+            brand,
+            catalog,
+            docs=not args.no_docs,
+            covers=not args.no_covers,
+            animated_covers=args.animated_covers,
+        )
         print(f'OK {name} -> {out}')
         built.append(mod_dir)
         if args.zip:

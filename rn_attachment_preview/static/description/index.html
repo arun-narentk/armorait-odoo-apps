@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Attachment Preview | ARMORA IT Technologies</title>
-<meta name="description" content="Preview PDFs, images, videos, audio, and text files inside Odoo without downloading. Odoo 19 attachment preview, PDF preview Odoo, file viewer Odoo, document preview without download">
+<meta name="description" content="Preview PDFs, Office files, images, and media inside Odoo without downloading. Odoo 19 attachment preview, PDF preview Odoo, Office preview Odoo, OCR search attachments, document preview without download">
 <style>
 :root { --module-accent: #2563eb; }
 /* ARMORA Marketplace Framework - shared Apps Store description styles */
@@ -246,7 +246,7 @@ a { color: var(--armora-primary); }
 
 <section class="armora-hero" id="top">
   <h1>Attachment Preview</h1>
-  <p class="tagline">Preview PDFs, images, videos, audio, and text files inside Odoo without downloading</p>
+  <p class="tagline">Preview PDFs, Office files, images, and media inside Odoo without downloading</p>
   <div class="armora-badges">
     <span>Odoo 19 Community</span>
     <span>ARMORA IT Technologies</span>
@@ -260,16 +260,18 @@ a { color: var(--armora-primary); }
 
 <section class="armora-section" id="overview">
   <h2>App Overview</h2>
-  <p>Preview supported files directly in Odoo with thumbnails, hover preview, and a full-screen gallery viewer.</p>
+  <p>Preview supported files directly in Odoo with thumbnails, OCR search, Office HTML preview, PDF annotations, and a full-screen gallery viewer.</p>
   <ul class="armora-list-check">
     
     <li>Instant PDF and image preview in forms</li>
     
-    <li>Thumbnail strip instead of filename-only attachments</li>
+    <li>Generated thumbnails via scheduled jobs</li>
     
-    <li>Hover preview for quick checks</li>
+    <li>Search attachment text with OCR indexing</li>
     
-    <li>Gallery navigation across multiple files</li>
+    <li>Preview Word, Excel, and PowerPoint in the browser</li>
+    
+    <li>Annotate PDFs with page notes</li>
     
     <li>Respects Odoo document access rights</li>
     
@@ -283,7 +285,7 @@ a { color: var(--armora-primary); }
 
 <section class="armora-section" id="solution">
   <h2>Business Solution</h2>
-  <p>Preview supported files directly in Odoo with thumbnails, hover preview, and a full-screen gallery viewer.</p>
+  <p>Preview supported files directly in Odoo with thumbnails, OCR search, Office HTML preview, PDF annotations, and a full-screen gallery viewer.</p>
 </section>
 
 <section class="armora-section" id="features">
@@ -291,28 +293,28 @@ a { color: var(--armora-primary); }
   <div class="armora-grid-2">
     
     <div class="armora-card">
-      <h3>PDF Preview</h3>
-      <p>Open PDFs in the built-in viewer with zoom and page scroll.</p>
+      <h3>Thumbnail Cron</h3>
+      <p>Background jobs generate stored thumbnails for images, PDF, and Office files.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Image Gallery</h3>
-      <p>Preview PNG, JPG, SVG, GIF, and WEBP with next/previous navigation.</p>
+      <h3>OCR Search</h3>
+      <p>Find attachments by text inside PDF, TXT, and Office documents.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Video and Audio</h3>
-      <p>Play MP4, WEBM, MP3, WAV, and OGG files inline.</p>
+      <h3>Office Preview</h3>
+      <p>Read DOCX, XLSX, and PPTX as HTML without an Office license.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Text Files</h3>
-      <p>Read TXT, CSV, JSON, and XML without leaving Odoo.</p>
+      <h3>PDF Annotations</h3>
+      <p>Add page notes while previewing PDF files.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Thumbnail Strip</h3>
-      <p>Visual attachment cards with Preview and Download actions.</p>
+      <h3>Gallery Viewer</h3>
+      <p>Full-screen preview for PDF, image, video, audio, and text.</p>
     </div>
     
   </div>
@@ -324,19 +326,19 @@ a { color: var(--armora-primary); }
   <div class="armora-workflow">
     
     
-    <span class="step">Open any record with attachments</span>
+    <span class="step">Upload attachments on any supported record</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">See visual thumbnails on the attachment strip</span>
+    <span class="step">Cron jobs build thumbnails and OCR text</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Hover for a quick preview</span>
+    <span class="step">Browse the visual thumbnail strip</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Click Preview for full-screen viewing</span>
+    <span class="step">Preview Office files or PDFs in the V2 dialog</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Navigate across files like a gallery</span>
+    <span class="step">Search globally with OCR Search</span>
     
   </div>
 </section>
@@ -396,11 +398,11 @@ a { color: var(--armora-primary); }
   <h2>FAQ</h2>
   <dl>
     
-    <dt>Which file types are supported in V1?</dt>
-    <dd>PDF, images, video, audio, and text files such as TXT, CSV, JSON, and XML.</dd>
+    <dt>Which file types are supported?</dt>
+    <dd>PDF, images, video, audio, text, and Office files (DOCX, XLSX, PPTX).</dd>
     
-    <dt>Does it support Excel or Word?</dt>
-    <dd>Not in V1. Office previews are planned once a reliable browser preview engine is integrated.</dd>
+    <dt>How does OCR search work?</dt>
+    <dd>A scheduled job extracts text from supported files and stores it for global search.</dd>
     
     <dt>Is preview access secure?</dt>
     <dd>Yes. Users can only preview attachments they are allowed to read in Odoo.</dd>
@@ -536,8 +538,8 @@ a { color: var(--armora-primary); }
     <li><strong>UI:</strong> OWL 2, Bootstrap 5</li>
     <li><strong>Deployment:</strong> On-premise, Odoo.sh, and Odoo Online (where custom modules are allowed)</li>
   </ul>
-  <p><strong>SEO:</strong> Odoo 19 attachment preview, PDF preview Odoo, file viewer Odoo, document preview without download</p>
-  <p><strong>Version:</strong> 19.0.1.0.0</p>
+  <p><strong>SEO:</strong> Odoo 19 attachment preview, PDF preview Odoo, Office preview Odoo, OCR search attachments, document preview without download</p>
+  <p><strong>Version:</strong> 19.0.2.0.0</p>
 </section>
 
 

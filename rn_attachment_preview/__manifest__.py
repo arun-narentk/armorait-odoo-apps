@@ -3,7 +3,7 @@
     'name': 'Attachment Preview',
     'version': '19.0.2.0.0',
     'category': 'Productivity',
-    'summary': 'Preview PDFs, images, Office files, and media inside Odoo without downloading',
+    'summary': 'Preview PDFs, Office files, images, and media inside Odoo without downloading',
     'description': """
 ARMORA Attachment Preview for Odoo 19 Community
 ===============================================

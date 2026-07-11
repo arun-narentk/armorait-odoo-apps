@@ -8,7 +8,7 @@ and marketplace_framework templates. Do not edit static/description/index.html b
 Usage:
   python build_marketplace.py --sync-catalog      # add missing modules to catalog.json
   python build_marketplace.py --init              # bootstrap marketplace/module.json
-  python build_marketplace.py --all --no-docs     # regenerate all index.html files
+  python build_marketplace.py --all --no-docs     # regenerate banners + index.html for all modules
   python build_marketplace.py rn_fleet_gps --zip    # build one module and zip
 """
 from __future__ import annotations
