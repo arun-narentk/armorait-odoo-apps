@@ -1,0 +1,63 @@
+{
+  "technical_name": "rn_smart_color_tags",
+  "app_name": "Smart Color Tags",
+  "tagline": "Highlight records in list and Kanban views with configurable color rules on any model",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#2563eb",
+  "problem": "Users spend hours scanning list and Kanban views. Status is buried in columns and easy to miss.",
+  "solution": "Smart Color Tags is a generic color rule engine. Administrators define domain-based rules with priority, color, icon, and badge label. Matching records get visual tags in list and Kanban views without custom code.",
+  "benefits": [
+    "Works on any Odoo model, including custom apps",
+    "Priority-based rules with domain builder, no coding",
+    "Colored badges, icons, and row accents in list and Kanban",
+    "Search filters by tag color on supported models",
+    "Cached rule evaluation for responsive pages"
+  ],
+  "features": [
+    {
+      "title": "Generic rule engine",
+      "text": "Create color rules for CRM, sales, invoices, stock, HR, projects, or any model."
+    },
+    {
+      "title": "Visual badges",
+      "text": "Show OVERDUE, PAID, VIP, and custom labels beside record names."
+    },
+    {
+      "title": "Priority matching",
+      "text": "Higher priority rules win when multiple conditions match."
+    },
+    {
+      "title": "List and Kanban accents",
+      "text": "Row highlights and card accents make records understandable at a glance."
+    }
+  ],
+  "workflow": [
+    "Open Color Rules",
+    "Pick target model",
+    "Set domain and color",
+    "Set priority and label",
+    "View tagged records"
+  ],
+  "seo_keywords": "Odoo 19 color tags, list view colors, kanban badges, visual rules, CRM colors, invoice highlight, ARMORA",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null,
+  "screenshot_labels": {
+    "overview.png": "Color Rules Overview",
+    "list.png": "Rules List",
+    "form.png": "Rule Configuration",
+    "dashboard.png": "Tagged Sale Orders",
+    "wizard.png": "Domain Builder",
+    "settings.png": "Color Filters",
+    "report.png": "Tagged Invoices",
+    "search.png": "CRM Opportunities",
+    "kanban.png": "Kanban Accents",
+    "mobile.png": "Mobile List View",
+    "workflow.png": "Rule Workflow",
+    "designer.png": "Rule Designer"
+  }
+}

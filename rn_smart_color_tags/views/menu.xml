@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_color_tags_root"
+        name="Smart Color Tags"
+        web_icon="rn_smart_color_tags,static/description/icon.png"
+        groups="rn_smart_color_tags.group_rn_color_tags_user"
+        sequence="47"/>
+
+    <menuitem id="menu_rn_color_rule"
+        name="Color Rules"
+        parent="menu_rn_color_tags_root"
+        action="action_rn_color_rule"
+        groups="rn_smart_color_tags.group_rn_color_tags_manager"
+        sequence="10"/>
+</odoo>
