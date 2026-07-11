@@ -2,7 +2,7 @@
     'name': 'Saudi Finance Dashboard',
     'version': '19.0.1.2.0',
     'category': 'Accounting',
-    'summary': 'Premium Saudi finance dashboard with SAR KPIs, 15% VAT, cash, compliance, and top customers',
+    'summary': 'Premium Saudi finance dashboard with KPIs in SAR, VAT, cash and top customers',
     'description': """
 Premium Saudi finance dashboard for Odoo 19 Community with SAR KPIs, VAT,
 receivables, payables, cash, compliance panels, trend charts, and bilingual OWL
@@ -32,9 +32,8 @@ dashboard for finance teams and ERP partners.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/dashboard.png',
         'static/description/workflow.png',
-        'static/description/monitoring.png',
-        'static/description/execution.png',
+        'static/description/dashboard.png',
+        'static/description/designer.png',
     ],
 }

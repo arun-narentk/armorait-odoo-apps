@@ -306,6 +306,7 @@ def generate_for_module(
     module_dir: Path,
     *,
     skip_existing: bool = False,
+    force: bool = False,
     include_icon: bool = True,
 ) -> list[str]:
     manifest = module_dir / '__manifest__.py'
@@ -324,7 +325,7 @@ def generate_for_module(
     written: list[str] = []
     for filename, image in assets.items():
         path = out / filename
-        if skip_existing and path.is_file():
+        if skip_existing and path.is_file() and not force:
             continue
         save_png(image, path)
         written.append(filename)
@@ -337,14 +338,14 @@ def generate_for_module(
     return written
 
 
-def generate_for_repo(repo_root: Path, skip_existing: bool = False, include_icon: bool = True) -> dict[str, list[str]]:
+def generate_for_repo(repo_root: Path, skip_existing: bool = False, force: bool = False, include_icon: bool = True) -> dict[str, list[str]]:
     skip_dirs = {'tools', 'armorait2_site', '.git', '.github', '.tmp'}
     results: dict[str, list[str]] = {}
     for manifest in sorted(repo_root.glob('*/__manifest__.py')):
         module_dir = manifest.parent
         if module_dir.name in skip_dirs:
             continue
-        written = generate_for_module(module_dir, skip_existing=skip_existing, include_icon=include_icon)
+        written = generate_for_module(module_dir, skip_existing=skip_existing, force=force, include_icon=include_icon)
         if written:
             results[module_dir.name] = written
     return results
@@ -364,6 +365,11 @@ def main() -> None:
         help='Do not overwrite files that already exist',
     )
     parser.add_argument(
+        '--force',
+        action='store_true',
+        help='Overwrite workflow, dashboard, and designer PNG files',
+    )
+    parser.add_argument(
         '--no-icon',
         action='store_true',
         help='Skip icon.png generation',
@@ -376,6 +382,7 @@ def main() -> None:
     results = generate_for_repo(
         repo_root,
         skip_existing=args.skip_existing,
+        force=args.force,
         include_icon=not args.no_icon,
     )
     print(f'Generated marketplace screenshots for {len(results)} modules in {repo_root}')

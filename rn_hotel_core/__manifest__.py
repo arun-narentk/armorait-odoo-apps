@@ -78,8 +78,9 @@ Roadmap: OTA channel manager, POS restaurant, door locks, guest mobile portal.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/overview.png',
+        'static/description/workflow.png',
         'static/description/dashboard.png',
+        'static/description/designer.png',
     ],
     'installable': True,
     'application': True,

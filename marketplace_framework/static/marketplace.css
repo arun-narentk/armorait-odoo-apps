@@ -53,12 +53,26 @@ a { color: var(--armora-primary); }
   font-size: 0.88rem;
 }
 
+.armora-gallery img,
+.armora-shot-wide,
+.armora-shot,
+.armora-hero img.banner,
+.armora-hero img.loempia_app_cover {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--armora-border);
+}
+
 .armora-hero img.banner,
 .armora-hero img.loempia_app_cover {
   max-width: min(100%, 960px);
-  margin-top: 24px;
+  margin: 24px auto 0;
   border-radius: var(--armora-radius);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: none;
 }
 
 .armora-section {
@@ -108,7 +122,7 @@ a { color: var(--armora-primary); }
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 600;
   color: var(--module-accent, var(--armora-primary));
   padding: 16px;
@@ -121,9 +135,14 @@ a { color: var(--armora-primary); }
   border: 1px solid var(--armora-border);
   border-radius: 8px;
   padding: 8px 14px;
+  white-space: nowrap;
 }
 
-.armora-workflow .arrow { color: var(--armora-muted); }
+.armora-workflow .arrow {
+  color: var(--armora-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+}
 
 .armora-gallery {
   display: grid;
@@ -132,14 +151,6 @@ a { color: var(--armora-primary); }
 }
 
 .armora-gallery figure { margin: 0; }
-
-.armora-gallery img,
-.armora-shot-wide,
-.armora-shot {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--armora-border);
-}
 
 .armora-gallery figcaption {
   font-size: 0.85rem;

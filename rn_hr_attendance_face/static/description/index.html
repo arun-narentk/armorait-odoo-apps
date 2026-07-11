@@ -62,11 +62,26 @@ a { color: var(--armora-primary); }
   font-size: 0.88rem;
 }
 
-.armora-hero img.banner {
+.armora-gallery img,
+.armora-shot-wide,
+.armora-shot,
+.armora-hero img.banner,
+.armora-hero img.loempia_app_cover {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--armora-border);
+}
+
+.armora-hero img.banner,
+.armora-hero img.loempia_app_cover {
   max-width: min(100%, 960px);
-  margin-top: 24px;
+  margin: 24px auto 0;
   border-radius: var(--armora-radius);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: none;
 }
 
 .armora-section {
@@ -116,7 +131,7 @@ a { color: var(--armora-primary); }
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 600;
   color: var(--module-accent, var(--armora-primary));
   padding: 16px;
@@ -129,9 +144,14 @@ a { color: var(--armora-primary); }
   border: 1px solid var(--armora-border);
   border-radius: 8px;
   padding: 8px 14px;
+  white-space: nowrap;
 }
 
-.armora-workflow .arrow { color: var(--armora-muted); }
+.armora-workflow .arrow {
+  color: var(--armora-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+}
 
 .armora-gallery {
   display: grid;
@@ -140,14 +160,6 @@ a { color: var(--armora-primary); }
 }
 
 .armora-gallery figure { margin: 0; }
-
-.armora-gallery img,
-.armora-shot-wide,
-.armora-shot {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--armora-border);
-}
 
 .armora-gallery figcaption {
   font-size: 0.85rem;
@@ -301,6 +313,7 @@ a { color: var(--armora-primary); }
   </div>
 </section>
 
+
 <section class="armora-section" id="workflow">
   <h2>Workflow</h2>
   <div class="armora-workflow">
@@ -308,139 +321,47 @@ a { color: var(--armora-primary); }
     
     <span class="step">Enroll employee face</span>
     
-    <span class="arrow">&#8595;</span>
+    <span class="arrow">&#8594;</span>
     <span class="step">Open kiosk</span>
     
-    <span class="arrow">&#8595;</span>
+    <span class="arrow">&#8594;</span>
     <span class="step">Capture and match</span>
     
-    <span class="arrow">&#8595;</span>
+    <span class="arrow">&#8594;</span>
     <span class="step">Create attendance</span>
     
-    <span class="arrow">&#8595;</span>
+    <span class="arrow">&#8594;</span>
     <span class="step">Review logs</span>
     
   </div>
 </section>
 
 
-<section class="armora-section" id="dashboard">
-  <h2>Dashboard</h2>
-  <p>KPI cards, filters, and operational views designed for managers and daily reviews.</p>
-  <img class="armora-shot-wide" src="dashboard.png" alt="Dashboard">
-  
-  <p><img class="armora-shot-wide" src="dashboard.gif" alt="Dashboard demo"></p>
-  
-</section>
-
-
-
 
 <section class="armora-section" id="screenshots">
   <h2>Screenshots</h2>
-  <p>Real Odoo backend captures from a working instance. Desktop and mobile views included.</p>
+  <p>Key views from Attendance Face Recognition on Odoo 19 Community.</p>
   <div class="armora-gallery">
     
     <figure>
-      <img src="overview.png" alt="Overview">
-      <figcaption>Overview</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="dashboard.png" alt="Dashboard">
-      <figcaption>Dashboard</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="list.png" alt="List View">
-      <figcaption>List View</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="form.png" alt="Form View">
-      <figcaption>Form View</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="wizard.png" alt="Wizard">
-      <figcaption>Wizard</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="settings.png" alt="Settings">
-      <figcaption>Settings</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="report.png" alt="Report">
-      <figcaption>Report</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="kanban.png" alt="Kanban">
-      <figcaption>Kanban</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="search.png" alt="Search">
-      <figcaption>Search</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="mobile.png" alt="Mobile">
-      <figcaption>Mobile</figcaption>
-    </figure>
-    
-  </div>
-</section>
-
-<section class="armora-section" id="demos">
-  <h2>Product Demonstrations</h2>
-  <p>20 to 30 second GIF recordings for hero, workflow, settings, and mobile flows.</p>
-  <div class="armora-gallery">
-    
-    <figure>
-      <img src="hero.gif" alt="Hero Demo">
-      <figcaption>Hero Demo</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="workflow.gif" alt="Workflow">
+      <img src="workflow.png" alt="Workflow" loading="lazy">
       <figcaption>Workflow</figcaption>
     </figure>
     
     <figure>
-      <img src="dashboard.gif" alt="Dashboard Demo">
-      <figcaption>Dashboard Demo</figcaption>
+      <img src="dashboard.png" alt="Dashboard" loading="lazy">
+      <figcaption>Dashboard</figcaption>
     </figure>
     
     <figure>
-      <img src="settings.gif" alt="Settings">
-      <figcaption>Settings</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="reports.gif" alt="Reports">
-      <figcaption>Reports</figcaption>
-    </figure>
-    
-    <figure>
-      <img src="mobile.gif" alt="Mobile">
-      <figcaption>Mobile</figcaption>
+      <img src="designer.png" alt="Designer" loading="lazy">
+      <figcaption>Designer</figcaption>
     </figure>
     
   </div>
 </section>
 
 
-<section class="armora-section" id="mobile">
-  <h2>Mobile Friendly</h2>
-  <p>Responsive layouts for phones and tablets.</p>
-  <img class="armora-shot" src="mobile.png" alt="Mobile view">
-  
-  <p><img class="armora-shot-wide" src="mobile.gif" alt="Mobile demo"></p>
-  
-</section>
 
 
 <section class="armora-section armora-faq" id="faq">

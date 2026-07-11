@@ -19,17 +19,9 @@ LEGACY_CATALOG = ARMORA_ROOT / 'tools' / 'apps_marketplace' / 'catalog.json'
 ZIP_OUT = ARMORA_ROOT / 'apps_store_zips'
 
 SCREENSHOT_MAP = {
-    'overview': 'overview.png',
+    'workflow': 'workflow.png',
     'dashboard': 'dashboard.png',
-    'list': 'list.png',
-    'form': 'form.png',
-    'wizard': 'wizard.png',
-    'settings': 'settings.png',
-    'report': 'report.png',
-    'kanban': 'kanban.png',
-    'search': 'search.png',
-    'mobile': 'mobile.png',
-    'main': 'main_screenshot.png',
+    'designer': 'designer.png',
 }
 
 GIF_MAP = {
@@ -42,18 +34,37 @@ GIF_MAP = {
 }
 
 SCREENSHOT_LABELS = {
-    'overview.png': 'Overview',
+    'workflow.png': 'Workflow',
     'dashboard.png': 'Dashboard',
-    'list.png': 'List View',
-    'form.png': 'Form View',
-    'wizard.png': 'Wizard',
-    'settings.png': 'Settings',
-    'report.png': 'Report',
-    'kanban.png': 'Kanban',
-    'search.png': 'Search',
-    'mobile.png': 'Mobile',
-    'main_screenshot.png': 'Main Screenshot',
+    'designer.png': 'Designer',
 }
+
+LEGACY_DESCRIPTION_FILES = frozenset({
+    'overview.png',
+    'list.png',
+    'form.png',
+    'wizard.png',
+    'settings.png',
+    'report.png',
+    'kanban.png',
+    'search.png',
+    'mobile.png',
+    'main_screenshot.png',
+    'ai_builder.png',
+    'execution.png',
+    'monitoring.png',
+    'screenshot_contact_phone.png',
+    'screenshot_invoice_form.png',
+    'screenshot_whatsapp_message.png',
+    'hero.gif',
+    'workflow.gif',
+    'dashboard.gif',
+    'settings.gif',
+    'reports.gif',
+    'mobile.gif',
+    'banner.gif',
+    'banner_small.gif',
+})
 
 GIF_LABELS = {
     'hero.gif': 'Hero Demo',
@@ -76,8 +87,9 @@ CATEGORY_LABELS = {
 MANIFEST_IMAGES = [
     'static/description/banner.png',
     'static/description/icon.png',
-    'static/description/overview.png',
+    'static/description/workflow.png',
     'static/description/dashboard.png',
+    'static/description/designer.png',
 ]
 
 SKIP_MODULE_DIRS = frozenset({
@@ -284,7 +296,18 @@ def related_products(technical_name: str, category_type: str, catalog: dict, lim
     return items[:limit]
 
 
+def cleanup_description_assets(desc_dir: Path) -> None:
+    """Remove stale capture files that break Apps Store index.html layouts."""
+    if not desc_dir.is_dir():
+        return
+    for name in LEGACY_DESCRIPTION_FILES:
+        path = desc_dir / name
+        if path.is_file():
+            path.unlink()
+
+
 def sync_media(mod_dir: Path, config: dict, desc_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
+    cleanup_description_assets(desc_dir)
     mp = mod_dir / 'marketplace'
     screenshots_cfg = config.get('screenshots', {})
     gifs_cfg = config.get('gifs', {})
@@ -292,43 +315,35 @@ def sync_media(mod_dir: Path, config: dict, desc_dir: Path) -> tuple[dict[str, s
     gifs: dict[str, str] = {}
 
     for key, filename in SCREENSHOT_MAP.items():
+        dest = desc_dir / filename
+        if dest.exists():
+            screenshots[key] = filename
+            continue
         candidates = []
         if key in screenshots_cfg:
             candidates.append(mp / screenshots_cfg[key])
         candidates.extend([
             mp / 'screenshots' / filename,
             mp / 'screenshots' / f'{key}.png',
-            desc_dir / filename,
         ])
         for src in candidates:
             if src.exists():
-                shutil.copy2(src, desc_dir / filename)
+                if src.resolve() != dest.resolve():
+                    shutil.copy2(src, dest)
                 screenshots[key] = filename
                 break
-        else:
-            screenshots[key] = filename
 
     for key, filename in GIF_MAP.items():
-        candidates = []
-        if key in gifs_cfg:
-            candidates.append(mp / gifs_cfg[key])
-        candidates.extend([
-            mp / 'gifs' / filename,
-            mp / 'gifs' / f'{key}.gif',
-            desc_dir / filename,
-        ])
-        for src in candidates:
-            if src.exists():
-                shutil.copy2(src, desc_dir / filename)
-                gifs[key] = filename
-                break
-        else:
-            gifs[key] = ''
+        dest = desc_dir / filename
+        if dest.exists():
+            gifs[key] = filename
 
     for extra in ('icon.png', 'banner.png', 'banner_small.png'):
         for src in (mp / 'assets' / extra, desc_dir / extra):
             if src.exists():
-                shutil.copy2(src, desc_dir / extra)
+                dest = desc_dir / extra
+                if src.resolve() != dest.resolve():
+                    shutil.copy2(src, dest)
                 break
 
     return screenshots, gifs
