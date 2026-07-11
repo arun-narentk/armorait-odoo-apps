@@ -337,6 +337,20 @@ def sync_media(mod_dir: Path, config: dict, desc_dir: Path) -> tuple[dict[str, s
         dest = desc_dir / filename
         if dest.exists():
             gifs[key] = filename
+            continue
+        candidates = []
+        if key in gifs_cfg:
+            candidates.append(mp / gifs_cfg[key])
+        candidates.extend([
+            mp / 'gifs' / filename,
+            mp / 'gifs' / f'{key}.gif',
+        ])
+        for src in candidates:
+            if src.exists():
+                if src.resolve() != dest.resolve():
+                    shutil.copy2(src, dest)
+                gifs[key] = filename
+                break
 
     for extra in ('icon.png', 'banner.png', 'banner_small.png'):
         for src in (mp / 'assets' / extra, desc_dir / extra):

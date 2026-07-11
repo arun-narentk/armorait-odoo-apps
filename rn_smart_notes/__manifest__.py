@@ -3,7 +3,7 @@
     'name': 'Smart Notes',
     'version': '19.0.1.0.0',
     'category': 'Productivity',
-    'summary': 'Context-aware sticky notes on sales, purchases, invoices, CRM, contacts, products, and employees',
+    'summary': 'Context-aware sticky notes on any business document with pins, mentions, and reminders',
     'description': """
 Smart Notes for Odoo 19 Community
 =================================
@@ -69,8 +69,7 @@ Features
         'static/description/icon.png',
         'static/description/workflow.png',
         'static/description/dashboard.png',
-        'static/description/monitoring.png',
-        'static/description/execution.png',
+        'static/description/designer.png',
     ],
     'installable': True,
     'application': True,
