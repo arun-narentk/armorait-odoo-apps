@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rn_name_template_product_default" model="rn.name.template">
+        <field name="name">Product Default</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="template_body">{Brand} {Series} {Model} {Category}</field>
+        <field name="priority">20</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="rn_name_template_product_variant_1" model="rn.name.template.variant">
+        <field name="template_id" ref="rn_name_template_product_default"/>
+        <field name="template_body">{Brand} {Series} {Model} Laptop</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="rn_name_template_product_variant_2" model="rn.name.template.variant">
+        <field name="template_id" ref="rn_name_template_product_default"/>
+        <field name="template_body">{Brand} {Category} {Model}</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="rn_name_template_product_furniture" model="rn.name.template">
+        <field name="name">Furniture Layout</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="template_body">{Brand} {Material} {Category} {Size}</field>
+        <field name="priority">15</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="rn_name_template_partner_default" model="rn.name.template">
+        <field name="name">Contact Company</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="template_body">{Name} Technologies Pvt Ltd</field>
+        <field name="priority">10</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="rn_name_template_lead_default" model="rn.name.template">
+        <field name="name">CRM Lead Project</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="template_body">{Name} ERP Implementation</field>
+        <field name="priority">10</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="rn_name_template_project_default" model="rn.name.template">
+        <field name="name">Project Initiative</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="template_body">Corporate {Name} Redesign</field>
+        <field name="priority">10</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="rn_name_template_task_default" model="rn.name.template">
+        <field name="name">Task Follow-up</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="template_body">{Name} Review</field>
+        <field name="priority">10</field>
+        <field name="sequence">60</field>
+    </record>
+</odoo>

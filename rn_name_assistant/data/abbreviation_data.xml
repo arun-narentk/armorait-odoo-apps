@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rn_name_abbrev_ltd" model="rn.name.abbreviation">
+        <field name="short_form">Ltd</field>
+        <field name="expansion">Limited</field>
+    </record>
+    <record id="rn_name_abbrev_pvt" model="rn.name.abbreviation">
+        <field name="short_form">Pvt</field>
+        <field name="expansion">Private</field>
+    </record>
+    <record id="rn_name_abbrev_intl" model="rn.name.abbreviation">
+        <field name="short_form">Intl</field>
+        <field name="expansion">International</field>
+    </record>
+    <record id="rn_name_abbrev_co" model="rn.name.abbreviation">
+        <field name="short_form">Co</field>
+        <field name="expansion">Company</field>
+    </record>
+</odoo>

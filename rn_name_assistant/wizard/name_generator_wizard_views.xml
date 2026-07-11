@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_name_generator_wizard_form" model="ir.ui.view">
+        <field name="name">rn.name.generator.wizard.form</field>
+        <field name="model">rn.name.generator.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Suggest Name">
+                <group>
+                    <field name="current_name" readonly="1"/>
+                    <field name="preview_name" readonly="1"/>
+                </group>
+                <separator string="Suggestions"/>
+                <field name="line_ids" nolabel="1">
+                    <list create="0" delete="0" editable="bottom">
+                        <field name="sequence"/>
+                        <field name="suggested_name"/>
+                        <field name="score"/>
+                        <field name="is_selected" widget="boolean_toggle"/>
+                    </list>
+                </field>
+                <field name="selected_line_id" invisible="1"/>
+                <field name="res_model" invisible="1"/>
+                <field name="res_id" invisible="1"/>
+                <footer>
+                    <button name="action_use_selected" type="object" string="Use Selected" class="btn-primary"/>
+                    <button name="action_refresh" type="object" string="Refresh" class="btn-secondary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

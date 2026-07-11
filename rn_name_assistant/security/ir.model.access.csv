@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_name_template_user,rn.name.template user,model_rn_name_template,rn_name_assistant.group_rn_name_assistant_user,1,0,0,0
+access_rn_name_template_manager,rn.name.template manager,model_rn_name_template,rn_name_assistant.group_rn_name_assistant_manager,1,1,1,1
+access_rn_name_template_variant_manager,rn.name.template.variant manager,model_rn_name_template_variant,rn_name_assistant.group_rn_name_assistant_manager,1,1,1,1
+access_rn_name_abbreviation_user,rn.name.abbreviation user,model_rn_name_abbreviation,rn_name_assistant.group_rn_name_assistant_user,1,0,0,0
+access_rn_name_abbreviation_manager,rn.name.abbreviation manager,model_rn_name_abbreviation,rn_name_assistant.group_rn_name_assistant_manager,1,1,1,1
+access_rn_name_generator_wizard_user,rn.name.generator.wizard user,model_rn_name_generator_wizard,rn_name_assistant.group_rn_name_assistant_user,1,1,1,1
+access_rn_name_generator_wizard_line_user,rn.name.generator.wizard.line user,model_rn_name_generator_wizard_line,rn_name_assistant.group_rn_name_assistant_user,1,1,1,1
+access_rn_name_batch_wizard_user,rn.name.batch.wizard user,model_rn_name_batch_wizard,rn_name_assistant.group_rn_name_assistant_user,1,1,1,1
+access_rn_name_batch_wizard_line_user,rn.name.batch.wizard.line user,model_rn_name_batch_wizard_line,rn_name_assistant.group_rn_name_assistant_user,1,1,1,1
