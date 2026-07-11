@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_folder_sales" model="rn.bookmark.folder">
+        <field name="name">Sales</field>
+        <field name="color">green</field>
+        <field name="icon">fa-shopping-cart</field>
+        <field name="user_id" ref="base.user_admin"/>
+    </record>
+    <record id="demo_folder_invoices" model="rn.bookmark.folder">
+        <field name="name">Invoices</field>
+        <field name="color">blue</field>
+        <field name="icon">fa-file-text-o</field>
+        <field name="user_id" ref="base.user_admin"/>
+    </record>
+    <record id="demo_tag_vip" model="rn.bookmark.tag">
+        <field name="name">VIP</field>
+        <field name="color">purple</field>
+        <field name="user_id" ref="base.user_admin"/>
+    </record>
+    <record id="demo_tag_urgent" model="rn.bookmark.tag">
+        <field name="name">Urgent</field>
+        <field name="color">red</field>
+        <field name="user_id" ref="base.user_admin"/>
+    </record>
+</odoo>

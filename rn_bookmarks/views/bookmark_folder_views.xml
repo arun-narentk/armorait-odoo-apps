@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_bookmark_folder_list" model="ir.ui.view">
+        <field name="name">rn.bookmark.folder.list</field>
+        <field name="model">rn.bookmark.folder</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+                <field name="color"/>
+                <field name="bookmark_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_bookmark_folder_form" model="ir.ui.view">
+        <field name="name">rn.bookmark.folder.form</field>
+        <field name="model">rn.bookmark.folder</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_bookmarks" type="object" class="oe_stat_button" icon="fa-star">
+                            <field name="bookmark_count" widget="statinfo" string="Bookmarks"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                        <field name="sequence"/>
+                        <field name="color"/>
+                        <field name="icon"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_bookmark_folder" model="ir.actions.act_window">
+        <field name="name">Folders</field>
+        <field name="res_model">rn.bookmark.folder</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record>
+</odoo>
