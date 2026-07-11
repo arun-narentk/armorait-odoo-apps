@@ -5,7 +5,7 @@
   "category_type": "productivity",
   "price": 9.99,
   "accent": "#0d9488",
-  "version": "19.0.1.0.0",
+  "version": "19.0.1.1.0",
   "branch": "19.0",
   "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0",
   "problem": "Teams waste time copying record URLs manually, lose context in chats, and have no audit trail of what was shared.",

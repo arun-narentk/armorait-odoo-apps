@@ -9,9 +9,11 @@ FORMAT_MARKDOWN = 'markdown'
 FORMAT_HTML = 'html'
 FORMAT_NAME = 'name'
 FORMAT_JSON = 'json'
+FORMAT_LABELED_URL = 'labeled_url'
 
 COPY_FORMATS = (
     (FORMAT_URL, 'URL'),
+    (FORMAT_LABELED_URL, 'Name and URL'),
     (FORMAT_MARKDOWN, 'Markdown'),
     (FORMAT_HTML, 'HTML'),
     (FORMAT_NAME, 'Record Name'),
