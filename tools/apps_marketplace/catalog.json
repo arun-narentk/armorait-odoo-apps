@@ -2815,6 +2815,53 @@
     "has_mobile": false,
     "live_test_url": "https://www.armorait.com"
   },
+  "rn_visual_enhancer": {
+    "branch": "19.0",
+    "app_name": "Visual Enhancer",
+    "tagline": "Emoji status, badges, icons, and color accents for list and Kanban views",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#2563eb",
+    "problem": "Status fields in Odoo list and Kanban views look the same. Teams scan columns for minutes to spot paid, overdue, hot, or delayed records.",
+    "solution": "Visual Enhancer is a complete UI toolkit. Map selection values to emoji and badges, add domain color rules, and highlight rows and Kanban cards without custom code.",
+    "benefits": [
+      "Emoji status maps for Paid, Draft, Hot, Overdue, and custom values",
+      "Priority color rules with domains on any model",
+      "Icons, badges, and row accents in list and Kanban views",
+      "Works on sales, invoices, CRM, stock, HR, and projects",
+      "Cached evaluation for responsive list pages"
+    ],
+    "features": [
+      {
+        "title": "Emoji status maps",
+        "text": "Replace plain Paid or Draft text with emoji labels administrators configure per field value."
+      },
+      {
+        "title": "Color rules",
+        "text": "Define domain-based rules with priority, color, icon, emoji, and badge label."
+      },
+      {
+        "title": "List and Kanban accents",
+        "text": "Row highlights and card accents make records understandable at a glance."
+      },
+      {
+        "title": "Any model",
+        "text": "Configure rules and status maps for CRM, sales, invoices, stock, HR, projects, or custom apps."
+      }
+    ],
+    "workflow": [
+      "Open Status Maps",
+      "Map field values to emoji",
+      "Create color rules",
+      "Set priority and domain",
+      "View tagged records"
+    ],
+    "seo_keywords": "Odoo 19 visual enhancer, emoji status, list view badges, kanban colors, CRM hot lead, invoice paid emoji, ARMORA",
+    "has_dashboard": true,
+    "has_reports": true,
+    "has_mobile": true,
+    "live_test_url": "https://www.armorait.com"
+  },
   "rn_formula_fields": {
     "branch": "19.0",
     "app_name": "Formula Fields",

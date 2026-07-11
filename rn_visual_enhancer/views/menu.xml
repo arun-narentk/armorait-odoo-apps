@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_color_tags_root"
+        name="Visual Enhancer"
+        web_icon="rn_visual_enhancer,static/description/icon.png"
+        groups="rn_visual_enhancer.group_rn_color_tags_user"
+        sequence="47"/>
+
+    <menuitem id="menu_rn_color_rule"
+        name="Color Rules"
+        parent="menu_rn_color_tags_root"
+        action="action_rn_color_rule"
+        groups="rn_visual_enhancer.group_rn_color_tags_manager"
+        sequence="10"/>
+
+    <menuitem id="menu_rn_visual_status"
+        name="Status Maps"
+        parent="menu_rn_color_tags_root"
+        action="action_rn_visual_status"
+        groups="rn_visual_enhancer.group_rn_color_tags_manager"
+        sequence="20"/>
+</odoo>

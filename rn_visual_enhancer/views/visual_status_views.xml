@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_visual_status_tree" model="ir.ui.view">
+        <field name="name">rn.visual.status.tree</field>
+        <field name="model">rn.visual.status</field>
+        <field name="arch" type="xml">
+            <list string="Status Maps" default_order="sequence, id">
+                <field name="sequence" widget="handle"/>
+                <field name="model_id"/>
+                <field name="field_name"/>
+                <field name="field_value"/>
+                <field name="emoji"/>
+                <field name="icon"/>
+                <field name="color"/>
+                <field name="label"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_visual_status_form" model="ir.ui.view">
+        <field name="name">rn.visual.status.form</field>
+        <field name="model">rn.visual.status</field>
+        <field name="arch" type="xml">
+            <form string="Status Map">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id"/>
+                            <field name="field_name"/>
+                            <field name="field_value"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="emoji"/>
+                            <field name="icon"/>
+                            <field name="color"/>
+                            <field name="label"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_visual_status_search" model="ir.ui.view">
+        <field name="name">rn.visual.status.search</field>
+        <field name="model">rn.visual.status</field>
+        <field name="arch" type="xml">
+            <search string="Status Maps">
+                <field name="model_id"/>
+                <field name="field_name"/>
+                <field name="field_value"/>
+                <field name="label"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <filter name="filter_active" string="Active" domain="[('active', '=', True)]"/>
+                <group>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_visual_status" model="ir.actions.act_window">
+        <field name="name">Status Maps</field>
+        <field name="res_model">rn.visual.status</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_rn_visual_status_search"/>
+        <field name="help" type="html">
+            <p>Map selection field values to emoji, icons, colors, and badge labels.</p>
+        </field>
+    </record>
+</odoo>

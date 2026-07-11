@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_color_rule_user,rn.color.rule user,model_rn_color_rule,rn_visual_enhancer.group_rn_color_tags_user,1,0,0,0
+access_rn_color_rule_manager,rn.color.rule manager,model_rn_color_rule,rn_visual_enhancer.group_rn_color_tags_manager,1,1,1,1
+access_rn_color_rule_service_user,rn.color.rule.service user,model_rn_color_rule_service,rn_visual_enhancer.group_rn_color_tags_user,1,0,0,0
+access_rn_visual_status_user,rn.visual.status user,model_rn_visual_status,rn_visual_enhancer.group_rn_color_tags_user,1,0,0,0
+access_rn_visual_status_manager,rn.visual.status manager,model_rn_visual_status,rn_visual_enhancer.group_rn_color_tags_manager,1,1,1,1
