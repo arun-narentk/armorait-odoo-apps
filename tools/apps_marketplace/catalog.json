@@ -989,54 +989,6 @@
     "has_mobile": true,
     "live_test_url": "https://www.armorait.com"
   },
-  "account_invoice_whatsapp": {
-    "branch": null,
-    "app_name": "WhatsApp Odoo Integration",
-    "tagline": "Send Sale Orders, Purchase Orders, Invoices & Delivery via WhatsApp",
-    "category_type": "platform",
-    "price": 79.99,
-    "accent": "#2563eb",
-    "problem": "Teams running Odoo 19 need a reliable way to manage whatsapp odoo integration without spreadsheets or disconnected tools.",
-    "solution": "Send Sale Orders, Purchase Orders, Invoices & Delivery via WhatsApp",
-    "benefits": [
-      "Streamline whatsapp odoo integration workflows in Odoo",
-      "Built for Odoo 19 Community",
-      "Production-ready ARMORA architecture",
-      "Multi-company aware where applicable",
-      "Support from ARMORA IT Technologies"
-    ],
-    "features": [
-      {
-        "title": "Odoo-native",
-        "text": "WhatsApp Odoo Integration extends standard Odoo models and views."
-      },
-      {
-        "title": "Configurable",
-        "text": "Settings, security groups, and menus included."
-      },
-      {
-        "title": "Documented",
-        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
-      },
-      {
-        "title": "Commercial support",
-        "text": "Contact info@armorait.com for rollout help."
-      }
-    ],
-    "workflow": [
-      "Install module",
-      "Configure settings",
-      "Assign user groups",
-      "Run daily workflows",
-      "Review KPIs and reports",
-      "Scale across companies"
-    ],
-    "seo_keywords": "Odoo 19, Odoo Community, WhatsApp Odoo Integration, account_invoice_whatsapp, ARMORA IT Technologies",
-    "has_dashboard": false,
-    "has_reports": true,
-    "has_mobile": true,
-    "live_test_url": "https://www.armorait.com"
-  },
   "rn_ai_email_intelligence": {
     "branch": null,
     "app_name": "AI Email Intelligence",

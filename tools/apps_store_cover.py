@@ -35,14 +35,9 @@ PEACOCK_EMERALD = '#10b981'
 TITLE_COLOR = WHITE
 PANEL_GLOW = '#1e40af'
 WEBSITE_PILL = 'www.armorait.com'
+WEBSITE_URL = 'https://www.armorait.com/'
 
-DEFAULT_BRAND_LOGO = (
-    Path(__file__).resolve().parents[1]
-    / 'rn_ai_employee'
-    / 'static'
-    / 'description'
-    / 'armorait_brand_logo.png'
-)
+DEFAULT_BRAND_LOGO = Path(__file__).resolve().parent / 'armorait_brand_logo.png'
 DEFAULT_COVER_LOGO = Path(__file__).resolve().parent / 'armorait_cover_logo.png'
 LOGO_MARK_CROP = (0.16, 0.02, 0.84, 0.78)
 LOGO_LEFT_CROP = (0.18, 0.02, 0.82, 0.56)
@@ -390,15 +385,15 @@ def _draw_left_logo_disc(
 
 
 def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
-    """Website label on peacock background."""
+    """Website label below the V19 badge (top-right)."""
     draw = ImageDraw.Draw(img)
-    pill_font = _font(max(14, int(h * 0.024)), True)
+    pill_font = _font(max(12, int(h * 0.022)), True)
     tw, th = _text_size(draw, WEBSITE_PILL, pill_font)
-    pad_x, pad_y = 16, 8
+    pad_x, pad_y = 14, 7
     pill_w = tw + pad_x * 2
     pill_h = th + pad_y * 2
     pill_x = w - pill_w - 22
-    pill_y = 62
+    pill_y = 58
     _rounded_rect(
         draw,
         (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
@@ -413,6 +408,40 @@ def _draw_website_pill(img: Image.Image, w: int, h: int) -> None:
         font=pill_font,
         fill=WHITE,
     )
+
+
+def _draw_company_logo_badge(
+    img: Image.Image,
+    w: int,
+    h: int,
+    brand_logo: Path | None = None,
+) -> None:
+    """Bottom-right ARMORA company logo strip on every loempia_app_cover."""
+    logo_path = brand_logo or DEFAULT_BRAND_LOGO
+    if not logo_path.is_file():
+        return
+    source = Image.open(logo_path).convert('RGBA')
+    target_h = max(40, int(h * 0.105))
+    scale = target_h / max(source.height, 1)
+    target_w = max(1, int(source.width * scale))
+    mark = source.resize((target_w, target_h), RESAMPLE)
+
+    pad_x, pad_y = 14, 10
+    badge_x2 = w - 18
+    badge_x1 = badge_x2 - target_w - pad_x * 2
+    badge_y2 = h - 16
+    badge_y1 = badge_y2 - target_h - pad_y * 2
+
+    draw = ImageDraw.Draw(img)
+    _rounded_rect(
+        draw,
+        (badge_x1, badge_y1, badge_x2, badge_y2),
+        10,
+        NAVY_SHADOW,
+        outline=PEACOCK_CYAN,
+        width=2,
+    )
+    img.paste(mark, (badge_x1 + pad_x, badge_y1 + pad_y), mark)
 
 
 def _draw_gradient_rounded_rect(
@@ -470,6 +499,7 @@ def _draw_app_cover_layout(
     subtitle: str | list[str],
     w: int = 1200,
     h: int = 600,
+    brand_logo: Path | None = None,
 ) -> Image.Image:
     """Cover art with disc shell only (no shimmer or module icon). Used as GIF base."""
     subtitle_lines = subtitle if isinstance(subtitle, list) else [subtitle]
@@ -477,6 +507,7 @@ def _draw_app_cover_layout(
     draw = ImageDraw.Draw(img)
     _draw_cover_background(img, w, h)
     _draw_odoo_version_badge(img, w, h)
+    _draw_website_pill(img, w, h)
     _draw_left_logo_disc(img, w, h, shell_only=True)
 
     content_left = int(w * 0.50)
@@ -510,7 +541,7 @@ def _draw_app_cover_layout(
         )
         sub_y += sub_line_h
 
-    _draw_website_pill(img, w, h)
+    _draw_company_logo_badge(img, w, h, brand_logo=brand_logo)
     return img
 
 
@@ -525,7 +556,8 @@ def draw_app_cover(
     module_mark: Image.Image | None = None,
 ) -> Image.Image:
     """Render loempia_app_cover style banner for one module."""
-    img = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h)
+    brand_path = brand_logo or DEFAULT_BRAND_LOGO
+    img = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, brand_logo=brand_path)
     _draw_disc_content(img, w, h, disc_phase, module_mark=module_mark)
     return img
 
@@ -544,7 +576,8 @@ def draw_app_cover_gif_frames(
     _, _, _, inner = _disc_geometry(w, h)
     if module_mark is None:
         module_mark = Image.new('RGBA', (inner * 2, inner * 2), (0, 0, 0, 0))
-    layout = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h)
+    brand_path = brand_logo or DEFAULT_BRAND_LOGO
+    layout = _draw_app_cover_layout(title_lines, subtitle, w=w, h=h, brand_logo=brand_path)
     frames: list[Image.Image] = []
     for index in range(frame_count):
         phase = index / max(frame_count - 1, 1)
@@ -583,10 +616,15 @@ def save_cover_assets(
     out.mkdir(parents=True, exist_ok=True)
     module_slug = module_dir.name
     logo_src = cover_logo or DEFAULT_COVER_LOGO
+    brand_src = DEFAULT_BRAND_LOGO
     if logo_src.is_file():
         dest = out / 'armorait_cover_logo.png'
         if logo_src.resolve() != dest.resolve():
             shutil.copy2(logo_src, dest)
+    if brand_src.is_file():
+        brand_dest = out / 'armorait_brand_logo.png'
+        if brand_src.resolve() != brand_dest.resolve():
+            shutil.copy2(brand_src, brand_dest)
 
     icon = draw_module_icon(module_slug, module_name, module_summary)
     icon.save(out / 'icon.png', 'PNG', optimize=True)
@@ -594,11 +632,21 @@ def save_cover_assets(
     _, _, _, inner = _disc_geometry(1200, 600)
     module_mark = module_icon_for_disc(module_slug, module_name, module_summary, inner * 2 - 28)
 
-    banner = draw_app_cover(title_lines, subtitle, module_mark=module_mark)
+    banner = draw_app_cover(
+        title_lines,
+        subtitle,
+        brand_logo=brand_src,
+        module_mark=module_mark,
+    )
     banner.save(out / 'banner.png', 'PNG', optimize=True)
     banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
     if animated:
-        frames = draw_app_cover_gif_frames(title_lines, subtitle, module_mark=module_mark)
+        frames = draw_app_cover_gif_frames(
+            title_lines,
+            subtitle,
+            brand_logo=brand_src,
+            module_mark=module_mark,
+        )
         save_cover_gif(frames, out / 'banner.gif')
         small_frames = [frame.resize((360, 180), RESAMPLE) for frame in frames]
         save_cover_gif(small_frames, out / 'banner_small.gif')

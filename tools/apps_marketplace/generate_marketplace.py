@@ -12,6 +12,7 @@ import re
 import shutil
 import struct
 import subprocess
+import sys
 import textwrap
 import zlib
 from pathlib import Path
