@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="rn_qr_template_small" model="rn.qr.template">
+        <field name="name">Small</field>
+        <field name="code">small</field>
+        <field name="size">small</field>
+        <field name="template_type">small</field>
+    </record>
+    <record id="rn_qr_template_large" model="rn.qr.template">
+        <field name="name">Large</field>
+        <field name="code">large</field>
+        <field name="size">large</field>
+        <field name="template_type">large</field>
+    </record>
+    <record id="rn_qr_template_warehouse" model="rn.qr.template">
+        <field name="name">Warehouse</field>
+        <field name="code">warehouse</field>
+        <field name="size">small</field>
+        <field name="template_type">warehouse</field>
+    </record>
+    <record id="rn_qr_template_office" model="rn.qr.template">
+        <field name="name">Office</field>
+        <field name="code">office</field>
+        <field name="size">small</field>
+        <field name="template_type">office</field>
+    </record>
+    <record id="rn_qr_template_customer" model="rn.qr.template">
+        <field name="name">Customer</field>
+        <field name="code">customer</field>
+        <field name="size">small</field>
+        <field name="template_type">customer</field>
+    </record>
+    <record id="rn_qr_template_manufacturing" model="rn.qr.template">
+        <field name="name">Manufacturing</field>
+        <field name="code">manufacturing</field>
+        <field name="size">large</field>
+        <field name="template_type">manufacturing</field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="qr_template_small" model="rn.qr.template">
+        <field name="name">Small Label</field>
+        <field name="code">small</field>
+        <field name="sequence">10</field>
+        <field name="qr_size">100</field>
+        <field name="label_width_mm">40</field>
+        <field name="label_height_mm">25</field>
+    </record>
+    <record id="qr_template_large" model="rn.qr.template">
+        <field name="name">Large Label</field>
+        <field name="code">large</field>
+        <field name="sequence">20</field>
+        <field name="qr_size">300</field>
+        <field name="label_width_mm">80</field>
+        <field name="label_height_mm">50</field>
+    </record>
+    <record id="qr_template_warehouse" model="rn.qr.template">
+        <field name="name">Warehouse</field>
+        <field name="code">warehouse</field>
+        <field name="sequence">30</field>
+        <field name="qr_size">200</field>
+        <field name="qr_color">green</field>
+        <field name="show_barcode">True</field>
+        <field name="label_width_mm">60</field>
+        <field name="label_height_mm">40</field>
+    </record>
+    <record id="qr_template_office" model="rn.qr.template">
+        <field name="name">Office</field>
+        <field name="code">office</field>
+        <field name="sequence">40</field>
+        <field name="qr_size">200</field>
+        <field name="qr_color">blue</field>
+    </record>
+    <record id="qr_template_customer" model="rn.qr.template">
+        <field name="name">Customer</field>
+        <field name="code">customer</field>
+        <field name="sequence">50</field>
+        <field name="qr_size">200</field>
+        <field name="action_type">portal_page</field>
+    </record>
+    <record id="qr_template_manufacturing" model="rn.qr.template">
+        <field name="name">Manufacturing</field>
+        <field name="code">manufacturing</field>
+        <field name="sequence">60</field>
+        <field name="qr_size">300</field>
+        <field name="qr_color">black</field>
+        <field name="use_logo">True</field>
+    </record>
+
+    <record id="qr_config_sale_order" model="rn.qr.model.config">
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="enable_report">True</field>
+        <field name="template_id" ref="qr_template_customer"/>
+    </record>
+    <record id="qr_config_purchase_order" model="rn.qr.model.config">
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="enable_report">True</field>
+        <field name="template_id" ref="qr_template_office"/>
+    </record>
+    <record id="qr_config_account_move" model="rn.qr.model.config">
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="enable_report">True</field>
+        <field name="template_id" ref="qr_template_customer"/>
+    </record>
+    <record id="qr_config_res_partner" model="rn.qr.model.config">
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="template_id" ref="qr_template_office"/>
+    </record>
+    <record id="qr_config_product_template" model="rn.qr.model.config">
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="template_id" ref="qr_template_warehouse"/>
+        <field name="auto_generate">False</field>
+    </record>
+    <record id="qr_config_crm_lead" model="rn.qr.model.config">
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="template_id" ref="qr_template_office"/>
+    </record>
+    <record id="qr_config_stock_picking" model="rn.qr.model.config">
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="enable_report">True</field>
+        <field name="template_id" ref="qr_template_warehouse"/>
+    </record>
+</odoo>

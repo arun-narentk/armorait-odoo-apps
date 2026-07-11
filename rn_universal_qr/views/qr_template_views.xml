@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_template_list" model="ir.ui.view">
+        <field name="name">rn.qr.template.list</field>
+        <field name="model">rn.qr.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="template_type"/>
+                <field name="size"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_template_form" model="ir.ui.view">
+        <field name="name">rn.qr.template.form</field>
+        <field name="model">rn.qr.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="template_type"/>
+                            <field name="size"/>
+                            <field name="include_company"/>
+                            <field name="include_model"/>
+                            <field name="include_record_name"/>
+                            <field name="include_reference"/>
+                        </group>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_template_tree" model="ir.ui.view">
+        <field name="name">rn.qr.template.list</field>
+        <field name="model">rn.qr.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="qr_size"/>
+                <field name="qr_color"/>
+                <field name="action_type"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_template_form" model="ir.ui.view">
+        <field name="name">rn.qr.template.form</field>
+        <field name="model">rn.qr.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="payload_type"/>
+                            <field name="action_type"/>
+                        </group>
+                        <group>
+                            <field name="qr_size"/>
+                            <field name="qr_color"/>
+                            <field name="custom_color" invisible="qr_color != 'custom'"/>
+                            <field name="ecc_level"/>
+                            <field name="use_logo"/>
+                        </group>
+                    </group>
+                    <group string="Label Layout">
+                        <group>
+                            <field name="label_width_mm"/>
+                            <field name="label_height_mm"/>
+                            <field name="font_size"/>
+                        </group>
+                        <group>
+                            <field name="show_record_name"/>
+                            <field name="show_barcode"/>
+                        </group>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_qr_template" model="ir.actions.act_window">
+        <field name="name">QR Templates</field>
+        <field name="res_model">rn.qr.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

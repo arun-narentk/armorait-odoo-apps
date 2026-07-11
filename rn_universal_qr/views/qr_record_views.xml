@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_record_list" model="ir.ui.view">
+        <field name="name">rn.qr.record.list</field>
+        <field name="model">rn.qr.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="res_id"/>
+                <field name="token"/>
+                <field name="scan_count"/>
+                <field name="expiration_datetime"/>
+                <field name="is_expired"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_record_form" model="ir.ui.view">
+        <field name="name">rn.qr.record.form</field>
+        <field name="model">rn.qr.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_open_document" type="object" string="Open Document" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="token"/>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="template_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="scan_count" readonly="1"/>
+                            <field name="first_scanned_at" readonly="1"/>
+                            <field name="last_scanned_at" readonly="1"/>
+                            <field name="expiration_datetime"/>
+                            <field name="is_expired" readonly="1"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="QR">
+                        <field name="qr_url" readonly="1"/>
+                        <field name="qr_image" widget="image"/>
+                        <field name="qr_svg"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_record_tree" model="ir.ui.view">
+        <field name="name">rn.qr.record.list</field>
+        <field name="model">rn.qr.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="res_name"/>
+                <field name="payload_type"/>
+                <field name="action_type"/>
+                <field name="scan_count"/>
+                <field name="last_scan"/>
+                <field name="expires_on"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_record_form" model="ir.ui.view">
+        <field name="name">rn.qr.record.form</field>
+        <field name="model">rn.qr.record</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_image" type="object" string="Generate" class="btn-primary"/>
+                    <button name="action_regenerate_token" type="object" string="Regenerate Token"/>
+                    <button name="action_open_target_record" type="object" string="Open Record"/>
+                    <button name="action_view_scan_logs" type="object" string="Scan Logs"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_view_scan_logs" icon="fa-bar-chart">
+                            <field name="scan_count" widget="statinfo" string="Scans"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="res_name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="token"/>
+                            <field name="qr_url" widget="url"/>
+                        </group>
+                        <group>
+                            <field name="payload_type"/>
+                            <field name="action_type"/>
+                            <field name="custom_text"/>
+                            <field name="custom_url"/>
+                            <field name="server_action_id"/>
+                            <field name="template_id"/>
+                            <field name="expiration_policy"/>
+                            <field name="expires_on"/>
+                            <field name="enable_report"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Appearance">
+                        <group>
+                            <field name="qr_size"/>
+                            <field name="qr_color"/>
+                            <field name="custom_color" invisible="qr_color != 'custom'"/>
+                            <field name="ecc_level"/>
+                            <field name="use_logo"/>
+                        </group>
+                        <group>
+                            <field name="qr_image" widget="image" class="oe_avatar"/>
+                            <field name="first_scan"/>
+                            <field name="last_scan"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_record_search" model="ir.ui.view">
+        <field name="name">rn.qr.record.search</field>
+        <field name="model">rn.qr.record</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="res_name"/>
+                <field name="token"/>
+                <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="expired" string="Expired" domain="[('expires_on', '!=', False)]"/>
+                <group>
+                    <filter name="group_model" string="Model" context="{'group_by': 'res_model'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_qr_record" model="ir.actions.act_window">
+        <field name="name">QR Records</field>
+        <field name="res_model">rn.qr.record</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

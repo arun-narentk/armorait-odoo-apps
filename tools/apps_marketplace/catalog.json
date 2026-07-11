@@ -2717,5 +2717,52 @@
     "has_reports": false,
     "has_mobile": false,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_universal_qr": {
+    "branch": "feature/rn-universal-qr",
+    "app_name": "Universal QR",
+    "tagline": "Generate, track, and print QR codes for any Odoo business record",
+    "category_type": "productivity",
+    "price": 8.99,
+    "accent": "#2563eb",
+    "problem": "Teams need a standard way to generate and track QR codes across multiple Odoo apps without custom development per model.",
+    "solution": "Universal QR adds one global framework for QR creation, token routing, scan analytics, and report embedding across Sales, Purchase, Accounting, CRM, Contacts, Product, and Stock.",
+    "benefits": [
+      "Generate QR from any business form",
+      "Track scans with token logs and timestamps",
+      "Use templates for warehouse, office, customer, and manufacturing",
+      "Bulk export PNG QR files in ZIP format",
+      "Embed QR in standard business PDFs"
+    ],
+    "features": [
+      {
+        "title": "Global QR Fields",
+        "text": "A base mixin adds QR token, image, URL, and scan metrics to all records."
+      },
+      {
+        "title": "Public Scan Route",
+        "text": "Token endpoint resolves documents and logs source details safely."
+      },
+      {
+        "title": "Model Configuration",
+        "text": "Configure template and dynamic view generation per model."
+      },
+      {
+        "title": "Reports and Bulk ZIP",
+        "text": "Print labels, A4 sheets, and generate QR ZIP exports from wizard."
+      }
+    ],
+    "workflow": [
+      "Configure defaults",
+      "Generate QR on records",
+      "Print QR-enabled document",
+      "Scan token route",
+      "Review scan logs"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, universal QR, QR code labels, scan analytics",
+    "has_dashboard": true,
+    "has_reports": true,
+    "has_mobile": true,
+    "live_test_url": "https://www.armorait.com"
   }
 }
