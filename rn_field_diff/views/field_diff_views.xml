@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_field_diff_tree" model="ir.ui.view">
+        <field name="name">rn.field.diff.tree</field>
+        <field name="model">rn.field.diff</field>
+        <field name="arch" type="xml">
+            <list string="Field Changes" default_order="changed_on desc">
+                <field name="changed_on"/>
+                <field name="field_label"/>
+                <field name="old_value_display" string="Before"/>
+                <field name="new_value_display" string="After"/>
+                <field name="difference_display" string="Difference"/>
+                <field name="color_class" widget="badge"/>
+                <field name="user_id"/>
+                <field name="field_type" optional="hide"/>
+                <field name="filter_category" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_field_diff_form" model="ir.ui.view">
+        <field name="name">rn.field.diff.form</field>
+        <field name="model">rn.field.diff</field>
+        <field name="arch" type="xml">
+            <form string="Field Change" create="false" edit="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="field_label"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="model"/>
+                            <field name="res_id"/>
+                            <field name="field_name"/>
+                            <field name="field_type"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="changed_on"/>
+                            <field name="change_category"/>
+                            <field name="color_class"/>
+                            <field name="difference_display"/>
+                        </group>
+                    </group>
+                    <group string="Comparison">
+                        <group string="Before">
+                            <field name="old_value_display" nolabel="1"/>
+                        </group>
+                        <group string="After">
+                            <field name="new_value_display" nolabel="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="mail_message_id"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_field_diff_search" model="ir.ui.view">
+        <field name="name">rn.field.diff.search</field>
+        <field name="model">rn.field.diff</field>
+        <field name="arch" type="xml">
+            <search string="Field Changes">
+                <field name="field_label"/>
+                <field name="field_name"/>
+                <field name="user_id"/>
+                <field name="model"/>
+                <filter name="filter_numeric" string="Numeric" domain="[('filter_category', '=', 'numeric')]"/>
+                <filter name="filter_date" string="Dates" domain="[('filter_category', '=', 'date')]"/>
+                <filter name="filter_text" string="Text" domain="[('filter_category', '=', 'text')]"/>
+                <filter name="filter_relational" string="Relational" domain="[('filter_category', '=', 'relational')]"/>
+                <filter name="filter_my_changes" string="My Changes" domain="[('user_id', '=', uid)]"/>
+                <group>
+                    <filter name="group_changed_on" string="Date" context="{'group_by': 'changed_on:day'}"/>
+                    <filter name="group_field" string="Field" context="{'group_by': 'field_label'}"/>
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_field_diff" model="ir.actions.act_window">
+        <field name="name">Field Changes</field>
+        <field name="res_model">rn.field.diff</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_rn_field_diff_search"/>
+        <field name="help" type="html">
+            <p>Visual before/after comparisons for tracked field changes.</p>
+        </field>
+    </record>
+</odoo>

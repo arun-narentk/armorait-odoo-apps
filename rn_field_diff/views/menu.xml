@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_field_diff_root"
+        name="Field Differences"
+        web_icon="rn_field_diff,static/description/icon.png"
+        groups="rn_field_diff.group_rn_field_diff_user"
+        sequence="48"/>
+
+    <menuitem id="menu_rn_field_diff"
+        name="Change Log"
+        parent="menu_rn_field_diff_root"
+        action="action_rn_field_diff"
+        groups="rn_field_diff.group_rn_field_diff_user"
+        sequence="10"/>
+</odoo>

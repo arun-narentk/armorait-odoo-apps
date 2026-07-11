@@ -1,0 +1,63 @@
+{
+  "technical_name": "rn_field_diff",
+  "app_name": "Field Difference Viewer",
+  "tagline": "Visual before/after field change log with highlights, summaries, and history viewer",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#2563eb",
+  "problem": "Odoo chatter shows raw field changes that are hard to scan when many values update at once.",
+  "solution": "Field Difference Viewer builds structured before/after comparisons on top of standard mail.tracking.value data. Users get color-coded diffs, numeric deltas, history smart buttons, filters, and exports.",
+  "benefits": [
+    "Readable before/after blocks instead of plain chatter lines",
+    "Numeric, date, boolean, and relational difference formatting",
+    "History smart button on sales, invoices, and CRM records",
+    "Filter by field type, user, or date",
+    "CSV and PDF export for audit teams"
+  ],
+  "features": [
+    {
+      "title": "Visual comparisons",
+      "text": "Show Before, After, and Difference for every tracked field change."
+    },
+    {
+      "title": "Smart summaries",
+      "text": "See how many numeric, date, and text fields changed at a glance."
+    },
+    {
+      "title": "History viewer",
+      "text": "Open a dedicated change log from the record smart button."
+    },
+    {
+      "title": "Audit exports",
+      "text": "Export filtered change logs to CSV or PDF."
+    }
+  ],
+  "workflow": [
+    "Edit tracked record",
+    "View visual diff in chatter",
+    "Open History smart button",
+    "Filter changes",
+    "Export audit report"
+  ],
+  "seo_keywords": "Odoo 19 field diff, change log, audit trail, chatter viewer, before after comparison, ARMORA",
+  "has_dashboard": false,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null,
+  "screenshot_labels": {
+    "overview.png": "Change Log Overview",
+    "list.png": "Field Changes List",
+    "form.png": "Diff Detail Form",
+    "dashboard.png": "Sale Order History",
+    "wizard.png": "Comparison Dialog",
+    "settings.png": "Change Filters",
+    "report.png": "PDF Export",
+    "search.png": "CRM Opportunity Diffs",
+    "kanban.png": "Timeline Mode",
+    "mobile.png": "Mobile History",
+    "workflow.png": "Diff Workflow",
+    "designer.png": "Numeric Comparison"
+  }
+}

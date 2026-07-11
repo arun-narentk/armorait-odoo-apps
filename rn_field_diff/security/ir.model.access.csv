@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_field_diff_user,rn.field.diff user,model_rn_field_diff,rn_field_diff.group_rn_field_diff_user,1,0,0,0
+access_rn_field_diff_manager,rn.field.diff manager,model_rn_field_diff,rn_field_diff.group_rn_field_diff_manager,1,1,1,1
+access_rn_field_diff_service_user,rn.field.diff.service user,model_rn_field_diff_service,rn_field_diff.group_rn_field_diff_user,1,0,0,0
+access_rn_field_diff_export_wizard_user,rn.field.diff.export.wizard user,model_rn_field_diff_export_wizard,rn_field_diff.group_rn_field_diff_user,1,1,1,1

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_field_diff.DiffViewerDialog">
+        <Dialog title="props.title or 'Field Differences'" size="'lg'">
+            <div class="rn-field-diff-viewer p-3">
+                <t t-if="state.loading">
+                    <p>Loading changes...</p>
+                </t>
+                <t t-else="">
+                    <div class="rn-field-diff-summary mb-3" t-if="state.summary.total">
+                        <strong><t t-esc="state.summary.total"/> fields changed</strong>
+                        <span class="ms-2 text-muted">
+                            <t t-if="state.summary.numeric"><t t-esc="state.summary.numeric"/> numeric</t>
+                            <t t-if="state.summary.date"> | <t t-esc="state.summary.date"/> dates</t>
+                            <t t-if="state.summary.text"> | <t t-esc="state.summary.text"/> text</t>
+                        </span>
+                    </div>
+                    <t t-foreach="state.diffs" t-as="diff" t-key="diff.id">
+                        <div t-attf-class="rn-field-diff-card rn-field-diff--{{diff.color_class}} mb-3 p-3 border rounded">
+                            <div class="fw-bold mb-2"><t t-esc="diff.field_label"/></div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="text-muted small">Before</div>
+                                    <div><t t-esc="diff.old_value or '-'"/></div>
+                                </div>
+                                <div class="col-md-2 text-center align-self-center">&#8595;</div>
+                                <div class="col-md-5">
+                                    <div class="text-muted small">After</div>
+                                    <div><t t-esc="diff.new_value or '-'"/></div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-primary" t-if="diff.difference">
+                                Difference: <t t-esc="diff.difference"/>
+                            </div>
+                            <div class="mt-1 small text-muted">
+                                <t t-esc="diff.user"/> | <t t-esc="diff.changed_on"/>
+                            </div>
+                        </div>
+                    </t>
+                    <p t-if="!state.diffs.length" class="text-muted">No tracked field changes yet.</p>
+                </t>
+            </div>
+        </Dialog>
+    </t>
+</templates>

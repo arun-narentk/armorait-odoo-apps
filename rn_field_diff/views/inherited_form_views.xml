@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_field_diff" model="ir.ui.view">
+        <field name="name">sale.order.form.field.diff</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_field_diff_history" type="object" class="oe_stat_button" icon="fa-exchange">
+                    <field name="field_diff_count" widget="statinfo" string="Changes"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form_field_diff" model="ir.ui.view">
+        <field name="name">account.move.form.field.diff</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_field_diff_history" type="object" class="oe_stat_button" icon="fa-exchange">
+                    <field name="field_diff_count" widget="statinfo" string="Changes"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_form_field_diff" model="ir.ui.view">
+        <field name="name">crm.lead.form.field.diff</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_field_diff_history" type="object" class="oe_stat_button" icon="fa-exchange">
+                    <field name="field_diff_count" widget="statinfo" string="Changes"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

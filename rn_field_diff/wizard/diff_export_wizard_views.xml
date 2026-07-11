@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_field_diff_export_wizard" model="ir.ui.view">
+        <field name="name">rn.field.diff.export.wizard.form</field>
+        <field name="model">rn.field.diff.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Field Changes">
+                <group>
+                    <field name="model" readonly="1"/>
+                    <field name="res_id" readonly="1"/>
+                    <field name="export_format"/>
+                </group>
+                <footer>
+                    <button name="action_export" type="object" string="Export" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
