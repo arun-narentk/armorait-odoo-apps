@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Record Share',
-    'version': '19.0.1.1.0',
+    'version': '19.0.1.1.1',
     'category': 'Productivity',
     'summary': 'Share Odoo records with secure links, copy formats, QR bridge, and share history',
     'description': """
@@ -40,6 +40,7 @@ Features
         'crm',
         'contacts',
         'product',
+        'project',
     ],
     'data': [
         'security/security.xml',
