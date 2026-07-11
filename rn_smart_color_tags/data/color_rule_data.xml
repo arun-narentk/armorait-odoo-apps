@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    <record id="rn_color_rule_sale_confirmed" model="rn.color.rule">
+        <field name="name">Confirmed Sale Order</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="domain">[('state', '=', 'sale')]</field>
+        <field name="color">green</field>
+        <field name="priority">90</field>
+        <field name="icon">check</field>
+        <field name="label">CONFIRMED</field>
+    </record>
+
+    <record id="rn_color_rule_sale_draft" model="rn.color.rule">
+        <field name="name">Draft Sale Order</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="domain">[('state', '=', 'draft')]</field>
+        <field name="color">gray</field>
+        <field name="priority">50</field>
+        <field name="icon">clock</field>
+        <field name="label">DRAFT</field>
+    </record>
+
+    <record id="rn_color_rule_invoice_posted" model="rn.color.rule">
+        <field name="name">Posted Customer Invoice</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="domain">[('state', '=', 'posted'), ('move_type', 'in', ('out_invoice', 'out_refund'))]</field>
+        <field name="color">blue</field>
+        <field name="priority">80</field>
+        <field name="icon">target</field>
+        <field name="label">POSTED</field>
+    </record>
+
+    <record id="rn_color_rule_crm_won" model="rn.color.rule">
+        <field name="name">Won Opportunity</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="domain">[('type', '=', 'opportunity'), ('probability', '=', 100)]</field>
+        <field name="color">purple</field>
+        <field name="priority">85</field>
+        <field name="icon">star</field>
+        <field name="label">WON</field>
+    </record>
+    </data>
+</odoo>
