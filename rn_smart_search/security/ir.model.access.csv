@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_search_history_user,rn.search.history user,model_rn_search_history,group_rn_smart_search_user,1,1,1,1
+access_rn_search_history_manager,rn.search.history manager,model_rn_search_history,group_rn_smart_search_manager,1,1,1,1
+access_rn_smart_search_service_user,rn.smart.search.service user,model_rn_smart_search_service,group_rn_smart_search_user,1,0,0,0

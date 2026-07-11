@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_smart_search.Tracker">
+        <span class="o_rn_smart_search_tracker d-none"/>
+    </t>
+</templates>

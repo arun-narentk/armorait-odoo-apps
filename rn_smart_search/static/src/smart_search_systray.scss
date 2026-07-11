@@ -1,0 +1,11 @@
+.o_rn_smart_search_systray {
+    .o_rn_smart_search_systray_panel {
+        min-width: 18rem;
+        max-width: 22rem;
+    }
+
+    .o_rn_smart_search_systray_body {
+        max-height: 20rem;
+        overflow-y: auto;
+    }
+}

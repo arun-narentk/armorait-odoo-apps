@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_config_settings_smart_search" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.smart.search</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Smart Search" name="rn_smart_search" groups="rn_smart_search.group_rn_smart_search_manager">
+                    <block title="Smart Search History">
+                        <setting string="Remember viewed records" help="Store recently opened business records for quick access.">
+                            <field name="rn_smart_search_remember_viewed"/>
+                        </setting>
+                        <setting string="Remember search queries" help="Store recent search queries in the command palette and workspace.">
+                            <field name="rn_smart_search_remember_searches"/>
+                        </setting>
+                        <setting string="Maximum history entries" help="Non-favorite entries above this limit are removed automatically.">
+                            <field name="rn_smart_search_max_history"/>
+                        </setting>
+                        <setting string="Auto-clean after (days)" help="Remove stale non-favorite entries after this many days.">
+                            <field name="rn_smart_search_auto_clean_days"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

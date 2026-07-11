@@ -1,0 +1,74 @@
+{
+  "technical_name": "rn_smart_search",
+  "app_name": "Smart Search",
+  "tagline": "Recent records, search history, favorites, and Ctrl+K quick reopen",
+  "category_type": "productivity",
+  "price": 7.99,
+  "accent": "#2563eb",
+  "version": "19.0.1.0.0",
+  "branch": "19.0",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0",
+  "problem": "Users lose time reopening the same records and repeating the same searches across Odoo menus.",
+  "solution": "Smart Search remembers viewed records and search queries per user, then surfaces them in a workspace, systray, and Ctrl+K command palette.",
+  "benefits": [
+    "Reopen recent sale orders, contacts, leads, invoices, and products faster",
+    "Keep favorite records one click away",
+    "Ctrl+K quick access without custom shortcuts",
+    "Configurable retention and automatic cleanup",
+    "Built for Odoo 19 Community with OWL 2 assets"
+  ],
+  "features": [
+    {
+      "title": "View tracking",
+      "text": "Automatically logs recently opened records on supported business documents."
+    },
+    {
+      "title": "Search history",
+      "text": "Stores recent search queries and lets users reopen filtered lists quickly."
+    },
+    {
+      "title": "Workspace",
+      "text": "Grouped favorites, recent views, and recent searches in one dashboard."
+    },
+    {
+      "title": "Ctrl+K provider",
+      "text": "Adds recent history items to the standard command palette."
+    },
+    {
+      "title": "Systray shortcut",
+      "text": "Open recent views or jump to the workspace from the top bar."
+    },
+    {
+      "title": "Retention controls",
+      "text": "Configure max history, remember toggles, and stale entry cleanup."
+    }
+  ],
+  "workflow": [
+    "Install Smart Search",
+    "Assign Smart Search user group",
+    "Open a supported form view",
+    "Press Ctrl+K or open the workspace",
+    "Pin favorites and reopen records instantly"
+  ],
+  "screenshot_labels": {
+    "workflow.png": "Form View Tracking",
+    "dashboard.png": "Smart Search Workspace",
+    "designer.png": "History List View",
+    "settings.png": "Retention Settings",
+    "mobile.png": "Mobile Workspace",
+    "report.png": "Recent Searches"
+  },
+  "gif_labels": {
+    "hero.gif": "Reopen a recent record from Ctrl+K",
+    "workflow.gif": "Track and reopen form views",
+    "dashboard.gif": "Browse workspace sections",
+    "settings.gif": "Configure history retention",
+    "reports.gif": "Review search history",
+    "mobile.gif": "Mobile quick reopen"
+  },
+  "seo_keywords": "Odoo 19, Odoo Community, Smart Search, recent records, search history, command palette, rn_smart_search, ARMORA IT Technologies",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com"
+}

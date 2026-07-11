@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_smart_search_root"
+              name="Smart Search"
+              sequence="47"
+              web_icon="rn_smart_search,static/description/icon.png"
+              groups="rn_smart_search.group_rn_smart_search_user"/>
+
+    <menuitem id="menu_rn_smart_search_workspace"
+              name="Workspace"
+              parent="menu_rn_smart_search_root"
+              action="action_rn_smart_search_workspace"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_smart_search_history"
+              name="History"
+              parent="menu_rn_smart_search_root"
+              action="action_rn_search_history"
+              sequence="20"
+              groups="rn_smart_search.group_rn_smart_search_manager"/>
+</odoo>
