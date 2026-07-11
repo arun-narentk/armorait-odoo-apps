@@ -23,6 +23,13 @@
                          class="o_preview_image object-fit-cover rounded align-baseline"
                          t-attf-src="/web/image/{{ file.id }}"
                          t-att-alt="file.name"/>
+                    <img t-elif="isPreviewable(file)"
+                         class="o_preview_image object-fit-cover rounded align-baseline rn_generated_thumb"
+                         t-att-src="getThumbnailUrl(file)"
+                         t-att-alt="file.name"
+                         t-att-data-fallback-mimetype="file.mimetype"
+                         t-att-data-fallback-ext="ext"
+                         t-on-error="onThumbnailError"/>
                     <span t-else="" class="o_image o_preview_image"
                           t-att-data-mimetype="file.mimetype"
                           t-att-data-ext="ext"

@@ -10,6 +10,7 @@ from ..constants import (
     AUDIO_MIMETYPES,
     HOVER_PREVIEW_MAX_BYTES,
     IMAGE_MIMETYPES,
+    OFFICE_MIMETYPES,
     PREVIEWABLE_MIMETYPES,
     TEXT_MIMETYPES,
     VIDEO_MIMETYPES,
@@ -33,12 +34,14 @@ class RnAttachmentPreviewService(models.AbstractModel):
             return 'audio'
         if mimetype in TEXT_MIMETYPES:
             return 'text'
+        if mimetype in OFFICE_MIMETYPES:
+            return 'office'
         return 'other'
 
     @api.model
     def is_previewable(self, attachment) -> bool:
         mimetype = (attachment.mimetype or '').lower()
-        return mimetype in PREVIEWABLE_MIMETYPES
+        return mimetype in PREVIEWABLE_MIMETYPES or mimetype in OFFICE_MIMETYPES
 
     @api.model
     def attachment_to_dict(self, attachment) -> dict:
@@ -47,6 +50,7 @@ class RnAttachmentPreviewService(models.AbstractModel):
         mimetype = attachment.mimetype or ''
         preview_type = self.classify_mimetype(mimetype)
         file_size = attachment.file_size or 0
+        ocr_text = attachment.rn_ocr_text or ''
         return {
             'id': attachment.id,
             'name': attachment.name,
@@ -57,10 +61,19 @@ class RnAttachmentPreviewService(models.AbstractModel):
             'is_previewable': self.is_previewable(attachment),
             'hover_preview': file_size <= HOVER_PREVIEW_MAX_BYTES and preview_type in ('image', 'pdf'),
             'image_url': f'/web/image/{attachment.id}' if preview_type == 'image' else False,
+            'thumbnail_url': (
+                f'/web/image/ir.attachment/{attachment.id}/rn_preview_thumbnail'
+                if attachment.rn_has_thumbnail else False
+            ),
             'content_url': f'/web/content/{attachment.id}',
             'download_url': f'/web/content/{attachment.id}?download=true',
             'create_uid_name': attachment.create_uid.name,
             'create_date': attachment.create_date.isoformat() if attachment.create_date else False,
+            'thumbnail_state': attachment.rn_thumbnail_state,
+            'ocr_state': attachment.rn_ocr_state,
+            'ocr_snippet': ocr_text[:160] if ocr_text else False,
+            'office_preview_ready': bool(attachment.rn_office_preview_html),
+            'annotation_count': attachment.rn_annotation_count,
         }
 
     @api.model
@@ -114,3 +127,36 @@ class RnAttachmentPreviewService(models.AbstractModel):
             'text': text,
             'truncated': truncated,
         }
+
+    @api.model
+    def get_office_preview(self, attachment_id: int) -> dict:
+        attachment = self.env['ir.attachment'].browse(attachment_id)
+        if not attachment.exists():
+            raise UserError(_('Attachment not found.'))
+        attachment.check_access('read')
+        if self.classify_mimetype(attachment.mimetype) != 'office':
+            raise AccessError(_('Office preview is not available for this file type.'))
+        if not attachment.rn_office_preview_html:
+            self.env['rn.attachment.office.service'].process_attachment(attachment)
+        return {
+            'attachment_id': attachment.id,
+            'name': attachment.name,
+            'mimetype': attachment.mimetype,
+            'html': attachment.rn_office_preview_html or '',
+        }
+
+    @api.model
+    def search_by_ocr(self, query: str, limit: int = 20) -> list[dict]:
+        return self.env['rn.attachment.ocr.service'].search_attachments(query, limit=limit)
+
+    @api.model
+    def get_pdf_annotations(self, attachment_id: int) -> list[dict]:
+        return self.env['rn.attachment.annotation.service'].list_for_attachment(attachment_id)
+
+    @api.model
+    def create_pdf_annotation(self, attachment_id: int, values: dict) -> dict:
+        return self.env['rn.attachment.annotation.service'].create_annotation(attachment_id, values)
+
+    @api.model
+    def delete_pdf_annotation(self, annotation_id: int) -> bool:
+        return self.env['rn.attachment.annotation.service'].delete_annotation(annotation_id)

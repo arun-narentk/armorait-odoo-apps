@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_cron_rn_attachment_thumbnail" model="ir.cron">
+        <field name="name">Attachment Preview: Generate Thumbnails</field>
+        <field name="model_id" ref="base.model_ir_attachment"/>
+        <field name="state">code</field>
+        <field name="code">model.env['rn.attachment.thumbnail.service'].cron_generate_batch()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="ir_cron_rn_attachment_ocr" model="ir.cron">
+        <field name="name">Attachment Preview: Extract OCR Text</field>
+        <field name="model_id" ref="base.model_ir_attachment"/>
+        <field name="state">code</field>
+        <field name="code">model.env['rn.attachment.ocr.service'].cron_extract_batch()</field>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

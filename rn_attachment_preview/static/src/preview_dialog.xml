@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rn_attachment_preview.PreviewDialog">
+        <Dialog t-props="dialogProps">
+            <div class="rn_preview_dialog_body" t-att-class="{'rn_preview_dialog_loading': state.loading}">
+                <t t-if="isOffice">
+                    <div class="rn_office_preview_panel" t-out="officeHtml"/>
+                </t>
+                <t t-elif="isPdf">
+                    <div class="rn_pdf_preview_layout">
+                        <iframe class="rn_pdf_iframe" t-att-src="pdfViewerUrl" title="PDF preview"/>
+                        <aside class="rn_pdf_annotations_panel">
+                            <h5>PDF Annotations</h5>
+                            <div class="rn_annotation_list">
+                                <t t-foreach="state.annotations" t-as="annotation" t-key="annotation.id">
+                                    <div class="rn_annotation_item">
+                                        <div class="rn_annotation_meta">
+                                            <strong>Page <t t-esc="annotation.page_number"/></strong>
+                                            <span class="text-muted ms-2"><t t-esc="annotation.user_name"/></span>
+                                        </div>
+                                        <p><t t-esc="annotation.note"/></p>
+                                        <button type="button" class="btn btn-link btn-sm p-0 text-danger"
+                                                t-on-click="() => this.onDeleteAnnotation(annotation.id)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </t>
+                                <p t-if="!state.annotations.length" class="text-muted">No annotations yet.</p>
+                            </div>
+                            <div class="rn_annotation_form mt-3">
+                                <label class="form-label">Page</label>
+                                <input type="number" min="1" class="form-control mb-2"
+                                       t-model.number="state.pageNumber"/>
+                                <label class="form-label">Note</label>
+                                <textarea class="form-control mb-2" rows="3" t-model="state.newNote"
+                                          placeholder="Highlight, approval note, or correction..."/>
+                                <button type="button" class="btn btn-primary btn-sm"
+                                        t-on-click="() => this.onAddAnnotation()">
+                                    Add Annotation
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </t>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-secondary" t-on-click="props.close">Close</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

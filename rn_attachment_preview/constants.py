@@ -61,3 +61,17 @@ AUDIO_MIMETYPES = {
 }
 
 HOVER_PREVIEW_MAX_BYTES = 5 * 1024 * 1024
+THUMBNAIL_MAX_BYTES = 10 * 1024 * 1024
+OCR_MAX_BYTES = 15 * 1024 * 1024
+THUMBNAIL_SIZE = (160, 160)
+CRON_BATCH_SIZE = 40
+
+OFFICE_MIMETYPES = {
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+}
+
+OCR_MIMETYPES = PREVIEWABLE_MIMETYPES | OFFICE_MIMETYPES
+
+THUMBNAIL_MIMETYPES = IMAGE_MIMETYPES | {'application/pdf'} | OFFICE_MIMETYPES

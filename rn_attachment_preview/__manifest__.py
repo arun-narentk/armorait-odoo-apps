@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Attachment Preview',
-    'version': '19.0.1.0.0',
+    'version': '19.0.2.0.0',
     'category': 'Productivity',
-    'summary': 'Preview PDFs, images, videos, audio, and text files inside Odoo without downloading',
+    'summary': 'Preview PDFs, images, Office files, and media inside Odoo without downloading',
     'description': """
 ARMORA Attachment Preview for Odoo 19 Community
 ===============================================
 
 Preview attachments directly inside Odoo forms and lists.
 
-* PDF, image, video, audio, and text file preview
-* Thumbnail strip on attachment widgets
-* Hover preview for images and lightweight files
+* PDF, image, video, audio, text, and Office file preview
+* Thumbnail strip with scheduled thumbnail generation
+* OCR search across attachment text
+* Word, Excel, and PowerPoint HTML preview engine
+* PDF annotations with page notes
 * Full-screen viewer with gallery navigation
 * Respects Odoo access rights on every preview
     """,
@@ -27,6 +29,7 @@ Preview attachments directly inside Odoo forms and lists.
     'sequence': 60,
     'depends': [
         'base',
+        'base_setup',
         'mail',
         'web',
         'sale',
@@ -34,7 +37,10 @@ Preview attachments directly inside Odoo forms and lists.
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'data/ir_config_parameter.xml',
+        'data/cron.xml',
         'views/inherited_form_views.xml',
+        'views/rn_attachment_preview_views.xml',
         'views/menu.xml',
     ],
     'demo': [
@@ -43,6 +49,8 @@ Preview attachments directly inside Odoo forms and lists.
     'assets': {
         'web.assets_backend': [
             'rn_attachment_preview/static/src/attachment_preview_field.scss',
+            'rn_attachment_preview/static/src/preview_dialog.xml',
+            'rn_attachment_preview/static/src/preview_dialog.js',
             'rn_attachment_preview/static/src/attachment_preview_field.xml',
             'rn_attachment_preview/static/src/attachment_preview_field.js',
         ],

@@ -5,4 +5,16 @@
               web_icon="rn_attachment_preview,static/description/icon.png"
               sequence="59"
               groups="rn_attachment_preview.group_rn_attachment_preview_user"/>
+    <menuitem id="menu_rn_attachment_ocr_search"
+              name="OCR Search"
+              parent="menu_rn_attachment_preview_root"
+              action="action_rn_attachment_ocr_search"
+              sequence="10"
+              groups="rn_attachment_preview.group_rn_attachment_preview_user"/>
+    <menuitem id="menu_rn_attachment_annotations"
+              name="PDF Annotations"
+              parent="menu_rn_attachment_preview_root"
+              action="action_rn_attachment_annotations"
+              sequence="20"
+              groups="rn_attachment_preview.group_rn_attachment_preview_user"/>
 </odoo>
