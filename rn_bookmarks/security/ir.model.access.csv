@@ -3,3 +3,4 @@ access_rn_bookmark_user,rn.bookmark user,model_rn_bookmark,rn_bookmarks.group_rn
 access_rn_bookmark_folder_user,rn.bookmark.folder user,model_rn_bookmark_folder,rn_bookmarks.group_rn_bookmarks_user,1,1,1,1
 access_rn_bookmark_tag_user,rn.bookmark.tag user,model_rn_bookmark_tag,rn_bookmarks.group_rn_bookmarks_user,1,1,1,1
 access_rn_bookmark_service_user,rn.bookmark.service user,model_rn_bookmark_service,rn_bookmarks.group_rn_bookmarks_user,1,0,0,0
+access_rn_bookmark_create_wizard,rn.bookmark.create.wizard,model_rn_bookmark_create_wizard,rn_bookmarks.group_rn_bookmarks_user,1,1,1,1

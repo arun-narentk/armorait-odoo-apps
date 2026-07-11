@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_bookmark_create_wizard_form" model="ir.ui.view">
+        <field name="name">rn.bookmark.create.wizard.form</field>
+        <field name="model">rn.bookmark.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Bookmark">
+                <group>
+                    <group>
+                        <field name="bookmark_type"/>
+                        <field name="name"/>
+                        <field name="folder_id"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="color"/>
+                    </group>
+                    <group>
+                        <field name="is_pinned"/>
+                        <field name="is_favorite"/>
+                        <field name="note"/>
+                    </group>
+                </group>
+                <group string="List View" invisible="bookmark_type != 'list'">
+                    <field name="res_model" placeholder="sale.order"/>
+                    <field name="domain" placeholder="[('state', '=', 'draft')]"/>
+                    <field name="context_data" placeholder="{}"/>
+                </group>
+                <group string="Menu" invisible="bookmark_type != 'menu'">
+                    <field name="menu_id"/>
+                </group>
+                <group string="Report" invisible="bookmark_type != 'report'">
+                    <field name="report_action_id"/>
+                </group>
+                <group string="Dashboard" invisible="bookmark_type != 'dashboard'">
+                    <field name="action_id"/>
+                </group>
+                <footer>
+                    <button name="action_create_bookmark" type="object" string="Save Bookmark" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_bookmark_create_wizard" model="ir.actions.act_window">
+        <field name="name">Create Bookmark</field>
+        <field name="res_model">rn.bookmark.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

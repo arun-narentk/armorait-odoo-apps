@@ -30,6 +30,12 @@
               action="action_rn_bookmark_recent"
               sequence="30"/>
 
+    <menuitem id="menu_rn_bookmark_create"
+              name="Create Bookmark"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_create_wizard"
+              sequence="15"/>
+
     <menuitem id="menu_rn_bookmark_folders"
               name="Folders"
               parent="menu_rn_bookmarks_root"

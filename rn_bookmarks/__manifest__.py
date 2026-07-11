@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Bookmarks',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Productivity',
     'summary': 'Bookmark any Odoo record, list view, menu, or report and open it instantly from a sidebar',
     'description': """
@@ -28,6 +28,7 @@ Universal bookmarking with folders, pins, colors, notes, tags, and quick navigat
         'views/bookmark_views.xml',
         'views/settings_views.xml',
         'views/inherited_form_views.xml',
+        'wizard/bookmark_create_wizard_views.xml',
         'views/menu.xml',
     ],
     'demo': ['demo/demo.xml'],

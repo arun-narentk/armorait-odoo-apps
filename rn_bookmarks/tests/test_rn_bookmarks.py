@@ -100,6 +100,49 @@ class TestRnBookmarks(TransactionCase):
                 'res_id': self.partner.id,
             })
 
+    def test_wizard_list_bookmark(self):
+        wizard = self.env['rn.bookmark.create.wizard'].create({
+            'bookmark_type': 'list',
+            'name': 'BMTEST Wizard List',
+            'res_model': 'sale.order',
+            'domain': "[('state', '=', 'draft')]",
+            'context_data': '{}',
+            'folder_id': self.folder_sales.id,
+            'is_pinned': True,
+        })
+        action = wizard.action_create_bookmark()
+        bookmark = self.env['rn.bookmark'].browse(action['res_id'])
+        self.assertEqual(bookmark.bookmark_type, 'list')
+        self.assertTrue(bookmark.is_pinned)
+        self.assertEqual(bookmark.folder_id, self.folder_sales)
+
+    def test_wizard_menu_bookmark(self):
+        menu = self.env.ref('sale.sale_menu_root')
+        wizard = self.env['rn.bookmark.create.wizard'].create({
+            'bookmark_type': 'menu',
+            'name': 'BMTEST Sales Menu',
+            'menu_id': menu.id,
+            'folder_id': self.folder_sales.id,
+        })
+        action = wizard.action_create_bookmark()
+        bookmark = self.env['rn.bookmark'].browse(action['res_id'])
+        self.assertEqual(bookmark.bookmark_type, 'menu')
+        self.assertEqual(bookmark.menu_id, menu)
+
+    def test_wizard_report_bookmark(self):
+        report = self.env['ir.actions.report'].search([('report_type', '=', 'qweb-pdf')], limit=1)
+        if not report:
+            self.skipTest('No PDF report found in database.')
+        wizard = self.env['rn.bookmark.create.wizard'].create({
+            'bookmark_type': 'report',
+            'name': 'BMTEST Report',
+            'report_action_id': report.id,
+        })
+        action = wizard.action_create_bookmark()
+        bookmark = self.env['rn.bookmark'].browse(action['res_id'])
+        self.assertEqual(bookmark.bookmark_type, 'report')
+        self.assertEqual(bookmark.report_action_id, report)
+
 
 @tagged('post_install', '-at_install', 'rn_bookmarks')
 class TestRnBookmarksHttp(HttpCase):
