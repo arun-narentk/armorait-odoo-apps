@@ -57,7 +57,9 @@ class QrService(models.AbstractModel):
         template_id = int(
             self.env['ir.config_parameter'].sudo().get_param('rn_universal_qr.default_template_id', default='0') or 0
         )
-        company = business_record.company_id if 'company_id' in business_record._fields else self.env.company
+        company = self.env.company
+        if 'company_id' in business_record._fields and business_record.company_id:
+            company = business_record.company_id
         return self.env['rn.qr.record'].create({
             'name': business_record.display_name,
             'token': business_record.rn_qr_token,

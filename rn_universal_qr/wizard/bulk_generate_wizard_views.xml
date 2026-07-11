@@ -22,33 +22,3 @@
         </field>
     </record>
 </odoo>
-
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="view_rn_qr_bulk_generate_wizard_form" model="ir.ui.view">
-        <field name="name">rn.qr.bulk.generate.wizard.form</field>
-        <field name="model">rn.qr.bulk.generate.wizard</field>
-        <field name="arch" type="xml">
-            <form string="Bulk Generate QR">
-                <group>
-                    <field name="res_model" readonly="1"/>
-                    <field name="res_ids" readonly="1"/>
-                    <field name="template_id"/>
-                    <field name="payload_type"/>
-                    <field name="action_type"/>
-                </group>
-                <footer>
-                    <button name="action_generate_zip" type="object" string="Download ZIP" class="btn-primary"/>
-                    <button string="Cancel" special="cancel"/>
-                </footer>
-            </form>
-        </field>
-    </record>
-
-    <record id="action_rn_qr_bulk_generate_wizard" model="ir.actions.act_window">
-        <field name="name">Bulk Generate QR</field>
-        <field name="res_model">rn.qr.bulk.generate.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-    </record>
-</odoo>

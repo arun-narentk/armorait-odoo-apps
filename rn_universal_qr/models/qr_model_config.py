@@ -10,7 +10,7 @@ class QrModelConfig(models.Model):
 
     name = fields.Char(compute='_compute_name', store=True)
     active = fields.Boolean(default=True)
-    model_id = fields.Many2one('ir.model', required=True, domain=[('transient', '=', False)])
+    model_id = fields.Many2one('ir.model', required=True, ondelete='cascade', domain=[('transient', '=', False)])
     model_name = fields.Char(related='model_id.model', store=True)
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     template_id = fields.Many2one('rn.qr.template')
@@ -49,7 +49,7 @@ class QrModelConfig(models.Model):
                 'model': record.model_name,
                 'mode': 'extension',
                 'inherit_id': inherit_view.id,
-                'arch_base': """
+                'arch': """
                     <data>
                         <xpath expr="//sheet" position="inside">
                             <group string="QR">

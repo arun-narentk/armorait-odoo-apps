@@ -16,28 +16,3 @@
         </field>
     </record>
 </odoo>
-
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="view_rn_qr_scan_log_tree" model="ir.ui.view">
-        <field name="name">rn.qr.scan.log.list</field>
-        <field name="model">rn.qr.scan.log</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="scan_date"/>
-                <field name="qr_record_id"/>
-                <field name="res_model"/>
-                <field name="res_id"/>
-                <field name="user_id"/>
-                <field name="device"/>
-                <field name="ip_address"/>
-            </list>
-        </field>
-    </record>
-
-    <record id="action_rn_qr_scan_log" model="ir.actions.act_window">
-        <field name="name">Scan Logs</field>
-        <field name="res_model">rn.qr.scan.log</field>
-        <field name="view_mode">list</field>
-    </record>
-</odoo>

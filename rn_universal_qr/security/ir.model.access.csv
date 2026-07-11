@@ -1,22 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rn_qr_record_user,rn.qr.record user,model_rn_qr_record,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_record_manager,rn.qr.record manager,model_rn_qr_record,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_scan_log_user,rn.qr.scan.log user,model_rn_qr_scan_log,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_scan_log_manager,rn.qr.scan.log manager,model_rn_qr_scan_log,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_template_user,rn.qr.template user,model_rn_qr_template,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_template_manager,rn.qr.template manager,model_rn_qr_template,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_model_config_manager,rn.qr.model.config manager,model_rn_qr_model_config,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_bulk_generate_wizard,rn.qr.bulk.generate.wizard,model_rn_qr_bulk_generate_wizard,group_rn_universal_qr_user,1,1,1,1
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rn_qr_record_user,rn.qr.record user,model_rn_qr_record,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_record_manager,rn.qr.record manager,model_rn_qr_record,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_scan_log_user,rn.qr.scan.log user,model_rn_qr_scan_log,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_scan_log_manager,rn.qr.scan.log manager,model_rn_qr_scan_log,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_template_user,rn.qr.template user,model_rn_qr_template,group_rn_universal_qr_user,1,0,0,0
-access_rn_qr_template_manager,rn.qr.template manager,model_rn_qr_template,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_model_config_manager,rn.qr.model.config manager,model_rn_qr_model_config,group_rn_universal_qr_manager,1,1,1,1
-access_rn_qr_bulk_generate_wizard,rn.qr.bulk.generate.wizard access,model_rn_qr_bulk_generate_wizard,group_rn_universal_qr_user,1,1,1,1
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_rn_qr_record_user,rn.qr.record user,model_rn_qr_record,rn_universal_qr.group_rn_universal_qr_user,1,1,1,0
 access_rn_qr_record_manager,rn.qr.record manager,model_rn_qr_record,rn_universal_qr.group_rn_universal_qr_manager,1,1,1,1
 access_rn_qr_scan_log_user,rn.qr.scan.log user,model_rn_qr_scan_log,rn_universal_qr.group_rn_universal_qr_user,1,0,0,0

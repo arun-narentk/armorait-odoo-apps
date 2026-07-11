@@ -6,7 +6,7 @@ class BulkGenerateWizard(models.TransientModel):
     _name = 'rn.qr.bulk.generate.wizard'
     _description = 'Bulk Generate QR Wizard'
 
-    model_id = fields.Many2one('ir.model', required=True, domain=[('transient', '=', False)])
+    model_id = fields.Many2one('ir.model', required=True, ondelete='cascade', domain=[('transient', '=', False)])
     limit = fields.Integer(default=100)
     include_archived = fields.Boolean(default=False)
     zip_file = fields.Binary(readonly=True)
