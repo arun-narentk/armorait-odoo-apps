@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="demo_colortag_partner" model="res.partner">
+            <field name="name">COLORTAG Capture Customer</field>
+            <field name="email">colortag.capture@armorait.com</field>
+        </record>
+
+        <record id="demo_colortag_rule_live" model="rn.color.rule">
+            <field name="name">COLORTAG Live Capture Rule</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="domain">[('partner_id.name', 'ilike', 'COLORTAG%')]</field>
+            <field name="color">purple</field>
+            <field name="priority">150</field>
+            <field name="icon">star</field>
+            <field name="label">CAPTURE</field>
+        </record>
+    </data>
+</odoo>

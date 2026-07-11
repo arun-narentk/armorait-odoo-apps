@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_color_rule_tree" model="ir.ui.view">
+        <field name="name">rn.color.rule.tree</field>
+        <field name="model">rn.color.rule</field>
+        <field name="arch" type="xml">
+            <list string="Visual Color Rules" default_order="priority desc, id desc">
+                <field name="priority"/>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="color"/>
+                <field name="icon"/>
+                <field name="emoji"/>
+                <field name="label"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_color_rule_form" model="ir.ui.view">
+        <field name="name">rn.color.rule.form</field>
+        <field name="model">rn.color.rule</field>
+        <field name="arch" type="xml">
+            <form string="Visual Color Rule">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="model_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="priority"/>
+                            <field name="color"/>
+                            <field name="icon"/>
+                            <field name="label"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="domain" widget="domain" options="{'model': 'model_name'}"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_color_rule_search" model="ir.ui.view">
+        <field name="name">rn.color.rule.search</field>
+        <field name="model">rn.color.rule</field>
+        <field name="arch" type="xml">
+            <search string="Visual Color Rules">
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="color"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <filter name="filter_active" string="Active" domain="[('active', '=', True)]"/>
+                <group>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_id'}"/>
+                    <filter name="group_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_color_rule" model="ir.actions.act_window">
+        <field name="name">Visual Color Rules</field>
+        <field name="res_model">rn.color.rule</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_rn_color_rule_search"/>
+        <field name="help" type="html">
+            <p>Create smart rules that assign visual color tags by domain.</p>
+        </field>
+    </record>
+</odoo>
