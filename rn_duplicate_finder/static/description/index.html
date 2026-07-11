@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Smart Duplicate Finder | ARMORA IT Technologies</title>
-<meta name="description" content="Find and merge duplicate records on any model using fuzzy matching rules. Odoo 19, Odoo Community, Smart Duplicate Finder, rn_duplicate_finder, ARMORA IT Technologies">
+<meta name="description" content="Find and merge duplicate records on any Odoo model using fuzzy matching rules. Odoo 19 duplicate finder, fuzzy matching, merge contacts, deduplicate products, data quality, ARMORA">
 <style>
 :root { --module-accent: #16a34a; }
 /* ARMORA Marketplace Framework - shared Apps Store description styles */
@@ -246,44 +246,44 @@ a { color: var(--armora-primary); }
 
 <section class="armora-hero" id="top">
   <h1>Smart Duplicate Finder</h1>
-  <p class="tagline">Find and merge duplicate records on any model using fuzzy matching rules</p>
+  <p class="tagline">Find and merge duplicate records on any Odoo model using fuzzy matching rules</p>
   <div class="armora-badges">
     <span>Odoo 19 Community</span>
     <span>ARMORA IT Technologies</span>
     <span>Production Ready</span>
     <span>Multi-company</span>
-    
-    
+    <span>Dashboard</span>
+    <span>Reports</span>
   </div>
   <img class="img img-fluid loempia_app_cover shadow-sm banner" src="banner.png" alt="Smart Duplicate Finder banner">
 </section>
 
 <section class="armora-section" id="overview">
   <h2>App Overview</h2>
-  <p>Find and merge duplicate records on any model using fuzzy matching rules</p>
+  <p>Smart Duplicate Finder is a generic framework: define rules per model, run weighted fuzzy scans, review scored pairs, then merge or ignore duplicates with a guided wizard.</p>
   <ul class="armora-list-check">
     
-    <li>Streamline smart duplicate finder workflows in Odoo</li>
+    <li>Works on any Odoo model, including custom apps</li>
     
-    <li>Built for Odoo 19 Community</li>
+    <li>Weighted exact, fuzzy, and phone digit matching</li>
     
-    <li>Production-ready ARMORA architecture</li>
+    <li>Ignore pairs to keep recurring scans clean</li>
     
-    <li>Multi-company aware where applicable</li>
+    <li>Native partner merge plus safe archive for other models</li>
     
-    <li>Support from ARMORA IT Technologies</li>
+    <li>Scheduled scans for proactive data quality</li>
     
   </ul>
 </section>
 
 <section class="armora-section" id="problem">
   <h2>Business Problem</h2>
-  <p>Teams running Odoo 19 need a reliable way to manage smart duplicate finder without spreadsheets or disconnected tools.</p>
+  <p>Duplicate contacts, products, employees, and vendors pollute CRM, inventory, and HR data. Manual cleanup is slow and error-prone.</p>
 </section>
 
 <section class="armora-section" id="solution">
   <h2>Business Solution</h2>
-  <p>Find and merge duplicate records on any model using fuzzy matching rules</p>
+  <p>Smart Duplicate Finder is a generic framework: define rules per model, run weighted fuzzy scans, review scored pairs, then merge or ignore duplicates with a guided wizard.</p>
 </section>
 
 <section class="armora-section" id="features">
@@ -291,23 +291,23 @@ a { color: var(--armora-primary); }
   <div class="armora-grid-2">
     
     <div class="armora-card">
-      <h3>Odoo-native</h3>
-      <p>Smart Duplicate Finder extends standard Odoo models and views.</p>
+      <h3>Rule-based framework</h3>
+      <p>Create duplicate rules for res.partner, product.template, hr.employee, or any model.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Configurable</h3>
-      <p>Settings, security groups, and menus included.</p>
+      <h3>Weighted scoring</h3>
+      <p>Combine field weights with exact, fuzzy, and phone digit match modes.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Documented</h3>
-      <p>README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs.</p>
+      <h3>Scan batches</h3>
+      <p>Run on-demand or scheduled scans with match threshold and record limits.</p>
     </div>
     
     <div class="armora-card">
-      <h3>Commercial support</h3>
-      <p>Contact info@armorait.com for rollout help.</p>
+      <h3>Merge wizard</h3>
+      <p>Merge partners with Odoo native merge. Archive duplicates on other models.</p>
     </div>
     
   </div>
@@ -319,22 +319,19 @@ a { color: var(--armora-primary); }
   <div class="armora-workflow">
     
     
-    <span class="step">Install module</span>
+    <span class="step">Configure rule</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Configure settings</span>
+    <span class="step">Run scan</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Assign user groups</span>
+    <span class="step">Review matches</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Run daily workflows</span>
+    <span class="step">Merge or ignore</span>
     
     <span class="arrow">&#8594;</span>
-    <span class="step">Review KPIs and reports</span>
-    
-    <span class="arrow">&#8594;</span>
-    <span class="step">Scale across companies</span>
+    <span class="step">Schedule auto scan</span>
     
   </div>
 </section>
@@ -347,14 +344,107 @@ a { color: var(--armora-primary); }
   <div class="armora-gallery">
     
     <figure>
-      <img src="dashboard.png" alt="Dashboard" loading="lazy">
-      <figcaption>Dashboard</figcaption>
+      <img src="overview.png" alt="Overview" loading="lazy">
+      <figcaption>Overview</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="list.png" alt="Rules List" loading="lazy">
+      <figcaption>Rules List</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="form.png" alt="Rule Form" loading="lazy">
+      <figcaption>Rule Form</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="dashboard.png" alt="Duplicate Matches" loading="lazy">
+      <figcaption>Duplicate Matches</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="wizard.png" alt="Merge Wizard" loading="lazy">
+      <figcaption>Merge Wizard</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="settings.png" alt="Ignored Pairs" loading="lazy">
+      <figcaption>Ignored Pairs</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="report.png" alt="Scan Results" loading="lazy">
+      <figcaption>Scan Results</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="search.png" alt="Match Review" loading="lazy">
+      <figcaption>Match Review</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="kanban.png" alt="All Matches" loading="lazy">
+      <figcaption>All Matches</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="mobile.png" alt="Mobile View" loading="lazy">
+      <figcaption>Mobile View</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="workflow.png" alt="Process Workflow" loading="lazy">
+      <figcaption>Process Workflow</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="designer.png" alt="Rule Designer" loading="lazy">
+      <figcaption>Rule Designer</figcaption>
     </figure>
     
   </div>
 </section>
 
 
+
+<section class="armora-section" id="demos">
+  <h2>Product Demonstrations</h2>
+  <p>Short GIF recordings for core workflows.</p>
+  <div class="armora-gallery">
+    
+    <figure>
+      <img src="hero.gif" alt="Hero Demo" loading="lazy">
+      <figcaption>Hero Demo</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="workflow.gif" alt="Workflow" loading="lazy">
+      <figcaption>Workflow</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="dashboard.gif" alt="Dashboard Demo" loading="lazy">
+      <figcaption>Dashboard Demo</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="settings.gif" alt="Settings" loading="lazy">
+      <figcaption>Settings</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="reports.gif" alt="Reports" loading="lazy">
+      <figcaption>Reports</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="mobile.gif" alt="Mobile" loading="lazy">
+      <figcaption>Mobile</figcaption>
+    </figure>
+    
+  </div>
+</section>
 
 
 <section class="armora-section armora-faq" id="faq">
@@ -507,7 +597,7 @@ a { color: var(--armora-primary); }
     <li><strong>UI:</strong> OWL 2, Bootstrap 5</li>
     <li><strong>Deployment:</strong> On-premise, Odoo.sh, and Odoo Online (where custom modules are allowed)</li>
   </ul>
-  <p><strong>SEO:</strong> Odoo 19, Odoo Community, Smart Duplicate Finder, rn_duplicate_finder, ARMORA IT Technologies</p>
+  <p><strong>SEO:</strong> Odoo 19 duplicate finder, fuzzy matching, merge contacts, deduplicate products, data quality, ARMORA</p>
   <p><strong>Version:</strong> 19.0.1.0.0</p>
 </section>
 

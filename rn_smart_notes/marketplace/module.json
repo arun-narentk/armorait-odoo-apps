@@ -5,8 +5,9 @@
   "category_type": "productivity",
   "price": 8.99,
   "accent": "#f59e0b",
+  "version": "19.0.1.0.0",
   "problem": "Critical customer context is buried in chatter, spreadsheets, or personal notebooks instead of the document users are working on.",
-  "solution": "Attach colorful sticky notes to sale orders, invoices, CRM leads, contacts, products, and more with pins, mentions, templates, and reminders.",
+  "solution": "Attach colorful sticky notes to sale orders, invoices, CRM leads, contacts, products, and employees. Pin warnings, mention teammates, use templates, and schedule reminders without opening the chatter.",
   "benefits": [
     "Keep payment warnings and VIP flags visible on the record",
     "Mention teammates without leaving the form",
@@ -16,12 +17,12 @@
   ],
   "features": [
     {
-      "title": "Context-aware",
-      "text": "Notes stay attached to the exact business document you are viewing."
+      "title": "Document panel",
+      "text": "Add, pin, edit, and delete notes from a clean panel on sale orders, invoices, CRM leads, and more."
     },
     {
       "title": "Pinned cards",
-      "text": "Pin critical warnings so they always appear first."
+      "text": "Pin VIP, payment delay, and delivery warnings so they always appear first."
     },
     {
       "title": "Mentions",
@@ -29,16 +30,43 @@
     },
     {
       "title": "Templates",
-      "text": "Admins define VIP, payment delay, and delivery call templates."
+      "text": "Admins define VIP, payment delay, delivery call, and credit risk quick notes."
+    },
+    {
+      "title": "Reminders",
+      "text": "Set a reminder date and Smart Notes creates an Odoo activity automatically."
+    },
+    {
+      "title": "Visibility",
+      "text": "Control who sees each note: Everyone, Only Me, Sales Team, or Managers."
     }
   ],
   "workflow": [
     "Install Smart Notes",
     "Assign Smart Notes user group",
     "Open a sale order or invoice",
-    "Add or pin a note from the panel",
+    "Add a note from the panel",
+    "Pin or use a quick template",
     "Mention a teammate or set a reminder"
   ],
+  "seo_keywords": "Odoo 19, Odoo Community, Smart Notes, sticky notes, context notes, sale order notes, invoice notes, CRM notes, rn_smart_notes, ARMORA IT Technologies",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "screenshots": {
+    "workflow": "screenshots/workflow.png",
+    "dashboard": "screenshots/dashboard.png",
+    "designer": "screenshots/designer.png"
+  },
+  "gifs": {
+    "hero": "gifs/hero.gif",
+    "workflow": "gifs/workflow.gif",
+    "dashboard": "gifs/dashboard.gif",
+    "settings": "gifs/settings.gif",
+    "reports": "gifs/reports.gif",
+    "mobile": "gifs/mobile.gif"
+  },
   "faq": [
     {
       "q": "Which documents are supported in V1?",
@@ -47,6 +75,14 @@
     {
       "q": "Can notes be private?",
       "a": "Yes. Set visibility to Only Me, Sales Team, Managers, or Everyone."
+    },
+    {
+      "q": "Do reminders create activities?",
+      "a": "Yes. A reminder date on a note creates a linked Odoo activity on the source document."
+    },
+    {
+      "q": "Does it work on Odoo 19 Community?",
+      "a": "Yes. Built for Odoo 19 Community with OWL 2 backend assets."
     }
   ]
 }
