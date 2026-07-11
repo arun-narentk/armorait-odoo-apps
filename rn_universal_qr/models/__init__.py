@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from . import qr_mixin
 from . import base
 from . import qr_record
 from . import qr_scan_log

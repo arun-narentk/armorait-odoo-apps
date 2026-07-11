@@ -5,46 +5,46 @@
   "category_type": "productivity",
   "price": 8.99,
   "accent": "#2563eb",
-  "problem": "Most QR solutions are limited to one document type and do not provide reusable tracking.",
-  "solution": "Universal QR Generator adds one secure framework for token routing, scan logs, model-level configuration, and printable QR output across Odoo apps.",
+  "problem": "Most QR apps only cover invoices or sale orders. Teams need one secure engine for warehouse, CRM, products, and custom models.",
+  "solution": "Token-based QR URLs, configurable payloads and actions, scan analytics, labels, and report blocks on any enabled model.",
   "benefits": [
-    "Universal model support through base inheritance",
-    "Secure token endpoint with expiration handling",
-    "Template-driven QR generation",
-    "Bulk ZIP export for operations teams",
-    "Native report integration for core business documents"
+    "Works on any Odoo model via configuration",
+    "Secure token URLs with expiration and regeneration",
+    "Multiple QR actions: record, portal, PDF, custom URL",
+    "Bulk ZIP export and printable label templates",
+    "Scan statistics with user and device logging"
   ],
   "features": [
     {
-      "title": "Universal mixin",
-      "text": "QR fields and actions are available on all models through rn.qr.mixin."
+      "title": "Universal engine",
+      "text": "One mixin and service layer for all models, no hardcoded document logic."
     },
     {
-      "title": "Scan analytics",
-      "text": "Track token, timestamp, source, and network metadata in scan logs."
+      "title": "Secure scanning",
+      "text": "Public /rn/qr/<token> route with access checks and login redirect."
     },
     {
-      "title": "Templates and model config",
-      "text": "Configure defaults and per-model behavior from backend menus."
+      "title": "Print and export",
+      "text": "PNG, SVG, label PDF, A4 sheet, and report QR blocks."
     },
     {
-      "title": "Reports and export",
-      "text": "Print labels, A4 sheets, and download QR batches as ZIP."
+      "title": "Admin control",
+      "text": "Templates, per-model config, ECC level, colors, and logo overlay."
     }
   ],
   "workflow": [
-    "Configure QR defaults",
+    "Install module",
+    "Configure defaults",
+    "Enable models",
     "Generate QR on records",
-    "Share printed or digital QR",
-    "Scan token route",
-    "Review scan logs"
+    "Print labels or reports",
+    "Track scans"
   ],
-  "seo_keywords": "Odoo 19, Odoo Community, universal qr, qr generator, qr scan tracking",
-  "has_dashboard": true,
+  "seo_keywords": "Odoo 19, Odoo Community, Universal QR, QR code generator, secure QR, warehouse labels, ARMORA IT Technologies",
+  "has_dashboard": false,
   "has_reports": true,
   "has_mobile": true,
   "live_test_url": "https://www.armorait.com",
   "version": "19.0.1.0.0",
-  "branch": "19.0",
-  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0"
+  "branch": "19.0"
 }

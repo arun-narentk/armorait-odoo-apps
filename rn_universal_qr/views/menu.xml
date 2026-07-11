@@ -9,7 +9,7 @@
     <record id="action_rn_qr_scan_log" model="ir.actions.act_window">
         <field name="name">Scan Logs</field>
         <field name="res_model">rn.qr.scan.log</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">list</field>
     </record>
 
     <record id="action_rn_qr_template" model="ir.actions.act_window">
@@ -19,7 +19,7 @@
     </record>
 
     <record id="action_rn_qr_model_config" model="ir.actions.act_window">
-        <field name="name">Model Configurations</field>
+        <field name="name">Model Configuration</field>
         <field name="res_model">rn.qr.model.config</field>
         <field name="view_mode">list,form</field>
     </record>
@@ -31,16 +31,6 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="menu_rn_universal_qr_root" name="Universal QR" parent="base.menu_custom" sequence="52" groups="rn_universal_qr.group_rn_universal_qr_user"/>
-    <menuitem id="menu_rn_universal_qr_records" name="QR Records" parent="menu_rn_universal_qr_root" action="action_rn_qr_record" sequence="10" groups="rn_universal_qr.group_rn_universal_qr_user"/>
-    <menuitem id="menu_rn_universal_qr_scan_logs" name="Scan Logs" parent="menu_rn_universal_qr_root" action="action_rn_qr_scan_log" sequence="20" groups="rn_universal_qr.group_rn_universal_qr_user"/>
-    <menuitem id="menu_rn_universal_qr_templates" name="Templates" parent="menu_rn_universal_qr_root" action="action_rn_qr_template" sequence="30" groups="rn_universal_qr.group_rn_universal_qr_manager"/>
-    <menuitem id="menu_rn_universal_qr_model_config" name="Model Config" parent="menu_rn_universal_qr_root" action="action_rn_qr_model_config" sequence="40" groups="rn_universal_qr.group_rn_universal_qr_manager"/>
-    <menuitem id="menu_rn_universal_qr_bulk_generate" name="Bulk Generate" parent="menu_rn_universal_qr_root" action="action_rn_qr_bulk_generate_wizard" sequence="50" groups="rn_universal_qr.group_rn_universal_qr_user"/>
-</odoo>
-
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
     <menuitem id="menu_rn_universal_qr_root"
               name="Universal QR"
               sequence="58"
@@ -59,6 +49,12 @@
               action="action_rn_qr_scan_log"
               sequence="20"
               groups="rn_universal_qr.group_rn_universal_qr_manager"/>
+
+    <menuitem id="menu_rn_qr_bulk_generate"
+              name="Bulk Generate"
+              parent="menu_rn_universal_qr_root"
+              action="action_rn_qr_bulk_generate_wizard"
+              sequence="30"/>
 
     <menuitem id="menu_rn_qr_configuration"
               name="Configuration"

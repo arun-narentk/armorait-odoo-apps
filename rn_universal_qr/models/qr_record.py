@@ -55,9 +55,9 @@ class QrRecord(models.Model):
         counter = {row['qr_record_id'][0]: row for row in grouped if row.get('qr_record_id')}
         for record in self:
             value = counter.get(record.id, {})
-            record.scan_count = value.get('qr_record_id_count', 0)
-            record.first_scanned_at = value.get('scan_datetime_min')
-            record.last_scanned_at = value.get('scan_datetime_max')
+            record.scan_count = value.get('__count', 0)
+            record.first_scanned_at = value.get('scan_datetime_min') or value.get('scan_datetime')
+            record.last_scanned_at = value.get('scan_datetime_max') or value.get('scan_datetime')
 
     def action_open_document(self):
         self.ensure_one()
