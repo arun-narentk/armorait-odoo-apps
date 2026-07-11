@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_timeline" model="ir.ui.view">
+        <field name="name">sale.order.form.timeline</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_timeline" type="object" class="oe_stat_button" icon="fa-history">
+                    <field name="timeline_event_count" widget="statinfo" string="Timeline"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Timeline" name="record_timeline">
+                    <field name="timeline_event_count" widget="rn_record_timeline" nolabel="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

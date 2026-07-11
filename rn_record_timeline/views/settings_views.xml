@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_timeline" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.timeline</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Record Timeline" name="rn_record_timeline" groups="rn_record_timeline.group_rn_timeline_manager">
+                    <block title="Timeline Logging">
+                        <setting string="Automatic event logging" help="Log timeline nodes when supported documents change state.">
+                            <field name="rn_timeline_auto_log"/>
+                        </setting>
+                        <setting string="Timeline page size" help="Number of events loaded initially in the visual timeline widget.">
+                            <field name="rn_timeline_default_limit"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

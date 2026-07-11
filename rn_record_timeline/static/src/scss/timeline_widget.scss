@@ -1,0 +1,32 @@
+.o_rn_timeline_widget {
+    padding: 8px 4px;
+}
+
+.o_rn_timeline_rail {
+    width: 36px;
+    position: relative;
+}
+
+.o_rn_timeline_dot {
+    font-size: 16px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 4px;
+    z-index: 1;
+}
+
+.o_rn_timeline_line {
+    display: block;
+    width: 2px;
+    min-height: 48px;
+    background: #cbd5e1;
+    margin: 0 auto;
+}
+
+.o_rn_timeline_item:last-child .o_rn_timeline_line {
+    display: none;
+}
+
+.o_rn_timeline_content {
+    padding-left: 8px;
+}

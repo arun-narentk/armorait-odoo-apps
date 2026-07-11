@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_record_timeline.TimelineWidget">
+        <div class="o_rn_timeline_widget">
+            <div class="o_rn_timeline_toolbar d-flex flex-wrap gap-2 align-items-center mb-3">
+                <label class="mb-0 me-2">Filter</label>
+                <select class="form-select form-select-sm w-auto" t-on-change="onFilterChange">
+                    <option value="all" t-att-selected="state.filter === 'all'">All events</option>
+                    <option value="financial" t-att-selected="state.filter === 'financial'">Only Financial</option>
+                    <option value="logistics" t-att-selected="state.filter === 'logistics'">Only Logistics</option>
+                    <option value="approval" t-att-selected="state.filter === 'approval'">Only Approval</option>
+                    <option value="general" t-att-selected="state.filter === 'general'">General</option>
+                </select>
+                <button type="button" class="btn btn-secondary btn-sm ms-auto" t-on-click="exportPdf">
+                    Export PDF
+                </button>
+            </div>
+
+            <t t-if="state.loading and !state.events.length">
+                <div class="text-muted">Loading timeline...</div>
+            </t>
+            <t t-elif="!state.events.length">
+                <div class="alert alert-light border">No timeline events yet for this record.</div>
+            </t>
+            <t t-else="">
+                <div class="o_rn_timeline_list">
+                    <t t-foreach="state.events" t-as="event" t-key="event.id">
+                        <div class="o_rn_timeline_item d-flex">
+                            <div class="o_rn_timeline_rail text-center">
+                                <span t-attf-class="o_rn_timeline_dot fa {{event.icon}}"
+                                      t-att-style="'color:' + event.color"/>
+                                <span class="o_rn_timeline_line"/>
+                            </div>
+                            <div class="o_rn_timeline_content flex-grow-1 mb-3 pb-2 border-bottom">
+                                <div class="fw-bold" t-esc="event.name"/>
+                                <div class="text-muted small">
+                                    <t t-esc="formatDate(event.date)"/>
+                                    <t t-if="event.user"> | <t t-esc="event.user"/></t>
+                                </div>
+                                <div t-if="event.description" class="small mt-1" t-esc="event.description"/>
+                                <button t-if="event.related_model and event.related_res_id"
+                                        type="button"
+                                        class="btn btn-link btn-sm ps-0"
+                                        t-on-click="() => this.openRelated(event)">
+                                    Open related document
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <span class="text-muted small">
+                        Showing <t t-esc="state.events.length"/> of <t t-esc="state.total"/> events
+                    </span>
+                    <button t-if="state.hasMore" type="button" class="btn btn-outline-primary btn-sm"
+                            t-att-disabled="state.loading" t-on-click="loadMore">
+                        Load older events
+                    </button>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

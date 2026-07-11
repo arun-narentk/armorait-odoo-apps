@@ -2476,5 +2476,149 @@
     "has_reports": false,
     "has_mobile": false,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_duplicate_finder": {
+    "branch": null,
+    "app_name": "Smart Duplicate Finder",
+    "tagline": "Find and merge duplicate records on any model using fuzzy matching rules",
+    "category_type": "productivity",
+    "price": 29.99,
+    "accent": "#16a34a",
+    "problem": "Teams running Odoo 19 need a reliable way to manage smart duplicate finder without spreadsheets or disconnected tools.",
+    "solution": "Find and merge duplicate records on any model using fuzzy matching rules",
+    "benefits": [
+      "Streamline smart duplicate finder workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Smart Duplicate Finder extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Smart Duplicate Finder, rn_duplicate_finder, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_record_timeline": {
+    "branch": null,
+    "app_name": "Record Timeline",
+    "tagline": "Visual timeline history for sales, purchases, invoices, and CRM leads",
+    "category_type": "productivity",
+    "price": 8.99,
+    "accent": "#ea580c",
+    "problem": "Teams running Odoo 19 need a reliable way to manage record timeline without spreadsheets or disconnected tools.",
+    "solution": "Visual timeline history for sales, purchases, invoices, and CRM leads",
+    "benefits": [
+      "Streamline record timeline workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Record Timeline extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Record Timeline, rn_record_timeline, sale order history, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": true,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_smart_notes": {
+    "branch": null,
+    "app_name": "Smart Notes",
+    "tagline": "Context-aware sticky notes on sales, purchases, invoices, CRM, contacts, products, and employees",
+    "category_type": "productivity",
+    "price": 8.99,
+    "accent": "#4f46e5",
+    "problem": "Teams running Odoo 19 need a reliable way to manage smart notes without spreadsheets or disconnected tools.",
+    "solution": "Context-aware sticky notes on sales, purchases, invoices, CRM, contacts, products, and employees",
+    "benefits": [
+      "Streamline smart notes workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Smart Notes extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Smart Notes, rn_smart_notes, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
   }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_parameter_auto_log" model="ir.config_parameter">
+        <field name="key">rn_record_timeline.auto_log</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_parameter_default_limit" model="ir.config_parameter">
+        <field name="key">rn_record_timeline.default_limit</field>
+        <field name="value">50</field>
+    </record>
+</odoo>

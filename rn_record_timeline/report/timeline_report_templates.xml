@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_timeline_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2>Record Timeline</h2>
+                <p>
+                    <strong>Document:</strong>
+                    <span t-field="doc.display_name"/>
+                </p>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>User</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="events" t-value="doc.env['rn.timeline.event'].search([('model', '=', doc._name), ('record_id', '=', doc.id)], order='date desc, id desc', limit=200)"/>
+                        <tr t-foreach="events" t-as="event">
+                            <td><span t-field="event.date"/></td>
+                            <td><span t-field="event.name"/></td>
+                            <td><span t-field="event.user_id"/></td>
+                            <td><span t-field="event.filter_category"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_timeline_sale">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="rn_record_timeline.report_timeline_document"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_timeline_pdf" model="ir.actions.report">
+        <field name="name">Timeline Report</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_record_timeline.report_timeline_sale</field>
+        <field name="report_file">rn_record_timeline.report_timeline_sale</field>
+        <field name="print_report_name">'Timeline - %s' % object.display_name</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

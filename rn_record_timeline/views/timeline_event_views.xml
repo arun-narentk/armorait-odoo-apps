@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_timeline_event_list" model="ir.ui.view">
+        <field name="name">rn.timeline.event.list</field>
+        <field name="model">rn.timeline.event</field>
+        <field name="arch" type="xml">
+            <list string="Timeline Events" default_order="date desc">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="model"/>
+                <field name="record_id"/>
+                <field name="event_type"/>
+                <field name="filter_category"/>
+                <field name="user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_timeline_event_form" model="ir.ui.view">
+        <field name="name">rn.timeline.event.form</field>
+        <field name="model">rn.timeline.event</field>
+        <field name="arch" type="xml">
+            <form string="Timeline Event">
+                <header>
+                    <button name="action_open_related_document" type="object"
+                            string="Open Related Document" class="btn-primary"
+                            invisible="not related_model or not related_res_id"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="user_id"/>
+                            <field name="event_type"/>
+                            <field name="filter_category"/>
+                        </group>
+                        <group>
+                            <field name="model"/>
+                            <field name="record_id"/>
+                            <field name="icon"/>
+                            <field name="color" widget="color"/>
+                            <field name="sequence"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Related Document">
+                        <field name="related_model"/>
+                        <field name="related_res_id"/>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_timeline_event_search" model="ir.ui.view">
+        <field name="name">rn.timeline.event.search</field>
+        <field name="model">rn.timeline.event</field>
+        <field name="arch" type="xml">
+            <search string="Timeline Events">
+                <field name="name"/>
+                <field name="model"/>
+                <field name="user_id"/>
+                <filter string="Financial" name="filter_financial" domain="[('filter_category', '=', 'financial')]"/>
+                <filter string="Logistics" name="filter_logistics" domain="[('filter_category', '=', 'logistics')]"/>
+                <filter string="Approval" name="filter_approval" domain="[('filter_category', '=', 'approval')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Model" name="group_model" context="{'group_by': 'model'}"/>
+                    <filter string="Category" name="group_filter_category" context="{'group_by': 'filter_category'}"/>
+                    <filter string="Event Type" name="group_event_type" context="{'group_by': 'event_type'}"/>
+                    <filter string="User" name="group_user" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_timeline_event" model="ir.actions.act_window">
+        <field name="name">Record Timeline</field>
+        <field name="res_model">rn.timeline.event</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_rn_timeline_event_search"/>
+    </record>
+</odoo>

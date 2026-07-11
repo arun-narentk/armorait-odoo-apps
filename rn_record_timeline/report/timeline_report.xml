@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_timeline_purchase" model="ir.actions.report">
+        <field name="name">Timeline Report</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_record_timeline.report_timeline_sale</field>
+        <field name="report_file">rn_record_timeline.report_timeline_sale</field>
+        <field name="print_report_name">'Timeline - %s' % object.display_name</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_timeline_invoice" model="ir.actions.report">
+        <field name="name">Timeline Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_record_timeline.report_timeline_sale</field>
+        <field name="report_file">rn_record_timeline.report_timeline_sale</field>
+        <field name="print_report_name">'Timeline - %s' % object.display_name</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_timeline_crm" model="ir.actions.report">
+        <field name="name">Timeline Report</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rn_record_timeline.report_timeline_sale</field>
+        <field name="report_file">rn_record_timeline.report_timeline_sale</field>
+        <field name="print_report_name">'Timeline - %s' % object.display_name</field>
+        <field name="binding_model_id" ref="crm.model_crm_lead"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

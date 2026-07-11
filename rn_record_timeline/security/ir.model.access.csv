@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_timeline_event_user,rn.timeline.event user,model_rn_timeline_event,group_rn_timeline_user,1,0,0,0
+access_rn_timeline_event_manager,rn.timeline.event manager,model_rn_timeline_event,group_rn_timeline_manager,1,1,1,1
+access_rn_timeline_template_user,rn.timeline.template user,model_rn_timeline_template,group_rn_timeline_user,1,0,0,0
+access_rn_timeline_template_manager,rn.timeline.template manager,model_rn_timeline_template,group_rn_timeline_manager,1,1,1,1

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_timeline_root"
+              name="Record Timeline"
+              parent="base.menu_custom"
+              sequence="46"
+              groups="rn_record_timeline.group_rn_timeline_user"/>
+
+    <menuitem id="menu_rn_timeline_events"
+              name="Timeline Events"
+              parent="menu_rn_timeline_root"
+              action="action_rn_timeline_event"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_timeline_templates"
+              name="Timeline Templates"
+              parent="menu_rn_timeline_root"
+              action="action_rn_timeline_template"
+              sequence="20"
+              groups="rn_record_timeline.group_rn_timeline_manager"/>
+</odoo>
