@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="config_rn_bookmark_recent_limit" model="ir.config_parameter">
+        <field name="key">rn_bookmarks.recent_limit</field>
+        <field name="value">50</field>
+    </record>
+    <record id="config_rn_bookmark_enable_hotkey" model="ir.config_parameter">
+        <field name="key">rn_bookmarks.enable_hotkey</field>
+        <field name="value">True</field>
+    </record>
+    <record id="config_rn_bookmark_enable_systray" model="ir.config_parameter">
+        <field name="key">rn_bookmarks.enable_systray</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

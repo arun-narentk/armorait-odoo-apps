@@ -1,0 +1,16 @@
+.o_rn_bookmarks_systray {
+    color: #f59e0b;
+}
+
+.o_rn_bookmarks_panel .o_rn_bookmark_item {
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.o_rn_bookmarks_panel .o_rn_bookmark_item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.o_rn_bookmark_toggle {
+    font-weight: 500;
+}

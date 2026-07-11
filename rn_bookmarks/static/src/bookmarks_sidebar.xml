@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_bookmarks.Sidebar">
+        <Dropdown>
+            <button class="o_rn_bookmarks_systray btn btn-link" title="Bookmarks">
+                <i class="fa fa-star"/>
+            </button>
+            <t t-set-slot="content">
+                <div class="o_rn_bookmarks_panel p-2" style="min-width: 320px; max-height: 70vh; overflow: auto;">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <strong>Bookmarks</strong>
+                        <button class="btn btn-sm btn-link" t-on-click="openDashboard">Open</button>
+                    </div>
+                    <input class="form-control form-control-sm mb-2" type="search"
+                           placeholder="Search bookmarks"
+                           t-model="state.search"
+                           t-on-input="onSearch"/>
+                    <div class="small text-muted mb-2" t-if="!state.loading">
+                        <span t-esc="state.stats.total"/> bookmarks |
+                        <span t-esc="state.stats.pinned"/> pinned |
+                        <span t-esc="state.stats.folders"/> folders
+                    </div>
+                    <div t-if="state.loading" class="text-muted small">Loading...</div>
+                    <section t-if="state.pinned.length" class="mb-2">
+                        <div class="fw-bold small text-uppercase">Pinned</div>
+                        <t t-foreach="state.pinned" t-as="item" t-key="item.id">
+                            <div class="o_rn_bookmark_item d-flex align-items-center gap-2 py-1"
+                                 t-on-click="() => this.openBookmark(item.id)">
+                                <i class="fa fa-thumb-tack text-warning"/>
+                                <span t-esc="item.name"/>
+                            </div>
+                        </t>
+                    </section>
+                    <section t-foreach="state.folders" t-as="folder" t-key="folder.id" class="mb-2">
+                        <div class="fw-bold small">
+                            <i t-att-class="'fa ' + (folder.icon || 'fa-folder')"/>
+                            <span class="ms-1" t-esc="folder.name"/>
+                        </div>
+                        <t t-foreach="folder.bookmarks" t-as="item" t-key="item.id">
+                            <div class="o_rn_bookmark_item ps-3 py-1"
+                                 t-on-click="() => this.openBookmark(item.id)">
+                                <i class="fa fa-star text-warning me-1"/>
+                                <span t-esc="item.name"/>
+                            </div>
+                        </t>
+                    </section>
+                    <section t-if="state.unfiled.length" class="mb-2">
+                        <div class="fw-bold small text-uppercase">Unfiled</div>
+                        <t t-foreach="state.unfiled" t-as="item" t-key="item.id">
+                            <div class="o_rn_bookmark_item py-1"
+                                 t-on-click="() => this.openBookmark(item.id)">
+                                <i class="fa fa-star-o me-1"/>
+                                <span t-esc="item.name"/>
+                            </div>
+                        </t>
+                    </section>
+                </div>
+            </t>
+        </Dropdown>
+    </t>
+</templates>

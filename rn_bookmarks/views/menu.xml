@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_bookmarks_root"
+              name="Bookmarks"
+              sequence="55"
+              groups="rn_bookmarks.group_rn_bookmarks_user"
+              web_icon="rn_bookmarks,static/description/icon.png"/>
+
+    <menuitem id="menu_rn_bookmark_dashboard"
+              name="Dashboard"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_dashboard"
+              sequence="5"/>
+
+    <menuitem id="menu_rn_bookmark_pinned"
+              name="Pinned"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_pinned"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_bookmark_favorites"
+              name="Favorites"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_favorites"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_bookmark_recent"
+              name="Recent"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_recent"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_bookmark_folders"
+              name="Folders"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_folder"
+              sequence="40"/>
+
+    <menuitem id="menu_rn_bookmark_tags"
+              name="Tags"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_tag"
+              sequence="50"/>
+
+    <menuitem id="menu_rn_bookmark_all"
+              name="All Bookmarks"
+              parent="menu_rn_bookmarks_root"
+              action="action_rn_bookmark_all"
+              sequence="60"/>
+</odoo>

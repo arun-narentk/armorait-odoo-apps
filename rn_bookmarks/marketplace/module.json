@@ -1,0 +1,58 @@
+{
+  "technical_name": "rn_bookmarks",
+  "app_name": "Bookmarks",
+  "tagline": "Bookmark any Odoo record, list view, menu, or report and open it instantly from a sidebar",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#f59e0b",
+  "problem": "Odoo has no universal bookmark system. Users juggle browser tabs, stars, and copy-paste links to reopen the same records every day.",
+  "solution": "Bookmarks adds a cross-model bookmark hub with folders, pins, colors, notes, tags, Ctrl+B hotkey, and a systray sidebar for instant navigation.",
+  "benefits": [
+    "Bookmark any record on any model, including custom apps",
+    "Organize bookmarks into Sales, Invoices, CRM, and custom folders",
+    "Pin urgent items and add notes for context",
+    "Search bookmarks from the sidebar without leaving your screen",
+    "Actionable bookmark types for records, list views, menus, and reports"
+  ],
+  "features": [
+    {
+      "title": "Universal record bookmarks",
+      "text": "Star any form view record with one click or Ctrl+B."
+    },
+    {
+      "title": "Folder sidebar",
+      "text": "Browser-style folders with drag-ready ordering and color tags."
+    },
+    {
+      "title": "Pin and favorite",
+      "text": "Keep critical bookmarks on top across sessions."
+    },
+    {
+      "title": "Notes and tags",
+      "text": "Add context like Urgent or VIP without leaving the record."
+    },
+    {
+      "title": "List view bookmarks",
+      "text": "Save filtered list views such as Overdue Invoices for one-click reopen."
+    },
+    {
+      "title": "Smart button",
+      "text": "See bookmark count on sale orders, partners, invoices, and leads."
+    }
+  ],
+  "workflow": [
+    "Open any record",
+    "Click Bookmark or press Ctrl+B",
+    "Organize into folders",
+    "Pin urgent items",
+    "Search from sidebar",
+    "Reopen in one click"
+  ],
+  "seo_keywords": "Odoo 19 bookmarks, record bookmarks, productivity sidebar, ARMORA IT Technologies, quick navigation",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "19.0"
+}

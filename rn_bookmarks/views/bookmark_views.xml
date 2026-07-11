@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_bookmark_list" model="ir.ui.view">
+        <field name="name">rn.bookmark.list</field>
+        <field name="model">rn.bookmark</field>
+        <field name="arch" type="xml">
+            <list decoration-info="is_pinned" decoration-muted="not active">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="bookmark_type"/>
+                <field name="res_model"/>
+                <field name="folder_id"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <field name="color"/>
+                <field name="is_pinned"/>
+                <field name="is_favorite"/>
+                <field name="last_opened_at"/>
+                <field name="open_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_bookmark_form" model="ir.ui.view">
+        <field name="name">rn.bookmark.form</field>
+        <field name="model">rn.bookmark</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_open_bookmark" type="object" string="Open" class="btn-primary"/>
+                    <button name="action_pin" type="object" string="Pin" invisible="is_pinned"/>
+                    <button name="action_unpin" type="object" string="Unpin" invisible="not is_pinned"/>
+                    <button name="action_toggle_favorite" type="object" string="Toggle Favorite"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="bookmark_type"/>
+                            <field name="folder_id"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="color"/>
+                            <field name="icon"/>
+                        </group>
+                        <group>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="menu_id"/>
+                            <field name="action_id"/>
+                            <field name="report_action_id"/>
+                            <field name="is_pinned"/>
+                            <field name="is_favorite"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <group string="List Context" invisible="bookmark_type != 'list'">
+                        <field name="domain"/>
+                        <field name="context"/>
+                    </group>
+                    <group string="Note">
+                        <field name="note" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_bookmark_search" model="ir.ui.view">
+        <field name="name">rn.bookmark.search</field>
+        <field name="model">rn.bookmark</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="note"/>
+                <field name="res_model"/>
+                <field name="folder_id"/>
+                <field name="tag_ids"/>
+                <filter name="pinned" string="Pinned" domain="[('is_pinned', '=', True)]"/>
+                <filter name="favorites" string="Favorites" domain="[('is_favorite', '=', True)]"/>
+                <filter name="records" string="Records" domain="[('bookmark_type', '=', 'record')]"/>
+                <filter name="lists" string="List Views" domain="[('bookmark_type', '=', 'list')]"/>
+                <filter name="menus" string="Menus" domain="[('bookmark_type', '=', 'menu')]"/>
+                <group>
+                    <filter name="group_folder" string="Folder" context="{'group_by': 'folder_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'bookmark_type'}"/>
+                    <filter name="group_model" string="Model" context="{'group_by': 'res_model'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_rn_bookmark_kanban" model="ir.ui.view">
+        <field name="name">rn.bookmark.kanban</field>
+        <field name="model">rn.bookmark</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="bookmark_type"/>
+                <field name="color"/>
+                <field name="is_pinned"/>
+                <field name="folder_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex flex-column gap-1">
+                            <strong><field name="name"/></strong>
+                            <span class="text-muted"><field name="bookmark_type"/></span>
+                            <span t-if="record.is_pinned.raw_value" class="badge text-bg-warning">Pinned</span>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_rn_bookmark_all" model="ir.actions.act_window">
+        <field name="name">All Bookmarks</field>
+        <field name="res_model">rn.bookmark</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('user_id', '=', uid), ('active', '=', True)]</field>
+        <field name="context">{'search_default_group_folder': 1}</field>
+    </record>
+
+    <record id="action_rn_bookmark_pinned" model="ir.actions.act_window">
+        <field name="name">Pinned</field>
+        <field name="res_model">rn.bookmark</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('user_id', '=', uid), ('is_pinned', '=', True), ('active', '=', True)]</field>
+    </record>
+
+    <record id="action_rn_bookmark_favorites" model="ir.actions.act_window">
+        <field name="name">Favorites</field>
+        <field name="res_model">rn.bookmark</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('user_id', '=', uid), ('is_favorite', '=', True), ('active', '=', True)]</field>
+    </record>
+
+    <record id="action_rn_bookmark_recent" model="ir.actions.act_window">
+        <field name="name">Recent</field>
+        <field name="res_model">rn.bookmark</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('user_id', '=', uid), ('active', '=', True)]</field>
+        <field name="context">{'search_default_group_type': 0}</field>
+    </record>
+
+    <record id="action_rn_bookmark_dashboard" model="ir.actions.act_window">
+        <field name="name">Bookmarks Dashboard</field>
+        <field name="res_model">rn.bookmark</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('user_id', '=', uid), ('active', '=', True)]</field>
+    </record>
+</odoo>

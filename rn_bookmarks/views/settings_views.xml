@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_bookmarks" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.bookmarks</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Bookmarks" name="rn_bookmarks" groups="rn_bookmarks.group_rn_bookmarks_user">
+                    <block title="Bookmarks">
+                        <setting string="Recent limit" help="Maximum bookmarks shown in recent groups.">
+                            <field name="rn_bookmark_recent_limit"/>
+                        </setting>
+                        <setting string="Ctrl+B hotkey" help="Allow Ctrl+B to bookmark the current record.">
+                            <field name="rn_bookmark_enable_hotkey"/>
+                        </setting>
+                        <setting string="Sidebar systray" help="Show bookmarks panel in the top bar.">
+                            <field name="rn_bookmark_enable_systray"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
