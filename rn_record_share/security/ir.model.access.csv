@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_share_log_user,rn.share.log user,model_rn_share_log,rn_record_share.group_rn_record_share_user,1,0,1,0
+access_rn_share_log_manager,rn.share.log manager,model_rn_share_log,rn_record_share.group_rn_record_share_manager,1,1,1,1
+access_rn_record_share_wizard_user,rn.record.share.wizard user,model_rn_record_share_wizard,rn_record_share.group_rn_record_share_user,1,1,1,1

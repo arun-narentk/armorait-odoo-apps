@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_share_log_list" model="ir.ui.view">
+        <field name="name">rn.share.log.list</field>
+        <field name="model">rn.share.log</field>
+        <field name="arch" type="xml">
+            <list string="Share History" create="0" edit="0">
+                <field name="label"/>
+                <field name="action_type"/>
+                <field name="format_type"/>
+                <field name="model_label"/>
+                <field name="shared_url"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_share_log_search" model="ir.ui.view">
+        <field name="name">rn.share.log.search</field>
+        <field name="model">rn.share.log</field>
+        <field name="arch" type="xml">
+            <search string="Share History">
+                <field name="label"/>
+                <field name="res_model"/>
+                <field name="action_type"/>
+                <filter name="filter_copy" string="Copy" domain="[('action_type', '=', 'copy')]"/>
+                <filter name="filter_share" string="Share" domain="[('action_type', '=', 'share')]"/>
+                <filter name="filter_today" string="Today"
+                        domain="[('create_date', '&gt;=', (context_today()).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <group>
+                    <filter name="group_action" string="Action" context="{'group_by': 'action_type'}"/>
+                    <filter name="group_model" string="Model" context="{'group_by': 'res_model'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_share_log" model="ir.actions.act_window">
+        <field name="name">Share History</field>
+        <field name="res_model">rn.share.log</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'search_default_filter_today': 0}</field>
+    </record>
+</odoo>

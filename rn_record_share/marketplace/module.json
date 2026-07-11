@@ -1,0 +1,75 @@
+{
+  "technical_name": "rn_record_share",
+  "app_name": "Record Share",
+  "tagline": "Share Odoo records with secure links, copy formats, QR bridge, and share history",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#0d9488",
+  "version": "19.0.1.0.0",
+  "branch": "19.0",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0",
+  "problem": "Teams waste time copying record URLs manually, lose context in chats, and have no audit trail of what was shared.",
+  "solution": "Record Share adds Copy Link, a share wizard, multiple formats, email and WhatsApp helpers, optional QR bridge, and per-user share history on key business documents.",
+  "benefits": [
+    "Copy secure record links in one click from sale orders, contacts, leads, invoices, and products",
+    "Share as URL, Markdown, HTML, JSON, or record name",
+    "Permission checks before any link is exposed",
+    "Email and WhatsApp helpers with pre-filled messages",
+    "Optional bridge to Universal QR Generator when installed",
+    "Share history with configurable retention cleanup"
+  ],
+  "features": [
+    {
+      "title": "Copy Link",
+      "text": "Stat button copies the record URL or your configured default format instantly."
+    },
+    {
+      "title": "Share wizard",
+      "text": "Popup with previews, copy actions, email, WhatsApp, and open-in-new-tab."
+    },
+    {
+      "title": "Multiple formats",
+      "text": "URL, Markdown, HTML, JSON, and plain record name for docs, chats, and tickets."
+    },
+    {
+      "title": "Access control",
+      "text": "Links are generated only when the user can read the underlying record."
+    },
+    {
+      "title": "Share history",
+      "text": "Audit log per user with action type, format, and timestamp."
+    },
+    {
+      "title": "QR bridge",
+      "text": "Generate QR codes through Universal QR Generator when that app is installed."
+    }
+  ],
+  "workflow": [
+    "Install Record Share",
+    "Assign Record Share user group",
+    "Open a supported form view",
+    "Click Copy Link or Share",
+    "Pick a format or send via email or WhatsApp"
+  ],
+  "screenshot_labels": {
+    "workflow.png": "Copy Link on Form",
+    "dashboard.png": "Share Wizard",
+    "designer.png": "Share History",
+    "settings.png": "Retention Settings",
+    "mobile.png": "Mobile Share",
+    "report.png": "Format Previews"
+  },
+  "gif_labels": {
+    "hero.gif": "Copy a record link in one click",
+    "workflow.gif": "Open the share wizard",
+    "dashboard.gif": "Copy Markdown or JSON formats",
+    "settings.gif": "Configure default format and retention",
+    "reports.gif": "Review share history",
+    "mobile.gif": "Share from mobile form view"
+  },
+  "seo_keywords": "Odoo 19, Odoo Community, record share, copy link, share URL, WhatsApp share, QR bridge, rn_record_share, ARMORA IT Technologies",
+  "has_dashboard": false,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com"
+}

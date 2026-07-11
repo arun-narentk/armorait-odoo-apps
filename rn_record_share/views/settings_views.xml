@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_record_share" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.record.share</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Record Share" name="rn_record_share" groups="rn_record_share.group_rn_record_share_manager">
+                    <block title="Sharing Settings">
+                        <setting string="Default copy format">
+                            <field name="rn_record_share_default_format"/>
+                        </setting>
+                        <setting string="Share log retention (days)">
+                            <field name="rn_record_share_log_retention_days"/>
+                        </setting>
+                        <setting string="Enable email share">
+                            <field name="rn_record_share_enable_email"/>
+                        </setting>
+                        <setting string="Enable WhatsApp share">
+                            <field name="rn_record_share_enable_whatsapp"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
