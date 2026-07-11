@@ -23,3 +23,8 @@ def running_version_domain(company_id=None, extra=None):
     if extra:
         domain.extend(extra)
     return domain
+
+
+def search_running_versions(env, company_id=None, extra=None):
+    """Return hr.version records representing active employee contracts."""
+    return env['hr.version'].search(running_version_domain(company_id, extra))

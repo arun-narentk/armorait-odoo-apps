@@ -45,7 +45,6 @@ consolidation, recruitment cost analytics.
         'hr',
         'hr_attendance',
         'hr_holidays',
-        'hr_contract',
     ],
     'data': [
         'security/security.xml',

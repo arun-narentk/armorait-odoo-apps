@@ -46,7 +46,6 @@ integration, mobile signing.
         'sale',
         'purchase',
         'hr',
-        'hr_contract',
         'account',
     ],
     'data': [
