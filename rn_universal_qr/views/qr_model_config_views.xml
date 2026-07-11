@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_model_config_list" model="ir.ui.view">
+        <field name="name">rn.qr.model.config.list</field>
+        <field name="model">rn.qr.model.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model_id"/>
+                <field name="template_id"/>
+                <field name="auto_generate_on_create"/>
+                <field name="show_on_form"/>
+                <field name="include_in_reports"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_model_config_form" model="ir.ui.view">
+        <field name="name">rn.qr.model.config.form</field>
+        <field name="model">rn.qr.model.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_form_view" type="object" string="Generate Dynamic Form View" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id"/>
+                            <field name="template_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="auto_generate_on_create"/>
+                            <field name="show_on_form"/>
+                            <field name="include_in_reports"/>
+                            <field name="generated_view_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_qr_model_config_tree" model="ir.ui.view">
+        <field name="name">rn.qr.model.config.list</field>
+        <field name="model">rn.qr.model.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model_id"/>
+                <field name="template_id"/>
+                <field name="payload_type"/>
+                <field name="action_type"/>
+                <field name="auto_generate"/>
+                <field name="enable_report"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_qr_model_config_form" model="ir.ui.view">
+        <field name="name">rn.qr.model.config.form</field>
+        <field name="model">rn.qr.model.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="template_id"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="payload_type"/>
+                            <field name="action_type"/>
+                            <field name="auto_generate"/>
+                            <field name="enable_report"/>
+                        </group>
+                    </group>
+                    <group string="Form UI">
+                        <field name="enable_smart_button"/>
+                        <field name="enable_notebook_page"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_qr_model_config" model="ir.actions.act_window">
+        <field name="name">Model Configuration</field>
+        <field name="res_model">rn.qr.model.config</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

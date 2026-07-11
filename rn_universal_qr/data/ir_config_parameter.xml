@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_parameter_rn_qr_default_expiration_days" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.default_expiration_days</field>
+        <field name="value">0</field>
+    </record>
+    <record id="ir_config_parameter_rn_qr_default_scan_action" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.default_scan_action</field>
+        <field name="value">open_record</field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_rn_qr_default_size" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.default_size</field>
+        <field name="value">200</field>
+    </record>
+    <record id="ir_config_rn_qr_default_color" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.default_color</field>
+        <field name="value">black</field>
+    </record>
+    <record id="ir_config_rn_qr_ecc_level" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.ecc_level</field>
+        <field name="value">M</field>
+    </record>
+    <record id="ir_config_rn_qr_payload_type" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.payload_type</field>
+        <field name="value">record_url</field>
+    </record>
+    <record id="ir_config_rn_qr_action_type" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.action_type</field>
+        <field name="value">open_record</field>
+    </record>
+    <record id="ir_config_rn_qr_enable_statistics" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.enable_statistics</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_rn_qr_enable_public_url" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.enable_public_url</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_rn_qr_enable_report" model="ir.config_parameter">
+        <field name="key">rn_universal_qr.enable_report</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

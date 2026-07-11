@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_universal_qr" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.universal.qr</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Universal QR" name="rn_universal_qr" groups="rn_universal_qr.group_rn_universal_qr_manager">
+                    <block title="Default QR Settings">
+                        <setting string="Default Template">
+                            <field name="rn_qr_default_template_id"/>
+                        </setting>
+                        <setting string="Default Expiration Days">
+                            <field name="rn_qr_default_expiration_days"/>
+                        </setting>
+                        <setting string="Default Scan Action">
+                            <field name="rn_qr_default_scan_action"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_qr" model="ir.ui.view">
+        <field name="name">res.config.settings.rn.universal.qr</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="QR Generator" name="rn_universal_qr" groups="rn_universal_qr.group_rn_universal_qr_manager">
+                    <block title="Defaults">
+                        <setting string="Default QR Size">
+                            <field name="rn_qr_default_size"/>
+                        </setting>
+                        <setting string="Default Color">
+                            <field name="rn_qr_default_color"/>
+                            <field name="rn_qr_custom_color" invisible="rn_qr_default_color != 'custom'"/>
+                        </setting>
+                        <setting string="ECC Level">
+                            <field name="rn_qr_ecc_level"/>
+                        </setting>
+                        <setting string="Logo in Center">
+                            <field name="rn_qr_use_logo"/>
+                        </setting>
+                    </block>
+                    <block title="Payload and Actions">
+                        <setting string="Default Payload">
+                            <field name="rn_qr_payload_type"/>
+                        </setting>
+                        <setting string="Default Action">
+                            <field name="rn_qr_action_type"/>
+                        </setting>
+                        <setting string="Expiration Policy">
+                            <field name="rn_qr_expiration_policy"/>
+                        </setting>
+                    </block>
+                    <block title="Features">
+                        <setting string="Scan Statistics">
+                            <field name="rn_qr_enable_statistics"/>
+                        </setting>
+                        <setting string="Public URL Payload">
+                            <field name="rn_qr_enable_public_url"/>
+                        </setting>
+                        <setting string="QR on Reports">
+                            <field name="rn_qr_enable_report"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
