@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_record_share_root"
+              name="Record Share"
+              sequence="54"
+              web_icon="rn_record_share,static/description/icon.png"
+              groups="rn_record_share.group_rn_record_share_user"/>
+
+    <menuitem id="menu_rn_record_share_history"
+              name="Share History"
+              parent="menu_rn_record_share_root"
+              action="action_rn_share_log"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_record_share_settings"
+              name="Settings"
+              parent="menu_rn_record_share_root"
+              action="base.res_config_setting_act_window"
+              sequence="90"
+              groups="rn_record_share.group_rn_record_share_manager"/>
+</odoo>

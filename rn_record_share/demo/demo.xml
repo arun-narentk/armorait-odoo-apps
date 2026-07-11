@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_partner_share" model="res.partner">
+        <field name="name">ShareCap Demo Customer</field>
+        <field name="email">sharecap.demo@armorait.com</field>
+        <field name="is_company" eval="True"/>
+    </record>
+</odoo>
