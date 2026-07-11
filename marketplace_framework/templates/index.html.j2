@@ -58,72 +58,45 @@
   </div>
 </section>
 
+{% if workflow %}
 <section class="armora-section" id="workflow">
   <h2>Workflow</h2>
   <div class="armora-workflow">
     {% for step in workflow %}
-    {% if not loop.first %}<span class="arrow">&#8595;</span>{% endif %}
+    {% if not loop.first %}<span class="arrow">&#8594;</span>{% endif %}
     <span class="step">{{ step }}</span>
     {% endfor %}
   </div>
 </section>
-
-{% if has_dashboard %}
-<section class="armora-section" id="dashboard">
-  <h2>Dashboard</h2>
-  <p>KPI cards, filters, and operational views designed for managers and daily reviews.</p>
-  <img class="armora-shot-wide" src="{{ screenshots.dashboard }}" alt="Dashboard">
-  {% if gifs.dashboard %}
-  <p><img class="armora-shot-wide" src="{{ gifs.dashboard }}" alt="Dashboard demo"></p>
-  {% endif %}
-</section>
 {% endif %}
 
-{% if has_reports %}
-<section class="armora-section" id="reports">
-  <h2>Reports</h2>
-  <p>PDF, pivot, and export-ready outputs for audits and management reviews.</p>
-  <img class="armora-shot-wide" src="{{ screenshots.report }}" alt="Report">
-  {% if gifs.reports %}
-  <p><img class="armora-shot-wide" src="{{ gifs.reports }}" alt="Reports demo"></p>
-  {% endif %}
-</section>
-{% endif %}
-
+{% if screenshot_gallery %}
 <section class="armora-section" id="screenshots">
   <h2>Screenshots</h2>
-  <p>Real Odoo backend captures from a working instance. Desktop and mobile views included.</p>
+  <p>Key views from {{ app_name }} on Odoo 19 Community.</p>
   <div class="armora-gallery">
     {% for shot in screenshot_gallery %}
     <figure>
-      <img src="{{ shot.file }}" alt="{{ shot.label }}">
+      <img src="{{ shot.file }}" alt="{{ shot.label }}" loading="lazy">
       <figcaption>{{ shot.label }}</figcaption>
     </figure>
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
+{% if gif_gallery %}
 <section class="armora-section" id="demos">
   <h2>Product Demonstrations</h2>
-  <p>20 to 30 second GIF recordings for hero, workflow, settings, and mobile flows.</p>
+  <p>Short GIF recordings for core workflows.</p>
   <div class="armora-gallery">
     {% for gif in gif_gallery %}
     <figure>
-      <img src="{{ gif.file }}" alt="{{ gif.label }}">
+      <img src="{{ gif.file }}" alt="{{ gif.label }}" loading="lazy">
       <figcaption>{{ gif.label }}</figcaption>
     </figure>
     {% endfor %}
   </div>
-</section>
-
-{% if has_mobile %}
-<section class="armora-section" id="mobile">
-  <h2>Mobile Friendly</h2>
-  <p>Responsive layouts for phones and tablets.</p>
-  <img class="armora-shot" src="{{ screenshots.mobile }}" alt="Mobile view">
-  {% if gifs.mobile %}
-  <p><img class="armora-shot-wide" src="{{ gifs.mobile }}" alt="Mobile demo"></p>
-  {% endif %}
 </section>
 {% endif %}
 

@@ -61,8 +61,9 @@ depend on this core instead of duplicating chart, filter, or alert logic.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/overview.png',
+        'static/description/workflow.png',
         'static/description/dashboard.png',
+        'static/description/designer.png',
     ],
     'installable': True,
     'application': True,

@@ -2,7 +2,7 @@
     'name': 'Arabic Tooltip',
     'version': '19.0.1.2.0',
     'category': 'Tools',
-    'summary': 'Arabic hover translations for Odoo backend labels and the rn_arabic_hint field widget',
+    'summary': 'Hover Arabic translations for backend labels and a reusable field widget',
     'description': """
 Arabic hover translations for Odoo backend labels and field values. Global
 label tooltips, rn_arabic_hint field widget, Odoo translation support, and an
@@ -35,7 +35,6 @@ accounting fallback dictionary for bilingual Saudi and GCC teams.
         'static/description/icon.png',
         'static/description/workflow.png',
         'static/description/dashboard.png',
-        'static/description/monitoring.png',
-        'static/description/execution.png',
+        'static/description/designer.png',
     ],
 }
