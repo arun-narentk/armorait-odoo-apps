@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Smart Notes',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Productivity',
     'summary': 'Context-aware sticky notes on any business document with pins, mentions, and reminders',
     'description': """
@@ -56,6 +56,7 @@ Features
     ],
     'demo': [
         'demo/demo.xml',
+        'demo/demo_sale_order_notes.xml',
     ],
     'assets': {
         'web.assets_backend': [
