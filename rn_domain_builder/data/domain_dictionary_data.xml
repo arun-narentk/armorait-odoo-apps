@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Sale Orders -->
+    <record id="dict_sale_confirmed_quotations" model="rn.domain.dictionary">
+        <field name="name">Confirmed Quotations</field>
+        <field name="res_model">sale.order</field>
+        <field name="trigger_word">confirmed quotations</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">sent</field>
+        <field name="sequence">0</field>
+    </record>
+    <record id="dict_sale_confirmed" model="rn.domain.dictionary">
+        <field name="name">Confirmed Sales Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="trigger_word">confirmed</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">sale</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="dict_sale_quotation" model="rn.domain.dictionary">
+        <field name="name">Quotations</field>
+        <field name="res_model">sale.order</field>
+        <field name="trigger_word">quotations</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">sent</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="dict_sale_draft" model="rn.domain.dictionary">
+        <field name="name">Draft Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="trigger_word">draft</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">draft</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <!-- Invoices -->
+    <record id="dict_invoice_paid" model="rn.domain.dictionary">
+        <field name="name">Paid Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">paid</field>
+        <field name="field_name">payment_state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">paid</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="dict_invoice_overdue" model="rn.domain.dictionary">
+        <field name="name">Overdue Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">overdue</field>
+        <field name="field_name">invoice_date_due</field>
+        <field name="operator">&lt;</field>
+        <field name="value_type">date_expression</field>
+        <field name="date_expression">today</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="dict_invoice_this_month" model="rn.domain.dictionary">
+        <field name="name">Invoices This Month</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">this month</field>
+        <field name="field_name">invoice_date</field>
+        <field name="operator">=</field>
+        <field name="value_type">date_expression</field>
+        <field name="date_expression">this_month</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="dict_invoice_customer_invoice" model="rn.domain.dictionary">
+        <field name="name">Customer Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">invoices</field>
+        <field name="field_name">move_type</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">out_invoice</field>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="dict_invoice_amount" model="rn.domain.dictionary">
+        <field name="name">Invoice Amount</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">amount</field>
+        <field name="field_name">amount_total</field>
+        <field name="operator">&gt;</field>
+        <field name="value_type">float</field>
+        <field name="value_float">0.0</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="dict_invoice_above" model="rn.domain.dictionary">
+        <field name="name">Above Amount Keyword</field>
+        <field name="res_model">account.move</field>
+        <field name="trigger_word">above</field>
+        <field name="field_name">amount_total</field>
+        <field name="operator">&gt;</field>
+        <field name="value_type">float</field>
+        <field name="value_float">0.0</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <!-- CRM -->
+    <record id="dict_crm_lost" model="rn.domain.dictionary">
+        <field name="name">Lost Opportunities</field>
+        <field name="res_model">crm.lead</field>
+        <field name="trigger_word">lost</field>
+        <field name="field_name">active</field>
+        <field name="operator">=</field>
+        <field name="value_type">boolean</field>
+        <field name="value_boolean" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="dict_crm_won" model="rn.domain.dictionary">
+        <field name="name">Won Opportunities</field>
+        <field name="res_model">crm.lead</field>
+        <field name="trigger_word">won</field>
+        <field name="field_name">probability</field>
+        <field name="operator">=</field>
+        <field name="value_type">integer</field>
+        <field name="value_integer">100</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Products -->
+    <record id="dict_product_stock" model="rn.domain.dictionary">
+        <field name="name">Stock Quantity Field</field>
+        <field name="res_model">product.template</field>
+        <field name="trigger_word">quantity</field>
+        <field name="field_name">qty_available</field>
+        <field name="operator">&lt;</field>
+        <field name="value_type">integer</field>
+        <field name="value_integer">0</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="dict_product_archived" model="rn.domain.dictionary">
+        <field name="name">Archived Products</field>
+        <field name="res_model">product.template</field>
+        <field name="trigger_word">archived</field>
+        <field name="field_name">active</field>
+        <field name="operator">=</field>
+        <field name="value_type">boolean</field>
+        <field name="value_boolean" eval="False"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Contacts -->
+    <record id="dict_partner_vip" model="rn.domain.dictionary">
+        <field name="name">VIP Contacts</field>
+        <field name="res_model">res.partner</field>
+        <field name="trigger_word">vip</field>
+        <field name="field_name">customer_rank</field>
+        <field name="operator">&gt;</field>
+        <field name="value_type">integer</field>
+        <field name="value_integer">0</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="dict_partner_company" model="rn.domain.dictionary">
+        <field name="name">Companies</field>
+        <field name="res_model">res.partner</field>
+        <field name="trigger_word">companies</field>
+        <field name="field_name">is_company</field>
+        <field name="operator">=</field>
+        <field name="value_type">boolean</field>
+        <field name="value_boolean" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Employees -->
+    <record id="dict_employee_active" model="rn.domain.dictionary">
+        <field name="name">Active Employees</field>
+        <field name="res_model">hr.employee</field>
+        <field name="trigger_word">active</field>
+        <field name="field_name">active</field>
+        <field name="operator">=</field>
+        <field name="value_type">boolean</field>
+        <field name="value_boolean" eval="True"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Purchase -->
+    <record id="dict_purchase_confirmed" model="rn.domain.dictionary">
+        <field name="name">Confirmed Purchase Orders</field>
+        <field name="res_model">purchase.order</field>
+        <field name="trigger_word">confirmed</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">purchase</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Stock -->
+    <record id="dict_picking_ready" model="rn.domain.dictionary">
+        <field name="name">Ready Transfers</field>
+        <field name="res_model">stock.picking</field>
+        <field name="trigger_word">ready</field>
+        <field name="field_name">state</field>
+        <field name="operator">=</field>
+        <field name="value_type">char</field>
+        <field name="value_char">assigned</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Projects -->
+    <record id="dict_project_active" model="rn.domain.dictionary">
+        <field name="name">Active Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="trigger_word">active</field>
+        <field name="field_name">active</field>
+        <field name="operator">=</field>
+        <field name="value_type">boolean</field>
+        <field name="value_boolean" eval="True"/>
+        <field name="sequence">1</field>
+    </record>
+</odoo>

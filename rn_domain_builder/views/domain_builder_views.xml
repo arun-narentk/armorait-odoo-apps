@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_domain_builder_form" model="ir.ui.view">
+        <field name="name">rn.domain.builder.form</field>
+        <field name="model">rn.domain.builder</field>
+        <field name="arch" type="xml">
+            <form string="Domain Builder">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="res_model"/>
+                            <field name="description" placeholder="Example: paid invoices this month"/>
+                            <field name="suggestion_text" placeholder="Type to see suggestions"/>
+                            <field name="suggestion_display" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="record_count" readonly="1"/>
+                            <field name="is_valid" readonly="1"/>
+                            <field name="warning_message" readonly="1" invisible="not warning_message"/>
+                        </group>
+                    </group>
+                    <group string="Generated Domain">
+                        <field name="domain_text" nolabel="1" readonly="1" widget="text"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_generate" type="object" string="Generate" class="btn-primary"/>
+                    <button name="action_test" type="object" string="Test" class="btn-secondary"/>
+                    <button name="action_save_filter" type="object" string="Save Filter" class="btn-secondary"/>
+                    <button name="action_save_history" type="object" string="Save History" class="btn-secondary"/>
+                    <button string="Close" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_domain_builder" model="ir.actions.act_window">
+        <field name="name">Domain Builder</field>
+        <field name="res_model">rn.domain.builder</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_res_model': 'sale.order'}</field>
+    </record>
+
+    <record id="action_rn_domain_builder_launch" model="ir.actions.server">
+        <field name="name">Open Domain Builder</field>
+        <field name="model_id" ref="model_rn_domain_builder"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_open_builder()</field>
+    </record>
+
+    <record id="view_rn_domain_dictionary_tree" model="ir.ui.view">
+        <field name="name">rn.domain.dictionary.tree</field>
+        <field name="model">rn.domain.dictionary</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="trigger_word"/>
+                <field name="field_name"/>
+                <field name="operator"/>
+                <field name="value_type"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_domain_dictionary_form" model="ir.ui.view">
+        <field name="name">rn.domain.dictionary.form</field>
+        <field name="model">rn.domain.dictionary</field>
+        <field name="arch" type="xml">
+            <form string="Dictionary Entry">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="res_model"/>
+                            <field name="trigger_word"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="field_name"/>
+                            <field name="operator"/>
+                            <field name="value_type"/>
+                            <field name="value_char" invisible="value_type != 'char'"/>
+                            <field name="value_integer" invisible="value_type != 'integer'"/>
+                            <field name="value_float" invisible="value_type != 'float'"/>
+                            <field name="value_boolean" invisible="value_type != 'boolean'"/>
+                            <field name="date_expression" invisible="value_type != 'date_expression'"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_domain_dictionary" model="ir.actions.act_window">
+        <field name="name">Dictionary</field>
+        <field name="res_model">rn.domain.dictionary</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_domain_history_tree" model="ir.ui.view">
+        <field name="name">rn.domain.history.tree</field>
+        <field name="model">rn.domain.history</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="res_model"/>
+                <field name="record_count"/>
+                <field name="user_id"/>
+                <field name="filter_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_domain_history_form" model="ir.ui.view">
+        <field name="name">rn.domain.history.form</field>
+        <field name="model">rn.domain.history</field>
+        <field name="arch" type="xml">
+            <form string="Domain History">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="res_model"/>
+                        <field name="record_count"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="filter_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                        <field name="domain_text" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_domain_history" model="ir.actions.act_window">
+        <field name="name">History</field>
+        <field name="res_model">rn.domain.history</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
