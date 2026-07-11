@@ -19,8 +19,17 @@ LEGACY_CATALOG = ARMORA_ROOT / 'tools' / 'apps_marketplace' / 'catalog.json'
 ZIP_OUT = ARMORA_ROOT / 'apps_store_zips'
 
 SCREENSHOT_MAP = {
-    'workflow': 'workflow.png',
+    'overview': 'overview.png',
+    'list': 'list.png',
+    'form': 'form.png',
     'dashboard': 'dashboard.png',
+    'wizard': 'wizard.png',
+    'settings': 'settings.png',
+    'report': 'report.png',
+    'search': 'search.png',
+    'kanban': 'kanban.png',
+    'mobile': 'mobile.png',
+    'workflow': 'workflow.png',
     'designer': 'designer.png',
 }
 
@@ -34,21 +43,21 @@ GIF_MAP = {
 }
 
 SCREENSHOT_LABELS = {
-    'workflow.png': 'Workflow',
-    'dashboard.png': 'Dashboard',
-    'designer.png': 'Designer',
+    'overview.png': 'Overview',
+    'list.png': 'Rules List',
+    'form.png': 'Rule Form',
+    'dashboard.png': 'Duplicate Matches',
+    'wizard.png': 'Merge Wizard',
+    'settings.png': 'Ignored Pairs',
+    'report.png': 'Scan Results',
+    'search.png': 'Match Review',
+    'kanban.png': 'All Matches',
+    'mobile.png': 'Mobile View',
+    'workflow.png': 'Process Workflow',
+    'designer.png': 'Rule Designer',
 }
 
 LEGACY_DESCRIPTION_FILES = frozenset({
-    'overview.png',
-    'list.png',
-    'form.png',
-    'wizard.png',
-    'settings.png',
-    'report.png',
-    'kanban.png',
-    'search.png',
-    'mobile.png',
     'main_screenshot.png',
     'ai_builder.png',
     'execution.png',
@@ -56,12 +65,6 @@ LEGACY_DESCRIPTION_FILES = frozenset({
     'screenshot_contact_phone.png',
     'screenshot_invoice_form.png',
     'screenshot_whatsapp_message.png',
-    'hero.gif',
-    'workflow.gif',
-    'dashboard.gif',
-    'settings.gif',
-    'reports.gif',
-    'mobile.gif',
     'banner.gif',
     'banner_small.gif',
 })

@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo/>
+<odoo>
+    <data noupdate="1">
+        <record id="dupcap_partner_acme_a" model="res.partner">
+            <field name="name">DUPCAP Acme Supplies</field>
+            <field name="email">dupcap.acme@armorait.com</field>
+            <field name="is_company" eval="False"/>
+        </record>
+        <record id="dupcap_partner_acme_b" model="res.partner">
+            <field name="name">DUPCAP ACME Supplies Ltd</field>
+            <field name="email">dupcap.acme@armorait.com</field>
+            <field name="is_company" eval="False"/>
+        </record>
+        <record id="dupcap_partner_blue_a" model="res.partner">
+            <field name="name">DUPCAP Blue Desk Co</field>
+            <field name="email">dupcap.blue@armorait.com</field>
+            <field name="is_company" eval="False"/>
+        </record>
+        <record id="dupcap_partner_blue_b" model="res.partner">
+            <field name="name">DUPCAP BlueDesk Company</field>
+            <field name="email">dupcap.blue@armorait.com</field>
+            <field name="is_company" eval="False"/>
+        </record>
+    </data>
+</odoo>
