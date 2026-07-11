@@ -48,7 +48,7 @@ class TestRnNameAssistant(TransactionCase):
     def test_contact_heuristics(self):
         suggestions = self.service.generate_for_record('res.partner', self.partner.id)
         names = [row['name'] for row in suggestions]
-        self.assertIn('ABC Technologies Pvt Ltd', names)
+        self.assertIn('ABC Technologies Private Limited', names)
         self.assertIn('ABC Engineering', names)
 
     def test_lead_heuristics(self):

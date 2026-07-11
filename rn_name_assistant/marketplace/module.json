@@ -33,17 +33,34 @@
     }
   ],
   "workflow": [
-    "Install module",
-    "Configure settings",
-    "Assign user groups",
-    "Run daily workflows",
-    "Review KPIs and reports",
-    "Scale across companies"
+    "Install Name Assistant",
+    "Configure naming templates and abbreviations",
+    "Assign manager and user groups",
+    "Open a product, contact, or project record",
+    "Click Suggest Name and pick a ranked option",
+    "Run batch generation from list views when needed"
   ],
-  "seo_keywords": "Odoo 19, Odoo Community, Name Assistant, rn_name_assistant, ARMORA IT Technologies",
-  "has_dashboard": false,
-  "has_reports": false,
-  "has_mobile": false,
+  "screenshot_labels": {
+    "dashboard.png": "Naming Templates",
+    "wizard.png": "Suggest Name Wizard",
+    "settings.png": "Abbreviation Rules",
+    "report.png": "Product Catalog",
+    "mobile.png": "Mobile Product Form",
+    "workflow.png": "Product Naming Fields",
+    "designer.png": "Template Designer"
+  },
+  "gif_labels": {
+    "hero.gif": "Suggest and apply a product name",
+    "workflow.gif": "Templates to product wizard",
+    "dashboard.gif": "Browse naming templates",
+    "settings.gif": "Manage abbreviations",
+    "reports.gif": "Product list and naming",
+    "mobile.gif": "Mobile naming workflow"
+  },
+  "seo_keywords": "Odoo 19, Odoo Community, Name Assistant, product naming, rn_name_assistant, ARMORA IT Technologies",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
   "live_test_url": "https://www.armorait.com",
   "version": "19.0.1.0.0",
   "branch": "19.0",

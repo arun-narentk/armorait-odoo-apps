@@ -372,6 +372,8 @@ def render_index_html(config: dict, brand: dict, catalog: dict, mod_dir: Path) -
     technical_name = config.get('technical_name', mod_dir.name)
     category_type = config.get('category_type', 'erp')
     screenshots, gifs = sync_media(mod_dir, config, desc)
+    screenshot_labels = {**SCREENSHOT_LABELS, **config.get('screenshot_labels', {})}
+    gif_labels = {**GIF_LABELS, **config.get('gif_labels', {})}
 
     env = Environment(
         loader=FileSystemLoader(str(FRAMEWORK / 'templates')),
@@ -401,12 +403,12 @@ def render_index_html(config: dict, brand: dict, catalog: dict, mod_dir: Path) -
         gifs=gifs,
         screenshot_gallery=[
             {'file': fname, 'label': label}
-            for fname, label in SCREENSHOT_LABELS.items()
+            for fname, label in screenshot_labels.items()
             if (desc / fname).exists()
         ],
         gif_gallery=[
             {'file': fname, 'label': label}
-            for fname, label in GIF_LABELS.items()
+            for fname, label in gif_labels.items()
             if (desc / fname).exists()
         ],
         related_products=related_products(technical_name, category_type, catalog),
