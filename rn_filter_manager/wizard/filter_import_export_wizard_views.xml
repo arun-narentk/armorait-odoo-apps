@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_filter_import_export_wizard_form" model="ir.ui.view">
+        <field name="name">rn.filter.import.export.wizard.form</field>
+        <field name="model">rn.filter.import.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import / Export Filters">
+                <group>
+                    <field name="mode"/>
+                    <field name="filter_ids" widget="many2many_tags" invisible="mode != 'export'"/>
+                    <field name="import_mode" invisible="mode != 'import'"/>
+                    <field name="json_file" filename="json_filename" invisible="mode != 'import'"/>
+                    <field name="json_filename" invisible="1"/>
+                    <field name="export_data" invisible="mode != 'export'"/>
+                </group>
+                <footer>
+                    <button name="action_export" type="object" string="Export JSON" class="btn-primary" invisible="mode != 'export'"/>
+                    <button name="action_import" type="object" string="Import JSON" class="btn-primary" invisible="mode != 'import'"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_filter_import_export_wizard" model="ir.actions.act_window">
+        <field name="name">Import / Export</field>
+        <field name="res_model">rn.filter.import.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

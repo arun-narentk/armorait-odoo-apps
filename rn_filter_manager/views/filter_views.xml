@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ir_filters_filter_manager_list" model="ir.ui.view">
+        <field name="name">ir.filters.filter.manager.list</field>
+        <field name="model">ir.filters</field>
+        <field name="arch" type="xml">
+            <list default_order="rn_is_pinned desc, rn_sequence, name">
+                <field name="rn_is_pinned" widget="boolean_toggle"/>
+                <field name="rn_is_favorite"/>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="rn_folder_id"/>
+                <field name="rn_share_type"/>
+                <field name="rn_color"/>
+                <field name="rn_usage_count"/>
+                <field name="rn_last_used_at"/>
+                <field name="rn_owner_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ir_filters_filter_manager_form" model="ir.ui.view">
+        <field name="name">ir.filters.filter.manager.form</field>
+        <field name="model">ir.filters</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_pin" type="object" string="Pin" class="btn-primary" invisible="rn_is_pinned"/>
+                    <button name="action_unpin" type="object" string="Unpin" invisible="not rn_is_pinned"/>
+                    <button name="action_mark_favorite" type="object" string="Favorite"/>
+                    <button name="action_log_usage" type="object" string="Log Usage"/>
+                    <button name="action_open_duplicates" type="object" string="Find Duplicates"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="model_id"/>
+                            <field name="rn_folder_id"/>
+                            <field name="rn_share_type"/>
+                            <field name="user_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="rn_is_pinned"/>
+                            <field name="rn_is_favorite"/>
+                            <field name="rn_color"/>
+                            <field name="rn_icon"/>
+                            <field name="rn_sequence"/>
+                            <field name="rn_owner_id" readonly="1"/>
+                            <field name="rn_company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Filter Definition">
+                        <field name="domain"/>
+                        <field name="context"/>
+                        <field name="sort"/>
+                        <field name="is_default"/>
+                        <field name="action_id"/>
+                    </group>
+                    <group string="Analytics">
+                        <field name="rn_usage_count" readonly="1"/>
+                        <field name="rn_last_used_at" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ir_filters_filter_manager_search" model="ir.ui.view">
+        <field name="name">ir.filters.filter.manager.search</field>
+        <field name="model">ir.filters</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="rn_folder_id"/>
+                <filter name="pinned" string="Pinned" domain="[('rn_is_pinned', '=', True)]"/>
+                <filter name="favorite" string="Favorites" domain="[('rn_is_favorite', '=', True)]"/>
+                <filter name="shared" string="Shared" domain="[('rn_share_type', '=', 'shared')]"/>
+                <filter name="company" string="Company" domain="[('rn_share_type', '=', 'company')]"/>
+                <filter name="team" string="Team" domain="[('rn_share_type', '=', 'team')]"/>
+                <filter name="global" string="Global" domain="[('rn_share_type', '=', 'global')]"/>
+                <group>
+                    <filter name="group_folder" string="Folder" context="{'group_by': 'rn_folder_id'}"/>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_id'}"/>
+                    <filter name="group_share" string="Share Type" context="{'group_by': 'rn_share_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_rn_filter_all" model="ir.actions.act_window">
+        <field name="name">All Filters</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="search_view_id" ref="view_ir_filters_filter_manager_search"/>
+    </record>
+
+    <record id="action_rn_filter_favorites" model="ir.actions.act_window">
+        <field name="name">Favorites</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="domain">[('rn_is_favorite', '=', True)]</field>
+    </record>
+
+    <record id="action_rn_filter_pinned" model="ir.actions.act_window">
+        <field name="name">Pinned</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="domain">[('rn_is_pinned', '=', True)]</field>
+    </record>
+
+    <record id="action_rn_filter_shared" model="ir.actions.act_window">
+        <field name="name">Shared</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="domain">[('rn_share_type', 'in', ['shared', 'team', 'company', 'global'])]</field>
+    </record>
+
+    <record id="action_rn_filter_company" model="ir.actions.act_window">
+        <field name="name">Company Filters</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="domain">[('rn_share_type', '=', 'company')]</field>
+    </record>
+
+    <record id="action_rn_filter_team" model="ir.actions.act_window">
+        <field name="name">Team Filters</field>
+        <field name="res_model">ir.filters</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ir_filters_filter_manager_list"/>
+        <field name="domain">[('rn_share_type', '=', 'team')]</field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_filter_folder_user,rn.filter.folder user,model_rn_filter_folder,rn_filter_manager.group_rn_filter_manager_user,1,1,1,0
+access_rn_filter_folder_manager,rn.filter.folder manager,model_rn_filter_folder,rn_filter_manager.group_rn_filter_manager_manager,1,1,1,1
+access_rn_filter_history_user,rn.filter.history user,model_rn_filter_history,rn_filter_manager.group_rn_filter_manager_user,1,0,1,0
+access_rn_filter_history_manager,rn.filter.history manager,model_rn_filter_history,rn_filter_manager.group_rn_filter_manager_manager,1,1,1,1
+access_rn_filter_import_export_wizard,rn.filter.import.export.wizard,model_rn_filter_import_export_wizard,rn_filter_manager.group_rn_filter_manager_user,1,1,1,1

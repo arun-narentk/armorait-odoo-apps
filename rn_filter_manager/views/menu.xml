@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_filter_manager_root"
+              name="Filters"
+              sequence="54"
+              groups="rn_filter_manager.group_rn_filter_manager_user"
+              web_icon="rn_filter_manager,static/description/icon.png"/>
+
+    <menuitem id="menu_rn_filter_favorites"
+              name="Favorites"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_favorites"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_filter_recent"
+              name="Recent"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_recent"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_filter_shared"
+              name="Shared"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_shared"
+              sequence="30"/>
+
+    <menuitem id="menu_rn_filter_company"
+              name="Company"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_company"
+              sequence="40"
+              groups="rn_filter_manager.group_rn_filter_manager_manager"/>
+
+    <menuitem id="menu_rn_filter_team"
+              name="Team"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_team"
+              sequence="50"/>
+
+    <menuitem id="menu_rn_filter_folders"
+              name="My Folders"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_folder"
+              sequence="60"/>
+
+    <menuitem id="menu_rn_filter_pinned"
+              name="Pinned"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_pinned"
+              sequence="70"/>
+
+    <menuitem id="menu_rn_filter_all"
+              name="All Filters"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_all"
+              sequence="80"/>
+
+    <menuitem id="menu_rn_filter_import_export"
+              name="Import / Export"
+              parent="menu_rn_filter_manager_root"
+              action="action_rn_filter_import_export_wizard"
+              sequence="90"/>
+</odoo>
