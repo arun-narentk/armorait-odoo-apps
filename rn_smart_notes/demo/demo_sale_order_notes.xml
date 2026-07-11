@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_smart_notes_partner" model="res.partner">
+        <field name="name">SMARTNOTE Demo Customer</field>
+        <field name="email">demo@armorait.com</field>
+    </record>
+
+    <record id="demo_rn_smart_notes_sale_order" model="sale.order">
+        <field name="partner_id" ref="demo_rn_smart_notes_partner"/>
+    </record>
+
+    <record id="demo_rn_smart_note_vip" model="rn.smart.note">
+        <field name="name">VIP Customer</field>
+        <field name="note"><![CDATA[<p>Priority account. Handle with extra care.</p>]]></field>
+        <field name="res_model">sale.order</field>
+        <field name="res_id" eval="ref('demo_rn_smart_notes_sale_order')"/>
+        <field name="color">green</field>
+        <field name="priority">high</field>
+        <field name="icon">vip</field>
+        <field name="is_pinned" eval="True"/>
+        <field name="visibility">everyone</field>
+    </record>
+
+    <record id="demo_rn_smart_note_payment" model="rn.smart.note">
+        <field name="name">Payment Delay</field>
+        <field name="note"><![CDATA[<p>Customer often delays payment. Follow up before delivery.</p>]]></field>
+        <field name="res_model">sale.order</field>
+        <field name="res_id" eval="ref('demo_rn_smart_notes_sale_order')"/>
+        <field name="color">orange</field>
+        <field name="priority">critical</field>
+        <field name="icon">warning</field>
+        <field name="is_pinned" eval="True"/>
+        <field name="visibility">everyone</field>
+    </record>
+
+    <record id="demo_rn_smart_note_call" model="rn.smart.note">
+        <field name="name">Call Before Delivery</field>
+        <field name="note"><![CDATA[<p>Call warehouse before dispatch.</p>]]></field>
+        <field name="res_model">sale.order</field>
+        <field name="res_id" eval="ref('demo_rn_smart_notes_sale_order')"/>
+        <field name="color">blue</field>
+        <field name="priority">high</field>
+        <field name="icon">call</field>
+        <field name="visibility">everyone</field>
+    </record>
+</odoo>
