@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_smart_notes_root"
+              name="Smart Notes"
+              web_icon="rn_smart_notes,static/description/icon.png"
+              groups="rn_smart_notes.group_rn_smart_notes_user"
+              sequence="46"/>
+
+    <menuitem id="menu_rn_smart_notes_notes"
+              name="All Notes"
+              parent="menu_rn_smart_notes_root"
+              action="action_rn_smart_note"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_smart_notes_templates"
+              name="Templates"
+              parent="menu_rn_smart_notes_root"
+              action="action_rn_smart_note_template"
+              groups="rn_smart_notes.group_rn_smart_notes_manager"
+              sequence="20"/>
+</odoo>

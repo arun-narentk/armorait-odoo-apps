@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_smart_notes" model="ir.ui.view">
+        <field name="name">sale.order.form.smart.notes</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_form_smart_notes" model="ir.ui.view">
+        <field name="name">purchase.order.form.smart.notes</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form_smart_notes" model="ir.ui.view">
+        <field name="name">account.move.form.smart.notes</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_form_smart_notes" model="ir.ui.view">
+        <field name="name">crm.lead.form.smart.notes</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_form_smart_notes" model="ir.ui.view">
+        <field name="name">res.partner.form.smart.notes</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_form_smart_notes" model="ir.ui.view">
+        <field name="name">product.template.form.smart.notes</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_form_smart_notes" model="ir.ui.view">
+        <field name="name">hr.employee.form.smart.notes</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_smart_notes" type="object" class="oe_stat_button" icon="fa-sticky-note-o"
+                        groups="rn_smart_notes.group_rn_smart_notes_user">
+                    <field name="smart_note_count" widget="statinfo" string="Notes"/>
+                </button>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <widget name="rn_smart_notes_panel" groups="rn_smart_notes.group_rn_smart_notes_user"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

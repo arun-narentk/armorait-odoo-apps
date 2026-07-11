@@ -1,0 +1,18 @@
+.o_rn_smart_notes_panel {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.o_rn_note_card {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
+}
+
+.o_rn_note_composer {
+    background: #fff;
+}
+
+.o_rn_smart_notes_kanban .o_rn_note_card {
+    min-height: 120px;
+}

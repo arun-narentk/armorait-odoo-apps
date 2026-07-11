@@ -1,0 +1,52 @@
+{
+  "technical_name": "rn_smart_notes",
+  "app_name": "Smart Notes",
+  "tagline": "Context-aware sticky notes on any business document with pins, mentions, and reminders",
+  "category_type": "productivity",
+  "price": 8.99,
+  "accent": "#f59e0b",
+  "problem": "Critical customer context is buried in chatter, spreadsheets, or personal notebooks instead of the document users are working on.",
+  "solution": "Attach colorful sticky notes to sale orders, invoices, CRM leads, contacts, products, and more with pins, mentions, templates, and reminders.",
+  "benefits": [
+    "Keep payment warnings and VIP flags visible on the record",
+    "Mention teammates without leaving the form",
+    "One-click templates for common warnings",
+    "Reminder dates create activities automatically",
+    "Fast OWL panel without opening chatter"
+  ],
+  "features": [
+    {
+      "title": "Context-aware",
+      "text": "Notes stay attached to the exact business document you are viewing."
+    },
+    {
+      "title": "Pinned cards",
+      "text": "Pin critical warnings so they always appear first."
+    },
+    {
+      "title": "Mentions",
+      "text": "Notify teammates when they are mentioned on a note."
+    },
+    {
+      "title": "Templates",
+      "text": "Admins define VIP, payment delay, and delivery call templates."
+    }
+  ],
+  "workflow": [
+    "Install Smart Notes",
+    "Assign Smart Notes user group",
+    "Open a sale order or invoice",
+    "Add or pin a note from the panel",
+    "Mention a teammate or set a reminder"
+  ],
+  "faq": [
+    {
+      "q": "Which documents are supported in V1?",
+      "a": "Sale orders, purchase orders, invoices, CRM leads, contacts, products, and employees."
+    },
+    {
+      "q": "Can notes be private?",
+      "a": "Yes. Set visibility to Only Me, Sales Team, Managers, or Everyone."
+    }
+  ]
+}

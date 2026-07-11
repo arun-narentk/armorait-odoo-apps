@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_smart_note_kanban" model="ir.ui.view">
+        <field name="name">rn.smart.note.kanban</field>
+        <field name="model">rn.smart.note</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="priority" class="o_rn_smart_notes_kanban">
+                <field name="name"/>
+                <field name="note"/>
+                <field name="color"/>
+                <field name="priority"/>
+                <field name="icon"/>
+                <field name="is_pinned"/>
+                <field name="user_id"/>
+                <field name="reminder_date"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="oe_kanban_card o_rn_note_card o_rn_note_#{record.color.raw_value}">
+                            <div class="o_kanban_record_top">
+                                <strong><field name="name"/></strong>
+                                <span t-if="record.is_pinned.raw_value" class="badge text-bg-warning">Pinned</span>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <field name="note" widget="html"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <field name="user_id"/>
+                                <field name="reminder_date"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_rn_smart_note_list" model="ir.ui.view">
+        <field name="name">rn.smart.note.list</field>
+        <field name="model">rn.smart.note</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="record_display_name"/>
+                <field name="priority"/>
+                <field name="color"/>
+                <field name="is_pinned"/>
+                <field name="visibility"/>
+                <field name="user_id"/>
+                <field name="reminder_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_smart_note_form" model="ir.ui.view">
+        <field name="name">rn.smart.note.form</field>
+        <field name="model">rn.smart.note</field>
+        <field name="arch" type="xml">
+            <form string="Smart Note">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_toggle_pin" type="object" class="oe_stat_button" icon="fa-thumb-tack">
+                            <field name="is_pinned" widget="boolean"/>
+                        </button>
+                        <button name="action_open_record" type="object" class="oe_stat_button" icon="fa-external-link"
+                                invisible="not res_id">
+                            <span class="o_stat_text">Open Record</span>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="priority"/>
+                            <field name="color"/>
+                            <field name="icon"/>
+                            <field name="is_pinned"/>
+                        </group>
+                        <group>
+                            <field name="res_model" readonly="1"/>
+                            <field name="res_id" readonly="1"/>
+                            <field name="visibility"/>
+                            <field name="reminder_date"/>
+                            <field name="user_id" readonly="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="note" widget="html"/>
+                        </page>
+                        <page string="Mentions and Files">
+                            <field name="mention_user_ids" widget="many2many_tags"/>
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_smart_note_search" model="ir.ui.view">
+        <field name="name">rn.smart.note.search</field>
+        <field name="model">rn.smart.note</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="note"/>
+                <field name="res_model"/>
+                <field name="user_id"/>
+                <filter name="pinned" string="Pinned" domain="[('is_pinned', '=', True)]"/>
+                <filter name="mine" string="Mine" domain="[('user_id', '=', uid)]"/>
+                <filter name="mentioned_me" string="Mentioned Me" domain="[('mention_user_ids', 'in', uid)]"/>
+                <filter name="critical" string="Critical" domain="[('priority', '=', 'critical')]"/>
+                <filter name="with_reminder" string="With Reminder" domain="[('reminder_date', '!=', False)]"/>
+                <group>
+                    <filter name="group_priority" string="Priority" context="{'group_by': 'priority'}"/>
+                    <filter name="group_color" string="Color" context="{'group_by': 'color'}"/>
+                    <filter name="group_model" string="Document Type" context="{'group_by': 'res_model'}"/>
+                    <filter name="group_user" string="Author" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_rn_smart_note_template_tree" model="ir.ui.view">
+        <field name="name">rn.smart.note.template.list</field>
+        <field name="model">rn.smart.note.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="priority"/>
+                <field name="icon"/>
+                <field name="is_quick"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_smart_note_template_form" model="ir.ui.view">
+        <field name="name">rn.smart.note.template.form</field>
+        <field name="model">rn.smart.note.template</field>
+        <field name="arch" type="xml">
+            <form string="Note Template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        <field name="color"/>
+                        <field name="priority"/>
+                        <field name="icon"/>
+                        <field name="visibility"/>
+                        <field name="is_quick"/>
+                        <field name="active"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <field name="description" widget="html"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_smart_note" model="ir.actions.act_window">
+        <field name="name">Smart Notes</field>
+        <field name="res_model">rn.smart.note</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_rn_smart_note_search"/>
+    </record>
+
+    <record id="action_rn_smart_note_template" model="ir.actions.act_window">
+        <field name="name">Note Templates</field>
+        <field name="res_model">rn.smart.note.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

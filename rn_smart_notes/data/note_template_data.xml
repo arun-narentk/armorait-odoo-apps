@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rn_smart_note_template_vip_customer" model="rn.smart.note.template">
+        <field name="name">VIP Customer</field>
+        <field name="description"><![CDATA[<p>Priority customer. Handle with extra care.</p>]]></field>
+        <field name="color">green</field>
+        <field name="priority">high</field>
+        <field name="icon">vip</field>
+        <field name="is_quick" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="rn_smart_note_template_payment_delay" model="rn.smart.note.template">
+        <field name="name">Payment Delay</field>
+        <field name="description"><![CDATA[<p>Customer often delays payment. Follow up before delivery.</p>]]></field>
+        <field name="color">orange</field>
+        <field name="priority">critical</field>
+        <field name="icon">warning</field>
+        <field name="is_quick" eval="True"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="rn_smart_note_template_call_before_delivery" model="rn.smart.note.template">
+        <field name="name">Call Before Delivery</field>
+        <field name="description"><![CDATA[<p>Call customer before dispatch.</p>]]></field>
+        <field name="color">blue</field>
+        <field name="priority">high</field>
+        <field name="icon">call</field>
+        <field name="is_quick" eval="True"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="rn_smart_note_template_high_credit_risk" model="rn.smart.note.template">
+        <field name="name">High Credit Risk</field>
+        <field name="description"><![CDATA[<p>Review credit limit before confirming the order.</p>]]></field>
+        <field name="color">red</field>
+        <field name="priority">critical</field>
+        <field name="icon">finance</field>
+        <field name="sequence">40</field>
+    </record>
+
+    <record id="rn_smart_note_template_handle_carefully" model="rn.smart.note.template">
+        <field name="name">Handle Carefully</field>
+        <field name="description"><![CDATA[<p>Special handling instructions apply to this record.</p>]]></field>
+        <field name="color">purple</field>
+        <field name="priority">medium</field>
+        <field name="icon">technical</field>
+        <field name="sequence">50</field>
+    </record>
+</odoo>

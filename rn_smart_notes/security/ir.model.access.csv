@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_smart_note_user,rn.smart.note user,model_rn_smart_note,rn_smart_notes.group_rn_smart_notes_user,1,1,1,1
+access_rn_smart_note_manager,rn.smart.note manager,model_rn_smart_note,rn_smart_notes.group_rn_smart_notes_manager,1,1,1,1
+access_rn_smart_note_template_user,rn.smart.note.template user,model_rn_smart_note_template,rn_smart_notes.group_rn_smart_notes_user,1,0,0,0
+access_rn_smart_note_template_manager,rn.smart.note.template manager,model_rn_smart_note_template,rn_smart_notes.group_rn_smart_notes_manager,1,1,1,1

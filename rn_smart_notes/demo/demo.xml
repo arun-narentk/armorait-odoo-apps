@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="demo_rn_smart_note_partner" model="rn.smart.note">
+        <field name="name">VIP Customer</field>
+        <field name="note"><![CDATA[<p>Long-term customer with premium support expectations.</p>]]></field>
+        <field name="res_model">res.partner</field>
+        <field name="res_id" ref="base.res_partner_1"/>
+        <field name="color">green</field>
+        <field name="priority">high</field>
+        <field name="icon">vip</field>
+        <field name="is_pinned" eval="True"/>
+        <field name="visibility">everyone</field>
+    </record>
+</odoo>
