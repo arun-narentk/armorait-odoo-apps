@@ -3,7 +3,7 @@
     'name': 'Smart Duplicate Finder',
     'version': '19.0.1.0.0',
     'category': 'Productivity',
-    'summary': 'Find and merge duplicate records on any model using fuzzy matching rules',
+    'summary': 'Find and merge duplicate records on any Odoo model using fuzzy matching rules',
     'description': """
 ARMORA Smart Duplicate Finder for Odoo 19 Community
 ===================================================

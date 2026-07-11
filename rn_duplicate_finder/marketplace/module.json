@@ -1,49 +1,48 @@
 {
   "technical_name": "rn_duplicate_finder",
   "app_name": "Smart Duplicate Finder",
-  "tagline": "Find and merge duplicate records on any model using fuzzy matching rules",
+  "tagline": "Find and merge duplicate records on any Odoo model using fuzzy matching rules",
   "category_type": "productivity",
   "price": 29.99,
   "accent": "#16a34a",
-  "problem": "Teams running Odoo 19 need a reliable way to manage smart duplicate finder without spreadsheets or disconnected tools.",
-  "solution": "Find and merge duplicate records on any model using fuzzy matching rules",
+  "problem": "Duplicate contacts, products, employees, and vendors pollute CRM, inventory, and HR data. Manual cleanup is slow and error-prone.",
+  "solution": "Smart Duplicate Finder is a generic framework: define rules per model, run weighted fuzzy scans, review scored pairs, then merge or ignore duplicates with a guided wizard.",
   "benefits": [
-    "Streamline smart duplicate finder workflows in Odoo",
-    "Built for Odoo 19 Community",
-    "Production-ready ARMORA architecture",
-    "Multi-company aware where applicable",
-    "Support from ARMORA IT Technologies"
+    "Works on any Odoo model, including custom apps",
+    "Weighted exact, fuzzy, and phone digit matching",
+    "Ignore pairs to keep recurring scans clean",
+    "Native partner merge plus safe archive for other models",
+    "Scheduled scans for proactive data quality"
   ],
   "features": [
     {
-      "title": "Odoo-native",
-      "text": "Smart Duplicate Finder extends standard Odoo models and views."
+      "title": "Rule-based framework",
+      "text": "Create duplicate rules for res.partner, product.template, hr.employee, or any model."
     },
     {
-      "title": "Configurable",
-      "text": "Settings, security groups, and menus included."
+      "title": "Weighted scoring",
+      "text": "Combine field weights with exact, fuzzy, and phone digit match modes."
     },
     {
-      "title": "Documented",
-      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      "title": "Scan batches",
+      "text": "Run on-demand or scheduled scans with match threshold and record limits."
     },
     {
-      "title": "Commercial support",
-      "text": "Contact info@armorait.com for rollout help."
+      "title": "Merge wizard",
+      "text": "Merge partners with Odoo native merge. Archive duplicates on other models."
     }
   ],
   "workflow": [
-    "Install module",
-    "Configure settings",
-    "Assign user groups",
-    "Run daily workflows",
-    "Review KPIs and reports",
-    "Scale across companies"
+    "Configure rule",
+    "Run scan",
+    "Review matches",
+    "Merge or ignore",
+    "Schedule auto scan"
   ],
-  "seo_keywords": "Odoo 19, Odoo Community, Smart Duplicate Finder, rn_duplicate_finder, ARMORA IT Technologies",
-  "has_dashboard": false,
-  "has_reports": false,
-  "has_mobile": false,
+  "seo_keywords": "Odoo 19 duplicate finder, fuzzy matching, merge contacts, deduplicate products, data quality, ARMORA",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
   "live_test_url": "https://www.armorait.com",
   "version": "19.0.1.0.0",
   "branch": null
