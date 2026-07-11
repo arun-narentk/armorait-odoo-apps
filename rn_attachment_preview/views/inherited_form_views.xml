@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_attachment_preview" model="ir.ui.view">
+        <field name="name">sale.order.form.attachment.preview</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_attachment_gallery"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-paperclip"
+                        groups="rn_attachment_preview.group_rn_attachment_preview_user"
+                        invisible="rn_attachment_count == 0">
+                    <field name="rn_attachment_count" widget="statinfo" string="Attachments"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Attachments" name="rn_attachment_preview"
+                      groups="rn_attachment_preview.group_rn_attachment_preview_user">
+                    <field name="rn_attachment_ids"
+                           widget="rn_attachment_preview"
+                           nolabel="1"
+                           readonly="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

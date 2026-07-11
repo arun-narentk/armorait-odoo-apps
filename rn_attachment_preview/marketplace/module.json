@@ -1,0 +1,71 @@
+{
+  "technical_name": "rn_attachment_preview",
+  "app_name": "Attachment Preview",
+  "tagline": "Preview PDFs, images, videos, audio, and text files inside Odoo without downloading",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#2563eb",
+  "problem": "Users must download attachments to see what is inside invoices, products, and documents.",
+  "solution": "Preview supported files directly in Odoo with thumbnails, hover preview, and a full-screen gallery viewer.",
+  "benefits": [
+    "Instant PDF and image preview in forms",
+    "Thumbnail strip instead of filename-only attachments",
+    "Hover preview for quick checks",
+    "Gallery navigation across multiple files",
+    "Respects Odoo document access rights"
+  ],
+  "features": [
+    {"title": "PDF Preview", "text": "Open PDFs in the built-in viewer with zoom and page scroll."},
+    {"title": "Image Gallery", "text": "Preview PNG, JPG, SVG, GIF, and WEBP with next/previous navigation."},
+    {"title": "Video and Audio", "text": "Play MP4, WEBM, MP3, WAV, and OGG files inline."},
+    {"title": "Text Files", "text": "Read TXT, CSV, JSON, and XML without leaving Odoo."},
+    {"title": "Thumbnail Strip", "text": "Visual attachment cards with Preview and Download actions."}
+  ],
+  "workflow": [
+    "Open any record with attachments",
+    "See visual thumbnails on the attachment strip",
+    "Hover for a quick preview",
+    "Click Preview for full-screen viewing",
+    "Navigate across files like a gallery"
+  ],
+  "screenshots": {
+    "workflow": "screenshots/workflow.png",
+    "dashboard": "screenshots/dashboard.png",
+    "designer": "screenshots/designer.png",
+    "mobile": "screenshots/mobile.png"
+  },
+  "gifs": {
+    "hero": "gifs/hero.gif",
+    "workflow": "gifs/workflow.gif",
+    "dashboard": "gifs/dashboard.gif",
+    "settings": "gifs/settings.gif",
+    "reports": "gifs/reports.gif",
+    "mobile": "gifs/mobile.gif"
+  },
+  "screenshot_labels": {
+    "workflow": "Thumbnail Strip",
+    "dashboard": "Hover Preview",
+    "designer": "Full-Screen Viewer",
+    "mobile": "Mobile Preview"
+  },
+  "gif_labels": {
+    "hero": "Preview Without Download",
+    "workflow": "Thumbnail and Hover",
+    "dashboard": "Open Full Preview",
+    "settings": "Gallery Navigation",
+    "reports": "PDF and Text Preview",
+    "mobile": "Mobile Full Screen"
+  },
+  "faq": [
+    {"q": "Which file types are supported in V1?", "a": "PDF, images, video, audio, and text files such as TXT, CSV, JSON, and XML."},
+    {"q": "Does it support Excel or Word?", "a": "Not in V1. Office previews are planned once a reliable browser preview engine is integrated."},
+    {"q": "Is preview access secure?", "a": "Yes. Users can only preview attachments they are allowed to read in Odoo."}
+  ],
+  "seo_keywords": "Odoo 19 attachment preview, PDF preview Odoo, file viewer Odoo, document preview without download",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

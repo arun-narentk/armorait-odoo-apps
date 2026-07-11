@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_attachment_preview_root"
+              name="Attachment Preview"
+              web_icon="rn_attachment_preview,static/description/icon.png"
+              sequence="59"
+              groups="rn_attachment_preview.group_rn_attachment_preview_user"/>
+</odoo>

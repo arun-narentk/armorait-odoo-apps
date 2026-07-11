@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="rn_attachment_preview.AttachmentPreviewField" t-inherit="web.Many2ManyBinaryField" t-inherit-mode="primary">
+        <xpath expr="//t[@t-call='web.Many2ManyBinaryField.attachment_preview']" position="replace">
+            <t t-call="rn_attachment_preview.AttachmentPreviewCard"/>
+        </xpath>
+    </t>
+
+    <t t-name="rn_attachment_preview.AttachmentPreviewCard">
+        <t t-set="editable" t-value="!props.readonly"/>
+        <div t-attf-class="o_attachment o_attachment_many2many rn_attachment_preview_card #{ editable ? 'o_attachment_editable' : '' }"
+             t-att-title="file.name"
+             t-on-mouseenter="() => this.onHoverEnter(file)"
+             t-on-mouseleave="() => this.onHoverLeave()">
+            <div class="o_attachment_wrap">
+                <t t-set="ext" t-value="getExtension(file)"/>
+                <t t-set="url" t-value="getUrl(file.id)"/>
+                <div class="o_image_box float-start rn_preview_thumb"
+                     t-att-class="{'rn_preview_thumb_hover': isHovered(file)}"
+                     t-on-click.stop="(ev) => this.onPreviewClick(file, ev)">
+                    <img t-if="isImage(file)"
+                         class="o_preview_image object-fit-cover rounded align-baseline"
+                         t-attf-src="/web/image/{{ file.id }}"
+                         t-att-alt="file.name"/>
+                    <span t-else="" class="o_image o_preview_image"
+                          t-att-data-mimetype="file.mimetype"
+                          t-att-data-ext="ext"
+                          role="img"/>
+                    <span t-if="isPreviewable(file)" class="rn_preview_badge fa fa-eye" title="Preview"/>
+                </div>
+
+                <div class="caption d-flex flex-column">
+                    <a class="ml4 rn_preview_name"
+                       t-att-href="url"
+                       t-att-data-tooltip="file.name"
+                       t-on-click.stop="(ev) => this.onPreviewClick(file, ev)">
+                        <t t-esc="file.name"/>
+                    </a>
+                    <div class="rn_preview_actions ms-1">
+                        <button t-if="isPreviewable(file)"
+                                type="button"
+                                class="btn btn-link btn-sm p-0 me-2"
+                                t-on-click.stop="(ev) => this.onPreviewClick(file, ev)">
+                            Preview
+                        </button>
+                        <a class="small" t-att-href="url" download="" t-on-click.stop="onDownloadClick.bind(this, file)">
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div t-if="isHovered(file) and getHoverPreviewUrl(file)" class="rn_hover_preview_popover">
+                    <img t-if="isImage(file)" t-att-src="getHoverPreviewUrl(file)" t-att-alt="file.name"/>
+                    <div t-else="" class="rn_hover_preview_meta">
+                        <i class="fa fa-file-pdf-o fa-2x" t-if="file.mimetype == 'application/pdf'"/>
+                        <i class="fa fa-file-text-o fa-2x" t-elif="file.mimetype and file.mimetype.startsWith('text/')"/>
+                        <i class="fa fa-file-o fa-2x" t-else=""/>
+                        <div class="mt-1"><t t-esc="file.name"/></div>
+                        <small>Click to open full preview</small>
+                    </div>
+                </div>
+
+                <div t-if="editable" class="o_attachment_delete" t-on-click.stop="() => this.onFileRemove(file.id)">
+                    <span role="img" aria-label="Delete" title="Delete">×</span>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

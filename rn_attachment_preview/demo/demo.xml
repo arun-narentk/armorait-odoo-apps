@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_preview_partner" model="res.partner">
+        <field name="name">PREVIEW Demo Customer</field>
+        <field name="email">preview.demo@armorait.com</field>
+    </record>
+
+    <record id="demo_rn_preview_sale_order" model="sale.order">
+        <field name="partner_id" ref="demo_rn_preview_partner"/>
+    </record>
+
+    <record id="demo_rn_preview_image" model="ir.attachment">
+        <field name="name">product-photo.png</field>
+        <field name="res_model">sale.order</field>
+        <field name="res_id" eval="ref('demo_rn_preview_sale_order')"/>
+        <field name="type">binary</field>
+        <field name="mimetype">image/png</field>
+        <field name="datas" type="base64" file="rn_attachment_preview/demo/files/demo_image.png"/>
+    </record>
+
+    <record id="demo_rn_preview_text" model="ir.attachment">
+        <field name="name">invoice-notes.txt</field>
+        <field name="res_model">sale.order</field>
+        <field name="res_id" eval="ref('demo_rn_preview_sale_order')"/>
+        <field name="type">binary</field>
+        <field name="mimetype">text/plain</field>
+        <field name="datas" type="base64" file="rn_attachment_preview/demo/files/demo_notes.txt"/>
+    </record>
+</odoo>

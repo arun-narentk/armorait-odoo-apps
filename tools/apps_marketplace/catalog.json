@@ -2918,5 +2918,149 @@
     "has_reports": true,
     "has_mobile": true,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_attachment_preview": {
+    "branch": null,
+    "app_name": "Attachment Preview",
+    "tagline": "Preview PDFs, images, videos, audio, and text files inside Odoo without downloading",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#16a34a",
+    "problem": "Teams running Odoo 19 need a reliable way to manage attachment preview without spreadsheets or disconnected tools.",
+    "solution": "Preview PDFs, images, videos, audio, and text files inside Odoo without downloading",
+    "benefits": [
+      "Streamline attachment preview workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Attachment Preview extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Attachment Preview, rn_attachment_preview, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_field_diff": {
+    "branch": null,
+    "app_name": "Field Difference Viewer",
+    "tagline": "Visual before/after field change log with highlights, summaries, and history viewer",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage field difference viewer without spreadsheets or disconnected tools.",
+    "solution": "Visual before/after field change log with highlights, summaries, and history viewer",
+    "benefits": [
+      "Streamline field difference viewer workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Field Difference Viewer extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Field Difference Viewer, rn_field_diff, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_smart_search": {
+    "branch": null,
+    "app_name": "Smart Search",
+    "tagline": "Recent records, search history, favorites, and Ctrl+K quick reopen",
+    "category_type": "productivity",
+    "price": 7.99,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage smart search without spreadsheets or disconnected tools.",
+    "solution": "Recent records, search history, favorites, and Ctrl+K quick reopen",
+    "benefits": [
+      "Streamline smart search workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Smart Search extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Smart Search, rn_smart_search, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
   }
 }
