@@ -263,9 +263,11 @@ a { color: var(--armora-primary); }
   <p>Record Share adds Copy Link, a share wizard, multiple formats, email and WhatsApp helpers, optional QR bridge, and per-user share history on key business documents.</p>
   <ul class="armora-list-check">
     
-    <li>Copy secure record links in one click from sale orders, contacts, leads, invoices, and products</li>
+    <li>Copy secure record links in one click from sale orders, contacts, leads, invoices, products, projects, and tasks</li>
     
-    <li>Share as URL, Markdown, HTML, JSON, or record name</li>
+    <li>Keyboard shortcut Ctrl+Shift+C on any supported form view</li>
+    
+    <li>Share as URL, name and URL, Markdown, HTML, JSON, or record name</li>
     
     <li>Permission checks before any link is exposed</li>
     
@@ -318,10 +320,46 @@ a { color: var(--armora-primary); }
     </div>
     
     <div class="armora-card">
+      <h3>Keyboard shortcut</h3>
+      <p>Press Ctrl+Shift+C on a supported form to copy the link without reaching for the mouse.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Name and URL</h3>
+      <p>Copy labeled links such as SO0245 - Azure Interior for chats, tickets, and email threads.</p>
+    </div>
+    
+    <div class="armora-card">
       <h3>QR bridge</h3>
       <p>Generate QR codes through Universal QR Generator when that app is installed.</p>
     </div>
     
+  </div>
+</section>
+
+<section class="armora-section" id="how-it-works">
+  <h2>How It Works</h2>
+  <div class="armora-workflow">
+    <span class="step">Open SO0245</span>
+    <span class="arrow">&#8594;</span>
+    <span class="step">Click Copy Link</span>
+    <span class="arrow">&#8594;</span>
+    <span class="step">Paste into browser</span>
+    <span class="arrow">&#8594;</span>
+    <span class="step">Same record opens</span>
+  </div>
+  <p style="margin-top:16px;">The clipboard action shows a short confirmation toast. Links respect read access on the underlying record.</p>
+</section>
+
+<section class="armora-section" id="supported-models">
+  <h2>Supported Models</h2>
+  <div class="armora-grid-3">
+    <div class="armora-card"><h3>Sales</h3><p>Sale orders</p></div>
+    <div class="armora-card"><h3>Accounting</h3><p>Customer invoices and credit notes</p></div>
+    <div class="armora-card"><h3>CRM</h3><p>Leads and opportunities</p></div>
+    <div class="armora-card"><h3>Contacts</h3><p>Partners and customers</p></div>
+    <div class="armora-card"><h3>Products</h3><p>Product templates</p></div>
+    <div class="armora-card"><h3>Projects</h3><p>Projects and tasks</p></div>
   </div>
 </section>
 
@@ -580,7 +618,7 @@ a { color: var(--armora-primary); }
     <li><strong>Deployment:</strong> On-premise, Odoo.sh, and Odoo Online (where custom modules are allowed)</li>
   </ul>
   <p><strong>SEO:</strong> Odoo 19, Odoo Community, record share, copy link, share URL, WhatsApp share, QR bridge, rn_record_share, ARMORA IT Technologies</p>
-  <p><strong>Version:</strong> 19.0.1.0.0</p>
+  <p><strong>Version:</strong> 19.0.1.1.1</p>
 </section>
 
 

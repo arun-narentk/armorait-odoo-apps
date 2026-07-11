@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Record Share',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.1',
     'category': 'Productivity',
     'summary': 'Share Odoo records with secure links, copy formats, QR bridge, and share history',
     'description': """
@@ -14,7 +14,8 @@ email and WhatsApp helpers, optional QR integration, and share history.
 Features
 --------
 
-* Copy Link on sale orders, contacts, CRM leads, invoices, and products
+* Copy Link on sale orders, contacts, CRM leads, invoices, products, projects, and tasks
+* Keyboard shortcut Ctrl+Shift+C on any supported form view
 * Share wizard with URL, Markdown, HTML, JSON, and record name formats
 * Permission checks before any link is exposed
 * Share history and analytics per user
@@ -39,6 +40,7 @@ Features
         'crm',
         'contacts',
         'product',
+        'project',
     ],
     'data': [
         'security/security.xml',
@@ -56,6 +58,7 @@ Features
     'assets': {
         'web.assets_backend': [
             'rn_record_share/static/src/js/record_share_clipboard.js',
+            'rn_record_share/static/src/js/record_share_hotkey.js',
         ],
     },
     'images': [

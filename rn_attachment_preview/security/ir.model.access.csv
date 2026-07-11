@@ -1,1 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_attachment_annotation_user,rn.attachment.annotation user,model_rn_attachment_annotation,rn_attachment_preview.group_rn_attachment_preview_user,1,1,1,1
+access_rn_attachment_annotation_manager,rn.attachment.annotation manager,model_rn_attachment_annotation,rn_attachment_preview.group_rn_attachment_preview_manager,1,1,1,1
+access_rn_attachment_search_wizard_user,rn.attachment.search.wizard user,model_rn_attachment_search_wizard,rn_attachment_preview.group_rn_attachment_preview_user,1,1,1,1
