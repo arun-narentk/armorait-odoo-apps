@@ -118,4 +118,48 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_project_form_record_share" model="ir.ui.view">
+        <field name="name">project.project.form.record.share</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_copy_record_link" type="object" class="oe_stat_button" icon="fa-clipboard"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">Copy Link</span></div>
+                </button>
+                <button name="action_open_record_share" type="object" class="oe_stat_button" icon="fa-share-alt"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">Share</span></div>
+                </button>
+                <button name="action_open_record_qr" type="object" class="oe_stat_button" icon="fa-qrcode"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">QR</span></div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_form_record_share" model="ir.ui.view">
+        <field name="name">project.task.form.record.share</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_copy_record_link" type="object" class="oe_stat_button" icon="fa-clipboard"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">Copy Link</span></div>
+                </button>
+                <button name="action_open_record_share" type="object" class="oe_stat_button" icon="fa-share-alt"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">Share</span></div>
+                </button>
+                <button name="action_open_record_qr" type="object" class="oe_stat_button" icon="fa-qrcode"
+                        groups="rn_record_share.group_rn_record_share_user">
+                    <div class="o_stat_info"><span class="o_stat_text">QR</span></div>
+                </button>
+            </xpath>
+        </field>
+    </record>
 </odoo>

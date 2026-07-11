@@ -102,6 +102,8 @@ class RnRecordShareService(models.AbstractModel):
             return f'<a href="{share_url}">{label}</a>'
         if fmt == const.FORMAT_NAME:
             return label
+        if fmt == const.FORMAT_LABELED_URL:
+            return f'{label} - {share_url}'
         if fmt == const.FORMAT_JSON:
             payload = {
                 'model': record._name,
