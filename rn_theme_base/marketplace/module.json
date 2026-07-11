@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_theme_base",
+  "app_name": "Website Theme Framework",
+  "tagline": "40 snippets, customizer, SEO, and Bootstrap 5 theme base",
+  "category_type": "theme",
+  "price": 49.99,
+  "accent": "#4f46e5",
+  "problem": "Agencies rebuild the same website snippets and theme options for every Odoo project.",
+  "solution": "Website Theme Framework is an ARMORA theme base with 40 snippets, mega menu, customizer, animations, and SEO helpers for Odoo Website.",
+  "benefits": [
+    "Faster website launches",
+    "Consistent ARMORA design",
+    "40 ready snippets",
+    "Live customizer",
+    "Bootstrap 5 native"
+  ],
+  "features": [
+    {
+      "title": "Snippet Library",
+      "text": "Hero, pricing, team, FAQ, and industry blocks."
+    },
+    {
+      "title": "Customizer",
+      "text": "Colors, fonts, and layout without code."
+    },
+    {
+      "title": "Mega Menu",
+      "text": "Multi-column navigation patterns."
+    },
+    {
+      "title": "SEO Pack",
+      "text": "Structured meta and performance helpers."
+    }
+  ],
+  "workflow": [
+    "Install theme",
+    "Pick palette",
+    "Drop snippets",
+    "Customize header",
+    "Publish site"
+  ],
+  "seo_keywords": "Odoo website theme, Bootstrap 5, website snippets, Odoo 19 theme",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/theme-base"
+}

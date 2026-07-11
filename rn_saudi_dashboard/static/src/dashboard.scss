@@ -1,0 +1,889 @@
+// ===========================================================================
+// RN Saudi Finance Dashboard — premium enterprise UI (SAP/Oracle-class)
+// Frontend styling only. No business logic, markup contracts preserved.
+// ===========================================================================
+
+.o_rn_dashboard {
+    // --- Design tokens ----------------------------------------------------
+    --rn-bg: #eef1f6;
+    --rn-surface: #ffffff;
+    --rn-ink: #0b1524;
+    --rn-ink-soft: #475569;
+    --rn-muted: #8a97a8;
+    --rn-line: #e7ecf3;
+    --rn-line-soft: #f1f4f9;
+    --rn-accent: #0ea5e9;
+
+    --rn-radius: 18px;
+    --rn-radius-sm: 12px;
+    --rn-gap: 20px;
+    --rn-pad: 28px;
+
+    --rn-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+    --rn-shadow-md: 0 4px 14px rgba(15, 23, 42, 0.06);
+    --rn-shadow-lg: 0 18px 40px rgba(15, 23, 42, 0.14);
+
+    --rn-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", "Noto Sans Arabic", "Noto Kufi Arabic", "Cairo",
+        Tahoma, Arial, sans-serif;
+    --rn-font-ar: "Noto Kufi Arabic", "Noto Sans Arabic", "Cairo", "Tahoma",
+        var(--rn-font);
+
+    height: 100%;
+    overflow: auto;
+    padding: var(--rn-pad);
+    background:
+        radial-gradient(1200px 480px at 100% -10%, #f7f9fc 0%, rgba(247, 249, 252, 0) 60%),
+        var(--rn-bg);
+    font-family: var(--rn-font);
+    color: var(--rn-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    // tighten gutters on smaller viewports for better mobile rendering
+    @media (max-width: 1024px) { --rn-pad: 20px; --rn-gap: 16px; }
+    @media (max-width: 600px) { --rn-pad: 14px; --rn-gap: 14px; }
+
+    // centre the layout on ultra-wide executive screens
+    > div { max-width: 1680px; margin: 0 auto; }
+
+    // financial figures get tabular, evenly-spaced digits
+    .o_rn_card_value,
+    .o_rn_comp_value,
+    .o_rn_bar_value,
+    .o_rn_vat_net,
+    .o_rn_filing_status {
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1, "cv01" 1;
+    }
+
+    // Arabic text rendering
+    [dir="rtl"],
+    .o_rn_ar,
+    .o_rn_ar_inline,
+    .o_rn_section_ar {
+        font-family: var(--rn-font-ar);
+        line-height: 1.7;
+    }
+
+    .o_rn_loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        color: var(--rn-muted);
+        font-weight: 500;
+    }
+
+    // --- Header -----------------------------------------------------------
+    .o_rn_header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--rn-line);
+
+        .o_rn_title {
+            margin: 0;
+            font-size: clamp(22px, 2.4vw, 30px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--rn-ink);
+            line-height: 1.1;
+        }
+        .o_rn_subtitle {
+            margin-top: 8px;
+            color: var(--rn-ink-soft);
+            font-size: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .o_rn_company {
+                padding-left: 12px;
+                border-left: 2px solid var(--rn-line);
+                font-weight: 700;
+                color: var(--rn-ink);
+            }
+        }
+        .o_rn_header_right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .o_rn_period {
+            background: var(--rn-surface);
+            border: 1px solid var(--rn-line);
+            color: var(--rn-ink-soft);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: var(--rn-shadow-sm);
+            white-space: nowrap;
+        }
+        .o_rn_refresh {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1e293b 0%, #0b1524 100%);
+            border: 1px solid #0b1524;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 10px 18px;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: var(--rn-shadow-sm);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+
+            &:hover { filter: brightness(1.15); box-shadow: var(--rn-shadow-md); }
+            &:active { transform: translateY(1px); }
+        }
+    }
+
+    // --- KPI grid ---------------------------------------------------------
+    .o_rn_kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--rn-gap);
+        margin-bottom: 28px;
+
+        @media (max-width: 1280px) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        @media (max-width: 940px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 540px) { grid-template-columns: 1fr; }
+    }
+
+    .o_rn_card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--rn-surface);
+        border: 1px solid var(--rn-line);
+        border-radius: var(--rn-radius);
+        padding: 22px 22px 20px;
+        box-shadow: var(--rn-shadow-sm);
+        overflow: hidden;
+        isolation: isolate;
+        transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.22s ease, border-color 0.22s ease;
+
+        // top accent bar (gradient)
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                var(--rn-accent),
+                color-mix(in srgb, var(--rn-accent) 55%, #ffffff));
+        }
+
+        .o_rn_card_top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .o_rn_icon {
+            flex: 0 0 auto;
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            color: var(--rn-accent);
+            background: color-mix(in srgb, var(--rn-accent) 14%, #ffffff);
+            box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--rn-accent) 22%, #ffffff);
+        }
+        .o_rn_card_label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--rn-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            line-height: 1.3;
+        }
+        .o_rn_card_value {
+            font-size: clamp(26px, 2.3vw, 34px);
+            font-weight: 800;
+            color: var(--rn-ink);
+            line-height: 1.05;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+
+            &.o_rn_negative { color: #dc2626; }
+        }
+        .o_rn_card_foot {
+            font-size: 12.5px;
+            color: var(--rn-muted);
+            margin-top: auto;
+        }
+    }
+
+    .o_rn_clickable {
+        cursor: pointer;
+
+        // "open" affordance shown on hover
+        &::after {
+            content: "\2197"; // north-east arrow
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--rn-accent);
+            opacity: 0;
+            transform: translate(-4px, 4px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        &:hover {
+            transform: translateY(-4px);
+            border-color: color-mix(in srgb, var(--rn-accent) 35%, var(--rn-line));
+            box-shadow: var(--rn-shadow-lg);
+        }
+        &:hover::after { opacity: 1; transform: translate(0, 0); }
+        &:active {
+            transform: translateY(-1px);
+            box-shadow: var(--rn-shadow-md);
+        }
+    }
+
+    // --- Section heading --------------------------------------------------
+    .o_rn_section_head {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin: 8px 0 16px;
+        padding-left: 14px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            bottom: 2px;
+            width: 4px;
+            border-radius: 4px;
+            background: linear-gradient(180deg, #10b981, #0d9488);
+        }
+        .o_rn_section_title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: var(--rn-ink);
+        }
+        .o_rn_section_ar {
+            font-size: 14px;
+            color: var(--rn-muted);
+        }
+    }
+
+    // --- Panels -----------------------------------------------------------
+    .o_rn_body {
+        display: grid;
+        grid-template-columns: 1.65fr 1fr;
+        gap: var(--rn-gap);
+        margin-bottom: 28px;
+
+        @media (max-width: 992px) { grid-template-columns: 1fr; }
+    }
+
+    .o_rn_panel {
+        background: var(--rn-surface);
+        border: 1px solid var(--rn-line);
+        border-radius: var(--rn-radius);
+        padding: 24px;
+        box-shadow: var(--rn-shadow-sm);
+
+        .o_rn_panel_title {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: var(--rn-ink);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
+    .o_rn_chart {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .o_rn_bar_row {
+        display: grid;
+        grid-template-columns: 96px 1fr 140px;
+        align-items: center;
+        gap: 14px;
+
+        .o_rn_bar_label {
+            font-size: 12.5px;
+            color: var(--rn-ink-soft);
+            font-weight: 600;
+        }
+        .o_rn_bar_track {
+            background: var(--rn-line-soft);
+            border-radius: 999px;
+            height: 14px;
+            overflow: hidden;
+        }
+        .o_rn_bar_fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #38bdf8, #0369a1);
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .o_rn_bar_value {
+            font-size: 13px;
+            text-align: right;
+            color: var(--rn-ink);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+    }
+
+    // --- Tables -----------------------------------------------------------
+    .o_rn_table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--rn-muted);
+            font-weight: 700;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--rn-line);
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--rn-line-soft);
+            color: var(--rn-ink-soft);
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        .o_rn_row_click {
+            cursor: pointer;
+            transition: background 0.15s ease;
+            &:hover td { background: #f6f9fe; }
+        }
+    }
+
+    .o_rn_badge {
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #4338ca;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        text-transform: capitalize;
+    }
+
+    .o_rn_empty {
+        color: var(--rn-muted);
+        font-style: italic;
+        padding: 16px 0;
+    }
+
+    // --- Saudi compliance -------------------------------------------------
+    .o_rn_compliance {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--rn-gap);
+        margin-bottom: var(--rn-gap);
+
+        @media (max-width: 1280px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 540px) { grid-template-columns: 1fr; }
+    }
+
+    .o_rn_comp_card {
+        display: flex;
+        flex-direction: column;
+        padding: 22px;
+        min-height: 150px;
+
+        .o_rn_comp_label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--rn-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            line-height: 1.4;
+
+            .o_rn_ar {
+                display: block;
+                text-transform: none;
+                letter-spacing: 0;
+                font-weight: 500;
+                color: var(--rn-muted);
+                font-size: 12px;
+                margin-top: 2px;
+            }
+        }
+        .o_rn_comp_value {
+            font-size: clamp(24px, 2vw, 30px);
+            font-weight: 800;
+            color: var(--rn-ink);
+            line-height: 1.05;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+        .o_rn_card_foot {
+            font-size: 12.5px;
+            color: var(--rn-muted);
+            margin-top: auto;
+        }
+    }
+
+    .o_rn_ar_inline {
+        color: var(--rn-muted);
+        font-weight: 500;
+        font-size: 0.9em;
+    }
+
+    // ZATCA status pill
+    .o_rn_status {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 10px;
+        box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+
+        .o_rn_status_dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
+        }
+
+        &.o_rn_status--ready { color: #047857; background: #d1fae5; }
+        &.o_rn_status--pending { color: #b45309; background: #fef3c7; }
+        &.o_rn_status--review { color: #b91c1c; background: #fee2e2; }
+    }
+
+    // Invoice compliance progress
+    .o_rn_progress {
+        background: var(--rn-line-soft);
+        border-radius: 999px;
+        height: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+
+        .o_rn_progress_fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #34d399, #059669);
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+    }
+
+    // Filing reminder
+    .o_rn_filing {
+        position: relative;
+
+        .o_rn_filing_status {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+            color: var(--rn-ink);
+        }
+        &.o_rn_filing--pending {
+            box-shadow: var(--rn-shadow-sm), inset 4px 0 0 #f59e0b;
+            .o_rn_filing_status { color: #b45309; }
+        }
+        &.o_rn_filing--submitted {
+            box-shadow: var(--rn-shadow-sm), inset 4px 0 0 #10b981;
+            .o_rn_filing_status { color: #047857; }
+        }
+        &.o_rn_filing--overdue {
+            box-shadow: var(--rn-shadow-sm), inset 4px 0 0 #dc2626;
+            .o_rn_filing_status { color: #b91c1c; }
+        }
+    }
+
+    // VAT collected vs paid
+    .o_rn_vat_compare {
+        margin-bottom: 28px;
+
+        .o_rn_vat_row {
+            display: grid;
+            grid-template-columns: 200px 1fr 150px;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+
+            @media (max-width: 640px) {
+                grid-template-columns: 1fr;
+                gap: 6px;
+                margin-bottom: 20px;
+            }
+
+            .o_rn_vat_name {
+                font-size: 13.5px;
+                font-weight: 700;
+                color: var(--rn-ink-soft);
+            }
+            .o_rn_bar_track {
+                background: var(--rn-line-soft);
+                border-radius: 999px;
+                height: 18px;
+                overflow: hidden;
+            }
+            .o_rn_bar_fill {
+                height: 100%;
+                border-radius: 999px;
+                transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .o_rn_bar_out { background: linear-gradient(90deg, #818cf8, #4f46e5); }
+            .o_rn_bar_in { background: linear-gradient(90deg, #fbbf24, #d97706); }
+            .o_rn_bar_value {
+                text-align: right;
+                font-weight: 700;
+                color: var(--rn-ink);
+                font-size: 13.5px;
+                white-space: nowrap;
+
+                @media (max-width: 640px) { text-align: left; }
+            }
+        }
+        .o_rn_vat_net {
+            margin-top: 8px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--rn-line);
+            color: var(--rn-ink-soft);
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    // --- Latest invoice QR preview ---------------------------------------
+    .o_rn_qr {
+        margin-bottom: 28px;
+
+        .o_rn_qr_body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+
+            @media (max-width: 600px) {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        .o_rn_qr_info {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 0;
+        }
+        .o_rn_qr_number {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: var(--rn-ink);
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 2px;
+        }
+        .o_rn_qr_row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 13.5px;
+            border-bottom: 1px solid var(--rn-line-soft);
+            padding-bottom: 8px;
+
+            &:last-child { border-bottom: 0; padding-bottom: 0; }
+        }
+        .o_rn_qr_k {
+            color: var(--rn-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .o_rn_qr_v {
+            color: var(--rn-ink);
+            text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .o_rn_qr_code {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+
+            img {
+                width: 132px;
+                height: 132px;
+                border-radius: 14px;
+                border: 1px solid var(--rn-line);
+                background: #ffffff;
+                padding: 8px;
+                box-shadow: var(--rn-shadow-sm);
+            }
+            .o_rn_qr_hint {
+                font-size: 11.5px;
+                color: var(--rn-muted);
+                font-weight: 600;
+            }
+        }
+    }
+
+    // --- Bilingual labels (EN + AR) --------------------------------------
+    .o_rn_lbl_ar {
+        font-family: var(--rn-font-ar);
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 500;
+        color: var(--rn-muted);
+    }
+    .o_rn_card_label {
+        .o_rn_lbl_en { display: block; }
+        .o_rn_lbl_ar { display: block; font-size: 11.5px; margin-top: 3px; }
+    }
+    .o_rn_title {
+        .o_rn_lbl_en { display: block; }
+        .o_rn_lbl_ar { display: block; font-size: 15px; font-weight: 600; margin-top: 4px; }
+    }
+    .o_rn_panel_title {
+        .o_rn_lbl_ar { font-size: 13px; font-weight: 600; }
+    }
+    .o_rn_th_ar {
+        display: block;
+        font-family: var(--rn-font-ar);
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 600;
+        font-size: 11px;
+        color: var(--rn-muted);
+        margin-top: 2px;
+    }
+    .o_rn_refresh .o_rn_lbl_ar { display: none; }
+    .o_rn_action .o_rn_lbl_ar { display: none; }
+
+    // Header action buttons (Create Invoice / Vendor Bill / Reports)
+    .o_rn_action {
+        display: inline-flex;
+        align-items: center;
+        background: var(--rn-surface);
+        border: 1px solid var(--rn-line);
+        color: var(--rn-ink-soft);
+        border-radius: 12px;
+        padding: 10px 16px;
+        font-weight: 700;
+        font-size: 13px;
+        box-shadow: var(--rn-shadow-sm);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+            border-color 0.18s ease, color 0.18s ease, filter 0.18s ease;
+
+        &:hover {
+            border-color: color-mix(in srgb, var(--rn-accent) 40%, var(--rn-line));
+            color: var(--rn-ink);
+            box-shadow: var(--rn-shadow-md);
+        }
+        &:active { transform: translateY(1px); }
+
+        // Primary call-to-action (Create Invoice)
+        &.o_rn_action--primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            border-color: #0369a1;
+            color: #ffffff;
+
+            &:hover {
+                color: #ffffff;
+                filter: brightness(1.08);
+                box-shadow: var(--rn-shadow-md);
+            }
+        }
+    }
+
+    // Language toggle button
+    .o_rn_lang {
+        display: inline-flex;
+        align-items: center;
+        background: var(--rn-surface);
+        border: 1px solid var(--rn-line);
+        color: var(--rn-ink-soft);
+        border-radius: 12px;
+        padding: 10px 16px;
+        font-weight: 700;
+        font-size: 13px;
+        box-shadow: var(--rn-shadow-sm);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+            border-color 0.18s ease, color 0.18s ease;
+
+        &:hover {
+            border-color: color-mix(in srgb, var(--rn-accent) 40%, var(--rn-line));
+            color: var(--rn-ink);
+            box-shadow: var(--rn-shadow-md);
+        }
+        &:active { transform: translateY(1px); }
+    }
+
+    // --- RTL layout (Arabic enabled) -------------------------------------
+    &.o_rn_rtl {
+        // Arabic becomes the primary label, English the secondary line
+        .o_rn_card_label {
+            display: flex;
+            flex-direction: column;
+
+            .o_rn_lbl_ar {
+                order: -1;
+                margin-top: 0;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: var(--rn-muted);
+            }
+            .o_rn_lbl_en { font-size: 11px; opacity: 0.7; }
+        }
+        .o_rn_title {
+            display: flex;
+            flex-direction: column;
+            .o_rn_lbl_ar { order: -1; margin-top: 0; }
+            .o_rn_lbl_en { font-size: 16px; opacity: 0.75; margin-top: 4px; }
+        }
+
+        // Refresh + action button labels switch to Arabic
+        .o_rn_refresh,
+        .o_rn_action {
+            .o_rn_lbl_en { display: none; }
+            .o_rn_lbl_ar { display: inline; }
+        }
+
+        // Mirror left-anchored decorations for RTL reading direction
+        .o_rn_subtitle .o_rn_company {
+            border-left: 0;
+            border-right: 2px solid var(--rn-line);
+            padding-left: 0;
+            padding-right: 12px;
+        }
+        .o_rn_section_head {
+            padding-left: 0;
+            padding-right: 14px;
+            &::before { left: auto; right: 0; }
+        }
+        .o_rn_clickable::after {
+            content: "\2196"; // north-west arrow
+            right: auto;
+            left: 18px;
+            transform: translate(4px, 4px);
+        }
+        .o_rn_clickable:hover::after { transform: translate(0, 0); }
+        .o_rn_filing--pending {
+            box-shadow: var(--rn-shadow-sm), inset -4px 0 0 #f59e0b;
+        }
+        .o_rn_filing--submitted {
+            box-shadow: var(--rn-shadow-sm), inset -4px 0 0 #10b981;
+        }
+        .o_rn_filing--overdue {
+            box-shadow: var(--rn-shadow-sm), inset -4px 0 0 #dc2626;
+        }
+    }
+
+    // --- Motion -----------------------------------------------------------
+    .o_rn_kpis .o_rn_card,
+    .o_rn_compliance .o_rn_comp_card {
+        animation: rnFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @for $i from 1 through 8 {
+        .o_rn_kpis .o_rn_card:nth-child(#{$i}) { animation-delay: #{$i * 0.04}s; }
+    }
+
+    @keyframes rnFadeUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .o_rn_kpis .o_rn_card,
+        .o_rn_compliance .o_rn_comp_card { animation: none; }
+        .o_rn_clickable { transition: none; }
+    }
+}
+
+// --- Custom Arabic hover tooltip -----------------------------------------
+// Lives at the dashboard root; positioned via fixed coordinates set in JS.
+.o_rn_dashboard .o_rn_tip {
+    position: fixed;
+    z-index: 1080;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 120px;
+    max-width: 280px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #0f172a;
+    color: #f8fafc;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.32);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, calc(-100% - 4px));
+    transition: opacity 0.16s ease, transform 0.16s ease;
+
+    .o_rn_tip_en {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #e2e8f0;
+    }
+    .o_rn_tip_ar {
+        font-family: var(--rn-font-ar);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.4;
+        color: #ffffff;
+    }
+
+    // Pointer arrow under the chip
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        background: #0f172a;
+        transform: translateX(-50%) rotate(45deg);
+        border-radius: 2px;
+    }
+
+    &.o_rn_tip--show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, calc(-100% - 12px));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .o_rn_dashboard .o_rn_tip { transition: opacity 0.16s ease; }
+}

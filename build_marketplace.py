@@ -2,12 +2,14 @@
 """
 ARMORA Product Builder
 
-Generate Odoo Apps Store assets from marketplace/module.json and shared templates.
+Generate Odoo Apps Store index.html from tools/apps_marketplace/catalog.json
+and marketplace_framework templates. Do not edit static/description/index.html by hand.
 
 Usage:
-  python build_marketplace.py --init              # bootstrap module configs from catalog
-  python build_marketplace.py rn_fleet_gps        # build one module
-  python build_marketplace.py --all --zip         # build all local rn_* modules and zip
+  python build_marketplace.py --sync-catalog      # add missing modules to catalog.json
+  python build_marketplace.py --init              # bootstrap marketplace/module.json
+  python build_marketplace.py --all --no-docs     # regenerate all index.html files
+  python build_marketplace.py rn_fleet_gps --zip    # build one module and zip
 """
 from __future__ import annotations
 

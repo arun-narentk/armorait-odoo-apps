@@ -1,0 +1,6 @@
+id,name,is_company,city,country_id,vat,supplier_rank
+rn_saudi_demo.vend_gulf_office,Gulf Office Supplies,True,Riyadh,Saudi Arabia,300611111100003,1
+rn_saudi_demo.vend_saudi_industrial,Saudi Industrial Equipment,True,Dammam,Saudi Arabia,300622222200003,1
+rn_saudi_demo.vend_riyadh_packaging,Riyadh Packaging Materials,True,Riyadh,Saudi Arabia,300633333300003,1
+rn_saudi_demo.vend_arabian_it,Arabian IT Solutions,True,Jeddah,Saudi Arabia,300644444400003,1
+rn_saudi_demo.vend_al_faisal,Al Faisal Trading,True,Riyadh,Saudi Arabia,300655555500003,1

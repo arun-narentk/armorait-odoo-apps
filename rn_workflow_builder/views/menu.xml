@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_rn_workflow_root" name="Workflow Builder" sequence="42"
+    <menuitem id="menu_rn_workflow_root" name="AI Automation" sequence="42"
               web_icon="rn_workflow_builder,static/description/icon.png"
               groups="rn_workflow_builder.group_rn_workflow_user"/>
     <menuitem id="menu_rn_workflow_dashboard" name="Monitor" parent="menu_rn_workflow_root"

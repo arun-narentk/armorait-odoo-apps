@@ -1,0 +1,8 @@
+id,move_type,partner_id,invoice_date,invoice_date_due,invoice_line_ids/name,invoice_line_ids/quantity,invoice_line_ids/price_unit,invoice_line_ids/tax_ids
+rn_saudi_demo.bill_001,in_invoice,Gulf Office Supplies,2026-01-10,2026-02-09,Office Equipment Purchase,1,5000.00,15%
+rn_saudi_demo.bill_002,in_invoice,Saudi Industrial Equipment,2026-02-10,2026-03-12,Industrial Equipment,1,12000.00,15%
+rn_saudi_demo.bill_003,in_invoice,Riyadh Packaging Materials,2026-03-10,2026-04-09,Packaging Materials,1,4500.00,15%
+rn_saudi_demo.bill_004,in_invoice,Arabian IT Solutions,2026-04-10,2026-05-10,IT Services & Software Licenses,1,8000.00,15%
+rn_saudi_demo.bill_005,in_invoice,Al Faisal Trading,2026-05-10,2026-06-09,Trading Goods Supply,1,6500.00,15%
+rn_saudi_demo.bill_006,in_invoice,Gulf Office Supplies,2026-06-10,2026-07-10,Office Supplies Restock,1,3000.00,15%
+rn_saudi_demo.bill_007,in_invoice,Saudi Industrial Equipment,2026-06-10,2026-07-10,Machinery Maintenance,1,7000.00,15%

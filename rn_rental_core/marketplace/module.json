@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_rental_core",
+  "app_name": "Rental Management",
+  "tagline": "Assets, pricing, availability, and bookings for any rental business",
+  "category_type": "erp",
+  "price": 29.99,
+  "accent": "#2563eb",
+  "problem": "Rental businesses juggle spreadsheets for asset availability, pricing seasons, and double bookings.",
+  "solution": "Rental Management is an industry-agnostic rental engine with assets, pricing rules, conflict detection, and an OWL operations dashboard.",
+  "benefits": [
+    "Stop double bookings",
+    "Flexible pricing rules",
+    "Asset lifecycle tracking",
+    "Portal-ready foundation",
+    "Extend with industry packs"
+  ],
+  "features": [
+    {
+      "title": "Asset Catalog",
+      "text": "Categories, serials, barcodes, and states."
+    },
+    {
+      "title": "Pricing Engine",
+      "text": "Hourly to yearly rates and seasonal rules."
+    },
+    {
+      "title": "Availability",
+      "text": "Conflict-aware reservation and confirmation."
+    },
+    {
+      "title": "Dashboard",
+      "text": "Live view of bookings and utilization."
+    }
+  ],
+  "workflow": [
+    "Add assets",
+    "Set pricing",
+    "Create booking",
+    "Check availability",
+    "Confirm rental",
+    "Return asset"
+  ],
+  "seo_keywords": "Odoo rental, equipment rental, car rental Odoo, booking engine, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-rental-core"
+}

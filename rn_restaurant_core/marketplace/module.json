@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_restaurant_core",
+  "app_name": "Restaurant Management",
+  "tagline": "Branches, floors, tables, menu, and restaurant setup",
+  "category_type": "erp",
+  "price": 49.99,
+  "accent": "#ea580c",
+  "problem": "Restaurant groups lack a single Odoo foundation for branches, menus, tables, and taxes before POS rollout.",
+  "solution": "Restaurant Management delivers multi-branch setup, floor plans, table management, menu structure, taxes, payments, and an overview dashboard.",
+  "benefits": [
+    "Multi-branch ready",
+    "Table and floor planning",
+    "Menu and tax setup",
+    "Setup wizard",
+    "Foundation for POS and KDS"
+  ],
+  "features": [
+    {
+      "title": "Branches & Floors",
+      "text": "Organize locations, floors, and seating."
+    },
+    {
+      "title": "Menu Engine",
+      "text": "Categories, items, modifiers, and taxes."
+    },
+    {
+      "title": "Payments",
+      "text": "Payment methods mapped for later POS use."
+    },
+    {
+      "title": "Setup Wizard",
+      "text": "Guided onboarding for new restaurants."
+    }
+  ],
+  "workflow": [
+    "Create restaurant",
+    "Configure floors",
+    "Build menu",
+    "Assign tables",
+    "Go live"
+  ],
+  "seo_keywords": "Odoo restaurant, table management, restaurant ERP, Odoo 19 Community",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-restaurant-core"
+}

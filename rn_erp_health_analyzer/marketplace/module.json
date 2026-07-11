@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_erp_health_analyzer",
+  "app_name": "ERP Health Analyzer",
+  "tagline": "AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness",
+  "category_type": "productivity",
+  "price": 99.0,
+  "accent": "#2563eb",
+  "problem": "Teams running Odoo 19 need a reliable way to manage erp health analyzer without spreadsheets or disconnected tools.",
+  "solution": "AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness",
+  "benefits": [
+    "Streamline erp health analyzer workflows in Odoo",
+    "Built for Odoo 19 Community",
+    "Production-ready ARMORA architecture",
+    "Multi-company aware where applicable",
+    "Support from ARMORA IT Technologies"
+  ],
+  "features": [
+    {
+      "title": "Odoo-native",
+      "text": "ERP Health Analyzer extends standard Odoo models and views."
+    },
+    {
+      "title": "Configurable",
+      "text": "Settings, security groups, and menus included."
+    },
+    {
+      "title": "Documented",
+      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+    },
+    {
+      "title": "Commercial support",
+      "text": "Contact info@armorait.com for rollout help."
+    }
+  ],
+  "workflow": [
+    "Install module",
+    "Configure settings",
+    "Assign user groups",
+    "Run daily workflows",
+    "Review KPIs and reports",
+    "Scale across companies"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, ERP Health Analyzer, rn_erp_health_analyzer, ARMORA IT Technologies",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

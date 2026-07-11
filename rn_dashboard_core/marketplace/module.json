@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_dashboard_core",
+  "app_name": "Dashboard Core",
+  "tagline": "Shared OWL dashboard shell for ARMORA analytics modules",
+  "category_type": "dashboard",
+  "price": 49.99,
+  "accent": "#4f46e5",
+  "problem": "Every dashboard module rebuilds filters, widgets, TV mode, and KPI snapshots from scratch.",
+  "solution": "Dashboard Core is the shared foundation for ARMORA dashboards: widgets, filters, alerts, KPI snapshots, and TV-ready refresh.",
+  "benefits": [
+    "Reuse across ARMORA suite",
+    "Consistent UX patterns",
+    "Widget and filter engine",
+    "Alert snapshots",
+    "Manufacturing-ready base"
+  ],
+  "features": [
+    {
+      "title": "Widget Shell",
+      "text": "Composable cards and layout primitives."
+    },
+    {
+      "title": "Filter Engine",
+      "text": "Shared date, company, and custom filters."
+    },
+    {
+      "title": "KPI Snapshots",
+      "text": "Scheduled capture for trends and TV mode."
+    },
+    {
+      "title": "Alerts",
+      "text": "Threshold-based notifications for dashboards."
+    }
+  ],
+  "workflow": [
+    "Install core",
+    "Configure widgets",
+    "Attach data services",
+    "Schedule snapshots",
+    "Display on TV"
+  ],
+  "seo_keywords": "Odoo dashboard, OWL dashboard, KPI widgets, manufacturing dashboard, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-dashboard-core"
+}

@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_whatsapp_connector",
+  "app_name": "WhatsApp Automation",
+  "tagline": "Send invoices, orders, and alerts on WhatsApp from Odoo 19",
+  "category_type": "platform",
+  "price": 79.99,
+  "accent": "#16a34a",
+  "problem": "Teams chase customers on email and phone while invoices, deliveries, and payment updates sit unread in Odoo.",
+  "solution": "WhatsApp Automation connects Odoo to WhatsApp Business providers, queues messages, and triggers notifications from sales, invoices, and deliveries.",
+  "benefits": [
+    "Reach customers on WhatsApp",
+    "Automate invoice and order updates",
+    "Queue and retry failed messages",
+    "Multi-provider adapter framework",
+    "OWL dashboard with live KPIs"
+  ],
+  "features": [
+    {
+      "title": "Message Queue",
+      "text": "Reliable outbound queue with retry and delivery status."
+    },
+    {
+      "title": "Automation Rules",
+      "text": "Trigger WhatsApp on confirm, invoice, delivery, and custom events."
+    },
+    {
+      "title": "Templates",
+      "text": "Reusable templates with placeholders for PDFs and links."
+    },
+    {
+      "title": "Provider Adapters",
+      "text": "Meta, Twilio, 360Dialog, and extensible provider layer."
+    }
+  ],
+  "workflow": [
+    "Connect provider",
+    "Map templates",
+    "Enable automation",
+    "Queue sends",
+    "Track delivery",
+    "Review dashboard"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, WhatsApp Integration, WhatsApp Business API, invoice WhatsApp, sales automation",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-whatsapp-connector"
+}

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from odoo import fields
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 
@@ -23,11 +24,12 @@ class TestRnHrIntelligence(TransactionCase):
             'department_id': cls.department.id,
             'company_id': cls.env.company.id,
         })
-        cls.env['hr.contract'].create({
+        cls.env['hr.version'].create({
             'name': 'Test Contract',
             'employee_id': cls.employee.id,
             'wage': 25000,
-            'state': 'open',
+            'contract_date_start': fields.Date.today(),
+            'date_version': fields.Date.today(),
             'company_id': cls.env.company.id,
         })
 

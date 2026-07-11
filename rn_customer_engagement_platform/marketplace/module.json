@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_customer_engagement_platform",
+  "app_name": "Customer Engagement Platform",
+  "tagline": "AI customer engagement across web, messaging, email, and voice with Odoo-aware self service",
+  "category_type": "theme",
+  "price": 149.0,
+  "accent": "#0d9488",
+  "problem": "Teams running Odoo 19 need a reliable way to manage customer engagement platform without spreadsheets or disconnected tools.",
+  "solution": "AI customer engagement across web, messaging, email, and voice with Odoo-aware self service",
+  "benefits": [
+    "Streamline customer engagement platform workflows in Odoo",
+    "Built for Odoo 19 Community",
+    "Production-ready ARMORA architecture",
+    "Multi-company aware where applicable",
+    "Support from ARMORA IT Technologies"
+  ],
+  "features": [
+    {
+      "title": "Odoo-native",
+      "text": "Customer Engagement Platform extends standard Odoo models and views."
+    },
+    {
+      "title": "Configurable",
+      "text": "Settings, security groups, and menus included."
+    },
+    {
+      "title": "Documented",
+      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+    },
+    {
+      "title": "Commercial support",
+      "text": "Contact info@armorait.com for rollout help."
+    }
+  ],
+  "workflow": [
+    "Install module",
+    "Configure settings",
+    "Assign user groups",
+    "Run daily workflows",
+    "Review KPIs and reports",
+    "Scale across companies"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, Customer Engagement Platform, rn_customer_engagement_platform, ARMORA IT Technologies",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

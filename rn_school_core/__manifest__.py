@@ -80,6 +80,8 @@ Roadmap: transport GPS, library, hostel, face attendance, mobile app, WhatsApp.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

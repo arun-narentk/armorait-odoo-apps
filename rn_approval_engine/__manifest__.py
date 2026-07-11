@@ -71,6 +71,8 @@ workflow automation beyond approval (auto PO, vendor email, payment scheduling).
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

@@ -988,5 +988,1493 @@
     "has_reports": false,
     "has_mobile": true,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_ai_email_intelligence": {
+    "branch": null,
+    "app_name": "AI Email Intelligence",
+    "tagline": "Context-aware AI email drafts for CRM, sales, accounting, and HR",
+    "category_type": "ai",
+    "price": 99.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai email intelligence without spreadsheets or disconnected tools.",
+    "solution": "Context-aware AI email drafts for CRM, sales, accounting, and HR",
+    "benefits": [
+      "Streamline ai email intelligence workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI Email Intelligence extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI Email Intelligence, rn_ai_email_intelligence, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_ai_invoice_ocr": {
+    "branch": null,
+    "app_name": "AI Invoice OCR",
+    "tagline": "Upload supplier invoices, OCR extract fields, match vendor, create vendor bill",
+    "category_type": "ai",
+    "price": 99.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai invoice ocr without spreadsheets or disconnected tools.",
+    "solution": "Upload supplier invoices, OCR extract fields, match vendor, create vendor bill",
+    "benefits": [
+      "Streamline ai invoice ocr workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI Invoice OCR extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI Invoice OCR, rn_ai_invoice_ocr, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": true,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_ai_site_base": {
+    "branch": null,
+    "app_name": "AI Business Launch Core",
+    "tagline": "AI business brief, site structure, pages, SEO, and Odoo publish hooks",
+    "category_type": "ai",
+    "price": 149.0,
+    "accent": "#0d9488",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai business launch core without spreadsheets or disconnected tools.",
+    "solution": "AI business brief, site structure, pages, SEO, and Odoo publish hooks",
+    "benefits": [
+      "Streamline ai business launch core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI Business Launch Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI Business Launch Core, rn_ai_site_base, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_approval_engine": {
+    "branch": null,
+    "app_name": "Workflow Approval Engine",
+    "tagline": "Universal approval workflows for PO, bills, expenses, and custom documents",
+    "category_type": "productivity",
+    "price": 149.0,
+    "accent": "#16a34a",
+    "problem": "Teams running Odoo 19 need a reliable way to manage workflow approval engine without spreadsheets or disconnected tools.",
+    "solution": "Universal approval workflows for PO, bills, expenses, and custom documents",
+    "benefits": [
+      "Streamline workflow approval engine workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Workflow Approval Engine extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Workflow Approval Engine, rn_approval_engine, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_arabic_tooltip": {
+    "branch": null,
+    "app_name": "Arabic Tooltip",
+    "tagline": "Hover Arabic translations for backend labels and a reusable field widget",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage arabic tooltip without spreadsheets or disconnected tools.",
+    "solution": "Hover Arabic translations for backend labels and a reusable field widget",
+    "benefits": [
+      "Streamline arabic tooltip workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Arabic Tooltip extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Arabic Tooltip, rn_arabic_tooltip, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_cloud_platform": {
+    "branch": null,
+    "app_name": "Cloud Platform",
+    "tagline": "Managed Odoo cloud control plane for deployment, backups, monitoring, upgrades, and AI ops insight",
+    "category_type": "productivity",
+    "price": 99.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage cloud platform without spreadsheets or disconnected tools.",
+    "solution": "Managed Odoo cloud control plane for deployment, backups, monitoring, upgrades, and AI ops insight",
+    "benefits": [
+      "Streamline cloud platform workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Cloud Platform extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Cloud Platform, rn_cloud_platform, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_construction_core": {
+    "branch": null,
+    "app_name": "Construction ERP Core",
+    "tagline": "Projects, BOQ, site ops, procurement, labour, equipment, billing",
+    "category_type": "erp",
+    "price": 249.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage construction erp core without spreadsheets or disconnected tools.",
+    "solution": "Projects, BOQ, site ops, procurement, labour, equipment, billing",
+    "benefits": [
+      "Streamline construction erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Construction ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Construction ERP Core, rn_construction_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_conversational_erp": {
+    "branch": null,
+    "app_name": "Conversational ERP",
+    "tagline": "Natural conversation interface for ERP actions, approvals, and AI-assisted workflows",
+    "category_type": "productivity",
+    "price": 149.0,
+    "accent": "#0891b2",
+    "problem": "Teams running Odoo 19 need a reliable way to manage conversational erp without spreadsheets or disconnected tools.",
+    "solution": "Natural conversation interface for ERP actions, approvals, and AI-assisted workflows",
+    "benefits": [
+      "Streamline conversational erp workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Conversational ERP extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Conversational ERP, rn_conversational_erp, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_customer_engagement_platform": {
+    "branch": null,
+    "app_name": "Customer Engagement Platform",
+    "tagline": "AI customer engagement across web, messaging, email, and voice with Odoo-aware self service",
+    "category_type": "theme",
+    "price": 149.0,
+    "accent": "#0d9488",
+    "problem": "Teams running Odoo 19 need a reliable way to manage customer engagement platform without spreadsheets or disconnected tools.",
+    "solution": "AI customer engagement across web, messaging, email, and voice with Odoo-aware self service",
+    "benefits": [
+      "Streamline customer engagement platform workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Customer Engagement Platform extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Customer Engagement Platform, rn_customer_engagement_platform, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_customer_experience": {
+    "branch": null,
+    "app_name": "Customer Experience Portal",
+    "tagline": "Customer self-service experience portal: orders, invoices, payments, downloads, and widgets",
+    "category_type": "theme",
+    "price": 79.99,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage customer experience portal without spreadsheets or disconnected tools.",
+    "solution": "Customer self-service experience portal: orders, invoices, payments, downloads, and widgets",
+    "benefits": [
+      "Streamline customer experience portal workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Customer Experience Portal extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Customer Experience Portal, rn_customer_experience, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_dental_core": {
+    "branch": null,
+    "app_name": "Dental ERP Core",
+    "tagline": "Patients, appointments, odontogram, treatment plans, lab, billing hooks",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#0d9488",
+    "problem": "Teams running Odoo 19 need a reliable way to manage dental erp core without spreadsheets or disconnected tools.",
+    "solution": "Patients, appointments, odontogram, treatment plans, lab, billing hooks",
+    "benefits": [
+      "Streamline dental erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Dental ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Dental ERP Core, rn_dental_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_document_idp": {
+    "branch": null,
+    "app_name": "AI Document Processing",
+    "tagline": "AI Intelligent Document Processing: capture, classify, extract, validate, and post to Odoo",
+    "category_type": "productivity",
+    "price": 149.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai document processing without spreadsheets or disconnected tools.",
+    "solution": "AI Intelligent Document Processing: capture, classify, extract, validate, and post to Odoo",
+    "benefits": [
+      "Streamline ai document processing workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI Document Processing extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI Document Processing, rn_document_idp, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_document_platform": {
+    "branch": null,
+    "app_name": "Digital Document Platform",
+    "tagline": "Sign, approve, audit, and AI-analyze contracts and business documents",
+    "category_type": "productivity",
+    "price": 149.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage digital document platform without spreadsheets or disconnected tools.",
+    "solution": "Sign, approve, audit, and AI-analyze contracts and business documents",
+    "benefits": [
+      "Streamline digital document platform workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Digital Document Platform extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Digital Document Platform, rn_document_platform, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_erp_health_analyzer": {
+    "branch": null,
+    "app_name": "ERP Health Analyzer",
+    "tagline": "AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness",
+    "category_type": "productivity",
+    "price": 99.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage erp health analyzer without spreadsheets or disconnected tools.",
+    "solution": "AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness",
+    "benefits": [
+      "Streamline erp health analyzer workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "ERP Health Analyzer extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, ERP Health Analyzer, rn_erp_health_analyzer, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_hall_base": {
+    "branch": null,
+    "app_name": "Marriage Hall Management Core",
+    "tagline": "Venue master, halls, capacity, booking calendar, and conflict detection",
+    "category_type": "erp",
+    "price": 99.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage marriage hall management core without spreadsheets or disconnected tools.",
+    "solution": "Venue master, halls, capacity, booking calendar, and conflict detection",
+    "benefits": [
+      "Streamline marriage hall management core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Marriage Hall Management Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Marriage Hall Management Core, rn_hall_base, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_hospital_core": {
+    "branch": null,
+    "app_name": "Hospital ERP Core",
+    "tagline": "Patient management, appointments, EMR, billing hooks for clinics and hospitals",
+    "category_type": "erp",
+    "price": 249.0,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage hospital erp core without spreadsheets or disconnected tools.",
+    "solution": "Patient management, appointments, EMR, billing hooks for clinics and hospitals",
+    "benefits": [
+      "Streamline hospital erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Hospital ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Hospital ERP Core, rn_hospital_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_hotel_core": {
+    "branch": null,
+    "app_name": "Hotel ERP Core",
+    "tagline": "Reservations, front desk, housekeeping, folio billing for boutique hotels",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage hotel erp core without spreadsheets or disconnected tools.",
+    "solution": "Reservations, front desk, housekeeping, folio billing for boutique hotels",
+    "benefits": [
+      "Streamline hotel erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Hotel ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Hotel ERP Core, rn_hotel_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_hr_intelligence": {
+    "branch": null,
+    "app_name": "Workforce Intelligence",
+    "tagline": "HR intelligence: payroll analytics, overtime, attrition, compliance KPIs",
+    "category_type": "erp",
+    "price": 149.0,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage workforce intelligence without spreadsheets or disconnected tools.",
+    "solution": "HR intelligence: payroll analytics, overtime, attrition, compliance KPIs",
+    "benefits": [
+      "Streamline workforce intelligence workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Workforce Intelligence extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Workforce Intelligence, rn_hr_intelligence, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_jewellery_core": {
+    "branch": null,
+    "app_name": "Jewellery ERP Core",
+    "tagline": "Metal specs, job work, karigar, orders, repairs, gold rates, POS hooks",
+    "category_type": "erp",
+    "price": 249.0,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage jewellery erp core without spreadsheets or disconnected tools.",
+    "solution": "Metal specs, job work, karigar, orders, repairs, gold rates, POS hooks",
+    "benefits": [
+      "Streamline jewellery erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Jewellery ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Jewellery ERP Core, rn_jewellery_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_mes_core": {
+    "branch": null,
+    "app_name": "Manufacturing MES",
+    "tagline": "Shop-floor MES: tablet execution, barcode, quality, downtime, OEE, IoT hooks",
+    "category_type": "erp",
+    "price": 249.0,
+    "accent": "#ea580c",
+    "problem": "Teams running Odoo 19 need a reliable way to manage manufacturing mes without spreadsheets or disconnected tools.",
+    "solution": "Shop-floor MES: tablet execution, barcode, quality, downtime, OEE, IoT hooks",
+    "benefits": [
+      "Streamline manufacturing mes workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Manufacturing MES extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Manufacturing MES, rn_mes_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_messaging_bot": {
+    "branch": null,
+    "app_name": "Messaging Bot Engine",
+    "tagline": "Omnichannel inbox, bot flows, templates, and campaign broadcasts",
+    "category_type": "platform",
+    "price": 79.99,
+    "accent": "#16a34a",
+    "problem": "Teams running Odoo 19 need a reliable way to manage messaging bot engine without spreadsheets or disconnected tools.",
+    "solution": "Omnichannel inbox, bot flows, templates, and campaign broadcasts",
+    "benefits": [
+      "Streamline messaging bot engine workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Messaging Bot Engine extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Messaging Bot Engine, rn_messaging_bot, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_mobile_platform": {
+    "branch": null,
+    "app_name": "Mobile Platform",
+    "tagline": "Metadata-driven mobile experience platform for Odoo apps, offline sync, device features, and branded deployments",
+    "category_type": "productivity",
+    "price": 149.0,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage mobile platform without spreadsheets or disconnected tools.",
+    "solution": "Metadata-driven mobile experience platform for Odoo apps, offline sync, device features, and branded deployments",
+    "benefits": [
+      "Streamline mobile platform workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Mobile Platform extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Mobile Platform, rn_mobile_platform, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": true,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_mrp_intelligence": {
+    "branch": null,
+    "app_name": "Manufacturing Intelligence",
+    "tagline": "Factory command center: production KPIs, OEE, WIP, bottlenecks, AI insights",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage manufacturing intelligence without spreadsheets or disconnected tools.",
+    "solution": "Factory command center: production KPIs, OEE, WIP, bottlenecks, AI insights",
+    "benefits": [
+      "Streamline manufacturing intelligence workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Manufacturing Intelligence extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Manufacturing Intelligence, rn_mrp_intelligence, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_realestate_base": {
+    "branch": null,
+    "app_name": "Real Estate ERP Core",
+    "tagline": "Developer master, projects, property inventory, leads, and sales dashboard",
+    "category_type": "erp",
+    "price": 149.0,
+    "accent": "#db2777",
+    "problem": "Teams running Odoo 19 need a reliable way to manage real estate erp core without spreadsheets or disconnected tools.",
+    "solution": "Developer master, projects, property inventory, leads, and sales dashboard",
+    "benefits": [
+      "Streamline real estate erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Real Estate ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Real Estate ERP Core, rn_realestate_base, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_saudi_dashboard": {
+    "branch": null,
+    "app_name": "Saudi Finance Dashboard",
+    "tagline": "Premium Saudi finance dashboard with KPIs in SAR, VAT, cash and top customers",
+    "category_type": "dashboard",
+    "price": 39.0,
+    "accent": "#ea580c",
+    "problem": "Teams running Odoo 19 need a reliable way to manage saudi finance dashboard without spreadsheets or disconnected tools.",
+    "solution": "Premium Saudi finance dashboard with KPIs in SAR, VAT, cash and top customers",
+    "benefits": [
+      "Streamline saudi finance dashboard workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Saudi Finance Dashboard extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Saudi Finance Dashboard, rn_saudi_dashboard, ARMORA IT Technologies",
+    "has_dashboard": true,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_school_core": {
+    "branch": null,
+    "app_name": "AI School Operating System",
+    "tagline": "AI school OS: admissions, fees, attendance, exams, homework, parent engagement",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#0d9488",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai school operating system without spreadsheets or disconnected tools.",
+    "solution": "AI school OS: admissions, fees, attendance, exams, homework, parent engagement",
+    "benefits": [
+      "Streamline ai school operating system workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI School Operating System extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI School Operating System, rn_school_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_temple_base": {
+    "branch": null,
+    "app_name": "Temple Management Core",
+    "tagline": "Temple master, branches, trustees, priests, timings, and festival calendar",
+    "category_type": "erp",
+    "price": 99.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage temple management core without spreadsheets or disconnected tools.",
+    "solution": "Temple master, branches, trustees, priests, timings, and festival calendar",
+    "benefits": [
+      "Streamline temple management core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Temple Management Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Temple Management Core, rn_temple_base, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_temple_core": {
+    "branch": null,
+    "app_name": "Temple Digital Platform",
+    "tagline": "Devotees, donations, sevas, festivals, annadhanam, hundi, volunteers",
+    "category_type": "erp",
+    "price": 249.0,
+    "accent": "#4f46e5",
+    "problem": "Teams running Odoo 19 need a reliable way to manage temple digital platform without spreadsheets or disconnected tools.",
+    "solution": "Devotees, donations, sevas, festivals, annadhanam, hundi, volunteers",
+    "benefits": [
+      "Streamline temple digital platform workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Temple Digital Platform extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Temple Digital Platform, rn_temple_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_textile_base": {
+    "branch": null,
+    "app_name": "Textile Manufacturing Core",
+    "tagline": "Factory master, departments, machines, yarn specs, and production dashboard",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage textile manufacturing core without spreadsheets or disconnected tools.",
+    "solution": "Factory master, departments, machines, yarn specs, and production dashboard",
+    "benefits": [
+      "Streamline textile manufacturing core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Textile Manufacturing Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Textile Manufacturing Core, rn_textile_base, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_veterinary_core": {
+    "branch": null,
+    "app_name": "Veterinary ERP Core",
+    "tagline": "Pets, owners, appointments, vaccinations, surgery, grooming, boarding",
+    "category_type": "erp",
+    "price": 199.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage veterinary erp core without spreadsheets or disconnected tools.",
+    "solution": "Pets, owners, appointments, vaccinations, surgery, grooming, boarding",
+    "benefits": [
+      "Streamline veterinary erp core workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Veterinary ERP Core extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Veterinary ERP Core, rn_veterinary_core, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_workflow_builder": {
+    "branch": null,
+    "app_name": "AI Workflow Builder",
+    "tagline": "Visual automation platform: triggers, conditions, actions, AI workflow builder",
+    "category_type": "productivity",
+    "price": 199.0,
+    "accent": "#2563eb",
+    "problem": "Teams running Odoo 19 need a reliable way to manage ai workflow builder without spreadsheets or disconnected tools.",
+    "solution": "Visual automation platform: triggers, conditions, actions, AI workflow builder",
+    "benefits": [
+      "Streamline ai workflow builder workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "AI Workflow Builder extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, AI Workflow Builder, rn_workflow_builder, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
   }
 }

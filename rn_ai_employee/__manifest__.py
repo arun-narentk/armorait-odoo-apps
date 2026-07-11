@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'AI Copilot for Odoo',
+    'name': 'AI Chatbot',
     'version': '19.0.4.0.0',
     'category': 'Productivity',
-    'summary': 'Enterprise AI operating layer for Odoo: ask, reason, act, audit, and automate',
+    'summary': 'Ask Odoo anything. Get answers and actions from an AI copilot',
     'description': """
 AI Copilot for Odoo 19
 ======================
@@ -28,7 +28,7 @@ Install, enable, and use it in your own Odoo environment.
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'OPL-1',
-    'price': 9.99,
+    'price': 99.99,
     'live_test_url': 'https://www.armorait.com',
     'currency': 'USD',
     'depends': [
@@ -59,8 +59,7 @@ Install, enable, and use it in your own Odoo environment.
         'static/description/banner.png',
         'static/description/icon.png',
         'static/description/overview.png',
-        'static/description/settings.png',
-        'static/description/tools.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

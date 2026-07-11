@@ -1,0 +1,48 @@
+{
+  "technical_name": "rn_hrms_core",
+  "app_name": "HRMS Core",
+  "tagline": "Employee lifecycle, org structure, and HR operations base",
+  "category_type": "erp",
+  "price": 49.0,
+  "accent": "#7c3aed",
+  "problem": "Growing companies outgrow basic HR before they can deploy full payroll and talent suites.",
+  "solution": "HRMS Core extends Odoo HR with ARMORA employee lifecycle, org units, document hooks, and an HR overview dashboard.",
+  "benefits": [
+    "Structured employee records",
+    "Org hierarchy",
+    "HR dashboard shell",
+    "Suite-ready architecture",
+    "Community compatible"
+  ],
+  "features": [
+    {
+      "title": "Employee 360",
+      "text": "Richer employee profiles and lifecycle states."
+    },
+    {
+      "title": "Organization",
+      "text": "Units, managers, and reporting lines."
+    },
+    {
+      "title": "Documents",
+      "text": "Hooks for contracts and HR files."
+    },
+    {
+      "title": "HR Dashboard",
+      "text": "Headcount and activity KPIs."
+    }
+  ],
+  "workflow": [
+    "Onboard employee",
+    "Assign department",
+    "Track documents",
+    "Review dashboard"
+  ],
+  "seo_keywords": "Odoo HRMS, human resources, employee management, Odoo 19 Community",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-hrms-core"
+}

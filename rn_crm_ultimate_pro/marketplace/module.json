@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_crm_ultimate_pro",
+  "app_name": "CRM Enhancements",
+  "tagline": "Lead scoring, duplicates, follow-ups, and CRM analytics",
+  "category_type": "productivity",
+  "price": 49.99,
+  "accent": "#4f46e5",
+  "problem": "Sales teams lose deals because leads are duplicated, unscored, and follow-ups are missed.",
+  "solution": "CRM Enhancements adds scoring rules, duplicate detection, follow-up automation, and a CRM dashboard on top of Odoo CRM.",
+  "benefits": [
+    "Prioritize hot leads",
+    "Merge duplicate opportunities",
+    "Automate follow-up reminders",
+    "Live CRM KPIs",
+    "Configurable scoring"
+  ],
+  "features": [
+    {
+      "title": "Lead Scoring",
+      "text": "Rules with badges on opportunity forms."
+    },
+    {
+      "title": "Duplicate Detection",
+      "text": "Find and merge similar leads safely."
+    },
+    {
+      "title": "Follow-up Queue",
+      "text": "Reminder automation for sales activities."
+    },
+    {
+      "title": "CRM Dashboard",
+      "text": "OWL shell with pipeline KPIs."
+    }
+  ],
+  "workflow": [
+    "Import leads",
+    "Score automatically",
+    "Detect duplicates",
+    "Schedule follow-up",
+    "Close won"
+  ],
+  "seo_keywords": "Odoo CRM, lead scoring, duplicate leads, CRM dashboard, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-crm-ultimate-pro"
+}

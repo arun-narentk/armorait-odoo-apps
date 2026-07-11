@@ -1,0 +1,6 @@
+id,name,type,list_price,sale_ok,purchase_ok
+rn_saudi_demo.prod_erp_consulting,ERP Consulting Service,service,10000.00,True,True
+rn_saudi_demo.prod_accounting_impl,Accounting Implementation Service,service,15000.00,True,True
+rn_saudi_demo.prod_inventory_mgmt,Inventory Management Service,service,8000.00,True,True
+rn_saudi_demo.prod_annual_support,Annual ERP Support Contract,service,20000.00,True,True
+rn_saudi_demo.prod_business_process,Business Process Consulting,service,12000.00,True,True

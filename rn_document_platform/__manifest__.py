@@ -46,7 +46,6 @@ integration, mobile signing.
         'sale',
         'purchase',
         'hr',
-        'hr_contract',
         'account',
     ],
     'data': [
@@ -77,6 +76,8 @@ integration, mobile signing.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import json
 import re
 import shutil
@@ -79,6 +80,25 @@ MANIFEST_IMAGES = [
     'static/description/dashboard.png',
 ]
 
+SKIP_MODULE_DIRS = frozenset({
+    'tools',
+    'marketplace_framework',
+    'apps_store_zips',
+    'armorait2_site',
+    'website_armorait',
+})
+
+ACCENT_PALETTE = (
+    '#2563eb',
+    '#16a34a',
+    '#7c3aed',
+    '#db2777',
+    '#ea580c',
+    '#0891b2',
+    '#4f46e5',
+    '#0d9488',
+)
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding='utf-8'))
@@ -120,6 +140,127 @@ def load_catalog() -> dict:
     if LEGACY_CATALOG.exists():
         return load_json(LEGACY_CATALOG)
     return load_json(FRAMEWORK / 'catalog.json')
+
+
+def save_catalog(catalog: dict) -> None:
+    LEGACY_CATALOG.write_text(
+        json.dumps(catalog, indent=2, ensure_ascii=False) + '\n',
+        encoding='utf-8',
+    )
+
+
+def read_manifest(manifest_path: Path) -> dict:
+    text = manifest_path.read_text(encoding='utf-8')
+    match = re.search(r'\{[\s\S]*\}', text)
+    if not match:
+        return {}
+    return ast.literal_eval(match.group())
+
+
+def guess_category_type(technical_name: str, manifest: dict) -> str:
+    name = technical_name.lower()
+    category = str(manifest.get('category', '')).lower()
+    if name.startswith('rn_ai_') or 'artificial intelligence' in category:
+        return 'ai'
+    if 'dashboard' in name or 'dashboard' in category or 'reporting' in category:
+        return 'dashboard'
+    if 'whatsapp' in name or 'messaging' in name or 'connector' in name:
+        return 'platform'
+    if 'theme' in name or 'website' in category:
+        return 'theme'
+    if 'productivity' in category or 'tools' in category:
+        return 'productivity'
+    return 'erp'
+
+
+def guess_accent(technical_name: str) -> str:
+    return ACCENT_PALETTE[sum(ord(c) for c in technical_name) % len(ACCENT_PALETTE)]
+
+
+def guess_price(technical_name: str, manifest: dict, brand: dict) -> float:
+    if 'price' in manifest:
+        try:
+            return float(manifest['price'])
+        except (TypeError, ValueError):
+            pass
+    name = technical_name.lower()
+    if 'whatsapp' in name or 'connector' in name:
+        return 79.99
+    if 'ai_' in name or name.startswith('rn_ai'):
+        return 99.0
+    if 'payroll' in name:
+        return 79.0
+    if 'dashboard' in name:
+        return 39.0
+    return float(brand.get('default_price', 9.99))
+
+
+def build_catalog_entry_from_manifest(mod_dir: Path, brand: dict) -> dict:
+    manifest = read_manifest(mod_dir / '__manifest__.py')
+    technical_name = mod_dir.name
+    app_name = str(manifest.get('name') or technical_name.replace('_', ' ').title())
+    tagline = str(manifest.get('summary') or f'Commercial Odoo 19 module by {brand["company"]}.')
+    category_type = guess_category_type(technical_name, manifest)
+    benefits = [
+        f'Streamline {app_name.lower()} workflows in Odoo',
+        'Built for Odoo 19 Community',
+        'Production-ready ARMORA architecture',
+        'Multi-company aware where applicable',
+        f'Support from {brand["company"]}',
+    ]
+    features = [
+        {'title': 'Odoo-native', 'text': f'{app_name} extends standard Odoo models and views.'},
+        {'title': 'Configurable', 'text': 'Settings, security groups, and menus included.'},
+        {'title': 'Documented', 'text': 'README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs.'},
+        {'title': 'Commercial support', 'text': f'Contact {brand["support_email"]} for rollout help.'},
+    ]
+    keywords = [
+        'Odoo 19',
+        'Odoo Community',
+        app_name,
+        technical_name,
+        brand['company'],
+    ]
+    return {
+        'branch': None,
+        'app_name': app_name,
+        'tagline': tagline,
+        'category_type': category_type,
+        'price': guess_price(technical_name, manifest, brand),
+        'accent': guess_accent(technical_name),
+        'problem': (
+            f'Teams running Odoo 19 need a reliable way to manage {app_name.lower()} '
+            'without spreadsheets or disconnected tools.'
+        ),
+        'solution': tagline,
+        'benefits': benefits,
+        'features': features,
+        'workflow': [
+            'Install module',
+            'Configure settings',
+            'Assign user groups',
+            'Run daily workflows',
+            'Review KPIs and reports',
+            'Scale across companies',
+        ],
+        'seo_keywords': ', '.join(keywords),
+        'has_dashboard': 'dashboard' in technical_name,
+        'has_reports': any(x in technical_name for x in ('report', 'gst', 'payroll', 'invoice')),
+        'has_mobile': any(x in technical_name for x in ('mobile', 'portal', 'whatsapp')),
+        'live_test_url': brand.get('website', 'https://www.armorait.com'),
+    }
+
+
+def sync_catalog_missing(catalog: dict, brand: dict) -> list[str]:
+    added = []
+    for mod_dir in discover_modules():
+        if mod_dir.name in catalog:
+            continue
+        catalog[mod_dir.name] = build_catalog_entry_from_manifest(mod_dir, brand)
+        added.append(mod_dir.name)
+    if added:
+        save_catalog(catalog)
+    return added
 
 
 def default_faq(brand: dict, app_name: str) -> list[dict]:
@@ -378,10 +519,13 @@ def build_module(mod_dir: Path, brand: dict, catalog: dict, docs: bool = True) -
     return out
 
 
-def init_module_from_catalog(mod_dir: Path, catalog: dict) -> Path:
+def init_module_from_catalog(mod_dir: Path, catalog: dict, brand: dict | None = None) -> Path:
     name = mod_dir.name
     if name not in catalog:
-        raise KeyError(f'{name} not in catalog')
+        if brand is None:
+            brand = load_json(FRAMEWORK / 'branding.json')
+        catalog[name] = build_catalog_entry_from_manifest(mod_dir, brand)
+        save_catalog(catalog)
     meta = catalog[name]
     data = {
         'technical_name': name,
@@ -433,15 +577,23 @@ def package_zip(mod_dir: Path) -> Path:
 def discover_modules() -> list[Path]:
     return sorted(
         p for p in ARMORA_ROOT.iterdir()
-        if p.is_dir() and p.name.startswith('rn_') and (p / '__manifest__.py').exists()
+        if p.is_dir()
+        and p.name not in SKIP_MODULE_DIRS
+        and not p.name.startswith('.')
+        and (p / '__manifest__.py').exists()
     )
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description='ARMORA Product Builder')
     parser.add_argument('modules', nargs='*', help='Module technical names')
-    parser.add_argument('--all', action='store_true', help='Build all rn_* modules')
+    parser.add_argument('--all', action='store_true', help='Build all commercial modules')
     parser.add_argument('--init', action='store_true', help='Create marketplace/module.json from catalog')
+    parser.add_argument(
+        '--sync-catalog',
+        action='store_true',
+        help='Add missing modules to tools/apps_marketplace/catalog.json from manifests',
+    )
     parser.add_argument('--zip', action='store_true', help='Package Apps Store ZIP after build')
     parser.add_argument('--no-docs', action='store_true', help='Skip README/FAQ regeneration')
     args = parser.parse_args(argv)
@@ -449,11 +601,19 @@ def main(argv: list[str] | None = None) -> int:
     brand = load_json(FRAMEWORK / 'branding.json')
     catalog = load_catalog()
 
+    if args.sync_catalog:
+        added = sync_catalog_missing(catalog, brand)
+        for name in added:
+            print(f'CATALOG + {name}')
+        if not added:
+            print('CATALOG up to date')
+        if not (args.init or args.all or args.modules):
+            return 0
+
     if args.init:
         for mod_dir in discover_modules():
-            if mod_dir.name in catalog:
-                init_module_from_catalog(mod_dir, catalog)
-                print(f'INIT {mod_dir.name}')
+            init_module_from_catalog(mod_dir, catalog, brand)
+            print(f'INIT {mod_dir.name}')
         return 0
 
     modules = [p.name for p in discover_modules()] if (args.all or not args.modules) else args.modules
@@ -465,11 +625,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f'SKIP missing {name}')
             continue
         if not (mod_dir / 'marketplace' / 'module.json').exists() and not (mod_dir / 'marketplace' / 'module.yaml').exists():
-            if name in catalog:
-                init_module_from_catalog(mod_dir, catalog)
-            else:
-                print(f'SKIP no config {name}')
-                continue
+            init_module_from_catalog(mod_dir, catalog, brand)
         out = build_module(mod_dir, brand, catalog, docs=not args.no_docs)
         print(f'OK {name} -> {out}')
         built.append(mod_dir)

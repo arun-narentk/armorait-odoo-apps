@@ -12,6 +12,7 @@ import re
 import shutil
 import struct
 import subprocess
+import sys
 import textwrap
 import zlib
 from pathlib import Path
@@ -655,4 +656,9 @@ def main():
 
 
 if __name__ == '__main__':
+    builder = ROOT / 'build_marketplace.py'
+    if builder.exists() and '--legacy' not in sys.argv:
+        cmd = [sys.executable, str(builder), '--sync-catalog', '--all', '--no-docs']
+        print('Deprecated. Running ARMORA Product Builder:', ' '.join(cmd))
+        raise SystemExit(subprocess.call(cmd, cwd=ROOT))
     main()

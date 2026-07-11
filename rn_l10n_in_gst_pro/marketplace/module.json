@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_l10n_in_gst_pro",
+  "app_name": "GST Reports",
+  "tagline": "GSTR-1, GSTR-3B, GSTR-9, and GST validation for India",
+  "category_type": "erp",
+  "price": 49.99,
+  "accent": "#c2410c",
+  "problem": "Indian businesses struggle to reconcile books with GST return formats and validation rules.",
+  "solution": "GST Reports builds on l10n_in with return periods, validation issues, dashboard shell, and export-ready architecture for GSTR workflows.",
+  "benefits": [
+    "India GST focused",
+    "Return period tracking",
+    "Validation issue log",
+    "Accountant-friendly menus",
+    "Multi-company security"
+  ],
+  "features": [
+    {
+      "title": "Return Shell",
+      "text": "GSTR-1, 3B, and 9 workflow models and menus."
+    },
+    {
+      "title": "HSN & Masters",
+      "text": "GST masters aligned with Indian compliance needs."
+    },
+    {
+      "title": "Validation",
+      "text": "Surface mismatches before filing."
+    },
+    {
+      "title": "Dashboard",
+      "text": "OWL overview for open periods and issues."
+    }
+  ],
+  "workflow": [
+    "Set GST period",
+    "Pull transactions",
+    "Run validation",
+    "Review issues",
+    "Export return",
+    "File GST"
+  ],
+  "seo_keywords": "Odoo GST India, GSTR-1, GSTR-3B, GSTR-9, l10n_in, Odoo 19 Community",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-l10n-in-gst-pro"
+}

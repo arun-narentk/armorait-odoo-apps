@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-name="rn_arabic_tooltip.ArabicHintField">
+    <span class="o_rn_ar_hint" t-ref="root"
+          t-on-mouseenter="onHover" t-on-mouseleave="onLeave">
+        <span class="o_rn_ar_hint_val" t-esc="displayText"/>
+        <span t-if="enabled" class="o_rn_field_tip"
+              t-att-class="{ 'o_rn_tip--show': state.visible }"
+              t-attf-style="left:{{state.x}}px; top:{{state.y}}px;" aria-hidden="true">
+            <span class="o_rn_tip_en" t-esc="state.en"/>
+            <span class="o_rn_tip_ar" dir="rtl" t-esc="state.ar || '…'"/>
+        </span>
+    </span>
+</t>
+
+</templates>

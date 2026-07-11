@@ -1,42 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>ERP Health Analyzer</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; color: #1f2937; line-height: 1.6; }
-        .hero { background: linear-gradient(135deg, #0f766e, #115e59); color: #fff; padding: 48px 24px; text-align: center; }
-        .container { max-width: 960px; margin: 0 auto; padding: 24px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-        .card { border: 1px solid #d1fae5; border-radius: 12px; padding: 16px; background: #fff; }
-        .footer { background: #111827; color: #d1d5db; padding: 24px; text-align: center; margin-top: 32px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ERP Health Analyzer | ARMORA IT Technologies</title>
+<meta name="description" content="AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness. Odoo 19, Odoo Community, ERP Health Analyzer, rn_erp_health_analyzer, ARMORA IT Technologies">
+<style>
+:root { --module-accent: #2563eb; }
+/* ARMORA Marketplace Framework - shared Apps Store description styles */
+:root {
+  --armora-primary: #4f46e5;
+  --armora-secondary: #0f172a;
+  --armora-surface: #ffffff;
+  --armora-muted: #64748b;
+  --armora-border: #e2e8f0;
+  --armora-bg: #f1f5f9;
+  --armora-radius: 12px;
+  --armora-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+  --armora-max: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, Helvetica, sans-serif;
+  background: var(--armora-bg);
+  margin: 0;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+a { color: var(--armora-primary); }
+
+.armora-hero {
+  background: linear-gradient(135deg, var(--module-accent, var(--armora-primary)), var(--armora-secondary));
+  color: #fff;
+  padding: 56px 24px 48px;
+  text-align: center;
+}
+
+.armora-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.armora-hero .tagline {
+  font-size: 1.15rem;
+  max-width: 820px;
+  margin: 0 auto 20px;
+  opacity: 0.95;
+}
+
+.armora-badges span {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin: 4px;
+  font-size: 0.88rem;
+}
+
+.armora-hero img.banner {
+  max-width: min(100%, 960px);
+  margin-top: 24px;
+  border-radius: var(--armora-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.armora-section {
+  background: var(--armora-surface);
+  margin: 24px auto;
+  width: 92%;
+  max-width: var(--armora-max);
+  padding: 28px 32px;
+  border-radius: var(--armora-radius);
+  box-shadow: var(--armora-shadow);
+}
+
+.armora-section h2 {
+  margin-top: 0;
+  color: var(--armora-secondary);
+  font-size: 1.45rem;
+}
+
+.armora-section h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.armora-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.armora-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.armora-card {
+  border: 1px solid var(--armora-border);
+  border-radius: 10px;
+  padding: 18px;
+  background: #f8fafc;
+}
+
+.armora-card h3 { color: var(--module-accent, var(--armora-primary)); }
+
+.armora-workflow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--module-accent, var(--armora-primary));
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.armora-workflow .step {
+  background: #fff;
+  border: 1px solid var(--armora-border);
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.armora-workflow .arrow { color: var(--armora-muted); }
+
+.armora-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.armora-gallery figure { margin: 0; }
+
+.armora-gallery img,
+.armora-shot-wide,
+.armora-shot {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--armora-border);
+}
+
+.armora-gallery figcaption {
+  font-size: 0.85rem;
+  color: var(--armora-muted);
+  margin-top: 6px;
+}
+
+.armora-cta {
+  text-align: center;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  border: 1px solid #c7d2fe;
+}
+
+.armora-cta .btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: var(--module-accent, var(--armora-primary));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.armora-related a {
+  display: block;
+  padding: 12px 16px;
+  border: 1px solid var(--armora-border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  background: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.armora-related a:hover { border-color: var(--module-accent, var(--armora-primary)); }
+
+.armora-testimonial {
+  border-left: 4px solid var(--module-accent, var(--armora-primary));
+  padding: 12px 16px;
+  background: #f8fafc;
+  margin-bottom: 12px;
+  border-radius: 0 8px 8px 0;
+}
+
+.armora-testimonial cite {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--armora-muted);
+  font-style: normal;
+}
+
+.armora-faq dt { font-weight: 700; margin-top: 14px; }
+.armora-faq dd { margin: 4px 0 0 0; color: #334155; }
+
+.armora-footer {
+  background: var(--armora-secondary);
+  color: #fff;
+  text-align: center;
+  padding: 40px 24px;
+  margin-top: 32px;
+}
+
+.armora-footer a { color: #93c5fd; }
+
+.armora-list-check { list-style: none; padding: 0; }
+.armora-list-check li::before {
+  content: "\2713 ";
+  color: var(--module-accent, var(--armora-primary));
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .armora-grid-2,
+  .armora-grid-3,
+  .armora-gallery { grid-template-columns: 1fr; }
+  .armora-section { padding: 20px 18px; }
+}
+
+</style>
 </head>
 <body>
-    <section class="hero">
-        <h1>ERP Health Analyzer</h1>
-        <p>Continuous ERP intelligence for performance, security, accounting, and data quality.</p>
-    </section>
-    <div class="container">
-        <h2>Why it matters</h2>
-        <div class="grid">
-            <div class="card"><strong>Find hidden risk</strong><p>Surface admin sprawl, cron overload, duplicate data, and reconciliation backlog.</p></div>
-            <div class="card"><strong>Prioritize fixes</strong><p>Score findings by severity and business impact.</p></div>
-            <div class="card"><strong>Consultant-ready output</strong><p>Turn technical signals into clear recommendations.</p></div>
-            <div class="card"><strong>Build recurring revenue</strong><p>Run weekly monitoring instead of one-off audits.</p></div>
-        </div>
-        <h2>Phase 1 includes</h2>
-        <ul>
-            <li>Scan targets and reusable intelligence scopes</li>
-            <li>Performance, security, data quality, accounting, and upgrade checks</li>
-            <li>Risk dashboard with recent scans and findings</li>
-            <li>Multi-company access control</li>
-        </ul>
+
+<section class="armora-hero" id="top">
+  <h1>ERP Health Analyzer</h1>
+  <p class="tagline">AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness</p>
+  <div class="armora-badges">
+    <span>Odoo 19 Community</span>
+    <span>ARMORA IT Technologies</span>
+    <span>Production Ready</span>
+    <span>Multi-company</span>
+    
+    
+  </div>
+  <img class="img img-fluid loempia_app_cover shadow-sm banner" src="banner.png" alt="ERP Health Analyzer banner">
+</section>
+
+<section class="armora-section" id="overview">
+  <h2>App Overview</h2>
+  <p>AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness</p>
+  <ul class="armora-list-check">
+    
+    <li>Streamline erp health analyzer workflows in Odoo</li>
+    
+    <li>Built for Odoo 19 Community</li>
+    
+    <li>Production-ready ARMORA architecture</li>
+    
+    <li>Multi-company aware where applicable</li>
+    
+    <li>Support from ARMORA IT Technologies</li>
+    
+  </ul>
+</section>
+
+<section class="armora-section" id="problem">
+  <h2>Business Problem</h2>
+  <p>Teams running Odoo 19 need a reliable way to manage erp health analyzer without spreadsheets or disconnected tools.</p>
+</section>
+
+<section class="armora-section" id="solution">
+  <h2>Business Solution</h2>
+  <p>AI-assisted ERP intelligence: performance, security, data quality, and upgrade readiness</p>
+</section>
+
+<section class="armora-section" id="features">
+  <h2>Feature Highlights</h2>
+  <div class="armora-grid-2">
+    
+    <div class="armora-card">
+      <h3>Odoo-native</h3>
+      <p>ERP Health Analyzer extends standard Odoo models and views.</p>
     </div>
-    <footer class="footer">
-        <strong>ARMORA IT Technologies</strong><br/>
-        https://www.armorait.com | info@armorait.com
-    </footer>
+    
+    <div class="armora-card">
+      <h3>Configurable</h3>
+      <p>Settings, security groups, and menus included.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Documented</h3>
+      <p>README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Commercial support</h3>
+      <p>Contact info@armorait.com for rollout help.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="armora-section" id="workflow">
+  <h2>Workflow</h2>
+  <div class="armora-workflow">
+    
+    
+    <span class="step">Install module</span>
+    
+    <span class="arrow">&#8595;</span>
+    <span class="step">Configure settings</span>
+    
+    <span class="arrow">&#8595;</span>
+    <span class="step">Assign user groups</span>
+    
+    <span class="arrow">&#8595;</span>
+    <span class="step">Run daily workflows</span>
+    
+    <span class="arrow">&#8595;</span>
+    <span class="step">Review KPIs and reports</span>
+    
+    <span class="arrow">&#8595;</span>
+    <span class="step">Scale across companies</span>
+    
+  </div>
+</section>
+
+
+
+
+
+<section class="armora-section" id="screenshots">
+  <h2>Screenshots</h2>
+  <p>Real Odoo backend captures from a working instance. Desktop and mobile views included.</p>
+  <div class="armora-gallery">
+    
+    <figure>
+      <img src="overview.png" alt="Overview">
+      <figcaption>Overview</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="dashboard.png" alt="Dashboard">
+      <figcaption>Dashboard</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="list.png" alt="List View">
+      <figcaption>List View</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="form.png" alt="Form View">
+      <figcaption>Form View</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="wizard.png" alt="Wizard">
+      <figcaption>Wizard</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="settings.png" alt="Settings">
+      <figcaption>Settings</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="report.png" alt="Report">
+      <figcaption>Report</figcaption>
+    </figure>
+    
+  </div>
+</section>
+
+<section class="armora-section" id="demos">
+  <h2>Product Demonstrations</h2>
+  <p>20 to 30 second GIF recordings for hero, workflow, settings, and mobile flows.</p>
+  <div class="armora-gallery">
+    
+    <figure>
+      <img src="hero.gif" alt="Hero Demo">
+      <figcaption>Hero Demo</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="workflow.gif" alt="Workflow">
+      <figcaption>Workflow</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="dashboard.gif" alt="Dashboard Demo">
+      <figcaption>Dashboard Demo</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="reports.gif" alt="Reports">
+      <figcaption>Reports</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="mobile.gif" alt="Mobile">
+      <figcaption>Mobile</figcaption>
+    </figure>
+    
+  </div>
+</section>
+
+
+
+<section class="armora-section armora-faq" id="faq">
+  <h2>FAQ</h2>
+  <dl>
+    
+    <dt>Does ERP Health Analyzer work on Odoo Community?</dt>
+    <dd>Yes. Built for Odoo 19 Community.</dd>
+    
+    <dt>Multi-company support?</dt>
+    <dd>Yes, where underlying models are company-aware.</dd>
+    
+    <dt>Can we customize it?</dt>
+    <dd>Yes. Standard Odoo inheritance and service-layer patterns.</dd>
+    
+    <dt>Is documentation included?</dt>
+    <dd>README, INSTALL, USER_GUIDE, FAQ, SECURITY, and ROADMAP are included.</dd>
+    
+    <dt>How do we get support?</dt>
+    <dd>Contact info@armorait.com for commercial support.</dd>
+    
+  </dl>
+</section>
+
+<section class="armora-section" id="testimonials">
+  <h2>Customer Testimonials</h2>
+  
+  <blockquote class="armora-testimonial">
+    <p>&ldquo;ARMORA modules feel like native Odoo. Our team adopted the dashboards without extra training.&rdquo;</p>
+    <cite>Operations Manager, Distribution company, India</cite>
+  </blockquote>
+  
+  <blockquote class="armora-testimonial">
+    <p>&ldquo;Clean architecture made customization straightforward. Security and multi-company worked out of the box.&rdquo;</p>
+    <cite>Odoo Technical Lead, ERP partner</cite>
+  </blockquote>
+  
+</section>
+
+<section class="armora-section" id="maturity">
+  <h2>Why Product Maturity Matters</h2>
+  <p>Apps Store buyers need confidence that a module will survive upgrades, permissions, and real data volumes.</p>
+  <ul class="armora-list-check">
+    
+    <li>Structured service-layer architecture, not throwaway scripts</li>
+    
+    <li>Security groups, access rights, and record rules from day one</li>
+    
+    <li>Automated tests and upgrade-safe data files</li>
+    
+    <li>Documentation pack included with every commercial module</li>
+    
+    <li>Consistent OWL 2 and Bootstrap 5 UI patterns</li>
+    
+  </ul>
+</section>
+
+<section class="armora-section" id="why-armora">
+  <h2>Why ARMORA IT Technologies</h2>
+  <div class="armora-grid-2">
+    
+    <div class="armora-card">
+      <h3>Odoo-native delivery</h3>
+      <p>We ship on Community standards: ORM, OWL, Bootstrap 5, and clean inheritance. No Enterprise lock-in tricks.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Implementation experience</h3>
+      <p>Built by consultants who roll out ERP, CRM, inventory, HR, and industry packs for real businesses.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Long-term maintenance</h3>
+      <p>Versioned releases, changelog discipline, and support through info@armorait.com.</p>
+    </div>
+    
+    <div class="armora-card">
+      <h3>Suite thinking</h3>
+      <p>Modules share dashboards, connectors, and naming so your stack grows without fragmentation.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="armora-section armora-cta" id="try">
+  <h2>Try before you buy</h2>
+  <p>Request a guided demo or live test on armorait.com. We map your process, show the module on Odoo 19, and answer rollout questions before you purchase.</p>
+  
+  <p><strong>Live demo:</strong> <a href="https://www.armorait.com">https://www.armorait.com</a></p>
+  
+  <a class="btn" href="https://www.armorait.com/contactus">Request free consultation</a>
+</section>
+
+<section class="armora-section" id="purchase">
+  <h2>Purchase Includes</h2>
+  <ul class="armora-list-check">
+    
+    <li>Full module source under OPL-1</li>
+    
+    <li>README, INSTALL, USER_GUIDE, FAQ, SECURITY, ROADMAP</li>
+    
+    <li>Access rights, groups, and record rules</li>
+    
+    <li>Demo data where applicable</li>
+    
+    <li>Apps Store assets: icon, banner, screenshots, GIFs</li>
+    
+  </ul>
+</section>
+
+<section class="armora-section" id="activation">
+  <h2>Activation Guide</h2>
+  <ol>
+    
+    <li>Purchase and download the module ZIP from the Odoo Apps Store</li>
+    
+    <li>Extract into your custom addons path</li>
+    
+    <li>Update the Apps list and install the module</li>
+    
+    <li>Open Settings and complete the module configuration wizard</li>
+    
+    <li>Assign security groups to the right users</li>
+    
+    <li>Optional: load demo data for a guided evaluation</li>
+    
+    <li>Go live and contact support if you need rollout help</li>
+    
+  </ol>
+</section>
+
+<section class="armora-section" id="installation">
+  <h2>Installation Details</h2>
+  <ol>
+    <li>Copy the module into your custom addons path.</li>
+    <li>Restart Odoo and update the Apps list.</li>
+    <li>Install <strong>ERP Health Analyzer</strong> (technical name: <code>rn_erp_health_analyzer</code>).</li>
+    <li>Open Settings and complete module configuration.</li>
+    <li>Assign security groups to users.</li>
+    <li>Optional: load demo data for evaluation.</li>
+  </ol>
+</section>
+
+<section class="armora-section" id="compatibility">
+  <h2>Compatibility</h2>
+  <ul>
+    <li><strong>Odoo:</strong> 19.0 Community</li>
+    <li><strong>Python:</strong> 3.12+</li>
+    <li><strong>Database:</strong> PostgreSQL 14+</li>
+    <li><strong>UI:</strong> OWL 2, Bootstrap 5</li>
+    <li><strong>Deployment:</strong> On-premise, Odoo.sh, and Odoo Online (where custom modules are allowed)</li>
+  </ul>
+  <p><strong>SEO:</strong> Odoo 19, Odoo Community, ERP Health Analyzer, rn_erp_health_analyzer, ARMORA IT Technologies</p>
+  <p><strong>Version:</strong> 19.0.1.0.0</p>
+</section>
+
+
+<section class="armora-section armora-related" id="related">
+  <h2>You May Also Like</h2>
+  <p>Other Productivity modules from ARMORA IT Technologies:</p>
+  
+  <a href="#">WhatsApp Integration</a>
+  
+  <a href="#">Attendance Face Recognition</a>
+  
+  <a href="#">Payroll Portal</a>
+  
+  <a href="#">CRM Enhancements</a>
+  
+  <a href="#">Appointment Booking</a>
+  
+</section>
+
+
+<section class="armora-section" id="support">
+  <h2>Support</h2>
+  <p>Commercial support and rollout guidance from ARMORA IT Technologies.</p>
+  <ul>
+    <li>Website: <a href="https://www.armorait.com">https://www.armorait.com</a></li>
+    <li>Email: <a href="mailto:info@armorait.com">info@armorait.com</a></li>
+    <li>License: OPL-1</li>
+  </ul>
+</section>
+
+<footer class="armora-footer">
+  <h3>ARMORA IT Technologies</h3>
+  <p>Website: <a href="https://www.armorait.com">https://www.armorait.com</a></p>
+  <p>Support: <a href="mailto:info@armorait.com">info@armorait.com</a></p>
+  <p>&copy; ARMORA IT Technologies</p>
+</footer>
+
+<script>
+/* ARMORA Marketplace Framework - light enhancements for Apps Store description pages */
+(function () {
+  'use strict';
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.armora-gallery img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      if (!img.dataset.full) {
+        return;
+      }
+      window.open(img.dataset.full || img.src, '_blank', 'noopener');
+    });
+  });
+})();
+
+</script>
 </body>
 </html>

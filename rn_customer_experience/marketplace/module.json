@@ -1,0 +1,50 @@
+{
+  "technical_name": "rn_customer_experience",
+  "app_name": "Customer Experience Portal",
+  "tagline": "Customer self-service experience portal: orders, invoices, payments, downloads, and widgets",
+  "category_type": "theme",
+  "price": 79.99,
+  "accent": "#2563eb",
+  "problem": "Teams running Odoo 19 need a reliable way to manage customer experience portal without spreadsheets or disconnected tools.",
+  "solution": "Customer self-service experience portal: orders, invoices, payments, downloads, and widgets",
+  "benefits": [
+    "Streamline customer experience portal workflows in Odoo",
+    "Built for Odoo 19 Community",
+    "Production-ready ARMORA architecture",
+    "Multi-company aware where applicable",
+    "Support from ARMORA IT Technologies"
+  ],
+  "features": [
+    {
+      "title": "Odoo-native",
+      "text": "Customer Experience Portal extends standard Odoo models and views."
+    },
+    {
+      "title": "Configurable",
+      "text": "Settings, security groups, and menus included."
+    },
+    {
+      "title": "Documented",
+      "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+    },
+    {
+      "title": "Commercial support",
+      "text": "Contact info@armorait.com for rollout help."
+    }
+  ],
+  "workflow": [
+    "Install module",
+    "Configure settings",
+    "Assign user groups",
+    "Run daily workflows",
+    "Review KPIs and reports",
+    "Scale across companies"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, Customer Experience Portal, rn_customer_experience, ARMORA IT Technologies",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": false,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

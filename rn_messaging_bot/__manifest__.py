@@ -60,6 +60,8 @@ message templates, campaign broadcasts, and optional WhatsApp connector bridge.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
+        'static/description/overview.png',
+        'static/description/dashboard.png',
     ],
     'installable': True,
     'application': True,

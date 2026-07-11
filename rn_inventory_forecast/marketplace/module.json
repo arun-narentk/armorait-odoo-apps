@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_inventory_forecast",
+  "app_name": "Inventory Forecast",
+  "tagline": "Demand forecasting, safety stock, and ABC analysis",
+  "category_type": "dashboard",
+  "price": 39.99,
+  "accent": "#0891b2",
+  "problem": "Buyers overstock slow items and run out of bestsellers because planning lives in spreadsheets.",
+  "solution": "Inventory Forecast analyzes movement, forecasts demand, suggests reorder points, and surfaces alerts in an OWL planning dashboard.",
+  "benefits": [
+    "Reduce stock-outs",
+    "Lower excess inventory",
+    "ABC and XYZ analysis",
+    "Smart replenishment alerts",
+    "Service-layer forecasting"
+  ],
+  "features": [
+    {
+      "title": "Demand Forecast",
+      "text": "Historical sales and purchase driven projections."
+    },
+    {
+      "title": "Safety Stock",
+      "text": "Reorder points tuned to lead time and variability."
+    },
+    {
+      "title": "ABC / XYZ",
+      "text": "Classify items by value and demand stability."
+    },
+    {
+      "title": "Alert Engine",
+      "text": "Notify buyers before shortages hit operations."
+    }
+  ],
+  "workflow": [
+    "Sync stock moves",
+    "Run forecast job",
+    "Review ABC classes",
+    "Adjust reorder rules",
+    "Raise PO"
+  ],
+  "seo_keywords": "Odoo inventory forecast, demand planning, safety stock, ABC analysis, Odoo 19",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-inventory-forecast"
+}

@@ -1,0 +1,49 @@
+{
+  "technical_name": "rn_hr_attendance_face",
+  "app_name": "Attendance Face Recognition",
+  "tagline": "Biometric attendance with face matching and OWL kiosk",
+  "category_type": "productivity",
+  "price": 59.99,
+  "accent": "#0d9488",
+  "problem": "Manual attendance and shared PINs create buddy punching and payroll disputes.",
+  "solution": "Attendance Face Recognition stores face embeddings, matches employees at kiosk check-in, and writes clean HR attendance records.",
+  "benefits": [
+    "Reduce buddy punching",
+    "Fast kiosk check-in",
+    "Embedding-based matching",
+    "Camera and device registry",
+    "Modular AI engine layer"
+  ],
+  "features": [
+    {
+      "title": "Face Embeddings",
+      "text": "Store vectors, not raw photos, for privacy-aware matching."
+    },
+    {
+      "title": "OWL Kiosk",
+      "text": "Dedicated check-in UI for reception and shop floor."
+    },
+    {
+      "title": "Recognition Logs",
+      "text": "Audit trail for matches, failures, and devices."
+    },
+    {
+      "title": "Engine Adapters",
+      "text": "Swap OpenCV, InsightFace, or ONNX without HR changes."
+    }
+  ],
+  "workflow": [
+    "Enroll employee face",
+    "Open kiosk",
+    "Capture and match",
+    "Create attendance",
+    "Review logs"
+  ],
+  "seo_keywords": "Odoo attendance, face recognition, biometric kiosk, HR attendance Odoo 19",
+  "has_dashboard": true,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "feature/rn-hr-attendance-face"
+}
