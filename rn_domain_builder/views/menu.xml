@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_domain_builder_root"
+              name="Domain Builder"
+              web_icon="rn_domain_builder,static/description/icon.png"
+              sequence="58"
+              groups="rn_domain_builder.group_rn_domain_builder_user"/>
+
+    <menuitem id="menu_rn_domain_builder_wizard"
+              name="Build Filter"
+              parent="menu_rn_domain_builder_root"
+              action="action_rn_domain_builder_launch"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_domain_builder_history"
+              name="History"
+              parent="menu_rn_domain_builder_root"
+              action="action_rn_domain_history"
+              sequence="20"/>
+
+    <menuitem id="menu_rn_domain_builder_dictionary"
+              name="Dictionary"
+              parent="menu_rn_domain_builder_root"
+              action="action_rn_domain_dictionary"
+              sequence="30"
+              groups="rn_domain_builder.group_rn_domain_builder_manager"/>
+</odoo>

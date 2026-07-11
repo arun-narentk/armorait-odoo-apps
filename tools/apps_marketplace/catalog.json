@@ -2718,5 +2718,101 @@
     "has_reports": true,
     "has_mobile": true,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_domain_builder": {
+    "branch": null,
+    "app_name": "Domain Builder",
+    "tagline": "Build Odoo search domains using plain English instead of Python-like syntax",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#0891b2",
+    "problem": "Teams running Odoo 19 need a reliable way to manage domain builder without spreadsheets or disconnected tools.",
+    "solution": "Build Odoo search domains using plain English instead of Python-like syntax",
+    "benefits": [
+      "Streamline domain builder workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Domain Builder extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Domain Builder, rn_domain_builder, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
+  },
+  "rn_smart_color_tags": {
+    "branch": null,
+    "app_name": "Smart Color Tags",
+    "tagline": "Highlight records in list and Kanban views with configurable color rules on any model",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#7c3aed",
+    "problem": "Teams running Odoo 19 need a reliable way to manage smart color tags without spreadsheets or disconnected tools.",
+    "solution": "Highlight records in list and Kanban views with configurable color rules on any model",
+    "benefits": [
+      "Streamline smart color tags workflows in Odoo",
+      "Built for Odoo 19 Community",
+      "Production-ready ARMORA architecture",
+      "Multi-company aware where applicable",
+      "Support from ARMORA IT Technologies"
+    ],
+    "features": [
+      {
+        "title": "Odoo-native",
+        "text": "Smart Color Tags extends standard Odoo models and views."
+      },
+      {
+        "title": "Configurable",
+        "text": "Settings, security groups, and menus included."
+      },
+      {
+        "title": "Documented",
+        "text": "README, INSTALL, USER_GUIDE, FAQ, and SECURITY docs."
+      },
+      {
+        "title": "Commercial support",
+        "text": "Contact info@armorait.com for rollout help."
+      }
+    ],
+    "workflow": [
+      "Install module",
+      "Configure settings",
+      "Assign user groups",
+      "Run daily workflows",
+      "Review KPIs and reports",
+      "Scale across companies"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Smart Color Tags, rn_smart_color_tags, ARMORA IT Technologies",
+    "has_dashboard": false,
+    "has_reports": false,
+    "has_mobile": false,
+    "live_test_url": "https://www.armorait.com"
   }
 }

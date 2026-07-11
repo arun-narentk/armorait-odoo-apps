@@ -1,0 +1,71 @@
+{
+  "technical_name": "rn_domain_builder",
+  "app_name": "Domain Builder",
+  "tagline": "Build Odoo search domains using plain English instead of Python-like syntax",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#0f766e",
+  "problem": "Functional consultants and power users struggle to write Odoo domain syntax for filters, actions, and automations.",
+  "solution": "Describe filters in plain English and get validated Odoo domains with live record counts, copy, test, and save options.",
+  "benefits": [
+    "Dictionary-driven parser with predictable results",
+    "Hybrid UI with suggestions while typing",
+    "Preview record counts before saving filters",
+    "Configurable word mappings per model",
+    "Works on Sales, Invoices, CRM, Products, and more"
+  ],
+  "features": [
+    {"title": "Plain-English Builder", "text": "Type phrases like paid invoices this month or confirmed quotations."},
+    {"title": "Dictionary Engine", "text": "Administrators map words to fields, operators, and values per model."},
+    {"title": "Live Preview", "text": "See generated domains and matching record counts instantly."},
+    {"title": "Save Favorite Filters", "text": "Push generated domains into ir.filters with one click."},
+    {"title": "History", "text": "Keep a searchable log of generated domains per user."}
+  ],
+  "workflow": [
+    "Open Domain Builder from the app menu",
+    "Pick a model and describe your filter",
+    "Generate and review the domain",
+    "Test results or save as favorite filter",
+    "Tune dictionary entries for your business language"
+  ],
+  "screenshots": {
+    "workflow": "screenshots/workflow.png",
+    "dashboard": "screenshots/dashboard.png",
+    "designer": "screenshots/designer.png",
+    "mobile": "screenshots/mobile.png"
+  },
+  "gifs": {
+    "hero": "gifs/hero.gif",
+    "workflow": "gifs/workflow.gif",
+    "dashboard": "gifs/dashboard.gif",
+    "settings": "gifs/settings.gif",
+    "reports": "gifs/reports.gif",
+    "mobile": "gifs/mobile.gif"
+  },
+  "screenshot_labels": {
+    "workflow": "Build Filter Wizard",
+    "dashboard": "Dictionary Configuration",
+    "designer": "Generated Domain Preview",
+    "mobile": "Mobile Builder"
+  },
+  "gif_labels": {
+    "hero": "Plain English to Domain",
+    "workflow": "Generate and Test",
+    "dashboard": "Dictionary Setup",
+    "settings": "Save Favorite Filter",
+    "reports": "History Log",
+    "mobile": "Mobile Usage"
+  },
+  "faq": [
+    {"q": "Does this use AI?", "a": "No. Domains are built from configurable dictionary rules and a deterministic parser."},
+    {"q": "Can I add custom words?", "a": "Yes. Managers can map business terms to fields in the Dictionary menu."},
+    {"q": "Which models are supported?", "a": "Sale Orders, Invoices, Products, CRM, Contacts, Employees, Purchase, Stock, and Projects."}
+  ],
+  "seo_keywords": "Odoo 19 domain builder, plain English Odoo filters, Odoo search domain helper, functional consultant productivity",
+  "has_dashboard": true,
+  "has_reports": true,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": null
+}

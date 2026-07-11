@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_domain_dictionary_user,rn.domain.dictionary user,model_rn_domain_dictionary,group_rn_domain_builder_user,1,0,0,0
+access_rn_domain_dictionary_manager,rn.domain.dictionary manager,model_rn_domain_dictionary,group_rn_domain_builder_manager,1,1,1,1
+access_rn_domain_history_user,rn.domain.history user,model_rn_domain_history,group_rn_domain_builder_user,1,1,1,0
+access_rn_domain_history_manager,rn.domain.history manager,model_rn_domain_history,group_rn_domain_builder_manager,1,1,1,1
+access_rn_domain_builder_user,rn.domain.builder user,model_rn_domain_builder,group_rn_domain_builder_user,1,1,1,1
