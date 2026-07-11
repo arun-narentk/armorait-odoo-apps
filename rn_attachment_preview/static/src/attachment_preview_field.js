@@ -2,9 +2,11 @@
 
 import { _t } from "@web/core/l10n/translation";
 import { useFileViewer } from "@web/core/file_viewer/file_viewer_hook";
+import { useService } from "@web/core/utils/hooks";
 import { url } from "@web/core/utils/urls";
 import { Many2ManyBinaryField, many2ManyBinaryField } from "@web/views/fields/many2many_binary/many2many_binary_field";
 import { registry } from "@web/core/registry";
+import { RnPreviewDialog } from "./preview_dialog";
 
 const TEXT_MIMETYPES = new Set([
     "text/plain",
@@ -37,6 +39,12 @@ const VIDEO_MIMETYPES = new Set([
     "audio/webm",
 ]);
 
+const OFFICE_MIMETYPES = new Set([
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+]);
+
 function toPreviewFile(file) {
     const mimetype = file.mimetype || "";
     const id = file.id;
@@ -53,6 +61,9 @@ function toPreviewFile(file) {
         get isPdf() {
             return mimetype.startsWith("application/pdf");
         },
+        get isOffice() {
+            return OFFICE_MIMETYPES.has(mimetype);
+        },
         get isVideo() {
             return VIDEO_MIMETYPES.has(mimetype);
         },
@@ -60,7 +71,7 @@ function toPreviewFile(file) {
             return TEXT_MIMETYPES.has(mimetype);
         },
         get isViewable() {
-            return (this.isText || this.isImage || this.isVideo || this.isPdf) && !this.uploading;
+            return (this.isText || this.isImage || this.isVideo || this.isPdf || this.isOffice) && !this.uploading;
         },
         get urlRoute() {
             return this.isImage ? `/web/image/${id}` : `/web/content/${id}`;
@@ -89,6 +100,7 @@ export class RnAttachmentPreviewField extends Many2ManyBinaryField {
     setup() {
         super.setup();
         this.fileViewer = useFileViewer();
+        this.dialog = useService("dialog");
         this.hoverFileId = null;
     }
 
@@ -100,6 +112,22 @@ export class RnAttachmentPreviewField extends Many2ManyBinaryField {
         return toPreviewFile(file).isViewable;
     }
 
+    getThumbnailUrl(file) {
+        return `/web/image/ir.attachment/${file.id}/rn_preview_thumbnail`;
+    }
+
+    onThumbnailError(ev) {
+        const target = ev.target;
+        target.classList.add("o_image");
+        target.removeAttribute("src");
+        if (target.dataset.fallbackMimetype) {
+            target.dataset.mimetype = target.dataset.fallbackMimetype;
+        }
+        if (target.dataset.fallbackExt) {
+            target.dataset.ext = target.dataset.fallbackExt;
+        }
+    }
+
     onPreviewClick(file, ev) {
         ev.preventDefault();
         ev.stopPropagation();
@@ -107,7 +135,15 @@ export class RnAttachmentPreviewField extends Many2ManyBinaryField {
         if (!previewFile.isViewable) {
             return;
         }
-        const allFiles = this.toPreviewFiles().filter((item) => item.isViewable);
+        if (previewFile.isOffice) {
+            this.dialog.add(RnPreviewDialog, { file: previewFile, mode: "office" });
+            return;
+        }
+        if (previewFile.isPdf) {
+            this.dialog.add(RnPreviewDialog, { file: previewFile, mode: "pdf" });
+            return;
+        }
+        const allFiles = this.toPreviewFiles().filter((item) => item.isViewable && !item.isOffice);
         this.fileViewer.open(previewFile, allFiles);
     }
 
@@ -120,8 +156,8 @@ export class RnAttachmentPreviewField extends Many2ManyBinaryField {
         if (preview.isImage) {
             return url(preview.urlRoute, preview.urlQueryParams);
         }
-        if (preview.isPdf) {
-            return `/web/static/img/mimetypes/pdf.svg`;
+        if (preview.isPdf || preview.isOffice) {
+            return this.getThumbnailUrl(file);
         }
         return false;
     }

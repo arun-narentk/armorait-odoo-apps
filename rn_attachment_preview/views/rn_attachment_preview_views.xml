@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_attachment_search_wizard_form" model="ir.ui.view">
+        <field name="name">rn.attachment.search.wizard.form</field>
+        <field name="model">rn.attachment.search.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Search Attachments">
+                <group>
+                    <field name="query" placeholder="GST, invoice number, contract clause..."/>
+                    <field name="result_count" invisible="not result_count"/>
+                </group>
+                <footer>
+                    <button name="action_search" type="object" string="Search" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_attachment_ocr_search" model="ir.actions.act_window">
+        <field name="name">OCR Search</field>
+        <field name="res_model">rn.attachment.search.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_rn_attachment_annotation_tree" model="ir.ui.view">
+        <field name="name">rn.attachment.annotation.list</field>
+        <field name="model">rn.attachment.annotation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="attachment_id"/>
+                <field name="page_number"/>
+                <field name="note"/>
+                <field name="user_id"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_attachment_annotation_form" model="ir.ui.view">
+        <field name="name">rn.attachment.annotation.form</field>
+        <field name="model">rn.attachment.annotation</field>
+        <field name="arch" type="xml">
+            <form string="PDF Annotation">
+                <sheet>
+                    <group>
+                        <field name="attachment_id"/>
+                        <field name="page_number"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="color" widget="color"/>
+                        <field name="pos_x"/>
+                        <field name="pos_y"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_rn_attachment_annotations" model="ir.actions.act_window">
+        <field name="name">PDF Annotations</field>
+        <field name="res_model">rn.attachment.annotation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_res_config_settings_rn_attachment_preview" model="ir.ui.view">
+        <field name="name">res.config.settings.rn.attachment.preview</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Attachment Preview" name="rn_attachment_preview"
+                     groups="rn_attachment_preview.group_rn_attachment_preview_manager">
+                    <block title="Attachment Preview V2">
+                        <setting string="OCR search" help="Enable full-text search across extracted attachment text.">
+                            <field name="rn_attachment_enable_ocr_search"/>
+                        </setting>
+                        <setting string="Thumbnail batch size" help="Attachments processed per thumbnail cron run.">
+                            <field name="rn_attachment_thumbnail_batch"/>
+                        </setting>
+                        <setting string="OCR batch size" help="Attachments processed per OCR cron run.">
+                            <field name="rn_attachment_ocr_batch"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
