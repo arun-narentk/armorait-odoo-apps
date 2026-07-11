@@ -673,7 +673,12 @@ def save_cover_assets(
         module_mark=module_mark,
     )
     banner.save(out / 'banner.png', 'PNG', optimize=True)
-    banner.resize((360, 180), RESAMPLE).save(out / 'banner_small.png', 'PNG', optimize=True)
+    banner_small = banner.resize((360, 180), RESAMPLE)
+    banner_small.save(out / 'banner_small.png', 'PNG', optimize=True)
+    mp_assets = module_dir / 'marketplace' / 'assets'
+    mp_assets.mkdir(parents=True, exist_ok=True)
+    for asset_name in ('icon.png', 'banner.png', 'banner_small.png'):
+        shutil.copy2(out / asset_name, mp_assets / asset_name)
     if animated:
         frames = draw_app_cover_gif_frames(
             title_lines,

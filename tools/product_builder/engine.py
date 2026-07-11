@@ -358,12 +358,10 @@ def sync_media(mod_dir: Path, config: dict, desc_dir: Path) -> tuple[dict[str, s
                 break
 
     for extra in ('icon.png', 'banner.png', 'banner_small.png'):
-        for src in (mp / 'assets' / extra, desc_dir / extra):
-            if src.exists():
-                dest = desc_dir / extra
-                if src.resolve() != dest.resolve():
-                    shutil.copy2(src, dest)
-                break
+        dest = desc_dir / extra
+        asset_src = mp / 'assets' / extra
+        if not dest.is_file() and asset_src.is_file():
+            shutil.copy2(asset_src, dest)
 
     return screenshots, gifs
 
@@ -578,12 +576,12 @@ def build_module(
     (mod_dir / 'marketplace').mkdir(parents=True, exist_ok=True)
     (mod_dir / 'docs').mkdir(parents=True, exist_ok=True)
 
-    if covers:
-        generate_cover_assets(mod_dir, animated=animated_covers)
-
     html = render_index_html(config, brand, catalog, mod_dir)
     out = mod_dir / 'static' / 'description' / 'index.html'
     out.write_text(html, encoding='utf-8')
+
+    if covers:
+        generate_cover_assets(mod_dir, animated=animated_covers)
 
     if (mod_dir / '__manifest__.py').exists():
         patch_manifest(mod_dir / '__manifest__.py', config, brand)
