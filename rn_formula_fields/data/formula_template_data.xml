@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="formula_template_margin" model="rn.formula.template"><field name="name">Margin</field><field name="expression">list_price - standard_price</field><field name="field_dependencies">list_price,standard_price</field></record>
+    <record id="formula_template_profit_pct" model="rn.formula.template"><field name="name">Profit Percentage</field><field name="expression">(list_price - standard_price) / list_price * 100 if list_price else 0</field><field name="field_dependencies">list_price,standard_price</field></record>
+    <record id="formula_template_remaining" model="rn.formula.template"><field name="name">Remaining Amount</field><field name="expression">amount_total - amount_paid</field><field name="field_dependencies">amount_total,amount_paid</field></record>
+    <record id="formula_template_tax_pct" model="rn.formula.template"><field name="name">Tax Percentage</field><field name="expression">tax_amount / amount_untaxed * 100 if amount_untaxed else 0</field><field name="field_dependencies">tax_amount,amount_untaxed</field></record>
+    <record id="formula_template_vip" model="rn.formula.template"><field name="name">VIP Customer</field><field name="expression">total_sales &gt;= 10000</field><field name="field_dependencies">total_sales</field><field name="field_type">boolean</field></record>
+</odoo>

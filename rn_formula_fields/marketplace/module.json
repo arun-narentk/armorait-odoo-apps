@@ -1,0 +1,45 @@
+{
+  "technical_name": "rn_formula_fields",
+  "app_name": "Formula Fields",
+  "tagline": "Create safe stored calculated fields without custom Python code",
+  "category_type": "productivity",
+  "price": 9.99,
+  "accent": "#2563eb",
+  "problem": "Businesses need calculated values on records without maintaining custom modules for each formula.",
+  "solution": "Formula Fields provides a restricted expression engine and synchronises formulas as Odoo computed fields.",
+  "benefits": [
+    "Safe AST expression evaluation",
+    "Stored computed fields",
+    "Reusable templates",
+    "Formula test wizard",
+    "Multi-company access controls"
+  ],
+  "features": [
+    {
+      "title": "Safe formulas",
+      "text": "Only approved operators and functions are evaluated."
+    },
+    {
+      "title": "Dynamic fields",
+      "text": "Formulas synchronise to native Odoo computed fields."
+    },
+    {
+      "title": "Templates",
+      "text": "Start from common margin, profit, remaining, tax, and VIP formulas."
+    }
+  ],
+  "workflow": [
+    "Choose a model",
+    "Define field dependencies",
+    "Write and test the formula",
+    "Use the computed field"
+  ],
+  "seo_keywords": "Odoo 19, Odoo Community, formula fields, calculated fields, product margin",
+  "has_dashboard": false,
+  "has_reports": false,
+  "has_mobile": true,
+  "live_test_url": "https://www.armorait.com",
+  "version": "19.0.1.0.0",
+  "branch": "19.0",
+  "git_url": "ssh://git@github.com/arun-narentk/armorait-odoo-apps.git#19.0"
+}

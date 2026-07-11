@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="formula_field_product_margin" model="rn.formula.field">
+        <field name="name">Product Margin</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="field_name">x_rn_formula_margin</field>
+        <field name="expression">list_price - standard_price</field>
+        <field name="field_dependencies">list_price,standard_price</field>
+    </record>
+    <record id="formula_field_product_profit_pct" model="rn.formula.field">
+        <field name="name">Product Profit Percentage</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="field_name">x_rn_formula_profit_pct</field>
+        <field name="expression">(list_price - standard_price) / list_price * 100 if list_price else 0</field>
+        <field name="field_dependencies">list_price,standard_price</field>
+    </record>
+</odoo>

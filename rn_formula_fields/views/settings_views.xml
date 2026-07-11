@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_formula_fields" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.formula.fields</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Formula Fields" name="rn_formula_fields" groups="rn_formula_fields.group_rn_formula_manager">
+                    <block title="Formula Engine">
+                        <setting string="Allow stored formula fields" help="Store computed formula values in the database.">
+                            <field name="rn_formula_allow_stored"/>
+                        </setting>
+                        <setting string="Log evaluation errors" help="Write formula evaluation failures to the server log.">
+                            <field name="rn_formula_log_errors"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

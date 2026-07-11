@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="param_rn_formula_fields_max_per_model" model="ir.config_parameter">
+        <field name="key">rn_formula_fields.max_per_model</field>
+        <field name="value">20</field>
+    </record>
+</odoo>

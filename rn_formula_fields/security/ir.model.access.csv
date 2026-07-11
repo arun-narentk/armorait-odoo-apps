@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_formula_field_user,rn.formula.field user,model_rn_formula_field,group_rn_formula_user,1,0,0,0
+access_rn_formula_field_manager,rn.formula.field manager,model_rn_formula_field,group_rn_formula_manager,1,1,1,1
+access_rn_formula_template_user,rn.formula.template user,model_rn_formula_template,group_rn_formula_user,1,0,0,0
+access_rn_formula_template_manager,rn.formula.template manager,model_rn_formula_template,group_rn_formula_manager,1,1,1,1
+access_rn_formula_test_wizard_manager,rn.formula.test.wizard manager,model_rn_formula_test_wizard,group_rn_formula_manager,1,1,1,1

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_formula_template_list" model="ir.ui.view"><field name="name">rn.formula.template.list</field><field name="model">rn.formula.template</field><field name="arch" type="xml"><list><field name="name"/><field name="field_type"/><field name="active"/></list></field></record>
+    <record id="view_rn_formula_template_form" model="ir.ui.view"><field name="name">rn.formula.template.form</field><field name="model">rn.formula.template</field><field name="arch" type="xml"><form><header><button name="action_create_formula" type="object" string="Use Template" class="btn-primary"/></header><sheet><group><field name="name"/><field name="field_type"/><field name="active"/><field name="company_id" groups="base.group_multi_company"/></group><group><field name="description"/><field name="expression"/><field name="field_dependencies"/></group></sheet></form></field></record>
+    <record id="action_rn_formula_template" model="ir.actions.act_window"><field name="name">Formula Templates</field><field name="res_model">rn.formula.template</field><field name="view_mode">list,form</field></record>
+</odoo>

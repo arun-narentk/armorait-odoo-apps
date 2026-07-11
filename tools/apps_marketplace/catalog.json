@@ -2814,5 +2814,52 @@
     "has_reports": false,
     "has_mobile": false,
     "live_test_url": "https://www.armorait.com"
+  },
+  "rn_formula_fields": {
+    "branch": "19.0",
+    "app_name": "Formula Fields",
+    "tagline": "Excel-like calculated fields for any Odoo model without Python code",
+    "category_type": "productivity",
+    "price": 9.99,
+    "accent": "#2563eb",
+    "problem": "Every custom margin, profit, or remaining amount field needs a developer and a module upgrade cycle.",
+    "solution": "Formula Fields lets administrators define safe stored formulas on any model with dependency detection, templates, live preview, and a test wizard.",
+    "benefits": [
+      "Create calculated fields without Python",
+      "Safe AST engine with whitelisted operators and functions",
+      "Automatic dependency detection and validation",
+      "Formula library for margin, profit %, remaining amount, and more",
+      "Built for Odoo 19 Community with multi-company security"
+    ],
+    "features": [
+      {
+        "title": "Safe formula engine",
+        "text": "No eval(). Only approved math, logic, and comparison operators run through an AST validator."
+      },
+      {
+        "title": "Formula builder",
+        "text": "Pick fields, operators, and functions. Preview results on a sample record before saving."
+      },
+      {
+        "title": "Native computed fields",
+        "text": "Formulas sync to Odoo computed fields and recalculate when dependencies change."
+      },
+      {
+        "title": "Formula tester",
+        "text": "Run any formula against a live record and see dependency values plus the result."
+      }
+    ],
+    "workflow": [
+      "Install Formula Fields",
+      "Open Formula Library or create a new formula",
+      "Choose target model and return type",
+      "Build expression and test on a record",
+      "Apply field and use it on forms and lists"
+    ],
+    "seo_keywords": "Odoo 19, Odoo Community, Formula Fields, calculated fields, rn_formula_fields, product margin, ARMORA IT Technologies",
+    "has_dashboard": true,
+    "has_reports": false,
+    "has_mobile": true,
+    "live_test_url": "https://www.armorait.com"
   }
 }

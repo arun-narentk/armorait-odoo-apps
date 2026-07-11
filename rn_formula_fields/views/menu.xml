@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_formula_root"
+              name="Formula Fields"
+              web_icon="rn_formula_fields,static/description/icon.png"
+              groups="rn_formula_fields.group_rn_formula_user"
+              sequence="60"/>
+    <menuitem id="menu_rn_formula_fields"
+              name="Formula Fields"
+              parent="menu_rn_formula_root"
+              action="action_rn_formula_field"
+              sequence="10"/>
+    <menuitem id="menu_rn_formula_templates"
+              name="Formula Library"
+              parent="menu_rn_formula_root"
+              action="action_rn_formula_template"
+              sequence="20"/>
+</odoo>

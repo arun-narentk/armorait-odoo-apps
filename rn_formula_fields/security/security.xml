@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups.privilege" id="res_groups_privilege_rn_formula_fields">
+        <field name="name">ARMORA Formula Fields</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+    <record id="group_rn_formula_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_formula_fields"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="group_rn_formula_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="privilege_id" ref="res_groups_privilege_rn_formula_fields"/>
+        <field name="implied_ids" eval="[(4, ref('group_rn_formula_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="rn_formula_field_company_rule" model="ir.rule">
+        <field name="name">Formula fields: multi-company</field>
+        <field name="model_id" ref="model_rn_formula_field"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_rn_formula_user'))]"/>
+    </record>
+</odoo>
