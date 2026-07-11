@@ -19,7 +19,7 @@ class TestRnTimelineSecurity(TransactionCase):
         user = self.env['res.users'].create({
             'name': 'Timeline User',
             'login': 'timeline_user_test',
-            'groups_id': [(6, 0, [self.env.ref('rn_record_timeline.group_rn_timeline_user').id])],
+            'group_ids': [(6, 0, [self.env.ref('rn_record_timeline.group_rn_timeline_user').id])],
         })
         partner = self.env['res.partner'].create({'name': 'Security Partner'})
         order = self.env['sale.order'].create({'partner_id': partner.id})

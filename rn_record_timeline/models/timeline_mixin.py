@@ -34,7 +34,13 @@ class RnTimelineMixin(models.AbstractModel):
             fields=['record_id'],
             groupby=['record_id'],
         )
-        counts = {item['record_id'][0]: item['record_id_count'] for item in grouped}
+        counts = {}
+        for item in grouped:
+            record_key = item.get('record_id')
+            if isinstance(record_key, tuple):
+                record_key = record_key[0]
+            count = item.get('record_id_count', item.get('__count', 0))
+            counts[record_key] = count
         for record in self:
             record.timeline_event_count = counts.get(record.id, 0)
 
