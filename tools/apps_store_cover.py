@@ -281,15 +281,15 @@ def _load_cover_logo_left(cover_logo: Path, max_size: int) -> Image.Image | None
 
 
 def _draw_odoo_version_badge(img: Image.Image, w: int, h: int) -> None:
-    """Top-right Odoo 19 version tag (Serpent-style ribbon)."""
+    """Top-left Odoo 19 version tag (clear of website pill on the right)."""
     draw = ImageDraw.Draw(img)
     label_font = _font(max(16, int(h * 0.036)), True)
     lw, lh = _text_size(draw, ODOO_VERSION_LABEL, label_font)
     pad_x, pad_y = 16, 8
     box_w = lw + pad_x * 2
     box_h = lh + pad_y * 2
-    x2 = w - 18
-    x1 = x2 - box_w
+    x1 = 18
+    x2 = x1 + box_w
     y1 = 16
     y2 = y1 + box_h
     _rounded_rect(draw, (x1, y1, x2, y2), 6, WHITE)
