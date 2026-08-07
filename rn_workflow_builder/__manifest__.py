@@ -119,9 +119,9 @@ and follow-up reminders are included at install.
     'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/workflow.png',
-        'static/description/dashboard.png',
-        'static/description/designer.png',
+        'static/description/screenshot_execution_dashboard.png',
+        'static/description/screenshot_visual_designer.png',
+        'static/description/screenshot_workflow_overview.png',
     ],
     'installable': True,
     'application': True,

@@ -331,6 +331,10 @@ def sync_company_brand_assets(desc_dir: Path, brand: dict, config: dict) -> None
     cover_src = TOOLS_DIR / 'armorait_cover_logo.png'
     if cover_src.is_file():
         shutil.copy2(cover_src, desc_dir / 'armorait_cover_logo.png')
+    # Keep handcrafted SCREENSHOTS.txt when a custom Apps page exists
+    mod_dir = desc_dir.parent.parent
+    if (mod_dir / 'marketplace' / 'custom_index.html').is_file() and (desc_dir / 'SCREENSHOTS.txt').is_file():
+        return
     write_screenshots_guide(desc_dir, brand, config)
 
 
@@ -511,6 +515,12 @@ def render_index_html(config: dict, brand: dict, catalog: dict, mod_dir: Path) -
         for key, filename in GIF_MAP.items()
         if (desc / filename).exists()
     }
+
+    # Handcrafted Apps Store pages (Ceres-quality) win over Jinja template
+    custom_index = mod_dir / 'marketplace' / 'custom_index.html'
+    if custom_index.is_file():
+        return custom_index.read_text(encoding='utf-8')
+
     screenshot_labels = {**SCREENSHOT_LABELS, **config.get('screenshot_labels', {})}
     gif_labels = {**GIF_LABELS, **config.get('gif_labels', {})}
 
@@ -663,7 +673,16 @@ def patch_manifest(manifest_path: Path, config: dict, brand: dict) -> None:
     live = config.get('live_test_url')
     if live and "'live_test_url':" not in text:
         text = text.replace(f"'price': {price},", f"'price': {price},\n    'live_test_url': '{live}',", 1)
-    images_block = ',\n        '.join(f"'{img}'" for img in MANIFEST_IMAGES)
+    desc_dir = manifest_path.parent / 'static' / 'description'
+    image_paths = list(MANIFEST_IMAGES)
+    if desc_dir.is_dir():
+        named_shots = sorted(desc_dir.glob('screenshot_*.png'))
+        if named_shots:
+            image_paths = [
+                'static/description/banner.png',
+                'static/description/icon.png',
+            ] + [f'static/description/{p.name}' for p in named_shots]
+    images_block = ',\n        '.join(f"'{img}'" for img in image_paths)
     if "'images':" in text:
         text = re.sub(
             r"'images': \[[^\]]*\]",

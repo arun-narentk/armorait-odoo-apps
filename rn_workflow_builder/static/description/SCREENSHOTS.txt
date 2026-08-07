@@ -14,19 +14,20 @@ company_logo.png / company_logo.svg   | Official ARMORA IT Technologies logo
 company_icon.png                      | Logo mark (square)
 icon.png                              | App icon for Apps Store (256x256)
 banner.png                            | Store banner / cover image (1200x600)
-banner_small.png                      | Small banner variant
 favicon.ico                           | Company favicon
-index.html                            | Apps Store description page
-overview.png / list.png / form.png    | Screenshot placeholders (replace with live UI)
-dashboard.png / wizard.png / ...      | Additional view captures
-hero.gif / workflow.gif / ...         | Optional GIF demos
+index.html                            | Handcrafted Apps Store description page
+screenshot_workflow_overview.png      | Workflow trigger to notify overview
+screenshot_visual_designer.png        | Visual designer layout and properties
+screenshot_execution_dashboard.png    | KPI dashboard and recent runs
+workflow.png / designer.png / ...     | Source UI captures used above
 
 Brand colors:
   Primary:   #4f46e5
   Secondary: #0f172a
-  Accent:    #2563eb
+  Accent:    #7c3aed / #a78bfa
 
-Current images may be UI mockups or generated covers. Replace screenshots with
-real Odoo 19 captures from your database before publishing when possible.
+Handcrafted page is stored at marketplace/custom_index.html so
+python3.10 build_marketplace.py rn_workflow_builder keeps this design.
 
 Recommended capture size: about 1280 px wide (16:9 works well).
+Replace mockups with live Odoo 19 screenshots before major republish when possible.
