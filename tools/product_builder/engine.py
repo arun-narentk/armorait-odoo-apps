@@ -16,9 +16,18 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ARMORA_ROOT = Path(__file__).resolve().parents[2]
 FRAMEWORK = ARMORA_ROOT / 'marketplace_framework'
+BRAND_DIR = FRAMEWORK / 'static' / 'brand'
 TOOLS_DIR = ARMORA_ROOT / 'tools'
 LEGACY_CATALOG = ARMORA_ROOT / 'tools' / 'apps_marketplace' / 'catalog.json'
 ZIP_OUT = ARMORA_ROOT / 'apps_store_zips'
+
+COMPANY_BRAND_FILES = (
+    'company_logo.png',
+    'company_logo.svg',
+    'company_icon.png',
+    'favicon.ico',
+    'armorait_brand_logo.png',
+)
 
 SCREENSHOT_MAP = {
     'overview': 'overview.png',
@@ -311,6 +320,123 @@ def cleanup_description_assets(desc_dir: Path) -> None:
             path.unlink()
 
 
+def sync_company_brand_assets(desc_dir: Path, brand: dict, config: dict) -> None:
+    """Copy Ceres-style company logo/icon/favicon into static/description/."""
+    desc_dir.mkdir(parents=True, exist_ok=True)
+    for name in COMPANY_BRAND_FILES:
+        src = BRAND_DIR / name
+        if not src.is_file():
+            continue
+        shutil.copy2(src, desc_dir / name)
+    cover_src = TOOLS_DIR / 'armorait_cover_logo.png'
+    if cover_src.is_file():
+        shutil.copy2(cover_src, desc_dir / 'armorait_cover_logo.png')
+    write_screenshots_guide(desc_dir, brand, config)
+
+
+def write_screenshots_guide(desc_dir: Path, brand: dict, config: dict) -> None:
+    """Write SCREENSHOTS.txt listing Apps Store description assets (Ceres pattern)."""
+    app_name = config.get('app_name', desc_dir.parent.parent.name)
+    technical = config.get('technical_name', desc_dir.parent.parent.name)
+    lines = [
+        'SCREENSHOTS for Odoo Apps listing',
+        '=================================',
+        '',
+        f'Module: {app_name} ({technical})',
+        f'Company: {brand.get("company", "ARMORA IT Technologies")}',
+        f'Website: {brand.get("website", "https://www.armorait.com")}',
+        f'Support: {brand.get("support_email", "info@armorait.com")}',
+        '',
+        'Files in this folder (static/description/):',
+        '',
+        'Filename                              | Purpose',
+        '--------------------------------------|------------------------------------------',
+        'company_logo.png / company_logo.svg   | Official ARMORA IT Technologies logo',
+        'company_icon.png                      | Logo mark (square)',
+        'icon.png                              | App icon for Apps Store (256x256)',
+        'banner.png                            | Store banner / cover image (1200x600)',
+        'banner_small.png                      | Small banner variant',
+        'favicon.ico                           | Company favicon',
+        'index.html                            | Apps Store description page',
+        'overview.png / list.png / form.png    | Screenshot placeholders (replace with live UI)',
+        'dashboard.png / wizard.png / ...      | Additional view captures',
+        'hero.gif / workflow.gif / ...         | Optional GIF demos',
+        '',
+        'Brand colors:',
+        f'  Primary:   {brand.get("primary_color", "#4f46e5")}',
+        f'  Secondary: {brand.get("secondary_color", "#0f172a")}',
+        f'  Accent:    {config.get("accent", brand.get("accent_default", "#2563eb"))}',
+        '',
+        'Current images may be UI mockups or generated covers. Replace screenshots with',
+        'real Odoo 19 captures from your database before publishing when possible.',
+        '',
+        'Recommended capture size: about 1280 px wide (16:9 works well).',
+        '',
+    ]
+    (desc_dir / 'SCREENSHOTS.txt').write_text('\n'.join(lines), encoding='utf-8')
+
+
+def ensure_screenshot_placeholders(desc_dir: Path, config: dict) -> None:
+    """Replace missing or 1x1 PNG placeholders with usable Apps Store mockups."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return
+
+    accent = config.get('accent', '#2563eb')
+    app_name = str(config.get('app_name', 'ARMORA App'))
+    labels = {**SCREENSHOT_LABELS, **config.get('screenshot_labels', {})}
+
+    def _font(size: int):
+        for name in ('DejaVuSans-Bold.ttf', 'DejaVuSans.ttf'):
+            try:
+                return ImageFont.truetype(name, size)
+            except OSError:
+                continue
+        return ImageFont.load_default()
+
+    def _needs_placeholder(path: Path) -> bool:
+        if not path.is_file():
+            return True
+        try:
+            with Image.open(path) as im:
+                return im.size[0] < 8 or im.size[1] < 8
+        except OSError:
+            return True
+
+    def _make_shot(label: str, width: int = 1440, height: int = 900) -> Image.Image:
+        img = Image.new('RGB', (width, height), '#f1f5f9')
+        draw = ImageDraw.Draw(img)
+        draw.rectangle((0, 0, width, 64), fill='#0f172a')
+        draw.rectangle((0, 64, 220, height), fill='#1e293b')
+        draw.rectangle((220, 64, width, height), fill='#ffffff')
+        draw.rectangle((220, 64, width, 68), fill=accent)
+        title_font = _font(36)
+        small_font = _font(20)
+        draw.text((24, 18), 'ARMORA', fill='#ffffff', font=small_font)
+        draw.text((248, 120), app_name, fill='#0f172a', font=title_font)
+        draw.text((248, 180), label, fill='#64748b', font=small_font)
+        y = 240
+        for i in range(3):
+            x0, y0 = 248, y + i * 180
+            box = (x0, y0, width - 48, y0 + 140)
+            if hasattr(draw, 'rounded_rectangle'):
+                draw.rounded_rectangle(box, radius=12, fill='#f8fafc', outline='#e2e8f0', width=2)
+            else:
+                draw.rectangle(box, fill='#f8fafc', outline='#e2e8f0', width=2)
+            draw.rectangle((x0 + 24, y0 + 28, x0 + 280, y0 + 48), fill=accent if i == 0 else '#cbd5e1')
+            draw.rectangle((x0 + 24, y0 + 70, width - 96, y0 + 86), fill='#e2e8f0')
+            draw.rectangle((x0 + 24, y0 + 100, width - 220, y0 + 116), fill='#e2e8f0')
+        return img
+
+    for filename in SCREENSHOT_MAP.values():
+        dest = desc_dir / filename
+        if not _needs_placeholder(dest):
+            continue
+        label = labels.get(filename, filename.replace('.png', '').replace('_', ' ').title())
+        _make_shot(label).save(dest, optimize=True)
+
+
 def sync_media(mod_dir: Path, config: dict, desc_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
     cleanup_description_assets(desc_dir)
     mp = mod_dir / 'marketplace'
@@ -371,7 +497,20 @@ def render_index_html(config: dict, brand: dict, catalog: dict, mod_dir: Path) -
     desc.mkdir(parents=True, exist_ok=True)
     technical_name = config.get('technical_name', mod_dir.name)
     category_type = config.get('category_type', 'erp')
+    sync_company_brand_assets(desc, brand, config)
     screenshots, gifs = sync_media(mod_dir, config, desc)
+    ensure_screenshot_placeholders(desc, config)
+    # Refresh gallery after placeholders may have filled gaps
+    screenshots = {
+        key: filename
+        for key, filename in SCREENSHOT_MAP.items()
+        if (desc / filename).exists()
+    }
+    gifs = {
+        key: filename
+        for key, filename in GIF_MAP.items()
+        if (desc / filename).exists()
+    }
     screenshot_labels = {**SCREENSHOT_LABELS, **config.get('screenshot_labels', {})}
     gif_labels = {**GIF_LABELS, **config.get('gif_labels', {})}
 

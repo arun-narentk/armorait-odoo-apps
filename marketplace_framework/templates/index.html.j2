@@ -13,8 +13,15 @@
 <body>
 
 <section class="armora-hero" id="top">
+  <div class="armora-logo-bar">
+    <a href="{{ brand.website }}" target="_blank" rel="noopener noreferrer">
+      <img src="company_logo.png" alt="{{ brand.company }} | Odoo Apps" title="{{ brand.company }}">
+    </a>
+  </div>
+  <img class="armora-app-icon" src="icon.png" alt="{{ app_name }} app icon by {{ brand.company }}">
   <h1>{{ app_name }}</h1>
   <p class="tagline">{{ tagline }}</p>
+  <p class="armora-hero-byline">by {{ brand.company }} | Odoo {{ brand.odoo_version }} Community Apps</p>
   <div class="armora-badges">
     <span>Odoo {{ brand.odoo_version }} Community</span>
     <span>{{ brand.company }}</span>
@@ -215,6 +222,9 @@
 </section>
 
 <footer class="armora-footer">
+  <div class="armora-logo-bar" style="margin-bottom: 1rem;">
+    <img src="company_logo.png" alt="{{ brand.company }} logo">
+  </div>
   <h3>{{ brand.company }}</h3>
   <p>Website: <a href="{{ brand.website }}">{{ brand.website }}</a></p>
   <p>Support: <a href="mailto:{{ brand.support_email }}">{{ brand.support_email }}</a></p>

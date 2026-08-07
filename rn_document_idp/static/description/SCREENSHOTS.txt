@@ -1,0 +1,32 @@
+SCREENSHOTS for Odoo Apps listing
+=================================
+
+Module: AI Document Processing (rn_document_idp)
+Company: ARMORA IT Technologies
+Website: https://www.armorait.com
+Support: info@armorait.com
+
+Files in this folder (static/description/):
+
+Filename                              | Purpose
+--------------------------------------|------------------------------------------
+company_logo.png / company_logo.svg   | Official ARMORA IT Technologies logo
+company_icon.png                      | Logo mark (square)
+icon.png                              | App icon for Apps Store (256x256)
+banner.png                            | Store banner / cover image (1200x600)
+banner_small.png                      | Small banner variant
+favicon.ico                           | Company favicon
+index.html                            | Apps Store description page
+overview.png / list.png / form.png    | Screenshot placeholders (replace with live UI)
+dashboard.png / wizard.png / ...      | Additional view captures
+hero.gif / workflow.gif / ...         | Optional GIF demos
+
+Brand colors:
+  Primary:   #4f46e5
+  Secondary: #0f172a
+  Accent:    #7c3aed
+
+Current images may be UI mockups or generated covers. Replace screenshots with
+real Odoo 19 captures from your database before publishing when possible.
+
+Recommended capture size: about 1280 px wide (16:9 works well).

@@ -39,6 +39,43 @@ a { color: var(--armora-primary); }
   text-align: center;
 }
 
+.armora-logo-bar {
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.85rem 1.25rem;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.armora-logo-bar img {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  border-radius: 0;
+}
+
+.armora-app-icon {
+  width: 78px;
+  height: 78px;
+  border-radius: 18px;
+  background: #fff;
+  padding: 8px;
+  margin: 0 auto 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  display: block;
+  border: none;
+}
+
+.armora-hero-byline {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
 .armora-hero h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   margin: 0 0 12px;
@@ -245,8 +282,15 @@ a { color: var(--armora-primary); }
 <body>
 
 <section class="armora-hero" id="top">
+  <div class="armora-logo-bar">
+    <a href="https://www.armorait.com" target="_blank" rel="noopener noreferrer">
+      <img src="company_logo.png" alt="ARMORA IT Technologies | Odoo Apps" title="ARMORA IT Technologies">
+    </a>
+  </div>
+  <img class="armora-app-icon" src="icon.png" alt="Workflow Approval Engine app icon by ARMORA IT Technologies">
   <h1>Workflow Approval Engine</h1>
   <p class="tagline">Universal approval workflows for PO, bills, expenses, and custom documents</p>
+  <p class="armora-hero-byline">by ARMORA IT Technologies | Odoo 19 Community Apps</p>
   <div class="armora-badges">
     <span>Odoo 19 Community</span>
     <span>ARMORA IT Technologies</span>
@@ -347,8 +391,53 @@ a { color: var(--armora-primary); }
   <div class="armora-gallery">
     
     <figure>
+      <img src="overview.png" alt="Overview" loading="lazy">
+      <figcaption>Overview</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="list.png" alt="Rules List" loading="lazy">
+      <figcaption>Rules List</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="form.png" alt="Rule Form" loading="lazy">
+      <figcaption>Rule Form</figcaption>
+    </figure>
+    
+    <figure>
       <img src="dashboard.png" alt="Duplicate Matches" loading="lazy">
       <figcaption>Duplicate Matches</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="wizard.png" alt="Merge Wizard" loading="lazy">
+      <figcaption>Merge Wizard</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="settings.png" alt="Ignored Pairs" loading="lazy">
+      <figcaption>Ignored Pairs</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="report.png" alt="Scan Results" loading="lazy">
+      <figcaption>Scan Results</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="search.png" alt="Match Review" loading="lazy">
+      <figcaption>Match Review</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="kanban.png" alt="All Matches" loading="lazy">
+      <figcaption>All Matches</figcaption>
+    </figure>
+    
+    <figure>
+      <img src="mobile.png" alt="Mobile View" loading="lazy">
+      <figcaption>Mobile View</figcaption>
     </figure>
     
     <figure>
@@ -550,6 +639,9 @@ a { color: var(--armora-primary); }
 </section>
 
 <footer class="armora-footer">
+  <div class="armora-logo-bar" style="margin-bottom: 1rem;">
+    <img src="company_logo.png" alt="ARMORA IT Technologies logo">
+  </div>
   <h3>ARMORA IT Technologies</h3>
   <p>Website: <a href="https://www.armorait.com">https://www.armorait.com</a></p>
   <p>Support: <a href="mailto:info@armorait.com">info@armorait.com</a></p>
