@@ -29,11 +29,20 @@ dashboard for finance teams and ERP partners.
     'currency': 'USD',
     'price': 39.0,
     'live_test_url': 'https://www.armorait.com',
-    'images': [
+        'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/workflow.png',
         'static/description/dashboard.png',
+        'static/description/overview.png',
+        'static/description/form.png',
+        'static/description/list.png',
+        'static/description/kanban.png',
+        'static/description/wizard.png',
         'static/description/designer.png',
+        'static/description/search.png',
+        'static/description/settings.png',
+        'static/description/report.png',
+        'static/description/workflow.png',
+        'static/description/mobile.png',
     ],
 }
