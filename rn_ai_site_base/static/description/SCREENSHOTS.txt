@@ -8,25 +8,32 @@ Support: info@armorait.com
 
 Files in this folder (static/description/):
 
-Filename                              | Purpose
---------------------------------------|------------------------------------------
-company_logo.png / company_logo.svg   | Official ARMORA IT Technologies logo
-company_icon.png                      | Logo mark (square)
-icon.png                              | App icon for Apps Store (256x256)
-banner.png                            | Store banner / cover image (1200x600)
-banner_small.png                      | Small banner variant
-favicon.ico                           | Company favicon
-index.html                            | Apps Store description page
-overview.png / list.png / form.png    | Screenshot placeholders (replace with live UI)
-dashboard.png / wizard.png / ...      | Additional view captures
-hero.gif / workflow.gif / ...         | Optional GIF demos
+Filename           | Purpose in index.html
+-------------------|------------------------------------------
+company_logo.png   | Official ARMORA logo in hero / contact
+icon.png           | App icon
+banner.png         | Store banner in hero
+dashboard.png      | Screenshot 01 - Operations dashboard
+overview.png       | Screenshot 02 - Module overview
+form.png           | Screenshot 03 - Brief / project form
+list.png           | Screenshot 04 - Projects list
+kanban.png         | Screenshot 05 - Kanban pipeline
+wizard.png         | Screenshot 06 - Generate wizard
+designer.png       | Screenshot 07 - Theme / designer presets
+search.png         | Screenshot 08 - SEO / search fields
+settings.png       | Screenshot 09 - Configuration settings
+report.png         | Screenshot 10 - Reports
+workflow.png       | Screenshot 11 - Process workflow
+mobile.png         | Screenshot 12 - Mobile workspace
 
 Brand colors:
-  Primary:   #4f46e5
-  Secondary: #0f172a
-  Accent:    #0d9488
+  Primary indigo: #4f46e5
+  Accent teal:    #0d9488
+  Secondary:      #0f172a
 
-Current images may be UI mockups or generated covers. Replace screenshots with
-real Odoo 19 captures from your database before publishing when possible.
+index.html uses the rich Apps Store layout (hero, feature tiles,
+problem/solution, numbered steps, screenshot cards) similar to
+ceres_invoice_credit_notes / rn_workflow_builder.
 
-Recommended capture size: about 1280 px wide (16:9 works well).
+Replace placeholder screenshots with live Odoo 19 captures before
+publish when possible. Recommended width: about 1280 px (16:9).
