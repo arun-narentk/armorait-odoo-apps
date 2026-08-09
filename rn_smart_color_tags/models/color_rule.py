@@ -37,6 +37,7 @@ class RnColorRule(models.Model):
         tracking=True,
     )
     icon = fields.Selection(selection=ICON_SELECTION, default="none", tracking=True)
+    emoji = fields.Char(tracking=True)
     label = fields.Char(required=True, tracking=True)
     priority = fields.Integer(default=50, index=True, tracking=True)
     company_id = fields.Many2one(

@@ -52,7 +52,7 @@
         <field name="binding_view_types">list</field>
         <field name="state">code</field>
         <field name="code">action = records.action_batch_suggest_names()</field>
-        <field name="groups_id" eval="[(4, ref('rn_name_assistant.group_rn_name_assistant_user'))]"/>
+        <field name="group_ids" eval="[(4, ref('rn_name_assistant.group_rn_name_assistant_user'))]"/>
     </record>
 
     <record id="view_res_partner_form_name_assistant" model="ir.ui.view">

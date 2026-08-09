@@ -1,0 +1,466 @@
+{
+  "modules": 65,
+  "static_pass": 65,
+  "static_fail": 0,
+  "with_tests": 65,
+  "odoo_pass": 39,
+  "odoo_fail": 26,
+  "odoo_skipped": 0,
+  "results": [
+    {
+      "name": "rn_ai_document_generator",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "generate_document_flow"
+    },
+    {
+      "name": "rn_ai_email_intelligence",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "missing xmlid: %s'"
+    },
+    {
+      "name": "rn_ai_employee",
+      "static": "PASS",
+      "tests": 6,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_ai_invoice_ocr",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: scan_views.xml\n\nView error context:\n'-no context-'\n\n2026-08-08 22:31:22"
+    },
+    {
+      "name": "rn_ai_site_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_approval_engine",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: request_views.xml:108\nError while validating view near:\n\n                <filter name=\"pending\" string=\"Pending\" domain=\"[('stat"
+    },
+    {
+      "name": "rn_arabic_tooltip",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_attachment_preview",
+      "static": "PASS",
+      "tests": 3,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_bi_sales_dashboard",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_booking_platform",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_bookmarks",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_cloud_platform",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_construction_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_conversational_erp",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_crm_ultimate_pro",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "install failed (registry)"
+    },
+    {
+      "name": "rn_customer_engagement_platform",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_customer_experience",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_dashboard_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "test fail: TestRnDashboardCoreSkeleton.test_alert_evaluation"
+    },
+    {
+      "name": "rn_dental_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_document_idp",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_document_platform",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "13, in setUpClass"
+    },
+    {
+      "name": "rn_domain_builder",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_duplicate_finder",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_erp_health_analyzer",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_field_diff",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_filter_manager",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_fleet_gps",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_formula_fields",
+      "static": "PASS",
+      "tests": 3,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_hall_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_hms_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_hospital_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "KeyError: 'Field color referenced in related field definition hr.employee.department_color does not exist.'"
+    },
+    {
+      "name": "rn_hotel_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": ".py\", line 87, in test_gm_dashboard"
+    },
+    {
+      "name": "rn_hr_attendance_face",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "install failed (registry)"
+    },
+    {
+      "name": "rn_hr_intelligence",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "in setUpClass"
+    },
+    {
+      "name": "rn_hr_resume_ai_parser",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "install failed (registry)"
+    },
+    {
+      "name": "rn_hrms_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_inventory_forecast",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_jewellery_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_l10n_in_gst_pro",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_mes_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_messaging_bot",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_mobile_platform",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_mrp_intelligence",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "setUpClass"
+    },
+    {
+      "name": "rn_name_assistant",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_payroll_portal_pro",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_realestate_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_record_share",
+      "static": "PASS",
+      "tests": 3,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_record_timeline",
+      "static": "PASS",
+      "tests": 6,
+      "odoo": "FAIL",
+      "notes": "test fail: TestRnTimelineExport.test_demo_timeline_events_on_sale_order"
+    },
+    {
+      "name": "rn_rental_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_restaurant_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_saudi_dashboard",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_school_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_smart_color_tags",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_smart_notes",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_smart_search",
+      "static": "PASS",
+      "tests": 2,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_temple_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_temple_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_textile_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_theme_base",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "install failed (registry)"
+    },
+    {
+      "name": "rn_universal_qr",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_veterinary_core",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "ParseError: %s:%s"
+    },
+    {
+      "name": "rn_visual_enhancer",
+      "static": "PASS",
+      "tests": 3,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_whatsapp_connector",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_whatsapp_integration",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "PASS",
+      "notes": ""
+    },
+    {
+      "name": "rn_workflow_builder",
+      "static": "PASS",
+      "tests": 1,
+      "odoo": "FAIL",
+      "notes": "missing xmlid: %s'"
+    }
+  ]
+}

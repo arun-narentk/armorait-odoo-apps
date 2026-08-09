@@ -34,6 +34,7 @@ class RnColorRuleService(models.AbstractModel):
                     "domain": rule.domain,
                     "color": rule.color,
                     "icon": rule.icon,
+                    "emoji": getattr(rule, "emoji", False),
                     "label": rule.label,
                 }
                 for rule in rules
@@ -85,6 +86,7 @@ class RnColorRuleService(models.AbstractModel):
                 "rule_id": rule["id"],
                 "color": rule["color"],
                 "icon": rule["icon"],
+                "emoji": rule.get("emoji"),
                 "label": rule["label"],
                 "css_class": COLOR_CSS_CLASS.get(rule["color"], ""),
             }

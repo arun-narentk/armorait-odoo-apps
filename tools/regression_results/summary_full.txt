@@ -1,0 +1,81 @@
+RN full regression summary (2026-08-09 04:18)
+DB: armora_apps | Modules: 65
+Static PASS: 65  FAIL: 0
+Modules with tests: 65
+Odoo PASS: 39  FAIL: 26  SKIPPED: 0
+
+Module | Static | Tests | Odoo | Notes
+---|---|---|---|---
+rn_ai_document_generator | PASS | 1 | FAIL | test error TestRnAiDocumentGenerator.test_generate_document_flow
+rn_ai_email_intelligence | PASS | 1 | FAIL | missing xmlid rn_ai_email_intelligence.action_rn_ai_email_compose_wizard
+rn_ai_employee | PASS | 6 | PASS | 
+rn_ai_invoice_ocr | PASS | 1 | FAIL | ParseError scan_views.xml:127
+
+View error context:
+'-no context-'
+
+2026-08-08 22:31:22
+rn_ai_site_base | PASS | 1 | FAIL | ParseError settings_views.xml:81
+rn_approval_engine | PASS | 1 | FAIL | view validation: <filter name="pending" string="Pending" domain="[('state', '=', 'pending')]"/>
+Error while validating view near:
+
+                <filter name="pending" string="Pending" domain="[('stat
+rn_arabic_tooltip | PASS | 1 | PASS | 
+rn_attachment_preview | PASS | 3 | PASS | 
+rn_bi_sales_dashboard | PASS | 1 | PASS | 
+rn_booking_platform | PASS | 1 | PASS | 
+rn_bookmarks | PASS | 1 | PASS | 
+rn_cloud_platform | PASS | 1 | PASS | 
+rn_construction_core | PASS | 1 | FAIL | ParseError settings_views.xml:20
+rn_conversational_erp | PASS | 1 | PASS | 
+rn_crm_ultimate_pro | PASS | 1 | FAIL | install/registry failed
+rn_customer_engagement_platform | PASS | 1 | PASS | 
+rn_customer_experience | PASS | 1 | PASS | 
+rn_dashboard_core | PASS | 1 | FAIL | TestRnDashboardCoreSkeleton.test_alert_evaluation: 'warning' != 'critical'
+rn_dental_core | PASS | 1 | FAIL | ParseError settings_views.xml:22
+rn_document_idp | PASS | 1 | PASS | 
+rn_document_platform | PASS | 1 | FAIL | unique constraint rn_doc_platform_settings_company_uniq
+rn_domain_builder | PASS | 2 | PASS | 
+rn_duplicate_finder | PASS | 2 | PASS | 
+rn_erp_health_analyzer | PASS | 1 | PASS | 
+rn_field_diff | PASS | 2 | PASS | 
+rn_filter_manager | PASS | 1 | PASS | 
+rn_fleet_gps | PASS | 1 | PASS | 
+rn_formula_fields | PASS | 3 | PASS | 
+rn_hall_base | PASS | 1 | FAIL | ParseError settings_views.xml:127
+rn_hms_core | PASS | 1 | PASS | 
+rn_hospital_core | PASS | 1 | FAIL | KeyError 'Field color referenced in related field definition hr.employee.department_color does not exist.'
+rn_hotel_core | PASS | 1 | FAIL | test error TestRnHotelCore.test_ai_pricing
+rn_hr_attendance_face | PASS | 1 | FAIL | install/registry failed
+rn_hr_intelligence | PASS | 1 | FAIL | unique constraint rn_hr_intelligence_settings_company_uniq
+rn_hr_resume_ai_parser | PASS | 1 | FAIL | install/registry failed
+rn_hrms_core | PASS | 1 | PASS | 
+rn_inventory_forecast | PASS | 1 | PASS | 
+rn_jewellery_core | PASS | 1 | FAIL | ParseError settings_views.xml:21
+rn_l10n_in_gst_pro | PASS | 1 | PASS | 
+rn_mes_core | PASS | 1 | PASS | 
+rn_messaging_bot | PASS | 1 | PASS | 
+rn_mobile_platform | PASS | 1 | PASS | 
+rn_mrp_intelligence | PASS | 1 | FAIL | unique constraint rn_mrp_intelligence_settings_company_uniq
+rn_name_assistant | PASS | 2 | PASS | 
+rn_payroll_portal_pro | PASS | 1 | PASS | 
+rn_realestate_base | PASS | 1 | FAIL | ParseError settings_views.xml:126
+rn_record_share | PASS | 3 | PASS | 
+rn_record_timeline | PASS | 6 | FAIL | TestRnTimelineExport.test_demo_timeline_events_on_sale_order: 'Delivered' not found in ['Payment Registered']
+rn_rental_core | PASS | 1 | PASS | 
+rn_restaurant_core | PASS | 1 | PASS | 
+rn_saudi_dashboard | PASS | 1 | PASS | 
+rn_school_core | PASS | 1 | PASS | 
+rn_smart_color_tags | PASS | 2 | PASS | 
+rn_smart_notes | PASS | 2 | PASS | 
+rn_smart_search | PASS | 2 | PASS | 
+rn_temple_base | PASS | 1 | FAIL | ParseError settings_views.xml:56
+rn_temple_core | PASS | 1 | FAIL | ParseError settings_views.xml:22
+rn_textile_base | PASS | 1 | FAIL | ParseError settings_views.xml:130
+rn_theme_base | PASS | 1 | FAIL | install/registry failed
+rn_universal_qr | PASS | 1 | PASS | 
+rn_veterinary_core | PASS | 1 | FAIL | ParseError settings_views.xml:21
+rn_visual_enhancer | PASS | 3 | PASS | 
+rn_whatsapp_connector | PASS | 1 | PASS | 
+rn_whatsapp_integration | PASS | 1 | PASS | 
+rn_workflow_builder | PASS | 1 | FAIL | missing xmlid rn_workflow_builder.action_rn_workflow_build_wizard

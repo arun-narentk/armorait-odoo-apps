@@ -1,6 +1,6 @@
 <!-- SEO: ARMORA IT Technologies | Dashboard Core -->
-<meta name="description" content="Shared OWL dashboard shell for ARMORA analytics modules. Odoo 19 Community app by ARMORA IT Technologies. Contact info@armorait.com | https://www.armorait.com"/>
-<meta name="keywords" content="Odoo 19, Odoo Community, Dashboard Core, rn_dashboard_core, ARMORA IT Technologies, Shared OWL dashboard shell for ARMORA analytics modules"/>
+<meta name="description" content="Shared OWL dashboard shell for ARMORA analytics modules. Odoo 19 Community app by ARMORA IT Technologies. Contact info@armorait.com"/>
+<meta name="keywords" content="Odoo 19, Odoo Community, Dashboard Core, rn_dashboard_core, ARMORA IT Technologies"/>
 <meta name="author" content="ARMORA IT Technologies"/>
 <link rel="canonical" href="https://www.armorait.com/"/>
 
@@ -28,306 +28,230 @@
 </script>
 
 <style>
-    .arm-wrap { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2d3748; max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-    .arm-hero { background: linear-gradient(135deg, #312e81 0%, #4f46e5 45%, #6366f1 100%); border-radius: 24px; padding: 2.5rem 2rem 2.2rem; color: #fff; text-align: center; position: relative; overflow: hidden; box-shadow: 0 18px 40px rgba(79, 70, 229, 0.28); margin-bottom: 1.75rem; }
-    .arm-hero:before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(167, 139, 250, 0.22); top: -90px; right: -60px; }
-    .arm-hero:after { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); bottom: -70px; left: -40px; }
-    .arm-hero-inner { position: relative; z-index: 1; }
-    .arm-logo-bar { background: #fff; border-radius: 16px; padding: 1rem 1.25rem; display: inline-block; margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-    .arm-logo-bar img { max-width: 260px; width: 100%; height: auto; display: block; }
-    .arm-pill { display: inline-block; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); color: #fff; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; margin: 0.2rem; }
-    .arm-pill-accent { background: #a78bfa; border-color: #a78bfa; color: #1e1b4b; font-weight: 600; }
-    .arm-section { background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(15, 21, 31, 0.06); border: 1px solid #e8eef5; }
-    .arm-section-soft { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
-    .arm-h2 { font-size: 1.55rem; font-weight: 700; color: #0f172a; margin: 0 0 0.35rem 0; text-align: center; }
-    .arm-sub { text-align: center; color: #6b7a8c; margin: 0 0 1.4rem 0; font-size: 1rem; }
-    .arm-accent-line { width: 64px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, #4f46e5, #a78bfa); margin: 0 auto 1.25rem auto; }
-    .arm-feature { background: #fff; border: 1px solid #e4edf6; border-radius: 16px; padding: 1.25rem 1.1rem; height: 100%; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.05); }
-    .arm-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 0.85rem; color: #fff; background: linear-gradient(135deg, #4f46e5, #6366f1); box-shadow: 0 8px 16px rgba(79, 70, 229, 0.25); }
-    .arm-icon.indigo { background: linear-gradient(135deg, #7c3aed, #a78bfa); box-shadow: 0 8px 16px rgba(124, 58, 237, 0.28); }
-    .arm-feature h4 { color: #0f172a; font-size: 1.05rem; font-weight: 700; margin: 0 0 0.45rem 0; }
-    .arm-feature p { color: #5a6a7a; font-size: 0.94rem; line-height: 1.6; margin: 0; }
-    .arm-split { border-radius: 18px; padding: 1.35rem 1.2rem; height: 100%; }
-    .arm-problem { background: linear-gradient(160deg, #fff5f5 0%, #ffffff 70%); border: 1px solid #f5c6c6; }
-    .arm-solution { background: linear-gradient(160deg, #f0faf4 0%, #ffffff 70%); border: 1px solid #bfe3cb; }
-    .arm-split h3 { font-size: 1.2rem; font-weight: 700; margin: 0 0 0.85rem 0; }
-    .arm-split ul { padding-left: 0; list-style: none; margin: 0; }
-    .arm-split li { position: relative; padding: 0.4rem 0 0.4rem 1.7rem; color: #4a5568; font-size: 0.96rem; line-height: 1.5; }
-    .arm-problem li:before { content: '\f00d'; font-family: FontAwesome; position: absolute; left: 0; color: #e74c3c; font-size: 0.9rem; top: 0.45rem; }
-    .arm-solution li:before { content: '\f00c'; font-family: FontAwesome; position: absolute; left: 0; color: #27ae60; font-size: 0.9rem; top: 0.45rem; }
-    .arm-step-card { background: #fff; border-radius: 16px; border: 1px solid #e8eef5; padding: 1.1rem 1rem; margin-bottom: 0.9rem; display: flex; gap: 1rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(15, 21, 31, 0.04); }
-    .arm-step-num { min-width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #a78bfa); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25); }
-    .arm-shot { background: #fff; border-radius: 18px; border: 1px solid #e8eef5; padding: 1.25rem; margin-bottom: 1.35rem; box-shadow: 0 10px 28px rgba(15, 21, 31, 0.07); }
-    .arm-shot-badge { display: inline-block; background: #7c3aed; color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; border-radius: 999px; padding: 0.28rem 0.75rem; margin-bottom: 0.55rem; text-transform: uppercase; }
-    .arm-shot h3 { color: #4f46e5; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.55rem 0; }
-    .arm-shot p { color: #5a6a7a; font-size: 0.98rem; line-height: 1.6; margin: 0 0 1rem 0; }
-    .arm-shot img { width: 100%; border-radius: 12px; border: 1px solid #dbe5ef; box-shadow: 0 8px 22px rgba(15, 21, 31, 0.1); }
-    .arm-chip { display: inline-block; background: #eef2ff; color: #4f46e5; border-radius: 999px; padding: 0.4rem 0.85rem; margin: 0.25rem; font-size: 0.86rem; font-weight: 600; border: 1px solid #c7d2fe; }
-    .arm-contact { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #4f46e5 100%); border-radius: 22px; padding: 2rem 1.5rem; color: #fff; box-shadow: 0 18px 36px rgba(15, 21, 31, 0.22); }
-    .arm-contact a { color: #ddd6fe; text-decoration: none; font-weight: 600; }
-    .arm-contact a:hover { color: #a78bfa; }
-    .arm-contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 1.1rem 1rem; height: 100%; }
-    .arm-cta { display: inline-block; background: #a78bfa; color: #1e1b4b !important; border-radius: 999px; padding: 0.7rem 1.4rem; font-weight: 700; margin-top: 0.75rem; box-shadow: 0 8px 18px rgba(167, 139, 250, 0.35); }
-    .arm-compat { text-align: center; background: #fff; border: 1px solid #e4edf6; border-radius: 14px; padding: 1rem 0.6rem; height: 100%; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.05); }
-    .arm-compat i { color: #4f46e5; font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
-    .arm-compat b { color: #0f172a; font-size: 0.95rem; }
-    .arm-faq dt { font-weight: 700; margin-top: 14px; color: #0f172a; }
-    .arm-faq dd { margin: 4px 0 0 0; color: #5a6a7a; }
+    .ceres-wrap { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2d3748; max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .ceres-hero { background: linear-gradient(135deg, #312e81 0%, #4f46e5 45%, #6366f1 100%); border-radius: 24px; padding: 2.5rem 2rem 2.2rem; color: #fff; text-align: center; position: relative; overflow: hidden; box-shadow: 0 18px 40px rgba(79, 70, 229, 0.28); margin-bottom: 1.75rem; }
+    .ceres-hero:before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(167, 139, 250, 0.18); top: -90px; right: -60px; }
+    .ceres-hero:after { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); bottom: -70px; left: -40px; }
+    .ceres-hero-inner { position: relative; z-index: 1; }
+    .ceres-logo-bar { background: #fff; border-radius: 16px; padding: 1rem 1.25rem; display: inline-block; margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .ceres-logo-bar img { max-width: 260px; width: 100%; height: auto; display: block; }
+    .ceres-pill { display: inline-block; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); color: #fff; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; margin: 0.2rem; }
+    .ceres-pill-accent { background: #a78bfa; border-color: #a78bfa; color: #1e1b4b; font-weight: 600; }
+    .ceres-section { background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(15, 21, 31, 0.06); border: 1px solid #e8eef5; }
+    .ceres-section-soft { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .ceres-h2 { font-size: 1.55rem; font-weight: 700; color: #0f172a; margin: 0 0 0.35rem 0; text-align: center; }
+    .ceres-sub { text-align: center; color: #6b7a8c; margin: 0 0 1.4rem 0; font-size: 1rem; }
+    .ceres-accent-line { width: 64px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, #4f46e5, #a78bfa); margin: 0 auto 1.25rem auto; }
+    .ceres-feature { background: #fff; border: 1px solid #e4edf6; border-radius: 16px; padding: 1.25rem 1.1rem; height: 100%; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.05); }
+    .ceres-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 0.85rem; color: #fff; background: linear-gradient(135deg, #4f46e5, #6366f1); box-shadow: 0 8px 16px rgba(79, 70, 229, 0.25); }
+    .ceres-icon.orange { background: linear-gradient(135deg, #7c3aed, #a78bfa); box-shadow: 0 8px 16px rgba(124, 58, 237, 0.28); }
+    .ceres-feature h4 { color: #0f172a; font-size: 1.05rem; font-weight: 700; margin: 0 0 0.45rem 0; }
+    .ceres-feature p { color: #5a6a7a; font-size: 0.94rem; line-height: 1.6; margin: 0; }
+    .ceres-split { border-radius: 18px; padding: 1.35rem 1.2rem; height: 100%; }
+    .ceres-problem { background: linear-gradient(160deg, #fff5f5 0%, #ffffff 70%); border: 1px solid #f5c6c6; }
+    .ceres-solution { background: linear-gradient(160deg, #f0faf4 0%, #ffffff 70%); border: 1px solid #bfe3cb; }
+    .ceres-split h3 { font-size: 1.2rem; font-weight: 700; margin: 0 0 0.85rem 0; }
+    .ceres-split ul { padding-left: 0; list-style: none; margin: 0; }
+    .ceres-split li { position: relative; padding: 0.4rem 0 0.4rem 1.7rem; color: #4a5568; font-size: 0.96rem; line-height: 1.5; }
+    .ceres-problem li:before { content: '\f00d'; font-family: FontAwesome; position: absolute; left: 0; color: #e74c3c; font-size: 0.9rem; top: 0.45rem; }
+    .ceres-solution li:before { content: '\f00c'; font-family: FontAwesome; position: absolute; left: 0; color: #27ae60; font-size: 0.9rem; top: 0.45rem; }
+    .ceres-step-card { background: #fff; border-radius: 16px; border: 1px solid #e8eef5; padding: 1.1rem 1rem; margin-bottom: 0.9rem; display: flex; gap: 1rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(15, 21, 31, 0.04); }
+    .ceres-step-num { min-width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #a78bfa); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25); }
+    .ceres-shot { background: #fff; border-radius: 18px; border: 1px solid #e8eef5; padding: 1.25rem; margin-bottom: 1.35rem; box-shadow: 0 10px 28px rgba(15, 21, 31, 0.07); }
+    .ceres-shot-badge { display: inline-block; background: #f7941d; color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; border-radius: 999px; padding: 0.28rem 0.75rem; margin-bottom: 0.55rem; text-transform: uppercase; }
+    .ceres-shot h3 { color: #4f46e5; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.55rem 0; }
+    .ceres-shot p { color: #5a6a7a; font-size: 0.98rem; line-height: 1.6; margin: 0 0 1rem 0; }
+    .ceres-shot img { width: 100%; border-radius: 12px; border: 1px solid #dbe5ef; box-shadow: 0 8px 22px rgba(15, 21, 31, 0.1); }
+    .ceres-chip { display: inline-block; background: #eef2ff; color: #4f46e5; border-radius: 999px; padding: 0.4rem 0.85rem; margin: 0.25rem; font-size: 0.86rem; font-weight: 600; border: 1px solid #c7d2fe; }
+    .ceres-contact { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #4f46e5 100%); border-radius: 22px; padding: 2rem 1.5rem; color: #fff; box-shadow: 0 18px 36px rgba(15, 21, 31, 0.22); }
+    .ceres-contact a { color: #ddd6fe; text-decoration: none; font-weight: 600; }
+    .ceres-contact a:hover { color: #a78bfa; }
+    .ceres-contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 1.1rem 1rem; height: 100%; }
+    .ceres-cta { display: inline-block; background: #a78bfa; color: #1e1b4b !important; border-radius: 999px; padding: 0.7rem 1.4rem; font-weight: 700; margin-top: 0.75rem; box-shadow: 0 8px 18px rgba(167, 139, 250, 0.35); }
+    .ceres-compat { text-align: center; background: #fff; border: 1px solid #e4edf6; border-radius: 14px; padding: 1rem 0.6rem; height: 100%; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.05); }
+    .ceres-compat i { color: #4f46e5; font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
+    .ceres-compat b { color: #0f172a; font-size: 0.95rem; }
 </style>
 
-<div class="arm-wrap" itemscope itemtype="https://schema.org/SoftwareApplication">
-    <div class="arm-hero">
-        <div class="arm-hero-inner">
-            <div class="arm-logo-bar">
+<div class="ceres-wrap" itemscope itemtype="https://schema.org/SoftwareApplication">
+    <div class="ceres-hero">
+        <div class="ceres-hero-inner">
+            <div class="ceres-logo-bar">
                 <a href="https://www.armorait.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="company_logo.png" alt="ARMORA IT Technologies | Odoo Apps" title="ARMORA IT Technologies"/>
+                    <img src="company_logo.png" alt="ARMORA IT Technologies" title="ARMORA IT Technologies"/>
                 </a>
             </div>
             <div style="margin-bottom: 0.9rem;">
-                <span class="arm-pill"><i class="fa fa-cube"></i> Odoo 19 Community</span>
-                <span class="arm-pill"><i class="fa fa-check"></i> Production Ready</span>
-                <span class="arm-pill arm-pill-accent"><i class="fa fa-star"></i> ARMORA Apps</span>
+                <span class="ceres-pill"><i class="fa fa-cube"></i> Odoo 19 Community</span>
+                <span class="ceres-pill"><i class="fa fa-check"></i> Production Ready</span>
+                <span class="ceres-pill ceres-pill-accent"><i class="fa fa-star"></i> ARMORA Apps</span>
             </div>
-            <img src="icon.png" alt="Dashboard Core by ARMORA IT Technologies" style="width: 78px; height: 78px; border-radius: 18px; background: #fff; padding: 8px; margin-bottom: 1rem; box-shadow: 0 10px 24px rgba(0,0,0,0.18);"/>
+            <img src="icon.png" alt="Dashboard Core" style="width: 78px; height: 78px; border-radius: 18px; background: #fff; padding: 8px; margin-bottom: 1rem; box-shadow: 0 10px 24px rgba(0,0,0,0.18);"/>
             <h1 style="font-size: 2.35rem; font-weight: 800; margin: 0 0 0.55rem 0; letter-spacing: -0.02em;" itemprop="name">Dashboard Core</h1>
-            <p style="font-size: 1.12rem; opacity: 0.95; max-width: 760px; margin: 0 auto 0.85rem auto; line-height: 1.55;" itemprop="description">Shared OWL dashboard shell for ARMORA analytics modules</p>
+            <p style="font-size: 1.12rem; opacity: 0.95; max-width: 720px; margin: 0 auto 0.85rem auto; line-height: 1.55;" itemprop="description">Shared OWL dashboard shell for ARMORA analytics modules</p>
             <p style="margin: 0; font-weight: 600; color: #ddd6fe;">by ARMORA IT Technologies | Odoo 19 Community Apps</p>
             <meta itemprop="applicationCategory" content="BusinessApplication"/>
             <meta itemprop="operatingSystem" content="Odoo 19"/>
-            </div>
+        </div>
     </div>
 
     <div style="text-align: center; margin-bottom: 1.75rem;">
-        <span class="arm-chip"><i class="fa fa-check"></i> Community</span>
-        <span class="arm-chip"><i class="fa fa-check"></i> Odoo 19</span>
-        <span class="arm-chip"><i class="fa fa-check"></i> Production Ready</span>
-        <span class="arm-chip"><i class="fa fa-check"></i> Dashboards</span>
+        <span class="ceres-chip"><i class="fa fa-check"></i> Community</span>
+        <span class="ceres-chip"><i class="fa fa-cloud"></i> Odoo.sh Ready</span>
+        <span class="ceres-chip"><i class="fa fa-shield"></i> Access Rights</span>
+        <span class="ceres-chip"><i class="fa fa-bolt"></i> Fast Setup</span>
     </div>
 
-    <div class="arm-section arm-section-soft">
-        <h2 class="arm-h2"><i class="fa fa-eye" style="color:#4f46e5;"></i> Overview</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">Shared OWL dashboard shell for ARMORA analytics modules</p>
+    <div class="ceres-section ceres-section-soft">
+        <h2 class="ceres-h2"><i class="fa fa-eye" style="color:#4f46e5;"></i> Overview</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">Shared OWL dashboard shell for ARMORA analytics modules</p>
         <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0 0 0.9rem 0;">Reusable dashboard engine for ARMORA Manufacturing Intelligence and other</p>
         <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0;">analytics suites. Phase 1 delivers dashboard definitions, widgets, filters,</p>
     </div>
 
     <div class="row" style="margin-left:-8px; margin-right:-8px;">
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-split arm-problem">
+            <div class="ceres-split ceres-problem">
                 <h3 style="color:#c0392b;"><i class="fa fa-exclamation-circle"></i> The Problem</h3>
                 <ul>
-                    <li>Teams manage shared owl dashboard shell for armora analytics modules with spreadsheets or disconnected tools</li>
-                    <li>No single place in Odoo for daily operations and status</li>
-                    <li>Approvals, visibility, and follow-up stay inconsistent</li>
-                    <li>Hard to scale the process across companies or teams</li>
-                    <li>Upgrade-safe, documented modules are hard to find</li>
+                    <li>Teams handle shared owl dashboard shell for armora analytics modules with spreadsheets or disconnected tools</li>
+                    <li>No clear place in Odoo for daily status and follow-up</li>
+                    <li>Approvals and visibility stay inconsistent across users</li>
+                    <li>Hard to scale the same process across companies</li>
+                    <li>Upgrade-safe documented apps are hard to find</li>
                 </ul>
             </div>
         </div>
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-split arm-solution">
+            <div class="ceres-split ceres-solution">
                 <h3 style="color:#1e8449;"><i class="fa fa-check-circle"></i> The Solution</h3>
                 <ul>
                     <li>Dedicated Odoo app for Shared OWL dashboard shell for ARMORA analytics modules</li>
                     <li>Native forms, lists, dashboards, and settings</li>
                     <li>Security groups and access rights included</li>
-                    <li>Designed for Odoo 19 Community and multi-company use</li>
-                    <li>Support and documentation from ARMORA IT Technologies</li>
+                    <li>Built for Odoo 19 Community and multi-company use</li>
+                    <li>Support from ARMORA IT Technologies</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="arm-section" style="margin-top:1.5rem;">
-        <h2 class="arm-h2"><i class="fa fa-diamond" style="color:#7c3aed;"></i> Key Features</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">Built for Odoo 19 Community teams that want a reliable, documented app</p>
+    <div class="ceres-section" style="margin-top:1.5rem;">
+        <h2 class="ceres-h2"><i class="fa fa-diamond" style="color:#7c3aed;"></i> Key Features</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">Built for Odoo 19 Community teams</p>
         <div class="row" style="margin-left:-8px; margin-right:-8px;">
 
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-cog"></i></div>
-                    <h4>Odoo-native</h4>
-                    <p>Shared OWL dashboard shell for ARMORA analytics modules.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-cog"></i></div>
+                    <h4>Odoo-native models and views</h4>
+                    <p>Odoo-native models and views</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-bolt"></i></div>
-                    <h4>Configurable</h4>
-                    <p>Settings, security groups, and menus included for rollout.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-bolt"></i></div>
+                    <h4>Security groups and access rights</h4>
+                    <p>Security groups and access rights</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-shield"></i></div>
-                    <h4>Documented</h4>
-                    <p>README and support pack for implementation teams.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-shield"></i></div>
+                    <h4>Configurable settings and menus</h4>
+                    <p>Configurable settings and menus</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-sitemap"></i></div>
-                    <h4>Multi-company aware</h4>
-                    <p>Works with company-aware models where applicable.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-sitemap"></i></div>
+                    <h4>Multi-company aware where applicable</h4>
+                    <p>Multi-company aware where applicable</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-bar-chart"></i></div>
-                    <h4>Production ready</h4>
-                    <p>Built for Odoo 19 Community deployments.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-bar-chart"></i></div>
+                    <h4>Documented for implementation teams</h4>
+                    <p>Documented for implementation teams</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-magic"></i></div>
-                    <h4>Commercial support</h4>
-                    <p>Support from ARMORA IT Technologies via info@armorait.com.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-magic"></i></div>
+                    <h4>Commercial support via info@armorait.com</h4>
+                    <p>Commercial support via info@armorait.com</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="arm-section arm-section-soft">
-        <h2 class="arm-h2"><i class="fa fa-road" style="color:#4f46e5;"></i> How It Works</h2>
-        <div class="arm-accent-line"></div>
-        <div class="arm-step-card"><div class="arm-step-num">1</div><div><b style="color:#0f172a;">Install the module</b><br/><span style="color:#5a6a7a;">Add <code>rn_dashboard_core</code> to your addons path and install <b>Dashboard Core</b>.</span></div></div>
-        <div class="arm-step-card"><div class="arm-step-num">2</div><div><b style="color:#0f172a;">Configure settings</b><br/><span style="color:#5a6a7a;">Open Settings, complete configuration, and assign security groups.</span></div></div>
-        <div class="arm-step-card"><div class="arm-step-num">3</div><div><b style="color:#0f172a;">Run daily workflows</b><br/><span style="color:#5a6a7a;">Use forms, lists, dashboards, and wizards for your process.</span></div></div>
-        <div class="arm-step-card"><div class="arm-step-num">4</div><div><b style="color:#0f172a;">Review reports and KPIs</b><br/><span style="color:#5a6a7a;">Track status and follow-up from the module views and reports.</span></div></div>
-        <div class="arm-step-card" style="margin-bottom:0;"><div class="arm-step-num">5</div><div><b style="color:#0f172a;">Scale with ARMORA</b><br/><span style="color:#5a6a7a;">Extend with related ARMORA apps and request rollout help when needed.</span></div></div>
+    <div class="ceres-section ceres-section-soft">
+        <h2 class="ceres-h2"><i class="fa fa-road" style="color:#4f46e5;"></i> How It Works</h2>
+        <div class="ceres-accent-line"></div>
+        <div class="ceres-step-card"><div class="ceres-step-num">1</div><div><b style="color:#0f172a;">Install the module</b><br/><span style="color:#5a6a7a;">Add <code>rn_dashboard_core</code> to your addons path and install <b>Dashboard Core</b>.</span></div></div>
+        <div class="ceres-step-card"><div class="ceres-step-num">2</div><div><b style="color:#0f172a;">Configure settings</b><br/><span style="color:#5a6a7a;">Open Settings, complete configuration, and assign security groups.</span></div></div>
+        <div class="ceres-step-card"><div class="ceres-step-num">3</div><div><b style="color:#0f172a;">Use the smart workflows</b><br/><span style="color:#5a6a7a;">Work from forms, lists, and dashboards with clear navigation.</span></div></div>
+        <div class="ceres-step-card"><div class="ceres-step-num">4</div><div><b style="color:#0f172a;">Review related records</b><br/><span style="color:#5a6a7a;">Open linked documents from smart buttons and list actions.</span></div></div>
+        <div class="ceres-step-card" style="margin-bottom:0;"><div class="ceres-step-num">5</div><div><b style="color:#0f172a;">Scale with ARMORA</b><br/><span style="color:#5a6a7a;">Extend with related apps and request rollout help when needed.</span></div></div>
     </div>
 
-    <div class="arm-section">
-        <h2 class="arm-h2"><i class="fa fa-picture-o" style="color:#7c3aed;"></i> Screenshots</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">Key views from Dashboard Core on Odoo 19 Community</p>
+    <div class="ceres-section">
+        <h2 class="ceres-h2"><i class="fa fa-picture-o" style="color:#f7941d;"></i> Screenshots</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">See Dashboard Core in action on Odoo 19 Community</p>
 
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 01</span>
-            <h3>Operations Dashboard</h3>
-            <p>Track KPIs, status, and recent activity for this module in one place.</p>
-            <img src="dashboard.png" alt="Dashboard Core - Operations Dashboard"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 01</span>
+            <h3>Dashboard Core: Form Smart Button</h3>
+            <p>Open a record form for Dashboard Core. The top-right button box highlights related actions with a live count.</p>
+            <img src="screenshot_form.png" alt="Dashboard Core - Dashboard Core: Form Smart Button"/>
         </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 02</span>
-            <h3>Module Overview</h3>
-            <p>Start from a clean overview that introduces the main workspace and entry points.</p>
-            <img src="overview.png" alt="Dashboard Core - Module Overview"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 02</span>
+            <h3>Dashboard Core: Related Records List</h3>
+            <p>Clicking the smart button opens related records in list view so you can review numbers, dates, and status.</p>
+            <img src="screenshot_list.png" alt="Dashboard Core - Dashboard Core: Related Records List"/>
         </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 03</span>
-            <h3>Main Form</h3>
-            <p>Create and edit records with a structured form layout designed for daily use.</p>
-            <img src="form.png" alt="Dashboard Core - Main Form"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 03</span>
+            <h3>Dashboard Core: Operations Dashboard</h3>
+            <p>Track open, in-progress, and completed work for Dashboard Core from one dashboard.</p>
+            <img src="screenshot_dashboard.png" alt="Dashboard Core - Dashboard Core: Operations Dashboard"/>
         </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 04</span>
-            <h3>List View</h3>
-            <p>Browse records in list view to review status, filters, and key fields quickly.</p>
-            <img src="list.png" alt="Dashboard Core - List View"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 05</span>
-            <h3>Kanban View</h3>
-            <p>Move work across stages with a visual board when workflow stages apply.</p>
-            <img src="kanban.png" alt="Dashboard Core - Kanban View"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 06</span>
-            <h3>Guided Wizard</h3>
-            <p>Run guided wizards for setup, generation, or batch actions.</p>
-            <img src="wizard.png" alt="Dashboard Core - Guided Wizard"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 07</span>
-            <h3>Designer / Builder</h3>
-            <p>Configure rules, layouts, or design options from the builder screen.</p>
-            <img src="designer.png" alt="Dashboard Core - Designer / Builder"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 08</span>
-            <h3>Search and Filters</h3>
-            <p>Find records faster with search views and practical filters.</p>
-            <img src="search.png" alt="Dashboard Core - Search and Filters"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 09</span>
-            <h3>Configuration Settings</h3>
-            <p>Tune module parameters and defaults from the settings screen.</p>
-            <img src="settings.png" alt="Dashboard Core - Configuration Settings"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 10</span>
-            <h3>Reports</h3>
-            <p>Review operational reporting and output for follow-up.</p>
-            <img src="report.png" alt="Dashboard Core - Reports"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 11</span>
-            <h3>Process Workflow</h3>
-            <p>See how the end-to-end process fits together for your team.</p>
-            <img src="workflow.png" alt="Dashboard Core - Process Workflow"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 12</span>
-            <h3>Mobile Friendly Workspace</h3>
-            <p>Monitor and act on records from a responsive backend layout.</p>
-            <img src="mobile.png" alt="Dashboard Core - Mobile Friendly Workspace"/>
-        </div>
-
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 13</span>
-            <h3>Hero Demo</h3>
-            <p>Animated preview of the main experience.</p>
-            <img src="hero.gif" alt="Dashboard Core - Hero Demo"/>
-        </div>
-
-        <div class="arm-shot" style="margin-bottom:0;">
-            <span class="arm-shot-badge">Screenshot 14</span>
-            <h3>Dashboard Demo</h3>
-            <p>Animated dashboard walkthrough.</p>
-            <img src="dashboard.gif" alt="Dashboard Core - Dashboard Demo"/>
+        <div class="ceres-shot" style="margin-bottom:0;">
+            <span class="ceres-shot-badge">Screenshot 04</span>
+            <h3>Dashboard Core: Back to Source Record</h3>
+            <p>From a related document, use the back smart button to return to the original record.</p>
+            <img src="screenshot_back.png" alt="Dashboard Core - Dashboard Core: Back to Source Record"/>
         </div>
     </div>
 
     <div class="row" style="margin-left:-8px; margin-right:-8px;">
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-section" style="height:100%; margin-bottom:0;">
-                <h2 class="arm-h2" style="font-size:1.3rem;"><i class="fa fa-download" style="color:#4f46e5;"></i> Installation</h2>
-                <div class="arm-accent-line"></div>
+            <div class="ceres-section" style="height:100%; margin-bottom:0;">
+                <h2 class="ceres-h2" style="font-size:1.3rem;"><i class="fa fa-download" style="color:#4f46e5;"></i> Installation</h2>
+                <div class="ceres-accent-line"></div>
                 <ol style="padding-left:1.2rem; color:#4a5568; line-height:1.7; margin:0;">
                     <li>Download the module ZIP from the Odoo Apps Store</li>
                     <li>Extract <code>rn_dashboard_core</code> into your custom addons path</li>
                     <li>Restart Odoo and update the Apps list</li>
                     <li>Install <b>Dashboard Core</b></li>
                     <li>Complete settings and assign security groups</li>
-                    <li>Optional: load demo data for evaluation</li>
                 </ol>
             </div>
         </div>
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-section" style="height:100%; margin-bottom:0;">
-                <h2 class="arm-h2" style="font-size:1.3rem;"><i class="fa fa-check-square-o" style="color:#7c3aed;"></i> Compatibility</h2>
-                <div class="arm-accent-line"></div>
+            <div class="ceres-section" style="height:100%; margin-bottom:0;">
+                <h2 class="ceres-h2" style="font-size:1.3rem;"><i class="fa fa-check-square-o" style="color:#7c3aed;"></i> Compatibility</h2>
+                <div class="ceres-accent-line"></div>
                 <div class="row" style="margin-left:-6px; margin-right:-6px;">
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="arm-compat"><i class="fa fa-cube"></i><b>Odoo 19.0</b></div></div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="arm-compat"><i class="fa fa-users"></i><b>Community</b></div></div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="arm-compat"><i class="fa fa-code"></i><b>Python 3.12+</b></div></div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="arm-compat"><i class="fa fa-cloud"></i><b>On-Prem / Odoo.sh</b></div></div>
+                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="ceres-compat"><i class="fa fa-cube"></i><b>Odoo 19.0</b></div></div>
+                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="ceres-compat"><i class="fa fa-users"></i><b>Community</b></div></div>
+                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="ceres-compat"><i class="fa fa-code"></i><b>Python 3.12+</b></div></div>
+                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;"><div class="ceres-compat"><i class="fa fa-cloud"></i><b>On-Prem / Odoo.sh</b></div></div>
                 </div>
                 <div style="clear:both;"></div>
                 <p style="color:#6b7a8c; margin:1rem 0 0 0; font-size:0.95rem;">License <b>OPL-1</b>. Technical name <code>rn_dashboard_core</code>. Version <b>19.0.1.0.0</b>.</p>
@@ -335,39 +259,24 @@
         </div>
     </div>
 
-    <div class="arm-section arm-faq" style="margin-top:1.5rem;">
-        <h2 class="arm-h2"><i class="fa fa-question-circle" style="color:#4f46e5;"></i> FAQ</h2>
-        <div class="arm-accent-line"></div>
-        <dl>
-            <dt>Does Dashboard Core work on Odoo Community?</dt>
-            <dd>Yes. Built for Odoo 19 Community.</dd>
-            <dt>Multi-company support?</dt>
-            <dd>Yes, where underlying models are company-aware.</dd>
-            <dt>Can we customize it?</dt>
-            <dd>Yes. Standard Odoo inheritance and service-layer patterns.</dd>
-            <dt>How do we get support?</dt>
-            <dd>Email <a href="mailto:info@armorait.com">info@armorait.com</a> or visit <a href="https://www.armorait.com">www.armorait.com</a>.</dd>
-        </dl>
-    </div>
-
-    <div class="arm-contact">
+    <div class="ceres-contact" style="margin-top:1.5rem;">
         <div style="text-align:center; margin-bottom:1.25rem;">
             <h2 style="font-size:1.6rem; font-weight:800; margin:0 0 0.4rem 0; color:#fff;">Support &amp; Contact</h2>
             <p style="margin:0; opacity:0.9;">Request a demo or rollout help for Dashboard Core</p>
         </div>
         <div class="row" style="margin-left:-8px; margin-right:-8px;">
             <div class="col-md-6" style="padding:8px;">
-                <div class="arm-contact-card">
+                <div class="ceres-contact-card">
                     <h4 style="margin:0 0 0.55rem 0; color:#ddd6fe;">ARMORA IT Technologies</h4>
                     <p style="margin:0; line-height:1.65; opacity:0.95;">Odoo Apps, AI automation, and ERP implementation for growing businesses.</p>
                 </div>
             </div>
             <div class="col-md-6" style="padding:8px;">
-                <div class="arm-contact-card">
+                <div class="ceres-contact-card">
                     <p style="margin:0 0 0.45rem 0;"><i class="fa fa-envelope"></i> <a href="mailto:info@armorait.com">info@armorait.com</a></p>
                     <p style="margin:0 0 0.45rem 0;"><i class="fa fa-globe"></i> <a href="https://www.armorait.com/" target="_blank" rel="noopener noreferrer">www.armorait.com</a></p>
                     <p style="margin:0;"><i class="fa fa-shopping-cart"></i> License: OPL-1</p>
-                    <a class="arm-cta" href="https://www.armorait.com/contactus" target="_blank" rel="noopener noreferrer">Request free consultation</a>
+                    <a class="ceres-cta" href="https://www.armorait.com/contactus" target="_blank" rel="noopener noreferrer">Request free consultation</a>
                 </div>
             </div>
         </div>

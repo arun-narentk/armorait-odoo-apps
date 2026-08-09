@@ -13,6 +13,7 @@ class RnColorMixin(models.AbstractModel):
     rn_color_tag_color = fields.Selection(selection=COLOR_SELECTION, readonly=True, index=True)
     rn_color_tag_icon = fields.Selection(selection=ICON_SELECTION, readonly=True)
     rn_color_tag_label = fields.Char(readonly=True, index=True)
+    rn_color_tag_emoji = fields.Char(readonly=True)
     rn_color_tag_css_class = fields.Char(readonly=True)
 
     @api.model_create_multi
@@ -43,6 +44,7 @@ class RnColorMixin(models.AbstractModel):
                 "rn_color_tag_color": tag.get("color") or False,
                 "rn_color_tag_icon": tag.get("icon") or "none",
                 "rn_color_tag_label": tag.get("label") or False,
+                "rn_color_tag_emoji": tag.get("emoji") or False,
                 "rn_color_tag_css_class": tag.get("css_class") or False,
             }
             record.with_context(rn_skip_color_refresh=True).write(values)

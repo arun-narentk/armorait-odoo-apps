@@ -60,18 +60,20 @@ class RnArabicTooltip(models.AbstractModel):
         accounting fallback dictionary.
         """
         # Prefer an installed (active) Arabic language so we read Odoo's own
-        # standard translations; fall back to ar_001 for the gettext lookup.
+        # standard translations. If none is active, skip gettext and use fallback.
         installed_ar = self.env["res.lang"].search(
             [("code", "=like", "ar%"), ("active", "=", True)], limit=1
         )
-        lang = installed_ar.code or "ar_001"
+        lang = installed_ar.code if installed_ar else False
         result = {}
         for label in labels or []:
             source = (label or "").strip()
             if not source:
                 continue
+            translated = False
             # 1) Standard value: Odoo's own translation in the Arabic language.
-            translated = self.with_context(lang=lang).env._(source)
+            if lang:
+                translated = self.with_context(lang=lang).env._(source)
             # 2) Automatic fallback: accounting dictionary tailored for Saudi.
             if not translated or translated == source:
                 translated = self._AR_FALLBACK.get(source)

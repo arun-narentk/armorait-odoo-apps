@@ -26,3 +26,6 @@ rough_note.txt
 
 # Apps Store zip staging (do not commit)
 apps_store_zips/
+
+# Local Odoo regression run logs
+tools/regression_results/*.log

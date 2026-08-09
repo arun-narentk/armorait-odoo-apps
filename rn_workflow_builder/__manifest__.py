@@ -116,12 +116,13 @@ and follow-up reminders are included at install.
             'rn_workflow_builder/static/src/js/workflow_dashboard.js',
         ],
     },
-    'images': [
+        'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/screenshot_execution_dashboard.png',
-        'static/description/screenshot_visual_designer.png',
-        'static/description/screenshot_workflow_overview.png',
+        'static/description/screenshot_form.png',
+        'static/description/screenshot_list.png',
+        'static/description/screenshot_dashboard.png',
+        'static/description/screenshot_back.png',
     ],
     'installable': True,
     'application': True,
