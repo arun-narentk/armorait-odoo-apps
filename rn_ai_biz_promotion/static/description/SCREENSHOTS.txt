@@ -1,0 +1,26 @@
+SCREENSHOTS for Odoo Apps listing
+=================================
+
+Files in this folder (static/description/):
+
+Filename                                       | Purpose
+-----------------------------------------------|------------------------------------------
+company_logo.png                               | Official ARMORA IT Technologies logo
+icon.png                                       | App icon (256x256)
+banner.png                                     | Store banner / cover image
+index.html                                     | Apps store description page
+screenshot_ai_biz_promotion_dashboard.png      | Public /ai-biz landing page
+screenshot_ai_biz_promotion_form.png           | Promotion form with benefits
+screenshot_ai_biz_promotion_list.png           | Promotions list view
+screenshot_ai_biz_promotion_back.png           | CTA / bottom section preview
+
+Company details:
+  Name:    ARMORA IT Technologies
+  Email:   info@armorait.com
+  Website: https://www.armorait.com
+  Brand:   Navy #1c2f4a, Red #e11d2e
+
+Current images are UI mockups for the listing. Replace them with real Odoo 19
+screenshots from your database before publishing when possible.
+
+Recommended capture size: about 1280 px wide (16:9 works well).
