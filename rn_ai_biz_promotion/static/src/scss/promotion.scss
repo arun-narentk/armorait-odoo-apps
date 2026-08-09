@@ -1,0 +1,152 @@
+// AI BIZ promotional landing page
+$rn-ai-biz-red: #e11d2e;
+$rn-ai-biz-red-dark: #b91221;
+$rn-ai-biz-navy: #0f1b2d;
+$rn-ai-biz-muted: #5b6777;
+$rn-ai-biz-card-bg: #f7f9fc;
+$rn-ai-biz-border: #e6ebf2;
+$rn-ai-biz-radius: 1rem;
+$rn-ai-biz-shadow: 0 10px 28px rgba(15, 27, 45, 0.08);
+
+.rn-ai-biz-page {
+    background: #fff;
+    color: $rn-ai-biz-navy;
+}
+
+.rn-ai-biz-hero-panel {
+    background: linear-gradient(135deg, #101b2d 0%, #1c2f4a 55%, #243a58 100%);
+    color: #fff;
+}
+
+.rn-ai-biz-kicker {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+}
+
+.rn-ai-biz-title {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.rn-ai-biz-banner-frame {
+    border-radius: $rn-ai-biz-radius;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.rn-ai-biz-banner {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 420px;
+}
+
+.rn-ai-biz-banner-placeholder {
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+.rn-ai-biz-intro-copy,
+.rn-ai-biz-cta-copy {
+    color: $rn-ai-biz-muted;
+    font-size: 1.05rem;
+    line-height: 1.7;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.rn-ai-biz-card {
+    background: $rn-ai-biz-card-bg;
+    border: 1px solid $rn-ai-biz-border;
+    border-radius: $rn-ai-biz-radius;
+    box-shadow: $rn-ai-biz-shadow;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 34px rgba(15, 27, 45, 0.12);
+    }
+}
+
+.rn-ai-biz-card-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.85rem;
+    background: #fff;
+    border: 1px solid $rn-ai-biz-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: $rn-ai-biz-red;
+    font-size: 1.4rem;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.rn-ai-biz-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.55rem;
+}
+
+.rn-ai-biz-card-text {
+    color: $rn-ai-biz-muted;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.rn-ai-biz-cta-btn {
+    background: $rn-ai-biz-red;
+    color: #fff !important;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.9rem 2.2rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    box-shadow: 0 12px 24px rgba(225, 29, 46, 0.28);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover,
+    &:focus {
+        background: $rn-ai-biz-red-dark;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(185, 18, 33, 0.32);
+    }
+}
+
+.rn-ai-biz-empty {
+    background: #f8fafc;
+}
+
+@media (max-width: 575.98px) {
+    .rn-ai-biz-cta-btn {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .rn-ai-biz-card {
+        padding: 1.25rem;
+    }
+}

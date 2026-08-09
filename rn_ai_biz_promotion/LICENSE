@@ -1,0 +1,38 @@
+OPL-1
+=======
+
+Odoo Proprietary License v1.0
+
+This software and associated files (the "Software") may only be used (executed,
+modified, executed after modifications) with a valid Odoo Enterprise
+Subscription for the correct number of users if you use Enterprise features,
+or under the terms published with this module for Community Apps Store sales.
+
+You may develop modules based on the Software or modules using the Software
+as a library (typically by depending on it, importing it and using its resources),
+but without copying any source code or material from the Software.
+You may distribute those modules under the license of your choice, provided that
+this notice is included in full in all copies (in original or modified form).
+
+The Copyright holder grants you an unlimited permission to distribute
+verbatim copies of the Software for free or commercially, as long as this
+license notice remains intact and you do not modify the Software.
+
+You may charge fees for warranty, support, or redistribution of the Software,
+as long as this license notice remains intact and you do not modify the Software.
+
+It is forbidden to publish, distribute, sublicense, or sell copies of the Software
+or modified copies of the Software.
+
+The above copyright notice and this permission notice must be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+Copyright (c) ARMORA IT Technologies

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_biz_promotion_user,ai.biz.promotion user,model_ai_biz_promotion,group_rn_ai_biz_promotion_user,1,0,0,0
+access_ai_biz_promotion_manager,ai.biz.promotion manager,model_ai_biz_promotion,group_rn_ai_biz_promotion_manager,1,1,1,1
+access_ai_biz_benefit_user,ai.biz.benefit user,model_ai_biz_benefit,group_rn_ai_biz_promotion_user,1,0,0,0
+access_ai_biz_benefit_manager,ai.biz.benefit manager,model_ai_biz_benefit,group_rn_ai_biz_promotion_manager,1,1,1,1
+access_ai_biz_promotion_public,ai.biz.promotion public,model_ai_biz_promotion,base.group_public,1,0,0,0
+access_ai_biz_benefit_public,ai.biz.benefit public,model_ai_biz_benefit,base.group_public,1,0,0,0
+access_ai_biz_promotion_portal,ai.biz.promotion portal,model_ai_biz_promotion,base.group_portal,1,0,0,0
+access_ai_biz_benefit_portal,ai.biz.benefit portal,model_ai_biz_benefit,base.group_portal,1,0,0,0

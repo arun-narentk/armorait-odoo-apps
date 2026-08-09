@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ai_biz_benefit_list" model="ir.ui.view">
+        <field name="name">ai.biz.benefit.list</field>
+        <field name="model">ai.biz.benefit</field>
+        <field name="arch" type="xml">
+            <list string="AI BIZ Benefits">
+                <field name="sequence" widget="handle"/>
+                <field name="promotion_id"/>
+                <field name="icon" widget="image" options="{'size': [40, 40]}"/>
+                <field name="title"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_biz_benefit_form" model="ir.ui.view">
+        <field name="name">ai.biz.benefit.form</field>
+        <field name="model">ai.biz.benefit</field>
+        <field name="arch" type="xml">
+            <form string="AI BIZ Benefit">
+                <sheet>
+                    <group>
+                        <field name="promotion_id"/>
+                        <field name="sequence"/>
+                        <field name="icon" widget="image"/>
+                        <field name="title"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ai_biz_benefit" model="ir.actions.act_window">
+        <field name="name">Benefits</field>
+        <field name="res_model">ai.biz.benefit</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

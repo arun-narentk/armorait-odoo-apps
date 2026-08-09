@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ai_biz_landing_page" name="AI BIZ Landing Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure rn-ai-biz-page">
+                <t t-if="not promotion">
+                    <section class="rn-ai-biz-empty py-5">
+                        <div class="container text-center py-5">
+                            <h1 class="display-6 fw-bold mb-3">AI BIZ</h1>
+                            <p class="lead text-muted mb-0">
+                                No active promotion is published yet. Activate a promotion in Website &gt; AI BIZ Promotions.
+                            </p>
+                        </div>
+                    </section>
+                </t>
+
+                <t t-if="promotion">
+                    <section class="rn-ai-biz-hero">
+                        <div class="container-fluid px-0">
+                            <div class="rn-ai-biz-hero-panel">
+                                <div class="container">
+                                    <div class="row align-items-center g-4 py-4 py-lg-5">
+                                        <div class="col-lg-6 text-center text-lg-start">
+                                            <p t-if="promotion.subtitle" class="rn-ai-biz-kicker" t-esc="promotion.subtitle"/>
+                                            <h1 class="rn-ai-biz-title" t-esc="promotion.title"/>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="rn-ai-biz-banner-frame">
+                                                <t t-if="promotion.banner_image">
+                                                    <img t-att-src="'/web/image/ai.biz.promotion/%s/banner_image' % promotion.id"
+                                                         class="img-fluid rn-ai-biz-banner"
+                                                         t-att-alt="promotion.title"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <div class="rn-ai-biz-banner-placeholder">
+                                                        <span class="fa fa-plane"/>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="rn-ai-biz-intro py-4 py-lg-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9 text-center">
+                                    <div class="rn-ai-biz-intro-copy" t-field="promotion.description"/>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="rn-ai-biz-benefits pb-4 pb-lg-5" t-if="benefits">
+                        <div class="container">
+                            <div class="row g-3 g-md-4">
+                                <t t-foreach="benefits" t-as="benefit">
+                                    <div class="col-12 col-md-6">
+                                        <article class="rn-ai-biz-card h-100">
+                                            <div class="rn-ai-biz-card-icon">
+                                                <t t-if="benefit.icon">
+                                                    <img t-att-src="'/web/image/ai.biz.benefit/%s/icon' % benefit.id"
+                                                         t-att-alt="benefit.title"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="fa fa-check-circle"/>
+                                                </t>
+                                            </div>
+                                            <h3 class="rn-ai-biz-card-title" t-esc="benefit.title"/>
+                                            <p class="rn-ai-biz-card-text" t-esc="benefit.description"/>
+                                        </article>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="rn-ai-biz-cta py-4 py-lg-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 text-center">
+                                    <div class="rn-ai-biz-cta-copy mb-4" t-if="promotion.footer_text" t-field="promotion.footer_text"/>
+                                    <a t-att-href="promotion.button_url or '#'"
+                                       class="btn rn-ai-biz-cta-btn"
+                                       t-esc="promotion.button_text or 'Explore AI BIZ'"/>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <record id="menu_website_ai_biz" model="website.menu">
+        <field name="name">AI BIZ</field>
+        <field name="url">/ai-biz</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">45</field>
+        <field name="website_id" ref="website.default_website"/>
+    </record>
+</odoo>

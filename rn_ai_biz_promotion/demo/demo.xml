@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_ai_biz_promotion_gst" model="ai.biz.promotion">
+        <field name="name">GST Savings for Business Travel</field>
+        <field name="sequence">10</field>
+        <field name="active" eval="True"/>
+        <field name="title">GST SAVINGS FOR YOUR BUSINESS TRAVELS</field>
+        <field name="subtitle">AI BIZ</field>
+        <field name="description" type="html">
+            <p>Now registered businesses with a valid GST can save more on every eligible business trip. Claim input tax credit, keep travel spend organized, and unlock corporate-ready pricing on the AI BIZ platform.</p>
+        </field>
+        <field name="footer_text" type="html">
+            <p>Our all-new dedicated platform is built for GST-registered companies that want simpler bookings, clearer invoices, and stronger savings on business travel.</p>
+        </field>
+        <field name="button_text">Explore AI BIZ</field>
+        <field name="button_url">/contactus</field>
+    </record>
+
+    <record id="demo_ai_biz_benefit_gst_credit" model="ai.biz.benefit">
+        <field name="promotion_id" ref="demo_ai_biz_promotion_gst"/>
+        <field name="sequence">10</field>
+        <field name="title">Claim GST Credit</field>
+        <field name="description">Use valid GST invoices from eligible trips and claim input tax credit with cleaner documentation.</field>
+    </record>
+
+    <record id="demo_ai_biz_benefit_corporate_fares" model="ai.biz.benefit">
+        <field name="promotion_id" ref="demo_ai_biz_promotion_gst"/>
+        <field name="sequence">20</field>
+        <field name="title">Corporate-Ready Fares</field>
+        <field name="description">Access business-friendly travel options designed for teams that need speed, policy control, and predictable costs.</field>
+    </record>
+
+    <record id="demo_ai_biz_benefit_smart_invoicing" model="ai.biz.benefit">
+        <field name="promotion_id" ref="demo_ai_biz_promotion_gst"/>
+        <field name="sequence">30</field>
+        <field name="title">Smart Invoicing</field>
+        <field name="description">Get structured invoices that help finance teams reconcile travel spend without spreadsheet chaos.</field>
+    </record>
+
+    <record id="demo_ai_biz_benefit_priority_support" model="ai.biz.benefit">
+        <field name="promotion_id" ref="demo_ai_biz_promotion_gst"/>
+        <field name="sequence">40</field>
+        <field name="title">Priority Support</field>
+        <field name="description">Reach a dedicated business desk for booking changes, GST questions, and trip escalations.</field>
+    </record>
+</odoo>

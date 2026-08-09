@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_ai_biz_promotion_root"
+              name="AI BIZ Promotions"
+              parent="website.menu_website_configuration"
+              sequence="55"
+              groups="rn_ai_biz_promotion.group_rn_ai_biz_promotion_user"/>
+
+    <menuitem id="menu_rn_ai_biz_promotion"
+              name="Promotions"
+              parent="menu_rn_ai_biz_promotion_root"
+              action="action_ai_biz_promotion"
+              sequence="10"
+              groups="rn_ai_biz_promotion.group_rn_ai_biz_promotion_user"/>
+
+    <menuitem id="menu_rn_ai_biz_benefit"
+              name="Benefits"
+              parent="menu_rn_ai_biz_promotion_root"
+              action="action_ai_biz_benefit"
+              sequence="20"
+              groups="rn_ai_biz_promotion.group_rn_ai_biz_promotion_manager"/>
+</odoo>
