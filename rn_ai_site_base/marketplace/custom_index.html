@@ -1,6 +1,6 @@
 <!-- SEO: ARMORA IT Technologies | AI Business Launch Core -->
-<meta name="description" content="AI Business Launch Core for Odoo 19 by ARMORA IT Technologies. Turn a business brief into website pages, content blocks, SEO metadata, and Odoo publish hooks. Contact info@armorait.com | https://www.armorait.com"/>
-<meta name="keywords" content="Odoo 19, Odoo Community, AI Business Launch Core, AI website builder Odoo, business brief to website, Odoo SEO pages, Odoo website generation, rn_ai_site_base, ARMORA IT Technologies"/>
+<meta name="description" content="AI business brief, site structure, pages, SEO, and Odoo publish hooks. Odoo 19 Community app by ARMORA IT Technologies. Contact info@armorait.com"/>
+<meta name="keywords" content="Odoo 19, Odoo Community, AI Business Launch Core, rn_ai_site_base, AI Website, ARMORA IT Technologies"/>
 <meta name="author" content="ARMORA IT Technologies"/>
 <link rel="canonical" href="https://www.armorait.com/"/>
 
@@ -22,682 +22,328 @@
     "@type": "Offer",
     "price": "149.00",
     "priceCurrency": "USD"
-  }
+  },
+  "description": "AI business brief, site structure, pages, SEO, and Odoo publish hooks"
 }
 </script>
 
 <style>
-    .arm-wrap {
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        color: #2d3748;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 1.5rem 1rem 3rem;
-    }
-    .arm-hero {
-        background: linear-gradient(135deg, #312e81 0%, #4f46e5 45%, #6366f1 100%);
-        border-radius: 24px;
-        padding: 2.5rem 2rem 2.2rem;
-        color: #fff;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 18px 40px rgba(79, 70, 229, 0.28);
-        margin-bottom: 1.75rem;
-    }
-    .arm-hero:before {
-        content: '';
-        position: absolute;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        background: rgba(167, 139, 250, 0.22);
-        top: -90px;
-        right: -60px;
-    }
-    .arm-hero:after {
-        content: '';
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.08);
-        bottom: -70px;
-        left: -40px;
-    }
-    .arm-hero-inner { position: relative; z-index: 1; }
-    .arm-logo-bar {
-        background: #fff;
-        border-radius: 16px;
-        padding: 1rem 1.25rem;
-        display: inline-block;
-        margin-bottom: 1.25rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
-    .arm-logo-bar img { max-width: 260px; width: 100%; height: auto; display: block; }
-    .arm-pill {
-        display: inline-block;
-        background: rgba(255,255,255,0.16);
-        border: 1px solid rgba(255,255,255,0.28);
-        color: #fff;
-        border-radius: 999px;
-        padding: 0.35rem 0.9rem;
-        font-size: 0.82rem;
-        margin: 0.2rem;
-    }
-    .arm-pill-accent {
-        background: #a78bfa;
-        border-color: #a78bfa;
-        color: #1e1b4b;
-        font-weight: 600;
-    }
-    .arm-section {
-        background: #fff;
-        border-radius: 20px;
-        padding: 1.75rem 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 10px 30px rgba(15, 21, 31, 0.06);
-        border: 1px solid #e8eef5;
-    }
-    .arm-section-soft {
-        background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
-    }
-    .arm-h2 {
-        font-size: 1.55rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0 0 0.35rem 0;
-        text-align: center;
-    }
-    .arm-sub {
-        text-align: center;
-        color: #6b7a8c;
-        margin: 0 0 1.4rem 0;
-        font-size: 1rem;
-    }
-    .arm-accent-line {
-        width: 64px;
-        height: 4px;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #4f46e5, #4f46e5);
-        margin: 0 auto 1.25rem auto;
-    }
-    .arm-feature {
-        background: #fff;
-        border: 1px solid #e4edf6;
-        border-radius: 16px;
-        padding: 1.25rem 1.1rem;
-        height: 100%;
-        transition: box-shadow 0.2s ease, transform 0.2s ease;
-        box-shadow: 0 4px 14px rgba(13, 148, 136, 0.05);
-    }
-    .arm-feature:hover {
-        box-shadow: 0 12px 28px rgba(13, 148, 136, 0.14);
-        transform: translateY(-2px);
-    }
-    .arm-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35rem;
-        margin-bottom: 0.85rem;
-        color: #fff;
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
-        box-shadow: 0 8px 16px rgba(13, 148, 136, 0.25);
-    }
-    .arm-icon.indigo {
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
-        box-shadow: 0 8px 16px rgba(79, 70, 229, 0.28);
-    }
-    .arm-feature h4 {
-        color: #0f172a;
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin: 0 0 0.45rem 0;
-    }
-    .arm-feature p {
-        color: #5a6a7a;
-        font-size: 0.94rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-    .arm-split {
-        border-radius: 18px;
-        padding: 1.35rem 1.2rem;
-        height: 100%;
-    }
-    .arm-problem {
-        background: linear-gradient(160deg, #fff5f5 0%, #ffffff 70%);
-        border: 1px solid #f5c6c6;
-    }
-    .arm-solution {
-        background: linear-gradient(160deg, #f5f3ff 0%, #ffffff 70%);
-        border: 1px solid #c7d2fe;
-    }
-    .arm-split h3 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 0 0 0.85rem 0;
-    }
-    .arm-split ul {
-        padding-left: 0;
-        list-style: none;
-        margin: 0;
-    }
-    .arm-split li {
-        position: relative;
-        padding: 0.4rem 0 0.4rem 1.7rem;
-        color: #4a5568;
-        font-size: 0.96rem;
-        line-height: 1.5;
-    }
-    .arm-problem li:before {
-        content: '\f00d';
-        font-family: FontAwesome;
-        position: absolute;
-        left: 0;
-        color: #e74c3c;
-        font-size: 0.9rem;
-        top: 0.45rem;
-    }
-    .arm-solution li:before {
-        content: '\f00c';
-        font-family: FontAwesome;
-        position: absolute;
-        left: 0;
-        color: #4f46e5;
-        font-size: 0.9rem;
-        top: 0.45rem;
-    }
-    .arm-step-card {
-        background: #fff;
-        border-radius: 16px;
-        border: 1px solid #e8eef5;
-        padding: 1.1rem 1rem 1.1rem 1.1rem;
-        margin-bottom: 0.9rem;
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
-        box-shadow: 0 4px 12px rgba(15, 21, 31, 0.04);
-    }
-    .arm-step-num {
-        min-width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #4f46e5, #4f46e5);
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 14px rgba(13, 148, 136, 0.25);
-    }
-    .arm-shot {
-        background: #fff;
-        border-radius: 18px;
-        border: 1px solid #e8eef5;
-        padding: 1.25rem;
-        margin-bottom: 1.35rem;
-        box-shadow: 0 10px 28px rgba(15, 21, 31, 0.07);
-    }
-    .arm-shot-badge {
-        display: inline-block;
-        background: #4f46e5;
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.78rem;
-        letter-spacing: 0.04em;
-        border-radius: 999px;
-        padding: 0.28rem 0.75rem;
-        margin-bottom: 0.55rem;
-        text-transform: uppercase;
-    }
-    .arm-shot h3 {
-        color: #4f46e5;
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 0 0 0.55rem 0;
-    }
-    .arm-shot p {
-        color: #5a6a7a;
-        font-size: 0.98rem;
-        line-height: 1.6;
-        margin: 0 0 1rem 0;
-    }
-    .arm-shot img {
-        width: 100%;
-        border-radius: 12px;
-        border: 1px solid #dbe5ef;
-        box-shadow: 0 8px 22px rgba(15, 21, 31, 0.1);
-    }
-    .arm-chip {
-        display: inline-block;
-        background: #f5f3ff;
-        color: #4f46e5;
-        border-radius: 999px;
-        padding: 0.4rem 0.85rem;
-        margin: 0.25rem;
-        font-size: 0.86rem;
-        font-weight: 600;
-        border: 1px solid #c7d2fe;
-    }
-    .arm-contact {
-        background: linear-gradient(135deg, #0f172a 0%, #134e4a 55%, #4f46e5 100%);
-        border-radius: 22px;
-        padding: 2rem 1.5rem;
-        color: #fff;
-        box-shadow: 0 18px 36px rgba(15, 21, 31, 0.22);
-    }
-    .arm-contact a { color: #ddd6fe; text-decoration: none; font-weight: 600; }
-    .arm-contact a:hover { color: #fff; }
-    .arm-contact-card {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.14);
-        border-radius: 14px;
-        padding: 1.1rem 1rem;
-        height: 100%;
-    }
-    .arm-cta {
-        display: inline-block;
-        background: #4f46e5;
-        color: #fff !important;
-        border-radius: 999px;
-        padding: 0.7rem 1.4rem;
-        font-weight: 700;
-        margin-top: 0.75rem;
-        box-shadow: 0 8px 18px rgba(79, 70, 229, 0.35);
-    }
-    .arm-compat {
-        text-align: center;
-        background: #fff;
-        border: 1px solid #e4edf6;
-        border-radius: 14px;
-        padding: 1rem 0.6rem;
-        height: 100%;
-        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.05);
-    }
-    .arm-compat i {
-        color: #4f46e5;
-        font-size: 1.4rem;
-        margin-bottom: 0.4rem;
-        display: block;
-    }
-    .arm-compat b { color: #0f172a; font-size: 0.95rem; }
-    .arm-faq dt { font-weight: 700; margin-top: 14px; color: #0f172a; }
-    .arm-faq dd { margin: 4px 0 0 0; color: #5a6a7a; }
+    .ceres-wrap { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2d3748; max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    .ceres-hero { background: linear-gradient(135deg, #312e81 0%, #4f46e5 45%, #6366f1 100%); border-radius: 24px; padding: 2.5rem 2rem 2.2rem; color: #fff; text-align: center; position: relative; overflow: hidden; box-shadow: 0 18px 40px rgba(79, 70, 229, 0.28); margin-bottom: 1.75rem; }
+    .ceres-hero:before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(167, 139, 250, 0.18); top: -90px; right: -60px; }
+    .ceres-hero:after { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); bottom: -70px; left: -40px; }
+    .ceres-hero-inner { position: relative; z-index: 1; }
+    .ceres-logo-bar { background: #0b0f1a; border-radius: 16px; padding: 0.55rem 0.75rem; display: inline-block; margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.28); border: 1px solid rgba(79,70,229,0.35); }
+    .ceres-logo-bar img { max-width: 320px; width: 100%; height: auto; display: block; border-radius: 10px; }
+    .ceres-hero img.loempia_app_cover { display: block; width: 100%; max-width: min(100%, 960px); height: auto; margin: 1.35rem auto 0 auto; border-radius: 14px; border: 1px solid rgba(255,255,255,0.22); }
+    .ceres-pill { display: inline-block; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); color: #fff; border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; margin: 0.2rem; }
+    .ceres-pill-accent { background: #a78bfa; border-color: #a78bfa; color: #1e1b4b; font-weight: 600; }
+    .ceres-section { background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(15, 21, 31, 0.06); border: 1px solid #e8eef5; }
+    .ceres-section-soft { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .ceres-h2 { font-size: 1.55rem; font-weight: 700; color: #0f172a; margin: 0 0 0.35rem 0; text-align: center; }
+    .ceres-sub { text-align: center; color: #6b7a8c; margin: 0 0 1.4rem 0; font-size: 1rem; }
+    .ceres-accent-line { width: 64px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, #4f46e5, #a78bfa); margin: 0 auto 1.25rem auto; }
+    .ceres-feature { background: #fff; border: 1px solid #e4edf6; border-radius: 16px; padding: 1.25rem 1.1rem; height: 100%; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.05); }
+    .ceres-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 0.85rem; color: #fff; background: linear-gradient(135deg, #4f46e5, #6366f1); box-shadow: 0 8px 16px rgba(79, 70, 229, 0.25); }
+    .ceres-icon.orange { background: linear-gradient(135deg, #7c3aed, #a78bfa); box-shadow: 0 8px 16px rgba(124, 58, 237, 0.28); }
+    .ceres-feature h4 { color: #0f172a; font-size: 1.05rem; font-weight: 700; margin: 0 0 0.45rem 0; }
+    .ceres-feature p { color: #5a6a7a; font-size: 0.94rem; line-height: 1.6; margin: 0; }
+    .ceres-split { border-radius: 18px; padding: 1.35rem 1.2rem; height: 100%; }
+    .ceres-problem { background: linear-gradient(160deg, #fff5f5 0%, #ffffff 70%); border: 1px solid #f5c6c6; }
+    .ceres-solution { background: linear-gradient(160deg, #f0faf4 0%, #ffffff 70%); border: 1px solid #bfe3cb; }
+    .ceres-split h3 { font-size: 1.2rem; font-weight: 700; margin: 0 0 0.85rem 0; }
+    .ceres-split ul { padding-left: 0; list-style: none; margin: 0; }
+    .ceres-split li { position: relative; padding: 0.4rem 0 0.4rem 1.7rem; color: #4a5568; font-size: 0.96rem; line-height: 1.5; }
+    .ceres-problem li:before { content: '\f00d'; font-family: FontAwesome; position: absolute; left: 0; color: #e74c3c; font-size: 0.9rem; top: 0.45rem; }
+    .ceres-solution li:before { content: '\f00c'; font-family: FontAwesome; position: absolute; left: 0; color: #27ae60; font-size: 0.9rem; top: 0.45rem; }
+    .ceres-step-card { background: #fff; border-radius: 16px; border: 1px solid #e8eef5; padding: 1.1rem 1rem; margin-bottom: 0.9rem; display: flex; gap: 1rem; align-items: flex-start; box-shadow: 0 4px 12px rgba(15, 21, 31, 0.04); }
+    .ceres-step-num { min-width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #4f46e5, #a78bfa); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25); }
+    .ceres-shot { background: #fff; border-radius: 18px; border: 1px solid #e8eef5; padding: 1.25rem; margin-bottom: 1.35rem; box-shadow: 0 10px 28px rgba(15, 21, 31, 0.07); }
+    .ceres-shot-badge { display: inline-block; background: #f7941d; color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; border-radius: 999px; padding: 0.28rem 0.75rem; margin-bottom: 0.55rem; text-transform: uppercase; }
+    .ceres-shot h3 { color: #4f46e5; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.55rem 0; }
+    .ceres-shot p { color: #5a6a7a; font-size: 0.98rem; line-height: 1.6; margin: 0 0 1rem 0; }
+    .ceres-shot img { width: 100%; border-radius: 12px; border: 1px solid #dbe5ef; box-shadow: 0 8px 22px rgba(15, 21, 31, 0.1); }
+    .ceres-chip { display: inline-block; background: #eef2ff; color: #4f46e5; border-radius: 999px; padding: 0.4rem 0.85rem; margin: 0.25rem; font-size: 0.86rem; font-weight: 600; border: 1px solid #c7d2fe; }
+    .ceres-stat { text-align: center; background: #fff; border: 1px solid #e8eef5; border-radius: 14px; padding: 1rem 0.5rem; height: 100%; }
+    .ceres-stat .n { font-size: 1.6rem; font-weight: 800; }
+    .ceres-stat .l { color: #6b7a8c; font-size: 0.86rem; margin-top: 0.25rem; }
+    .ceres-contact { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #4f46e5 100%); border-radius: 22px; padding: 2rem 1.5rem; color: #fff; box-shadow: 0 18px 36px rgba(15, 21, 31, 0.22); }
+    .ceres-contact a { color: #ddd6fe; text-decoration: none; font-weight: 600; }
+    .ceres-contact a:hover { color: #a78bfa; }
+    .ceres-contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 1.1rem 1rem; height: 100%; }
+    .ceres-cta { display: inline-block; background: #a78bfa; color: #1e1b4b !important; border-radius: 999px; padding: 0.7rem 1.4rem; font-weight: 700; margin-top: 0.75rem; box-shadow: 0 8px 18px rgba(167, 139, 250, 0.35); }
+    .ceres-compat { text-align: center; background: #fff; border: 1px solid #e4edf6; border-radius: 14px; padding: 1rem 0.6rem; height: 100%; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.05); }
+    .ceres-compat i { color: #4f46e5; font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
+    .ceres-compat b { color: #0f172a; font-size: 0.95rem; }
 </style>
 
-<div class="arm-wrap" itemscope itemtype="https://schema.org/SoftwareApplication">
-
-    <!-- HERO -->
-    <div class="arm-hero">
-        <div class="arm-hero-inner">
-            <div class="arm-logo-bar">
+<div class="ceres-wrap" itemscope itemtype="https://schema.org/SoftwareApplication">
+    <div class="ceres-hero">
+        <div class="ceres-hero-inner">
+            <div class="ceres-logo-bar">
                 <a href="https://www.armorait.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="company_logo.png"
-                         alt="ARMORA IT Technologies | Odoo Apps"
-                         title="ARMORA IT Technologies"/>
+                    <img src="company_logo.png" alt="ARMORA IT Technologies" title="ARMORA IT Technologies"/>
                 </a>
             </div>
             <div style="margin-bottom: 0.9rem;">
-                <span class="arm-pill"><i class="fa fa-cube"></i> Odoo 19 Community</span>
-                <span class="arm-pill"><i class="fa fa-globe"></i> Website Launch</span>
-                <span class="arm-pill arm-pill-accent"><i class="fa fa-magic"></i> AI Platform</span>
+                <span class="ceres-pill"><i class="fa fa-cube"></i> Odoo 19 Community</span>
+                <span class="ceres-pill"><i class="fa fa-check"></i> Production Ready</span>
+                <span class="ceres-pill ceres-pill-accent"><i class="fa fa-star"></i> AI Website</span>
             </div>
-            <img src="icon.png" alt="AI Business Launch Core by ARMORA IT Technologies"
-                 style="width: 78px; height: 78px; border-radius: 18px; background: #fff; padding: 8px; margin-bottom: 1rem; box-shadow: 0 10px 24px rgba(0,0,0,0.18);"/>
-            <h1 style="font-size: 2.35rem; font-weight: 800; margin: 0 0 0.55rem 0; letter-spacing: -0.02em;" itemprop="name">
-                AI Business Launch Core
-            </h1>
-            <p style="font-size: 1.12rem; opacity: 0.95; max-width: 760px; margin: 0 auto 0.85rem auto; line-height: 1.55;" itemprop="description">
-                Turn a plain-language business brief into website structure, pages, content blocks, SEO metadata, and Odoo publish hooks.
-            </p>
-            <p style="margin: 0; font-weight: 600; color: #ddd6fe;">
-                by ARMORA IT Technologies | Odoo 19 Community Apps
-            </p>
+            <img src="icon.png" alt="AI Business Launch Core" style="width: 78px; height: 78px; border-radius: 18px; background: #fff; padding: 8px; margin-bottom: 1rem; box-shadow: 0 10px 24px rgba(0,0,0,0.18);"/>
+            <h1 style="font-size: 2.35rem; font-weight: 800; margin: 0 0 0.55rem 0; letter-spacing: -0.02em;" itemprop="name">AI Business Launch Core</h1>
+            <p style="font-size: 1.12rem; opacity: 0.95; max-width: 720px; margin: 0 auto 0.85rem auto; line-height: 1.55;" itemprop="description">AI business brief, site structure, pages, SEO, and Odoo publish hooks</p>
+            <p style="margin: 0; font-weight: 600; color: #ddd6fe;">by ARMORA IT Technologies | Odoo 19 Community Apps</p>
             <meta itemprop="applicationCategory" content="BusinessApplication"/>
             <meta itemprop="operatingSystem" content="Odoo 19"/>
+            <img class="img img-fluid loempia_app_cover shadow-sm banner" src="banner.png" alt="AI Business Launch Core banner"/>
         </div>
     </div>
 
-    <!-- TAGS -->
     <div style="text-align: center; margin-bottom: 1.75rem;">
-        <span class="arm-chip"><i class="fa fa-check"></i> Community</span>
-        <span class="arm-chip"><i class="fa fa-file-text-o"></i> Brief to Pages</span>
-        <span class="arm-chip"><i class="fa fa-search"></i> SEO Ready</span>
-        <span class="arm-chip"><i class="fa fa-paint-brush"></i> Theme Presets</span>
-        <span class="arm-chip"><i class="fa fa-cloud-upload"></i> Publish Hooks</span>
+        <span class="ceres-chip"><i class="fa fa-check"></i> Community</span>
+        <span class="ceres-chip"><i class="fa fa-cloud"></i> Odoo.sh Ready</span>
+        <span class="ceres-chip"><i class="fa fa-bolt"></i> Pages Smart Button</span>
+        <span class="ceres-chip"><i class="fa fa-shield"></i> Access Rights</span>
+        <span class="ceres-chip"><i class="fa fa-building"></i> Multi-company</span>
     </div>
 
-    <!-- OVERVIEW -->
-    <div class="arm-section arm-section-soft">
-        <h2 class="arm-h2"><i class="fa fa-eye" style="color:#4f46e5;"></i> Overview</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">An AI Business Launch Platform, not just a page generator</p>
-        <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0 0 0.9rem 0;">
-            Most teams still describe the business in chat, then rebuild the website by hand in Odoo.
-            That slows launches and leaves SEO, structure, and messaging inconsistent.
-        </p>
-        <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0;">
-            <b style="color:#4f46e5;">AI Business Launch Core</b> captures a business brief (type, location, tone, audience, keywords),
-            generates a multi-page website project with content blocks and theme presets, stores SEO metadata per page,
-            and prepares publish workflow hooks for Odoo Website and companion modules.
-        </p>
+    <div class="ceres-section ceres-section-soft">
+        <h2 class="ceres-h2"><i class="fa fa-eye" style="color:#4f46e5;"></i> Overview</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">From business brief to site structure, SEO, and publish hooks</p>
+        <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0 0 0.9rem 0;">Turn a plain-language business description into a structured website project</p>
+        <p style="color:#4a5568; font-size:1.05rem; line-height:1.75; margin:0;"><b style="color:#4f46e5;">AI Business Launch Core</b> with pages, content blocks, theme, SEO metadata, and Odoo integration hooks. It is built for <b>Odoo 19 Community</b> by ARMORA IT Technologies.</p>
     </div>
 
-    <!-- PROBLEM / SOLUTION -->
     <div class="row" style="margin-left:-8px; margin-right:-8px;">
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-split arm-problem">
+            <div class="ceres-split ceres-problem">
                 <h3 style="color:#c0392b;"><i class="fa fa-exclamation-circle"></i> The Problem</h3>
                 <ul>
-                    <li>Business ideas stay in notes and chat threads</li>
-                    <li>Website pages are built page-by-page by hand</li>
-                    <li>SEO titles and descriptions are often missing</li>
-                    <li>Theme and messaging drift across pages</li>
-                    <li>No clear path from brief to publish in Odoo</li>
+                    <li>Website projects start as messy briefs in docs and chats</li>
+                    <li>Page structure and SEO are rebuilt manually every time</li>
+                    <li>Theme and content blocks stay inconsistent</li>
+                    <li>Publish to Odoo Website needs custom glue</li>
+                    <li>No operations view for launch progress</li>
                 </ul>
             </div>
         </div>
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-split arm-solution">
-                <h3 style="color:#4f46e5;"><i class="fa fa-check-circle"></i> The Solution</h3>
+            <div class="ceres-split ceres-solution">
+                <h3 style="color:#1e8449;"><i class="fa fa-check-circle"></i> The Solution</h3>
                 <ul>
-                    <li>Capture a structured <b>Business Brief</b></li>
-                    <li>Generate pages, blocks, and theme in one flow</li>
-                    <li>SEO metadata and OG fields per page</li>
-                    <li>Operations dashboard for project status</li>
-                    <li>Publish hooks ready for Odoo Website sync</li>
+                    <li>Business brief capture in Odoo</li>
+                    <li>Multi-page structure with content blocks</li>
+                    <li>Theme presets and SEO metadata</li>
+                    <li>Publish workflow and Website sync hooks</li>
+                    <li>Launch dashboard for project status</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- KEY FEATURES -->
-    <div class="arm-section" style="margin-top:1.5rem;">
-        <h2 class="arm-h2"><i class="fa fa-diamond" style="color:#4f46e5;"></i> Key Features</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">Phase 1 core for the AI Business Launch suite</p>
+    <div class="ceres-section" style="margin-top:1.5rem;">
+        <h2 class="ceres-h2"><i class="fa fa-diamond" style="color:#f7941d;"></i> Key Features</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">Built for marketers, founders, and website teams</p>
         <div class="row" style="margin-left:-8px; margin-right:-8px;">
+
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-commenting"></i></div>
-                    <h4>Business Brief</h4>
-                    <p>Capture business type, location, tone, audience, and keywords in a guided brief form.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-bolt"></i></div>
+                    <h4>Business brief capture</h4>
+                    <p>Business brief capture (type, location, tone, audience, keywords)</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-sitemap"></i></div>
-                    <h4>Site Structure</h4>
-                    <p>Build a multi-page website project with Home, Services, About, FAQ, Contact, and more.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-list-alt"></i></div>
+                    <h4>Website project with multi-page structur...</h4>
+                    <p>Website project with multi-page structure. Available in <b>AI Business Launch Core</b> for Odoo 19 Community teams.</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-th-large"></i></div>
-                    <h4>Content Blocks</h4>
-                    <p>Hero, services, FAQ, CTA, contact, and other reusable blocks for each page.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-bar-chart"></i></div>
+                    <h4>Content blocks</h4>
+                    <p>Content blocks (hero, services, FAQ, contact, CTA, etc.). Available in <b>AI Business Launch Core</b> for Odoo 19 Community teams.</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-paint-brush"></i></div>
-                    <h4>Theme Presets</h4>
-                    <p>Apply color, font, and layout presets so the generated site stays on-brand.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-exchange"></i></div>
+                    <h4>Theme presets</h4>
+                    <p>Theme presets (colors, fonts, layout style). Available in <b>AI Business Launch Core</b> for Odoo 19 Community teams.</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon"><i class="fa fa-search"></i></div>
-                    <h4>SEO Metadata</h4>
-                    <p>Title, meta description, and Open Graph fields stored per page for search and social.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon"><i class="fa fa-shield"></i></div>
+                    <h4>SEO metadata per page</h4>
+                    <p>SEO metadata per page (title, description, OG tags). Available in <b>AI Business Launch Core</b> for Odoo 19 Community teams.</p>
                 </div>
             </div>
             <div class="col-md-4" style="padding:8px;">
-                <div class="arm-feature">
-                    <div class="arm-icon indigo"><i class="fa fa-rocket"></i></div>
-                    <h4>Publish Hooks</h4>
-                    <p>Publish workflow and Odoo Website sync hooks for rollout and companion modules.</p>
+                <div class="ceres-feature">
+                    <div class="ceres-icon orange"><i class="fa fa-cogs"></i></div>
+                    <h4>Template-based site generation from brie...</h4>
+                    <p>Template-based site generation from brief (LLM-ready service layer)</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- HOW IT WORKS -->
-    <div class="arm-section arm-section-soft">
-        <h2 class="arm-h2"><i class="fa fa-road" style="color:#4f46e5;"></i> How It Works</h2>
-        <div class="arm-accent-line"></div>
-        <div class="arm-step-card">
-            <div class="arm-step-num">1</div>
-            <div><b style="color:#0f172a;">Install the module</b><br/><span style="color:#5a6a7a;">Add <code>rn_ai_site_base</code> to your addons path and install <b>AI Business Launch Core</b>.</span></div>
+    <div class="ceres-section ceres-section-soft">
+        <h2 class="ceres-h2"><i class="fa fa-road" style="color:#4f46e5;"></i> How It Works</h2>
+        <div class="ceres-accent-line"></div>
+
+        <div class="ceres-step-card">
+            <div class="ceres-step-num">1</div>
+            <div><b style="color:#0f172a;">Capture the brief</b><br/><span style="color:#5a6a7a;">Enter business type, audience, tone, and keywords.</span></div>
         </div>
-        <div class="arm-step-card">
-            <div class="arm-step-num">2</div>
-            <div><b style="color:#0f172a;">Create a Business Brief</b><br/><span style="color:#5a6a7a;">Describe the business, audience, tone, location, and keywords.</span></div>
+        <div class="ceres-step-card">
+            <div class="ceres-step-num">2</div>
+            <div><b style="color:#0f172a;">Generate structure</b><br/><span style="color:#5a6a7a;">Create the website project with pages and blocks.</span></div>
         </div>
-        <div class="arm-step-card">
-            <div class="arm-step-num">3</div>
-            <div><b style="color:#0f172a;">Generate the website project</b><br/><span style="color:#5a6a7a;">Create pages, content blocks, and theme presets from the brief.</span></div>
+        <div class="ceres-step-card">
+            <div class="ceres-step-num">3</div>
+            <div><b style="color:#0f172a;">Tune SEO and theme</b><br/><span style="color:#5a6a7a;">Set titles, descriptions, and theme presets.</span></div>
         </div>
-        <div class="arm-step-card">
-            <div class="arm-step-num">4</div>
-            <div><b style="color:#0f172a;">Review SEO and structure</b><br/><span style="color:#5a6a7a;">Tune page titles, descriptions, and block content before publish.</span></div>
+        <div class="ceres-step-card">
+            <div class="ceres-step-num">4</div>
+            <div><b style="color:#0f172a;">Review related pages</b><br/><span style="color:#5a6a7a;">Open pages from smart buttons on the project.</span></div>
         </div>
-        <div class="arm-step-card" style="margin-bottom:0;">
-            <div class="arm-step-num">5</div>
-            <div><b style="color:#0f172a;">Publish and extend</b><br/><span style="color:#5a6a7a;">Use publish hooks, then add companion modules for content, images, forms, products, and chatbot.</span></div>
+        <div class="ceres-step-card" style="margin-bottom:0;">
+            <div class="ceres-step-num">5</div>
+            <div><b style="color:#0f172a;">Publish hooks</b><br/><span style="color:#5a6a7a;">Push or sync toward Odoo Website when ready.</span></div>
         </div>
     </div>
 
-    <!-- SCREENSHOTS -->
-    <div class="arm-section">
-        <h2 class="arm-h2"><i class="fa fa-picture-o" style="color:#4f46e5;"></i> Screenshots</h2>
-        <div class="arm-accent-line"></div>
-        <p class="arm-sub">Key views from AI Business Launch Core on Odoo 19 Community</p>
+    <div class="ceres-section">
+        <h2 class="ceres-h2"><i class="fa fa-picture-o" style="color:#f7941d;"></i> Screenshots</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">See AI Business Launch Core in action on Odoo 19 Community</p>
 
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 01</span>
-            <h3>Operations Dashboard</h3>
-            <p>Track open, in-progress, and completed launch projects with weekly activity and recent records in one place.</p>
-            <img src="dashboard.png" alt="AI Business Launch Core operations dashboard"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 01</span>
+            <h3>AI Business Launch Core: Pages Smart Button</h3>
+            <p>Open a <b>AI Business Launch Core</b> website project form. The top-right button box shows <b>Pages</b> (or related records) with a live count.</p>
+            <img src="screenshot_ai_site_base_form.png" alt="AI Business Launch Core - AI Business Launch Core: Pages Smart Button"/>
         </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 02</span>
-            <h3>Module Overview</h3>
-            <p>Start from a clean overview that introduces the AI Business Launch Core workspace and project entry points.</p>
-            <img src="overview.png" alt="AI Business Launch Core overview"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 02</span>
+            <h3>Pages List from the Project</h3>
+            <p>Clicking the smart button opens project pages in list view with SEO and status fields.</p>
+            <img src="screenshot_ai_site_base_list.png" alt="AI Business Launch Core - Pages List from the Project"/>
         </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 03</span>
-            <h3>Business Brief / Project Form</h3>
-            <p>Capture the business description, tone, audience, and keywords that drive site generation.</p>
-            <img src="form.png" alt="AI Business Launch Core brief and project form"/>
+        <div class="ceres-shot">
+            <span class="ceres-shot-badge">Screenshot 03</span>
+            <h3>Launch Operations Dashboard</h3>
+            <p>Track open projects, pages in progress, completed launches, and alerts.</p>
+            <img src="screenshot_ai_site_base_dashboard.png" alt="AI Business Launch Core - Launch Operations Dashboard"/>
         </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 04</span>
-            <h3>Projects List</h3>
-            <p>Browse website projects in list view to review status, brief link, and publish readiness.</p>
-            <img src="list.png" alt="AI Business Launch Core projects list"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 05</span>
-            <h3>Kanban Pipeline</h3>
-            <p>Move projects across draft, generating, ready, and published stages with a visual board.</p>
-            <img src="kanban.png" alt="AI Business Launch Core kanban pipeline"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 06</span>
-            <h3>Generate Wizard</h3>
-            <p>Run the guided generation wizard to create pages, blocks, and theme presets from the brief.</p>
-            <img src="wizard.png" alt="AI Business Launch Core generate wizard"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 07</span>
-            <h3>Theme / Designer Presets</h3>
-            <p>Choose colors, fonts, and layout style so generated pages stay consistent across the site.</p>
-            <img src="designer.png" alt="AI Business Launch Core theme designer presets"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 08</span>
-            <h3>SEO and Search Fields</h3>
-            <p>Review page SEO titles, descriptions, and search-friendly metadata before going live.</p>
-            <img src="search.png" alt="AI Business Launch Core SEO and search fields"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 09</span>
-            <h3>Configuration Settings</h3>
-            <p>Configure AI credits, defaults, and module parameters from the settings screen.</p>
-            <img src="settings.png" alt="AI Business Launch Core settings"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 10</span>
-            <h3>Reports</h3>
-            <p>Review launch progress and project reporting for operations follow-up.</p>
-            <img src="report.png" alt="AI Business Launch Core reports"/>
-        </div>
-        <div class="arm-shot">
-            <span class="arm-shot-badge">Screenshot 11</span>
-            <h3>Process Workflow</h3>
-            <p>See how brief capture, generation, review, and publish fit together in one launch flow.</p>
-            <img src="workflow.png" alt="AI Business Launch Core process workflow"/>
-        </div>
-        <div class="arm-shot" style="margin-bottom:0;">
-            <span class="arm-shot-badge">Screenshot 12</span>
-            <h3>Mobile Friendly Workspace</h3>
-            <p>Monitor launch projects from a responsive backend layout on smaller screens.</p>
-            <img src="mobile.png" alt="AI Business Launch Core mobile view"/>
+        <div class="ceres-shot" style="margin-bottom:0;">
+            <span class="ceres-shot-badge">Screenshot 04</span>
+            <h3>Page: Back to Website Project</h3>
+            <p>From a page form, return to the parent website project.</p>
+            <img src="screenshot_ai_site_base_back.png" alt="AI Business Launch Core - Page: Back to Website Project"/>
         </div>
     </div>
 
-    <!-- INSTALL + COMPAT -->
     <div class="row" style="margin-left:-8px; margin-right:-8px;">
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-section" style="height:100%; margin-bottom:0;">
-                <h2 class="arm-h2" style="font-size:1.3rem;"><i class="fa fa-download" style="color:#4f46e5;"></i> Installation</h2>
-                <div class="arm-accent-line"></div>
+            <div class="ceres-section" style="height:100%; margin-bottom:0;">
+                <h2 class="ceres-h2" style="font-size:1.3rem;"><i class="fa fa-download" style="color:#4f46e5;"></i> Installation</h2>
+                <div class="ceres-accent-line"></div>
                 <ol style="padding-left:1.2rem; color:#4a5568; line-height:1.7; margin:0;">
-                    <li>Purchase and download the module ZIP from the Odoo Apps Store</li>
-                    <li>Extract <code>rn_ai_site_base</code> into your custom addons path</li>
-                    <li>Restart Odoo and update the Apps list</li>
-                    <li>Install <b>AI Business Launch Core</b></li>
-                    <li>Create a Business Brief and generate a website project</li>
-                    <li>Assign security groups and open the operations dashboard</li>
+                    <li>Add <code>rn_ai_site_base</code> to your addons path</li>
+                    <li>Restart the Odoo service</li>
+                    <li>Apps → Update Apps List</li>
+                    <li>Search <b>AI Business Launch Core</b></li>
+                    <li>Click <b>Install</b></li>
+                    <li>Complete settings and use the Pages smart workflows</li>
                 </ol>
             </div>
         </div>
         <div class="col-md-6" style="padding:8px;">
-            <div class="arm-section" style="height:100%; margin-bottom:0;">
-                <h2 class="arm-h2" style="font-size:1.3rem;"><i class="fa fa-check-square-o" style="color:#4f46e5;"></i> Compatibility</h2>
-                <div class="arm-accent-line"></div>
-                <div class="row" style="margin-left:-6px; margin-right:-6px;">
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;">
-                        <div class="arm-compat"><i class="fa fa-cube"></i><b>Odoo 19.0</b></div>
-                    </div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;">
-                        <div class="arm-compat"><i class="fa fa-users"></i><b>Community</b></div>
-                    </div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;">
-                        <div class="arm-compat"><i class="fa fa-code"></i><b>Python 3.12+</b></div>
-                    </div>
-                    <div class="col-xs-6" style="padding:6px; width:50%; float:left;">
-                        <div class="arm-compat"><i class="fa fa-cloud"></i><b>On-Prem / Odoo.sh</b></div>
-                    </div>
-                </div>
-                <div style="clear:both;"></div>
-                <p style="color:#6b7a8c; margin:1rem 0 0 0; font-size:0.95rem;">
-                    License <b>OPL-1</b>. Technical name <code>rn_ai_site_base</code>. Version <b>19.0.1.0.0</b>.
-                </p>
+            <div class="ceres-section" style="height:100%; margin-bottom:0;">
+                <h2 class="ceres-h2" style="font-size:1.3rem;"><i class="fa fa-wrench" style="color:#f7941d;"></i> Technical Notes</h2>
+                <div class="ceres-accent-line"></div>
+                <ul style="padding-left:1.2rem; color:#4a5568; line-height:1.7; margin:0;">
+                    <li><b>Depends on:</b> <code>base</code>, <code>mail</code>, <code>web</code>, <code>contacts</code>, <code>portal</code></li>
+                    <li><b>Models:</b> <code>block</code>, <code>brief</code>, <code>page</code>, <code>res_config_settings</code></li>
+                    <li><b>Category:</b> Website/Website</li>
+                    <li><b>Compatible:</b> Odoo 19 Community</li>
+                    <li><b>License:</b> OPL-1</li>
+                    <li><b>Version:</b> 19.0.1.0.0</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- FAQ -->
-    <div class="arm-section arm-faq" style="margin-top:1.5rem;">
-        <h2 class="arm-h2"><i class="fa fa-question-circle" style="color:#4f46e5;"></i> FAQ</h2>
-        <div class="arm-accent-line"></div>
-        <dl>
-            <dt>Does it work on Odoo Community?</dt>
-            <dd>Yes. Built for Odoo 19 Community.</dd>
-            <dt>Is this only a page generator?</dt>
-            <dd>No. It is the Phase 1 core of an AI Business Launch Platform: brief, structure, SEO, and publish hooks.</dd>
-            <dt>Can we customize generated pages?</dt>
-            <dd>Yes. Pages, blocks, themes, and SEO fields are standard Odoo records you can edit.</dd>
-            <dt>What about companion modules?</dt>
-            <dd>Roadmap includes AI content, images, blog, forms, products, publisher, chatbot, and SaaS API.</dd>
-            <dt>How do we get support?</dt>
-            <dd>Email <a href="mailto:info@armorait.com">info@armorait.com</a> or visit <a href="https://www.armorait.com">www.armorait.com</a>.</dd>
-        </dl>
-    </div>
-
-    <!-- WHY ARMORA -->
-    <div class="arm-section arm-section-soft">
-        <h2 class="arm-h2"><i class="fa fa-building" style="color:#4f46e5;"></i> Why ARMORA IT Technologies</h2>
-        <div class="arm-accent-line"></div>
+    <div class="ceres-section" style="margin-top:1.5rem;">
+        <h2 class="ceres-h2"><i class="fa fa-check-square-o" style="color:#4f46e5;"></i> Compatibility</h2>
+        <div class="ceres-accent-line"></div>
         <div class="row" style="margin-left:-8px; margin-right:-8px;">
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-feature">
-                    <h4>Odoo-native delivery</h4>
-                    <p>ORM, OWL, Bootstrap 5, and clean inheritance. No Enterprise lock-in tricks.</p>
-                </div>
-            </div>
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-feature">
-                    <h4>Implementation experience</h4>
-                    <p>Built by consultants who roll out ERP, CRM, website, and industry packs for real businesses.</p>
-                </div>
-            </div>
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-feature">
-                    <h4>Long-term maintenance</h4>
-                    <p>Versioned releases, changelog discipline, and support through info@armorait.com.</p>
-                </div>
-            </div>
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-feature">
-                    <h4>Suite thinking</h4>
-                    <p>Modules share naming, security patterns, and roadmap so your AI stack grows cleanly.</p>
-                </div>
-            </div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-compat"><i class="fa fa-cube"></i><b>Odoo 19.0</b></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-compat"><i class="fa fa-users"></i><b>Community</b></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-compat"><i class="fa fa-code"></i><b>Python 3.12+</b></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-compat"><i class="fa fa-cloud"></i><b>On-Premise / Odoo.sh</b></div></div>
         </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="arm-contact">
-        <div style="text-align:center; margin-bottom:1.25rem;">
-            <h2 style="font-size:1.6rem; font-weight:800; margin:0 0 0.4rem 0; color:#fff;">
-                Support &amp; Contact
-            </h2>
-            <p style="margin:0; opacity:0.9;">Request a demo or rollout help for AI Business Launch Core</p>
-        </div>
-        <div class="row" style="margin-left:-8px; margin-right:-8px;">
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-contact-card">
-                    <h4 style="margin:0 0 0.55rem 0; color:#ddd6fe;">ARMORA IT Technologies</h4>
-                    <p style="margin:0; line-height:1.65; opacity:0.95;">
-                        Odoo Apps, AI automation, and ERP implementation for growing businesses.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6" style="padding:8px;">
-                <div class="arm-contact-card">
-                    <p style="margin:0 0 0.45rem 0;"><i class="fa fa-envelope"></i>
-                        <a href="mailto:info@armorait.com">info@armorait.com</a></p>
-                    <p style="margin:0 0 0.45rem 0;"><i class="fa fa-globe"></i>
-                        <a href="https://www.armorait.com/" target="_blank" rel="noopener noreferrer">www.armorait.com</a></p>
-                    <p style="margin:0;"><i class="fa fa-shopping-cart"></i> License: OPL-1</p>
-                    <a class="arm-cta" href="https://www.armorait.com/contactus" target="_blank" rel="noopener noreferrer">
-                        Request free consultation
-                    </a>
-                </div>
-            </div>
-        </div>
-        <p style="text-align:center; margin:1.25rem 0 0 0; font-size:0.9rem; opacity:0.75;">
-            © ARMORA IT Technologies. All rights reserved.
+        <p style="text-align:center; color:#6b7a8c; margin:1rem 0 0 0; font-size:0.95rem;">
+            Built for AI Business Launch Core. Multi-company friendly. Technical name <code>rn_ai_site_base</code>.
         </p>
     </div>
 
+    <div class="ceres-section ceres-section-soft" itemscope itemtype="https://schema.org/Organization">
+        <h2 class="ceres-h2"><i class="fa fa-building" style="color:#f7941d;"></i> About ARMORA IT Technologies</h2>
+        <div class="ceres-accent-line"></div>
+        <p class="ceres-sub">Odoo Apps, AI automation, and ERP implementation</p>
+        <div class="text-center" style="margin-bottom:1.1rem;">
+            <img src="company_logo.png" alt="ARMORA IT Technologies logo" itemprop="logo" style="max-width:300px; width:100%; height:auto; border-radius:10px;"/>
+        </div>
+        <meta itemprop="name" content="ARMORA IT Technologies"/>
+        <meta itemprop="url" content="https://www.armorait.com"/>
+        <p style="color:#4a5568; line-height:1.75; font-size:1.02rem;">
+            <b>ARMORA IT Technologies</b> builds practical <b>Odoo Community apps</b> such as <b>AI Business Launch Core</b>
+            for teams that want production-ready modules without a long custom project.
+        </p>
+        <p style="color:#4a5568; line-height:1.75; font-size:1.02rem; margin-bottom:1.25rem;">
+            Need help rolling out this app? Email <b>info@armorait.com</b> or visit <b>www.armorait.com</b>.
+        </p>
+        <div class="row" style="margin-left:-8px; margin-right:-8px;">
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-stat"><div class="n" style="color:#4f46e5;">60+</div><div class="l">Odoo Apps</div></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-stat"><div class="n" style="color:#4f46e5;">Odoo 19</div><div class="l">Community Ready</div></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-stat"><div class="n" style="color:#7c3aed;">AI</div><div class="l">Automation Focus</div></div></div>
+            <div class="col-md-3 col-6" style="padding:8px;"><div class="ceres-stat"><div class="n" style="color:#7c3aed;">OPL</div><div class="l">Commercial License</div></div></div>
+        </div>
+    </div>
+
+    <div class="ceres-contact" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="ARMORA IT Technologies"/>
+        <meta itemprop="email" content="info@armorait.com"/>
+        <link itemprop="url" href="https://www.armorait.com/"/>
+        <div style="text-align:center; margin-bottom:1.25rem;">
+            <h2 style="font-size:1.6rem; font-weight:800; margin:0 0 0.4rem 0; color:#fff;">Support &amp; Contact</h2>
+            <p style="margin:0; opacity:0.9;">Questions about AI Business Launch Core? We can help with demo and rollout.</p>
+        </div>
+        <div class="row" style="margin-left:-8px; margin-right:-8px;">
+            <div class="col-md-6" style="padding:8px;">
+                <div class="ceres-contact-card">
+                    <h4 style="margin:0 0 0.55rem 0; color:#ddd6fe;">ARMORA IT Technologies</h4>
+                    <p style="margin:0; line-height:1.65; opacity:0.95;">Odoo Apps, AI automation, and ERP implementation for growing businesses.</p>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding:8px;">
+                <div class="ceres-contact-card">
+                    <p style="margin:0 0 0.45rem 0;"><i class="fa fa-envelope"></i> <a href="mailto:info@armorait.com" itemprop="email">info@armorait.com</a></p>
+                    <p style="margin:0 0 0.45rem 0;"><i class="fa fa-globe"></i> <a href="https://www.armorait.com/" target="_blank" rel="noopener noreferrer" itemprop="url">www.armorait.com</a></p>
+                    <p style="margin:0;"><i class="fa fa-shopping-cart"></i> License: OPL-1</p>
+                    <a class="ceres-cta" href="https://www.armorait.com/contactus" target="_blank" rel="noopener noreferrer">Request free consultation</a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center; margin:1.25rem 0 0 0; font-size:0.9rem; opacity:0.75;">© ARMORA IT Technologies. All rights reserved.</p>
+    </div>
 </div>
