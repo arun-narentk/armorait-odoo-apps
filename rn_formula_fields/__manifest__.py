@@ -33,12 +33,13 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-            'images': [
+                        'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/screenshot_form.png',
-        'static/description/screenshot_list.png',
-        'static/description/screenshot_dashboard.png',
-        'static/description/screenshot_back.png',
+        'static/description/company_logo.png',
+        'static/description/screenshot_formula_fields_form.png',
+        'static/description/screenshot_formula_fields_list.png',
+        'static/description/screenshot_formula_fields_dashboard.png',
+        'static/description/screenshot_formula_fields_back.png',
     ],
 }

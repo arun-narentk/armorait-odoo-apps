@@ -51,13 +51,14 @@ Generic duplicate detection framework for any Odoo model.
     'demo': [
         'demo/demo.xml',
     ],
-            'images': [
+                        'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/screenshot_form.png',
-        'static/description/screenshot_list.png',
-        'static/description/screenshot_dashboard.png',
-        'static/description/screenshot_back.png',
+        'static/description/company_logo.png',
+        'static/description/screenshot_duplicate_finder_form.png',
+        'static/description/screenshot_duplicate_finder_list.png',
+        'static/description/screenshot_duplicate_finder_dashboard.png',
+        'static/description/screenshot_duplicate_finder_back.png',
     ],
     'installable': True,
     'application': True,

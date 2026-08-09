@@ -30,12 +30,13 @@ accounting fallback dictionary for bilingual Saudi and GCC teams.
     'currency': 'USD',
     'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
-            'images': [
+                        'images': [
         'static/description/banner.png',
         'static/description/icon.png',
-        'static/description/screenshot_form.png',
-        'static/description/screenshot_list.png',
-        'static/description/screenshot_dashboard.png',
-        'static/description/screenshot_back.png',
+        'static/description/company_logo.png',
+        'static/description/screenshot_arabic_tooltip_form.png',
+        'static/description/screenshot_arabic_tooltip_list.png',
+        'static/description/screenshot_arabic_tooltip_dashboard.png',
+        'static/description/screenshot_arabic_tooltip_back.png',
     ],
 }
