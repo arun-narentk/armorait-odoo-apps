@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_rn_dashboard_kpi_root"
+              name="Dashboard Studio"
+              web_icon="rn_dashboard_kpi,static/description/icon.png"
+              sequence="45"
+              groups="group_rn_dashboard_kpi_user"/>
+
+    <menuitem id="menu_rn_kpi_dashboard"
+              name="Dashboards"
+              parent="menu_rn_dashboard_kpi_root"
+              action="action_rn_kpi_dashboard"
+              sequence="10"/>
+
+    <menuitem id="menu_rn_kpi_dashboard_item"
+              name="Items"
+              parent="menu_rn_dashboard_kpi_root"
+              action="action_rn_kpi_dashboard_item"
+              sequence="20"
+              groups="group_rn_dashboard_kpi_manager"/>
+
+    <menuitem id="menu_rn_kpi_dashboard_filter"
+              name="Filters"
+              parent="menu_rn_dashboard_kpi_root"
+              action="action_rn_kpi_dashboard_filter"
+              sequence="30"
+              groups="group_rn_dashboard_kpi_manager"/>
+
+    <menuitem id="menu_rn_kpi_dashboard_bookmark"
+              name="My Bookmarks"
+              parent="menu_rn_dashboard_kpi_root"
+              action="action_rn_kpi_dashboard_bookmark"
+              sequence="40"/>
+</odoo>

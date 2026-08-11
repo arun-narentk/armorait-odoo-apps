@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="rn_dashboard_kpi.DashboardAction">
+        <div class="o_rn_kpi_dashboard o_action h-100 d-flex flex-column">
+            <div class="o_rn_kpi_dashboard_header px-3 py-2 border-bottom">
+                <h2 class="m-0" t-esc="title"/>
+            </div>
+            <div class="o_rn_kpi_dashboard_body flex-grow-1 p-4 text-muted">
+                <p class="mb-1">Dashboard KPI Studio is ready. Configure items in the backend, then reopen this board.</p>
+                <p class="mb-0" t-if="dashboardId">
+                    Dashboard id: <t t-esc="dashboardId"/>
+                </p>
+                <p class="mb-0" t-else="">
+                    Open a dashboard from Dashboard Studio to load its layout.
+                </p>
+            </div>
+        </div>
+    </t>
+</templates>

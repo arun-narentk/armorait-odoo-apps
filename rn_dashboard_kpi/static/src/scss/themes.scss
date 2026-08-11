@@ -1,0 +1,27 @@
+.o_rn_kpi_dashboard[data-theme="dark"] {
+    --rn-kpi-bg: #0b1220;
+    --rn-kpi-card-bg: #152238;
+    --rn-kpi-border: #243b53;
+    --rn-kpi-text: #f0f4f8;
+    --rn-kpi-muted: #9fb3c8;
+    --rn-kpi-accent: #38bdf8;
+}
+
+.o_rn_kpi_dashboard[data-theme="professional"] {
+    --rn-kpi-bg: #eef2f6;
+    --rn-kpi-card-bg: #ffffff;
+    --rn-kpi-accent: #1d4ed8;
+}
+
+.o_rn_kpi_dashboard[data-theme="minimal"] {
+    --rn-kpi-bg: #ffffff;
+    --rn-kpi-card-bg: #ffffff;
+    --rn-kpi-border: #e5e7eb;
+    --rn-kpi-accent: #111827;
+}
+
+.o_rn_kpi_dashboard[data-theme="executive"] {
+    --rn-kpi-bg: #f8fafc;
+    --rn-kpi-card-bg: #ffffff;
+    --rn-kpi-accent: #0f766e;
+}

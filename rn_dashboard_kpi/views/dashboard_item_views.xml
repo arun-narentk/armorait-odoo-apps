@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_kpi_dashboard_item" model="ir.actions.act_window">
+        <field name="name">Dashboard Items</field>
+        <field name="res_model">rn.kpi.dashboard.item</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_kpi_dashboard_item_list" model="ir.ui.view">
+        <field name="name">rn.kpi.dashboard.item.list</field>
+        <field name="model">rn.kpi.dashboard.item</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="dashboard_id"/>
+                <field name="item_type"/>
+                <field name="model_id"/>
+                <field name="aggregation"/>
+                <field name="data_source_type"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_kpi_dashboard_item_form" model="ir.ui.view">
+        <field name="name">rn.kpi.dashboard.item.form</field>
+        <field name="model">rn.kpi.dashboard.item</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Item">
+                <header>
+                    <button name="action_duplicate_item" type="object" string="Duplicate"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="General">
+                            <field name="name"/>
+                            <field name="dashboard_id"/>
+                            <field name="item_type"/>
+                            <field name="chart_type"/>
+                            <field name="title"/>
+                            <field name="subtitle"/>
+                            <field name="icon"/>
+                            <field name="icon_color"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Data Source">
+                            <field name="data_source_type"/>
+                            <field name="model_id" invisible="data_source_type != 'odoo'"/>
+                            <field name="model_name" invisible="data_source_type != 'odoo'"/>
+                            <field name="external_file_id" invisible="data_source_type == 'odoo'"/>
+                            <field name="domain"/>
+                            <field name="context"/>
+                            <field name="group_by"/>
+                            <field name="date_field"/>
+                            <field name="date_granularity"/>
+                            <field name="measure"/>
+                            <field name="measure_field_ids" widget="many2many_tags"/>
+                            <field name="aggregation"/>
+                            <field name="sort_field"/>
+                            <field name="sort_order"/>
+                            <field name="limit"/>
+                        </group>
+                    </group>
+                    <group string="Axes">
+                        <group>
+                            <field name="x_axis_field"/>
+                            <field name="y_axis_field"/>
+                            <field name="secondary_axis_field"/>
+                        </group>
+                        <group>
+                            <field name="dimensions"/>
+                            <field name="measures"/>
+                            <field name="formula_config"/>
+                        </group>
+                    </group>
+                    <group string="Appearance">
+                        <group>
+                            <field name="color_palette"/>
+                            <field name="custom_colors"/>
+                            <field name="number_format"/>
+                            <field name="decimal_places"/>
+                            <field name="currency_field"/>
+                            <field name="tile_size"/>
+                        </group>
+                        <group>
+                            <field name="show_title"/>
+                            <field name="show_legend"/>
+                            <field name="show_labels"/>
+                            <field name="show_values"/>
+                            <field name="animation_enabled"/>
+                            <field name="animation_config"/>
+                            <field name="css_class"/>
+                            <field name="style_config"/>
+                        </group>
+                    </group>
+                    <group string="Layout">
+                        <group>
+                            <field name="layout_x"/>
+                            <field name="layout_y"/>
+                            <field name="layout_width"/>
+                            <field name="layout_height"/>
+                        </group>
+                        <group>
+                            <field name="min_width"/>
+                            <field name="min_height"/>
+                            <field name="refresh_interval"/>
+                        </group>
+                    </group>
+                    <group string="Drill-down">
+                        <field name="drilldown_enabled"/>
+                        <field name="drilldown_action_id" invisible="not drilldown_enabled"/>
+                        <field name="target_action_id"/>
+                        <field name="filter_config"/>
+                    </group>
+                    <notebook>
+                        <page string="Item Filters" name="item_filters">
+                            <field name="item_filter_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="field_name"/>
+                                    <field name="operator"/>
+                                    <field name="value"/>
+                                    <field name="value_from"/>
+                                    <field name="value_to"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

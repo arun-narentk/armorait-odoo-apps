@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rn_kpi_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboards</field>
+        <field name="res_model">rn.kpi.dashboard</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_rn_kpi_dashboard_list" model="ir.ui.view">
+        <field name="name">rn.kpi.dashboard.list</field>
+        <field name="model">rn.kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="theme"/>
+                <field name="user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="item_count"/>
+                <field name="is_public"/>
+                <field name="is_favorite"/>
+                <field name="is_template"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_rn_kpi_dashboard_form" model="ir.ui.view">
+        <field name="name">rn.kpi.dashboard.form</field>
+        <field name="model">rn.kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard">
+                <header>
+                    <button name="action_open_dashboard" type="object" string="Open Dashboard" class="btn-primary"/>
+                    <button name="action_duplicate" type="object" string="Duplicate"/>
+                    <button name="action_export" type="object" string="Export JSON"/>
+                    <button name="action_create_menu" type="object" string="Create Menu" groups="rn_dashboard_kpi.group_rn_dashboard_kpi_manager"/>
+                    <button name="action_toggle_favorite" type="object" string="Toggle Favorite"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Dashboard name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="theme"/>
+                            <field name="layout_mode"/>
+                            <field name="user_id"/>
+                            <field name="is_public"/>
+                            <field name="is_favorite"/>
+                            <field name="is_template"/>
+                            <field name="active"/>
+                            <field name="item_count" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="company_ids" widget="many2many_tags" groups="base.group_multi_company"/>
+                            <field name="group_ids" widget="many2many_tags"/>
+                            <field name="auto_refresh"/>
+                            <field name="refresh_interval" invisible="not auto_refresh"/>
+                            <field name="date_filter_type"/>
+                            <field name="date_from" invisible="date_filter_type != 'custom'"/>
+                            <field name="date_to" invisible="date_filter_type != 'custom'"/>
+                            <field name="background_type"/>
+                            <field name="background_color" invisible="background_type != 'color'"/>
+                            <field name="background_image" widget="image" invisible="background_type != 'image'"/>
+                            <field name="action_id" readonly="1" groups="base.group_no_one"/>
+                            <field name="menu_id" readonly="1" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Items" name="items">
+                            <field name="item_ids">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="item_type"/>
+                                    <field name="model_id"/>
+                                    <field name="aggregation"/>
+                                    <field name="layout_x"/>
+                                    <field name="layout_y"/>
+                                    <field name="layout_width"/>
+                                    <field name="layout_height"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Filters" name="filters">
+                            <field name="filter_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="filter_type"/>
+                                    <field name="field_name"/>
+                                    <field name="operator"/>
+                                    <field name="value"/>
+                                    <field name="date_filter_type"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Description" name="description">
+                            <field name="description" placeholder="Optional notes for editors"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rn_kpi_dashboard_search" model="ir.ui.view">
+        <field name="name">rn.kpi.dashboard.search</field>
+        <field name="model">rn.kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="user_id"/>
+                <filter string="Favorites" name="filter_favorite" domain="[('is_favorite', '=', True)]"/>
+                <filter string="Public" name="filter_public" domain="[('is_public', '=', True)]"/>
+                <filter string="Templates" name="filter_template" domain="[('is_template', '=', True)]"/>
+                <separator/>
+                <filter string="Archived" name="filter_inactive" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter string="Owner" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Theme" name="group_theme" context="{'group_by': 'theme'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

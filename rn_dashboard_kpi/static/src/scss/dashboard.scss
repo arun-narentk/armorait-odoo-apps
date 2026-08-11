@@ -1,0 +1,21 @@
+.o_rn_kpi_dashboard {
+    --rn-kpi-bg: #f5f7fa;
+    --rn-kpi-card-bg: #ffffff;
+    --rn-kpi-border: #d9e2ec;
+    --rn-kpi-text: #102a43;
+    --rn-kpi-muted: #627d98;
+    --rn-kpi-accent: #0f4c81;
+    --rn-kpi-radius: 0.5rem;
+    --rn-kpi-gap: 1rem;
+
+    background: var(--rn-kpi-bg);
+    color: var(--rn-kpi-text);
+}
+
+.o_rn_kpi_dashboard_header {
+    background: var(--rn-kpi-card-bg);
+}
+
+.o_rn_kpi_dashboard_body {
+    color: var(--rn-kpi-muted);
+}

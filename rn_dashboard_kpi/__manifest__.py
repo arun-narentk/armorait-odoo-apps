@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Dashboard KPI Studio',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.1.0',
     'category': 'Productivity',
     'summary': 'No-code Odoo dashboard builder with KPIs, charts, filters, and layouts',
     'description': """
@@ -11,11 +11,11 @@ Dashboard KPI Studio for Odoo 19 Community
 Original ARMORA dashboard builder for creating KPI tiles, charts, lists, and
 interactive layouts from any accessible Odoo model.
 
-Phase 1 delivers the installable module skeleton: dashboard models,
-security groups, menus, OWL asset hooks, and service-layer placeholders.
+Phase 2 delivers the complete backend data model: dashboards, items, filters,
+bookmarks, validation, duplication, export definitions, menu helpers, and a
+secure ORM data engine for count and grouped aggregations.
 
-Core product features (drag layout, data engine, visualizations, import/export,
-realtime, formulas, AI) are implemented in later phases.
+Visualization UI enhancements continue in later phases.
     """,
     'author': 'ARMORA IT Technologies',
     'maintainer': 'ARMORA IT Technologies',
@@ -23,7 +23,7 @@ realtime, formulas, AI) are implemented in later phases.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 39.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 38,
     'depends': [
@@ -50,14 +50,13 @@ realtime, formulas, AI) are implemented in later phases.
             ('include', 'web.chartjs_lib'),
             'rn_dashboard_kpi/static/src/scss/dashboard.scss',
             'rn_dashboard_kpi/static/src/scss/themes.scss',
-            'rn_dashboard_kpi/static/src/utils/**/*',
-            'rn_dashboard_kpi/static/src/services/**/*',
-            'rn_dashboard_kpi/static/src/components/**/*',
-            'rn_dashboard_kpi/static/src/dashboard/**/*',
-            'rn_dashboard_kpi/static/src/xml/**/*',
+            'rn_dashboard_kpi/static/src/utils/visualization_registry.js',
+            'rn_dashboard_kpi/static/src/services/dashboard_service.js',
+            'rn_dashboard_kpi/static/src/dashboard/dashboard_action.js',
+            'rn_dashboard_kpi/static/src/xml/dashboard.xml',
         ],
         'web.assets_unit_tests': [
-            'rn_dashboard_kpi/static/tests/**/*',
+            'rn_dashboard_kpi/static/tests/visualization_registry_tests.js',
         ],
     },
     'images': [

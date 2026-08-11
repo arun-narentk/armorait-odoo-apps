@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_config_rn_dashboard_kpi_version" model="ir.config_parameter">
+        <field name="key">rn_dashboard_kpi.definition_version</field>
+        <field name="value">1</field>
+    </record>
+</odoo>

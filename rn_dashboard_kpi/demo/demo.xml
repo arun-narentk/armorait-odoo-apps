@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_rn_kpi_dashboard_welcome" model="rn.kpi.dashboard">
+        <field name="name">Welcome Dashboard</field>
+        <field name="description">Demo board created by Dashboard KPI Studio.</field>
+        <field name="theme">professional</field>
+        <field name="is_public" eval="True"/>
+        <field name="is_template" eval="True"/>
+        <field name="auto_refresh" eval="False"/>
+        <field name="date_filter_type">this_month</field>
+    </record>
+
+    <record id="demo_rn_kpi_dashboard_item_users" model="rn.kpi.dashboard.item">
+        <field name="dashboard_id" ref="demo_rn_kpi_dashboard_welcome"/>
+        <field name="name">Internal Users</field>
+        <field name="item_type">tile</field>
+        <field name="chart_type">tile</field>
+        <field name="title">Users</field>
+        <field name="subtitle">Count of res.users</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="aggregation">count</field>
+        <field name="layout_x">0</field>
+        <field name="layout_y">0</field>
+        <field name="layout_width">3</field>
+        <field name="layout_height">2</field>
+    </record>
+
+    <record id="demo_rn_kpi_dashboard_filter_month" model="rn.kpi.dashboard.filter">
+        <field name="dashboard_id" ref="demo_rn_kpi_dashboard_welcome"/>
+        <field name="name">Created This Month</field>
+        <field name="filter_type">date</field>
+        <field name="field_name">create_date</field>
+        <field name="date_filter_type">this_month</field>
+    </record>
+</odoo>

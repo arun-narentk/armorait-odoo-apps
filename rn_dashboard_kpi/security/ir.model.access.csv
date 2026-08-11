@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_kpi_dashboard_user,rn.kpi.dashboard user,model_rn_kpi_dashboard,group_rn_dashboard_kpi_user,1,1,1,1
+access_rn_kpi_dashboard_manager,rn.kpi.dashboard manager,model_rn_kpi_dashboard,group_rn_dashboard_kpi_manager,1,1,1,1
+access_rn_kpi_dashboard_item_user,rn.kpi.dashboard.item user,model_rn_kpi_dashboard_item,group_rn_dashboard_kpi_user,1,1,1,1
+access_rn_kpi_dashboard_item_manager,rn.kpi.dashboard.item manager,model_rn_kpi_dashboard_item,group_rn_dashboard_kpi_manager,1,1,1,1
+access_rn_kpi_dashboard_filter_user,rn.kpi.dashboard.filter user,model_rn_kpi_dashboard_filter,group_rn_dashboard_kpi_user,1,1,1,1
+access_rn_kpi_dashboard_filter_manager,rn.kpi.dashboard.filter manager,model_rn_kpi_dashboard_filter,group_rn_dashboard_kpi_manager,1,1,1,1
+access_rn_kpi_dashboard_bookmark_user,rn.kpi.dashboard.bookmark user,model_rn_kpi_dashboard_bookmark,group_rn_dashboard_kpi_user,1,1,1,1
+access_rn_kpi_dashboard_bookmark_manager,rn.kpi.dashboard.bookmark manager,model_rn_kpi_dashboard_bookmark,group_rn_dashboard_kpi_manager,1,1,1,1
+access_rn_kpi_dashboard_item_filter_user,rn.kpi.dashboard.item.filter user,model_rn_kpi_dashboard_item_filter,group_rn_dashboard_kpi_user,1,1,1,1
+access_rn_kpi_dashboard_item_filter_manager,rn.kpi.dashboard.item.filter manager,model_rn_kpi_dashboard_item_filter,group_rn_dashboard_kpi_manager,1,1,1,1
