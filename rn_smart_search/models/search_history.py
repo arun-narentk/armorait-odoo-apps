@@ -74,3 +74,9 @@ class RnSearchHistory(models.Model):
     def action_open_record(self):
         self.ensure_one()
         return self.env['rn.smart.search.service'].open_history_record(self.id)
+
+    @api.model
+    def _cron_cleanup_stale_history(self):
+        """Cron entrypoint: remove old non-favorite history entries."""
+        return self.env['rn.smart.search.service'].cleanup_stale_history()
+

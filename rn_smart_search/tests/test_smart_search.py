@@ -98,3 +98,13 @@ class TestRnSmartSearch(TransactionCase):
         removed = self.service.cleanup_stale_history()
         self.assertGreaterEqual(removed, 1)
         self.assertFalse(entry.exists())
+
+    def test_cron_cleanup_stale_history(self):
+        entry = self.service.log_search('cron old query', 'res.partner')
+        entry.write({
+            'last_opened': fields.Datetime.now() - timedelta(days=120),
+            'is_favorite': False,
+        })
+        removed = self.env['rn.search.history']._cron_cleanup_stale_history()
+        self.assertGreaterEqual(removed, 1)
+        self.assertFalse(entry.exists())
