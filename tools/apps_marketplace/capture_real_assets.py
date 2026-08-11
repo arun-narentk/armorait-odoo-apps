@@ -13,7 +13,7 @@ from playwright.sync_api import sync_playwright
 ODOO_ROOT = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA_ODOO_APPS')
 ARMORA = ODOO_ROOT / 'armora'
 CATALOG = ARMORA / 'tools/apps_marketplace/catalog.json'
-PY = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA/venv310/bin/python')
+PY = Path('/home/lenovo/bin/packages/PyCharm/odoovenvs/py310venv/bin/python')
 ODOO_BIN = ODOO_ROOT / 'odoo-bin'
 
 DB = 'armora_apps_capture'

@@ -30,7 +30,7 @@ Roadmap: pharmacy, laboratory, radiology, OT, specialty verticals (dental, eye).
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 249.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 58,
     'depends': [

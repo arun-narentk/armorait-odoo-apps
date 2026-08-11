@@ -85,7 +85,7 @@ for mod in modules:
 print(json.dumps(out))
 """
     cmd = [
-        str(ROOT.parent / 'venv310' / 'bin' / 'python'),
+        '/home/lenovo/bin/packages/PyCharm/odoovenvs/py310venv/bin/python',
         str(ROOT.parent / 'odoo-bin'),
         'shell',
         '-d', db,

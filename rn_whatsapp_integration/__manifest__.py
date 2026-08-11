@@ -54,6 +54,6 @@ Uses the contact's Phone or Mobile. No API required, opens wa.me. Optional docum
     'application': False,
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 59.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
 }

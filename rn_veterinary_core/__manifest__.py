@@ -31,7 +31,7 @@ Roadmap: owner mobile app, pharmacy batch tracking, livestock module.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 199.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 72,
     'depends': [

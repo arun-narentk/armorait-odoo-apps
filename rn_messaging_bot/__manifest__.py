@@ -20,7 +20,7 @@ message templates, campaign broadcasts, and optional WhatsApp connector bridge.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 79.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'depends': [
         'base',

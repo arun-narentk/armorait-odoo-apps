@@ -28,7 +28,7 @@ Install, enable, and use it in your own Odoo environment.
     'website': 'https://www.armorait.com',
     'support': 'info@armorait.com',
     'license': 'OPL-1',
-    'price': 99.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'currency': 'USD',
     'depends': [

@@ -14,7 +14,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[2]
 MODULE = 'rn_visual_enhancer'
 MOD_DIR = ROOT / MODULE
-PY = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA/venv310/bin/python')
+PY = Path('/home/lenovo/bin/packages/PyCharm/odoovenvs/py310venv/bin/python')
 ODOO_BIN = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA_ODOO_APPS/odoo-bin')
 RC = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA_ODOO_APPS/.openerp_serverrc')
 

@@ -31,7 +31,7 @@ Roadmap: devotee mobile app, e-hundi, multi-language, hall booking, prasadam sho
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 249.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 69,
     'depends': [

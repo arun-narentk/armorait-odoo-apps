@@ -16,7 +16,7 @@ from playwright.sync_api import sync_playwright
 ODOO_ROOT = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA_ODOO_APPS')
 ARMORA = ODOO_ROOT / 'armora'
 MODULE = 'rn_record_timeline'
-PY = Path('/home/lenovo/bin/packages/PyCharm/Old/Odoo_19_ARMORA/venv310/bin/python')
+PY = Path('/home/lenovo/bin/packages/PyCharm/odoovenvs/py310venv/bin/python')
 ODOO_BIN = ODOO_ROOT / 'odoo-bin'
 ADDONS_PATH = f'{ODOO_ROOT / "addons"},{ARMORA}'
 

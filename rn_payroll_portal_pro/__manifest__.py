@@ -54,6 +54,6 @@ Requires: Odoo 19, HR, Portal, Website. For payslip data, also install **HR Payr
     'application': False,
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 49.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
 }

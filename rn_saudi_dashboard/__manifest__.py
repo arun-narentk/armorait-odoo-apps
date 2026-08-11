@@ -27,7 +27,7 @@ dashboard for finance teams and ERP partners.
     'application': True,
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 39.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
                         'images': [
         'static/description/banner.png',

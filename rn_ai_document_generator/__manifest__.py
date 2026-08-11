@@ -25,7 +25,7 @@ template marketplace, and bulk generation.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 59.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 42,
     'depends': [

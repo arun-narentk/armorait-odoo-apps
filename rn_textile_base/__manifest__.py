@@ -32,7 +32,7 @@ energy monitoring, and AI.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 199.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 57,
     'depends': [

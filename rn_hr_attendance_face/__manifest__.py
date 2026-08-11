@@ -22,7 +22,7 @@ Phase 1: Module skeleton, security, menus, models, and service stubs.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 59.99,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 37,
     'depends': [

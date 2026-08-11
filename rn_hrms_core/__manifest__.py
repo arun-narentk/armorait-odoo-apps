@@ -24,7 +24,7 @@ recruitment, performance, portal, and more.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 49.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 40,
     'depends': [

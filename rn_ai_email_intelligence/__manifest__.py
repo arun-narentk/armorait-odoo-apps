@@ -30,7 +30,7 @@ intelligence, AI copilot commands, Gmail/Outlook sync.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 99.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 46,
     'depends': [

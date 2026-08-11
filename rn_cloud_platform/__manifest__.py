@@ -26,7 +26,7 @@ Phase 1 delivers:
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 99.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 51,
     'depends': [

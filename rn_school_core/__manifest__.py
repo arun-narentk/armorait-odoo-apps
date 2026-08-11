@@ -31,7 +31,7 @@ Roadmap: transport GPS, library, hostel, face attendance, mobile app, WhatsApp.
     'support': 'info@armorait.com',
     'license': 'OPL-1',
     'currency': 'USD',
-    'price': 199.0,
+    'price': 9.99,
     'live_test_url': 'https://www.armorait.com',
     'sequence': 62,
     'depends': [
