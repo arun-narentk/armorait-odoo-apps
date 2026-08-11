@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_rn_last_purchase_price" model="ir.ui.view">
+        <field name="name">purchase.order.form.rn.last.purchase.price</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']" position="after">
+                <field name="last_purchase_price" optional="show" readonly="1"
+                         decoration-danger="has_last_purchase_price_increase"
+                         decoration-success="purchase_price_difference &lt; 0"/>
+                <field name="purchase_price_difference" optional="hide" readonly="1"
+                         decoration-danger="purchase_price_difference &gt; 0"
+                         decoration-success="purchase_price_difference &lt; 0"/>
+                <field name="purchase_price_difference_percent" optional="hide" readonly="1"
+                         widget="float"/>
+                <field name="last_purchase_warning" optional="show" readonly="1"
+                         decoration-danger="has_last_purchase_price_increase"
+                         decoration-success="purchase_price_difference &lt; 0"/>
+                <field name="last_purchase_order_id" optional="hide" readonly="1"/>
+                <field name="last_purchase_vendor_id" optional="hide" readonly="1"/>
+                <field name="last_purchase_date" optional="hide" readonly="1"/>
+                <field name="has_last_purchase_price_increase" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+                <field name="last_purchase_price" readonly="1"/>
+                <field name="purchase_price_difference" readonly="1"/>
+                <field name="purchase_price_difference_percent" readonly="1"/>
+                <field name="last_purchase_warning" readonly="1"
+                         invisible="not last_purchase_warning"/>
+                <field name="last_purchase_order_id" readonly="1"/>
+                <field name="last_purchase_vendor_id" readonly="1"/>
+                <field name="last_purchase_date" readonly="1"/>
+                <field name="has_last_purchase_price_increase" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

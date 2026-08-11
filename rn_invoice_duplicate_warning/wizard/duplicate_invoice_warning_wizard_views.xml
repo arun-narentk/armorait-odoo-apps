@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_rn_invoice_duplicate_warning_wizard_form" model="ir.ui.view">
+        <field name="name">rn.invoice.duplicate.warning.wizard.form</field>
+        <field name="model">rn.invoice.duplicate.warning.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Duplicate Vendor Invoice Detected">
+                <field name="move_id" invisible="1"/>
+                <field name="duplicate_move_id" invisible="1"/>
+                <field name="block_mode" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <div class="alert alert-warning" role="alert">
+                    <field name="warning_message" nolabel="1"/>
+                </div>
+                <group>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="invoice_reference"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group>
+                        <field name="duplicate_name"/>
+                        <field name="duplicate_date"/>
+                        <field name="duplicate_amount"/>
+                        <field name="duplicate_state"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_close" type="object" string="Cancel" class="btn-secondary" invisible="block_mode"/>
+                    <button name="action_continue_anyway" type="object" string="Continue Anyway" class="btn-primary" invisible="block_mode"/>
+                    <button name="action_open_duplicate" type="object" string="Open Existing Bill" class="btn-secondary"/>
+                    <button name="action_close" type="object" string="Close" class="btn-primary" invisible="not block_mode"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

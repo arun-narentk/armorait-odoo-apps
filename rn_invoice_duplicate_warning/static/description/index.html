@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Invoice Duplicate Number Warning</title>
+    <style>
+        body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #102a43; background: #f5f7fa; }
+        .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 40px; }
+        .hero { background: #0f4c81; color: #fff; border-radius: 14px; padding: 28px 24px; }
+        .hero h1 { margin: 0 0 8px; font-size: 28px; }
+        .hero p { margin: 0; opacity: .95; }
+        .card { background: #fff; border: 1px solid #d9e2ec; border-radius: 12px; padding: 18px 18px 8px; margin-top: 16px; }
+        .card h2 { margin: 0 0 10px; font-size: 18px; }
+        .muted { color: #627d98; line-height: 1.5; }
+        ul { margin: 0 0 12px 18px; padding: 0; }
+        li { margin: 0 0 6px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .pill { background: #e6f0fa; border-radius: 10px; padding: 12px; }
+        .pill strong { display: block; margin-bottom: 4px; }
+        .mock { border: 1px dashed #9fb3c8; border-radius: 10px; padding: 12px; background: #f8fafc; margin: 10px 0 14px; }
+        .mock h3 { margin: 0 0 8px; font-size: 15px; color: #0f4c81; }
+        footer { margin-top: 24px; color: #627d98; font-size: 13px; }
+        @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } .hero h1 { font-size: 22px; } }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="hero">
+        <h1>Prevent Duplicate Vendor Invoices</h1>
+        <p>Detect duplicate vendor invoice numbers before posting. Simple, lightweight, and multi-company ready.</p>
+    </div>
+
+    <div class="card">
+        <h2>Overview</h2>
+        <p class="muted">
+            Invoice Duplicate Number Warning stops accounting users from accidentally posting the same supplier
+            invoice twice. It checks Bill Reference for the same vendor and company at posting time.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why Duplicate Vendor Invoices Are Dangerous</h2>
+        <ul class="muted">
+            <li>Duplicate payables and overpayment risk</li>
+            <li>Messy vendor reconciliation</li>
+            <li>Harder audit trails</li>
+            <li>Wasted AP time correcting posted bills</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>How It Works</h2>
+        <ol class="muted">
+            <li>User enters a vendor bill with a Bill Reference</li>
+            <li>User clicks Post</li>
+            <li>Module compares company + commercial vendor + normalized reference</li>
+            <li>If a draft or posted duplicate exists, a clear warning dialog opens</li>
+        </ol>
+        <div class="mock">
+            <h3>Duplicate Vendor Invoice Detected</h3>
+            <p class="muted">Vendor: ABC Suppliers<br/>Invoice Number: INV-2026-00125<br/>Existing Bill: BILL/2026/00458<br/>Status: Posted</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Warning Mode and Block Mode</h2>
+        <div class="grid">
+            <div class="pill">
+                <strong>Warning Mode (default)</strong>
+                <span class="muted">Cancel, open the existing bill, or continue anyway.</span>
+            </div>
+            <div class="pill">
+                <strong>Block Mode (optional)</strong>
+                <span class="muted">Posting is blocked until the invoice number is unique.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Multi-Company Support</h2>
+        <p class="muted">
+            Duplicates are evaluated per company. The same supplier invoice number in Company A does not warn
+            Company B.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Key Features</h2>
+        <ul class="muted">
+            <li>Vendor bill Bill Reference checks</li>
+            <li>Commercial partner matching</li>
+            <li>Case-insensitive and trimmed comparison</li>
+            <li>Draft and posted duplicates</li>
+            <li>Accounting settings toggles</li>
+            <li>No extra menus or heavy dependencies</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Simple Configuration</h2>
+        <p class="muted">
+            Accounting → Configuration → Settings → Vendor Bills → Duplicate Invoice Warning
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Compatibility</h2>
+        <ul class="muted">
+            <li>Odoo 19 Community</li>
+            <li>Depends on Accounting (`account`)</li>
+            <li>License: LGPL-3</li>
+        </ul>
+    </div>
+
+    <footer>
+        ARMORA IT Technologies<br/>
+        Website: https://www.armorait.com<br/>
+        Support: info@armorait.com
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_rn_po_line_internal_note" model="ir.ui.view">
+        <field name="name">purchase.order.form.rn.po.line.internal.note</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Inline on the editable line list, next to description -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='name']" position="after">
+                <field name="internal_note"
+                         optional="hide"
+                         widget="text"
+                         invisible="display_type"/>
+            </xpath>
+            <!-- Line form: Notes page (internal only; separate from vendor description) -->
+            <xpath expr="//field[@name='order_line']/form//page[@name='notes']/field[@name='name']" position="after">
+                <separator string="Internal Note"/>
+                <field name="internal_note"
+                         placeholder="Internal note (not shared with the vendor)"
+                         nolabel="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

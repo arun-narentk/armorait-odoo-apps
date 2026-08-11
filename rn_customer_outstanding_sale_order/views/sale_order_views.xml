@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_rn_customer_outstanding" model="ir.ui.view">
+        <field name="name">sale.order.form.rn.customer.outstanding</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='partner_details']/field[@name='partner_id']" position="after">
+                <field name="company_currency_id" invisible="1"/>
+                <field name="has_customer_outstanding" invisible="1"/>
+                <label for="customer_outstanding" string="Customer Outstanding"/>
+                <div class="o_row">
+                    <field name="customer_outstanding"
+                             widget="monetary"
+                             readonly="1"
+                             class="fw-bold text-warning"
+                             invisible="not has_customer_outstanding"/>
+                    <field name="customer_outstanding"
+                             widget="monetary"
+                             readonly="1"
+                             invisible="has_customer_outstanding"/>
+                    <span class="fa fa-exclamation-triangle text-warning ms-1"
+                          title="Customer has unpaid receivables"
+                          invisible="not has_customer_outstanding"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

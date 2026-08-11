@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_rn_previous_customer_price" model="ir.ui.view">
+        <field name="name">sale.order.form.rn.previous.customer.price</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- List / tree of order lines -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']" position="after">
+                <field name="previous_customer_price" optional="show" readonly="1"/>
+                <field name="previous_customer_order_id" optional="hide" readonly="1"/>
+                <field name="previous_customer_order_date" optional="hide" readonly="1"/>
+                <field name="previous_customer_price_difference" optional="hide" readonly="1"/>
+                <field name="previous_customer_price_percentage" optional="hide" readonly="1" widget="float"/>
+            </xpath>
+            <!-- Line form embedded in the order -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+                <field name="previous_customer_price" readonly="1"/>
+                <field name="previous_customer_order_id" readonly="1"/>
+                <field name="previous_customer_order_date" readonly="1"/>
+                <field name="previous_customer_price_difference" readonly="1"/>
+                <field name="previous_customer_price_percentage" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

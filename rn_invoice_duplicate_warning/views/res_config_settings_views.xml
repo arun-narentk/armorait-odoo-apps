@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_invoice_duplicate_warning" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.invoice.duplicate.warning</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='account_vendor_bills']" position="inside">
+                <setting id="rn_duplicate_invoice_warning_setting"
+                         string="Duplicate Invoice Warning"
+                         help="Prevent accidental duplicate vendor invoices by checking Bill Reference before posting.">
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <field name="rn_enable_duplicate_invoice_warning"/>
+                            <label for="rn_enable_duplicate_invoice_warning"/>
+                        </div>
+                        <div class="row" invisible="not rn_enable_duplicate_invoice_warning">
+                            <field name="rn_block_duplicate_invoice"/>
+                            <label for="rn_block_duplicate_invoice"/>
+                        </div>
+                        <div class="row" invisible="not rn_enable_duplicate_invoice_warning">
+                            <field name="rn_duplicate_invoice_case_insensitive"/>
+                            <label for="rn_duplicate_invoice_case_insensitive"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_rn_invoice_line_internal_note" model="ir.ui.view">
+        <field name="name">account.move.form.rn.invoice.line.internal.note</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Invoice / bill line list (customer & vendor) -->
+            <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='name']" position="after">
+                <field name="internal_note"
+                         placeholder="Internal note..."
+                         optional="show"
+                         widget="text"
+                         invisible="display_type"/>
+            </xpath>
+            <!-- Mobile / line form -->
+            <xpath expr="//field[@name='invoice_line_ids']/form//field[@name='name']" position="after">
+                <field name="internal_note"
+                         placeholder="Internal note (not shown on the PDF)"
+                         invisible="display_type in ('line_section', 'line_subsection', 'line_note')"
+                         widget="text"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

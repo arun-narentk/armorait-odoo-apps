@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_rn_quotation_expiry_countdown" model="ir.ui.view">
+        <field name="name">sale.order.form.rn.quotation.expiry.countdown</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='order_details']/field[@name='validity_date']" position="after">
+                <field name="quotation_expiry_urgency" invisible="1"/>
+                <label for="quotation_expiry_countdown"
+                       string="Countdown"
+                       invisible="state not in ('draft', 'sent') or not validity_date"/>
+                <div invisible="state not in ('draft', 'sent') or not validity_date">
+                    <field name="quotation_expiry_countdown"
+                             nolabel="1"
+                             readonly="1"
+                             class="oe_inline"
+                             widget="rn_quotation_expiry_countdown"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_quotation_tree_rn_quotation_expiry_countdown" model="ir.ui.view">
+        <field name="name">sale.order.list.rn.quotation.expiry.countdown</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='validity_date']" position="after">
+                <field name="quotation_expiry_urgency" column_invisible="1"/>
+                <field name="quotation_expiry_countdown"
+                         string="Countdown"
+                         optional="show"
+                         readonly="1"
+                         decoration-success="quotation_expiry_urgency == 'ok'"
+                         decoration-warning="quotation_expiry_urgency == 'warning'"
+                         decoration-danger="quotation_expiry_urgency == 'expired'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Quotation search (primary inherit used by RFQ/Quotation actions) -->
+    <record id="sale_order_view_search_rn_quotation_expiry" model="ir.ui.view">
+        <field name="name">sale.order.search.rn.quotation.expiry</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='draft']" position="after">
+                <separator/>
+                <filter string="Expiring Today"
+                        name="rn_expiring_today"
+                        domain="[
+                            ('state', 'in', ('draft', 'sent')),
+                            ('validity_date', '=', 'today')
+                        ]"/>
+                <filter string="Expiring Within 24 Hours"
+                        name="rn_expiring_within_24h"
+                        domain="[
+                            ('state', 'in', ('draft', 'sent')),
+                            ('validity_date', '&gt;=', 'today'),
+                            ('validity_date', '&lt;=', (context_today() + relativedelta(days=1)).strftime('%Y-%m-%d'))
+                        ]"/>
+                <filter string="Expired Quotations"
+                        name="rn_expired_quotations"
+                        domain="[
+                            ('state', 'in', ('draft', 'sent')),
+                            ('validity_date', '&lt;', 'today')
+                        ]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

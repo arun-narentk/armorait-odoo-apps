@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rn_quotation_expiry" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rn.quotation.expiry</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='quotation_validity_days']" position="after">
+                <setting id="rn_quotation_expiry_warning_hours"
+                         string="Expiry countdown warning"
+                         help="Highlight the countdown in orange when less than this many hours remain before expiration (end of day).">
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label for="rn_quotation_expiry_warning_hours" class="col-lg-4 o_light_label" string="Warning within"/>
+                            <field name="rn_quotation_expiry_warning_hours" class="text-center" style="width: 4rem;"/>
+                            <span>hours</span>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

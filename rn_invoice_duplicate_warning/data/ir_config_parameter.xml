@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_rn_invoice_duplicate_warning_enable" model="ir.config_parameter">
+        <field name="key">rn_invoice_duplicate_warning.enable</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_rn_invoice_duplicate_warning_block" model="ir.config_parameter">
+        <field name="key">rn_invoice_duplicate_warning.block</field>
+        <field name="value">False</field>
+    </record>
+    <record id="ir_config_rn_invoice_duplicate_warning_case" model="ir.config_parameter">
+        <field name="key">rn_invoice_duplicate_warning.case_insensitive</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

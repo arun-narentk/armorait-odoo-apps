@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_rn_invoice_duplicate_warning" model="ir.ui.view">
+        <field name="name">account.move.form.rn.invoice.duplicate.warning</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@role='alert'][.//field[@name='duplicated_ref_ids']]" position="after">
+                <field name="rn_has_duplicate_vendor_ref" invisible="1"/>
+                <div class="alert alert-warning w-100" role="alert"
+                     invisible="move_type != 'in_invoice' or not rn_has_duplicate_vendor_ref">
+                    Duplicate Invoice Number: another vendor bill already uses this Bill Reference
+                    for the same vendor and company.
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

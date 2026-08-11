@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rn_invoice_duplicate_warning_wizard_invoice,rn.invoice.duplicate.warning.wizard invoice,model_rn_invoice_duplicate_warning_wizard,account.group_account_invoice,1,1,1,1
+access_rn_invoice_duplicate_warning_wizard_user,rn.invoice.duplicate.warning.wizard user,model_rn_invoice_duplicate_warning_wizard,account.group_account_user,1,1,1,1
+access_rn_invoice_duplicate_warning_wizard_manager,rn.invoice.duplicate.warning.wizard manager,model_rn_invoice_duplicate_warning_wizard,account.group_account_manager,1,1,1,1
