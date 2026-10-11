@@ -34,14 +34,6 @@
     "designer": "screenshots/designer.png",
     "mobile": "screenshots/mobile.png"
   },
-  "gifs": {
-    "hero": "gifs/hero.gif",
-    "workflow": "gifs/workflow.gif",
-    "dashboard": "gifs/dashboard.gif",
-    "settings": "gifs/settings.gif",
-    "reports": "gifs/reports.gif",
-    "mobile": "gifs/mobile.gif"
-  },
   "screenshot_labels": {
     "workflow": "Build Filter Wizard",
     "dashboard": "Dictionary Configuration",
