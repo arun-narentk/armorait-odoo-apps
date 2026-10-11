@@ -278,6 +278,7 @@ class RnSmartSearchService(models.AbstractModel):
                 'name': entry.label,
                 'res_model': entry.model,
                 'view_mode': 'form',
+                'views': [(False, 'form')],
                 'res_id': entry.record_id,
                 'target': 'current',
             }
@@ -290,6 +291,7 @@ class RnSmartSearchService(models.AbstractModel):
                 'name': entry.search_query or entry.label,
                 'res_model': entry.model or 'ir.ui.view',
                 'view_mode': 'list,form' if entry.model else 'form',
+                'views': [(False, 'list'), (False, 'form')] if entry.model else [(False, 'form')],
                 'domain': action_domain,
                 'target': 'current',
             }

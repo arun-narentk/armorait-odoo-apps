@@ -39,7 +39,6 @@ export class RnSmartSearchWorkspace extends Component {
         if (clientAction) {
             await this.action.doAction(clientAction);
         }
-        await this.refresh();
     }
 
     async toggleFavorite(historyId) {

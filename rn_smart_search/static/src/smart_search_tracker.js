@@ -3,7 +3,7 @@
 import { registry } from "@web/core/registry";
 import { standardWidgetProps } from "@web/views/widgets/standard_widget_props";
 import { useService } from "@web/core/utils/hooks";
-import { Component, onWillStart, useEffect } from "@odoo/owl";
+import { Component, useEffect } from "@odoo/owl";
 
 export class RnSmartSearchTrackerWidget extends Component {
     static template = "rn_smart_search.Tracker";
@@ -13,7 +13,6 @@ export class RnSmartSearchTrackerWidget extends Component {
 
     setup() {
         this.orm = useService("orm");
-        onWillStart(() => this.trackView());
         useEffect(
             () => {
                 this.trackView();
