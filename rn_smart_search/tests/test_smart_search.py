@@ -3,6 +3,7 @@
 from datetime import timedelta
 
 from odoo import fields
+from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
@@ -79,8 +80,21 @@ class TestRnSmartSearch(TransactionCase):
         action = self.service.open_history_record(entry.id)
         self.assertEqual(action['res_model'], 'res.partner')
         self.assertEqual(action['res_id'], self.partner.id)
+        self.assertEqual(action['views'], [(False, 'form')])
         entry.invalidate_recordset()
         self.assertEqual(entry.open_count, 2)
+
+    def test_open_search_history(self):
+        entry = self.service.log_search('Smart Search Partner', 'res.partner')
+        action = self.service.open_history_record(entry.id)
+        self.assertEqual(action['res_model'], 'res.partner')
+        self.assertEqual(action['views'], [(False, 'list'), (False, 'form')])
+        self.assertIn(self.partner, self.env['res.partner'].search(action['domain']))
+
+    def test_open_search_history_without_model(self):
+        entry = self.service.log_search('no model query')
+        with self.assertRaises(UserError):
+            self.service.open_history_record(entry.id)
 
     def test_remember_viewed_disabled(self):
         self.env['ir.config_parameter'].sudo().set_param('rn_smart_search.remember_viewed', 'False')

@@ -9,7 +9,7 @@ def migrate(cr, version):
         return
     env = api.Environment(cr, SUPERUSER_ID, {})
     cron = env.ref('rn_smart_search.ir_cron_rn_smart_search_cleanup', raise_if_not_found=False)
-    if not cron:
+    if not cron or cron.model_id.model != 'rn.smart.search.service':
         return
     cron.write({
         'model_id': env.ref('rn_smart_search.model_rn_search_history').id,

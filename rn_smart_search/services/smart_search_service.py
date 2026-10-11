@@ -283,16 +283,17 @@ class RnSmartSearchService(models.AbstractModel):
                 'target': 'current',
             }
         if entry.history_type == HISTORY_TYPE_SEARCH:
-            action_domain = []
-            if entry.model and entry.model in self.env:
-                action_domain = self._search_domain_for_model(entry.model, entry.search_query)
+            if not entry.model:
+                raise UserError(_('This search is not linked to any model.'))
+            if entry.model not in self.env:
+                raise UserError(_('The linked model is no longer available.'))
             return {
                 'type': 'ir.actions.act_window',
                 'name': entry.search_query or entry.label,
-                'res_model': entry.model or 'ir.ui.view',
-                'view_mode': 'list,form' if entry.model else 'form',
-                'views': [(False, 'list'), (False, 'form')] if entry.model else [(False, 'form')],
-                'domain': action_domain,
+                'res_model': entry.model,
+                'view_mode': 'list,form',
+                'views': [(False, 'list'), (False, 'form')],
+                'domain': self._search_domain_for_model(entry.model, entry.search_query),
                 'target': 'current',
             }
         raise UserError(_('This history entry cannot be opened.'))
@@ -312,7 +313,9 @@ class RnSmartSearchService(models.AbstractModel):
             return ['|', ('name', 'ilike', normalized), ('partner_id.name', 'ilike', normalized)]
         if model == 'account.move':
             return ['|', ('name', 'ilike', normalized), ('partner_id.name', 'ilike', normalized)]
-        return [('name', 'ilike', normalized)]
+        if 'name' in self.env[model]._fields:
+            return [('name', 'ilike', normalized)]
+        return [('display_name', 'ilike', normalized)]
 
     @api.model
     def toggle_favorite(self, history_id: int) -> dict[str, Any]:

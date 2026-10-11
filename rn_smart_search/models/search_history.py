@@ -79,4 +79,3 @@ class RnSearchHistory(models.Model):
     def _cron_cleanup_stale_history(self):
         """Cron entrypoint: remove old non-favorite history entries."""
         return self.env['rn.smart.search.service'].cleanup_stale_history()
-
